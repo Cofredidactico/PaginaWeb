@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://cofredidactico.github.io/PaginaWeb/sitemap.xml
+
+# No indexar el panel de administración
+Disallow: /?admin
+Disallow: /?login
