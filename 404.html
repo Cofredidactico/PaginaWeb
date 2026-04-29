@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página no encontrada · Cofre Didáctico</title>
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Nunito',sans-serif;
+  background:#FDFCF8;color:#1A2744;
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:24px;
+}
+.card{
+  max-width:540px;width:100%;
+  background:#fff;border-radius:34px;
+  border:1.5px solid #E6E2D6;
+  padding:52px 44px;text-align:center;
+  box-shadow:0 24px 64px rgba(0,0,0,.08);
+}
+.emoji-wrap{
+  width:120px;height:120px;border-radius:28px;
+  background:linear-gradient(135deg,#E3F2FD,#FFF3E8);
+  display:flex;align-items:center;justify-content:center;
+  font-size:3.5rem;margin:0 auto 28px;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;color:#3BB8C3;
+  background:rgba(59,184,195,.1);padding:6px 16px;border-radius:50px;
+  border:1px solid rgba(59,184,195,.2);margin-bottom:18px;
+}
+h1{
+  font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,5vw,2.8rem);
+  font-weight:900;letter-spacing:-0.04em;color:#1A2744;
+  line-height:1.05;margin-bottom:16px;
+}
+h1 em{color:#F97316;font-style:normal;}
+p{
+  font-size:.95rem;color:#637082;font-weight:500;
+  line-height:1.75;margin-bottom:32px;
+}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 26px;border-radius:50px;font-family:'Nunito',sans-serif;
+  font-size:.9rem;font-weight:800;cursor:pointer;
+  border:none;text-decoration:none;transition:all .2s;
+}
+.btn-primary{background:#F97316;color:#fff;box-shadow:0 6px 20px rgba(249,115,22,.35);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(249,115,22,.45);}
+.btn-secondary{background:#F5F3EC;color:#1A2744;border:1.5px solid #E6E2D6;}
+.btn-secondary:hover{background:#E6E2D6;}
+.links{margin-top:32px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+.links a{
+  font-size:.82rem;font-weight:700;color:#637082;text-decoration:none;
+  transition:color .15s;
+}
+.links a:hover{color:#2196F3;}
+.footer-note{margin-top:28px;font-size:.72rem;color:#A8B2BF;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="emoji-wrap">🔍</div>
+  <div class="badge">Error 404</div>
+  <h1>Esta página se<br><em>perdió en el aula</em></h1>
+  <p>El recurso que buscás no existe o fue movido.<br>¡Pero tenemos miles de materiales esperándote!</p>
+  <div class="btns">
+    <a href="/" class="btn btn-primary">🏠 Ir al inicio</a>
+    <a href="/#s-cat" class="btn btn-secondary">📚 Ver catálogo</a>
+  </div>
+  <div class="links">
+    <a href="/#s-test">⭐ Reseñas</a>
+    <a href="/#s-mapa">🗺️ Comunidad</a>
+    <a href="mailto:cofredidacticoo@gmail.com">✉️ Contacto</a>
+  </div>
+  <p class="footer-note">Cofre Didáctico · Materiales educativos para docentes</p>
+</div>
+<script>
+  // Redirect to home after 15 seconds
+  var count = 15;
+  var note = document.querySelector('.footer-note');
+  var t = setInterval(function(){
+    count--;
+    if(note) note.textContent = 'Redirigiendo al inicio en ' + count + 's… · Cofre Didáctico';
+    if(count <= 0){ clearInterval(t); window.location.href='/'; }
+  }, 1000);
+</script>
+</body>
+</html>
