@@ -1,5 +1,101 @@
 {
-  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
+  "productos": [
+    {
+      "id": "Dia-de-la-Escarapela",
+      "nombre": "Día de la Escarapela",
+      "descripcion": "Actividades graduadas para reconocer y trazar vocales. 24 páginas listas para imprimir, ideal para nivel inicial y primer grado.",
+      "tipo": "cuadernillo",
+      "tematica": "lengua",
+      "nivel": "Nivel Inicial · 1° Primaria",
+      "precio": 2500,
+      "precioTachado": 3500,
+      "acceso": "pago",
+      "imagen": "/PaginaWeb/images/Publicación Día de la Escarapela 1.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-de-la-escarapela-con-plataforma-interactiva",
+      "etiqueta": "mas-vendido",
+      "activo": true,
+      "destacado": true
+    },
+    {
+      "id": "pasapalabra",
+      "nombre": "Pasapalabra Interactivo",
+      "descripcion": "Juego digital tipo rosco para repasar contenidos. Editable: cambiás las preguntas y queda listo para tu aula.",
+      "tipo": "juego",
+      "tematica": "juegos",
+      "nivel": "2° Ciclo Primaria",
+      "precio": 1800,
+      "precioTachado": null,
+      "acceso": "pago",
+      "imagen": "images/placeholder-pasapalabra.svg",
+      "link": "https://cofredidactico.empretienda.com.ar/",
+      "etiqueta": "nuevo",
+      "activo": true,
+      "destacado": true
+    },
+    {
+      "id": "dia-tierra",
+      "nombre": "Día de la Tierra",
+      "descripcion": "Lámina + actividades para trabajar el cuidado del planeta. Recurso gratuito como bienvenida.",
+      "tipo": "lamina",
+      "tematica": "efemerides",
+      "nivel": "Todos los niveles",
+      "precio": 0,
+      "precioTachado": null,
+      "acceso": "gratis",
+      "imagen": "images/placeholder-tierra.svg",
+      "link": "https://cofredidactico.empretienda.com.ar/",
+      "activo": true,
+      "destacado": false
+    },
+    {
+      "id": "laminas-mate",
+      "nombre": "Láminas Matemáticas",
+      "descripcion": "Set de 8 láminas A3 con tablas, números y operaciones básicas. Diseño editorial para colgar en el aula.",
+      "tipo": "lamina",
+      "tematica": "matematica",
+      "nivel": "1° Ciclo Primaria",
+      "precio": 3200,
+      "precioTachado": null,
+      "acceso": "pago",
+      "imagen": "images/placeholder-mate.svg",
+      "link": "https://cofredidactico.empretienda.com.ar/",
+      "etiqueta": "destacado",
+      "activo": true,
+      "destacado": false
+    }
+  ],
+  "tematicas": [
+    {
+      "id": "lengua",
+      "nombre": "Lengua",
+      "emoji": "📖"
+    },
+    {
+      "id": "matematica",
+      "nombre": "Matemática",
+      "emoji": "🔢"
+    },
+    {
+      "id": "ciencias",
+      "nombre": "Ciencias",
+      "emoji": "🔬"
+    },
+    {
+      "id": "efemerides",
+      "nombre": "Efemérides",
+      "emoji": "🗓️"
+    },
+    {
+      "id": "juegos",
+      "nombre": "Juegos",
+      "emoji": "🎮"
+    },
+    {
+      "id": "laminas",
+      "nombre": "Láminas",
+      "emoji": "🖼️"
+    }
+  ],
   "config": {
     "anuncio": {
       "activo": false,
@@ -19,74 +115,5 @@
       "email": "cofredidacticoo@gmail.com"
     }
   },
-  "tematicas": [
-    {"id": "lengua",       "nombre": "Lengua",       "emoji": "📖"},
-    {"id": "matematica",   "nombre": "Matemática",   "emoji": "🔢"},
-    {"id": "ciencias",     "nombre": "Ciencias",     "emoji": "🔬"},
-    {"id": "efemerides",   "nombre": "Efemérides",   "emoji": "🗓️"},
-    {"id": "juegos",       "nombre": "Juegos",       "emoji": "🎮"},
-    {"id": "laminas",      "nombre": "Láminas",      "emoji": "🖼️"}
-  ],
-  "productos": [
-    {
-      "id": "cuadernillo-vocales",
-      "nombre": "Cuadernillo de Vocales",
-      "descripcion": "Actividades graduadas para reconocer y trazar vocales. 24 páginas listas para imprimir, ideal para nivel inicial y primer grado.",
-      "tipo": "cuadernillo",
-      "tematica": "lengua",
-      "nivel": "Nivel Inicial · 1° Primaria",
-      "precio": 2500,
-      "precioTachado": 3500,
-      "acceso": "pago",
-      "imagen": "images/placeholder-vocales.svg",
-      "link": "https://cofredidactico.empretienda.com.ar/",
-      "etiqueta": "mas-vendido",
-      "activo": true,
-      "destacado": true
-    },
-    {
-      "id": "pasapalabra",
-      "nombre": "Pasapalabra Interactivo",
-      "descripcion": "Juego digital tipo rosco para repasar contenidos. Editable: cambiás las preguntas y queda listo para tu aula.",
-      "tipo": "juego",
-      "tematica": "juegos",
-      "nivel": "2° Ciclo Primaria",
-      "precio": 1800,
-      "acceso": "pago",
-      "imagen": "images/placeholder-pasapalabra.svg",
-      "link": "https://cofredidactico.empretienda.com.ar/",
-      "etiqueta": "nuevo",
-      "activo": true,
-      "destacado": true
-    },
-    {
-      "id": "dia-tierra",
-      "nombre": "Día de la Tierra",
-      "descripcion": "Lámina + actividades para trabajar el cuidado del planeta. Recurso gratuito como bienvenida.",
-      "tipo": "lamina",
-      "tematica": "efemerides",
-      "nivel": "Todos los niveles",
-      "precio": 0,
-      "acceso": "gratis",
-      "imagen": "images/placeholder-tierra.svg",
-      "link": "https://cofredidactico.empretienda.com.ar/",
-      "activo": true,
-      "destacado": false
-    },
-    {
-      "id": "laminas-mate",
-      "nombre": "Láminas Matemáticas",
-      "descripcion": "Set de 8 láminas A3 con tablas, números y operaciones básicas. Diseño editorial para colgar en el aula.",
-      "tipo": "lamina",
-      "tematica": "matematica",
-      "nivel": "1° Ciclo Primaria",
-      "precio": 3200,
-      "acceso": "pago",
-      "imagen": "images/placeholder-mate.svg",
-      "link": "https://cofredidactico.empretienda.com.ar/",
-      "etiqueta": "destacado",
-      "activo": true,
-      "destacado": false
-    }
-  ]
+  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home."
 }
