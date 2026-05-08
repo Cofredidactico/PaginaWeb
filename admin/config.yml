@@ -1,5 +1,5 @@
 # ════════════════════════════════════════════════════════════════
-#  Decap CMS — Configuración del panel admin de Cofre Didáctico
+#  Sveltia CMS — Configuración del panel admin de Cofre Didáctico
 # ════════════════════════════════════════════════════════════════
 #  Cómo accedés:
 #    https://cofredidactico.github.io/PaginaWeb/admin/
@@ -12,6 +12,9 @@ backend:
   repo: Cofredidactico/PaginaWeb
   branch: main
   # Si tu rama principal se llama "master", cambialo arriba.
+  # Auth directa GitHub vía proxy oficial de Sveltia (PKCE, no necesita backend).
+  auth_type: pkce
+  app_id: Iv1.bb2671b21f24f60a  # Sveltia public OAuth app — funciona out-of-the-box
 
 # Carpeta donde Decap guarda las imágenes que subís
 media_folder: "images"
