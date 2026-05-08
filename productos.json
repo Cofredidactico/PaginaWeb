@@ -1,0 +1,92 @@
+{
+  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
+  "config": {
+    "anuncio": {
+      "activo": false,
+      "texto": "🎉 Envíos gratis esta semana — usá el código DOCENTE10",
+      "color": "#FF8A4C"
+    },
+    "stats": {
+      "docentes": "+500",
+      "paises": "+12",
+      "descargas": "+2.000"
+    },
+    "links": {
+      "instagram": "https://www.instagram.com/cofredidactico/",
+      "empretienda": "https://cofredidactico.empretienda.com.ar/",
+      "hotmart": "https://hotmart.com/es/market/materiales-educativos",
+      "whatsapp": "https://wa.me/5491165298256?text=Hola!%20Tengo%20una%20consulta%20sobre%20los%20materiales%20de%20Cofre%20Did%C3%A1ctico%20%F0%9F%93%9A",
+      "email": "cofredidacticoo@gmail.com"
+    }
+  },
+  "tematicas": [
+    {"id": "lengua",       "nombre": "Lengua",       "emoji": "📖"},
+    {"id": "matematica",   "nombre": "Matemática",   "emoji": "🔢"},
+    {"id": "ciencias",     "nombre": "Ciencias",     "emoji": "🔬"},
+    {"id": "efemerides",   "nombre": "Efemérides",   "emoji": "🗓️"},
+    {"id": "juegos",       "nombre": "Juegos",       "emoji": "🎮"},
+    {"id": "laminas",      "nombre": "Láminas",      "emoji": "🖼️"}
+  ],
+  "productos": [
+    {
+      "id": "cuadernillo-vocales",
+      "nombre": "Cuadernillo de Vocales",
+      "descripcion": "Actividades graduadas para reconocer y trazar vocales. 24 páginas listas para imprimir, ideal para nivel inicial y primer grado.",
+      "tipo": "cuadernillo",
+      "tematica": "lengua",
+      "nivel": "Nivel Inicial · 1° Primaria",
+      "precio": 2500,
+      "precioTachado": 3500,
+      "acceso": "pago",
+      "imagen": "images/placeholder-vocales.svg",
+      "link": "https://cofredidactico.empretienda.com.ar/",
+      "etiqueta": "mas-vendido",
+      "activo": true,
+      "destacado": true
+    },
+    {
+      "id": "pasapalabra",
+      "nombre": "Pasapalabra Interactivo",
+      "descripcion": "Juego digital tipo rosco para repasar contenidos. Editable: cambiás las preguntas y queda listo para tu aula.",
+      "tipo": "juego",
+      "tematica": "juegos",
+      "nivel": "2° Ciclo Primaria",
+      "precio": 1800,
+      "acceso": "pago",
+      "imagen": "images/placeholder-pasapalabra.svg",
+      "link": "https://cofredidactico.empretienda.com.ar/",
+      "etiqueta": "nuevo",
+      "activo": true,
+      "destacado": true
+    },
+    {
+      "id": "dia-tierra",
+      "nombre": "Día de la Tierra",
+      "descripcion": "Lámina + actividades para trabajar el cuidado del planeta. Recurso gratuito como bienvenida.",
+      "tipo": "lamina",
+      "tematica": "efemerides",
+      "nivel": "Todos los niveles",
+      "precio": 0,
+      "acceso": "gratis",
+      "imagen": "images/placeholder-tierra.svg",
+      "link": "https://cofredidactico.empretienda.com.ar/",
+      "activo": true,
+      "destacado": false
+    },
+    {
+      "id": "laminas-mate",
+      "nombre": "Láminas Matemáticas",
+      "descripcion": "Set de 8 láminas A3 con tablas, números y operaciones básicas. Diseño editorial para colgar en el aula.",
+      "tipo": "lamina",
+      "tematica": "matematica",
+      "nivel": "1° Ciclo Primaria",
+      "precio": 3200,
+      "acceso": "pago",
+      "imagen": "images/placeholder-mate.svg",
+      "link": "https://cofredidactico.empretienda.com.ar/",
+      "etiqueta": "destacado",
+      "activo": true,
+      "destacado": false
+    }
+  ]
+}
