@@ -1,0 +1,131 @@
+# ════════════════════════════════════════════════════════════════
+#  Decap CMS — Configuración del panel admin de Cofre Didáctico
+# ════════════════════════════════════════════════════════════════
+#  Cómo accedés:
+#    https://cofredidactico.github.io/PaginaWeb/admin/
+#  Login:
+#    Con tu cuenta de GitHub (la que tiene acceso al repo)
+# ════════════════════════════════════════════════════════════════
+
+backend:
+  name: github
+  repo: Cofredidactico/PaginaWeb
+  branch: main
+  # Si tu rama principal se llama "master", cambialo arriba.
+
+# Carpeta donde Decap guarda las imágenes que subís
+media_folder: "images"
+public_folder: "/PaginaWeb/images"
+
+# URL del sitio público (para botón "Ver en sitio")
+site_url: https://cofredidactico.github.io/PaginaWeb/
+display_url: https://cofredidactico.github.io/PaginaWeb/
+logo_url: https://cofredidactico.github.io/PaginaWeb/logo.png
+
+# Idioma del panel
+locale: es
+
+collections:
+  # ────────────────────────────────────────
+  # PRODUCTOS — el grueso de tu trabajo diario
+  # ────────────────────────────────────────
+  - name: "productos"
+    label: "📚 Productos"
+    label_singular: "Producto"
+    folder: ""
+    files:
+      - file: "productos.json"
+        label: "Catálogo de productos"
+        name: "catalogo"
+        format: "json"
+        fields:
+          - name: "productos"
+            label: "📚 Productos"
+            label_singular: "Producto"
+            widget: "list"
+            summary: "{{fields.nombre}} — ${{fields.precio}}"
+            fields:
+              - {label: "ID interno (sin espacios, sin tildes)", name: "id", widget: "string", hint: "Ej: cuadernillo-vocales. Solo lo cambiás al crear."}
+              - {label: "Nombre", name: "nombre", widget: "string"}
+              - {label: "Descripción", name: "descripcion", widget: "text"}
+              - label: "Tipo"
+                name: "tipo"
+                widget: "select"
+                options:
+                  - { label: "📓 Cuadernillo", value: "cuadernillo" }
+                  - { label: "🎮 Juego interactivo", value: "juego" }
+                  - { label: "🖼️ Lámina", value: "lamina" }
+                  - { label: "🎁 Pack", value: "pack" }
+                  - { label: "📄 Otro", value: "otro" }
+              - label: "Temática"
+                name: "tematica"
+                widget: "select"
+                options:
+                  - { label: "📖 Lengua", value: "lengua" }
+                  - { label: "🔢 Matemática", value: "matematica" }
+                  - { label: "🔬 Ciencias", value: "ciencias" }
+                  - { label: "🗓️ Efemérides", value: "efemerides" }
+                  - { label: "🎮 Juegos", value: "juegos" }
+                  - { label: "🖼️ Láminas", value: "laminas" }
+                required: false
+              - {label: "Nivel educativo", name: "nivel", widget: "string", required: false, hint: "Ej: Nivel Inicial · 1° Primaria"}
+              - {label: "Precio (ARS)", name: "precio", widget: "number", default: 0, value_type: "int", min: 0}
+              - {label: "Precio tachado (opcional)", name: "precioTachado", widget: "number", required: false, value_type: "int", min: 0, hint: "Si ponés un precio mayor, se muestra tachado al lado del precio real."}
+              - label: "Tipo de acceso"
+                name: "acceso"
+                widget: "select"
+                options:
+                  - { label: "💳 Pago", value: "pago" }
+                  - { label: "🎁 Gratis", value: "gratis" }
+              - {label: "Imagen del producto", name: "imagen", widget: "image", hint: "Ideal: 800x800px o 1200x900px. Formato JPG, PNG o WebP."}
+              - {label: "Link de compra (Empretienda u Hotmart)", name: "link", widget: "string", pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"]}
+              - label: "Etiqueta destacada (opcional)"
+                name: "etiqueta"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "Sin etiqueta", value: "" }
+                  - { label: "⭐ Más vendido", value: "mas-vendido" }
+                  - { label: "🔥 Nuevo", value: "nuevo" }
+                  - { label: "🎉 Oferta", value: "oferta" }
+                  - { label: "✨ Destacado", value: "destacado" }
+              - {label: "Activo (visible en la tienda)", name: "activo", widget: "boolean", default: true}
+              - {label: "Mostrar en sección 'Destacados' del home", name: "destacado", widget: "boolean", default: false}
+
+          - name: "tematicas"
+            label: "🏷️ Temáticas"
+            label_singular: "Temática"
+            widget: "list"
+            summary: "{{fields.emoji}} {{fields.nombre}}"
+            fields:
+              - {label: "ID (sin espacios)", name: "id", widget: "string"}
+              - {label: "Nombre", name: "nombre", widget: "string"}
+              - {label: "Emoji", name: "emoji", widget: "string"}
+
+          - name: "config"
+            label: "⚙️ Configuración general"
+            widget: "object"
+            fields:
+              - label: "📢 Banner de anuncio"
+                name: "anuncio"
+                widget: "object"
+                fields:
+                  - {label: "Activo", name: "activo", widget: "boolean", default: false}
+                  - {label: "Texto", name: "texto", widget: "string"}
+                  - {label: "Color (hex)", name: "color", widget: "string", default: "#FF8A4C"}
+              - label: "📊 Stats del hero"
+                name: "stats"
+                widget: "object"
+                fields:
+                  - {label: "Docentes felices", name: "docentes", widget: "string", default: "+500"}
+                  - {label: "Países", name: "paises", widget: "string", default: "+12"}
+                  - {label: "Descargas", name: "descargas", widget: "string", default: "+2.000"}
+              - label: "🔗 Links de contacto"
+                name: "links"
+                widget: "object"
+                fields:
+                  - {label: "Instagram", name: "instagram", widget: "string"}
+                  - {label: "Empretienda", name: "empretienda", widget: "string"}
+                  - {label: "Hotmart", name: "hotmart", widget: "string"}
+                  - {label: "WhatsApp (link wa.me/...)", name: "whatsapp", widget: "string"}
+                  - {label: "Email", name: "email", widget: "string"}
