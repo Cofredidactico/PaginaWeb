@@ -12,9 +12,11 @@ backend:
   repo: Cofredidactico/PaginaWeb
   branch: main
   # Si tu rama principal se llama "master", cambialo arriba.
-  # Auth directa GitHub vía proxy oficial de Sveltia (PKCE, no necesita backend).
-  auth_type: pkce
-  app_id: Iv1.bb2671b21f24f60a  # Sveltia public OAuth app — funciona out-of-the-box
+  # Sveltia muestra dos opciones de login:
+  #  1) Sign in with GitHub (OAuth)
+  #  2) Use a personal access token (PAT) ← recomendado, funciona sin backend
+  # Para crear un PAT: GitHub → Settings → Developer settings →
+  # Personal access tokens → Tokens (classic) → Generate new → marcar "repo"
 
 # Carpeta donde Decap guarda las imágenes que subís
 media_folder: "images"
@@ -35,7 +37,6 @@ collections:
   - name: "productos"
     label: "📚 Productos"
     label_singular: "Producto"
-    folder: ""
     files:
       - file: "productos.json"
         label: "Catálogo de productos"
