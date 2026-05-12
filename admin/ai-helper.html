@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Asistente IA · Cofre Didáctico</title>
+<link rel="icon" href="../logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#D97757;--primary-soft:#FBE5DC;--accent:#FF8A4C;
+  --green:#4A8F5C;--green-soft:#DBEDDF;
+  --ink:#1A2744;--ink-2:#3E4A65;--ink-3:#6B7280;--ink-4:#9CA3AF;
+  --bg-1:#FBF7F2;--bg-2:#F5EFE7;--line:#E8DFD0;
+  --r:14px;--r-lg:20px;
+  --f:'Inter',system-ui,sans-serif;--f-d:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{font-family:var(--f);background:var(--bg-1);color:var(--ink);min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;border:none;cursor:pointer;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+.hdr{padding:18px 0;border-bottom:1px solid var(--line);background:#fff;}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.back{display:inline-flex;align-items:center;gap:8px;color:var(--ink-3);font-weight:700;padding:8px 14px;border-radius:10px;}
+.back:hover{background:var(--bg-2);color:var(--ink);}
+.brand{font-family:var(--f-d);font-weight:700;font-size:1.05rem;}
+.brand em{color:var(--primary);font-style:normal;}
+
+.hero{padding:40px 0 20px;text-align:center;}
+.tag{display:inline-block;background:var(--primary-soft);color:var(--primary);padding:6px 14px;border-radius:99px;font-weight:700;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px;}
+h1{font-family:var(--f-d);font-size:clamp(1.8rem,3.5vw,2.4rem);line-height:1.15;margin-bottom:10px;font-weight:700;}
+h1 em{color:var(--primary);font-style:normal;}
+.lead{color:var(--ink-3);font-size:1.02rem;max-width:600px;margin:0 auto;line-height:1.5;}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:36px 0 60px;align-items:start;}
+@media(max-width:880px){.grid{grid-template-columns:1fr;}}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;}
+.card h2{font-family:var(--f-d);font-size:1.2rem;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:.82rem;font-weight:700;color:var(--ink-2);margin-bottom:6px;}
+.field input,.field select,.field textarea{width:100%;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;background:#fff;color:var(--ink);transition:border-color .2s;}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--primary);}
+.field textarea{min-height:80px;resize:vertical;}
+.field-hint{font-size:.76rem;color:var(--ink-4);margin-top:4px;}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;padding:12px 22px;border-radius:12px;font-size:.92rem;transition:transform .12s,box-shadow .2s;color:#fff;background:var(--primary);box-shadow:0 8px 20px -8px rgba(217,119,87,.5);width:100%;justify-content:center;}
+.btn:hover{transform:translateY(-1px);box-shadow:0 12px 28px -10px rgba(217,119,87,.7);}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.btn-mini{display:inline-flex;align-items:center;gap:6px;background:var(--bg-2);color:var(--ink-2);font-weight:700;padding:6px 12px;border-radius:8px;font-size:.78rem;transition:background .15s;}
+.btn-mini:hover{background:var(--primary-soft);color:var(--primary);}
+
+.result{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;min-height:300px;}
+.result-empty{text-align:center;padding:60px 20px;color:var(--ink-4);}
+.result-empty .em{font-size:3rem;margin-bottom:10px;}
+
+.option{background:var(--bg-1);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:14px;}
+.option-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.option-n{font-size:.78rem;font-weight:700;color:var(--ink-4);text-transform:uppercase;letter-spacing:.06em;}
+.option-tone{font-size:.78rem;background:var(--primary-soft);color:var(--primary);padding:3px 10px;border-radius:99px;font-weight:700;}
+.option-body{color:var(--ink-2);font-size:.95rem;line-height:1.55;}
+
+.loading{display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;padding:60px 20px;color:var(--ink-3);}
+.spin{width:32px;height:32px;border:3px solid var(--bg-2);border-top-color:var(--primary);border-radius:50%;animation:r 1s linear infinite;}
+@keyframes r{to{transform:rotate(360deg);}}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120%);background:var(--ink);color:#fff;padding:12px 22px;border-radius:12px;font-weight:600;transition:transform .25s;z-index:99;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a href="index.html" class="back">← Panel</a>
+    <div class="brand">Asistente <em>IA</em> ✨</div>
+    <div style="width:80px;"></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="tag">✨ Beta</span>
+    <h1>Generá descripciones <em>en segundos</em></h1>
+    <p class="lead">Completá lo básico del producto y te genero 3 versiones de descripción con distintos tonos. Copiás la que más te guste y la pegás en el editor.</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="grid">
+    <div class="card">
+      <h2>📝 Datos del producto</h2>
+      <form id="form" onsubmit="generar(event)">
+        <div class="field">
+          <label>Nombre del producto *</label>
+          <input id="nombre" required placeholder="Ej: Cuadernillo de Vocales" />
+        </div>
+        <div class="field">
+          <label>Tipo</label>
+          <select id="tipo">
+            <option value="cuadernillo">📓 Cuadernillo</option>
+            <option value="juego">🎮 Juego interactivo</option>
+            <option value="lamina">🖼️ Lámina</option>
+            <option value="pack">🎁 Pack / Combo</option>
+            <option value="otro">📄 Otro recurso</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Nivel educativo</label>
+          <input id="nivel" placeholder="Ej: Nivel Inicial · 1° Primaria" />
+        </div>
+        <div class="field">
+          <label>Temática</label>
+          <input id="tematica" placeholder="Ej: Lengua, Matemática..." />
+        </div>
+        <div class="field">
+          <label>Qué incluye (opcional)</label>
+          <textarea id="incluye" placeholder="24 páginas PDF&#10;Trazo y reconocimiento&#10;Páginas para colorear"></textarea>
+          <div class="field-hint">Una línea por ítem. Ayuda a hacer descripciones más específicas.</div>
+        </div>
+        <button class="btn" id="btn-gen" type="submit">✨ Generar 3 descripciones</button>
+      </form>
+    </div>
+
+    <div class="result" id="result">
+      <div class="result-empty">
+        <div class="em">🤖</div>
+        <div>Completá los datos y dale a <strong>"Generar"</strong></div>
+        <div style="font-size:.85rem;margin-top:8px;">Te voy a sugerir 3 versiones con distintos tonos.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="toast" id="toast">¡Copiado!</div>
+
+<script>
+const $ = s => document.querySelector(s);
+
+async function generar(e){
+  e.preventDefault();
+  const nombre = $('#nombre').value.trim();
+  if (!nombre) return;
+  const tipo = $('#tipo').value;
+  const tipoLabel = { cuadernillo:'cuadernillo de actividades', juego:'juego interactivo', lamina:'lámina educativa', pack:'pack/combo', otro:'recurso educativo' }[tipo];
+  const nivel = $('#nivel').value.trim();
+  const tematica = $('#tematica').value.trim();
+  const incluye = $('#incluye').value.trim();
+
+  $('#btn-gen').disabled = true;
+  $('#btn-gen').innerHTML = '<span class="spin" style="width:16px;height:16px;border-width:2px;"></span> Generando...';
+  $('#result').innerHTML = '<div class="loading"><div class="spin"></div><div>La IA está pensando descripciones para vos...</div></div>';
+
+  const prompt = `Sos un copywriter experto en materiales educativos para docentes argentinos. La marca se llama "Cofre Didáctico" y su tono es cálido, profesional, cercano y emocional (no comercial vacío). Escribe en castellano rioplatense (usá "vos"). Productos: cuadernillos, juegos y láminas para nivel inicial y primaria.
+
+Generá EXACTAMENTE 3 descripciones distintas para este producto:
+- Nombre: ${nombre}
+- Tipo: ${tipoLabel}
+${nivel ? '- Nivel: ' + nivel : ''}
+${tematica ? '- Temática: ' + tematica : ''}
+${incluye ? '- Incluye:\n' + incluye : ''}
+
+Cada descripción debe:
+- Tener entre 25 y 45 palabras
+- Empezar con un beneficio concreto para el docente o el alumno
+- NO empezar con "Este producto" ni "Un cuadernillo"
+- Mencionar algo específico (cantidad, formato, beneficio)
+- Sonar humana, no robótica
+
+DEVOLVÉ SOLO un JSON válido con este formato exacto (sin markdown, sin texto extra):
+{"opciones":[{"tono":"Cálido","texto":"..."},{"tono":"Directo","texto":"..."},{"tono":"Emocional","texto":"..."}]}`;
+
+  try {
+    const raw = await window.claude.complete(prompt);
+    let json;
+    try {
+      const clean = raw.replace(/^```json\s*/i,'').replace(/^```\s*/,'').replace(/```\s*$/,'').trim();
+      json = JSON.parse(clean);
+    } catch(err) {
+      throw new Error('La IA no devolvió JSON válido. Probá de nuevo.');
+    }
+    renderOptions(json.opciones || []);
+  } catch (err) {
+    $('#result').innerHTML = `<div class="result-empty"><div class="em">⚠️</div><div style="color:var(--accent);font-weight:700;">${err.message || 'Error generando descripciones'}</div><div style="font-size:.85rem;margin-top:8px;">Probá refrescando la página y de nuevo.</div></div>`;
+  } finally {
+    $('#btn-gen').disabled = false;
+    $('#btn-gen').innerHTML = '✨ Generar 3 descripciones';
+  }
+}
+
+function renderOptions(opts){
+  if (!opts.length) {
+    $('#result').innerHTML = '<div class="result-empty"><div class="em">🤔</div><div>No se generaron opciones. Probá de nuevo.</div></div>';
+    return;
+  }
+  $('#result').innerHTML = `
+    <h2 style="font-family:var(--f-d);font-size:1.1rem;margin-bottom:16px;">✨ 3 opciones generadas</h2>
+    ${opts.map((o,i) => `
+      <div class="option">
+        <div class="option-h">
+          <span class="option-n">Opción ${i+1}</span>
+          <span class="option-tone">${o.tono || ''}</span>
+        </div>
+        <div class="option-body">${o.texto}</div>
+        <div style="margin-top:12px;text-align:right;">
+          <button class="btn-mini" onclick="copiar(this, ${JSON.stringify(o.texto).replace(/"/g,'&quot;')})">📋 Copiar</button>
+        </div>
+      </div>
+    `).join('')}
+    <p style="font-size:.82rem;color:var(--ink-4);text-align:center;margin-top:14px;">Copiá la que más te guste y pegala en el campo <strong>"Descripción corta"</strong> del editor.</p>
+  `;
+}
+
+function copiar(btn, texto){
+  navigator.clipboard.writeText(texto).then(() => {
+    btn.innerHTML = '✓ Copiado';
+    setTimeout(() => btn.innerHTML = '📋 Copiar', 1500);
+    const t = $('#toast'); t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 1800);
+  });
+}
+</script>
+</body>
+</html>

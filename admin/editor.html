@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editor · Cofre Didáctico</title>
+  <link rel="icon" href="../logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;font-family:'Inter',system-ui,sans-serif;background:#FBF7F2;}
+    .splash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;background:#FBF7F2;z-index:9999;transition:opacity .4s;}
+    .splash.gone{opacity:0;pointer-events:none;}
+    .splash-logo{width:72px;height:72px;border-radius:18px;background:#D97757;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-size:2rem;font-weight:800;box-shadow:0 14px 36px -10px rgba(217,119,87,.6);animation:bob 1.6s ease-in-out infinite;}
+    @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+    .splash h1{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:#1A2744;margin:0;}
+    .splash h1 em{color:#D97757;font-style:normal;}
+    .splash p{color:#6B7280;font-size:.92rem;margin:0;}
+    .splash a{color:#D97757;font-weight:700;text-decoration:none;font-size:.85rem;margin-top:8px;}
+    .spin{width:24px;height:24px;border:3px solid #F5EFE7;border-top-color:#D97757;border-radius:50%;animation:r 1s linear infinite;}
+    @keyframes r{to{transform:rotate(360deg);}}
+  </style>
+</head>
+<body>
+  <div class="splash" id="splash">
+    <div class="splash-logo">C</div>
+    <h1>Cofre <em>Didáctico</em></h1>
+    <p>Cargando el editor...</p>
+    <div class="spin"></div>
+    <a href="index.html">← Volver al panel</a>
+  </div>
+  <!-- Sveltia CMS: editor visual sobre GitHub, sin Netlify -->
+  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+  <script>
+    // Cuando Sveltia monta su UI, ocultamos el splash
+    const obs = new MutationObserver(() => {
+      if (document.querySelector('sveltia-cms, [class*="App"]')) {
+        setTimeout(() => {
+          document.getElementById('splash').classList.add('gone');
+          setTimeout(() => document.getElementById('splash')?.remove(), 500);
+        }, 600);
+        obs.disconnect();
+      }
+    });
+    obs.observe(document.body, {childList:true, subtree:true});
+    setTimeout(() => document.getElementById('splash')?.classList.add('gone'), 5000);
+  </script>
+</body>
+</html>

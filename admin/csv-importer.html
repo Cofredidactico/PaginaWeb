@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Importar CSV · Cofre Didáctico</title>
+<link rel="icon" href="../logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#D97757;--primary-soft:#FBE5DC;--accent:#FF8A4C;
+  --green:#4A8F5C;--green-soft:#DBEDDF;
+  --ink:#1A2744;--ink-2:#3E4A65;--ink-3:#6B7280;--ink-4:#9CA3AF;
+  --bg-1:#FBF7F2;--bg-2:#F5EFE7;--line:#E8DFD0;
+  --r-lg:20px;
+  --f:'Inter',system-ui,sans-serif;--f-d:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{font-family:var(--f);background:var(--bg-1);color:var(--ink);min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+.hdr{padding:18px 0;border-bottom:1px solid var(--line);background:#fff;}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.back{display:inline-flex;align-items:center;gap:8px;color:var(--ink-3);font-weight:700;padding:8px 14px;border-radius:10px;}
+.back:hover{background:var(--bg-2);color:var(--ink);}
+.brand{font-family:var(--f-d);font-weight:700;font-size:1.05rem;}
+.brand em{color:var(--primary);font-style:normal;}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;padding:11px 20px;border-radius:11px;font-size:.9rem;transition:transform .12s,box-shadow .2s;}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 20px -8px rgba(217,119,87,.5);}
+.btn-primary:hover{transform:translateY(-1px);}
+.btn-primary:disabled{opacity:.45;cursor:not-allowed;transform:none;}
+.btn-ghost{background:var(--bg-2);color:var(--ink);}
+.btn-ghost:hover{background:var(--primary-soft);color:var(--primary);}
+
+.intro{padding:36px 0 24px;text-align:center;}
+.tag{display:inline-block;background:var(--primary-soft);color:var(--primary);padding:5px 12px;border-radius:99px;font-weight:700;font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:12px;}
+h1{font-family:var(--f-d);font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;line-height:1.15;margin-bottom:8px;}
+h1 em{color:var(--primary);font-style:normal;}
+.intro p{color:var(--ink-3);font-size:1rem;max-width:620px;margin:0 auto;line-height:1.55;}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;margin-bottom:24px;}
+.card h2{font-family:var(--f-d);font-size:1.15rem;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+
+.drop{border:2.5px dashed var(--line);border-radius:16px;padding:50px 30px;text-align:center;transition:border-color .2s,background .2s;cursor:pointer;}
+.drop:hover,.drop.over{border-color:var(--primary);background:var(--primary-soft);}
+.drop-em{font-size:3rem;margin-bottom:10px;}
+.drop-t{font-weight:700;font-size:1.05rem;margin-bottom:4px;}
+.drop-s{color:var(--ink-3);font-size:.88rem;}
+.drop-s strong{color:var(--primary);text-decoration:underline;}
+input[type="file"]{display:none;}
+
+.fmt{margin-top:18px;font-size:.85rem;color:var(--ink-3);line-height:1.6;}
+.fmt code{background:var(--bg-2);padding:2px 6px;border-radius:4px;font:.82rem ui-monospace,Menlo,monospace;color:var(--ink);}
+.dl-tpl{margin-top:10px;display:inline-flex;align-items:center;gap:6px;color:var(--primary);font-weight:700;font-size:.88rem;}
+
+.preview{display:none;}
+.preview.show{display:block;}
+.tbl{width:100%;border-collapse:collapse;font-size:.86rem;}
+.tbl th{padding:10px 12px;text-align:left;background:var(--bg-2);font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);font-weight:700;}
+.tbl td{padding:10px 12px;border-bottom:1px solid var(--line);}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl .err{color:var(--accent);font-size:.78rem;}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;}
+
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px;}
+.sum{background:var(--bg-1);padding:14px;border-radius:12px;text-align:center;}
+.sum-n{font-family:var(--f-d);font-size:1.6rem;font-weight:800;color:var(--ink);line-height:1;}
+.sum-l{font-size:.78rem;color:var(--ink-3);font-weight:600;margin-top:4px;}
+.sum.err .sum-n{color:var(--accent);}
+.sum.ok .sum-n{color:var(--green);}
+
+.actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px;flex-wrap:wrap;}
+
+.modal{position:fixed;inset:0;background:rgba(26,39,68,.6);display:none;align-items:center;justify-content:center;z-index:20;padding:20px;}
+.modal.show{display:flex;}
+.modal-card{background:#fff;border-radius:var(--r-lg);padding:28px;max-width:680px;width:100%;max-height:90vh;display:flex;flex-direction:column;}
+.modal-card textarea{flex:1;min-height:300px;width:100%;padding:14px;border:1.5px solid var(--line);border-radius:10px;font:.82rem ui-monospace,Menlo,monospace;line-height:1.5;resize:none;margin:10px 0;}
+.steps{background:var(--bg-1);border-radius:10px;padding:14px;font-size:.85rem;color:var(--ink-2);line-height:1.6;}
+.steps a{color:var(--primary);font-weight:700;}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a href="index.html" class="back">← Panel</a>
+    <div class="brand">Importar <em>CSV</em> 📥</div>
+    <div style="width:80px;"></div>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <span class="tag">📥 Beta</span>
+    <h1>Subí <em>muchos productos</em> de una vez</h1>
+    <p>Tenés una planilla con todos tus productos de Empretienda u otra plataforma. Subí el CSV y lo convertimos al formato del sitio. Después lo pegás en GitHub.</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="card">
+    <h2>1️⃣ Subir archivo CSV</h2>
+    <label class="drop" id="drop">
+      <div class="drop-em">📂</div>
+      <div class="drop-t">Arrastrá tu archivo CSV acá</div>
+      <div class="drop-s">o <strong>elegí desde tu compu</strong></div>
+      <input type="file" id="file" accept=".csv,text/csv" />
+    </label>
+    <div class="fmt">
+      <strong>Columnas esperadas:</strong> <code>nombre</code>, <code>descripcion</code>, <code>tipo</code>, <code>tematica</code>, <code>nivel</code>, <code>precio</code>, <code>precioTachado</code>, <code>acceso</code>, <code>imagen</code>, <code>link</code>, <code>activo</code><br>
+      <a href="#" class="dl-tpl" onclick="descargarPlantilla(event)">⬇️ Descargar plantilla CSV de ejemplo</a>
+    </div>
+  </div>
+
+  <div class="card preview" id="preview">
+    <h2>2️⃣ Previsualizá lo que vas a importar</h2>
+    <div class="summary" id="summary"></div>
+    <div class="tbl-wrap">
+      <table class="tbl" id="tbl"></table>
+    </div>
+    <div class="actions">
+      <button class="btn btn-ghost" onclick="cancelar()">Cancelar</button>
+      <button class="btn btn-primary" id="btn-go" onclick="generar()">✨ Generar JSON</button>
+    </div>
+  </div>
+</main>
+
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <h2 style="font-family:var(--f-d);font-size:1.3rem;">✅ JSON listo</h2>
+    <p style="color:var(--ink-3);font-size:.92rem;">Se importaron <strong id="m-n">0</strong> productos. Reemplazá <code>productos.json</code> con esto:</p>
+    <div class="steps">
+      1. <a href="https://github.com/Cofredidactico/PaginaWeb/edit/main/productos.json" target="_blank" rel="noopener">Abrir productos.json en GitHub →</a><br>
+      2. Pegá el JSON, <strong>Commit changes</strong>.
+    </div>
+    <textarea id="json-out" readonly></textarea>
+    <div class="actions">
+      <button class="btn btn-ghost" onclick="$('#modal').classList.remove('show')">Cerrar</button>
+      <button class="btn btn-ghost" onclick="descargar()">⬇️ Descargar</button>
+      <button class="btn btn-primary" onclick="copiar(this)">📋 Copiar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+let _rows = null;
+let _existing = null;
+
+fetch('../productos.json?v=' + Date.now()).then(r => r.json()).then(d => _existing = d);
+
+const drop = $('#drop'), file = $('#file');
+drop.addEventListener('click', () => file.click());
+drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('over'); });
+drop.addEventListener('dragleave', () => drop.classList.remove('over'));
+drop.addEventListener('drop', e => {
+  e.preventDefault(); drop.classList.remove('over');
+  if (e.dataTransfer.files.length) procesarFile(e.dataTransfer.files[0]);
+});
+file.addEventListener('change', e => { if (e.target.files.length) procesarFile(e.target.files[0]); });
+
+function procesarFile(f){
+  const reader = new FileReader();
+  reader.onload = e => parsearCSV(e.target.result);
+  reader.readAsText(f, 'UTF-8');
+}
+
+// CSV parser básico (maneja comillas dobles)
+function parsearCSV(txt){
+  const lines = txt.replace(/^\uFEFF/,'').split(/\r?\n/).filter(l => l.trim());
+  if (!lines.length) return alert('CSV vacío');
+  const cells = lines.map(parseLine);
+  const headers = cells[0].map(h => h.trim().toLowerCase());
+  _rows = cells.slice(1).map(row => {
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = (row[i]||'').trim());
+    return obj;
+  });
+  renderPreview();
+}
+function parseLine(line){
+  const out = []; let cur = ''; let q = false;
+  for (let i=0;i<line.length;i++){
+    const c = line[i];
+    if (c === '"'){ if (q && line[i+1]==='"'){ cur+='"'; i++; } else q = !q; }
+    else if (c === ',' && !q){ out.push(cur); cur=''; }
+    else cur += c;
+  }
+  out.push(cur);
+  return out;
+}
+
+function slug(s){
+  return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').replace(/-+/g,'-');
+}
+
+function renderPreview(){
+  if (!_rows || !_rows.length) return;
+  const validados = _rows.map((r,i) => {
+    const errs = [];
+    if (!r.nombre) errs.push('Falta nombre');
+    if (!r.link) errs.push('Falta link');
+    if (r.precio && isNaN(+r.precio)) errs.push('Precio inválido');
+    return {r, errs, i};
+  });
+
+  const ok = validados.filter(v => !v.errs.length).length;
+  const err = validados.length - ok;
+  $('#summary').innerHTML = `
+    <div class="sum"><div class="sum-n">${validados.length}</div><div class="sum-l">Filas leídas</div></div>
+    <div class="sum ok"><div class="sum-n">${ok}</div><div class="sum-l">Listos para importar</div></div>
+    <div class="sum ${err?'err':''}"><div class="sum-n">${err}</div><div class="sum-l">Con errores</div></div>
+  `;
+
+  $('#tbl').innerHTML = `
+    <thead><tr><th>#</th><th>Nombre</th><th>Tipo</th><th>Precio</th><th>Estado</th></tr></thead>
+    <tbody>
+      ${validados.map(v => `
+        <tr>
+          <td>${v.i+1}</td>
+          <td>${v.r.nombre || '<span class="err">—</span>'}</td>
+          <td>${v.r.tipo || '—'}</td>
+          <td>${v.r.precio ? '$' + v.r.precio : '—'}</td>
+          <td>${v.errs.length ? `<span class="err">⚠️ ${v.errs.join(', ')}</span>` : '<span style="color:var(--green);">✓ OK</span>'}</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  `;
+  $('#btn-go').disabled = ok === 0;
+  $('#preview').classList.add('show');
+  $('#preview').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function generar(){
+  const productos = _rows.filter(r => r.nombre && r.link).map(r => {
+    const p = {
+      id: r.id || slug(r.nombre),
+      nombre: r.nombre,
+      descripcion: r.descripcion || '',
+      tipo: r.tipo || 'cuadernillo',
+      acceso: r.acceso || (+r.precio ? 'pago' : 'gratis'),
+      precio: +r.precio || 0,
+      imagen: r.imagen || 'images/placeholder-vocales.svg',
+      link: r.link,
+      activo: r.activo === 'false' || r.activo === '0' ? false : true
+    };
+    if (r.descripcionlarga || r['descripción larga']) p.descripcionLarga = r.descripcionlarga || r['descripción larga'];
+    if (r.tematica) p.tematica = r.tematica;
+    if (r.nivel) p.nivel = r.nivel;
+    if (+r.preciotachado || +r['precio tachado']) p.precioTachado = +r.preciotachado || +r['precio tachado'];
+    if (r.etiqueta) p.etiqueta = r.etiqueta;
+    if (r.destacado === 'true' || r.destacado === '1') p.destacado = true;
+    if (r.paginas) p.paginas = +r.paginas;
+    if (r.formato) p.formato = r.formato;
+    return p;
+  });
+
+  const merged = JSON.parse(JSON.stringify(_existing || {productos:[]}));
+  // Reemplaza productos por ID; agrega los nuevos
+  productos.forEach(p => {
+    const idx = (merged.productos||[]).findIndex(x => x.id === p.id);
+    if (idx >= 0) merged.productos[idx] = {...merged.productos[idx], ...p};
+    else (merged.productos = merged.productos||[]).push(p);
+  });
+
+  $('#json-out').value = JSON.stringify(merged, null, 2);
+  $('#m-n').textContent = productos.length;
+  $('#modal').classList.add('show');
+}
+
+function descargar(){
+  const blob = new Blob([$('#json-out').value], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'productos.json'; a.click();
+  URL.revokeObjectURL(url);
+}
+function copiar(btn){
+  navigator.clipboard.writeText($('#json-out').value).then(() => {
+    btn.innerHTML = '✓ Copiado!';
+    setTimeout(() => btn.innerHTML = '📋 Copiar', 1500);
+  });
+}
+function cancelar(){ _rows = null; $('#preview').classList.remove('show'); file.value=''; }
+
+function descargarPlantilla(e){
+  e.preventDefault();
+  const csv = `nombre,descripcion,tipo,tematica,nivel,precio,precioTachado,acceso,imagen,link,activo,destacado,paginas,formato,etiqueta
+Cuadernillo de Sumas,Actividades graduadas para aprender a sumar.,cuadernillo,matematica,1° Primaria,2200,2800,pago,images/sumas.jpg,https://cofredidactico.empretienda.com.ar/sumas,true,true,18,PDF · A4 · Color,nuevo
+Lámina de Vocales,Lámina A3 para colgar en el aula.,lamina,lengua,Nivel Inicial,0,,gratis,images/lamina-vocales.jpg,https://cofredidactico.empretienda.com.ar/vocales-gratis,true,false,1,PDF · A3,
+Pack Inicio Escolar,Combo con 3 cuadernillos a precio promo.,pack,,1° Primaria,5500,7500,pago,images/pack.jpg,https://cofredidactico.empretienda.com.ar/pack,true,true,,PDF,mas-vendido`;
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'plantilla-cofre.csv'; a.click();
+  URL.revokeObjectURL(url);
+}
+
+$('#modal').addEventListener('click', e => { if (e.target.id === 'modal') e.currentTarget.classList.remove('show'); });
+</script>
+</body>
+</html>

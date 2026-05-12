@@ -25,6 +25,18 @@ display_url: https://cofredidactico.github.io/PaginaWeb/
 logo_url: https://cofredidactico.github.io/PaginaWeb/logo.png
 locale: es
 
+# Optimización automática de imágenes al subir
+media_libraries:
+  default:
+    config:
+      max_file_size: 5242880  # 5 MB máximo por imagen
+      transformations:
+        raster_image:
+          format: webp        # Convierte JPG/PNG a WebP (70% más liviano)
+          quality: 85
+          width: 1600         # Redimensiona si supera 1600px de ancho
+          height: 1600
+
 collections:
   # ─────────────────────────────────────────
   # 📚 PRODUCTOS — el catálogo completo
