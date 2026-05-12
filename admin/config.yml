@@ -1,45 +1,40 @@
 # ════════════════════════════════════════════════════════════════
-#  Sveltia CMS — Configuración del panel admin de Cofre Didáctico
+#  Sveltia CMS — Panel admin de Cofre Didáctico
 # ════════════════════════════════════════════════════════════════
-#  Cómo accedés:
-#    https://cofredidactico.github.io/PaginaWeb/admin/
-#  Login:
-#    Con tu cuenta de GitHub (la que tiene acceso al repo)
+#  URL:    https://cofredidactico.github.io/PaginaWeb/admin/
+#  Login:  GitHub Personal Access Token (scope "repo")
 # ════════════════════════════════════════════════════════════════
 
 backend:
   name: github
   repo: Cofredidactico/PaginaWeb
   branch: main
-  # Si tu rama principal se llama "master", cambialo arriba.
-  # Sveltia muestra dos opciones de login:
-  #  1) Sign in with GitHub (OAuth)
-  #  2) Use a personal access token (PAT) ← recomendado, funciona sin backend
-  # Para crear un PAT: GitHub → Settings → Developer settings →
-  # Personal access tokens → Tokens (classic) → Generate new → marcar "repo"
+  commit_messages:
+    create: "✨ Crear: {{slug}}"
+    update: "📝 Actualizar: {{slug}}"
+    delete: "🗑️ Eliminar: {{slug}}"
+    uploadMedia: "📸 Imagen: {{path}}"
+    deleteMedia: "🗑️ Imagen: {{path}}"
 
-# Carpeta donde Decap guarda las imágenes que subís
+# Imágenes: se suben a /images del repo
 media_folder: "images"
 public_folder: "/PaginaWeb/images"
 
-# URL del sitio público (para botón "Ver en sitio")
 site_url: https://cofredidactico.github.io/PaginaWeb/
 display_url: https://cofredidactico.github.io/PaginaWeb/
 logo_url: https://cofredidactico.github.io/PaginaWeb/logo.png
-
-# Idioma del panel
 locale: es
 
 collections:
-  # ────────────────────────────────────────
-  # PRODUCTOS — el grueso de tu trabajo diario
-  # ────────────────────────────────────────
+  # ─────────────────────────────────────────
+  # 📚 PRODUCTOS — el catálogo completo
+  # ─────────────────────────────────────────
   - name: "productos"
     label: "📚 Productos"
-    label_singular: "Producto"
+    label_singular: "Catálogo"
     files:
       - file: "productos.json"
-        label: "Catálogo de productos"
+        label: "Catálogo completo"
         name: "catalogo"
         format: "json"
         fields:
@@ -47,23 +42,31 @@ collections:
             label: "📚 Productos"
             label_singular: "Producto"
             widget: "list"
-            summary: "{{fields.nombre}} — ${{fields.precio}}"
+            summary: "{{fields.nombre}} · ${{fields.precio}} · {{fields.tipo}}"
+            collapsed: true
+            min: 0
             fields:
-              - {label: "ID interno (sin espacios, sin tildes)", name: "id", widget: "string", hint: "Ej: cuadernillo-vocales. Solo lo cambiás al crear."}
-              - {label: "Nombre", name: "nombre", widget: "string"}
-              - {label: "Descripción", name: "descripcion", widget: "text"}
-              - label: "Tipo"
+              # ── Identidad ─────────────────
+              - {label: "📝 Nombre del producto", name: "nombre", widget: "string", hint: "Ej: Cuadernillo de Vocales — Nivel Inicial"}
+              - {label: "📄 Descripción corta", name: "descripcion", widget: "text", hint: "1-2 frases. Se muestra en la card del catálogo."}
+              - {label: "📖 Descripción larga (opcional)", name: "descripcionLarga", widget: "text", required: false, hint: "Aparece en la página del producto. Más detallada."}
+              - {label: "🆔 ID único (URL del producto)", name: "id", widget: "string", hint: "Solo minúsculas y guiones. Ej: cuadernillo-vocales", pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"]}
+
+              # ── Clasificación ─────────────
+              - label: "📦 Tipo"
                 name: "tipo"
                 widget: "select"
+                default: "cuadernillo"
                 options:
                   - { label: "📓 Cuadernillo", value: "cuadernillo" }
                   - { label: "🎮 Juego interactivo", value: "juego" }
                   - { label: "🖼️ Lámina", value: "lamina" }
-                  - { label: "🎁 Pack", value: "pack" }
-                  - { label: "📄 Otro", value: "otro" }
-              - label: "Temática"
+                  - { label: "🎁 Pack / Combo", value: "pack" }
+                  - { label: "📄 Otro recurso", value: "otro" }
+              - label: "🏷️ Temática"
                 name: "tematica"
                 widget: "select"
+                required: false
                 options:
                   - { label: "📖 Lengua", value: "lengua" }
                   - { label: "🔢 Matemática", value: "matematica" }
@@ -71,65 +74,116 @@ collections:
                   - { label: "🗓️ Efemérides", value: "efemerides" }
                   - { label: "🎮 Juegos", value: "juegos" }
                   - { label: "🖼️ Láminas", value: "laminas" }
-                required: false
-              - {label: "Nivel educativo", name: "nivel", widget: "string", required: false, hint: "Ej: Nivel Inicial · 1° Primaria"}
-              - {label: "Precio (ARS)", name: "precio", widget: "number", default: 0, value_type: "int", min: 0}
-              - {label: "Precio tachado (opcional)", name: "precioTachado", widget: "number", required: false, value_type: "int", min: 0, hint: "Si ponés un precio mayor, se muestra tachado al lado del precio real."}
-              - label: "Tipo de acceso"
+              - {label: "🎓 Nivel educativo", name: "nivel", widget: "string", required: false, hint: "Ej: Nivel Inicial · 1° Primaria"}
+
+              # ── Precio ────────────────────
+              - label: "💰 Tipo de acceso"
                 name: "acceso"
                 widget: "select"
+                default: "pago"
                 options:
                   - { label: "💳 Pago", value: "pago" }
                   - { label: "🎁 Gratis", value: "gratis" }
-              - {label: "Imagen del producto", name: "imagen", widget: "image", hint: "Ideal: 800x800px o 1200x900px. Formato JPG, PNG o WebP."}
-              - {label: "Link de compra (Empretienda u Hotmart)", name: "link", widget: "string", pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"]}
-              - label: "Etiqueta destacada (opcional)"
+              - {label: "💵 Precio (ARS)", name: "precio", widget: "number", default: 0, value_type: "int", min: 0, hint: "Poné 0 si es gratis"}
+              - {label: "💸 Precio tachado (antes)", name: "precioTachado", widget: "number", required: false, value_type: "int", min: 0, hint: "Para mostrar descuento (precio anterior)"}
+
+              # ── Imágenes ──────────────────
+              - {label: "📷 Imagen principal", name: "imagen", widget: "image", hint: "Ideal 1200×900px. Aparece en el catálogo y página del producto."}
+              - label: "📸 Vistas previas (galería de páginas internas)"
+                name: "previews"
+                widget: "list"
+                required: false
+                hint: "Subí 2-4 imágenes de páginas internas. ¡Aumenta MUCHO la conversión!"
+                summary: "Muestra"
+                field: {label: "Imagen", name: "img", widget: "image"}
+
+              # ── Detalles ──────────────────
+              - label: "✓ Qué incluye"
+                name: "incluye"
+                widget: "list"
+                required: false
+                hint: "Una línea por ítem. Aparece como lista con ✓"
+                summary: "✓ {{fields.texto}}"
+                field: {label: "Ítem", name: "texto", widget: "string"}
+              - {label: "📄 Cantidad de páginas", name: "paginas", widget: "number", required: false, value_type: "int", min: 1}
+              - {label: "📐 Formato", name: "formato", widget: "string", required: false, hint: "Ej: PDF · A4 · Color y B&N"}
+
+              # ── Compra ────────────────────
+              - {label: "🛒 Link de compra (Empretienda / Hotmart)", name: "link", widget: "string", pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"]}
+
+              # ── Visibilidad ───────────────
+              - label: "🎖️ Etiqueta destacada"
                 name: "etiqueta"
                 widget: "select"
                 required: false
+                default: ""
                 options:
-                  - { label: "Sin etiqueta", value: "" }
+                  - { label: "— Sin etiqueta —", value: "" }
                   - { label: "⭐ Más vendido", value: "mas-vendido" }
                   - { label: "🔥 Nuevo", value: "nuevo" }
                   - { label: "🎉 Oferta", value: "oferta" }
                   - { label: "✨ Destacado", value: "destacado" }
-              - {label: "Activo (visible en la tienda)", name: "activo", widget: "boolean", default: true}
-              - {label: "Mostrar en sección 'Destacados' del home", name: "destacado", widget: "boolean", default: false}
+              - {label: "✅ Activo (visible en la tienda)", name: "activo", widget: "boolean", default: true}
+              - {label: "⭐ Mostrar en 'Destacados' del home", name: "destacado", widget: "boolean", default: false}
+
+  # ─────────────────────────────────────────
+  # ⚙️ CONFIGURACIÓN GENERAL
+  # ─────────────────────────────────────────
+  - name: "config"
+    label: "⚙️ Configuración"
+    label_singular: "Ajuste"
+    files:
+      - file: "productos.json"
+        label: "Configuración del sitio"
+        name: "site_config"
+        format: "json"
+        fields:
+          - name: "config"
+            label: "Configuración"
+            widget: "object"
+            fields:
+              - label: "📢 Banner de anuncio (arriba del header)"
+                name: "anuncio"
+                widget: "object"
+                collapsed: false
+                fields:
+                  - {label: "Activar banner", name: "activo", widget: "boolean", default: false}
+                  - {label: "Texto del anuncio", name: "texto", widget: "string", required: false}
+                  - {label: "Color de fondo (hex)", name: "color", widget: "string", default: "#FF8A4C"}
+
+              - label: "📊 Números del hero"
+                name: "stats"
+                widget: "object"
+                collapsed: false
+                fields:
+                  - {label: "Docentes felices", name: "docentes", widget: "string", default: "+500"}
+                  - {label: "Países", name: "paises", widget: "string", default: "+12"}
+                  - {label: "Descargas", name: "descargas", widget: "string", default: "+2.000"}
+
+              - label: "📧 Newsletter (Brevo)"
+                name: "brevo"
+                widget: "object"
+                collapsed: false
+                fields:
+                  - {label: "URL del formulario Brevo", name: "formAction", widget: "string", required: false, hint: "Brevo → Contactos → Formularios → Embed → copiá el atributo action=\"...\". Vacío = modo demo."}
+                  - {label: "Nombre del campo email en Brevo", name: "emailField", widget: "string", default: "EMAIL"}
+
+              - label: "🔗 Links de contacto"
+                name: "links"
+                widget: "object"
+                collapsed: false
+                fields:
+                  - {label: "📷 Instagram", name: "instagram", widget: "string", required: false}
+                  - {label: "🏪 Empretienda", name: "empretienda", widget: "string", required: false}
+                  - {label: "🔥 Hotmart", name: "hotmart", widget: "string", required: false}
+                  - {label: "💬 WhatsApp (link wa.me/...)", name: "whatsapp", widget: "string", required: false}
+                  - {label: "✉️ Email", name: "email", widget: "string", required: false}
 
           - name: "tematicas"
             label: "🏷️ Temáticas"
-            label_singular: "Temática"
             widget: "list"
             summary: "{{fields.emoji}} {{fields.nombre}}"
             fields:
               - {label: "ID (sin espacios)", name: "id", widget: "string"}
               - {label: "Nombre", name: "nombre", widget: "string"}
               - {label: "Emoji", name: "emoji", widget: "string"}
-
-          - name: "config"
-            label: "⚙️ Configuración general"
-            widget: "object"
-            fields:
-              - label: "📢 Banner de anuncio"
-                name: "anuncio"
-                widget: "object"
-                fields:
-                  - {label: "Activo", name: "activo", widget: "boolean", default: false}
-                  - {label: "Texto", name: "texto", widget: "string"}
-                  - {label: "Color (hex)", name: "color", widget: "string", default: "#FF8A4C"}
-              - label: "📊 Stats del hero"
-                name: "stats"
-                widget: "object"
-                fields:
-                  - {label: "Docentes felices", name: "docentes", widget: "string", default: "+500"}
-                  - {label: "Países", name: "paises", widget: "string", default: "+12"}
-                  - {label: "Descargas", name: "descargas", widget: "string", default: "+2.000"}
-              - label: "🔗 Links de contacto"
-                name: "links"
-                widget: "object"
-                fields:
-                  - {label: "Instagram", name: "instagram", widget: "string"}
-                  - {label: "Empretienda", name: "empretienda", widget: "string"}
-                  - {label: "Hotmart", name: "hotmart", widget: "string"}
-                  - {label: "WhatsApp (link wa.me/...)", name: "whatsapp", widget: "string"}
-                  - {label: "Email", name: "email", widget: "string"}
