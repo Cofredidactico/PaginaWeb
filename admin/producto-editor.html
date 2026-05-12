@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nuevo producto · Cofre Didáctico</title>
+<link rel="icon" href="../logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#D97757;--primary-soft:#FBE5DC;--primary-dark:#B85A3E;
+  --green:#4A8F5C;--green-soft:#DBEDDF;
+  --red:#C0392B;--red-soft:#FDECEA;
+  --ink:#1A2744;--ink-2:#3E4A65;--ink-3:#6B7280;--ink-4:#9CA3AF;
+  --bg-1:#FBF7F2;--bg-2:#F5EFE7;--bg-3:#EDE4D6;--line:#E8DFD0;
+  --r:12px;--r-lg:18px;
+  --f:'Inter',system-ui,sans-serif;--f-d:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{font-family:var(--f);background:var(--bg-1);color:var(--ink);min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
+
+/* ── Header ── */
+.hdr{padding:16px 0;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10;}
+.hdr-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.back{display:inline-flex;align-items:center;gap:7px;color:var(--ink-3);font-weight:700;font-size:.88rem;padding:7px 12px;border-radius:9px;}
+.back:hover{background:var(--bg-2);color:var(--ink);}
+.brand{font-family:var(--f-d);font-weight:700;font-size:1rem;}
+.brand em{color:var(--primary);font-style:normal;}
+.hdr-status{font-size:.8rem;color:var(--ink-4);display:flex;align-items:center;gap:6px;}
+.hdr-status .dot{width:8px;height:8px;border-radius:50%;background:var(--ink-4);}
+.hdr-status.ok .dot{background:var(--green);}
+.hdr-status.ok{color:var(--green);}
+
+/* ── Layout ── */
+.wrap{max-width:1100px;margin:0 auto;padding:24px 24px 80px;}
+.layout{display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start;}
+@media(max-width:900px){.layout{grid-template-columns:1fr;}}
+
+/* ── Token setup banner ── */
+.token-banner{background:#fff;border:1.5px solid var(--line);border-radius:var(--r-lg);padding:20px;margin-bottom:20px;}
+.token-banner.ok{border-color:var(--green);background:var(--green-soft);}
+.token-banner h3{font-size:.95rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:7px;}
+.token-banner p{font-size:.82rem;color:var(--ink-3);line-height:1.5;margin-bottom:10px;}
+.token-banner p a{color:var(--primary);font-weight:700;}
+.token-row{display:flex;gap:8px;flex-wrap:wrap;}
+.token-row input{flex:1;min-width:180px;padding:9px 13px;border:1.5px solid var(--line);border-radius:9px;font:inherit;font-size:.86rem;}
+.token-row input:focus{outline:none;border-color:var(--primary);}
+
+/* ── Sección ── */
+.section{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:22px;margin-bottom:16px;}
+.section-h{font-family:var(--f-d);font-size:1rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+
+/* ── Campos ── */
+.field{margin-bottom:14px;}
+.field:last-child{margin-bottom:0;}
+.field label{display:block;font-size:.79rem;font-weight:700;color:var(--ink-2);margin-bottom:5px;letter-spacing:.01em;}
+.field label .req{color:var(--primary);}
+.field label .hint-inline{font-weight:400;color:var(--ink-4);margin-left:4px;}
+.field input,.field select,.field textarea{
+  width:100%;padding:10px 13px;border:1.5px solid var(--line);
+  border-radius:10px;font:inherit;background:#fff;color:var(--ink);
+  font-size:.9rem;transition:border-color .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--primary);}
+.field input.error,.field select.error,.field textarea.error{border-color:var(--red);}
+.field textarea{resize:vertical;min-height:70px;line-height:1.5;}
+.field-hint{font-size:.75rem;color:var(--ink-4);margin-top:4px;line-height:1.4;}
+.field-error{font-size:.75rem;color:var(--red);margin-top:4px;font-weight:600;display:none;}
+.field-error.show{display:block;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+/* ── Subida de imagen ── */
+.img-drop{
+  border:2px dashed var(--line);border-radius:12px;
+  padding:28px 20px;text-align:center;cursor:pointer;
+  transition:border-color .2s,background .2s;position:relative;
+}
+.img-drop:hover,.img-drop.over{border-color:var(--primary);background:var(--primary-soft);}
+.img-drop.has-img{border-style:solid;border-color:var(--primary);padding:0;overflow:hidden;background:var(--bg-2);}
+.img-drop input[type=file]{display:none;}
+.drop-em{font-size:2rem;margin-bottom:8px;}
+.drop-t{font-weight:700;font-size:.9rem;margin-bottom:3px;}
+.drop-s{font-size:.79rem;color:var(--ink-3);}
+.drop-s strong{color:var(--primary);}
+.img-preview{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.img-remove{
+  position:absolute;top:8px;right:8px;
+  background:rgba(26,39,68,.7);color:#fff;
+  border:none;border-radius:8px;padding:5px 9px;font-size:.76rem;
+  font-weight:700;cursor:pointer;
+}
+.img-progress{height:4px;background:var(--bg-2);border-radius:0 0 10px 10px;overflow:hidden;display:none;}
+.img-progress-bar{height:100%;background:var(--primary);border-radius:4px;transition:width .3s;}
+
+/* ── Incluye (lista dinámica) ── */
+.incluye-list{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
+.incluye-item{display:flex;gap:8px;align-items:center;}
+.incluye-item input{flex:1;}
+.incluye-item button{width:32px;height:32px;border-radius:8px;background:var(--bg-2);color:var(--ink-3);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex:none;transition:background .15s;}
+.incluye-item button:hover{background:var(--red-soft);color:var(--red);}
+.btn-add{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:700;color:var(--primary);padding:6px 12px;border-radius:8px;background:var(--primary-soft);transition:opacity .15s;}
+.btn-add:hover{opacity:.8;}
+
+/* ── Botones ── */
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;padding:11px 20px;border-radius:11px;font-size:.9rem;transition:transform .12s,box-shadow .2s;}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 20px -8px rgba(217,119,87,.5);}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 28px -10px rgba(217,119,87,.7);}
+.btn-primary:disabled{opacity:.45;cursor:not-allowed;transform:none;}
+.btn-ghost{background:var(--bg-2);color:var(--ink);}
+.btn-ghost:hover{background:var(--bg-3);}
+.btn-sm{padding:8px 14px;font-size:.82rem;border-radius:9px;}
+
+/* ── Panel derecho: preview ── */
+.preview-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;position:sticky;top:80px;}
+.preview-head{padding:14px 18px;border-bottom:1px solid var(--line);font-family:var(--f-d);font-size:.95rem;font-weight:700;}
+.preview-img-box{width:100%;aspect-ratio:4/3;background:var(--bg-2);display:flex;align-items:center;justify-content:center;font-size:3rem;overflow:hidden;}
+.preview-img-box img{width:100%;height:100%;object-fit:cover;}
+.preview-body{padding:16px;}
+.preview-tipo{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-4);margin-bottom:5px;}
+.preview-name{font-family:var(--f-d);font-size:1rem;font-weight:700;line-height:1.2;margin-bottom:7px;min-height:1.2em;}
+.preview-desc{font-size:.82rem;color:var(--ink-3);line-height:1.5;margin-bottom:12px;min-height:2.4em;}
+.preview-price{display:flex;align-items:baseline;gap:8px;margin-bottom:14px;}
+.preview-price .cur{font-family:var(--f-d);font-size:1.5rem;font-weight:800;}
+.preview-price .cur.free{color:var(--green);}
+.preview-price .old{font-size:.85rem;color:var(--ink-4);text-decoration:line-through;}
+.preview-cta{display:block;text-align:center;background:var(--primary);color:#fff;padding:10px;border-radius:10px;font-weight:700;font-size:.86rem;}
+.preview-badges{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px;}
+.pbadge{padding:3px 9px;border-radius:99px;font-size:.7rem;font-weight:700;}
+.pbadge-etiq{background:var(--primary-soft);color:var(--primary-dark);}
+.pbadge-dest{background:var(--green-soft);color:var(--green);}
+.pbadge-gratis{background:var(--green-soft);color:var(--green);}
+
+/* ── Acciones de guardado ── */
+.save-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  background:#fff;border-top:1px solid var(--line);
+  padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  z-index:9;box-shadow:0 -8px 24px -8px rgba(26,39,68,.08);
+}
+.save-bar-left{font-size:.84rem;color:var(--ink-3);}
+.save-bar-left strong{color:var(--ink);font-weight:700;}
+.save-bar-btns{display:flex;gap:10px;}
+
+/* ── Toast ── */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:11px 20px;border-radius:11px;font-weight:600;font-size:.86rem;opacity:0;transition:opacity .25s,transform .25s;z-index:99;pointer-events:none;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast.ok{background:var(--green);}
+.toast.err{background:var(--red);}
+
+/* ── Spinner ── */
+.spin{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:rot 1s linear infinite;flex:none;}
+@keyframes rot{to{transform:rotate(360deg);}}
+
+/* ── Toggle ── */
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;}
+.toggle-row+.toggle-row{border-top:1px solid var(--line);}
+.toggle-label{font-size:.88rem;font-weight:600;}
+.toggle-desc{font-size:.76rem;color:var(--ink-4);margin-top:1px;}
+.toggle{position:relative;display:inline-block;width:42px;height:24px;flex:none;}
+.toggle input{opacity:0;width:0;height:0;}
+.toggle .sl{position:absolute;cursor:pointer;inset:0;background:#D4C8B5;border-radius:99px;transition:.2s;}
+.toggle .sl::before{content:'';position:absolute;height:18px;width:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.toggle input:checked + .sl{background:var(--green);}
+.toggle input:checked + .sl::before{transform:translateX(18px);}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="index.html" class="back">← Panel</a>
+    <div class="brand">Nuevo <em>producto</em> ✨</div>
+    <div class="hdr-status" id="gh-status">
+      <span class="dot"></span>
+      <span id="gh-status-txt">Sin configurar</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- TOKEN BANNER -->
+  <div class="token-banner" id="token-banner">
+    <h3>🔑 Conectar con GitHub</h3>
+    <p>Para guardar productos directo en el repo sin tocar GitHub, necesitás un <a href="https://github.com/settings/tokens/new?scopes=repo&description=Cofre+Didactico+Panel" target="_blank" rel="noopener">Personal Access Token (scope repo) →</a></p>
+    <div class="token-row">
+      <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx" />
+      <button class="btn btn-primary btn-sm" onclick="guardarToken()">✓ Conectar</button>
+      <button class="btn btn-ghost btn-sm" onclick="saltearToken()">Después</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <!-- COLUMNA IZQUIERDA: formulario -->
+    <div>
+
+      <!-- IMAGEN -->
+      <div class="section">
+        <div class="section-h">📷 Imagen del producto</div>
+        <label class="img-drop" id="img-drop">
+          <div class="drop-em">🖼️</div>
+          <div class="drop-t">Arrastrá o elegí una imagen</div>
+          <div class="drop-s">o <strong>buscá desde tu compu</strong> · JPG, PNG, WebP · máx 4MB</div>
+          <input type="file" id="img-file" accept="image/*" />
+        </label>
+        <div class="img-progress" id="img-prog"><div class="img-progress-bar" id="img-prog-bar" style="width:0%"></div></div>
+        <div class="field-hint" style="margin-top:8px;">Ideal 1200×900px. Se guarda en <code>/images/</code> del repo automáticamente.</div>
+      </div>
+
+      <!-- IDENTIDAD -->
+      <div class="section">
+        <div class="section-h">📝 Datos básicos</div>
+
+        <div class="field">
+          <label>Nombre del producto <span class="req">*</span></label>
+          <input id="f-nombre" placeholder="Ej: Cuadernillo de Vocales — Nivel Inicial" oninput="syncPreview()" />
+          <div class="field-error" id="err-nombre">El nombre es obligatorio.</div>
+        </div>
+
+        <div class="field">
+          <label>ID único <span class="req">*</span> <span class="hint-inline">· URL del producto</span></label>
+          <input id="f-id" placeholder="cuadernillo-vocales" oninput="idManual=true;syncPreview()" />
+          <div class="field-hint">Solo minúsculas y guiones. Se genera automático desde el nombre.</div>
+          <div class="field-error" id="err-id">Solo minúsculas, números y guiones.</div>
+        </div>
+
+        <div class="field">
+          <label>Descripción corta <span class="req">*</span></label>
+          <textarea id="f-desc" rows="2" placeholder="1-2 frases. Se muestra en la card del catálogo." oninput="syncPreview()"></textarea>
+          <div class="field-error" id="err-desc">La descripción es obligatoria.</div>
+        </div>
+
+        <div class="field">
+          <label>Descripción larga <span class="hint-inline">· opcional</span></label>
+          <textarea id="f-desc-larga" rows="3" placeholder="Aparece en la página del producto. Más detallada."></textarea>
+        </div>
+      </div>
+
+      <!-- CLASIFICACIÓN -->
+      <div class="section">
+        <div class="section-h">🏷️ Clasificación</div>
+        <div class="row2">
+          <div class="field">
+            <label>Tipo</label>
+            <select id="f-tipo" onchange="syncPreview()">
+              <option value="cuadernillo">📓 Cuadernillo</option>
+              <option value="juego">🎮 Juego interactivo</option>
+              <option value="lamina">🖼️ Lámina</option>
+              <option value="pack">🎁 Pack / Combo</option>
+              <option value="otro">📄 Otro recurso</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Temática</label>
+            <select id="f-tematica">
+              <option value="">— Sin temática —</option>
+              <option value="lengua">📖 Lengua</option>
+              <option value="matematica">🔢 Matemática</option>
+              <option value="ciencias">🔬 Ciencias</option>
+              <option value="efemerides">🗓️ Efemérides</option>
+              <option value="juegos">🎮 Juegos</option>
+              <option value="laminas">🖼️ Láminas</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Nivel educativo</label>
+          <input id="f-nivel" placeholder="Ej: Nivel Inicial · 1° Primaria" oninput="syncPreview()" />
+        </div>
+      </div>
+
+      <!-- PRECIO -->
+      <div class="section">
+        <div class="section-h">💰 Precio</div>
+        <div class="row2">
+          <div class="field">
+            <label>Tipo de acceso</label>
+            <select id="f-acceso" onchange="syncPreview()">
+              <option value="pago">💳 Pago</option>
+              <option value="gratis">🎁 Gratis</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Precio (ARS)</label>
+            <input type="number" id="f-precio" min="0" value="0" placeholder="0" oninput="syncPreview()" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Precio tachado — antes <span class="hint-inline">· opcional</span></label>
+          <input type="number" id="f-precio-old" min="0" placeholder="Precio anterior para mostrar descuento" oninput="syncPreview()" />
+        </div>
+      </div>
+
+      <!-- QUÉ INCLUYE -->
+      <div class="section">
+        <div class="section-h">✓ Qué incluye</div>
+        <div class="incluye-list" id="incluye-list"></div>
+        <button class="btn-add" onclick="agregarItem()">+ Agregar ítem</button>
+        <div class="field-hint" style="margin-top:8px;">Aparece como lista con ✓ en la página del producto.</div>
+      </div>
+
+      <!-- DETALLES -->
+      <div class="section">
+        <div class="section-h">📐 Detalles</div>
+        <div class="row2">
+          <div class="field">
+            <label>Páginas</label>
+            <input type="number" id="f-paginas" min="1" placeholder="Ej: 24" />
+          </div>
+          <div class="field">
+            <label>Formato</label>
+            <input id="f-formato" placeholder="Ej: PDF · A4 · Color" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Link de compra <span class="req">*</span></label>
+          <input id="f-link" placeholder="https://cofredidactico.empretienda.com.ar/..." oninput="syncPreview()" />
+          <div class="field-error" id="err-link">Ingresá una URL válida (https://...).</div>
+        </div>
+      </div>
+
+      <!-- VISIBILIDAD -->
+      <div class="section">
+        <div class="section-h">👁 Visibilidad</div>
+
+        <div class="field" style="margin-bottom:10px;">
+          <label>Etiqueta destacada</label>
+          <select id="f-etiqueta" onchange="syncPreview()">
+            <option value="">— Sin etiqueta —</option>
+            <option value="mas-vendido">⭐ Más vendido</option>
+            <option value="nuevo">🔥 Nuevo</option>
+            <option value="oferta">🎉 Oferta</option>
+            <option value="destacado">✨ Destacado</option>
+          </select>
+        </div>
+
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-label">Activo (visible en la tienda)</div>
+            <div class="toggle-desc">Si está apagado, el producto no aparece en el catálogo.</div>
+          </div>
+          <label class="toggle"><input type="checkbox" id="f-activo" checked /><span class="sl"></span></label>
+        </div>
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-label">Mostrar en Destacados del home</div>
+            <div class="toggle-desc">Aparece en la sección especial de la página principal.</div>
+          </div>
+          <label class="toggle"><input type="checkbox" id="f-destacado" onchange="syncPreview()" /><span class="sl"></span></label>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COLUMNA DERECHA: preview -->
+    <div>
+      <div class="preview-card">
+        <div class="preview-head">👁 Vista previa</div>
+        <div class="preview-img-box" id="prev-img">📦</div>
+        <div class="preview-body">
+          <div class="preview-tipo" id="prev-tipo">cuadernillo</div>
+          <div class="preview-name" id="prev-name" style="color:var(--ink-4);">Nombre del producto</div>
+          <div class="preview-desc" id="prev-desc" style="color:var(--ink-4);font-style:italic;">Descripción corta...</div>
+          <div class="preview-price" id="prev-price">
+            <span class="cur">$0</span>
+          </div>
+          <div class="preview-badges" id="prev-badges"></div>
+          <a class="preview-cta" id="prev-cta" href="#" onclick="return false;">🛒 Ver en tienda</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BARRA DE GUARDAR -->
+<div class="save-bar">
+  <div class="save-bar-left" id="save-info">Completá los campos requeridos <span style="color:var(--primary)">*</span></div>
+  <div class="save-bar-btns">
+    <button class="btn btn-ghost" onclick="limpiarForm()">🗑 Limpiar</button>
+    <button class="btn btn-primary" id="btn-guardar" onclick="guardarProducto()">💾 Guardar en GitHub</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const GH_REPO   = 'Cofredidactico/PaginaWeb';
+const GH_FILE   = 'productos.json';
+const GH_BRANCH = 'main';
+const KEY_STORE = 'gh_token_panel';
+
+let imgBase64  = null;
+let imgNombre  = null;
+let idManual   = false;
+let _data      = null; // JSON completo del repo
+
+// ── Token ──────────────────────────────────────────────────────
+function getToken(){ return localStorage.getItem(KEY_STORE) || ''; }
+
+function guardarToken(){
+  const v = $('#gh-token').value.trim();
+  if (!v){ toast('Ingresá un token', 'err'); return; }
+  localStorage.setItem(KEY_STORE, v);
+  actualizarEstadoToken();
+  cargarJSON();
+}
+
+function saltearToken(){
+  $('#token-banner').style.display = 'none';
+}
+
+function actualizarEstadoToken(){
+  const tk = getToken();
+  const banner = $('#token-banner');
+  const status = $('#gh-status');
+  if (tk){
+    banner.innerHTML = `
+      <h3>✅ Conectado a GitHub</h3>
+      <p style="margin-bottom:0;">Token configurado. Los productos se guardan directo en <strong>Cofredidactico/PaginaWeb</strong>.
+        <button onclick="borrarToken()" style="color:var(--primary);font-weight:700;font:inherit;border:none;cursor:pointer;background:none;margin-left:8px;">Cambiar token</button>
+      </p>`;
+    banner.classList.add('ok');
+    status.classList.add('ok');
+    $('#gh-status-txt').textContent = 'Conectado';
+    $('#btn-guardar').textContent = '💾 Guardar en GitHub';
+  } else {
+    status.classList.remove('ok');
+    $('#gh-status-txt').textContent = 'Sin configurar';
+    $('#btn-guardar').textContent = '💾 Guardar (JSON local)';
+  }
+}
+
+function borrarToken(){
+  localStorage.removeItem(KEY_STORE);
+  location.reload();
+}
+
+// ── Cargar JSON existente ──────────────────────────────────────
+async function cargarJSON(){
+  const tk = getToken();
+  if (!tk) return;
+  try {
+    const r = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`,
+      { headers:{ Authorization:`Bearer ${tk}`, Accept:'application/vnd.github+json' }});
+    if (!r.ok) throw new Error(r.status);
+    const meta = await r.json();
+    const content = decodeURIComponent(escape(atob(meta.content.replace(/\n/g,''))));
+    _data = JSON.parse(content);
+  } catch(e){
+    toast('No se pudo cargar productos.json — verificá el token', 'err');
+  }
+}
+
+// ── Imagen ─────────────────────────────────────────────────────
+const drop = $('#img-drop');
+const fileInput = $('#img-file');
+
+drop.addEventListener('click', () => fileInput.click());
+drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('over'); });
+drop.addEventListener('dragleave', () => drop.classList.remove('over'));
+drop.addEventListener('drop', e => {
+  e.preventDefault(); drop.classList.remove('over');
+  if (e.dataTransfer.files[0]) procesarImagen(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', e => { if (e.target.files[0]) procesarImagen(e.target.files[0]); });
+
+function procesarImagen(file){
+  if (file.size > 4*1024*1024){ toast('La imagen supera 4MB', 'err'); return; }
+  const ext = file.name.split('.').pop().toLowerCase();
+  const clean = slug($('#f-nombre').value || 'producto');
+  imgNombre = `${clean}-${Date.now()}.${ext}`;
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    imgBase64 = e.target.result.split(',')[1];
+    drop.classList.add('has-img');
+    drop.innerHTML = `
+      <img class="img-preview" src="${e.target.result}" alt="preview" />
+      <button class="img-remove" onclick="quitarImagen(event)">✕ Quitar</button>`;
+    syncPreview();
+  };
+  reader.readAsDataURL(file);
+}
+
+function quitarImagen(e){
+  e.stopPropagation(); e.preventDefault();
+  imgBase64 = null; imgNombre = null;
+  drop.className = 'img-drop';
+  drop.innerHTML = `<div class="drop-em">🖼️</div><div class="drop-t">Arrastrá o elegí una imagen</div><div class="drop-s">o <strong>buscá desde tu compu</strong> · JPG, PNG, WebP · máx 4MB</div><input type="file" id="img-file" accept="image/*" />`;
+  drop.querySelector('input').addEventListener('change', e => { if(e.target.files[0]) procesarImagen(e.target.files[0]); });
+  drop.addEventListener('click', () => drop.querySelector('input').click());
+  syncPreview();
+}
+
+// ── Slug automático ────────────────────────────────────────────
+function slug(s){
+  return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').replace(/-+/g,'-').slice(0,60);
+}
+
+$('#f-nombre').addEventListener('input', () => {
+  if (!idManual) $('#f-id').value = slug($('#f-nombre').value);
+  syncPreview();
+});
+
+// ── Qué incluye ────────────────────────────────────────────────
+function agregarItem(val=''){
+  const div = document.createElement('div');
+  div.className = 'incluye-item';
+  div.innerHTML = `<input placeholder="Ej: 24 páginas PDF" value="${val}" /><button onclick="this.parentElement.remove()">✕</button>`;
+  $('#incluye-list').appendChild(div);
+  div.querySelector('input').focus();
+}
+
+// ── Vista previa sync ──────────────────────────────────────────
+function syncPreview(){
+  const nombre = $('#f-nombre').value || 'Nombre del producto';
+  const desc   = $('#f-desc').value   || 'Descripción corta...';
+  const tipo   = $('#f-tipo').value;
+  const nivel  = $('#f-nivel').value;
+  const acceso = $('#f-acceso').value;
+  const precio = +$('#f-precio').value || 0;
+  const old    = +$('#f-precio-old').value || 0;
+  const etiq   = $('#f-etiqueta').value;
+  const dest   = $('#f-destacado').checked;
+  const link   = $('#f-link').value || '#';
+
+  $('#prev-name').textContent = nombre;
+  $('#prev-name').style.color = nombre === 'Nombre del producto' ? 'var(--ink-4)' : '';
+  $('#prev-desc').textContent = desc;
+  $('#prev-desc').style.color = desc === 'Descripción corta...' ? 'var(--ink-4)' : '';
+  $('#prev-desc').style.fontStyle = desc === 'Descripción corta...' ? 'italic' : '';
+  $('#prev-tipo').textContent = tipo + (nivel ? ' · ' + nivel : '');
+
+  if (imgBase64 && drop.querySelector('img')){
+    $('#prev-img').innerHTML = `<img src="${drop.querySelector('img').src}" style="width:100%;height:100%;object-fit:cover;" />`;
+  } else {
+    $('#prev-img').innerHTML = '📦';
+  }
+
+  if (acceso === 'gratis'){
+    $('#prev-price').innerHTML = `<span class="cur free">Gratis</span>`;
+  } else {
+    $('#prev-price').innerHTML = `<span class="cur">$${precio.toLocaleString('es-AR')}</span>${old ? `<span class="old">$${old.toLocaleString('es-AR')}</span>` : ''}`;
+  }
+
+  let badges = '';
+  if (etiq) badges += `<span class="pbadge pbadge-etiq">${{['mas-vendido']:'⭐ Más vendido',nuevo:'🔥 Nuevo',oferta:'🎉 Oferta',destacado:'✨ Destacado'}[etiq]||etiq}</span>`;
+  if (dest) badges += `<span class="pbadge pbadge-dest">⭐ Destacado</span>`;
+  if (acceso === 'gratis') badges += `<span class="pbadge pbadge-gratis">🎁 Gratis</span>`;
+  $('#prev-badges').innerHTML = badges;
+
+  const hasLink = link && link !== '#' && link.startsWith('http');
+  $('#prev-cta').href = hasLink ? link : '#';
+  $('#prev-cta').style.opacity = hasLink ? '1' : '.5';
+}
+
+// ── Validación ─────────────────────────────────────────────────
+function validar(){
+  let ok = true;
+  const campos = [
+    { id:'f-nombre', err:'err-nombre', check: v => v.trim().length > 0 },
+    { id:'f-id',     err:'err-id',     check: v => /^[a-z0-9-]+$/.test(v.trim()) },
+    { id:'f-desc',   err:'err-desc',   check: v => v.trim().length > 5 },
+    { id:'f-link',   err:'err-link',   check: v => !v.trim() || v.trim().startsWith('http') },
+  ];
+  campos.forEach(({ id, err, check }) => {
+    const el = $(`#${id}`), errEl = $(`#${err}`);
+    if (!check(el.value)){ el.classList.add('error'); errEl.classList.add('show'); ok = false; }
+    else { el.classList.remove('error'); errEl.classList.remove('show'); }
+  });
+  return ok;
+}
+
+// ── Guardar en GitHub ──────────────────────────────────────────
+async function guardarProducto(){
+  if (!validar()) { toast('Revisá los campos marcados', 'err'); return; }
+
+  const btn = $('#btn-guardar');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spin"></div> Guardando...';
+
+  try {
+    // 1. Subir imagen si hay
+    let rutaImagen = 'images/placeholder-vocales.svg';
+    if (imgBase64 && imgNombre){
+      rutaImagen = await subirImagen(imgBase64, imgNombre);
+    }
+
+    // 2. Construir objeto producto
+    const prod = construirProducto(rutaImagen);
+
+    const tk = getToken();
+    if (!tk){
+      // Sin token: descargar JSON
+      descargarJSON(prod);
+      return;
+    }
+
+    // 3. Leer SHA actual
+    const metaRes = await fetch(
+      `https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`,
+      { headers:{ Authorization:`Bearer ${tk}`, Accept:'application/vnd.github+json' }}
+    );
+    if (!metaRes.ok) throw new Error(`No se pudo leer el archivo (${metaRes.status}). Verificá el token.`);
+    const meta = await metaRes.json();
+    const sha  = meta.sha;
+
+    // 4. Parsear JSON existente
+    const existente = JSON.parse(decodeURIComponent(escape(atob(meta.content.replace(/\n/g,'')))));
+    const prods = existente.productos || [];
+
+    // Verificar ID duplicado
+    if (prods.find(p => p.id === prod.id)){
+      prod.id = prod.id + '-' + Date.now().toString().slice(-4);
+    }
+    prods.push(prod);
+    existente.productos = prods;
+
+    // 5. Subir
+    const newContent = btoa(unescape(encodeURIComponent(JSON.stringify(existente, null, 2))));
+    const putRes = await fetch(
+      `https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,
+      {
+        method:'PUT',
+        headers:{ Authorization:`Bearer ${tk}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json' },
+        body: JSON.stringify({ message:`✨ Crear: ${prod.nombre}`, content: newContent, sha, branch: GH_BRANCH })
+      }
+    );
+    if (!putRes.ok){
+      const err = await putRes.json();
+      throw new Error(err.message || `Error ${putRes.status}`);
+    }
+
+    toast('✅ ¡Producto guardado en GitHub!', 'ok');
+    setTimeout(() => limpiarForm(), 1800);
+
+  } catch(e){
+    toast('❌ ' + (e.message || 'Error al guardar'), 'err');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = getToken() ? '💾 Guardar en GitHub' : '💾 Guardar (JSON local)';
+  }
+}
+
+async function subirImagen(base64, nombre){
+  const tk = getToken();
+  if (!tk) return 'images/' + nombre;
+
+  const path = `images/${nombre}`;
+  // Verificar si ya existe
+  let sha = undefined;
+  try {
+    const check = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`,
+      { headers:{ Authorization:`Bearer ${tk}`, Accept:'application/vnd.github+json' }});
+    if (check.ok){ const d = await check.json(); sha = d.sha; }
+  } catch {}
+
+  const body = { message:`📸 Imagen: ${nombre}`, content: base64, branch: GH_BRANCH };
+  if (sha) body.sha = sha;
+
+  const prog = $('#img-prog'), bar = $('#img-prog-bar');
+  prog.style.display = 'block'; bar.style.width = '40%';
+
+  const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`,
+    { method:'PUT', headers:{ Authorization:`Bearer ${tk}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json' }, body: JSON.stringify(body) });
+
+  bar.style.width = '100%';
+  setTimeout(() => { prog.style.display = 'none'; bar.style.width = '0%'; }, 600);
+
+  if (!res.ok){ const e = await res.json(); throw new Error('Error subiendo imagen: ' + (e.message||res.status)); }
+  return path;
+}
+
+function construirProducto(rutaImagen){
+  const incluye = Array.from($('#incluye-list').querySelectorAll('input'))
+    .map(i => i.value.trim()).filter(Boolean);
+  const prod = {
+    id:        $('#f-id').value.trim() || slug($('#f-nombre').value),
+    nombre:    $('#f-nombre').value.trim(),
+    descripcion: $('#f-desc').value.trim(),
+    tipo:      $('#f-tipo').value,
+    acceso:    $('#f-acceso').value,
+    precio:    +$('#f-precio').value || 0,
+    imagen:    rutaImagen,
+    link:      $('#f-link').value.trim(),
+    activo:    $('#f-activo').checked,
+    destacado: $('#f-destacado').checked,
+  };
+  const descLarga = $('#f-desc-larga').value.trim();
+  if (descLarga) prod.descripcionLarga = descLarga;
+  const tematica = $('#f-tematica').value;
+  if (tematica) prod.tematica = tematica;
+  const nivel = $('#f-nivel').value.trim();
+  if (nivel) prod.nivel = nivel;
+  const precioOld = +$('#f-precio-old').value;
+  if (precioOld) prod.precioTachado = precioOld;
+  const etiqueta = $('#f-etiqueta').value;
+  if (etiqueta) prod.etiqueta = etiqueta;
+  if (incluye.length) prod.incluye = incluye.map(t => ({ texto: t }));
+  const paginas = +$('#f-paginas').value;
+  if (paginas) prod.paginas = paginas;
+  const formato = $('#f-formato').value.trim();
+  if (formato) prod.formato = formato;
+  return prod;
+}
+
+function descargarJSON(prod){
+  const data = _data ? JSON.parse(JSON.stringify(_data)) : { productos:[], config:{} };
+  (data.productos = data.productos||[]).push(prod);
+  const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a'); a.href=url; a.download='productos.json'; a.click();
+  URL.revokeObjectURL(url);
+  toast('JSON descargado. Subilo a GitHub manualmente.', 'ok');
+}
+
+function limpiarForm(){
+  ['f-nombre','f-id','f-desc','f-desc-larga','f-nivel','f-link','f-formato'].forEach(id => $(`#${id}`).value='');
+  $('#f-precio').value = 0;
+  $('#f-precio-old').value = '';
+  $('#f-tipo').value = 'cuadernillo';
+  $('#f-tematica').value = '';
+  $('#f-acceso').value = 'pago';
+  $('#f-etiqueta').value = '';
+  $('#f-activo').checked = true;
+  $('#f-destacado').checked = false;
+  $('#incluye-list').innerHTML = '';
+  idManual = false;
+  quitarImagen({stopPropagation:()=>{},preventDefault:()=>{}});
+  syncPreview();
+}
+
+// ── Toast ──────────────────────────────────────────────────────
+function toast(msg, type=''){
+  const t = $('#toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => t.className = 'toast', 3000);
+}
+
+// ── Init ───────────────────────────────────────────────────────
+actualizarEstadoToken();
+if (getToken()){
+  $('#token-banner').style.display='none';
+  cargarJSON();
+}
+syncPreview();
+agregarItem();
+</script>
+</body>
+</html>
