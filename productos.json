@@ -11,7 +11,7 @@
       "acceso": "pago",
       "precio": 6500,
       "precioTachado": 8900,
-      "imagen": "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 1.jpg",
+      "imagen": "images/revolucion-de-mayo-1778563135675.jpg",
       "previews": [
         "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 5.jpg",
         "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 4.jpg",
@@ -20,9 +20,15 @@
         "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 6.jpg"
       ],
       "incluye": [
-        "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos.",
-        "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo",
-        "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio"
+        {
+          "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos."
+        },
+        {
+          "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo"
+        },
+        {
+          "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio"
+        }
       ],
       "paginas": 34,
       "formato": "PDF-A4-Color",
