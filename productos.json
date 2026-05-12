@@ -1,151 +1,6 @@
 {
   "productos": [
     {
-      "nombre": "Cuadernillo de Vocales",
-      "descripcion": "Actividades graduadas para reconocer y trazar vocales. 24 páginas listas para imprimir, ideal para nivel inicial y primer grado.",
-      "descripcionLarga": "Un recurso completo para introducir las 5 vocales con propuestas que combinan trazo, reconocimiento, fonología y arte. Cada vocal tiene una secuencia de 4 páginas con dificultad progresiva. Probado en aulas reales de nivel inicial y 1° primaria.",
-      "id": "cuadernillo-vocales",
-      "tipo": "cuadernillo",
-      "tematica": "lengua",
-      "nivel": "Nivel Inicial · 1° Primaria",
-      "acceso": "pago",
-      "precio": 2500,
-      "precioTachado": 3500,
-      "imagen": "images/placeholder-vocales.svg",
-      "paginas": 24,
-      "formato": "PDF · A4 · Color y B&N",
-      "link": "https://cofredidactico.empretienda.com.ar/",
-      "etiqueta": "mas-vendido",
-      "activo": true,
-      "destacado": true,
-      "incluye": [
-        {
-          "texto": "24 páginas en formato PDF"
-        },
-        {
-          "texto": "Actividades de trazo y reconocimiento"
-        },
-        {
-          "texto": "Páginas para colorear"
-        },
-        {
-          "texto": "Guía docente con sugerencias"
-        }
-      ],
-      "previews": [
-        {
-          "img": "images/placeholder-vocales.svg"
-        },
-        {
-          "img": "images/placeholder-mate.svg"
-        },
-        {
-          "img": "images/placeholder-pasapalabra.svg"
-        }
-      ]
-    },
-    {
-      "nombre": "Pasapalabra Interactivo",
-      "descripcion": "Juego digital tipo rosco para repasar contenidos. Editable: cambiás las preguntas y queda listo para tu aula.",
-      "descripcionLarga": "Recurso digital editable en PowerPoint con efectos sonoros, animaciones y sistema de puntaje. Adaptable a cualquier asignatura: solo editás las preguntas y respuestas. Perfecto para cierres de unidad o repaso antes de evaluaciones.",
-      "id": "pasapalabra",
-      "tipo": "juego",
-      "tematica": "juegos",
-      "nivel": "2° Ciclo Primaria",
-      "acceso": "pago",
-      "precio": 1800,
-      "imagen": "images/placeholder-pasapalabra.svg",
-      "formato": "PowerPoint editable",
-      "link": "https://cofredidactico.empretienda.com.ar/",
-      "etiqueta": "nuevo",
-      "activo": true,
-      "destacado": true,
-      "incluye": [
-        {
-          "texto": "Plantilla editable .pptx"
-        },
-        {
-          "texto": "Efectos sonoros incluidos"
-        },
-        {
-          "texto": "Tutorial de personalización"
-        }
-      ],
-      "previews": [
-        {
-          "img": "images/placeholder-pasapalabra.svg"
-        },
-        {
-          "img": "images/placeholder-mate.svg"
-        }
-      ]
-    },
-    {
-      "nombre": "Día de la Tierra",
-      "descripcion": "Lámina + actividades para trabajar el cuidado del planeta. Recurso gratuito como bienvenida.",
-      "descripcionLarga": "Material gratuito pensado para conmemorar el 22 de abril en el aula. Incluye una lámina ilustrada para imprimir en A3 y 4 actividades complementarias para todos los niveles.",
-      "id": "dia-tierra",
-      "tipo": "lamina",
-      "tematica": "efemerides",
-      "nivel": "Todos los niveles",
-      "acceso": "gratis",
-      "precio": 0,
-      "imagen": "images/placeholder-tierra.svg",
-      "paginas": 5,
-      "formato": "PDF · A3 + A4",
-      "link": "https://cofredidactico.empretienda.com.ar/",
-      "activo": true,
-      "destacado": false,
-      "incluye": [
-        {
-          "texto": "Lámina A3 ilustrada"
-        },
-        {
-          "texto": "4 actividades complementarias"
-        },
-        {
-          "texto": "Recurso 100% gratis"
-        }
-      ]
-    },
-    {
-      "nombre": "Láminas Matemáticas",
-      "descripcion": "Set de 8 láminas A3 con tablas, números y operaciones básicas. Diseño editorial para colgar en el aula.",
-      "descripcionLarga": "Colección de 8 láminas con diseño editorial profesional. Tablas de multiplicar, números del 1 al 100, operaciones básicas y conceptos geométricos. Ideales para tener visibles todo el año.",
-      "id": "laminas-mate",
-      "tipo": "lamina",
-      "tematica": "matematica",
-      "nivel": "1° Ciclo Primaria",
-      "acceso": "pago",
-      "precio": 3200,
-      "imagen": "images/placeholder-mate.svg",
-      "paginas": 8,
-      "formato": "PDF · A3 · Color y B&N",
-      "link": "https://cofredidactico.empretienda.com.ar/",
-      "etiqueta": "destacado",
-      "activo": true,
-      "destacado": false,
-      "incluye": [
-        {
-          "texto": "8 láminas en formato A3"
-        },
-        {
-          "texto": "Diseño editorial profesional"
-        },
-        {
-          "texto": "Versión color y B&N"
-        }
-      ],
-      "previews": [
-        {
-          "img": "images/placeholder-mate.svg"
-        },
-        {
-          "img": "images/placeholder-vocales.svg"
-        }
-      ]
-    },
-    {
       "nombre": "Revolución de Mayo",
       "descripcion": "Secuencia de Actividades Revolución de Mayo",
       "descripcionLarga": "🇦🇷✨ REVOLUCIÓN DE MAYO ✨🇦🇷\n\nLes traigo un material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario de una manera dinámica, significativa y atractiva para los estudiantes. 📚💙\n\n📦 ¿Qué encontrarás dentro del material?\n\n📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos.\n🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo\n🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio\n👒 Vendedores ambulantes de la época colonial con ilustraciones y descripciones\n✍️ Actividades de lectura, escritura y comprensión\n🧩 Rompecabezas temáticos\n🔎 Encuentra las diferencias y juegos de observación\n📝 Crucigramas y sopa de letras\n🖍️ Propuestas para colorear y dibujar\n🧠 Actividades para ordenar secuencias y completar oraciones\n🎨 Material visual listo para imprimir y utilizar en el aula\n✂️ Recursos manipulativos para recortar, armar y aprender jugando\n\n💡 Diseño profesional con una estética infantil, clara y atractiva para captar la atención de los estudiantes mientras aprenden sobre uno de los acontecimientos más importantes de nuestra historia.\n\nIdeal para:\n✔️ Nivel Primario\n✔️ Proyectos escolares\n✔️ Efemérides\n✔️ Trabajo en clase o tareas para el hogar\n✔️ Docentes que buscan propuestas innovadoras y listas para usar",
@@ -177,30 +32,30 @@
       "destacado": true
     }
   ],
+  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
   "config": {
-    "links": {
-      "email": "cofredidacticoo@gmail.com",
-      "whatsapp": "https://wa.me/5491165298256?text=Hola!%20Tengo%20una%20consulta%20sobre%20los%20materiales%20de%20Cofre%20Did%C3%A1ctico%20%F0%9F%93%9A",
-      "hotmart": "https://hotmart.com/es/market/materiales-educativos",
-      "empretienda": "https://cofredidactico.empretienda.com.ar/",
-      "instagram": "https://www.instagram.com/cofredidactico/"
-    },
-    "brevo": {
-      "emailField": "EMAIL",
-      "formAction": ""
+    "anuncio": {
+      "activo": false,
+      "texto": "🎉 Envíos gratis esta semana — usá el código DOCENTE10",
+      "color": "#FF8A4C"
     },
     "stats": {
-      "descargas": "+2.000",
+      "docentes": "+500",
       "paises": "+12",
-      "docentes": "+500"
+      "descargas": "+2.000"
     },
-    "anuncio": {
-      "color": "#FF8A4C",
-      "texto": "🎉 Envíos gratis esta semana — usá el código DOCENTE10",
-      "activo": false
+    "brevo": {
+      "formAction": "",
+      "emailField": "EMAIL"
+    },
+    "links": {
+      "instagram": "https://www.instagram.com/cofredidactico/",
+      "empretienda": "https://cofredidactico.empretienda.com.ar/",
+      "hotmart": "https://hotmart.com/es/market/materiales-educativos",
+      "whatsapp": "https://wa.me/5491165298256?text=Hola!%20Tengo%20una%20consulta%20sobre%20los%20materiales%20de%20Cofre%20Did%C3%A1ctico%20%F0%9F%93%9A",
+      "email": "cofredidacticoo@gmail.com"
     }
   },
-  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
   "tematicas": [
     {
       "id": "lengua",
