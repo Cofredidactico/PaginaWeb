@@ -403,6 +403,50 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   background:linear-gradient(110deg,var(--bg-2) 8%,var(--bg-3) 18%,var(--bg-2) 33%);
   background-size:200% 100%;animation:shimmer 1.6s linear infinite;
 }
+
+/* ═════ DETAIL VIEW ═════ */
+.detail-view{display:none;padding:32px 0 80px;}
+body.in-detail .detail-view{display:block;}
+body.in-detail .hero,body.in-detail .sec:not(.detail-view),body.in-detail .por-que,body.in-detail #catalogo,body.in-detail #faq,body.in-detail #newsletter{display:none;}
+.detail-back{display:inline-flex;align-items:center;gap:8px;color:var(--ink-3);font-weight:700;padding:10px 16px;border-radius:10px;transition:background .2s,color .2s;margin-bottom:24px;}
+.detail-back:hover{background:var(--bg-2);color:var(--ink);}
+.detail-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start;}
+.detail-gallery{position:sticky;top:90px;}
+.detail-main-img{aspect-ratio:4/3;border-radius:var(--r-lg);overflow:hidden;background:var(--bg-2);box-shadow:var(--s-2);border:1px solid rgba(26,39,68,.06);}
+.detail-main-img img{width:100%;height:100%;object-fit:cover;}
+.detail-thumbs{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
+.detail-thumb{width:78px;height:78px;border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s,transform .2s;background:var(--bg-2);}
+.detail-thumb img{width:100%;height:100%;object-fit:cover;}
+.detail-thumb.active{border-color:var(--primary);transform:scale(1.05);}
+.detail-thumb:hover{border-color:var(--primary);}
+.detail-info h1{font-family:var(--f-display);font-size:clamp(1.8rem,3.5vw,2.5rem);line-height:1.15;margin:0 0 12px;}
+.detail-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
+.detail-meta .tag{background:var(--primary-soft);color:var(--primary);font-weight:700;font-size:.78rem;padding:5px 12px;border-radius:99px;letter-spacing:.04em;text-transform:uppercase;}
+.detail-meta .tag.tag-accent{background:var(--accent-soft);color:#FF6B35;}
+.detail-meta .tag.tag-green{background:var(--green-soft);color:var(--green);}
+.detail-price{display:flex;align-items:baseline;gap:12px;margin:22px 0;}
+.detail-price .p-now{font-family:var(--f-display);font-size:2.4rem;font-weight:800;color:var(--ink);}
+.detail-price .p-now.gratis{color:var(--green);}
+.detail-price .p-old{font-size:1.2rem;text-decoration:line-through;color:var(--ink-4);font-weight:700;}
+.detail-price .p-off{background:var(--accent);color:#fff;padding:4px 10px;border-radius:8px;font-size:.78rem;font-weight:800;}
+.detail-desc{color:var(--ink-2);font-size:1.02rem;line-height:1.7;margin:18px 0 24px;white-space:pre-wrap;}
+.detail-cta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;}
+.detail-incluye{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 24px;margin-bottom:20px;}
+.detail-incluye h3{font-size:1.05rem;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.detail-incluye ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+.detail-incluye li{display:flex;align-items:flex-start;gap:10px;color:var(--ink-2);font-size:.95rem;}
+.detail-incluye li::before{content:'✓';color:var(--green);font-weight:800;flex:none;}
+.detail-specs{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:var(--bg-2);border-radius:var(--r-lg);padding:18px;margin-bottom:20px;}
+.detail-spec{display:flex;flex-direction:column;gap:2px;}
+.detail-spec-l{font-size:.72rem;color:var(--ink-4);font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+.detail-spec-v{font-size:.95rem;color:var(--ink);font-weight:700;}
+.detail-share{display:flex;gap:8px;align-items:center;color:var(--ink-3);font-size:.88rem;}
+.detail-share button{background:var(--bg-2);padding:8px 14px;border-radius:10px;font-weight:700;font-size:.85rem;transition:background .2s;display:inline-flex;gap:6px;align-items:center;}
+.detail-share button:hover{background:var(--primary-soft);color:var(--primary);}
+@media (max-width:880px){
+  .detail-grid{grid-template-columns:1fr;gap:28px;}
+  .detail-gallery{position:static;}
+}
 </style>
 </head>
 <body>
@@ -425,6 +469,14 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
     </nav>
   </div>
 </header>
+
+<!-- ═══════ DETAIL VIEW (página de producto) ═══════ -->
+<section class="sec detail-view" id="detail-view">
+  <div class="wrap">
+    <a href="#" class="detail-back" onclick="volverHome(event)">← Volver al catálogo</a>
+    <div class="detail-grid" id="detail-content"></div>
+  </div>
+</section>
 
 <!-- Hero -->
 <section class="hero">
@@ -609,7 +661,7 @@ let _q = '';
 // ── Cargar JSON ──
 fetch('productos.json?v=' + Date.now())
   .then(r => r.json())
-  .then(data => { _data = data; aplicarConfig(); render(); })
+  .then(data => { _data = data; aplicarConfig(); render(); routear(); })
   .catch(err => {
     console.error('Error cargando productos.json', err);
     $('#grid').innerHTML = '<div class="empty" style="grid-column:1/-1;"><div class="empty-em">⚠️</div><h3>No pudimos cargar el catálogo</h3><p>Probá refrescando la página en unos segundos.</p></div>';
@@ -689,10 +741,10 @@ function render(){
     const precio = p.acceso==='gratis'
       ? `<div class="price gratis">¡Gratis!</div>`
       : `<div class="price">${p.precioTachado?`<span class="price-tachado">$${p.precioTachado.toLocaleString('es-AR')}</span>`:''}$${(p.precio||0).toLocaleString('es-AR')}</div>`;
-    const cta = p.acceso==='gratis' ? 'Descargar →' : 'Comprar →';
+    const cta = p.acceso==='gratis' ? 'Descargar →' : 'Ver más →';
     const fp = i < 4 ? 'fetchpriority="high"' : '';
     return `
-      <a href="${p.link}" target="_blank" rel="noopener" class="card reveal" data-umami-event="click-producto" data-umami-event-id="${p.id}" data-umami-event-nombre="${p.nombre}">
+      <a href="#/producto/${p.id}" class="card reveal" data-umami-event="click-producto" data-umami-event-id="${p.id}" data-umami-event-nombre="${p.nombre}">
         <div class="card-img">
           ${ribbon}${tipo}
           <img src="${p.imagen}" alt="${p.nombre}" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
@@ -731,20 +783,133 @@ function initReveal(){
 }
 initReveal();
 
-// ── Newsletter (placeholder — conectar Brevo/Mailchimp) ──
-function suscribirse(e){
+// ── Newsletter (Brevo) ──
+async function suscribirse(e){
   e.preventDefault();
   const email = $('#nl-email').value.trim();
   if (!email) return false;
-  // TODO: conectar con Brevo o Mailchimp
-  // fetch('https://api.brevo.com/...' )
-  $('#nl-msg').textContent = '✅ ¡Listo! En unos minutos te llega el material.';
-  $('#nl-msg').style.color = 'var(--green)';
-  $('#nl-form').reset();
+  const msg = $('#nl-msg');
+  const formAction = (_data && _data.config && _data.config.brevo && _data.config.brevo.formAction) || '';
+  const emailField = (_data && _data.config && _data.config.brevo && _data.config.brevo.emailField) || 'EMAIL';
 
-  // Track con Umami si está activo
+  if (formAction){
+    try{
+      const fd = new FormData();
+      fd.append(emailField, email);
+      fd.append('email_address_check', '');
+      fd.append('locale', 'es');
+      await fetch(formAction, {method:'POST', body:fd, mode:'no-cors'});
+      msg.textContent = '✅ ¡Listo! Revisá tu casilla en unos minutos.';
+    }catch(err){
+      msg.textContent = '⚠️ Hubo un problema. Escribinos a ' + ((_data.config.links||{}).email||'cofredidacticoo@gmail.com');
+      msg.style.color = 'var(--accent)';
+      return false;
+    }
+  } else {
+    msg.textContent = '✅ ¡Anotado! (Proné a Brevo en /admin → Configuración → Newsletter para activar envío real)';
+  }
+  msg.style.color = 'var(--green)';
+  $('#nl-form').reset();
   if (window.umami) umami.track('newsletter-suscripcion', { email });
   return false;
+}
+
+// ── ROUTER: #/producto/{id} ──
+function routear(){
+  const h = location.hash;
+  const m = h.match(/^#\/producto\/([a-z0-9-]+)/i);
+  if (m && _data){
+    const p = (_data.productos||[]).find(x => x.id === m[1] && x.activo);
+    if (p){ renderDetalle(p); return; }
+  }
+  document.body.classList.remove('in-detail');
+  if (_originalTitle) document.title = _originalTitle;
+}
+let _originalTitle = '';
+window.addEventListener('DOMContentLoaded', () => { _originalTitle = document.title; });
+window.addEventListener('hashchange', routear);
+
+function renderDetalle(p){
+  document.body.classList.add('in-detail');
+  window.scrollTo({top:0, behavior:'instant'});
+  document.title = p.nombre + ' — Cofre Didáctico';
+
+  const imagenes = [p.imagen, ...((p.previews||[]).map(x => x.img).filter(Boolean))];
+  const tags = [];
+  if (p.tipo) tags.push(`<span class="tag">${TIPO_LABELS[p.tipo]||p.tipo}</span>`);
+  if (p.nivel) tags.push(`<span class="tag tag-accent">🎓 ${p.nivel}</span>`);
+  if (p.acceso === 'gratis') tags.push(`<span class="tag tag-green">🎁 Gratis</span>`);
+  const r = RIBBON[p.etiqueta];
+  if (r) tags.push(`<span class="tag tag-accent">${r.txt}</span>`);
+
+  const precio = p.acceso === 'gratis'
+    ? `<span class="p-now gratis">¡Gratis!</span>`
+    : (() => {
+        let off = '';
+        if (p.precioTachado && p.precioTachado > p.precio){
+          const pct = Math.round((1 - p.precio/p.precioTachado)*100);
+          off = `<span class="p-off">−${pct}%</span>`;
+        }
+        return `<span class="p-now">$${(p.precio||0).toLocaleString('es-AR')}</span>${p.precioTachado?`<span class="p-old">$${p.precioTachado.toLocaleString('es-AR')}</span>`:''}${off}`;
+      })();
+
+  const incluye = (p.incluye||[]).length
+    ? `<div class="detail-incluye"><h3>✨ Qué incluye</h3><ul>${p.incluye.map(i => `<li>${i.texto||i}</li>`).join('')}</ul></div>` : '';
+
+  const specs = [];
+  if (p.paginas) specs.push(`<div class="detail-spec"><span class="detail-spec-l">Páginas</span><span class="detail-spec-v">${p.paginas}</span></div>`);
+  if (p.formato) specs.push(`<div class="detail-spec"><span class="detail-spec-l">Formato</span><span class="detail-spec-v">${p.formato}</span></div>`);
+  if (p.tematica) specs.push(`<div class="detail-spec"><span class="detail-spec-l">Temática</span><span class="detail-spec-v">${p.tematica}</span></div>`);
+  if (p.nivel) specs.push(`<div class="detail-spec"><span class="detail-spec-l">Nivel</span><span class="detail-spec-v">${p.nivel}</span></div>`);
+  const specsHtml = specs.length ? `<div class="detail-specs">${specs.join('')}</div>` : '';
+
+  const cta = p.acceso === 'gratis' ? '🎁 Descargar gratis' : '🛍️ Comprar ahora';
+
+  $('#detail-content').innerHTML = `
+    <div class="detail-gallery">
+      <div class="detail-main-img"><img id="detail-main" src="${imagenes[0]}" alt="${p.nombre}" /></div>
+      ${imagenes.length > 1 ? `
+        <div class="detail-thumbs">
+          ${imagenes.map((img,i) => `<div class="detail-thumb ${i===0?'active':''}" onclick="cambiarImg('${img}', this)"><img src="${img}" alt="Muestra ${i+1}" loading="lazy" /></div>`).join('')}
+        </div>` : ''}
+    </div>
+    <div class="detail-info">
+      <div class="detail-meta">${tags.join('')}</div>
+      <h1>${p.nombre}</h1>
+      <div class="detail-price">${precio}</div>
+      <p class="detail-desc">${p.descripcionLarga || p.descripcion || ''}</p>
+      <div class="detail-cta">
+        <a href="${p.link}" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-umami-event="click-comprar" data-umami-event-id="${p.id}">${cta}</a>
+        <button class="btn btn-ghost btn-lg" onclick="compartir('${p.id}','${(p.nombre||'').replace(/'/g,"\\'")}')">🔗 Compartir</button>
+      </div>
+      ${incluye}
+      ${specsHtml}
+    </div>
+  `;
+  if (window.umami) umami.track('view-producto', { id: p.id, nombre: p.nombre });
+}
+
+function cambiarImg(src, el){
+  $('#detail-main').src = src;
+  $$('.detail-thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function volverHome(e){
+  e.preventDefault();
+  history.pushState('', document.title, location.pathname + location.search);
+  routear();
+  document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
+}
+
+function compartir(id, nombre){
+  const url = location.origin + location.pathname + '#/producto/' + id;
+  if (navigator.share){
+    navigator.share({title:nombre + ' — Cofre Didáctico', url}).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(url).then(() => alert('¡Link copiado! Ya podés compartirlo 📝'));
+  }
+  if (window.umami) umami.track('compartir-producto', { id });
 }
 </script>
 
