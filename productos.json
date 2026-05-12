@@ -30,6 +30,30 @@
       "etiqueta": "nuevo",
       "activo": true,
       "destacado": true
+    },
+    {
+      "id": "dia-de-la-escarapela",
+      "nombre": "Día de la Escarapela",
+      "descripcion": "Secuencia de Actividades  Día de la Escarapela",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 5500,
+      "imagen": "images/producto-1778559946157.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-de-la-escarapela-con-plataforma-interactiva",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "✨ Secuencia de Actividades: Día de la Escarapela 🇦🇷💙\n\nIncluye propuestas variadas para que los peques conozcan y valoren este símbolo patrio mientras desarrollan habilidades de lectura, escritura y pensamiento:\n\n📄 Secuencia Didáctica (con fundamentación y actividades organizadas para trabajar la efeméride)\n\n🎗️ Comprensión de infografía\n🎗️ Completar oraciones\n🎗️ Ordenar palabras y letras\n🎗️ Sopa de letras\n🎗️ Crucigrama temático\n🎗️ Mensajes secretos y códigos\n🎗️ Actividades de escritura guiada\n🎗️ Dibujo y pintura de la escarapela 🎨\n🎗️ Recortar y armar la escarapela ✂️\n🎗️ Laberinto (¡ayudá a Belgrano!)\n🎗️ Acróstico “ESCARAPELA”\n\n🎉✨️🎮 Plataforma Interactiva para aprender Jugando ( Podés utilizarlo desde cualquier dispositivo digital 💻🖥📲)\n\n📚 Ideal para Primer Ciclo\n🎨 Actividades listas para imprimir\n📝 Propuestas lúdicas y significativas\n💙 Perfecto para trabajar el 18 de mayo de forma lúdica e inclusiva.",
+      "tematica": "efemerides",
+      "nivel": "Primer Ciclo",
+      "precioTachado": 7498,
+      "etiqueta": "nuevo",
+      "incluye": [
+        {
+          "texto": "Propuestas lúdicas y significativas"
+        }
+      ],
+      "paginas": 25,
+      "formato": "PDF-A4-Color"
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
