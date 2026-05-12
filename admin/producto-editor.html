@@ -462,8 +462,8 @@ function actualizarPill(){
 async function cargarJSON(){
   const tk=getToken();if(!tk)return;
   try{
-    const r=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`,
-      {headers:{Authorization:`Bearer ${tk}`,Accept:'application/vnd.github+json'}});
+    const r=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}&t=${Date.now()}`,
+      {cache:'no-store',headers:{Authorization:`Bearer ${tk}`,Accept:'application/vnd.github+json'}});
     if(!r.ok)throw new Error(r.status);
     const meta=await r.json();
     _sha=meta.sha;
@@ -738,7 +738,7 @@ async function subirImg(base64,nombre){
   const tk=getToken();if(!tk)return 'images/'+nombre;
   const path=`images/${nombre}`;let sha;
   try{const r=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`,
-    {headers:{Authorization:`Bearer ${tk}`,Accept:'application/vnd.github+json'}});
+    {cache:'no-store',headers:{Authorization:`Bearer ${tk}`,Accept:'application/vnd.github+json'}});
     if(r.ok){const d=await r.json();sha=d.sha;}}catch{}
   const prog=$('#img-prog'),bar=$('#img-bar');
   prog.style.display='block';bar.style.width='50%';
