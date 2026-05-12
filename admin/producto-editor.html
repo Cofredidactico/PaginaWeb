@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Nuevo producto · Cofre Didáctico</title>
+<title>Editor de producto · Cofre Didáctico</title>
 <link rel="icon" href="../logo.png" />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -20,23 +20,27 @@ html,body{font-family:var(--f);background:var(--bg-1);color:var(--ink);min-heigh
 a{color:inherit;text-decoration:none;}
 button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 
-/* Header */
 .hdr{padding:14px 0;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10;}
 .hdr-in{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
 .back{display:inline-flex;align-items:center;gap:7px;color:var(--ink-3);font-weight:700;font-size:.85rem;padding:7px 12px;border-radius:9px;}
 .back:hover{background:var(--bg-2);color:var(--ink);}
 .brand{font-family:var(--f-d);font-weight:700;font-size:1rem;}
 .brand em{color:var(--primary);font-style:normal;}
-.gh-pill{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:99px;background:var(--bg-2);color:var(--ink-3);cursor:pointer;transition:background .15s;}
-.gh-pill:hover{background:var(--bg-3);}
+.hdr-center{display:flex;align-items:center;gap:9px;}
+.mode-pill{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:99px;}
+.mode-pill.nuevo{background:var(--primary-soft);color:var(--primary-dark);}
+.mode-pill.edicion{background:var(--green-soft);color:var(--green);}
+.gh-pill{display:inline-flex;align-items:center;gap:5px;font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:99px;background:var(--bg-2);color:var(--ink-3);cursor:pointer;}
 .gh-pill.ok{background:var(--green-soft);color:var(--green);}
 .gh-pill .dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none;}
-.btn{display:inline-flex;align-items:center;gap:7px;font-weight:700;padding:10px 18px;border-radius:11px;font-size:.88rem;transition:transform .12s,box-shadow .2s;}
-.btn-primary{background:var(--primary);color:#fff;box-shadow:0 6px 18px -6px rgba(217,119,87,.55);}
+.btn{display:inline-flex;align-items:center;gap:7px;font-weight:700;padding:9px 16px;border-radius:10px;font-size:.86rem;transition:transform .12s,box-shadow .15s;}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 6px 18px -6px rgba(217,119,87,.5);}
 .btn-primary:hover{transform:translateY(-1px);}
 .btn-primary:disabled{opacity:.45;cursor:not-allowed;transform:none;}
 .btn-ghost{background:var(--bg-2);color:var(--ink);}
 .btn-ghost:hover{background:var(--bg-3);}
+.btn-danger{background:var(--red-soft);color:var(--red);}
+.btn-danger:hover{background:var(--red);color:#fff;}
 .btn-sm{padding:7px 13px;font-size:.8rem;border-radius:9px;}
 
 /* Token overlay */
@@ -50,21 +54,22 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .token-row input{flex:1;padding:10px 13px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:.88rem;}
 .token-row input:focus{outline:none;border-color:var(--primary);}
 
-/* Page layout */
+/* Loading overlay */
+.loading-overlay{display:none;position:fixed;inset:0;background:rgba(251,247,242,.9);z-index:40;align-items:center;justify-content:center;flex-direction:column;gap:14px;}
+.loading-overlay.show{display:flex;}
+.loading-overlay p{font-size:.9rem;color:var(--ink-3);}
+.spin-lg{width:36px;height:36px;border:3px solid var(--bg-3);border-top-color:var(--primary);border-radius:50%;animation:rot 1s linear infinite;}
+@keyframes rot{to{transform:rotate(360deg);}}
+
+/* Page */
 .page{max-width:1200px;margin:0 auto;padding:20px 24px 100px;}
 .grid3{display:grid;grid-template-columns:250px 1fr 270px;gap:16px;align-items:start;}
 @media(max-width:1080px){.grid3{grid-template-columns:1fr 260px;}}
 @media(max-width:760px){.grid3{grid-template-columns:1fr;}}
 
-/* Columna imagen */
+/* Imagen */
 .img-col{display:flex;flex-direction:column;gap:10px;}
-.img-drop{
-  border:2px dashed var(--line);border-radius:14px;
-  aspect-ratio:4/3;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  cursor:pointer;transition:border-color .2s,background .2s;
-  position:relative;overflow:hidden;background:#fff;text-align:center;padding:20px;
-}
+.img-drop{border:2px dashed var(--line);border-radius:14px;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative;overflow:hidden;background:#fff;text-align:center;padding:20px;}
 .img-drop:hover,.img-drop.over{border-color:var(--primary);background:var(--primary-soft);}
 .img-drop.has-img{border:none;padding:0;}
 .img-drop input[type=file]{display:none;}
@@ -83,7 +88,7 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .mini-slot img{width:100%;height:100%;object-fit:cover;}
 .mini-slot input{display:none;}
 
-/* Formulario */
+/* Form */
 .form-col{display:flex;flex-direction:column;gap:10px;}
 .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;}
 .card-h{display:flex;align-items:center;gap:7px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line);}
@@ -94,11 +99,7 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .field{margin-bottom:11px;}
 .field:last-child{margin-bottom:0;}
 .field label{display:block;font-size:.71rem;font-weight:700;color:var(--ink-2);margin-bottom:4px;letter-spacing:.03em;text-transform:uppercase;}
-.field input,.field select,.field textarea{
-  width:100%;padding:8px 11px;border:1.5px solid var(--line);
-  border-radius:8px;font:inherit;background:#fff;color:var(--ink);
-  font-size:.88rem;transition:border-color .2s,box-shadow .2s;
-}
+.field input,.field select,.field textarea{width:100%;padding:8px 11px;border:1.5px solid var(--line);border-radius:8px;font:inherit;background:#fff;color:var(--ink);font-size:.88rem;transition:border-color .2s,box-shadow .2s;}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(217,119,87,.1);}
 .field input.err{border-color:var(--red);}
 .field textarea{resize:vertical;min-height:58px;line-height:1.5;}
@@ -107,8 +108,6 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .field-err.show{display:block;}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
 .g3{display:grid;grid-template-columns:auto 1fr 1fr;gap:9px;}
-
-/* Precio */
 .pnum{position:relative;}
 .pnum::before{content:'$';position:absolute;left:10px;top:50%;transform:translateY(-50%);font-weight:700;color:var(--ink-3);font-size:.86rem;pointer-events:none;}
 .pnum input{padding-left:22px;}
@@ -140,7 +139,7 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .etiq-btn:hover{border-color:var(--primary);color:var(--primary);}
 .etiq-btn.active{background:var(--primary-soft);border-color:var(--primary);color:var(--primary-dark);}
 
-/* Preview col */
+/* Preview */
 .preview-col{position:sticky;top:70px;}
 .preview-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;}
 .prev-head{padding:11px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
@@ -162,7 +161,7 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .pb-dest{background:var(--green-soft);color:var(--green);}
 .prev-cta{display:block;text-align:center;background:var(--primary);color:#fff;padding:8px;border-radius:8px;font-weight:700;font-size:.8rem;}
 
-/* Checklist */
+/* Completitud */
 .comp{margin-top:11px;border-top:1px solid var(--line);padding-top:11px;}
 .comp-title{font-size:.68rem;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px;}
 .comp-items{display:flex;flex-direction:column;gap:4px;}
@@ -175,13 +174,13 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .ci.warn .dot{background:#FEF3C7;color:#92400E;}
 .ci.warn{color:#92400E;}
 
+/* Danger zone */
+.danger-zone{background:var(--red-soft);border:1px solid #FCA5A5;border-radius:14px;padding:16px;}
+.danger-zone h3{font-size:.88rem;font-weight:700;color:var(--red);margin-bottom:4px;}
+.danger-zone p{font-size:.78rem;color:var(--red);opacity:.8;margin-bottom:12px;line-height:1.4;}
+
 /* Save bar */
-.save-bar{
-  position:fixed;bottom:0;left:0;right:0;
-  background:rgba(255,255,255,.95);backdrop-filter:blur(12px);
-  border-top:1px solid var(--line);padding:11px 24px;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:9;
-}
+.save-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:11px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:9;}
 .save-left{font-size:.8rem;color:var(--ink-3);}
 .save-left strong{color:var(--ink);}
 .save-btns{display:flex;gap:8px;}
@@ -191,7 +190,6 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .toast.ok{background:var(--green);}
 .toast.err{background:var(--red);}
 .spin{width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:rot 1s linear infinite;flex:none;}
-@keyframes rot{to{transform:rotate(360deg);}}
 </style>
 </head>
 <body>
@@ -200,7 +198,7 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 <div class="token-overlay" id="token-overlay">
   <div class="token-card">
     <h2>🔑 Conectar con GitHub</h2>
-    <p>Para guardar directo en el repo necesitás un <a href="https://github.com/settings/tokens/new?scopes=repo&description=Cofre+Panel" target="_blank" rel="noopener">Personal Access Token (scope repo) →</a><br>Se guarda solo en tu navegador, nunca en ningún servidor.</p>
+    <p>Para cargar y guardar productos necesitás un <a href="https://github.com/settings/tokens/new?scopes=repo&description=Cofre+Panel" target="_blank" rel="noopener">Personal Access Token (scope repo) →</a></p>
     <div class="token-row">
       <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx" />
       <button class="btn btn-primary btn-sm" onclick="guardarToken()">✓ Conectar</button>
@@ -211,12 +209,19 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
   </div>
 </div>
 
+<!-- LOADING OVERLAY -->
+<div class="loading-overlay" id="loading-overlay">
+  <div class="spin-lg"></div>
+  <p id="loading-txt">Cargando producto...</p>
+</div>
+
 <!-- HEADER -->
 <header class="hdr">
   <div class="hdr-in">
-    <a href="index.html" class="back">← Panel</a>
-    <div style="display:flex;align-items:center;gap:9px;">
-      <div class="brand">Nuevo <em>producto</em></div>
+    <a href="productos-lista.html" class="back">← Mis productos</a>
+    <div class="hdr-center">
+      <div class="brand" id="page-brand">Nuevo <em>producto</em></div>
+      <div class="mode-pill nuevo" id="mode-pill">✨ Nuevo</div>
       <div class="gh-pill" id="gh-pill" onclick="pilClick()">
         <span class="dot"></span><span id="gh-txt">Sin conectar</span>
       </div>
@@ -241,9 +246,8 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
         <input type="file" id="img-file" accept="image/*" />
       </label>
       <div class="img-prog" id="img-prog"><div class="img-prog-bar" id="img-bar" style="width:0%"></div></div>
-
       <div class="mini-label">Páginas internas (opcional)</div>
-      <div class="mini-grid">
+      <div class="mini-grid" id="mini-grid">
         <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
         <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
         <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
@@ -253,8 +257,6 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 
     <!-- COL 2: FORMULARIO -->
     <div class="form-col">
-
-      <!-- Datos básicos -->
       <div class="card">
         <div class="card-h"><span class="ico">📝</span><span>Datos del producto</span></div>
         <div class="field">
@@ -289,7 +291,6 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
         </div>
       </div>
 
-      <!-- Precio -->
       <div class="card">
         <div class="card-h"><span class="ico">💰</span><span>Precio y link</span></div>
         <div class="g3" style="margin-bottom:10px;">
@@ -316,7 +317,6 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
         </div>
       </div>
 
-      <!-- Detalles -->
       <div class="card">
         <div class="card-h"><span class="ico">📋</span><span>Detalles</span><span class="opt">opcional</span></div>
         <div class="g2" style="margin-bottom:10px;">
@@ -342,7 +342,6 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
         <button class="btn-add" onclick="agregarItem()">＋ Agregar ítem</button>
       </div>
 
-      <!-- Visibilidad -->
       <div class="card">
         <div class="card-h"><span class="ico">🏷️</span><span>Visibilidad</span></div>
         <div class="field" style="margin-bottom:12px;">
@@ -371,6 +370,13 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
         </div>
       </div>
 
+      <!-- DANGER ZONE — solo en modo edición -->
+      <div class="danger-zone" id="danger-zone" style="display:none;">
+        <h3>⚠️ Zona de peligro</h3>
+        <p>Esto elimina el producto del catálogo permanentemente. No se puede deshacer.</p>
+        <button class="btn btn-danger btn-sm" onclick="eliminarProducto()">🗑 Eliminar este producto</button>
+      </div>
+
     </div>
 
     <!-- COL 3: PREVIEW -->
@@ -396,12 +402,12 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
   </div>
 </div>
 
-<!-- BARRA GUARDAR -->
+<!-- SAVE BAR -->
 <div class="save-bar">
   <div class="save-left" id="save-info">Completá los campos requeridos</div>
   <div class="save-btns">
     <button class="btn btn-ghost btn-sm" onclick="limpiarForm()">🗑 Limpiar</button>
-    <button class="btn btn-primary" id="btn-f" onclick="guardarProducto()">💾 Guardar en GitHub</button>
+    <button class="btn btn-primary" id="btn-f" onclick="guardarProducto()">💾 Guardar</button>
   </div>
 </div>
 <div class="toast" id="toast"></div>
@@ -409,19 +415,39 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 <script>
 const $=s=>document.querySelector(s);
 const GH_REPO='Cofredidactico/PaginaWeb',GH_FILE='productos.json',GH_BRANCH='main',KEY='gh_token_panel';
-let imgBase64=null,imgNombre=null,idManual=false,etiqVal='',miniB64=[];
-let _data=null;
 
-// ── Token ──────────────────────────────────────────────────────
+// ── Estado ────────────────────────────────────────────────────
+let imgBase64=null,imgNombre=null,imgRutaExistente=null;
+let idManual=false,etiqVal='',miniB64=[];
+let _allData=null,_sha=null,_prodOriginal=null;
+
+// ── Detectar modo edición ─────────────────────────────────────
+const urlParams=new URLSearchParams(location.search);
+const editId=urlParams.get('id');
+const modoEdicion=!!editId;
+
+function configurarModo(){
+  if(modoEdicion){
+    $('#page-brand').innerHTML='Editar <em>producto</em>';
+    document.title='Editar producto · Cofre Didáctico';
+    const pill=$('#mode-pill');
+    pill.className='mode-pill edicion';
+    pill.textContent='✏️ Editando';
+    $('#danger-zone').style.display='block';
+  }
+}
+
+// ── Token ─────────────────────────────────────────────────────
 const getToken=()=>localStorage.getItem(KEY)||'';
 function guardarToken(){
   const v=$('#gh-token').value.trim();
   if(!v){toast('Ingresá un token','err');return;}
-  localStorage.setItem(KEY,v);cerrarOverlay();actualizarPill();cargarJSON();
+  localStorage.setItem(KEY,v);cerrarOverlay();actualizarPill();
+  if(modoEdicion)cargarProductoExistente();else cargarJSON();
 }
 function cerrarOverlay(){$('#token-overlay').classList.remove('show');}
 function pilClick(){
-  if(getToken()){if(confirm('¿Borrar el token guardado?')){localStorage.removeItem(KEY);actualizarPill();}}
+  if(getToken()){if(confirm('¿Borrar token?')){localStorage.removeItem(KEY);actualizarPill();}}
   else $('#token-overlay').classList.add('show');
 }
 function actualizarPill(){
@@ -429,22 +455,93 @@ function actualizarPill(){
   if(tk){pill.className='gh-pill ok';$('#gh-txt').textContent='GitHub conectado';}
   else{pill.className='gh-pill';$('#gh-txt').textContent='Sin conectar';}
   const lbl=tk?'💾 Guardar':'💾 Descargar JSON';
-  ['btn-h','btn-f'].forEach(id=>{const b=$(`#${id}`);if(b)b.innerHTML=lbl;});
+  ['btn-h','btn-f'].forEach(id=>{const b=$(`#${id}`);if(b)b.textContent=lbl;});
 }
 
-// ── Cargar JSON ────────────────────────────────────────────────
+// ── Cargar JSON completo ──────────────────────────────────────
 async function cargarJSON(){
   const tk=getToken();if(!tk)return;
   try{
     const r=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`,
       {headers:{Authorization:`Bearer ${tk}`,Accept:'application/vnd.github+json'}});
     if(!r.ok)throw new Error(r.status);
-    const m=await r.json();
-    _data=JSON.parse(decodeURIComponent(escape(atob(m.content.replace(/\n/g,'')))));
-  }catch(e){toast('No se pudo cargar productos.json','err');}
+    const meta=await r.json();
+    _sha=meta.sha;
+    _allData=JSON.parse(decodeURIComponent(escape(atob(meta.content.replace(/\n/g,'')))));
+  }catch(e){toast('No se pudo cargar productos.json: '+e.message,'err');}
 }
 
-// ── Imagen ─────────────────────────────────────────────────────
+// ── Cargar producto para editar ───────────────────────────────
+async function cargarProductoExistente(){
+  const tk=getToken();if(!tk)return;
+  setLoading(true,'Cargando producto...');
+  try{
+    await cargarJSON();
+    if(!_allData)throw new Error('No se pudo leer el JSON');
+    const prod=(_allData.productos||[]).find(p=>p.id===editId||p.nombre===decodeURIComponent(editId));
+    if(!prod)throw new Error(`No se encontró el producto con ID: ${editId}`);
+    _prodOriginal=prod;
+    poblarFormulario(prod);
+    toast('Producto cargado ✓','ok');
+  }catch(e){
+    toast('❌ '+e.message,'err');
+  }finally{setLoading(false);}
+}
+
+function setLoading(show,txt=''){
+  const ol=$('#loading-overlay');
+  if(show){$('#loading-txt').textContent=txt;ol.classList.add('show');}
+  else ol.classList.remove('show');
+}
+
+// ── Poblar formulario con datos del producto ──────────────────
+function poblarFormulario(p){
+  $('#f-nombre').value=p.nombre||'';
+  $('#f-id').value=p.id||'';
+  $('#f-desc').value=p.descripcion||'';
+  $('#f-desc-larga').value=p.descripcionLarga||'';
+  $('#f-nivel').value=p.nivel||'';
+  $('#f-link').value=p.link||'';
+  $('#f-formato').value=p.formato||'';
+  $('#f-precio').value=p.precio||0;
+  $('#f-precio-old').value=p.precioTachado||'';
+  $('#f-paginas').value=p.paginas||'';
+  $('#f-activo').checked=p.activo!==false;
+  $('#f-destacado').checked=!!p.destacado;
+
+  // Tipo
+  if(p.tipo)$('#f-tipo').value=p.tipo;
+  // Temática
+  if(p.tematica)$('#f-tematica').value=p.tematica;
+  // Acceso
+  if(p.acceso)$('#f-acceso').value=p.acceso;
+
+  // Etiqueta
+  etiqVal=p.etiqueta||'';
+  document.querySelectorAll('.etiq-btn').forEach(b=>{
+    b.classList.toggle('active',b.dataset.v===etiqVal);
+  });
+
+  // Qué incluye
+  $('#incluye-list').innerHTML='';
+  if(p.incluye&&p.incluye.length){
+    p.incluye.forEach(item=>agregarItem(item.texto||item));
+  }
+
+  // Imagen existente
+  if(p.imagen&&!p.imagen.includes('placeholder')){
+    imgRutaExistente=p.imagen;
+    const drop=$('#img-drop');
+    drop.classList.add('has-img');
+    drop.innerHTML=`<img class="img-preview" src="../${p.imagen}" onerror="this.src=''" /><button class="img-remove" onclick="quitImg(event)">✕ Quitar</button>`;
+    $('#prev-img').innerHTML=`<img src="../${p.imagen}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='📦'" />`;
+  }
+
+  idManual=true; // En edición no regenerar el ID
+  syncPreview();
+}
+
+// ── Imagen ────────────────────────────────────────────────────
 const drop=$('#img-drop'),fi=$('#img-file');
 drop.addEventListener('click',()=>fi.click());
 drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('over');});
@@ -456,6 +553,7 @@ function procImg(file){
   if(file.size>4*1024*1024){toast('Imagen supera 4MB','err');return;}
   const ext=file.name.split('.').pop().toLowerCase();
   imgNombre=`${slug($('#f-nombre').value||'producto')}-${Date.now()}.${ext}`;
+  imgRutaExistente=null;
   const r=new FileReader();
   r.onload=e=>{
     imgBase64=e.target.result.split(',')[1];
@@ -467,7 +565,8 @@ function procImg(file){
 }
 function quitImg(e){
   e.stopPropagation();e.preventDefault();
-  imgBase64=null;imgNombre=null;drop.className='img-drop';
+  imgBase64=null;imgNombre=null;imgRutaExistente=null;
+  drop.className='img-drop';
   drop.innerHTML=`<div class="drop-icon">🖼️</div><div class="drop-t">Imagen principal</div><div class="drop-s">Arrastrá o <strong>elegí desde tu compu</strong></div><div class="drop-s" style="margin-top:3px;">JPG · PNG · WebP · máx 4MB</div><input type="file" id="img-file" accept="image/*" />`;
   drop.querySelector('input').addEventListener('change',e=>{if(e.target.files[0])procImg(e.target.files[0]);});
   drop.addEventListener('click',()=>drop.querySelector('input').click());
@@ -483,7 +582,7 @@ function agregarMini(input){
   r.readAsDataURL(input.files[0]);
 }
 
-// ── Slug ───────────────────────────────────────────────────────
+// ── Slug ──────────────────────────────────────────────────────
 const slug=s=>(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').replace(/-+/g,'-').slice(0,60);
 function onNombre(){if(!idManual)$('#f-id').value=slug($('#f-nombre').value);syncPreview();actualizarComp();}
 
@@ -497,7 +596,8 @@ function setEtiq(btn){
 function agregarItem(val=''){
   const d=document.createElement('div');d.className='ii';
   d.innerHTML=`<input placeholder="Ej: 24 páginas PDF" value="${val}" /><button class="rm" onclick="this.parentElement.remove()">✕</button>`;
-  $('#incluye-list').appendChild(d);d.querySelector('input').focus();
+  $('#incluye-list').appendChild(d);
+  if(!val)d.querySelector('input').focus();
 }
 
 // ── Preview ───────────────────────────────────────────────────
@@ -512,7 +612,9 @@ function syncPreview(){
   $('#prev-desc').textContent=desc;$('#prev-desc').style.color=sinD?'var(--ink-4)':'';$('#prev-desc').style.fontStyle=sinD?'italic':'';
   $('#prev-tipo').textContent=tipo+(nivel?' · '+nivel:'');
   const imgEl=drop.querySelector('img');
-  $('#prev-img').innerHTML=imgEl?`<img src="${imgEl.src}" style="width:100%;height:100%;object-fit:cover;" />`:'📦';
+  if(imgEl)$('#prev-img').innerHTML=`<img src="${imgEl.src}" style="width:100%;height:100%;object-fit:cover;" />`;
+  else if(imgRutaExistente)$('#prev-img').innerHTML=`<img src="../${imgRutaExistente}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='📦'" />`;
+  else $('#prev-img').innerHTML='📦';
   $('#prev-price').innerHTML=acceso==='gratis'?`<span class="cur free">Gratis</span>`:`<span class="cur">$${precio.toLocaleString('es-AR')}</span>${old?`<span class="old">$${old.toLocaleString('es-AR')}</span>`:''}`;
   const etiqLabels={'mas-vendido':'⭐ Más vendido',nuevo:'🔥 Nuevo',oferta:'🎉 Oferta',destacado:'✨ Destacado'};
   let badges='';
@@ -523,8 +625,9 @@ function syncPreview(){
 }
 
 function actualizarComp(){
+  const tieneImg=!!imgBase64||!!imgRutaExistente;
   const checks=[
-    {l:'Imagen principal',ok:!!imgBase64},
+    {l:'Imagen principal',ok:tieneImg},
     {l:'Nombre',ok:$('#f-nombre').value.trim().length>0},
     {l:'Descripción',ok:$('#f-desc').value.trim().length>5},
     {l:'Precio / acceso',ok:$('#f-acceso').value==='gratis'||+$('#f-precio').value>0},
@@ -555,37 +658,80 @@ function validar(){
   return ok;
 }
 
-// ── Guardar ───────────────────────────────────────────────────
+// ── Guardar / Actualizar ──────────────────────────────────────
 async function guardarProducto(){
   if(!validar()){toast('Revisá los campos marcados','err');return;}
   const btns=['btn-h','btn-f'].map(id=>$(`#${id}`));
   btns.forEach(b=>{b.disabled=true;b.innerHTML='<div class="spin"></div> Guardando...';});
   try{
-    let ruta='images/placeholder-vocales.svg';
-    if(imgBase64&&imgNombre)ruta=await subirImg(imgBase64,imgNombre);
-    const prod=buildProd(ruta);
+    // Subir imagen nueva si hay
+    let rutaImagen=imgRutaExistente||'images/placeholder-vocales.svg';
+    if(imgBase64&&imgNombre)rutaImagen=await subirImg(imgBase64,imgNombre);
+
+    const prod=buildProd(rutaImagen);
     const tk=getToken();
     if(!tk){descargarJSON(prod);return;}
-    const mRes=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`,
-      {headers:{Authorization:`Bearer ${tk}`,Accept:'application/vnd.github+json'}});
-    if(!mRes.ok)throw new Error(`Error leyendo archivo (${mRes.status})`);
-    const meta=await mRes.json(),sha=meta.sha;
-    const ex=JSON.parse(decodeURIComponent(escape(atob(meta.content.replace(/\n/g,'')))));
-    const prods=ex.productos||[];
-    if(prods.find(p=>p.id===prod.id))prod.id+='-'+Date.now().toString().slice(-4);
-    prods.push(prod);ex.productos=prods;
-    const nc=btoa(unescape(encodeURIComponent(JSON.stringify(ex,null,2))));
+
+    // Asegurar JSON fresco
+    if(!_allData||!_sha)await cargarJSON();
+    if(!_allData)throw new Error('No se pudo leer el JSON actual.');
+
+    const prods=_allData.productos||[];
+
+    if(modoEdicion){
+      // Reemplazar producto existente
+      const idx=prods.findIndex(p=>p.id===editId||p.nombre===decodeURIComponent(editId));
+      if(idx>=0)prods[idx]={...prods[idx],...prod};
+      else prods.push(prod);
+    } else {
+      // Nuevo producto — verificar ID duplicado
+      if(prods.find(p=>p.id===prod.id))prod.id+='-'+Date.now().toString().slice(-4);
+      prods.push(prod);
+    }
+    _allData.productos=prods;
+
+    const nc=btoa(unescape(encodeURIComponent(JSON.stringify(_allData,null,2))));
+    const msg=modoEdicion?`📝 Actualizar: ${prod.nombre}`:`✨ Crear: ${prod.nombre}`;
     const pr=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,
       {method:'PUT',headers:{Authorization:`Bearer ${tk}`,Accept:'application/vnd.github+json','Content-Type':'application/json'},
-       body:JSON.stringify({message:`✨ Crear: ${prod.nombre}`,content:nc,sha,branch:GH_BRANCH})});
+       body:JSON.stringify({message:msg,content:nc,sha:_sha,branch:GH_BRANCH})});
     if(!pr.ok){const e=await pr.json();throw new Error(e.message||`Error ${pr.status}`);}
-    toast('✅ ¡Guardado en GitHub!','ok');
-    setTimeout(()=>limpiarForm(),1800);
+
+    toast(modoEdicion?'✅ ¡Producto actualizado!':'✅ ¡Producto guardado!','ok');
+    // Actualizar SHA para siguiente guardado
+    const prData=await pr.json();
+    if(prData.content)_sha=prData.content.sha;
+    if(!modoEdicion)setTimeout(()=>limpiarForm(),1800);
+
   }catch(e){toast('❌ '+(e.message||'Error al guardar'),'err');
   }finally{
     const lbl=getToken()?'💾 Guardar':'💾 Descargar JSON';
     btns.forEach(b=>{b.disabled=false;b.innerHTML=lbl;});
   }
+}
+
+// ── Eliminar producto ─────────────────────────────────────────
+async function eliminarProducto(){
+  if(!modoEdicion)return;
+  const nombre=_prodOriginal?.nombre||editId;
+  if(!confirm(`¿Eliminar "${nombre}" del catálogo?\n\nEsta acción no se puede deshacer.`))return;
+
+  const tk=getToken();
+  if(!tk){toast('Necesitás conectar GitHub para eliminar','err');return;}
+
+  setLoading(true,'Eliminando producto...');
+  try{
+    if(!_allData||!_sha)await cargarJSON();
+    _allData.productos=(_allData.productos||[]).filter(p=>p.id!==editId&&p.nombre!==decodeURIComponent(editId));
+    const nc=btoa(unescape(encodeURIComponent(JSON.stringify(_allData,null,2))));
+    const pr=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,
+      {method:'PUT',headers:{Authorization:`Bearer ${tk}`,Accept:'application/vnd.github+json','Content-Type':'application/json'},
+       body:JSON.stringify({message:`🗑️ Eliminar: ${nombre}`,content:nc,sha:_sha,branch:GH_BRANCH})});
+    if(!pr.ok){const e=await pr.json();throw new Error(e.message||`Error ${pr.status}`);}
+    toast('🗑 Producto eliminado','ok');
+    setTimeout(()=>location.href='productos-lista.html',1500);
+  }catch(e){toast('❌ '+e.message,'err');
+  }finally{setLoading(false);}
 }
 
 async function subirImg(base64,nombre){
@@ -631,8 +777,12 @@ function buildProd(ruta){
 }
 
 function descargarJSON(prod){
-  const data=_data?JSON.parse(JSON.stringify(_data)):{productos:[],config:{}};
-  (data.productos=data.productos||[]).push(prod);
+  const data=_allData?JSON.parse(JSON.stringify(_allData)):{productos:[],config:{}};
+  if(modoEdicion){
+    const idx=(data.productos||[]).findIndex(p=>p.id===editId);
+    if(idx>=0)data.productos[idx]={...data.productos[idx],...prod};
+    else(data.productos=data.productos||[]).push(prod);
+  }else{(data.productos=data.productos||[]).push(prod);}
   const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=url;a.download='productos.json';a.click();
@@ -640,6 +790,7 @@ function descargarJSON(prod){
 }
 
 function limpiarForm(){
+  if(modoEdicion&&_prodOriginal){poblarFormulario(_prodOriginal);return;}
   ['f-nombre','f-id','f-desc','f-desc-larga','f-nivel','f-link','f-formato'].forEach(id=>$(`#${id}`).value='');
   $('#f-precio').value=0;$('#f-precio-old').value='';
   $('#f-tipo').value='cuadernillo';$('#f-tematica').value='';
@@ -647,7 +798,7 @@ function limpiarForm(){
   $('#incluye-list').innerHTML='';
   document.querySelectorAll('.etiq-btn').forEach(b=>b.classList.remove('active'));
   document.querySelector('.etiq-btn[data-v=""]').classList.add('active');
-  etiqVal='';idManual=false;miniB64=[];
+  etiqVal='';idManual=false;miniB64=[];imgRutaExistente=null;
   quitImg({stopPropagation:()=>{},preventDefault:()=>{}});
   document.querySelectorAll('.mini-slot').forEach(s=>{s.innerHTML=`＋<input type="file" accept="image/*" onchange="agregarMini(this)" />`;});
   syncPreview();
@@ -658,11 +809,17 @@ function toast(msg,type=''){
   setTimeout(()=>t.className='toast',3000);
 }
 
-// Init
+// ── Init ──────────────────────────────────────────────────────
+configurarModo();
 actualizarPill();
-if(!getToken())setTimeout(()=>$('#token-overlay').classList.add('show'),500);
-else cargarJSON();
-syncPreview();agregarItem();
+if(getToken()){
+  if(modoEdicion)cargarProductoExistente();
+  else cargarJSON();
+}else{
+  setTimeout(()=>$('#token-overlay').classList.add('show'),500);
+}
+syncPreview();
+if(!modoEdicion)agregarItem();
 </script>
 </body>
 </html>
