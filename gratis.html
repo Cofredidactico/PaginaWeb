@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recursos gratis para docentes — Cofre Didáctico</title>
+<meta name="description" content="Descargá gratis cuadernillos, láminas y juegos educativos. Sin vueltas, listos para usar en tu aula." />
+<meta name="theme-color" content="#1A2744" />
+<meta property="og:title" content="Recursos gratis — Cofre Didáctico" />
+<meta property="og:description" content="Materiales 100% gratis para tu aula. Descargá hoy y empezá a usarlos." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_AR" />
+<link rel="icon" href="logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ═════════════════════════════════════════════════════════
+   COFRE DIDÁCTICO — Página de Recursos Gratuitos
+   ═════════════════════════════════════════════════════════ */
+:root{
+  --ink:#1A2744; --ink-2:#3B4A66; --ink-3:#637082; --ink-4:#8A93A4;
+  --bg:#FDFCF8; --bg-2:#F5F0E8; --bg-3:#ECE5D8;
+  --line:#E8E0CE;
+  --primary:#2196F3; --primary-soft:#E3F2FD;
+  --accent:#FF8A4C; --accent-soft:#FFE9D9;
+  --green:#2E7D32; --green-soft:#E8F5E9; --green-2:#1B5E20;
+  --gold:#F4A300;
+  --r-sm:8px; --r:14px; --r-lg:22px; --r-xl:32px;
+  --s-1: 0 1px 2px rgba(26,39,68,.05);
+  --s-2: 0 2px 4px rgba(26,39,68,.04), 0 8px 24px rgba(26,39,68,.06);
+  --s-3: 0 12px 32px rgba(26,39,68,.10);
+  --f-display:'Outfit', system-ui, sans-serif;
+  --f-body:'Nunito', system-ui, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  margin:0; font-family:var(--f-body); font-size:16px; line-height:1.6;
+  color:var(--ink); background:var(--bg);
+  background-image: radial-gradient(circle at 1px 1px, rgba(26,39,68,.04) 1px, transparent 0);
+  background-size: 28px 28px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:0;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+
+/* ─── Header (idéntico al index) ─── */
+.hdr{
+  position:sticky; top:0; z-index:50;
+  background:rgba(253,252,248,.85);
+  backdrop-filter:saturate(160%) blur(14px);
+  -webkit-backdrop-filter:saturate(160%) blur(14px);
+  border-bottom:1px solid rgba(26,39,68,.07);
+}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:24px;}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:800;font-size:1.1rem;}
+.brand img{width:40px;height:40px;border-radius:10px;object-fit:cover;}
+.brand strong{color:var(--accent);}
+.nav{display:flex;align-items:center;gap:6px;}
+.nav a{padding:8px 14px;border-radius:10px;font-weight:700;font-size:.92rem;color:var(--ink-2);transition:background .15s, color .15s;}
+.nav a:hover{background:var(--bg-2);color:var(--ink);}
+.nav a.active{color:var(--green);background:var(--green-soft);}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:12px;font-weight:700;font-size:.95rem;transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .2s,background .2s,border-color .2s;}
+.btn:hover{transform:translateY(-2px);}
+.btn:active{transform:translateY(0);}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#FF6B35);color:#fff;box-shadow:0 4px 14px rgba(255,138,76,.3);}
+.btn-primary:hover{box-shadow:0 8px 24px rgba(255,138,76,.4);}
+.btn-green{background:linear-gradient(135deg,var(--green),var(--green-2));color:#fff;box-shadow:0 4px 14px rgba(46,125,50,.3);}
+.btn-green:hover{box-shadow:0 8px 24px rgba(46,125,50,.4);}
+.btn-ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink);}
+.btn-ghost:hover{border-color:var(--primary);color:var(--primary);}
+.btn-lg{padding:15px 28px;font-size:1rem;}
+.btn-sm{padding:8px 14px;font-size:.85rem;}
+
+/* ─── Hero gratis ─── */
+.hero-g{
+  position:relative;padding:64px 0 60px;overflow:hidden;
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 0%, rgba(46,125,50,.10), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 90% 100%, rgba(255,138,76,.08), transparent 60%);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#fff;border:1.5px solid var(--green-soft);
+  padding:8px 16px;border-radius:99px;font-size:.78rem;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--green);
+  box-shadow:var(--s-1);
+}
+.hero-g h1{
+  font-size:clamp(2.4rem, 5.2vw, 4rem);
+  margin:18px 0 18px;text-wrap:balance;
+}
+.hero-g h1 em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--green),var(--accent));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  position:relative;display:inline-block;padding-bottom:.12em;
+}
+.hero-g h1 em::after{
+  content:'';position:absolute;left:-2%;right:-2%;bottom:-.05em;height:.42em;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 18' preserveAspectRatio='none'><path d='M3 13 Q 40 3 80 10 T 160 9 T 217 7' fill='none' stroke='%232E7D32' stroke-width='4' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;
+  z-index:-1;pointer-events:none;
+}
+.hero-g p.lead{font-size:1.12rem;color:var(--ink-2);max-width:520px;margin:0 0 28px;}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;}
+.hero-promesa{
+  display:flex;gap:24px;align-items:center;flex-wrap:wrap;
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(26,39,68,.06);
+  border-radius:18px;padding:16px 22px;
+  backdrop-filter:blur(8px);box-shadow:var(--s-1);
+}
+.promesa-item{display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:700;color:var(--ink-2);}
+.promesa-item span{
+  width:32px;height:32px;border-radius:50%;background:var(--green-soft);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;flex:none;
+}
+
+/* Mockup gratuito: paquete envuelto en moño */
+.hero-pack{position:relative;height:420px;display:flex;align-items:center;justify-content:center;}
+.pack{
+  width:300px;height:300px;position:relative;
+  background:linear-gradient(135deg,#FFFDF7,#F5EFE0);
+  border-radius:18px;
+  box-shadow:0 28px 60px rgba(46,125,50,.18), 0 8px 20px rgba(26,39,68,.10), inset 0 -4px 12px rgba(0,0,0,.04);
+  border:1px solid rgba(26,39,68,.06);
+  transform:rotate(-4deg);
+}
+/* moño horizontal */
+.pack::before{
+  content:'';position:absolute;left:-12px;right:-12px;top:50%;height:42px;transform:translateY(-50%);
+  background:linear-gradient(180deg,var(--accent),#FF6B35);
+  box-shadow:0 4px 12px rgba(255,138,76,.3);
+}
+/* moño vertical */
+.pack::after{
+  content:'';position:absolute;top:-12px;bottom:-12px;left:50%;width:42px;transform:translateX(-50%);
+  background:linear-gradient(90deg,var(--accent),#FF6B35);
+  box-shadow:0 4px 12px rgba(255,138,76,.3);
+}
+.pack-knot{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:96px;height:96px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #FFB07A, var(--accent) 60%, #FF6B35);
+  box-shadow:0 8px 20px rgba(255,107,53,.4), inset -4px -6px 12px rgba(0,0,0,.12);
+  z-index:2;display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-display);font-weight:800;font-size:1.5rem;color:#fff;letter-spacing:-.02em;
+}
+.pack-knot::before, .pack-knot::after{
+  content:'';position:absolute;width:44px;height:60px;background:linear-gradient(135deg,var(--accent),#FF6B35);
+  border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+  box-shadow:inset 0 -4px 8px rgba(0,0,0,.15);
+}
+.pack-knot::before{left:-30px;transform:rotate(-25deg);}
+.pack-knot::after{right:-30px;transform:rotate(25deg);}
+.pack-stamp{
+  position:absolute;top:-20px;right:-30px;
+  background:#fff;color:var(--green);
+  padding:10px 16px;border-radius:99px;font-size:.78rem;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;
+  box-shadow:var(--s-2);
+  border:1.5px dashed var(--green);
+  transform:rotate(8deg);z-index:3;
+}
+.pack-stars i{
+  position:absolute;color:var(--gold);font-size:1.4rem;opacity:.85;
+  font-family:var(--f-display);font-style:normal;
+}
+.pack-stars i:nth-child(1){top:8%;left:-6%;transform:rotate(-15deg);}
+.pack-stars i:nth-child(2){bottom:6%;right:-4%;font-size:1.8rem;transform:rotate(20deg);}
+.pack-stars i:nth-child(3){top:35%;right:-14%;font-size:1.1rem;color:var(--primary);}
+
+/* ─── Sección catalogo gratis ─── */
+.sec{padding:72px 0;}
+.sec-hd{margin-bottom:36px;}
+.sec-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,var(--green-soft),rgba(46,125,50,.04));
+  color:var(--green);
+  padding:7px 16px;border-radius:99px;font-size:.78rem;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;
+  border:1px solid rgba(46,125,50,.16);margin-bottom:14px;
+}
+.sec-h{font-size:clamp(2rem,4vw,2.6rem);margin-bottom:10px;}
+.sec-h em{
+  font-style:normal;
+  background:linear-gradient(135deg,var(--green),var(--accent));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  position:relative;display:inline-block;padding-bottom:.12em;
+}
+.sec-h em::after{
+  content:'';position:absolute;left:-2%;right:-2%;bottom:-.05em;height:.42em;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 18' preserveAspectRatio='none'><path d='M3 13 Q 40 3 80 10 T 160 9 T 217 7' fill='none' stroke='%23FF8A4C' stroke-width='4' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;
+  z-index:-1;pointer-events:none;
+}
+.sec-sub{color:var(--ink-3);max-width:600px;font-size:1.05rem;}
+
+/* ─── Grid productos gratis ─── */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;}
+.card{
+  background:#fff;border-radius:var(--r-lg);border:1px solid rgba(26,39,68,.07);
+  overflow:hidden;cursor:pointer;display:flex;flex-direction:column;
+  box-shadow:var(--s-1);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .25s;
+  position:relative;
+}
+.card:hover{transform:translateY(-6px);border-color:rgba(46,125,50,.25);box-shadow:var(--s-3);}
+.card-img{
+  position:relative;aspect-ratio:4/3;overflow:hidden;
+  background:linear-gradient(135deg,var(--bg-2),var(--bg-3));
+}
+.card-img::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
+  background-image:radial-gradient(circle at 1px 1px, rgba(26,39,68,.05) 1px, transparent 0);
+  background-size:14px 14px;opacity:.5;mix-blend-mode:multiply;
+}
+.card-img img{
+  width:100%;height:100%;object-fit:cover;position:relative;z-index:0;
+  transition:transform .5s cubic-bezier(.25,0,.25,1),opacity .35s;opacity:0;
+}
+.card-img img.loaded{opacity:1;}
+.card:hover .card-img img{transform:scale(1.06);}
+.card-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.4),transparent 50%);pointer-events:none;z-index:1;}
+.ribbon-gratis{
+  position:absolute;top:14px;left:14px;
+  background:var(--green);color:#fff;
+  padding:6px 12px;border-radius:99px;font-size:.74rem;font-weight:800;
+  letter-spacing:.04em;text-transform:uppercase;
+  box-shadow:var(--s-2);z-index:2;
+}
+.tag-tipo{
+  position:absolute;top:14px;right:14px;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(10px);
+  padding:6px 11px;border-radius:99px;font-size:.74rem;font-weight:700;color:var(--ink-2);
+  border:1px solid rgba(26,39,68,.06);z-index:2;
+}
+.card-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.card-nivel{font-size:.72rem;font-weight:700;color:var(--ink-4);letter-spacing:.05em;text-transform:uppercase;}
+.card-ttl{font-family:var(--f-display);font-size:1.1rem;font-weight:700;color:var(--ink);line-height:1.25;}
+.card-desc{color:var(--ink-3);font-size:.88rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);}
+.price-gratis{font-family:var(--f-display);font-weight:800;font-size:1.25rem;color:var(--green);display:flex;align-items:center;gap:6px;}
+.btn-card{
+  background:var(--green);color:#fff;
+  padding:8px 14px;border-radius:10px;font-size:.82rem;font-weight:700;
+  transition:background .2s, transform .2s;
+}
+.card:hover .btn-card{background:var(--green-2);}
+
+/* ─── Estado vacío ─── */
+.empty{text-align:center;padding:60px 20px;color:var(--ink-3);grid-column:1/-1;}
+.empty-em{font-size:3.4rem;margin-bottom:14px;}
+.empty h3{font-size:1.4rem;color:var(--ink);margin-bottom:8px;}
+
+/* ─── Newsletter (más prominente acá) ─── */
+.nl{
+  background:
+    radial-gradient(ellipse 60% 80% at 50% 0%, rgba(46,125,50,.08), transparent 70%),
+    linear-gradient(180deg,var(--bg-2),#F0EAD8);
+  text-align:center;position:relative;overflow:hidden;
+}
+.nl .wrap{position:relative;z-index:1;}
+.nl-icon{
+  width:72px;height:72px;border-radius:20px;
+  background:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:2rem;margin:0 auto 18px;
+  box-shadow:0 10px 24px rgba(46,125,50,.18), 0 1px 2px rgba(26,39,68,.06);
+  border:1px solid rgba(26,39,68,.05);transform:rotate(-6deg);
+}
+.nl .sec-badge{margin-left:auto;margin-right:auto;}
+.nl-form{display:flex;gap:8px;max-width:480px;margin:24px auto 0;}
+.nl-form input{
+  flex:1;padding:15px 18px;border-radius:12px;border:1.5px solid var(--line);
+  font:inherit;background:#fff;color:var(--ink);
+}
+.nl-form input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px var(--green-soft);}
+.nl-mini{font-size:.82rem;color:var(--ink-3);margin-top:14px;}
+.nl::before, .nl::after{
+  content:'✦';position:absolute;color:var(--accent);opacity:.25;
+  font-size:1.5rem;font-family:var(--f-display);
+}
+.nl::before{top:18%;left:8%;transform:rotate(-10deg);}
+.nl::after{bottom:22%;right:9%;font-size:2rem;opacity:.18;transform:rotate(15deg);}
+
+/* ─── Por qué gratis ─── */
+.porque-gratis{background:linear-gradient(180deg,var(--bg),var(--bg-2));}
+.pq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;}
+.pq{
+  background:#fff;border-radius:var(--r-lg);padding:28px 24px 26px;
+  border:1px solid rgba(26,39,68,.07);box-shadow:var(--s-1);
+  position:relative;overflow:hidden;
+}
+.pq-em{
+  width:50px;height:50px;border-radius:14px;
+  background:var(--green-soft);
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+  margin-bottom:14px;
+}
+.pq h3{font-size:1.05rem;margin-bottom:6px;}
+.pq p{font-size:.92rem;color:var(--ink-3);margin:0;line-height:1.55;}
+
+/* ─── Footer ─── */
+footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;}
+.ft-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px;color:#fff;font-family:var(--f-display);font-weight:800;font-size:1.15rem;}
+.ft-brand img{width:40px;height:40px;border-radius:10px;}
+.ft-brand strong{color:var(--accent);}
+.ft p{font-size:.92rem;color:#A8B0BD;line-height:1.6;max-width:320px;}
+.ft-social{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.ft-social a{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);padding:8px 14px;border-radius:10px;font-size:.85rem;font-weight:700;transition:background .2s;}
+.ft-social a:hover{background:rgba(255,255,255,.12);}
+.ft h4{color:#fff;font-size:.92rem;margin-bottom:14px;letter-spacing:.04em;text-transform:uppercase;}
+.ft ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+.ft ul a{font-size:.92rem;color:#A8B0BD;transition:color .2s;}
+.ft ul a:hover{color:#fff;}
+.ft-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.82rem;color:#A8B0BD;}
+
+/* ─── WhatsApp floating ─── */
+.wa{
+  position:fixed;bottom:24px;right:24px;z-index:40;
+  display:flex;align-items:center;gap:10px;
+  background:#25D366;color:#fff;padding:13px 20px;border-radius:99px;
+  font-weight:700;font-size:.92rem;
+  box-shadow:0 6px 20px rgba(37,211,102,.4);
+  transition:transform .2s, box-shadow .2s;
+}
+.wa:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,211,102,.5);}
+
+/* ─── Skeleton ─── */
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+.skeleton{background:linear-gradient(110deg,var(--bg-2) 8%,var(--bg-3) 18%,var(--bg-2) 33%);background-size:200% 100%;animation:shimmer 1.6s linear infinite;}
+
+/* ─── Reveal ─── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s, transform .7s;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+@media (max-width:840px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-pack{display:none;}
+  .ft-grid{grid-template-columns:1fr 1fr;}
+  .nav .hide-mobile{display:none;}
+}
+@media (max-width:520px){
+  .sec{padding:56px 0;}
+  .hero-g{padding:40px 0 48px;}
+  .hero-g h1{font-size:2.2rem;}
+  .nl-form{flex-direction:column;}
+  .ft-grid{grid-template-columns:1fr;}
+  .wa span{display:none;}
+  .wa{padding:14px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Cofre Didáctico" onerror="this.style.display='none'" />
+      <span>Cofre <strong>Didáctico</strong></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html#catalogo" class="hide-mobile">Catálogo</a>
+      <a href="gratis.html" class="active hide-mobile">🎁 Gratis</a>
+      <a href="index.html#faq" class="hide-mobile">FAQ</a>
+      <a href="#newsletter" class="btn btn-ghost btn-sm">📧 Newsletter</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero-g">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-badge">🎁 100% Gratis · Sin vueltas</div>
+      <h1>Recursos <em>gratis</em><br>para tu aula</h1>
+      <p class="lead">Cuadernillos, láminas y juegos didácticos sin costo. Descargá hoy, imprimí mañana, y empezá a usarlos en clase esta semana.</p>
+      <div class="hero-cta">
+        <a href="#gratis-grid" class="btn btn-green btn-lg">Ver todos los recursos ↓</a>
+        <a href="#newsletter" class="btn btn-ghost btn-lg">📧 Quiero recibir más</a>
+      </div>
+      <div class="hero-promesa">
+        <div class="promesa-item"><span>⚡</span>Descarga inmediata</div>
+        <div class="promesa-item"><span>📄</span>Listos para imprimir</div>
+        <div class="promesa-item"><span>🌍</span>Para todo el mundo</div>
+      </div>
+    </div>
+    <div class="hero-pack" aria-hidden="true">
+      <div class="pack">
+        <div class="pack-stars"><i>✦</i><i>✦</i><i>✦</i></div>
+        <span class="pack-stamp">¡Gratis!</span>
+        <div class="pack-knot">CD</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Grid de recursos gratis -->
+<section class="sec" id="gratis-grid">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div class="sec-badge">📚 Todo lo que está gratis</div>
+      <h2 class="sec-h">Recursos <em>sin costo</em>, sin trampa</h2>
+      <p class="sec-sub">Cada uno se descarga directo desde la tienda. Solo hacés clic y lo recibís en tu mail.</p>
+    </div>
+    <div class="grid" id="grid">
+      <div class="card"><div class="card-img skeleton"></div><div class="card-body"><div class="skeleton" style="height:14px;border-radius:6px;margin-bottom:8px;"></div><div class="skeleton" style="height:32px;border-radius:6px;"></div></div></div>
+      <div class="card"><div class="card-img skeleton"></div><div class="card-body"><div class="skeleton" style="height:14px;border-radius:6px;margin-bottom:8px;"></div><div class="skeleton" style="height:32px;border-radius:6px;"></div></div></div>
+      <div class="card"><div class="card-img skeleton"></div><div class="card-body"><div class="skeleton" style="height:14px;border-radius:6px;margin-bottom:8px;"></div><div class="skeleton" style="height:32px;border-radius:6px;"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Por qué los regalamos -->
+<section class="sec porque-gratis">
+  <div class="wrap">
+    <div class="sec-hd" style="text-align:center;">
+      <div class="sec-badge">💚 Nuestra forma de empezar</div>
+      <h2 class="sec-h">¿Por qué hay <em>recursos gratis</em>?</h2>
+    </div>
+    <div class="pq-grid">
+      <div class="pq reveal">
+        <div class="pq-em">🤝</div>
+        <h3>Para que nos conozcas</h3>
+        <p>Queremos que pruebes la calidad antes de pagar nada. Si te gusta, sabés que el resto del catálogo va por el mismo camino.</p>
+      </div>
+      <div class="pq reveal">
+        <div class="pq-em">👩‍🏫</div>
+        <h3>Porque también soy docente</h3>
+        <p>Sé lo que cuesta armar materiales lindos para el aula. Estos recursos son mi forma de devolver a la comunidad.</p>
+      </div>
+      <div class="pq reveal">
+        <div class="pq-em">📬</div>
+        <h3>Para construir comunidad</h3>
+        <p>Al suscribirte a la newsletter recibís nuevos recursos cada semana, antes que nadie. Sin spam, podés bajarte cuando quieras.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter (PROMINENTE en esta página) -->
+<section class="sec nl" id="newsletter">
+  <div class="wrap">
+    <div class="nl-icon" aria-hidden="true">✉️</div>
+    <div class="sec-badge">🎁 Recibí más cada semana</div>
+    <h2 class="sec-h">Nuevos recursos <em>todos los miércoles</em></h2>
+    <p class="sec-sub" style="margin:0 auto;text-align:center;">Dejá tu email y recibí material exclusivo, actividades inéditas y descuentos antes que nadie. Sin spam, podés bajarte cuando quieras.</p>
+    <form class="nl-form" id="nl-form" onsubmit="return suscribirse(event);">
+      <input type="email" required placeholder="tu@email.com" id="nl-email" />
+      <button class="btn btn-green">¡Me apunto!</button>
+    </form>
+    <p class="nl-mini" id="nl-msg">🔒 Tus datos están seguros · 1 email por semana · Cancelás cuando quieras</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-brand">
+          <img src="logo.png" alt="" onerror="this.style.display='none'" />
+          <span>Cofre <strong>Didáctico</strong></span>
+        </div>
+        <p>Propuestas y recursos digitales para tus clases. Diseñados con amor para docentes de todo el mundo.</p>
+        <div class="ft-social" id="ft-social"></div>
+      </div>
+      <div>
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="index.html#catalogo">Catálogo completo</a></li>
+          <li><a href="gratis.html">🎁 Recursos gratis</a></li>
+          <li><a href="index.html#por-que">Por qué Cofre</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Comprar</h4>
+        <ul id="ft-comprar"></ul>
+      </div>
+      <div>
+        <h4>Comunidad</h4>
+        <ul id="ft-comunidad"></ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>© <span id="year"></span> Cofre Didáctico · Hecho con ❤️ para docentes</span>
+      <span>v3 · Recursos gratis</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa" id="wa" target="_blank" rel="noopener">
+  <span style="font-size:1.2rem;">💬</span><span>Consultanos</span>
+</a>
+
+<script>
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+
+const TIPO_LABELS = {
+  cuadernillo:'📓 Cuadernillo', juego:'🎮 Juego',
+  lamina:'🖼️ Lámina', pack:'🎁 Pack', otro:'📄 Recurso'
+};
+
+let _data = null;
+
+fetch('productos.json?v=' + Date.now())
+  .then(r => r.json())
+  .then(data => { _data = data; aplicarConfig(); render(); })
+  .catch(err => {
+    console.error('Error cargando productos.json', err);
+    $('#grid').innerHTML = '<div class="empty"><div class="empty-em">⚠️</div><h3>No pudimos cargar los recursos</h3><p>Probá refrescando en unos segundos.</p></div>';
+  });
+
+function aplicarConfig(){
+  const c = _data.config || {};
+  const L = c.links || {};
+  if (L.whatsapp) $('#wa').href = L.whatsapp;
+
+  const social = $('#ft-social');
+  if (L.instagram) social.innerHTML += `<a href="${L.instagram}" target="_blank" rel="noopener">📸 Instagram</a>`;
+  if (L.empretienda) social.innerHTML += `<a href="${L.empretienda}" target="_blank" rel="noopener">🏪 Tienda</a>`;
+  if (L.email) social.innerHTML += `<a href="mailto:${L.email}">✉️ Email</a>`;
+
+  const c1 = $('#ft-comprar');
+  if (L.empretienda) c1.innerHTML += `<li><a href="${L.empretienda}" target="_blank" rel="noopener">Empretienda</a></li>`;
+  if (L.hotmart) c1.innerHTML += `<li><a href="${L.hotmart}" target="_blank" rel="noopener">Hotmart</a></li>`;
+  if (L.email) c1.innerHTML += `<li><a href="mailto:${L.email}">Contacto</a></li>`;
+
+  const c2 = $('#ft-comunidad');
+  if (L.instagram) c2.innerHTML += `<li><a href="${L.instagram}" target="_blank" rel="noopener">Instagram</a></li>`;
+  c2.innerHTML += `<li><a href="#newsletter">Newsletter</a></li>`;
+
+  $('#year').textContent = new Date().getFullYear();
+}
+
+function render(){
+  const gratis = (_data.productos || []).filter(p => p.activo && p.acceso === 'gratis');
+  const grid = $('#grid');
+
+  if (!gratis.length){
+    grid.innerHTML = `<div class="empty"><div class="empty-em">🎁</div><h3>Pronto habrá recursos gratis</h3><p>Suscribite a la newsletter y te avisamos en cuanto los publiquemos.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = gratis.map((p, i) => {
+    const tipo = `<div class="tag-tipo">${TIPO_LABELS[p.tipo]||p.tipo}</div>`;
+    const fp = i < 3 ? 'fetchpriority="high"' : '';
+    return `
+      <a href="index.html#/producto/${p.id}" class="card reveal" data-umami-event="click-producto-gratis" data-umami-event-id="${p.id}">
+        <div class="card-img">
+          <div class="ribbon-gratis">🎁 Gratis</div>${tipo}
+          <img src="${p.imagen}" alt="${p.nombre}" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
+        </div>
+        <div class="card-body">
+          ${p.nivel?`<div class="card-nivel">${p.nivel}</div>`:''}
+          <h3 class="card-ttl">${p.nombre}</h3>
+          <p class="card-desc">${p.descripcion||''}</p>
+          <div class="card-foot">
+            <div class="price-gratis">¡Gratis!</div>
+            <span class="btn-card">Descargar →</span>
+          </div>
+        </div>
+      </a>`;
+  }).join('');
+
+  initReveal();
+}
+
+function initReveal(){
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { rootMargin:'50px' });
+  $$('.reveal').forEach(el => { if(!el.classList.contains('in')) obs.observe(el); });
+}
+initReveal();
+
+async function suscribirse(e){
+  e.preventDefault();
+  const email = $('#nl-email').value.trim();
+  if (!email) return false;
+  const msg = $('#nl-msg');
+  const formAction = (_data && _data.config && _data.config.brevo && _data.config.brevo.formAction) || '';
+  const emailField = (_data && _data.config && _data.config.brevo && _data.config.brevo.emailField) || 'EMAIL';
+
+  if (formAction){
+    try{
+      const fd = new FormData();
+      fd.append(emailField, email);
+      fd.append('email_address_check', '');
+      fd.append('locale', 'es');
+      await fetch(formAction, {method:'POST', body:fd, mode:'no-cors'});
+      msg.textContent = '✅ ¡Listo! Revisá tu casilla en unos minutos.';
+    }catch(err){
+      msg.textContent = '⚠️ Hubo un problema. Escribinos a ' + ((_data.config.links||{}).email||'cofredidacticoo@gmail.com');
+      msg.style.color = 'var(--accent)';
+      return false;
+    }
+  } else {
+    msg.textContent = '✅ ¡Anotado! (Configurá Brevo en /admin para activar envío real)';
+  }
+  msg.style.color = 'var(--green)';
+  $('#nl-form').reset();
+  if (window.umami) umami.track('newsletter-suscripcion-gratis', { email });
+  return false;
+}
+</script>
+
+</body>
+</html>
