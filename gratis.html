@@ -65,6 +65,16 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .nav a{padding:8px 14px;border-radius:10px;font-weight:700;font-size:.92rem;color:var(--ink-2);transition:background .15s, color .15s;}
 .nav a:hover{background:var(--bg-2);color:var(--ink);}
 .nav a.active{color:var(--green);background:var(--green-soft);}
+/* Pill destacada siempre visible (incluso mobile) */
+.nav-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 14px;border-radius:99px;font-weight:800;font-size:.88rem;
+  border:1.5px solid transparent;transition:all .2s;
+}
+.nav-pill-green{background:var(--green-soft);color:var(--green);border-color:rgba(46,125,50,.15);}
+.nav-pill-green:hover{background:var(--green);color:#fff;border-color:var(--green);}
+.nav-pill-blue{background:var(--primary-soft);color:var(--primary);border-color:rgba(33,150,243,.15);}
+.nav-pill-blue:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
 
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:12px;font-weight:700;font-size:.95rem;transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .2s,background .2s,border-color .2s;}
 .btn:hover{transform:translateY(-2px);}
@@ -346,6 +356,8 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   .hero-pack{display:none;}
   .ft-grid{grid-template-columns:1fr 1fr;}
   .nav .hide-mobile{display:none;}
+  .nav{gap:8px;}
+  .hdr-in{gap:12px;}
 }
 @media (max-width:520px){
   .sec{padding:56px 0;}
@@ -355,6 +367,13 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   .ft-grid{grid-template-columns:1fr;}
   .wa span{display:none;}
   .wa{padding:14px;}
+  .brand span{font-size:.95rem;}
+  .nav-pill{padding:7px 11px;font-size:.82rem;}
+}
+@media (max-width:380px){
+  .hide-xs{display:none;}
+  .brand img{width:34px;height:34px;}
+  .brand span{display:none;}
 }
 </style>
 </head>
@@ -368,10 +387,10 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
       <span>Cofre <strong>Didáctico</strong></span>
     </a>
     <nav class="nav">
-      <a href="index.html#catalogo" class="hide-mobile">Catálogo</a>
-      <a href="gratis.html" class="active hide-mobile">🎁 Gratis</a>
+      <a href="index.html#catalogo" class="nav-pill nav-pill-blue">📚 Catálogo</a>
       <a href="index.html#faq" class="hide-mobile">FAQ</a>
-      <a href="#newsletter" class="btn btn-ghost btn-sm">📧 Newsletter</a>
+      <a href="gratis.html" class="active hide-mobile">🎁 Gratis</a>
+      <a href="#newsletter" class="btn btn-ghost btn-sm hide-xs">📧 Newsletter</a>
     </nav>
   </div>
 </header>

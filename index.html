@@ -88,8 +88,16 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
   transition:background .15s, color .15s;
 }
 .nav a:hover{background:var(--bg-2);color:var(--ink);}
-.nav a.nav-gratis{color:var(--green);}
-.nav a.nav-gratis:hover{background:var(--green-soft);color:var(--green);}
+/* Pill destacada (siempre visible, incluso en mobile) */
+.nav-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 14px;border-radius:99px;font-weight:800;font-size:.88rem;
+  border:1.5px solid transparent;transition:all .2s;
+}
+.nav-pill-green{background:var(--green-soft);color:var(--green);border-color:rgba(46,125,50,.15);}
+.nav-pill-green:hover{background:var(--green);color:#fff;border-color:var(--green);}
+.nav-pill-blue{background:var(--primary-soft);color:var(--primary);border-color:rgba(33,150,243,.15);}
+.nav-pill-blue:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
 .btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:11px 20px;border-radius:12px;font-weight:700;font-size:.95rem;
@@ -506,7 +514,9 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   .hero-collage{display:none;}
   .ft-grid{grid-template-columns:1fr 1fr;}
   .nav .hide-mobile{display:none;}
+  .nav{gap:8px;}
   .menu-btn{display:inline-flex;width:40px;height:40px;border-radius:10px;background:#fff;border:1.5px solid var(--line);align-items:center;justify-content:center;font-size:1.2rem;}
+  .hdr-in{gap:12px;}
 }
 @media (max-width:520px){
   .sec{padding:56px 0;}
@@ -518,6 +528,13 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   .ft-grid{grid-template-columns:1fr;}
   .wa span{display:none;}
   .wa{padding:14px;}
+  .brand span{font-size:.95rem;}
+  .nav-pill{padding:7px 11px;font-size:.82rem;}
+}
+@media (max-width:380px){
+  .hide-xs{display:none;}
+  .brand img{width:34px;height:34px;}
+  .brand span{display:none;}
 }
 
 /* ─── Reveal animation ─── */
@@ -590,10 +607,10 @@ body.in-detail .hero,body.in-detail .sec:not(.detail-view),body.in-detail .por-q
     </a>
     <nav class="nav">
       <a href="#catalogo" class="hide-mobile">Catálogo</a>
-      <a href="gratis.html" class="hide-mobile nav-gratis">🎁 Gratis</a>
       <a href="#por-que" class="hide-mobile">Por qué</a>
       <a href="#faq" class="hide-mobile">FAQ</a>
-      <a href="#newsletter" class="btn btn-ghost btn-sm">📧 Newsletter</a>
+      <a href="gratis.html" class="nav-pill nav-pill-green">🎁 Gratis</a>
+      <a href="#newsletter" class="btn btn-ghost btn-sm hide-xs">📧 Newsletter</a>
     </nav>
   </div>
 </header>
