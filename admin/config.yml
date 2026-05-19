@@ -121,7 +121,8 @@ collections:
               - {label: "📐 Formato", name: "formato", widget: "string", required: false, hint: "Ej: PDF · A4 · Color y B&N"}
 
               # ── Compra ────────────────────
-              - {label: "🛒 Link de compra (Empretienda / Hotmart)", name: "link", widget: "string", pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"]}
+              - {label: "🛒 Link principal de compra (Empretienda)", name: "link", widget: "string", pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "URL del producto en tu tienda principal (Empretienda)."}
+              - {label: "🔥 Link de Hotmart (opcional)", name: "linkHotmart", widget: "string", required: false, pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "Si lo completás, en la ficha del producto aparece un segundo botón 'Comprar en Hotmart'."}
 
               # ── Visibilidad ───────────────
               - label: "🎖️ Etiqueta destacada"
