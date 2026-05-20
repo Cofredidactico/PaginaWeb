@@ -1,103 +1,4 @@
 {
-  "productos": [
-    {
-      "nombre": "Revolución de Mayo",
-      "descripcion": "Secuencia de Actividades Revolución de Mayo",
-      "descripcionLarga": "🇦🇷✨ REVOLUCIÓN DE MAYO ✨🇦🇷\n\nLes traigo un material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario de una manera dinámica, significativa y atractiva para los estudiantes. 📚💙\n\n📦 ¿Qué encontrarás dentro del material?\n\n📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos.\n🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo\n🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio\n👒 Vendedores ambulantes de la época colonial con ilustraciones y descripciones\n✍️ Actividades de lectura, escritura y comprensión\n🧩 Rompecabezas temáticos\n🔎 Encuentra las diferencias y juegos de observación\n📝 Crucigramas y sopa de letras\n🖍️ Propuestas para colorear y dibujar\n🧠 Actividades para ordenar secuencias y completar oraciones\n🎨 Material visual listo para imprimir y utilizar en el aula\n✂️ Recursos manipulativos para recortar, armar y aprender jugando\n\n💡 Diseño profesional con una estética infantil, clara y atractiva para captar la atención de los estudiantes mientras aprenden sobre uno de los acontecimientos más importantes de nuestra historia.\n\nIdeal para:\n✔️ Nivel Primario\n✔️ Proyectos escolares\n✔️ Efemérides\n✔️ Trabajo en clase o tareas para el hogar\n✔️ Docentes que buscan propuestas innovadoras y listas para usar",
-      "id": "revolucion-mayo",
-      "tipo": "cuadernillo",
-      "tematica": "efemerides",
-      "nivel": "Primer Ciclo",
-      "acceso": "pago",
-      "precio": 6500,
-      "precioTachado": 8900,
-      "imagen": "images/revolucion-de-mayo-1778563135675.jpg",
-      "previews": [
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 5.jpg",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 4.jpg",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 3.jpg",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 2.jpg",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 6.jpg"
-      ],
-      "incluye": [
-        {
-          "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos."
-        },
-        {
-          "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo"
-        },
-        {
-          "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio"
-        }
-      ],
-      "paginas": 34,
-      "formato": "PDF-A4-Color",
-      "link": "https://cofredidactico.empretienda.com.ar/novedades/revolucion-de-mayo",
-      "etiqueta": "nuevo",
-      "activo": true,
-      "destacado": true
-    },
-    {
-      "id": "dia-de-la-escarapela",
-      "nombre": "Día de la Escarapela",
-      "descripcion": "Secuencia de Actividades  Día de la Escarapela",
-      "tipo": "cuadernillo",
-      "acceso": "pago",
-      "precio": 6500,
-      "imagen": "images/producto-1778559946157.jpg",
-      "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-de-la-escarapela-con-plataforma-interactiva",
-      "activo": true,
-      "destacado": true,
-      "descripcionLarga": "✨ Secuencia de Actividades: Día de la Escarapela 🇦🇷💙\n\nIncluye propuestas variadas para que los peques conozcan y valoren este símbolo patrio mientras desarrollan habilidades de lectura, escritura y pensamiento:\n\n📄 Secuencia Didáctica (con fundamentación y actividades organizadas para trabajar la efeméride)\n\n🎗️ Comprensión de infografía\n🎗️ Completar oraciones\n🎗️ Ordenar palabras y letras\n🎗️ Sopa de letras\n🎗️ Crucigrama temático\n🎗️ Mensajes secretos y códigos\n🎗️ Actividades de escritura guiada\n🎗️ Dibujo y pintura de la escarapela 🎨\n🎗️ Recortar y armar la escarapela ✂️\n🎗️ Laberinto (¡ayudá a Belgrano!)\n🎗️ Acróstico “ESCARAPELA”\n\n🎉✨️🎮 Plataforma Interactiva para aprender Jugando ( Podés utilizarlo desde cualquier dispositivo digital 💻🖥📲)\n\n📚 Ideal para Primer Ciclo\n🎨 Actividades listas para imprimir\n📝 Propuestas lúdicas y significativas\n💙 Perfecto para trabajar el 18 de mayo de forma lúdica e inclusiva.",
-      "tematica": "efemerides",
-      "nivel": "Primer Ciclo",
-      "precioTachado": 8200,
-      "etiqueta": "nuevo",
-      "incluye": [
-        {
-          "texto": "Propuestas lúdicas y significativas"
-        }
-      ],
-      "paginas": 25,
-      "formato": "PDF-A4-Color"
-    },
-    {
-      "id": "pack-mundial",
-      "nombre": "Pack Mundial",
-      "descripcion": "📚 Incluye 4 PDF con más de 50 hojas de ambiente alfabetizador\n🇦🇷 Inspirado en el Mundial 2026 y la Selección Argentina ⚽",
-      "tipo": "pack",
-      "acceso": "gratis",
-      "precio": 0,
-      "imagen": "images/producto-1779286790757.jpg",
-      "link": "https://drive.google.com/drive/folders/19CSBH5AERU0mqpa0om07QVeP7_SnqPBU?usp=sharing",
-      "activo": true,
-      "destacado": false,
-      "descripcionLarga": "✨ El pack contiene:\n• Banderín de “Bienvenidos”\n• Organizador semanal\n• Calendario 2026\n• Grilla numérica 0–100\n• Tabla pitagórica\n• Etiquetas para los nombres",
-      "nivel": "Primer Ciclo",
-      "incluye": [
-        {
-          "texto": "• Banderín de “Bienvenidos”"
-        },
-        {
-          "texto": "• Etiquetas para los nombres"
-        },
-        {
-          "texto": "• Tabla pitagórica"
-        },
-        {
-          "texto": "• Calendario 2026"
-        },
-        {
-          "texto": "• Organizador semanal"
-        },
-        {
-          "texto": "• Grilla numérica 0–100"
-        }
-      ],
-      "paginas": 60,
-      "formato": "PDF-A4-Color"
-    }
-  ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
   "config": {
     "anuncio": {
@@ -110,9 +11,21 @@
       "paises": "+12",
       "descargas": "+2.000"
     },
+    "semana": {
+      "activo": true,
+      "titulo": "Para esta semana",
+      "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
+      "etiqueta": "🗓️ Esta semana",
+      "productos": [
+        { "id": "revolucion-mayo" },
+        { "id": "dia-de-la-escarapela" },
+        { "id": "pack-mundial" }
+      ]
+    },
     "brevo": {
       "formAction": "",
-      "emailField": "EMAIL"
+      "emailField": "EMAIL",
+      "listIds": ""
     },
     "links": {
       "instagram": "https://www.instagram.com/cofredidactico/",
@@ -123,35 +36,99 @@
     }
   },
   "tematicas": [
+    { "id": "lengua",     "nombre": "Lengua",     "emoji": "📖" },
+    { "id": "matematica", "nombre": "Matemática", "emoji": "🔢" },
+    { "id": "ciencias",   "nombre": "Ciencias",   "emoji": "🔬" },
+    { "id": "efemerides", "nombre": "Efemérides", "emoji": "🗓️" },
+    { "id": "juegos",     "nombre": "Juegos",     "emoji": "🎮" },
+    { "id": "laminas",    "nombre": "Láminas",    "emoji": "🖼️" }
+  ],
+  "productos": [
     {
-      "id": "lengua",
-      "nombre": "Lengua",
-      "emoji": "📖"
+      "id": "revolucion-mayo",
+      "nombre": "Revolución de Mayo",
+      "descripcion": "Secuencia de Actividades Revolución de Mayo",
+      "descripcionLarga": "🇦🇷✨ REVOLUCIÓN DE MAYO ✨🇦🇷\n\nLes traigo un material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario de una manera dinámica, significativa y atractiva para los estudiantes. 📚💙\n\n📦 ¿Qué encontrarás dentro del material?\n\n📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos.\n🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo\n🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio\n👒 Vendedores ambulantes de la época colonial con ilustraciones y descripciones\n✍️ Actividades de lectura, escritura y comprensión\n🧩 Rompecabezas temáticos\n🔎 Encuentra las diferencias y juegos de observación\n📝 Crucigramas y sopa de letras\n🖍️ Propuestas para colorear y dibujar\n🧠 Actividades para ordenar secuencias y completar oraciones\n🎨 Material visual listo para imprimir y utilizar en el aula\n✂️ Recursos manipulativos para recortar, armar y aprender jugando\n\n💡 Diseño profesional con una estética infantil, clara y atractiva para captar la atención de los estudiantes mientras aprenden sobre uno de los acontecimientos más importantes de nuestra historia.\n\nIdeal para:\n✔️ Nivel Primario\n✔️ Proyectos escolares\n✔️ Efemérides\n✔️ Trabajo en clase o tareas para el hogar\n✔️ Docentes que buscan propuestas innovadoras y listas para usar",
+      "tipo": "cuadernillo",
+      "tematica": "efemerides",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "meses": [5],
+      "precio": 6500,
+      "precioTachado": 8900,
+      "acceso": "pago",
+      "imagen": "images/revolucion-de-mayo-1778563135675.jpg",
+      "previews": [
+        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 5.jpg",
+        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 4.jpg",
+        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 3.jpg",
+        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 2.jpg",
+        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 6.jpg"
+      ],
+      "incluye": [
+        { "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos." },
+        { "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo" },
+        { "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio" }
+      ],
+      "paginas": 34,
+      "formato": "PDF-A4-Color",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/revolucion-de-mayo",
+      "etiqueta": "nuevo",
+      "activo": true,
+      "destacado": true
     },
     {
-      "id": "matematica",
-      "nombre": "Matemática",
-      "emoji": "🔢"
+      "id": "dia-de-la-escarapela",
+      "nombre": "Día de la Escarapela",
+      "descripcion": "Secuencia de Actividades  Día de la Escarapela",
+      "descripcionLarga": "✨ Secuencia de Actividades: Día de la Escarapela 🇦🇷💙\n\nIncluye propuestas variadas para que los peques conozcan y valoren este símbolo patrio mientras desarrollan habilidades de lectura, escritura y pensamiento:\n\n📄 Secuencia Didáctica (con fundamentación y actividades organizadas para trabajar la efeméride)\n\n🎗️ Comprensión de infografía\n🎗️ Completar oraciones\n🎗️ Ordenar palabras y letras\n🎗️ Sopa de letras\n🎗️ Crucigrama temático\n🎗️ Mensajes secretos y códigos\n🎗️ Actividades de escritura guiada\n🎗️ Dibujo y pintura de la escarapela 🎨\n🎗️ Recortar y armar la escarapela ✂️\n🎗️ Laberinto (¡ayudá a Belgrano!)\n🎗️ Acróstico “ESCARAPELA”\n\n🎉✨️🎮 Plataforma Interactiva para aprender Jugando ( Podés utilizarlo desde cualquier dispositivo digital 💻🖥📲)\n\n📚 Ideal para Primer Ciclo\n🎨 Actividades listas para imprimir\n📝 Propuestas lúdicas y significativas\n💙 Perfecto para trabajar el 18 de mayo de forma lúdica e inclusiva.",
+      "tipo": "cuadernillo",
+      "tematica": "efemerides",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "meses": [5],
+      "precio": 6500,
+      "precioTachado": 8200,
+      "acceso": "pago",
+      "imagen": "images/producto-1778559946157.jpg",
+      "previews": [],
+      "incluye": [
+        { "texto": "Propuestas lúdicas y significativas" }
+      ],
+      "paginas": 25,
+      "formato": "PDF-A4-Color",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-de-la-escarapela-con-plataforma-interactiva",
+      "etiqueta": "nuevo",
+      "activo": true,
+      "destacado": true
     },
     {
-      "id": "ciencias",
-      "nombre": "Ciencias",
-      "emoji": "🔬"
-    },
-    {
-      "id": "efemerides",
-      "nombre": "Efemérides",
-      "emoji": "🗓️"
-    },
-    {
-      "id": "juegos",
-      "nombre": "Juegos",
-      "emoji": "🎮"
-    },
-    {
-      "id": "laminas",
-      "nombre": "Láminas",
-      "emoji": "🖼️"
+      "id": "pack-mundial",
+      "nombre": "Pack Mundial",
+      "descripcion": "📚 Incluye 4 PDF con más de 50 hojas de ambiente alfabetizador\n🇦🇷 Inspirado en el Mundial 2026 y la Selección Argentina ⚽",
+      "descripcionLarga": "✨ El pack contiene:\n• Banderín de “Bienvenidos”\n• Organizador semanal\n• Calendario 2026\n• Grilla numérica 0–100\n• Tabla pitagórica\n• Etiquetas para los nombres",
+      "tipo": "pack",
+      "tematica": "lengua",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "meses": [],
+      "precio": 0,
+      "acceso": "gratis",
+      "imagen": "images/producto-1779286790757.jpg",
+      "previews": [],
+      "incluye": [
+        { "texto": "• Banderín de “Bienvenidos”" },
+        { "texto": "• Etiquetas para los nombres" },
+        { "texto": "• Tabla pitagórica" },
+        { "texto": "• Calendario 2026" },
+        { "texto": "• Organizador semanal" },
+        { "texto": "• Grilla numérica 0–100" }
+      ],
+      "paginas": 60,
+      "formato": "PDF-A4-Color",
+      "link": "https://drive.google.com/drive/folders/19CSBH5AERU0mqpa0om07QVeP7_SnqPBU?usp=sharing",
+      "activo": true,
+      "destacado": false
     }
   ]
 }
