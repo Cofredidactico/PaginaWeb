@@ -170,6 +170,27 @@ collections:
               - {label: "✅ Activo (visible en la tienda)", name: "activo", widget: "boolean", default: true}
               - {label: "⭐ Mostrar en 'Destacados' del home", name: "destacado", widget: "boolean", default: false}
 
+              # ── Combos sugeridos ────────────
+              - label: "✨ Productos relacionados (combos sugeridos)"
+                name: "relacionados"
+                widget: "list"
+                required: false
+                hint: "IDs de productos que aparecen como 'Combinalo con…' en esta ficha. Si lo dejás vacío, se completan automáticamente por temática + nivel."
+                summary: "🔗 {{fields.id}}"
+                field: {label: "ID del producto", name: "id", widget: "string", pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"]}
+
+              # ── Testimonios ───────────
+              - label: "💬 Testimonios de docentes (anónimos)"
+                name: "testimonios"
+                widget: "list"
+                required: false
+                hint: "Aparecen en la ficha del producto. Animá a tus docentes a comentarte por DM y publicalas acá."
+                summary: "“{{fields.texto}}” — {{fields.inicial}} ({{fields.ciudad}})"
+                fields:
+                  - {label: "Inicial (1 letra)", name: "inicial", widget: "string", hint: "Ej: M, S, R…"}
+                  - {label: "Ciudad / Provincia", name: "ciudad", widget: "string", required: false, hint: "Ej: La Plata, Bs. As."}
+                  - {label: "Testimonio", name: "texto", widget: "text"}
+
   # ─────────────────────────────────────────
   # ⚙️ CONFIGURACIÓN GENERAL
   # ─────────────────────────────────────────
@@ -250,3 +271,72 @@ collections:
               - {label: "ID (sin espacios)", name: "id", widget: "string"}
               - {label: "Nombre", name: "nombre", widget: "string"}
               - {label: "Emoji", name: "emoji", widget: "string"}
+
+  # ─────────────────────────────
+  # 🎮 RECURSOS INTERACTIVOS
+  # ─────────────────────────────
+  - name: "interactivos"
+    label: "🎮 Recursos Interactivos"
+    label_singular: "Recurso interactivo"
+    files:
+      - file: "productos.json"
+        label: "Recursos interactivos"
+        name: "interactivos_list"
+        format: "json"
+        fields:
+          - name: "interactivos"
+            label: "🎮 Recursos Interactivos"
+            label_singular: "Recurso"
+            widget: "list"
+            summary: "{{fields.nombre}} · {{fields.acceso}}"
+            collapsed: true
+            min: 0
+            fields:
+              - {label: "📝 Nombre", name: "nombre", widget: "string", hint: "Ej: Revolución de Mayo — Plataforma Interactiva"}
+              - {label: "📄 Descripción corta", name: "descripcion", widget: "text"}
+              - {label: "📖 Descripción larga (opcional)", name: "descripcionLarga", widget: "text", required: false}
+              - {label: "🆔 ID único", name: "id", widget: "string", pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"]}
+              - {label: "📷 Imagen / portada", name: "imagen", widget: "image", hint: "Ideal 1200×750px (proporción 16:10)."}
+              - label: "🏷️ Temática"
+                name: "tematica"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "📖 Lengua", value: "lengua" }
+                  - { label: "🔢 Matemática", value: "matematica" }
+                  - { label: "🔬 Ciencias", value: "ciencias" }
+                  - { label: "🗓️ Efemérides", value: "efemerides" }
+                  - { label: "🎮 Juegos", value: "juegos" }
+              - label: "🎓 Nivel"
+                name: "nivelGrupo"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "🧸 Nivel Inicial", value: "inicial" }
+                  - { label: "1️⃣ 1° Ciclo Primaria", value: "1ciclo" }
+                  - { label: "2️⃣ 2° Ciclo Primaria", value: "2ciclo" }
+                  - { label: "🎒 Secundaria", value: "secundaria" }
+                  - { label: "🌎 Multinivel", value: "multinivel" }
+              - {label: "🌐 URL de la demo (iframe)", name: "demoUrl", widget: "string", pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "URL de la plataforma. Ej: https://cofredidactico.github.io/RevoluciondeMayo/"}
+              - label: "💰 Tipo de acceso"
+                name: "acceso"
+                widget: "select"
+                default: "gratis"
+                options:
+                  - { label: "🎁 Gratis", value: "gratis" }
+                  - { label: "💎 De pago", value: "pago" }
+              - {label: "🆓 Link 'Jugar gratis completo' (si acceso = gratis)", name: "linkGratis", widget: "string", required: false, hint: "URL a la que va el botón cuando se acaba el preview."}
+              - {label: "🛍️ Link 'Comprar' (si acceso = pago)", name: "linkCompra", widget: "string", required: false, hint: "URL de Empretienda u Hotmart."}
+              - {label: "💵 Precio (opcional, ARS)", name: "precio", widget: "number", required: false, value_type: "int", min: 0}
+              - {label: "⏱️ Segundos de preview", name: "previewSegundos", widget: "number", value_type: "int", min: 5, max: 300, default: 30, hint: "Cuántos segundos puede jugar dentro del sitio antes del CTA."}
+              - label: "🎖️ Etiqueta destacada"
+                name: "etiqueta"
+                widget: "select"
+                required: false
+                default: ""
+                options:
+                  - { label: "— Sin etiqueta —", value: "" }
+                  - { label: "🔥 Nuevo", value: "nuevo" }
+                  - { label: "⭐ Más usado", value: "mas-usado" }
+              - {label: "✅ Activo", name: "activo", widget: "boolean", default: true}
+              - {label: "⭐ Destacado", name: "destacado", widget: "boolean", default: false}
