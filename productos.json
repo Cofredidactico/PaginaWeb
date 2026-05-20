@@ -330,6 +330,25 @@
       "meses": [
         3
       ]
+    },
+    {
+      "id": "caperucita-roja",
+      "nombre": "Caperucita Roja",
+      "descripcion": "Un material para trabajar lectura, comprensión y vocales a partir de un cuento clásico, pensado para Nivel Inicial y Primer Ciclo ✨",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 6300,
+      "imagen": "images/caperucita-roja-1779305432918.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/general/caperucita-roja",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "🔹 ¿Qué incluye este cuadernillo?\n✔️ Cuento adaptado con pictogramas\n✔️ Actividades de comprensión lectora\n✔️ Secuencia para trabajar las vocales A – E – I – O – U\n✔️ Propuestas de lectura, escritura y juego\n✔️ Actividades claras y listas para usar\n✔️ Incluye plan de clases con proyecto: \"Libro de las Vocales del Bosque\"\n✔️ Material imprimible ( 14 hojas tamaño A4 )\n\n🔹 Ideal para:\n📚 Lectura compartida\n✏️ Primeros lectores\n🧠 Trabajo de comprensión\n👦👧 Aulas diversas y apoyos visuales\n\n📥 Formato: PDF descargable\n📌 Nivel: Inicial y Primer Ciclo",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 7500,
+      "meses": [
+        4
+      ]
     }
   ]
 }
