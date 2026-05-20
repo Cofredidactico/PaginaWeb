@@ -349,6 +349,28 @@
       "meses": [
         4
       ]
+    },
+    {
+      "id": "el-hombrecito-de-jengibre",
+      "nombre": "El Hombrecito de Jengibre",
+      "descripcion": "Una propuesta didáctica completa para aprender jugando a partir de un cuento clásico 🍪📚",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 6300,
+      "imagen": "images/el-hombrecito-de-jengibre-1779305565597.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/general/el-hombrecito-de-jengibre",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "Este material integra lengua y matemática a través de actividades lúdicas, ideales para acompañar los primeros aprendizajes.\n\n\n\n🔎 ¿Qué incluye?\n\n• Cuento adaptado con pictogramas (favorece la comprensión y la inclusión)\n\n• Actividades de comprensión lectora\n\n• Propuestas de escritura y reconocimiento de palabras\n\n• Trabajo con vocales (completar, identificar y leer)\n\n• Juegos de asociación, sopa de letras y selección múltiple\n\n• Actividades de orientación espacial (direcciones)\n\n• Propuestas matemáticas (conteo, series numéricas y problemas simples)\n\n• Rompecabezas para armar\n\n• Juegos didácticos imprimibles:\n\n• Memotest de personajes\n\n• Juego “Encontrá el personaje”\n\n\n\n🎯 Ideal para:\n\n• Nivel Inicial\n\n• Primer Ciclo de Primaria\n\n• Trabajo en el aula o en casa\n\n• Docentes de apoyo e inclusión\n\n\n\n💡 Beneficios del material:\n\n✔ Integra lengua y matemática en una misma propuesta\n\n✔ Estimula la comprensión, la memoria y la atención\n\n✔ Favorece la oralidad y el vocabulario\n\n✔ Promueve el aprendizaje significativo a través del juego\n\n\n\n📂 Formato: Digital (PDF descargable)\n\n🖨 Listo para imprimir y usar las veces que necesites",
+      "tematica": "lengua",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 7500,
+      "paginas": 35,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        4
+      ]
     }
   ]
 }
