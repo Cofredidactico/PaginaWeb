@@ -267,6 +267,27 @@
       "meses": [
         3
       ]
+    },
+    {
+      "id": "ambiente-alfabetizador-de-mesa",
+      "nombre": "Ambiente alfabetizador de Mesa",
+      "descripcion": "Ambiente alfabetizador de Mesa",
+      "tipo": "cuadernillo",
+      "acceso": "gratis",
+      "precio": 0,
+      "imagen": "images/producto-1779303451685.jpg",
+      "link": "https://drive.google.com/file/d/1n-aGzfK0Tf3I_oDAERFLyERhVKkylTDf/view?usp=sharing",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "Un recurso práctico y visual pensado para acompañar a los peques en su proceso de alfabetización todos los días 💛✏️\n\nIncluye diferentes versiones de abecedarios para responder a las diversas necesidades del aula 👩‍🏫🧠:\n🔤 ABC clásico\n🔠 Mayúscula y minúscula\n🖼️ Letras con palabras e imágenes\n🔎 Versión de consulta rápida\n🔢 Números del 1 al 20 (en cifra y palabra)\n📅 Días de la semana\n🧒 Espacio para escribir el nombre\n\n🖨️ El material está organizado en dos formatos:\n✔️ Modelo en hoja A4 completa para visualización clara\n✔️ Versión optimizada con 2 por hoja A4 para imprimir, recortar y armar fácilmente el soporte de mesa\n\nIdeal para:\n🪑 Uso diario en el banco\n✏️ Escritura autónoma\n🧩 Reconocimiento de letras y sonidos\n📖 Apoyo permanente durante la alfabetización",
+      "tematica": "lengua",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "paginas": 18,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        3
+      ]
     }
   ]
 }
