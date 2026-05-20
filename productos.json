@@ -60,6 +60,27 @@
       ],
       "paginas": 25,
       "formato": "PDF-A4-Color"
+    },
+    {
+      "id": "pack-mundial",
+      "nombre": "Pack Mundial",
+      "descripcion": "📚 Incluye 4 PDF con más de 50 hojas de ambiente alfabetizador\n🇦🇷 Inspirado en el Mundial 2026 y la Selección Argentina ⚽",
+      "tipo": "pack",
+      "acceso": "gratis",
+      "precio": 0,
+      "imagen": "images/producto-1779286790757.jpg",
+      "link": "https://drive.google.com/drive/folders/19CSBH5AERU0mqpa0om07QVeP7_SnqPBU?usp=sharing",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "✨ El pack contiene:\n• Banderín de “Bienvenidos”\n• Organizador semanal\n• Calendario 2026\n• Grilla numérica 0–100\n• Tabla pitagórica\n• Etiquetas para los nombres",
+      "nivel": "Primer Ciclo",
+      "incluye": [
+        {
+          "texto": "60"
+        }
+      ],
+      "paginas": 60,
+      "formato": "PDF-A4-Color"
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
