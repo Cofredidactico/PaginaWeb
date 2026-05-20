@@ -459,7 +459,7 @@ fetch('productos.json?v=' + Date.now())
 // Mantenemos retro-compatibilidad con un array "interactivos" suelto en el JSON.
 function listarInteractivos(){
   const desdeProductos = (_data.productos||[])
-    .filter(p => p.activo && p.demoUrl && String(p.demoUrl).trim())
+    .filter(p => p.activo && (p.tipo === 'juego' || (p.demoUrl && String(p.demoUrl).trim())))
     .map(p => ({
       id: p.id,
       nombre: p.nombre,
