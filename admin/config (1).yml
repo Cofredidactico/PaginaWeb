@@ -1,0 +1,252 @@
+# ════════════════════════════════════════════════════════════════
+#  Sveltia CMS — Panel admin de Cofre Didáctico
+# ════════════════════════════════════════════════════════════════
+#  URL:    https://cofredidactico.github.io/PaginaWeb/admin/
+#  Login:  GitHub Personal Access Token (scope "repo")
+# ════════════════════════════════════════════════════════════════
+
+backend:
+  name: github
+  repo: Cofredidactico/PaginaWeb
+  branch: main
+  commit_messages:
+    create: "✨ Crear: {{slug}}"
+    update: "📝 Actualizar: {{slug}}"
+    delete: "🗑️ Eliminar: {{slug}}"
+    uploadMedia: "📸 Imagen: {{path}}"
+    deleteMedia: "🗑️ Imagen: {{path}}"
+
+# Imágenes: se suben a /images del repo
+media_folder: "images"
+public_folder: "/PaginaWeb/images"
+
+site_url: https://cofredidactico.github.io/PaginaWeb/
+display_url: https://cofredidactico.github.io/PaginaWeb/
+logo_url: https://cofredidactico.github.io/PaginaWeb/logo.png
+locale: es
+
+# Optimización automática de imágenes al subir
+media_libraries:
+  default:
+    config:
+      max_file_size: 5242880  # 5 MB máximo por imagen
+      transformations:
+        raster_image:
+          format: webp        # Convierte JPG/PNG a WebP (70% más liviano)
+          quality: 85
+          width: 1600         # Redimensiona si supera 1600px de ancho
+          height: 1600
+
+collections:
+  # ─────────────────────────────────────────
+  # 📚 PRODUCTOS — el catálogo completo
+  # ─────────────────────────────────────────
+  - name: "productos"
+    label: "📚 Productos"
+    label_singular: "Catálogo"
+    files:
+      - file: "productos.json"
+        label: "Catálogo completo"
+        name: "catalogo"
+        format: "json"
+        fields:
+          - name: "productos"
+            label: "📚 Productos"
+            label_singular: "Producto"
+            widget: "list"
+            summary: "{{fields.nombre}} · ${{fields.precio}} · {{fields.tipo}}"
+            collapsed: true
+            min: 0
+            fields:
+              # ── Identidad ─────────────────
+              - {label: "📝 Nombre del producto", name: "nombre", widget: "string", hint: "Ej: Cuadernillo de Vocales — Nivel Inicial"}
+              - {label: "📄 Descripción corta", name: "descripcion", widget: "text", hint: "1-2 frases. Se muestra en la card del catálogo."}
+              - {label: "📖 Descripción larga (opcional)", name: "descripcionLarga", widget: "text", required: false, hint: "Aparece en la página del producto. Más detallada."}
+              - {label: "🆔 ID único (URL del producto)", name: "id", widget: "string", hint: "Solo minúsculas y guiones. Ej: cuadernillo-vocales", pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"]}
+
+              # ── Clasificación ─────────────
+              - label: "📦 Tipo"
+                name: "tipo"
+                widget: "select"
+                default: "cuadernillo"
+                options:
+                  - { label: "📓 Cuadernillo", value: "cuadernillo" }
+                  - { label: "🎮 Juego interactivo", value: "juego" }
+                  - { label: "🖼️ Lámina", value: "lamina" }
+                  - { label: "🎁 Pack / Combo", value: "pack" }
+                  - { label: "📄 Otro recurso", value: "otro" }
+              - label: "🏷️ Temática"
+                name: "tematica"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "📖 Lengua", value: "lengua" }
+                  - { label: "🔢 Matemática", value: "matematica" }
+                  - { label: "🔬 Ciencias", value: "ciencias" }
+                  - { label: "🗓️ Efemérides", value: "efemerides" }
+                  - { label: "🎮 Juegos", value: "juegos" }
+                  - { label: "🖼️ Láminas", value: "laminas" }
+              - {label: "🎓 Nivel educativo (texto libre)", name: "nivel", widget: "string", required: false, hint: "Ej: Nivel Inicial · 1° Primaria"}
+              - label: "🎯 Nivel para filtros"
+                name: "nivelGrupo"
+                widget: "select"
+                required: false
+                hint: "Define a qué chip de 'Nivel' del catálogo pertenece este producto."
+                options:
+                  - { label: "🧸 Nivel Inicial", value: "inicial" }
+                  - { label: "1️⃣ 1° Ciclo Primaria", value: "1ciclo" }
+                  - { label: "2️⃣ 2° Ciclo Primaria", value: "2ciclo" }
+                  - { label: "🎒 Secundaria", value: "secundaria" }
+                  - { label: "🌎 Multinivel (sirve para todos)", value: "multinivel" }
+              - label: "🗓️ Meses recomendados (efemérides, contenido estacional)"
+                name: "meses"
+                widget: "select"
+                multiple: true
+                required: false
+                min: 0
+                hint: "Activa el filtro de mes en el catálogo. Ej: 'Día de la Tierra' → Abril."
+                options:
+                  - { label: "Enero", value: 1 }
+                  - { label: "Febrero", value: 2 }
+                  - { label: "Marzo", value: 3 }
+                  - { label: "Abril", value: 4 }
+                  - { label: "Mayo", value: 5 }
+                  - { label: "Junio", value: 6 }
+                  - { label: "Julio", value: 7 }
+                  - { label: "Agosto", value: 8 }
+                  - { label: "Septiembre", value: 9 }
+                  - { label: "Octubre", value: 10 }
+                  - { label: "Noviembre", value: 11 }
+                  - { label: "Diciembre", value: 12 }
+
+              # ── Precio ────────────────────
+              - label: "💰 Tipo de acceso"
+                name: "acceso"
+                widget: "select"
+                default: "pago"
+                options:
+                  - { label: "💳 Pago", value: "pago" }
+                  - { label: "🎁 Gratis", value: "gratis" }
+              - {label: "💵 Precio (ARS)", name: "precio", widget: "number", default: 0, value_type: "int", min: 0, hint: "Poné 0 si es gratis"}
+              - {label: "💸 Precio tachado (antes)", name: "precioTachado", widget: "number", required: false, value_type: "int", min: 0, hint: "Para mostrar descuento (precio anterior)"}
+
+              # ── Imágenes ──────────────────
+              - {label: "📷 Imagen principal", name: "imagen", widget: "image", hint: "Ideal 1200×900px. Aparece en el catálogo y página del producto."}
+              - label: "📸 Vistas previas (galería de páginas internas)"
+                name: "previews"
+                widget: "list"
+                required: false
+                hint: "Subí 2-4 imágenes de páginas internas. ¡Aumenta MUCHO la conversión!"
+                summary: "Muestra"
+                field: {label: "Imagen", name: "img", widget: "image"}
+
+              # ── Detalles ──────────────────
+              - label: "✓ Qué incluye"
+                name: "incluye"
+                widget: "list"
+                required: false
+                hint: "Una línea por ítem. Aparece como lista con ✓"
+                summary: "✓ {{fields.texto}}"
+                field: {label: "Ítem", name: "texto", widget: "string"}
+              - {label: "📄 Cantidad de páginas", name: "paginas", widget: "number", required: false, value_type: "int", min: 1}
+              - {label: "📐 Formato", name: "formato", widget: "string", required: false, hint: "Ej: PDF · A4 · Color y B&N"}
+
+              # ── Compra ────────────────────
+              - {label: "🛒 Link principal de compra (Empretienda)", name: "link", widget: "string", pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "URL del producto en tu tienda principal (Empretienda)."}
+              - {label: "🔥 Link de Hotmart (opcional)", name: "linkHotmart", widget: "string", required: false, pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "Si lo completás, en la ficha del producto aparece un segundo botón 'Comprar en Hotmart'."}
+
+              # ── Visibilidad ───────────────
+              - label: "🎖️ Etiqueta destacada"
+                name: "etiqueta"
+                widget: "select"
+                required: false
+                default: ""
+                options:
+                  - { label: "— Sin etiqueta —", value: "" }
+                  - { label: "⭐ Más vendido", value: "mas-vendido" }
+                  - { label: "🔥 Nuevo", value: "nuevo" }
+                  - { label: "🎉 Oferta", value: "oferta" }
+                  - { label: "✨ Destacado", value: "destacado" }
+              - {label: "✅ Activo (visible en la tienda)", name: "activo", widget: "boolean", default: true}
+              - {label: "⭐ Mostrar en 'Destacados' del home", name: "destacado", widget: "boolean", default: false}
+
+  # ─────────────────────────────────────────
+  # ⚙️ CONFIGURACIÓN GENERAL
+  # ─────────────────────────────────────────
+  - name: "config"
+    label: "⚙️ Configuración"
+    label_singular: "Ajuste"
+    files:
+      - file: "productos.json"
+        label: "Configuración del sitio"
+        name: "site_config"
+        format: "json"
+        fields:
+          - name: "config"
+            label: "Configuración"
+            widget: "object"
+            fields:
+              - label: "📢 Banner de anuncio (arriba del header)"
+                name: "anuncio"
+                widget: "object"
+                collapsed: false
+                fields:
+                  - {label: "Activar banner", name: "activo", widget: "boolean", default: false}
+                  - {label: "Texto del anuncio", name: "texto", widget: "string", required: false}
+                  - {label: "Color de fondo (hex)", name: "color", widget: "string", default: "#FF8A4C"}
+
+              - label: "📊 Números del hero"
+                name: "stats"
+                widget: "object"
+                collapsed: false
+                fields:
+                  - {label: "Docentes felices", name: "docentes", widget: "string", default: "+500"}
+                  - {label: "Países", name: "paises", widget: "string", default: "+12"}
+                  - {label: "Descargas", name: "descargas", widget: "string", default: "+2.000"}
+
+              - label: "🗓️ Sección 'Para esta semana'"
+                name: "semana"
+                widget: "object"
+                collapsed: false
+                hint: "Bloque destacado arriba del catálogo para resaltar 2-4 materiales rotativos (próxima efeméride, contenido estacional)."
+                fields:
+                  - {label: "Activar sección", name: "activo", widget: "boolean", default: true}
+                  - {label: "Etiqueta (badge)", name: "etiqueta", widget: "string", default: "🗓️ Esta semana"}
+                  - {label: "Título", name: "titulo", widget: "string", default: "Para esta semana"}
+                  - {label: "Subtítulo", name: "subtitulo", widget: "text", required: false, default: "Materiales seleccionados según la efeméride o el contenido del mes."}
+                  - label: "📦 IDs de productos a destacar (2-4)"
+                    name: "productos"
+                    widget: "list"
+                    summary: "📦 {{fields.id}}"
+                    hint: "Poné el ID interno de cada producto, ej: 'cuadernillo-vocales'. El mismo ID que usás en cada producto."
+                    field: {label: "ID del producto", name: "id", widget: "string", pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"]}
+
+              - label: "📧 Newsletter (Brevo)"
+                name: "brevo"
+                widget: "object"
+                collapsed: false
+                hint: "Para conectar Brevo: Brevo → Contactos → Formularios → Embed → copiá la URL del atributo action=\"...\". Vacío = modo demo."
+                fields:
+                  - {label: "URL del formulario Brevo", name: "formAction", widget: "string", required: false, hint: "Empieza con https://sibforms.com/serve/..."}
+                  - {label: "Nombre del campo email en Brevo", name: "emailField", widget: "string", default: "EMAIL"}
+                  - {label: "IDs de listas (opcional)", name: "listIds", widget: "string", required: false, hint: "Si querés segmentar: ej '10' o '10,12'. Opcional."}
+
+              - label: "🔗 Links de contacto"
+                name: "links"
+                widget: "object"
+                collapsed: false
+                fields:
+                  - {label: "📷 Instagram", name: "instagram", widget: "string", required: false}
+                  - {label: "🏪 Empretienda", name: "empretienda", widget: "string", required: false}
+                  - {label: "🔥 Hotmart", name: "hotmart", widget: "string", required: false}
+                  - {label: "💬 WhatsApp (link wa.me/...)", name: "whatsapp", widget: "string", required: false}
+                  - {label: "✉️ Email", name: "email", widget: "string", required: false}
+
+          - name: "tematicas"
+            label: "🏷️ Temáticas"
+            widget: "list"
+            summary: "{{fields.emoji}} {{fields.nombre}}"
+            fields:
+              - {label: "ID (sin espacios)", name: "id", widget: "string"}
+              - {label: "Nombre", name: "nombre", widget: "string"}
+              - {label: "Emoji", name: "emoji", widget: "string"}
