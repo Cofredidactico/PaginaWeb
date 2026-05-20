@@ -440,6 +440,28 @@
       "meses": [
         3
       ]
+    },
+    {
+      "id": "pack-abecedario-argentino",
+      "nombre": "Pack Abecedario Argentino",
+      "descripcion": "Un material educativo pensado para aprender las letras de una manera significativa, visual y con identidad nacional. Ideal para nivel inicial y primer ciclo 📚💙",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 4000,
+      "imagen": "images/producto-1779309378120.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/general/pack-abecedario-argentino",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "Incluye 4 versiones (Todo en A4):\n🔤 Con sílabas\n🔠 Con las 4 grafías (mayúscula, minúscula y cursiva)\n🖼 Con sílaba + imágen\n⭐ Edición especial con marco mundialista",
+      "tematica": "efemerides",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 5000,
+      "paginas": 173,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        3
+      ]
     }
   ]
 }
