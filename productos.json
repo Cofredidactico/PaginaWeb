@@ -17,15 +17,9 @@
       "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
       "etiqueta": "🗓️ Esta semana",
       "productos": [
-        {
-          "id": "revolucion-mayo"
-        },
-        {
-          "id": "dia-de-la-escarapela"
-        },
-        {
-          "id": "pack-mundial"
-        }
+        { "id": "revolucion-mayo" },
+        { "id": "dia-de-la-escarapela" },
+        { "id": "pack-mundial" }
       ]
     },
     "brevo": {
@@ -42,36 +36,12 @@
     }
   },
   "tematicas": [
-    {
-      "id": "lengua",
-      "nombre": "Lengua",
-      "emoji": "📖"
-    },
-    {
-      "id": "matematica",
-      "nombre": "Matemática",
-      "emoji": "🔢"
-    },
-    {
-      "id": "ciencias",
-      "nombre": "Ciencias",
-      "emoji": "🔬"
-    },
-    {
-      "id": "efemerides",
-      "nombre": "Efemérides",
-      "emoji": "🗓️"
-    },
-    {
-      "id": "juegos",
-      "nombre": "Juegos",
-      "emoji": "🎮"
-    },
-    {
-      "id": "laminas",
-      "nombre": "Láminas",
-      "emoji": "🖼️"
-    }
+    { "id": "lengua",     "nombre": "Lengua",     "emoji": "📖" },
+    { "id": "matematica", "nombre": "Matemática", "emoji": "🔢" },
+    { "id": "ciencias",   "nombre": "Ciencias",   "emoji": "🔬" },
+    { "id": "efemerides", "nombre": "Efemérides", "emoji": "🗓️" },
+    { "id": "juegos",     "nombre": "Juegos",     "emoji": "🎮" },
+    { "id": "laminas",    "nombre": "Láminas",    "emoji": "🖼️" }
   ],
   "productos": [
     {
@@ -83,9 +53,7 @@
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
-      "meses": [
-        5
-      ],
+      "meses": [5],
       "precio": 6500,
       "precioTachado": 8900,
       "acceso": "pago",
@@ -98,39 +66,20 @@
         "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 6.jpg"
       ],
       "incluye": [
-        {
-          "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos."
-        },
-        {
-          "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo"
-        },
-        {
-          "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio"
-        }
+        { "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos." },
+        { "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo" },
+        { "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio" }
       ],
       "paginas": 34,
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/revolucion-de-mayo",
-      "demoUrl": "https://cofredidactico.github.io/RevoluciondeMayo/",
-      "previewSegundos": 30,
-      "linkGratis": "",
       "etiqueta": "nuevo",
       "activo": true,
       "destacado": true,
-      "relacionados": [
-        "dia-de-la-escarapela"
-      ],
+      "relacionados": ["dia-de-la-escarapela"],
       "testimonios": [
-        {
-          "inicial": "M",
-          "ciudad": "La Plata, Bs. As.",
-          "texto": "Las nenas y nenes estuvieron éncantados toda la semana. El material es divino y se nota el trabajo detrás."
-        },
-        {
-          "inicial": "S",
-          "ciudad": "Córdoba",
-          "texto": "Me salvó una semana entera de planificación. Llegó la PDF y al toque imprimí. Gracias Vir!"
-        }
+        { "inicial": "M", "ciudad": "La Plata, Bs. As.", "texto": "Las nenas y nenes estuvieron éncantados toda la semana. El material es divino y se nota el trabajo detrás." },
+        { "inicial": "S", "ciudad": "Córdoba", "texto": "Me salvó una semana entera de planificación. Llegó la PDF y al toque imprimí. Gracias Vir!" }
       ]
     },
     {
@@ -142,18 +91,14 @@
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
-      "meses": [
-        5
-      ],
+      "meses": [5],
       "precio": 6500,
       "precioTachado": 8200,
       "acceso": "pago",
       "imagen": "images/producto-1778559946157.jpg",
       "previews": [],
       "incluye": [
-        {
-          "texto": "Propuestas lúdicas y significativas"
-        }
+        { "texto": "Propuestas lúdicas y significativas" }
       ],
       "paginas": 25,
       "formato": "PDF-A4-Color",
@@ -161,9 +106,7 @@
       "etiqueta": "nuevo",
       "activo": true,
       "destacado": true,
-      "relacionados": [
-        "revolucion-mayo"
-      ],
+      "relacionados": ["revolucion-mayo"],
       "testimonios": []
     },
     {
@@ -181,24 +124,12 @@
       "imagen": "images/producto-1779286790757.jpg",
       "previews": [],
       "incluye": [
-        {
-          "texto": "• Banderín de “Bienvenidos”"
-        },
-        {
-          "texto": "• Etiquetas para los nombres"
-        },
-        {
-          "texto": "• Tabla pitagórica"
-        },
-        {
-          "texto": "• Calendario 2026"
-        },
-        {
-          "texto": "• Organizador semanal"
-        },
-        {
-          "texto": "• Grilla numérica 0–100"
-        }
+        { "texto": "• Banderín de “Bienvenidos”" },
+        { "texto": "• Etiquetas para los nombres" },
+        { "texto": "• Tabla pitagórica" },
+        { "texto": "• Calendario 2026" },
+        { "texto": "• Organizador semanal" },
+        { "texto": "• Grilla numérica 0–100" }
       ],
       "paginas": 60,
       "formato": "PDF-A4-Color",
@@ -207,26 +138,6 @@
       "destacado": false,
       "relacionados": [],
       "testimonios": []
-    },
-    {
-      "id": "plataforma-interactiva-dia-de-la-escarapela",
-      "nombre": "Plataforma Interactiva - Día de la Escarapela",
-      "descripcion": "Plataforma Interactiva",
-      "tipo": "juego",
-      "acceso": "pago",
-      "precio": 5500,
-      "imagen": "images/producto-1779293754717.jpg",
-      "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-de-la-escarapela-con-plataforma-interactiva",
-      "activo": true,
-      "destacado": false,
-      "descripcionLarga": "e presentamos una plataforma interactiva pensada para que los chicos aprendan sobre nuestro símbolo patrio de una forma súper divertida.\n\n​🎮 ¿Qué vas a encontrar en la web?\n\nActividades organizadas por niveles de dificultad:\n\n🟢 Nivel 1: Memotest y unir con flechas para los más peques.\n🟡 Nivel 2: Sopa de letras, rompecabezas y ordenar letras.\n🔴 Nivel 3: Desafíos de oraciones y un Quiz avanzado sobre su historia.\n🎡 ¡Y mucho más! Ruleta de preguntas, códigos secretos y actividades artísticas.\n\n✨️Todos los juegos con guía de Audio.",
-      "nivel": "Primer Ciclo",
-      "nivelGrupo": "1ciclo",
-      "etiqueta": "nuevo",
-      "meses": [
-        5
-      ],
-      "demoUrl": "https://cofredidactico.github.io/DiadelaEscarapela/"
     }
   ]
 }
