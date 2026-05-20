@@ -527,6 +527,28 @@
       "meses": [
         4
       ]
+    },
+    {
+      "id": "pasapalabra-malvinas",
+      "nombre": "Pasapalabra Malvinas",
+      "descripcion": "Actividad lista para trabajar esta efeméride de manera lúdica 💙",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 4000,
+      "imagen": "images/pasapalabra-malvinas-1779312386462.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/pasapalabra-malvinas",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "🧩 ¿Qué incluye este material?\n✔️ Pasapalabras completo para trabajar en clase\n✔️ Versión para completar por los estudiantes\n✔️ Referencias con respuestas e imágenes\n✔️ Actividad ideal para primer y segundo ciclo\n✔️ 📂 PDF y Carpeta con todas las actividades en formato imágen\n👉 Para que puedas adaptarlas y dimensionarlas a tu gusto.",
+      "tematica": "efemerides",
+      "nivel": "Segundo Ciclo",
+      "nivelGrupo": "2ciclo",
+      "precioTachado": 5000,
+      "paginas": 34,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        4
+      ]
     }
   ]
 }
