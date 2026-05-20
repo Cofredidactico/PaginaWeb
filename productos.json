@@ -309,6 +309,27 @@
       "meses": [
         3
       ]
+    },
+    {
+      "id": "flipbook-24-de-marzo",
+      "nombre": "Flipbook 24 de Marzo",
+      "descripcion": "Flipbook educativo del 24 de Marzo - Día de la Memoria por la Verdad y la Justicia",
+      "tipo": "lamina",
+      "acceso": "gratis",
+      "precio": 0,
+      "imagen": "images/producto-1779304501660.jpg",
+      "link": "https://drive.google.com/drive/folders/1P4NJ694yP5rQDNTbLkUITJnVaS7cNhNC",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "📚 Este flipbook interactivo incluye:\n• Explicaciones adaptadas al nivel primario sobre el 24 de Marzo.\n• Información sobre memoria, democracia, verdad y justicia.\n• Referencias a las Madres y Abuelas de Plaza de Mayo.\n• Actividad recortable para armar el flipbook.\n• Diseño visual atractivo, didáctico y fácil de utilizar en el aula.\n\n💡 Ideal para trabajar efemérides desde una mirada reflexiva, promoviendo el diálogo, la empatía y el valor de la democracia.",
+      "tematica": "efemerides",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "paginas": 4,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        3
+      ]
     }
   ]
 }
