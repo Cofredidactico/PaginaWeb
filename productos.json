@@ -418,6 +418,28 @@
       "meses": [
         3
       ]
+    },
+    {
+      "id": "mis-primeros-numeros-1-al-10",
+      "nombre": "Mis Primeros Nùmeros (1 al 10)",
+      "descripcion": "Un recurso pensado para que los más pequeños aprendan los números de forma lúdica, clara y motivadora.",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 5300,
+      "imagen": "images/placeholder-vocales.svg",
+      "link": "https://cofredidactico.empretienda.com.ar/general/mis-primeros-numeros-1-al-10",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "Este cuadernillo permite a los niños iniciarse en el mundo de los números a través de propuestas visuales, rimas y actividades prácticas.\n\n🔎 ¿Qué incluye?\n• Trabajo completo con los números del 1 al 10\n• Reconocimiento del número y su nombre\n• Actividades de trazado (grafomotricidad)\n• Asociación número-cantidad\n• Búsqueda e identificación de números\n• Conteo a partir de imágenes\n• Propuestas de coloreado según cantidad\n• Series numéricas simples\n• Versos y rimas para cada número (favorecen la memoria y comprensión).\n\n🎯 Ideal para:\n• Nivel Inicial\n• Primeros pasos en 1° grado\n• Apoyo escolar\n• Trabajo en el aula o en casa\n\n💡 Beneficios del material:\n✔ Favorece el reconocimiento numérico\n✔ Desarrolla habilidades de conteo\n✔ Estimula la motricidad fina\n✔ Integra aprendizaje con juego y lenguaje\n✔ Presenta los contenidos de forma clara y progresiva",
+      "tematica": "matematica",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 6000,
+      "paginas": 20,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        3
+      ]
     }
   ]
 }
