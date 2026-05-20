@@ -396,6 +396,28 @@
       "meses": [
         4
       ]
+    },
+    {
+      "id": "cuadernillo-de-vocales",
+      "nombre": "Cuadernillo de Vocales",
+      "descripcion": "Un material didáctico pensado especialmente para docentes de nivel inicial y primer ciclo, ideal para acompañar el proceso de alfabetización de manera lúdica y significativa 💛",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 4000,
+      "imagen": "images/producto-1779308666567.jpg",
+      "link": "https://drive.google.com/file/d/1DbFA-6DqwSxvm7wuik25eZVBaxX8CWsQ/view?usp=sharing",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "Este cuadernillo propone trabajar cada vocal a través de:\n\n🔤 Repaso de trazos en imprenta mayúscula y minúscula\n🧠 Adivinanzas para estimular la comprensión y el pensamiento\n🎨 Actividades de asociación imagen–palabra\n✏️ Espacios para leer, completar, dibujar y pintar\n📚 Ejercicios finales de recorrido del abecedario\n\nPerfecto para usar en el aula, en rincones de alfabetización o como cuadernillo de trabajo individual.\n\n🖨️ Listo para imprimir y usar\n🎯 Ideal para fortalecer la conciencia fonológica y el reconocimiento de vocales de forma divertida.",
+      "tematica": "lengua",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 5000,
+      "paginas": 29,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        3
+      ]
     }
   ]
 }
