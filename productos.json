@@ -612,6 +612,28 @@
       "precioTachado": 7500,
       "paginas": 22,
       "formato": "PDF-A4-Color"
+    },
+    {
+      "id": "dia-de-las-americas",
+      "nombre": "Día de las Américas",
+      "descripcion": "¿Buscás una propuesta dinámica, divertida y significativa para trabajar el Día de las Américas en el aula?",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 3500,
+      "imagen": "images/producto-1779315425276.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/3-pistas-1-pais-dia-de-las-americas",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "🔎 ¿De qué se trata?\nA partir de 3 pistas (comidas, músicas, lugares y costumbres), los alumnos deberán descubrir qué país es 🧠🌍\n\n💛 ¿Qué incluye?\n✔️ Actividades listas para imprimir\n✔️ Propuesta tipo juego (¡súper motivadora!)\n✔️ Países de América con elementos culturales representativos",
+      "tematica": "efemerides",
+      "nivel": "Primarias",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 5000,
+      "paginas": 23,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        4
+      ]
     }
   ]
 }
