@@ -76,7 +76,22 @@
       "nivel": "Primer Ciclo",
       "incluye": [
         {
-          "texto": "60"
+          "texto": "• Banderín de “Bienvenidos”"
+        },
+        {
+          "texto": "• Etiquetas para los nombres"
+        },
+        {
+          "texto": "• Tabla pitagórica"
+        },
+        {
+          "texto": "• Calendario 2026"
+        },
+        {
+          "texto": "• Organizador semanal"
+        },
+        {
+          "texto": "• Grilla numérica 0–100"
         }
       ],
       "paginas": 60,
