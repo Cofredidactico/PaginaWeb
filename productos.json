@@ -700,6 +700,26 @@
       "meses": [
         4
       ]
+    },
+    {
+      "id": "plataforma-interactiva-dia-del-trabajador",
+      "nombre": "Plataforma Interactiva Día del Trabajador",
+      "descripcion": "¿Querés que tus estudiantes, pacientes o hijos celebren el Día del Trabajador de una forma divertida, significativa y totalmente diferente? 💼🎮",
+      "tipo": "juego",
+      "acceso": "pago",
+      "precio": 3500,
+      "imagen": "images/plataforma-interactiva-dia-del-trabajador-1779321227687.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-del-trabajador-plataforma-interactiva",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "Plataforma Interactiva del Día del Trabajador 2026 🗓️\nUna experiencia educativa digital completa, pensada especialmente para los más peques.\n\n🎮 7 JUEGOS EN UNA SOLA PROPUESTA:\n📚 Explorá los oficios\n❓ Quiz con temporizador\n🧩 Memotest\n🔍 Sopa de letras\n✍️ Completá la frase\n🔗 Unir trabajador y herramienta\n🔡 Armá la palabra\n\n🌟 ¿Por qué este recurso es diferente?\n🔊 Guía de voz en cada actividad (¡como tener una maestra digital!)\n🏆 Sistema de puntaje, medallas y confeti\n🖨️ Certificado imprimible personalizado\n♿ 100% accesible (modo oscuro, texto ajustable y sin movimiento)\n💡 Datos curiosos + 💭 preguntas de reflexión final\n\n📲 Usalo donde quieras: aula, casa o tablet\n✔️ Sin instalación\n✔️ Sin registro\n✔️ Listo para usar",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 5500,
+      "meses": [
+        5
+      ],
+      "demoUrl": "https://cofredidactico.github.io/DiaDelTrabajador/"
     }
   ]
 }
