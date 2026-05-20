@@ -17,9 +17,15 @@
       "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
       "etiqueta": "🗓️ Esta semana",
       "productos": [
-        { "id": "revolucion-mayo" },
-        { "id": "dia-de-la-escarapela" },
-        { "id": "pack-mundial" }
+        {
+          "id": "revolucion-mayo"
+        },
+        {
+          "id": "dia-de-la-escarapela"
+        },
+        {
+          "id": "pack-mundial"
+        }
       ]
     },
     "brevo": {
@@ -36,12 +42,36 @@
     }
   },
   "tematicas": [
-    { "id": "lengua",     "nombre": "Lengua",     "emoji": "📖" },
-    { "id": "matematica", "nombre": "Matemática", "emoji": "🔢" },
-    { "id": "ciencias",   "nombre": "Ciencias",   "emoji": "🔬" },
-    { "id": "efemerides", "nombre": "Efemérides", "emoji": "🗓️" },
-    { "id": "juegos",     "nombre": "Juegos",     "emoji": "🎮" },
-    { "id": "laminas",    "nombre": "Láminas",    "emoji": "🖼️" }
+    {
+      "id": "lengua",
+      "nombre": "Lengua",
+      "emoji": "📖"
+    },
+    {
+      "id": "matematica",
+      "nombre": "Matemática",
+      "emoji": "🔢"
+    },
+    {
+      "id": "ciencias",
+      "nombre": "Ciencias",
+      "emoji": "🔬"
+    },
+    {
+      "id": "efemerides",
+      "nombre": "Efemérides",
+      "emoji": "🗓️"
+    },
+    {
+      "id": "juegos",
+      "nombre": "Juegos",
+      "emoji": "🎮"
+    },
+    {
+      "id": "laminas",
+      "nombre": "Láminas",
+      "emoji": "🖼️"
+    }
   ],
   "productos": [
     {
@@ -53,7 +83,9 @@
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
-      "meses": [5],
+      "meses": [
+        5
+      ],
       "precio": 6500,
       "precioTachado": 8900,
       "acceso": "pago",
@@ -66,9 +98,15 @@
         "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 6.jpg"
       ],
       "incluye": [
-        { "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos." },
-        { "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo" },
-        { "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio" }
+        {
+          "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos."
+        },
+        {
+          "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo"
+        },
+        {
+          "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio"
+        }
       ],
       "paginas": 34,
       "formato": "PDF-A4-Color",
@@ -76,10 +114,20 @@
       "etiqueta": "nuevo",
       "activo": true,
       "destacado": true,
-      "relacionados": ["dia-de-la-escarapela"],
+      "relacionados": [
+        "dia-de-la-escarapela"
+      ],
       "testimonios": [
-        { "inicial": "M", "ciudad": "La Plata, Bs. As.", "texto": "Las nenas y nenes estuvieron éncantados toda la semana. El material es divino y se nota el trabajo detrás." },
-        { "inicial": "S", "ciudad": "Córdoba", "texto": "Me salvó una semana entera de planificación. Llegó la PDF y al toque imprimí. Gracias Vir!" }
+        {
+          "inicial": "M",
+          "ciudad": "La Plata, Bs. As.",
+          "texto": "Las nenas y nenes estuvieron éncantados toda la semana. El material es divino y se nota el trabajo detrás."
+        },
+        {
+          "inicial": "S",
+          "ciudad": "Córdoba",
+          "texto": "Me salvó una semana entera de planificación. Llegó la PDF y al toque imprimí. Gracias Vir!"
+        }
       ]
     },
     {
@@ -91,14 +139,18 @@
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
-      "meses": [5],
+      "meses": [
+        5
+      ],
       "precio": 6500,
       "precioTachado": 8200,
       "acceso": "pago",
       "imagen": "images/producto-1778559946157.jpg",
       "previews": [],
       "incluye": [
-        { "texto": "Propuestas lúdicas y significativas" }
+        {
+          "texto": "Propuestas lúdicas y significativas"
+        }
       ],
       "paginas": 25,
       "formato": "PDF-A4-Color",
@@ -106,7 +158,9 @@
       "etiqueta": "nuevo",
       "activo": true,
       "destacado": true,
-      "relacionados": ["revolucion-mayo"],
+      "relacionados": [
+        "revolucion-mayo"
+      ],
       "testimonios": []
     },
     {
@@ -124,12 +178,24 @@
       "imagen": "images/producto-1779286790757.jpg",
       "previews": [],
       "incluye": [
-        { "texto": "• Banderín de “Bienvenidos”" },
-        { "texto": "• Etiquetas para los nombres" },
-        { "texto": "• Tabla pitagórica" },
-        { "texto": "• Calendario 2026" },
-        { "texto": "• Organizador semanal" },
-        { "texto": "• Grilla numérica 0–100" }
+        {
+          "texto": "• Banderín de “Bienvenidos”"
+        },
+        {
+          "texto": "• Etiquetas para los nombres"
+        },
+        {
+          "texto": "• Tabla pitagórica"
+        },
+        {
+          "texto": "• Calendario 2026"
+        },
+        {
+          "texto": "• Organizador semanal"
+        },
+        {
+          "texto": "• Grilla numérica 0–100"
+        }
       ],
       "paginas": 60,
       "formato": "PDF-A4-Color",
@@ -138,6 +204,27 @@
       "destacado": false,
       "relacionados": [],
       "testimonios": []
+    },
+    {
+      "id": "plataforma-interactiva-revolucion-de-mayo",
+      "nombre": "Plataforma Interactiva - Revolución de Mayo",
+      "descripcion": "Plataforma Educativa",
+      "tipo": "juego",
+      "acceso": "pago",
+      "precio": 2500,
+      "imagen": "images/placeholder-vocales.svg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/revolucion-de-mayo-con-plataforma-interactiva",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "Plataforma interactiva sobre la Revolución de Mayo, diseñada para aprender jugando, explorar y disfrutar de nuestras efemérides de una manera dinámica y significativa.\n\n🌟 ¿Qué incluye?\n🎮 Juegos interactivos\n🧩 Actividades lúdicas y didácticas\n🎨 Diseño visual infantil y atractivo\n📖 Contenidos adaptados para nivel primario\n🇦🇷 Personajes, símbolos y hechos históricos de 1810\n💻 Acceso digital desde celular, tablet o computadora\n\n✨ Además, la plataforma se complementa con las actividades propuestas en el cuadernillo del 25 de Mayo, permitiendo ampliar y enriquecer el trabajo del aula con recursos digitales interactivos.",
+      "tematica": "juegos",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "meses": [
+        5
+      ],
+      "demoUrl": "https://cofredidactico.github.io/RevoluciondeMayo/",
+      "previewSegundos": 25
     }
   ]
 }
