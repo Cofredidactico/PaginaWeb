@@ -225,6 +225,27 @@
       ],
       "demoUrl": "https://cofredidactico.github.io/RevoluciondeMayo/",
       "previewSegundos": 25
+    },
+    {
+      "id": "plataforma-interactiva-dia-de-la-escarapela",
+      "nombre": "Plataforma Interactiva - Día de la Escarapela",
+      "descripcion": "Plataforma Interactiva Día de la Escarapela",
+      "tipo": "juego",
+      "acceso": "pago",
+      "precio": 2500,
+      "imagen": "images/producto-1779302494886.jpeg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/plataforma-interactiva-dia-de-la-escarapela",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "Te presentamos una plataforma interactiva pensada para que los chicos aprendan sobre nuestro símbolo patrio de una forma súper divertida.\n\n​🎮 ¿Qué vas a encontrar en la web?\n\nActividades organizadas por niveles de dificultad:\n\n🟢 Nivel 1: Memotest y unir con flechas para los más peques.\n🟡 Nivel 2: Sopa de letras, rompecabezas y ordenar letras.\n🔴 Nivel 3: Desafíos de oraciones y un Quiz avanzado sobre su historia.\n🎡 ¡Y mucho más! Ruleta de preguntas, códigos secretos y actividades artísticas.\n\n✨️Todos los juegos con guía de Audio.\n\n​📢 ¡AVISO IMPORTANTE!\nPara todos los que ya adquirieron nuestro cuadernillo del Día de la Escarapela, esta plataforma interactiva ya se sumó automáticamente a su carpeta compartida como un recurso complementario para potenciar sus clases. 🎁✨",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 4200,
+      "meses": [
+        5
+      ],
+      "demoUrl": "https://cofredidactico.github.io/DiadelaEscarapela/",
+      "previewSegundos": 25
     }
   ]
 }
