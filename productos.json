@@ -678,6 +678,28 @@
       "meses": [
         4
       ]
+    },
+    {
+      "id": "dia-del-animal",
+      "nombre": "Día del Animal",
+      "descripcion": "Incluye propuestas variadas para que los peques aprendan sobre los animales mientras desarrollan habilidades de lectura, escritura, observación y reflexión.",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 6000,
+      "imagen": "images/producto-1779318880587.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-del-animal",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "📄 Secuencia Didáctica (Con Fundamentación, Propósitos y Contenidos)\n🐾 Comprensión de infografía\n🐾 Ordenar letras y formar palabras\n🐾 Sopa de letras\n🐾 Clasificación de animales\n🐾 Relación animal-hábitat\n🐾 Completar sílabas\n🐾 Actividades de conteo\n🐾 Crucigrama\n🐾 Encuentra las diferencias\n🐾 Propuestas de reflexión sobre el cuidado animal\n🐾 Juego interactivo + rompecabezas\n\n📚 Ideal para Nivel Inicial y Primer Ciclo\n🎨 Actividades listas para imprimir\n💻 Incluye propuesta interactiva\n📝 Perfecto para abordar la efeméride de forma integral",
+      "tematica": "efemerides",
+      "nivel": "Primaria",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 7500,
+      "paginas": 21,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        4
+      ]
     }
   ]
 }
