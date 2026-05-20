@@ -462,6 +462,28 @@
       "meses": [
         3
       ]
+    },
+    {
+      "id": "dia-nacional-de-la-memoria-por-la-verdad-y-la-justicia",
+      "nombre": "Día Nacional de la Memoria por la Verdad y la Justicia",
+      "descripcion": "Recurso pensado para trabajar esta fecha tan importante en el aula de forma clara, respetuosa y significativa.",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 5000,
+      "imagen": "images/producto-1779309900388.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/general/24-de-marzo-dia-de-la-memoria-por-la-verdad-y-la-justicia",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "El material incluye:\n\n📄 Infografías explicativas\n🕊️ Tarjetas del pañuelo blanco con acróstico\n🧠 Actividades de comprensión y reflexión\n🔎 Sopa de letras y crucigrama\n🧩 Rompecabezas\n🪪 Actividad de identidad con modelo de DNI\n🏷️ Plantilla de stickers con elementos representativos de la efeméride\n\n📂 El recurso se entrega en:\n✔ 1 PDF de 47 hojas tamaño A4 listo para imprimir\n✔ 1 carpeta con todas las actividades en formato JPG (imagen) para que puedas pegarlas en Word y ajustar el tamaño según tus necesidades.\n\nUn material completo para trabajar con los estudiantes los valores de\nMEMORIA • VERDAD • JUSTICIA",
+      "tematica": "efemerides",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 6200,
+      "paginas": 47,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        3
+      ]
     }
   ]
 }
