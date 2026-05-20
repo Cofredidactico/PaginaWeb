@@ -75,6 +75,16 @@ collections:
                   - { label: "🖼️ Lámina", value: "lamina" }
                   - { label: "🎁 Pack / Combo", value: "pack" }
                   - { label: "📄 Otro recurso", value: "otro" }
+
+              # ─────────────────────────────────────────────
+              # 🎮 PLATAFORMA INTERACTIVA (si el producto tiene un juego online)
+              # Si elegiste "Juego interactivo" arriba, llená estos 3 campos.
+              # También podés llenarlos en un Cuadernillo que tenga plataforma extra.
+              # ─────────────────────────────────────────────
+              - {label: "🎮 URL de la plataforma interactiva", name: "demoUrl", widget: "string", required: false, pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "🟢 LLENÁ ESTO si el producto tiene un juego online. Ej: https://cofredidactico.github.io/RevoluciondeMayo/ — Aparecerá automáticamente en la página de 'Recursos Interactivos' con un preview embebido."}
+              - {label: "⏱️ Segundos de preview gratis", name: "previewSegundos", widget: "number", required: false, value_type: "int", min: 5, max: 300, default: 30, hint: "Cuántos segundos puede jugar el visitante DENTRO del sitio antes de mostrarle el botón de compra o de jugar completo. 30 segundos es lo recomendado."}
+              - {label: "🆓 Link 'Jugar completo gratis' (solo si acceso = Gratis)", name: "linkGratis", widget: "string", required: false, hint: "Si la plataforma es gratuita, después del preview lleva acá. Suele ser la MISMA URL que el campo de arriba. Si la plataforma es PAGA, dejá esto vacío — se usará automáticamente el link de Empretienda."}
+
               - label: "🏷️ Temática"
                 name: "tematica"
                 widget: "select"
@@ -152,13 +162,8 @@ collections:
               - {label: "📐 Formato", name: "formato", widget: "string", required: false, hint: "Ej: PDF · A4 · Color y B&N"}
 
               # ── Compra ────────────────────
-              - {label: "🛒 Link principal de compra (Empretienda)", name: "link", widget: "string", pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "URL del producto en tu tienda principal (Empretienda)."}
+              - {label: "🛒 Link principal de compra (Empretienda)", name: "link", widget: "string", pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "URL del producto en tu tienda principal (Empretienda). Si la plataforma es paga, este link se usa al terminar el preview."}
               - {label: "🔥 Link de Hotmart (opcional)", name: "linkHotmart", widget: "string", required: false, pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "Si lo completás, en la ficha del producto aparece un segundo botón 'Comprar en Hotmart'."}
-
-              # ── Plataforma interactiva (opcional) ─────────
-              - {label: "🎮 URL de la plataforma interactiva (opcional)", name: "demoUrl", widget: "string", required: false, pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "Si este producto tiene una plataforma para jugar online (ej: https://cofredidactico.github.io/RevoluciondeMayo/), pegá la URL acá. Automáticamente aparecerá en la página de Recursos Interactivos con un preview de unos segundos antes de mostrar el botón de compra. Dejá vacío si el producto no tiene plataforma online."}
-              - {label: "⏱️ Segundos de preview en la plataforma", name: "previewSegundos", widget: "number", required: false, value_type: "int", min: 5, max: 300, default: 30, hint: "Cuántos segundos puede jugar el visitante dentro del sitio antes de mostrar el CTA. Sólo aplica si llenaste 'URL de la plataforma'."}
-              - {label: "🆓 Link 'Jugar completo gratis' (sólo si acceso = gratis)", name: "linkGratis", widget: "string", required: false, hint: "Si el recurso es gratis, después del preview lleva acá (ej: la misma URL de la plataforma). Sólo se usa cuando 'Tipo de acceso' es Gratis."}
 
               # ── Visibilidad ───────────────
               - label: "🎖️ Etiqueta destacada"
