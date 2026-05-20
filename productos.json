@@ -348,7 +348,10 @@
       "precioTachado": 7500,
       "meses": [
         4
-      ]
+      ],
+      "tematica": "lengua",
+      "paginas": 16,
+      "formato": "PDF-A4-Color"
     },
     {
       "id": "el-hombrecito-de-jengibre",
