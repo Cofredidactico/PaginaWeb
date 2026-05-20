@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recursos Interactivos — Cofre Didáctico</title>
+<meta name="description" content="Plataformas interactivas para usar en el aula. Probalas directamente desde el navegador." />
+<meta name="theme-color" content="#1A2744" />
+<meta property="og:title" content="Recursos Interactivos — Cofre Didáctico" />
+<meta property="og:description" content="Plataformas interactivas. Probalas acá mismo, jugá completo gratis o sumalas a tu aula." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_AR" />
+<link rel="icon" href="logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ═════════════════════════════════════════════════════════
+   COFRE DIDÁCTICO — Recursos Interactivos
+   ═════════════════════════════════════════════════════════ */
+:root{
+  --ink:#1A2744; --ink-2:#3B4A66; --ink-3:#637082; --ink-4:#8A93A4;
+  --bg:#FDFCF8; --bg-2:#F5F0E8; --bg-3:#ECE5D8;
+  --line:#E8E0CE;
+  --primary:#2196F3; --primary-soft:#E3F2FD;
+  --accent:#FF8A4C; --accent-soft:#FFE9D9;
+  --green:#2E7D32; --green-soft:#E8F5E9;
+  --purple:#7B61FF; --purple-soft:#F3E8FF;
+  --gold:#F4A300;
+  --r-sm:8px; --r:14px; --r-lg:22px; --r-xl:32px;
+  --s-1: 0 1px 2px rgba(26,39,68,.05);
+  --s-2: 0 2px 4px rgba(26,39,68,.04), 0 8px 24px rgba(26,39,68,.06);
+  --s-3: 0 12px 32px rgba(26,39,68,.10);
+  --f-display:'Outfit', system-ui, sans-serif;
+  --f-body:'Nunito', system-ui, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  margin:0; font-family:var(--f-body); font-size:16px; line-height:1.6;
+  color:var(--ink); background:var(--bg);
+  background-image: radial-gradient(circle at 1px 1px, rgba(26,39,68,.04) 1px, transparent 0);
+  background-size: 28px 28px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:0;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+
+/* ─── Header ─── */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(253,252,248,.85);backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid rgba(26,39,68,.07);}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:24px;}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:800;font-size:1.1rem;}
+.brand img{width:40px;height:40px;border-radius:10px;object-fit:cover;}
+.brand strong{color:var(--accent);}
+.nav{display:flex;align-items:center;gap:6px;}
+.nav a{padding:8px 14px;border-radius:10px;font-weight:700;font-size:.92rem;color:var(--ink-2);transition:background .15s, color .15s;}
+.nav a:hover{background:var(--bg-2);color:var(--ink);}
+.nav a.active{color:var(--purple);background:var(--purple-soft);}
+.nav-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:99px;font-weight:800;font-size:.88rem;border:1.5px solid transparent;transition:all .2s;}
+.nav-pill-blue{background:var(--primary-soft);color:var(--primary);border-color:rgba(33,150,243,.15);}
+.nav-pill-blue:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
+.nav-pill-green{background:var(--green-soft);color:var(--green);border-color:rgba(46,125,50,.15);}
+.nav-pill-green:hover{background:var(--green);color:#fff;border-color:var(--green);}
+.nav-pill-purple{background:var(--purple-soft);color:var(--purple);border-color:rgba(123,97,255,.18);}
+.nav-pill-purple:hover{background:var(--purple);color:#fff;border-color:var(--purple);}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:12px;font-weight:700;font-size:.95rem;transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .2s,background .2s,border-color .2s;}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{background:linear-gradient(135deg,var(--purple),#5E3FE0);color:#fff;box-shadow:0 4px 14px rgba(123,97,255,.32);}
+.btn-primary:hover{box-shadow:0 8px 24px rgba(123,97,255,.45);}
+.btn-ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink);}
+.btn-ghost:hover{border-color:var(--purple);color:var(--purple);}
+.btn-green{background:linear-gradient(135deg,var(--green),#1B5E20);color:#fff;box-shadow:0 4px 14px rgba(46,125,50,.32);}
+.btn-orange{background:linear-gradient(135deg,var(--accent),#FF6B35);color:#fff;box-shadow:0 4px 14px rgba(255,138,76,.32);}
+.btn-lg{padding:15px 28px;font-size:1rem;}
+.btn-sm{padding:8px 14px;font-size:.85rem;}
+
+/* ─── Hero ─── */
+.hero-i{position:relative;padding:64px 0 56px;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 15% 0%, rgba(123,97,255,.10), transparent 60%),radial-gradient(ellipse 70% 60% at 90% 100%, rgba(33,150,243,.10), transparent 60%);}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--line);padding:8px 16px;border-radius:99px;font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);box-shadow:var(--s-1);}
+.hero-i h1{font-size:clamp(2.2rem, 5vw, 3.6rem);margin:18px 0 18px;text-wrap:balance;}
+.hero-i h1 em{font-style:normal;background:linear-gradient(135deg,var(--purple),var(--primary));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-i p.lead{font-size:1.05rem;color:var(--ink-2);max-width:520px;margin:0 0 24px;}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
+.hero-points{display:flex;gap:24px;flex-wrap:wrap;margin-top:28px;}
+.hero-pt{display:flex;align-items:center;gap:8px;font-size:.92rem;color:var(--ink-2);font-weight:700;}
+.hero-pt .pt-em{width:32px;height:32px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);font-size:.95rem;}
+
+/* Hero mockup: laptop simplificada */
+.mock{position:relative;aspect-ratio:5/4;}
+.mock-screen{position:absolute;left:6%;top:0;right:6%;height:78%;background:#fff;border:8px solid #2A3142;border-radius:18px 18px 8px 8px;overflow:hidden;box-shadow:0 22px 50px rgba(26,39,68,.18);}
+.mock-screen::before{content:'';position:absolute;top:0;left:0;right:0;height:18px;background:#1A2330;display:flex;}
+.mock-screen-bd{position:absolute;inset:18px 0 0;background:linear-gradient(135deg,#F3E8FF,#E3F2FD);display:flex;align-items:center;justify-content:center;padding:24px;}
+.mock-blob{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;}
+.mock-card{background:#fff;border-radius:10px;height:54px;border:1px solid rgba(26,39,68,.06);box-shadow:0 4px 10px rgba(26,39,68,.06);position:relative;overflow:hidden;}
+.mock-card::before{content:'';position:absolute;left:8px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--primary));}
+.mock-card::after{content:'';position:absolute;left:38px;top:18px;right:10px;height:6px;border-radius:3px;background:var(--bg-3);}
+.mock-card span{position:absolute;left:38px;bottom:14px;width:50%;height:5px;border-radius:3px;background:var(--bg-3);display:block;}
+.mock-base{position:absolute;left:0;right:0;bottom:0;height:8%;background:linear-gradient(180deg,#2A3142,#1A2330);border-radius:0 0 14px 14px;}
+.mock-base::after{content:'';position:absolute;left:50%;transform:translateX(-50%);top:0;width:22%;height:5px;background:#0E141F;border-radius:0 0 6px 6px;}
+
+/* ─── Sec ─── */
+.sec{padding:64px 0;}
+.sec-hd{margin-bottom:36px;}
+.sec-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--purple-soft),rgba(123,97,255,.04));color:var(--purple);padding:7px 16px;border-radius:99px;font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(123,97,255,.16);margin-bottom:14px;}
+.sec-h{font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:10px;text-wrap:balance;}
+.sec-h em{font-style:normal;background:linear-gradient(135deg,var(--purple),var(--primary));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.sec-sub{color:var(--ink-3);max-width:600px;font-size:1.02rem;}
+
+/* ─── Grid de interactivos ─── */
+.grid-i{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px;}
+.card-i{background:#fff;border-radius:var(--r-lg);border:1px solid rgba(26,39,68,.07);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--s-1);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s, border-color .25s;position:relative;}
+.card-i:hover{transform:translateY(-5px);box-shadow:var(--s-3);border-color:rgba(123,97,255,.25);}
+.card-i-media{position:relative;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg,#F3E8FF,#E3F2FD);}
+.card-i-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.card-i:hover .card-i-media img{transform:scale(1.05);}
+.card-i-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,39,68,0) 50%,rgba(26,39,68,.6) 100%);display:flex;align-items:flex-end;justify-content:center;padding:14px;}
+.card-i-play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 30px rgba(26,39,68,.25);
+  transition:transform .25s;
+  font-size:1.4rem;
+}
+.card-i:hover .card-i-play{transform:translate(-50%,-50%) scale(1.1);}
+.card-i-tag{position:absolute;top:12px;left:12px;background:#fff;padding:5px 11px;border-radius:99px;font-size:.7rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);box-shadow:var(--s-1);}
+.card-i-tag.gratis{background:var(--green);color:#fff;}
+.card-i-tag.pago{background:var(--gold);color:#fff;}
+.card-i-ribbon{position:absolute;top:12px;right:12px;background:var(--accent);color:#fff;padding:5px 11px;border-radius:99px;font-size:.7rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;box-shadow:var(--s-2);}
+.card-i-bd{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.card-i-meta{display:flex;gap:8px;flex-wrap:wrap;}
+.chip-meta{display:inline-flex;align-items:center;gap:4px;background:var(--bg-2);color:var(--ink-2);padding:3px 10px;border-radius:99px;font-size:.74rem;font-weight:700;}
+.card-i-tt{font-family:var(--f-display);font-size:1.1rem;font-weight:800;color:var(--ink);line-height:1.2;}
+.card-i-de{font-size:.88rem;color:var(--ink-3);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.card-i-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);}
+.card-i-foot .price{font-family:var(--f-display);font-weight:800;font-size:1rem;color:var(--ink);}
+.card-i-foot .price.gratis{color:var(--green);}
+.card-i-foot .btn-play{background:linear-gradient(135deg,var(--purple),#5E3FE0);color:#fff;padding:8px 14px;border-radius:10px;font-size:.84rem;font-weight:800;display:inline-flex;gap:6px;align-items:center;transition:transform .2s, box-shadow .2s;}
+.card-i:hover .btn-play{box-shadow:0 6px 16px rgba(123,97,255,.4);}
+
+/* ─── Filtros ─── */
+.filtros-i{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;align-items:center;}
+.chip-i{background:#fff;border:1.5px solid var(--line);padding:8px 14px;border-radius:99px;font-size:.86rem;font-weight:700;color:var(--ink-2);transition:all .2s;}
+.chip-i:hover{border-color:var(--purple);color:var(--purple);}
+.chip-i.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+.chip-i .count{margin-left:6px;font-size:.72rem;background:var(--bg-2);padding:1px 7px;border-radius:99px;color:var(--ink-3);}
+.chip-i.on .count{background:rgba(255,255,255,.18);color:#fff;}
+
+/* ─── Cómo funciona ─── */
+.como{background:linear-gradient(180deg,#fff,var(--bg-2));}
+.como-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.como-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 22px;text-align:left;position:relative;box-shadow:var(--s-1);}
+.como-step{position:absolute;top:18px;right:18px;font-family:var(--f-display);font-weight:800;font-size:2rem;color:var(--purple-soft);line-height:1;}
+.como-em{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--purple-soft),#E3F2FD);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px;}
+.como-card h3{font-size:1.05rem;margin-bottom:6px;}
+.como-card p{font-size:.92rem;color:var(--ink-3);margin:0;line-height:1.55;}
+
+/* ─── Footer ─── */
+footer{background:var(--ink);color:#D1D7E0;padding:48px 0 24px;}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;}
+.ft-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px;color:#fff;font-family:var(--f-display);font-weight:800;font-size:1.15rem;}
+.ft-brand img{width:40px;height:40px;border-radius:10px;}
+.ft-brand strong{color:var(--accent);}
+.ft p{font-size:.92rem;color:#A8B0BD;line-height:1.6;max-width:320px;}
+.ft-social{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.ft-social a{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);padding:8px 14px;border-radius:10px;font-size:.85rem;font-weight:700;transition:background .2s;}
+.ft-social a:hover{background:rgba(255,255,255,.12);}
+.ft h4{color:#fff;font-size:.92rem;margin-bottom:14px;letter-spacing:.04em;text-transform:uppercase;}
+.ft ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+.ft ul a{font-size:.92rem;color:#A8B0BD;transition:color .2s;}
+.ft ul a:hover{color:#fff;}
+.ft-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.82rem;color:#A8B0BD;}
+
+/* ─── WhatsApp floating ─── */
+.wa{position:fixed;bottom:24px;right:24px;z-index:40;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:13px 20px;border-radius:99px;font-weight:700;font-size:.92rem;box-shadow:0 6px 20px rgba(37,211,102,.4);transition:transform .2s, box-shadow .2s;}
+.wa:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,211,102,.5);}
+
+/* ═════════ MODAL IFRAME — el corazón de la página ═════════ */
+.modal{position:fixed;inset:0;background:rgba(15,20,30,.88);backdrop-filter:blur(8px);z-index:100;display:none;flex-direction:column;animation:modalIn .25s ease;}
+.modal.open{display:flex;}
+@keyframes modalIn{from{opacity:0;}to{opacity:1;}}
+.modal-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 22px;color:#fff;flex:none;}
+.modal-tt{font-family:var(--f-display);font-weight:800;font-size:1rem;display:flex;align-items:center;gap:10px;}
+.modal-tt .modal-em{font-size:1.2rem;}
+.modal-clock{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.1);padding:7px 14px;border-radius:99px;
+  font-weight:800;font-size:.86rem;letter-spacing:.04em;
+}
+.modal-clock.warn{background:var(--accent);color:#fff;animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+.modal-x{
+  width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;font-weight:800;
+  transition:background .2s;
+}
+.modal-x:hover{background:rgba(255,255,255,.2);}
+.modal-stage{flex:1;position:relative;margin:0 22px 22px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+.modal-iframe{position:absolute;inset:0;border:0;width:100%;height:100%;background:#fff;}
+.modal-cover{
+  position:absolute;inset:0;background:rgba(15,20,30,.95);backdrop-filter:blur(6px);
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  padding:24px;text-align:center;color:#fff;z-index:5;
+}
+.modal-cover.show{display:flex;}
+.modal-cover .ic{
+  width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--primary));
+  display:flex;align-items:center;justify-content:center;font-size:2.4rem;margin-bottom:24px;
+  box-shadow:0 20px 50px rgba(123,97,255,.4);
+}
+.modal-cover h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 12px;text-wrap:balance;max-width:600px;}
+.modal-cover p{font-size:1rem;max-width:520px;line-height:1.55;margin:0 0 28px;color:rgba(255,255,255,.82);}
+.modal-cover-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.modal-cover .btn{border:0;}
+.modal-cover .btn-ghost{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.2);}
+.modal-cover .btn-ghost:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3);}
+
+/* ─── Skeleton ─── */
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+.skel{background:linear-gradient(110deg,var(--bg-2) 8%,var(--bg-3) 18%,var(--bg-2) 33%);background-size:200% 100%;animation:shimmer 1.6s linear infinite;border-radius:8px;}
+
+/* ─── Reveal ─── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s, transform .7s;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ─── Empty ─── */
+.empty{text-align:center;padding:60px 20px;color:var(--ink-3);grid-column:1/-1;}
+.empty-em{font-size:3.4rem;margin-bottom:14px;}
+.empty h3{font-size:1.4rem;color:var(--ink);margin-bottom:8px;}
+
+@media (max-width:840px){
+  .hero-grid{grid-template-columns:1fr;}
+  .mock{max-width:420px;margin:0 auto;}
+  .ft-grid{grid-template-columns:1fr 1fr;}
+  .nav .hide-mobile{display:none;}
+  .nav{gap:8px;}
+  .hdr-in{gap:12px;}
+}
+@media (max-width:520px){
+  .sec{padding:48px 0;}
+  .hero-i{padding:40px 0 48px;}
+  .hero-i h1{font-size:2rem;}
+  .ft-grid{grid-template-columns:1fr;}
+  .wa span{display:none;}
+  .wa{padding:14px;}
+  .brand span{font-size:.95rem;}
+  .nav-pill{padding:7px 11px;font-size:.82rem;}
+  .modal-bar{padding:10px 14px;}
+  .modal-stage{margin:0 10px 10px;}
+  .modal-tt{font-size:.9rem;}
+}
+@media (max-width:380px){
+  .hide-xs{display:none;}
+  .brand img{width:34px;height:34px;}
+  .brand span{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Cofre Didáctico" onerror="this.style.display='none'" />
+      <span>Cofre <strong>Didáctico</strong></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html#catalogo" class="nav-pill nav-pill-blue">📚 Catálogo</a>
+      <a href="interactivos.html" class="active hide-mobile">🎮 Interactivos</a>
+      <a href="gratis.html" class="nav-pill nav-pill-green">🎁 Gratis</a>
+      <a href="index.html#newsletter" class="btn btn-ghost btn-sm hide-xs">📧 Newsletter</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero-i">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-badge">🎮 Plataformas interactivas</div>
+      <h1>Recursos para <em>jugar y aprender</em> en el aula</h1>
+      <p class="lead">Plataformas didácticas que tus estudiantes pueden usar desde cualquier dispositivo. Probá cada una directamente acá, y si te gusta, jugá completo gratis o sumala a tu aula.</p>
+      <div class="hero-cta">
+        <a href="#grid-i" class="btn btn-primary btn-lg">Ver recursos ↓</a>
+        <a href="index.html#newsletter" class="btn btn-ghost btn-lg">📧 Avisame de nuevos</a>
+      </div>
+      <div class="hero-points">
+        <div class="hero-pt"><span class="pt-em">⚡</span>Probá al instante</div>
+        <div class="hero-pt"><span class="pt-em">📱</span>Cualquier dispositivo</div>
+        <div class="hero-pt"><span class="pt-em">🆓</span>Algunos gratis</div>
+      </div>
+    </div>
+    <div class="mock" aria-hidden="true">
+      <div class="mock-screen">
+        <div class="mock-screen-bd">
+          <div class="mock-blob">
+            <div class="mock-card"><span></span></div>
+            <div class="mock-card"><span></span></div>
+            <div class="mock-card"><span></span></div>
+            <div class="mock-card"><span></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mock-base"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Cómo funciona -->
+<section class="sec como">
+  <div class="wrap">
+    <div class="sec-hd" style="text-align:center;">
+      <div class="sec-badge">✨ Así funciona</div>
+      <h2 class="sec-h">3 pasos para <em>probar</em> y usar en clase</h2>
+    </div>
+    <div class="como-grid">
+      <div class="como-card">
+        <span class="como-step">01</span>
+        <div class="como-em">🖱️</div>
+        <h3>Elegí un recurso</h3>
+        <p>Filtrá por nivel o temática y mirá el que te interese.</p>
+      </div>
+      <div class="como-card">
+        <span class="como-step">02</span>
+        <div class="como-em">⏱️</div>
+        <h3>Probalo unos segundos</h3>
+        <p>Hacé clic en "Probar" y la plataforma se abre acá mismo. Sin descargas.</p>
+      </div>
+      <div class="como-card">
+        <span class="como-step">03</span>
+        <div class="como-em">🚀</div>
+        <h3>Jugá completo o llevatelo</h3>
+        <p>Si es gratis, te llevamos a la versión completa. Si es de pago, podés sumarlo a tu aula.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Grid -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div class="sec-badge">🎮 Catálogo interactivo</div>
+      <h2 class="sec-h">Recursos <em>para probar ya</em></h2>
+      <p class="sec-sub">Cada recurso abre directamente acá. Probalo unos segundos, después decidís si lo querés completo.</p>
+    </div>
+
+    <div class="filtros-i" id="filtros"></div>
+
+    <div class="grid-i" id="grid-i">
+      <div class="card-i"><div class="card-i-media skel" style="aspect-ratio:16/10;"></div><div class="card-i-bd"><div class="skel" style="height:14px;margin-bottom:8px;"></div><div class="skel" style="height:32px;"></div></div></div>
+      <div class="card-i"><div class="card-i-media skel" style="aspect-ratio:16/10;"></div><div class="card-i-bd"><div class="skel" style="height:14px;margin-bottom:8px;"></div><div class="skel" style="height:32px;"></div></div></div>
+      <div class="card-i"><div class="card-i-media skel" style="aspect-ratio:16/10;"></div><div class="card-i-bd"><div class="skel" style="height:14px;margin-bottom:8px;"></div><div class="skel" style="height:32px;"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-brand">
+          <img src="logo.png" alt="" onerror="this.style.display='none'" />
+          <span>Cofre <strong>Didáctico</strong></span>
+        </div>
+        <p>Plataformas interactivas y recursos didácticos hechos por una docente. Probalos hoy, usalos mañana en tu aula.</p>
+        <div class="ft-social" id="ft-social"></div>
+      </div>
+      <div>
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="index.html#catalogo">Catálogo</a></li>
+          <li><a href="interactivos.html">🎮 Interactivos</a></li>
+          <li><a href="gratis.html">🎁 Gratis</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Comprar</h4>
+        <ul id="ft-comprar"></ul>
+      </div>
+      <div>
+        <h4>Comunidad</h4>
+        <ul>
+          <li><a href="index.html#newsletter">Newsletter</a></li>
+          <li><a href="" id="ft-ig">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>© <span id="year"></span> Cofre Didáctico · Hecho con ❤️ para docentes</span>
+      <span>v4 · Interactivos</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa" id="wa" target="_blank" rel="noopener">
+  <span style="font-size:1.2rem;">💬</span><span>Consultanos</span>
+</a>
+
+<!-- ═════════ MODAL para iframe ═════════ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-tt">
+  <div class="modal-bar">
+    <div class="modal-tt"><span class="modal-em">🎮</span><span id="modal-tt">Cargando…</span></div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="modal-clock" id="modal-clock">⏱ <span id="modal-secs">30</span>s</div>
+      <button class="modal-x" onclick="cerrarModal()" aria-label="Cerrar">✕</button>
+    </div>
+  </div>
+  <div class="modal-stage">
+    <iframe class="modal-iframe" id="modal-iframe" src="about:blank" allow="autoplay; fullscreen" referrerpolicy="no-referrer"></iframe>
+    <div class="modal-cover" id="modal-cover">
+      <div class="ic" id="cover-em">🎉</div>
+      <h2 id="cover-tt">¿Te gustó?</h2>
+      <p id="cover-de">Seguí jugando la versión completa o llevatela para usarla en tu aula.</p>
+      <div class="modal-cover-cta">
+        <a href="#" id="cover-primary" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Jugar completo →</a>
+        <button class="btn btn-ghost btn-lg" onclick="extender()">⏱ Probar 30s más</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+
+const NIVELES = {
+  'inicial':'🧸 Inicial', '1ciclo':'1️⃣ 1° Ciclo',
+  '2ciclo':'2️⃣ 2° Ciclo', 'secundaria':'🎒 Secundaria',
+  'multinivel':'🌎 Multinivel'
+};
+
+let _data = null;
+let _filtroNivel = 'todos';
+let _filtroAcceso = 'todos';
+let _activeItem = null;
+let _timerId = null;
+let _secsLeft = 30;
+
+fetch('productos.json?v=' + Date.now())
+  .then(r => r.json())
+  .then(data => { _data = data; aplicarConfig(); render(); })
+  .catch(err => {
+    console.error('Error cargando productos.json', err);
+    $('#grid-i').innerHTML = '<div class="empty"><div class="empty-em">⚠️</div><h3>No pudimos cargar los recursos</h3><p>Probá refrescando en unos segundos.</p></div>';
+  });
+
+function aplicarConfig(){
+  const L = (_data.config && _data.config.links) || {};
+  if (L.whatsapp) $('#wa').href = L.whatsapp;
+  const social = $('#ft-social');
+  if (L.instagram){ social.innerHTML += `<a href="${L.instagram}" target="_blank" rel="noopener">📸 Instagram</a>`; $('#ft-ig').href = L.instagram; }
+  if (L.empretienda) social.innerHTML += `<a href="${L.empretienda}" target="_blank" rel="noopener">🏪 Tienda</a>`;
+  if (L.email) social.innerHTML += `<a href="mailto:${L.email}">✉️ Email</a>`;
+  const c1 = $('#ft-comprar');
+  if (L.empretienda) c1.innerHTML += `<li><a href="${L.empretienda}" target="_blank" rel="noopener">Empretienda</a></li>`;
+  if (L.hotmart) c1.innerHTML += `<li><a href="${L.hotmart}" target="_blank" rel="noopener">Hotmart</a></li>`;
+  if (L.email) c1.innerHTML += `<li><a href="mailto:${L.email}">Contacto</a></li>`;
+  $('#year').textContent = new Date().getFullYear();
+}
+
+function render(){
+  const items = (_data.interactivos||[]).filter(x => x.activo);
+
+  if (!items.length){
+    $('#filtros').innerHTML = '';
+    $('#grid-i').innerHTML = `<div class="empty"><div class="empty-em">🚧</div><h3>Pronto vas a ver recursos acá</h3><p>Estamos preparando nuevas plataformas interactivas. Mientras tanto, mirá el <a href="index.html#catalogo" style="color:var(--purple);font-weight:800;">catálogo completo</a>.</p></div>`;
+    return;
+  }
+
+  // Filtros: acceso (todos/gratis/pago) + nivel
+  const niveles = ['todos', ...new Set(items.map(x => x.nivelGrupo).filter(Boolean))];
+  const fHTML = [
+    `<button class="chip-i ${_filtroAcceso==='todos'?'on':''}" onclick="setF('acceso','todos')">✨ Todos <span class="count">${items.length}</span></button>`,
+    `<button class="chip-i ${_filtroAcceso==='gratis'?'on':''}" onclick="setF('acceso','gratis')">🎁 Gratis <span class="count">${items.filter(x=>x.acceso==='gratis').length}</span></button>`,
+    `<button class="chip-i ${_filtroAcceso==='pago'?'on':''}" onclick="setF('acceso','pago')">💎 De pago <span class="count">${items.filter(x=>x.acceso!=='gratis').length}</span></button>`,
+    ...niveles.filter(n => n !== 'todos').map(n => {
+      const count = items.filter(x => x.nivelGrupo === n).length;
+      return `<button class="chip-i ${_filtroNivel===n?'on':''}" onclick="setF('nivel','${n}')">${NIVELES[n]||n} <span class="count">${count}</span></button>`;
+    })
+  ].join('');
+  $('#filtros').innerHTML = fHTML;
+
+  const filtrados = items.filter(x => {
+    if (_filtroAcceso === 'gratis' && x.acceso !== 'gratis') return false;
+    if (_filtroAcceso === 'pago' && x.acceso === 'gratis') return false;
+    if (_filtroNivel !== 'todos' && x.nivelGrupo !== _filtroNivel) return false;
+    return true;
+  });
+
+  if (!filtrados.length){
+    $('#grid-i').innerHTML = `<div class="empty"><div class="empty-em">🔍</div><h3>Sin resultados con estos filtros</h3></div>`;
+    return;
+  }
+
+  $('#grid-i').innerHTML = filtrados.map((x,i) => {
+    const ribbon = x.etiqueta === 'nuevo' ? `<div class="card-i-ribbon">🔥 Nuevo</div>` : '';
+    const acceso = x.acceso === 'gratis'
+      ? `<div class="card-i-tag gratis">🎁 Gratis</div>`
+      : `<div class="card-i-tag pago">💎 De pago</div>`;
+    const meta = [];
+    if (x.nivelGrupo) meta.push(`<span class="chip-meta">${NIVELES[x.nivelGrupo]||x.nivelGrupo}</span>`);
+    if (x.tematica)   meta.push(`<span class="chip-meta">📚 ${x.tematica}</span>`);
+    const precio = x.acceso === 'gratis'
+      ? `<span class="price gratis">¡Gratis!</span>`
+      : (x.precio ? `<span class="price">$${(x.precio).toLocaleString('es-AR')}</span>` : '');
+    return `
+      <div class="card-i reveal" data-id="${x.id}">
+        <div class="card-i-media" onclick="abrirModal('${x.id}')">
+          ${acceso}${ribbon}
+          <img src="${x.imagen}" alt="${x.nombre}" loading="lazy" onerror="this.style.display='none'" />
+          <div class="card-i-overlay"></div>
+          <div class="card-i-play" aria-hidden="true">▶</div>
+        </div>
+        <div class="card-i-bd">
+          ${meta.length?`<div class="card-i-meta">${meta.join('')}</div>`:''}
+          <h3 class="card-i-tt">${x.nombre}</h3>
+          <p class="card-i-de">${x.descripcion||''}</p>
+          <div class="card-i-foot">
+            ${precio || '<span></span>'}
+            <button class="btn-play" onclick="abrirModal('${x.id}')">▶ Probar</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  initReveal();
+}
+
+function setF(k, v){
+  if (k === 'acceso') _filtroAcceso = v;
+  if (k === 'nivel')  _filtroNivel  = v;
+  render();
+}
+
+function initReveal(){
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { rootMargin:'50px' });
+  $$('.reveal').forEach(el => { if(!el.classList.contains('in')) obs.observe(el); });
+}
+
+// ═════════ MODAL ═════════
+function abrirModal(id){
+  const item = (_data.interactivos||[]).find(x => x.id === id);
+  if (!item) return;
+  _activeItem = item;
+  _secsLeft = Number(item.previewSegundos || 30);
+
+  $('#modal-tt').textContent = item.nombre;
+  $('#modal-secs').textContent = _secsLeft;
+  $('#modal-clock').classList.remove('warn');
+  $('#modal-cover').classList.remove('show');
+
+  // Cargar iframe
+  $('#modal-iframe').src = item.demoUrl || 'about:blank';
+
+  $('#modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // Iniciar contador
+  arrancarTimer();
+
+  // Trackear apertura
+  if (window.umami) umami.track('interactivo-abrir', { id: item.id, nombre: item.nombre, acceso: item.acceso });
+}
+
+function arrancarTimer(){
+  stopTimer();
+  _timerId = setInterval(() => {
+    _secsLeft--;
+    $('#modal-secs').textContent = Math.max(_secsLeft, 0);
+    if (_secsLeft <= 5) $('#modal-clock').classList.add('warn');
+    if (_secsLeft <= 0){
+      stopTimer();
+      mostrarCover();
+    }
+  }, 1000);
+}
+function stopTimer(){ if (_timerId){ clearInterval(_timerId); _timerId = null; } }
+
+function mostrarCover(){
+  if (!_activeItem) return;
+  const i = _activeItem;
+  if (i.acceso === 'gratis'){
+    $('#cover-em').textContent = '🎁';
+    $('#cover-tt').textContent = '¿Te gustó? ¡Es 100% gratis!';
+    $('#cover-de').textContent = 'Hacé clic abajo para abrir la versión completa en una nueva pestaña. Compartila con tus colegas si te sirvió.';
+    $('#cover-primary').textContent = '🎮 Jugar completo gratis →';
+    $('#cover-primary').href = i.linkGratis || i.demoUrl || '#';
+  } else {
+    $('#cover-em').textContent = '🛒';
+    $('#cover-tt').textContent = '¿Te gustó? Llevatela a tu aula';
+    $('#cover-de').textContent = 'Esta plataforma forma parte del cuadernillo. Conseguila en la tienda y empezá a usarla mañana mismo.';
+    $('#cover-primary').textContent = '🛍️ Conseguila en la tienda →';
+    $('#cover-primary').href = i.linkCompra || i.demoUrl || ((_data.config.links||{}).empretienda || '#');
+  }
+  $('#modal-cover').classList.add('show');
+  if (window.umami) umami.track('interactivo-cover', { id: i.id, acceso: i.acceso });
+}
+
+function extender(){
+  $('#modal-cover').classList.remove('show');
+  _secsLeft = 30;
+  $('#modal-clock').classList.remove('warn');
+  $('#modal-secs').textContent = _secsLeft;
+  arrancarTimer();
+  if (window.umami) umami.track('interactivo-extender');
+}
+
+function cerrarModal(){
+  stopTimer();
+  $('#modal').classList.remove('open');
+  $('#modal-iframe').src = 'about:blank';
+  $('#modal-cover').classList.remove('show');
+  document.body.style.overflow = '';
+  _activeItem = null;
+}
+
+// Cerrar con ESC
+window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && $('#modal').classList.contains('open')) cerrarModal(); });
+</script>
+
+</body>
+</html>

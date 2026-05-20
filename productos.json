@@ -17,15 +17,9 @@
       "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
       "etiqueta": "🗓️ Esta semana",
       "productos": [
-        {
-          "id": "revolucion-mayo"
-        },
-        {
-          "id": "dia-de-la-escarapela"
-        },
-        {
-          "id": "pack-mundial"
-        }
+        { "id": "revolucion-mayo" },
+        { "id": "dia-de-la-escarapela" },
+        { "id": "pack-mundial" }
       ]
     },
     "brevo": {
@@ -42,35 +36,30 @@
     }
   },
   "tematicas": [
+    { "id": "lengua",     "nombre": "Lengua",     "emoji": "📖" },
+    { "id": "matematica", "nombre": "Matemática", "emoji": "🔢" },
+    { "id": "ciencias",   "nombre": "Ciencias",   "emoji": "🔬" },
+    { "id": "efemerides", "nombre": "Efemérides", "emoji": "🗓️" },
+    { "id": "juegos",     "nombre": "Juegos",     "emoji": "🎮" },
+    { "id": "laminas",    "nombre": "Láminas",    "emoji": "🖼️" }
+  ],
+  "interactivos": [
     {
-      "id": "lengua",
-      "nombre": "Lengua",
-      "emoji": "📖"
-    },
-    {
-      "id": "matematica",
-      "nombre": "Matemática",
-      "emoji": "🔢"
-    },
-    {
-      "id": "ciencias",
-      "nombre": "Ciencias",
-      "emoji": "🔬"
-    },
-    {
-      "id": "efemerides",
-      "nombre": "Efemérides",
-      "emoji": "🗓️"
-    },
-    {
-      "id": "juegos",
-      "nombre": "Juegos",
-      "emoji": "🎮"
-    },
-    {
-      "id": "laminas",
-      "nombre": "Láminas",
-      "emoji": "🖼️"
+      "id": "revolucion-mayo-juego",
+      "nombre": "Revolución de Mayo — Plataforma Interactiva",
+      "descripcion": "Trivia, actividades y juegos sobre la Semana de Mayo. Funciona en cualquier dispositivo.",
+      "descripcionLarga": "Plataforma 100% interactiva para repasar la Revolución de Mayo de forma lúdica. Incluye trivias, ordenar hechos, completar oraciones y mucho más. Probá unos segundos acá y después seguí jugando completo.",
+      "imagen": "images/revolucion-de-mayo-1778563135675.jpg",
+      "tematica": "efemerides",
+      "nivelGrupo": "1ciclo",
+      "demoUrl": "https://cofredidactico.github.io/RevoluciondeMayo/",
+      "acceso": "gratis",
+      "linkGratis": "https://cofredidactico.github.io/RevoluciondeMayo/",
+      "linkCompra": "",
+      "previewSegundos": 30,
+      "etiqueta": "nuevo",
+      "destacado": true,
+      "activo": true
     }
   ],
   "productos": [
@@ -83,9 +72,7 @@
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
-      "meses": [
-        5
-      ],
+      "meses": [5],
       "precio": 6500,
       "precioTachado": 8900,
       "acceso": "pago",
@@ -98,22 +85,21 @@
         "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 6.jpg"
       ],
       "incluye": [
-        {
-          "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos."
-        },
-        {
-          "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo"
-        },
-        {
-          "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio"
-        }
+        { "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos." },
+        { "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo" },
+        { "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio" }
       ],
       "paginas": 34,
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/revolucion-de-mayo",
       "etiqueta": "nuevo",
       "activo": true,
-      "destacado": true
+      "destacado": true,
+      "relacionados": ["dia-de-la-escarapela"],
+      "testimonios": [
+        { "inicial": "M", "ciudad": "La Plata, Bs. As.", "texto": "Las nenas y nenes estuvieron éncantados toda la semana. El material es divino y se nota el trabajo detrás." },
+        { "inicial": "S", "ciudad": "Córdoba", "texto": "Me salvó una semana entera de planificación. Llegó la PDF y al toque imprimí. Gracias Vir!" }
+      ]
     },
     {
       "id": "dia-de-la-escarapela",
@@ -124,25 +110,23 @@
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
-      "meses": [
-        5
-      ],
+      "meses": [5],
       "precio": 6500,
       "precioTachado": 8200,
       "acceso": "pago",
       "imagen": "images/producto-1778559946157.jpg",
       "previews": [],
       "incluye": [
-        {
-          "texto": "Propuestas lúdicas y significativas"
-        }
+        { "texto": "Propuestas lúdicas y significativas" }
       ],
       "paginas": 25,
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-de-la-escarapela-con-plataforma-interactiva",
       "etiqueta": "nuevo",
       "activo": true,
-      "destacado": true
+      "destacado": true,
+      "relacionados": ["revolucion-mayo"],
+      "testimonios": []
     },
     {
       "id": "pack-mundial",
@@ -159,30 +143,20 @@
       "imagen": "images/producto-1779286790757.jpg",
       "previews": [],
       "incluye": [
-        {
-          "texto": "• Banderín de “Bienvenidos”"
-        },
-        {
-          "texto": "• Etiquetas para los nombres"
-        },
-        {
-          "texto": "• Tabla pitagórica"
-        },
-        {
-          "texto": "• Calendario 2026"
-        },
-        {
-          "texto": "• Organizador semanal"
-        },
-        {
-          "texto": "• Grilla numérica 0–100"
-        }
+        { "texto": "• Banderín de “Bienvenidos”" },
+        { "texto": "• Etiquetas para los nombres" },
+        { "texto": "• Tabla pitagórica" },
+        { "texto": "• Calendario 2026" },
+        { "texto": "• Organizador semanal" },
+        { "texto": "• Grilla numérica 0–100" }
       ],
       "paginas": 60,
       "formato": "PDF-A4-Color",
       "link": "https://drive.google.com/drive/folders/19CSBH5AERU0mqpa0om07QVeP7_SnqPBU?usp=sharing",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "relacionados": [],
+      "testimonios": []
     }
   ]
 }
