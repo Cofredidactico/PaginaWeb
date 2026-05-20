@@ -449,11 +449,39 @@ let _secsLeft = 30;
 
 fetch('productos.json?v=' + Date.now())
   .then(r => r.json())
-  .then(data => { _data = data; aplicarConfig(); render(); })
+  .then(data => { _data = data; aplicarConfig(); render(); autoAbrir(); })
   .catch(err => {
     console.error('Error cargando productos.json', err);
     $('#grid-i').innerHTML = '<div class="empty"><div class="empty-em">⚠️</div><h3>No pudimos cargar los recursos</h3><p>Probá refrescando en unos segundos.</p></div>';
   });
+
+// Lee los productos que tienen "demoUrl" cargado (= tienen plataforma interactiva).
+// Mantenemos retro-compatibilidad con un array "interactivos" suelto en el JSON.
+function listarInteractivos(){
+  const desdeProductos = (_data.productos||[])
+    .filter(p => p.activo && p.demoUrl && String(p.demoUrl).trim())
+    .map(p => ({
+      id: p.id,
+      nombre: p.nombre,
+      descripcion: p.descripcion,
+      descripcionLarga: p.descripcionLarga,
+      imagen: p.imagen,
+      tematica: p.tematica,
+      nivelGrupo: p.nivelGrupo,
+      demoUrl: p.demoUrl,
+      acceso: p.acceso || 'pago',
+      linkGratis: p.linkGratis || p.demoUrl,
+      linkCompra: p.link || '',
+      precio: p.precio,
+      previewSegundos: p.previewSegundos || 30,
+      etiqueta: p.etiqueta,
+      destacado: !!p.destacado
+    }));
+  const sueltos = (_data.interactivos||[]).filter(x => x.activo);
+  // Evitar duplicados por id
+  const ids = new Set(desdeProductos.map(x => x.id));
+  return [...desdeProductos, ...sueltos.filter(x => !ids.has(x.id))];
+}
 
 function aplicarConfig(){
   const L = (_data.config && _data.config.links) || {};
@@ -470,7 +498,7 @@ function aplicarConfig(){
 }
 
 function render(){
-  const items = (_data.interactivos||[]).filter(x => x.activo);
+  const items = listarInteractivos();
 
   if (!items.length){
     $('#filtros').innerHTML = '';
@@ -552,7 +580,7 @@ function initReveal(){
 
 // ═════════ MODAL ═════════
 function abrirModal(id){
-  const item = (_data.interactivos||[]).find(x => x.id === id);
+  const item = listarInteractivos().find(x => x.id === id);
   if (!item) return;
   _activeItem = item;
   _secsLeft = Number(item.previewSegundos || 30);
@@ -594,15 +622,17 @@ function mostrarCover(){
   const i = _activeItem;
   if (i.acceso === 'gratis'){
     $('#cover-em').textContent = '🎁';
-    $('#cover-tt').textContent = '¿Te gustó? ¡Es 100% gratis!';
-    $('#cover-de').textContent = 'Hacé clic abajo para abrir la versión completa en una nueva pestaña. Compartila con tus colegas si te sirvió.';
+    $('#cover-tt').textContent = '¡Es 100% gratis! Seguí jugando completo';
+    $('#cover-de').textContent = 'Te llevamos a la versión completa. Compartila con tus colegas si te sirvió 💙';
     $('#cover-primary').textContent = '🎮 Jugar completo gratis →';
     $('#cover-primary').href = i.linkGratis || i.demoUrl || '#';
   } else {
+    // PAGO: el preview ya se usó, ahora ofrecer comprar
     $('#cover-em').textContent = '🛒';
-    $('#cover-tt').textContent = '¿Te gustó? Llevatela a tu aula';
-    $('#cover-de').textContent = 'Esta plataforma forma parte del cuadernillo. Conseguila en la tienda y empezá a usarla mañana mismo.';
-    $('#cover-primary').textContent = '🛍️ Conseguila en la tienda →';
+    $('#cover-tt').textContent = '¡Gracias por probarla!';
+    const precio = i.precio ? `Esta plataforma interactiva forma parte del cuadernillo y se consigue por <strong>$${(i.precio).toLocaleString('es-AR')}</strong>.` : 'Esta plataforma interactiva forma parte del cuadernillo.';
+    $('#cover-de').innerHTML = precio + ' Si querés sumarla a tu aula y usarla con tus estudiantes, llevátela desde la tienda 💙';
+    $('#cover-primary').textContent = '🛍️ Quiero comprarla →';
     $('#cover-primary').href = i.linkCompra || i.demoUrl || ((_data.config.links||{}).empretienda || '#');
   }
   $('#modal-cover').classList.add('show');
@@ -629,6 +659,20 @@ function cerrarModal(){
 
 // Cerrar con ESC
 window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && $('#modal').classList.contains('open')) cerrarModal(); });
+
+// Si entran con ?probar=ID, abrir directo
+function autoAbrir(){
+  const params = new URLSearchParams(location.search);
+  const id = params.get('probar');
+  if (id){
+    const exists = listarInteractivos().find(x => x.id === id);
+    if (exists){
+      setTimeout(() => abrirModal(id), 250);
+      // Limpiar URL
+      history.replaceState({}, document.title, location.pathname);
+    }
+  }
+}
 </script>
 
 </body>
