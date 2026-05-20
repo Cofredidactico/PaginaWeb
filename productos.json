@@ -593,6 +593,25 @@
       "meses": [
         4
       ]
+    },
+    {
+      "id": "los-tres-cerditos",
+      "nombre": "Los Tres Cerditos",
+      "descripcion": "Un recurso didáctico completo basado en el clásico cuento de los tres cerditos, ideal para trabajar en nivel inicial y primaria.",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 6500,
+      "imagen": "images/los-tres-cerditos-1779314989479.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/los-tres-cerditos",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "📖 Incluye el cuento adaptado en imprenta mayúscula y con pictogramas de los personajes, favoreciendo la comprensión y el acceso a la lectura para todos los estudiantes.\n\nActividades variadas para aprender jugando:\n🧠 Comprensión lectora\n✏️ Completar oraciones\n🔤 Conciencia fonológica (P, M, L)\n🔎 Sopa de letras y crucigrama\n🧩 Rompecabezas y secuencias del cuento\n🎨 Actividades de dibujo y coloreo\n\n💡 Ideal para trabajar el cuento en profundidad y abordar contenidos de Prácticas del Lenguaje de forma lúdica.",
+      "tematica": "lengua",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 7500,
+      "paginas": 22,
+      "formato": "PDF-A4-Color"
     }
   ]
 }
