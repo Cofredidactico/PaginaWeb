@@ -656,6 +656,28 @@
       "meses": [
         4
       ]
+    },
+    {
+      "id": "dia-del-libro",
+      "nombre": "Día del Libro",
+      "descripcion": "Recurso educativo pensado para celebrar el 23 de abril - Día Internacional del Libro, fomentando la lectura de manera lúdica y significativa.",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 6000,
+      "imagen": "images/producto-1779318224468.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-mundial-del-libro",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "En este cuadernillo encontrarás propuestas variadas para que los niños aprendan y se diviertan:\n\n✨️ Plan de Clases (con fundamentación y objetivos)\n📖 Actividades de lectura y escritura\n✏️ Completar palabras con vocales\n🔤 Ordenar letras y descubrir palabras\n🧩 Crucigrama y sopa de letras\n🎨 Expresión creativa: diseñar la tapa de un libro\n🌀 Actividades de grafomotricidad\n🧠 Verdadero o falso\n📚 Ficha de lectura\n🎭 Mini libro y secuencias para ordenar\n🎉 Material visual listo para imprimir\n📲 Juego Didáctico Digital (memotest de cuentos)",
+      "tematica": "efemerides",
+      "nivel": "Primaria",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 7500,
+      "paginas": 21,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        4
+      ]
     }
   ]
 }
