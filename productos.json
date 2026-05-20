@@ -374,6 +374,28 @@
       "meses": [
         4
       ]
+    },
+    {
+      "id": "canciones-y-poemas",
+      "nombre": "Canciones y Poemas",
+      "descripcion": "Un material ideal para aprender, jugar y disfrutar a través de la música y la poesía 🎶📚💛",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 6300,
+      "imagen": "images/canciones-y-poemas-1779308396661.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/general/cucu-cantaba-la-rana-canciones-y-poemas",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "Este cuadernillo propone actividades lúdicas a partir de la canción tradicional “Cucú cantaba la rana”, favoreciendo el desarrollo del lenguaje, la memoria y la expresión.\n\n\n\n🔎 ¿Qué incluye?\n\n• Canción “Cucú cantaba la rana” adaptada con pictogramas\n\n• Actividades de comprensión y secuenciación\n\n• Propuestas de lectoescritura (palabras, sílabas y reconocimiento)\n\n• Juegos de asociación y observación\n\n• Actividades de memoria y atención\n\n• Propuestas de expresión artística (dibujar, completar, crear)\n\n• Trabajo con rimas y vocabulario\n\n• Actividades para cantar, repetir y dramatizar\n\n\n\n🎯 Ideal para:\n\n• Nivel Inicial\n\n• Primer Ciclo de Primaria\n\n• Actividades en el aula o en casa\n\n• Docentes de apoyo e inclusión\n\n\n\n💡 Beneficios del material:\n\n✔ Estimula el lenguaje oral y la memoria auditiva\n\n✔ Favorece la comprensión a través de pictogramas\n\n✔ Promueve la participación activa y el disfrute\n\n✔ Integra aprendizaje y juego en una propuesta significativa\n\n\n\n📂 Formato: Digital (PDF descargable)\n\n🖨 Listo para imprimir y utilizar las veces que necesites",
+      "tematica": "lengua",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 7500,
+      "paginas": 29,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        4
+      ]
     }
   ]
 }
