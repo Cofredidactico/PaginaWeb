@@ -288,6 +288,27 @@
       "meses": [
         3
       ]
+    },
+    {
+      "id": "abecedario-silabico",
+      "nombre": "Abecedario Silábico",
+      "descripcion": "Ideal para acompañar el proceso de lectoescritura de los peques 🧠💛",
+      "tipo": "cuadernillo",
+      "acceso": "gratis",
+      "precio": 0,
+      "imagen": "images/producto-1779304267922.jpg",
+      "link": "https://drive.google.com/file/d/1ezr9YIUiCKrtvJ_IBhZYbrO96OFzzctH/view?usp=drive_link",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "🔤 Incluye todas las letras con sus sílabas\n👧🧒 Perfecto para inicial y primeros grados\n📄 Material en PDF listo para usar",
+      "tematica": "lengua",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "paginas": 18,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        3
+      ]
     }
   ]
 }
