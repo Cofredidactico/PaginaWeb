@@ -484,6 +484,27 @@
       "meses": [
         3
       ]
+    },
+    {
+      "id": "dia-mundial-del-agua",
+      "nombre": "Día Mundial del Agua",
+      "descripcion": "Recurso educativo pensado para trabajar el 22 de marzo: Día Mundial del Agua.",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 4300,
+      "imagen": "images/dia-mundial-del-agua-1779310305144.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/general/22-de-marzo-dia-mundial-del-agua",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "🔹 Infografía sobre el Día Mundial del Agua\n🔹 Actividades de comprensión a partir de la infografía\n🔹 Flipbook del ciclo del agua para armar\n🔹 Actividades para ordenar y reconocer el ciclo del agua\n🔹 Crucigrama temático\n🔹 Sopa de letras\n🔹 Actividades de clasificación de acciones para cuidar el agua\n🔹 Propuestas de reflexión sobre la importancia del cuidado del agua\n🔹 Actividad de dibujo y producción escrita\n🔹 Material para **recortar y trabajar de forma manipulativa**\n\n📁 Además del PDF del cuadernillo, vas a recibir una carpeta con todas las actividades en formato JPG (imagen) para que puedas insertarlas fácilmente en tu planificación o pegarlas en un documento de Word y dimensionarlas al tamaño que prefieras para trabajar en clase.\n\n✨ Un recurso ideal para trabajar contenidos de Ciencias Naturales, promover la conciencia ambiental y generar actividades significativas en el aula.",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 5300,
+      "paginas": 34,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        3
+      ]
     }
   ]
 }
