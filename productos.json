@@ -571,6 +571,28 @@
       "meses": [
         4
       ]
+    },
+    {
+      "id": "pasapalabra-dia-mundial-de-la-salud",
+      "nombre": "Pasapalabra Día Mundial de la Salud",
+      "descripcion": "Propuesta lúdica y educativa para trabajar el 7 de abril: Día Mundial de la Salud de una forma dinámica, participativa y significativa en el aula.",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 3500,
+      "imagen": "images/producto-1779314453356.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/pasapalabra-dia-mundial-de-la-salud",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "📦 ¿Qué incluye este material?\n\n✔ Rosco de Pasapalabra completo\n✔ Tarjetas con definiciones y respuestas\n✔ Versión con imágenes (ideal para acompañar la comprensión)\n✔ Fichas para recortar y pegar\n✔ Hoja de registro para completar\n✔ Gran variedad de palabras relacionadas a la salud (hábitos, cuerpo, alimentación, emociones y más)",
+      "tematica": "efemerides",
+      "nivel": "Primaria",
+      "nivelGrupo": "2ciclo",
+      "precioTachado": 5000,
+      "paginas": 23,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        4
+      ]
     }
   ]
 }
