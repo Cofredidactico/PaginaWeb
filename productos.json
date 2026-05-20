@@ -634,6 +634,28 @@
       "meses": [
         4
       ]
+    },
+    {
+      "id": "dia-mundial-de-la-tierra",
+      "nombre": "Día Mundial de la Tierra",
+      "descripcion": "Propuesta completa, significativa y divertida para trabajar el 22 de abril 📚✨",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 6000,
+      "imagen": "images/producto-1779316324553.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-mundial-de-la-tierra",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "Este cuadernillo incluye una variedad de actividades pensadas para que los peques aprendan a cuidar nuestro planeta mientras juegan:\n\n✨️ Plan de Clases ( Con Fundamentación y objetivos)\n🌿 Dibujos y consignas de reflexión\n🎨 Actividades de pintar y completar palabras\n♻️ Clasificación de residuos (recortar y pegar)\n🔍 Sopa de letras y crucigrama\n😊 Caritas de la Tierra (acciones buenas y malas)\n🔎 Encuentra las diferencias\n✏️ Grafomotricidad y más propuestas lúdicas\n\n💡 Ideal para los más peques.\n\n📲 ACTIVIDAD INTERACTIVA\n¡Sumamos tecnología al aprendizaje! 🙌\nEscaneá el código QR y accedé al memotest ecológico 🎉 donde los chicos podrán seguir aprendiendo de manera dinámica y divertida 🌍💫",
+      "tematica": "efemerides",
+      "nivel": "Primaria",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 7500,
+      "paginas": 23,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        4
+      ]
     }
   ]
 }
