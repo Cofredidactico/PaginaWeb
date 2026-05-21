@@ -1,21 +1,21 @@
 {
-  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
+  "$schema": "EditÃ¡ este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
   "config": {
     "anuncio": {
       "activo": false,
-      "texto": "🎉 Envíos gratis esta semana — usá el código DOCENTE10",
+      "texto": "ð EnvÃ­os gratis esta semana â usÃ¡ el cÃ³digo DOCENTE10",
       "color": "#FF8A4C"
     },
     "stats": {
-      "docentes": "+500",
-      "paises": "+12",
+      "docentes": "+1000",
+      "paises": "+10",
       "descargas": "+2.000"
     },
     "semana": {
       "activo": true,
       "titulo": "Para esta semana",
-      "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
-      "etiqueta": "🗓️ Esta semana",
+      "subtitulo": "Materiales seleccionados segÃºn la efemÃ©ride o el contenido del mes.",
+      "etiqueta": "ðï¸ Esta semana",
       "productos": [
         {
           "id": "revolucion-mayo"
@@ -42,40 +42,40 @@
     {
       "id": "lengua",
       "nombre": "Lengua",
-      "emoji": "📖"
+      "emoji": "ð"
     },
     {
       "id": "matematica",
-      "nombre": "Matemática",
-      "emoji": "🔢"
+      "nombre": "MatemÃ¡tica",
+      "emoji": "ð¢"
     },
     {
       "id": "ciencias",
       "nombre": "Ciencias",
-      "emoji": "🔬"
+      "emoji": "ð¬"
     },
     {
       "id": "efemerides",
-      "nombre": "Efemérides",
-      "emoji": "🗓️"
+      "nombre": "EfemÃ©rides",
+      "emoji": "ðï¸"
     },
     {
       "id": "juegos",
       "nombre": "Juegos",
-      "emoji": "🎮"
+      "emoji": "ð®"
     },
     {
       "id": "laminas",
-      "nombre": "Láminas",
-      "emoji": "🖼️"
+      "nombre": "LÃ¡minas",
+      "emoji": "ð¼ï¸"
     }
   ],
   "productos": [
     {
       "id": "revolucion-mayo",
-      "nombre": "Revolución de Mayo",
-      "descripcion": "Secuencia de Actividades Revolución de Mayo",
-      "descripcionLarga": "🇦🇷✨ REVOLUCIÓN DE MAYO ✨🇦🇷\n\nLes traigo un material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario de una manera dinámica, significativa y atractiva para los estudiantes. 📚💙\n\n📦 ¿Qué encontrarás dentro del material?\n\n📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos.\n🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo\n🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio\n👒 Vendedores ambulantes de la época colonial con ilustraciones y descripciones\n✍️ Actividades de lectura, escritura y comprensión\n🧩 Rompecabezas temáticos\n🔎 Encuentra las diferencias y juegos de observación\n📝 Crucigramas y sopa de letras\n🖍️ Propuestas para colorear y dibujar\n🧠 Actividades para ordenar secuencias y completar oraciones\n🎨 Material visual listo para imprimir y utilizar en el aula\n✂️ Recursos manipulativos para recortar, armar y aprender jugando\n\n💡 Diseño profesional con una estética infantil, clara y atractiva para captar la atención de los estudiantes mientras aprenden sobre uno de los acontecimientos más importantes de nuestra historia.\n\nIdeal para:\n✔️ Nivel Primario\n✔️ Proyectos escolares\n✔️ Efemérides\n✔️ Trabajo en clase o tareas para el hogar\n✔️ Docentes que buscan propuestas innovadoras y listas para usar",
+      "nombre": "RevoluciÃ³n de Mayo",
+      "descripcion": "Secuencia de Actividades RevoluciÃ³n de Mayo",
+      "descripcionLarga": "ð¦ð·â¨ REVOLUCIÃN DE MAYO â¨ð¦ð·\n\nLes traigo un material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario de una manera dinÃ¡mica, significativa y atractiva para los estudiantes. ðð\n\nð¦ Â¿QuÃ© encontrarÃ¡s dentro del material?\n\nðSecuencia DidÃ¡ctica de 8 clases con fundamentaciÃ³n, propÃ³sitos, objetivos y contenidos.\nð§ Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo\nðï¸ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio\nð Vendedores ambulantes de la Ã©poca colonial con ilustraciones y descripciones\nâï¸ Actividades de lectura, escritura y comprensiÃ³n\nð§© Rompecabezas temÃ¡ticos\nð Encuentra las diferencias y juegos de observaciÃ³n\nð Crucigramas y sopa de letras\nðï¸ Propuestas para colorear y dibujar\nð§  Actividades para ordenar secuencias y completar oraciones\nð¨ Material visual listo para imprimir y utilizar en el aula\nâï¸ Recursos manipulativos para recortar, armar y aprender jugando\n\nð¡ DiseÃ±o profesional con una estÃ©tica infantil, clara y atractiva para captar la atenciÃ³n de los estudiantes mientras aprenden sobre uno de los acontecimientos mÃ¡s importantes de nuestra historia.\n\nIdeal para:\nâï¸ Nivel Primario\nâï¸ Proyectos escolares\nâï¸ EfemÃ©rides\nâï¸ Trabajo en clase o tareas para el hogar\nâï¸ Docentes que buscan propuestas innovadoras y listas para usar",
       "tipo": "cuadernillo",
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
@@ -88,21 +88,21 @@
       "acceso": "pago",
       "imagen": "images/revolucion-de-mayo-1778563135675.jpg",
       "previews": [
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 5.jpg",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 4.jpg",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 3.jpg",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 2.jpg",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 6.jpg"
+        "/PaginaWeb/images/PublicaciÃ³n RevoluciÃ³n de Mayo - Cofre DidÃ¡ctico 5.jpg",
+        "/PaginaWeb/images/PublicaciÃ³n RevoluciÃ³n de Mayo - Cofre DidÃ¡ctico 4.jpg",
+        "/PaginaWeb/images/PublicaciÃ³n RevoluciÃ³n de Mayo - Cofre DidÃ¡ctico 3.jpg",
+        "/PaginaWeb/images/PublicaciÃ³n RevoluciÃ³n de Mayo - Cofre DidÃ¡ctico 2.jpg",
+        "/PaginaWeb/images/PublicaciÃ³n RevoluciÃ³n de Mayo - Cofre DidÃ¡ctico 6.jpg"
       ],
       "incluye": [
         {
-          "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos."
+          "texto": "ðSecuencia DidÃ¡ctica de 8 clases con fundamentaciÃ³n, propÃ³sitos, objetivos y contenidos."
         },
         {
-          "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo"
+          "texto": "ð§ Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo"
         },
         {
-          "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio"
+          "texto": "ðï¸ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio"
         }
       ],
       "paginas": 34,
@@ -120,20 +120,20 @@
         {
           "inicial": "M",
           "ciudad": "La Plata, Bs. As.",
-          "texto": "Las nenas y nenes estuvieron éncantados toda la semana. El material es divino y se nota el trabajo detrás."
+          "texto": "Las nenas y nenes estuvieron Ã©ncantados toda la semana. El material es divino y se nota el trabajo detrÃ¡s."
         },
         {
           "inicial": "S",
-          "ciudad": "Córdoba",
-          "texto": "Me salvó una semana entera de planificación. Llegó la PDF y al toque imprimí. Gracias Vir!"
+          "ciudad": "CÃ³rdoba",
+          "texto": "Me salvÃ³ una semana entera de planificaciÃ³n. LlegÃ³ la PDF y al toque imprimÃ­. Gracias Vir!"
         }
       ]
     },
     {
       "id": "dia-de-la-escarapela",
-      "nombre": "Día de la Escarapela",
-      "descripcion": "Secuencia de Actividades  Día de la Escarapela",
-      "descripcionLarga": "✨ Secuencia de Actividades: Día de la Escarapela 🇦🇷💙\n\nIncluye propuestas variadas para que los peques conozcan y valoren este símbolo patrio mientras desarrollan habilidades de lectura, escritura y pensamiento:\n\n📄 Secuencia Didáctica (con fundamentación y actividades organizadas para trabajar la efeméride)\n\n🎗️ Comprensión de infografía\n🎗️ Completar oraciones\n🎗️ Ordenar palabras y letras\n🎗️ Sopa de letras\n🎗️ Crucigrama temático\n🎗️ Mensajes secretos y códigos\n🎗️ Actividades de escritura guiada\n🎗️ Dibujo y pintura de la escarapela 🎨\n🎗️ Recortar y armar la escarapela ✂️\n🎗️ Laberinto (¡ayudá a Belgrano!)\n🎗️ Acróstico “ESCARAPELA”\n\n🎉✨️🎮 Plataforma Interactiva para aprender Jugando ( Podés utilizarlo desde cualquier dispositivo digital 💻🖥📲)\n\n📚 Ideal para Primer Ciclo\n🎨 Actividades listas para imprimir\n📝 Propuestas lúdicas y significativas\n💙 Perfecto para trabajar el 18 de mayo de forma lúdica e inclusiva.",
+      "nombre": "DÃ­a de la Escarapela",
+      "descripcion": "Secuencia de Actividades  DÃ­a de la Escarapela",
+      "descripcionLarga": "â¨ Secuencia de Actividades: DÃ­a de la Escarapela ð¦ð·ð\n\nIncluye propuestas variadas para que los peques conozcan y valoren este sÃ­mbolo patrio mientras desarrollan habilidades de lectura, escritura y pensamiento:\n\nð Secuencia DidÃ¡ctica (con fundamentaciÃ³n y actividades organizadas para trabajar la efemÃ©ride)\n\nðï¸ ComprensiÃ³n de infografÃ­a\nðï¸ Completar oraciones\nðï¸ Ordenar palabras y letras\nðï¸ Sopa de letras\nðï¸ Crucigrama temÃ¡tico\nðï¸ Mensajes secretos y cÃ³digos\nðï¸ Actividades de escritura guiada\nðï¸ Dibujo y pintura de la escarapela ð¨\nðï¸ Recortar y armar la escarapela âï¸\nðï¸ Laberinto (Â¡ayudÃ¡ a Belgrano!)\nðï¸ AcrÃ³stico âESCARAPELAâ\n\nðâ¨ï¸ð® Plataforma Interactiva para aprender Jugando ( PodÃ©s utilizarlo desde cualquier dispositivo digital ð»ð¥ð²)\n\nð Ideal para Primer Ciclo\nð¨ Actividades listas para imprimir\nð Propuestas lÃºdicas y significativas\nð Perfecto para trabajar el 18 de mayo de forma lÃºdica e inclusiva.",
       "tipo": "cuadernillo",
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
@@ -148,7 +148,7 @@
       "previews": [],
       "incluye": [
         {
-          "texto": "Propuestas lúdicas y significativas"
+          "texto": "Propuestas lÃºdicas y significativas"
         }
       ],
       "paginas": 25,
@@ -166,7 +166,7 @@
     },
     {
       "id": "plataforma-interactiva-revolucion-de-mayo",
-      "nombre": "Plataforma Interactiva - Revolución de Mayo",
+      "nombre": "Plataforma Interactiva - RevoluciÃ³n de Mayo",
       "descripcion": "Plataforma Educativa",
       "tipo": "juego",
       "acceso": "pago",
@@ -175,7 +175,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/plataforma-interactiva-revolucion-de-mayo",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "Plataforma interactiva sobre la Revolución de Mayo, diseñada para aprender jugando, explorar y disfrutar de nuestras efemérides de una manera dinámica y significativa.\n\n🌟 ¿Qué incluye?\n🎮 Juegos interactivos\n🧩 Actividades lúdicas y didácticas\n🎨 Diseño visual infantil y atractivo\n📖 Contenidos adaptados para nivel primario\n🇦🇷 Personajes, símbolos y hechos históricos de 1810\n💻 Acceso digital desde celular, tablet o computadora\n\n✨ Además, la plataforma se complementa con las actividades propuestas en el cuadernillo del 25 de Mayo, permitiendo ampliar y enriquecer el trabajo del aula con recursos digitales interactivos.",
+      "descripcionLarga": "Plataforma interactiva sobre la RevoluciÃ³n de Mayo, diseÃ±ada para aprender jugando, explorar y disfrutar de nuestras efemÃ©rides de una manera dinÃ¡mica y significativa.\n\nð Â¿QuÃ© incluye?\nð® Juegos interactivos\nð§© Actividades lÃºdicas y didÃ¡cticas\nð¨ DiseÃ±o visual infantil y atractivo\nð Contenidos adaptados para nivel primario\nð¦ð· Personajes, sÃ­mbolos y hechos histÃ³ricos de 1810\nð» Acceso digital desde celular, tablet o computadora\n\nâ¨ AdemÃ¡s, la plataforma se complementa con las actividades propuestas en el cuadernillo del 25 de Mayo, permitiendo ampliar y enriquecer el trabajo del aula con recursos digitales interactivos.",
       "tematica": "juegos",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -188,8 +188,8 @@
     },
     {
       "id": "plataforma-interactiva-dia-de-la-escarapela",
-      "nombre": "Plataforma Interactiva - Día de la Escarapela",
-      "descripcion": "Plataforma Interactiva Día de la Escarapela",
+      "nombre": "Plataforma Interactiva - DÃ­a de la Escarapela",
+      "descripcion": "Plataforma Interactiva DÃ­a de la Escarapela",
       "tipo": "juego",
       "acceso": "pago",
       "precio": 2500,
@@ -197,7 +197,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/plataforma-interactiva-dia-de-la-escarapela",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "Te presentamos una plataforma interactiva pensada para que los chicos aprendan sobre nuestro símbolo patrio de una forma súper divertida.\n\n​🎮 ¿Qué vas a encontrar en la web?\n\nActividades organizadas por niveles de dificultad:\n\n🟢 Nivel 1: Memotest y unir con flechas para los más peques.\n🟡 Nivel 2: Sopa de letras, rompecabezas y ordenar letras.\n🔴 Nivel 3: Desafíos de oraciones y un Quiz avanzado sobre su historia.\n🎡 ¡Y mucho más! Ruleta de preguntas, códigos secretos y actividades artísticas.\n\n✨️Todos los juegos con guía de Audio.\n\n​📢 ¡AVISO IMPORTANTE!\nPara todos los que ya adquirieron nuestro cuadernillo del Día de la Escarapela, esta plataforma interactiva ya se sumó automáticamente a su carpeta compartida como un recurso complementario para potenciar sus clases. 🎁✨",
+      "descripcionLarga": "Te presentamos una plataforma interactiva pensada para que los chicos aprendan sobre nuestro sÃ­mbolo patrio de una forma sÃºper divertida.\n\nâð® Â¿QuÃ© vas a encontrar en la web?\n\nActividades organizadas por niveles de dificultad:\n\nð¢ Nivel 1: Memotest y unir con flechas para los mÃ¡s peques.\nð¡ Nivel 2: Sopa de letras, rompecabezas y ordenar letras.\nð´ Nivel 3: DesafÃ­os de oraciones y un Quiz avanzado sobre su historia.\nð¡ Â¡Y mucho mÃ¡s! Ruleta de preguntas, cÃ³digos secretos y actividades artÃ­sticas.\n\nâ¨ï¸Todos los juegos con guÃ­a de Audio.\n\nâð¢ Â¡AVISO IMPORTANTE!\nPara todos los que ya adquirieron nuestro cuadernillo del DÃ­a de la Escarapela, esta plataforma interactiva ya se sumÃ³ automÃ¡ticamente a su carpeta compartida como un recurso complementario para potenciar sus clases. ðâ¨",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
       "precioTachado": 4200,
@@ -210,7 +210,7 @@
     {
       "id": "moldeo-trazo-y-busco",
       "nombre": "Moldeo, Trazo y Busco",
-      "descripcion": "Un material didáctico pensado para que los más peques aprendan los números del 1 al 9 de forma lúdica, activa y multisensorial 🎨✋🧠",
+      "descripcion": "Un material didÃ¡ctico pensado para que los mÃ¡s peques aprendan los nÃºmeros del 1 al 9 de forma lÃºdica, activa y multisensorial ð¨âð§ ",
       "tipo": "cuadernillo",
       "acceso": "gratis",
       "precio": 0,
@@ -218,7 +218,7 @@
       "link": "https://drive.google.com/file/d/1iGEiTepCUoU9kjxnTNkjoOLVY9yKfINk/view?usp=drive_link",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "🔢 Cada número se trabaja a través de:\n✔️ Moldeo con masa o plastilina\n✔️ Trazo guiado\n✔️ Búsqueda visual del número\n✔️ Conteo y pintura de cantidades\n\n💡 Perfecto para nivel inicial, primeros aprendizajes matemáticos y acompañamiento en casa. Estimula la motricidad fina, la atención y el reconocimiento numérico.",
+      "descripcionLarga": "ð¢ Cada nÃºmero se trabaja a travÃ©s de:\nâï¸ Moldeo con masa o plastilina\nâï¸ Trazo guiado\nâï¸ BÃºsqueda visual del nÃºmero\nâï¸ Conteo y pintura de cantidades\n\nð¡ Perfecto para nivel inicial, primeros aprendizajes matemÃ¡ticos y acompaÃ±amiento en casa. Estimula la motricidad fina, la atenciÃ³n y el reconocimiento numÃ©rico.",
       "tematica": "matematica",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -231,7 +231,7 @@
     {
       "id": "ambiente-alfabetizador-de-mesa",
       "nombre": "Ambiente alfabetizador de Mesa",
-      "descripcion": "Un recurso práctico y visual pensado para acompañar a los peques en su proceso de alfabetización todos los días 💛✏️",
+      "descripcion": "Un recurso prÃ¡ctico y visual pensado para acompaÃ±ar a los peques en su proceso de alfabetizaciÃ³n todos los dÃ­as ðâï¸",
       "tipo": "cuadernillo",
       "acceso": "gratis",
       "precio": 0,
@@ -239,7 +239,7 @@
       "link": "https://drive.google.com/file/d/1n-aGzfK0Tf3I_oDAERFLyERhVKkylTDf/view?usp=sharing",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "Incluye diferentes versiones de abecedarios para responder a las diversas necesidades del aula 👩‍🏫🧠:\n🔤 ABC clásico\n🔠 Mayúscula y minúscula\n🖼️ Letras con palabras e imágenes\n🔎 Versión de consulta rápida\n🔢 Números del 1 al 20 (en cifra y palabra)\n📅 Días de la semana\n🧒 Espacio para escribir el nombre\n\n🖨️ El material está organizado en dos formatos:\n✔️ Modelo en hoja A4 completa para visualización clara\n✔️ Versión optimizada con 2 por hoja A4 para imprimir, recortar y armar fácilmente el soporte de mesa\n\nIdeal para:\n🪑 Uso diario en el banco\n✏️ Escritura autónoma\n🧩 Reconocimiento de letras y sonidos\n📖 Apoyo permanente durante la alfabetización",
+      "descripcionLarga": "Incluye diferentes versiones de abecedarios para responder a las diversas necesidades del aula ð©âð«ð§ :\nð¤ ABC clÃ¡sico\nð  MayÃºscula y minÃºscula\nð¼ï¸ Letras con palabras e imÃ¡genes\nð VersiÃ³n de consulta rÃ¡pida\nð¢ NÃºmeros del 1 al 20 (en cifra y palabra)\nð DÃ­as de la semana\nð§ Espacio para escribir el nombre\n\nð¨ï¸ El material estÃ¡ organizado en dos formatos:\nâï¸ Modelo en hoja A4 completa para visualizaciÃ³n clara\nâï¸ VersiÃ³n optimizada con 2 por hoja A4 para imprimir, recortar y armar fÃ¡cilmente el soporte de mesa\n\nIdeal para:\nðª Uso diario en el banco\nâï¸ Escritura autÃ³noma\nð§© Reconocimiento de letras y sonidos\nð Apoyo permanente durante la alfabetizaciÃ³n",
       "tematica": "lengua",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -251,8 +251,8 @@
     },
     {
       "id": "abecedario-silabico",
-      "nombre": "Abecedario Silábico",
-      "descripcion": "Ideal para acompañar el proceso de lectoescritura de los peques 🧠💛",
+      "nombre": "Abecedario SilÃ¡bico",
+      "descripcion": "Ideal para acompaÃ±ar el proceso de lectoescritura de los peques ð§ ð",
       "tipo": "cuadernillo",
       "acceso": "gratis",
       "precio": 0,
@@ -260,7 +260,7 @@
       "link": "https://drive.google.com/file/d/1ezr9YIUiCKrtvJ_IBhZYbrO96OFzzctH/view?usp=drive_link",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "🔤 Incluye todas las letras con sus sílabas\n👧🧒 Perfecto para inicial y primeros grados\n📄 Material en PDF listo para usar",
+      "descripcionLarga": "ð¤ Incluye todas las letras con sus sÃ­labas\nð§ð§ Perfecto para inicial y primeros grados\nð Material en PDF listo para usar",
       "tematica": "lengua",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -273,7 +273,7 @@
     {
       "id": "flipbook-24-de-marzo",
       "nombre": "Flipbook 24 de Marzo",
-      "descripcion": "Flipbook educativo del 24 de Marzo - Día de la Memoria por la Verdad y la Justicia",
+      "descripcion": "Flipbook educativo del 24 de Marzo - DÃ­a de la Memoria por la Verdad y la Justicia",
       "tipo": "lamina",
       "acceso": "gratis",
       "precio": 0,
@@ -281,7 +281,7 @@
       "link": "https://drive.google.com/drive/folders/1P4NJ694yP5rQDNTbLkUITJnVaS7cNhNC",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "📚 Este flipbook interactivo incluye:\n• Explicaciones adaptadas al nivel primario sobre el 24 de Marzo.\n• Información sobre memoria, democracia, verdad y justicia.\n• Referencias a las Madres y Abuelas de Plaza de Mayo.\n• Actividad recortable para armar el flipbook.\n• Diseño visual atractivo, didáctico y fácil de utilizar en el aula.\n\n💡 Ideal para trabajar efemérides desde una mirada reflexiva, promoviendo el diálogo, la empatía y el valor de la democracia.",
+      "descripcionLarga": "ð Este flipbook interactivo incluye:\nâ¢ Explicaciones adaptadas al nivel primario sobre el 24 de Marzo.\nâ¢ InformaciÃ³n sobre memoria, democracia, verdad y justicia.\nâ¢ Referencias a las Madres y Abuelas de Plaza de Mayo.\nâ¢ Actividad recortable para armar el flipbook.\nâ¢ DiseÃ±o visual atractivo, didÃ¡ctico y fÃ¡cil de utilizar en el aula.\n\nð¡ Ideal para trabajar efemÃ©rides desde una mirada reflexiva, promoviendo el diÃ¡logo, la empatÃ­a y el valor de la democracia.",
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -294,7 +294,7 @@
     {
       "id": "caperucita-roja",
       "nombre": "Caperucita Roja",
-      "descripcion": "Un material para trabajar lectura, comprensión y vocales a partir de un cuento clásico, pensado para Nivel Inicial y Primer Ciclo ✨",
+      "descripcion": "Un material para trabajar lectura, comprensiÃ³n y vocales a partir de un cuento clÃ¡sico, pensado para Nivel Inicial y Primer Ciclo â¨",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 6300,
@@ -302,7 +302,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/general/caperucita-roja",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "🔹 ¿Qué incluye este cuadernillo?\n✔️ Cuento adaptado con pictogramas\n✔️ Actividades de comprensión lectora\n✔️ Secuencia para trabajar las vocales A – E – I – O – U\n✔️ Propuestas de lectura, escritura y juego\n✔️ Actividades claras y listas para usar\n✔️ Incluye plan de clases con proyecto: \"Libro de las Vocales del Bosque\"\n✔️ Material imprimible ( 14 hojas tamaño A4 )\n\n🔹 Ideal para:\n📚 Lectura compartida\n✏️ Primeros lectores\n🧠 Trabajo de comprensión\n👦👧 Aulas diversas y apoyos visuales\n\n📥 Formato: PDF descargable\n📌 Nivel: Inicial y Primer Ciclo",
+      "descripcionLarga": "ð¹ Â¿QuÃ© incluye este cuadernillo?\nâï¸ Cuento adaptado con pictogramas\nâï¸ Actividades de comprensiÃ³n lectora\nâï¸ Secuencia para trabajar las vocales A â E â I â O â U\nâï¸ Propuestas de lectura, escritura y juego\nâï¸ Actividades claras y listas para usar\nâï¸ Incluye plan de clases con proyecto: \"Libro de las Vocales del Bosque\"\nâï¸ Material imprimible ( 14 hojas tamaÃ±o A4 )\n\nð¹ Ideal para:\nð Lectura compartida\nâï¸ Primeros lectores\nð§  Trabajo de comprensiÃ³n\nð¦ð§ Aulas diversas y apoyos visuales\n\nð¥ Formato: PDF descargable\nð Nivel: Inicial y Primer Ciclo",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
       "precioTachado": 7500,
@@ -317,7 +317,7 @@
     {
       "id": "el-hombrecito-de-jengibre",
       "nombre": "El Hombrecito de Jengibre",
-      "descripcion": "Una propuesta didáctica completa para aprender jugando a partir de un cuento clásico 🍪📚",
+      "descripcion": "Una propuesta didÃ¡ctica completa para aprender jugando a partir de un cuento clÃ¡sico ðªð",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 6300,
@@ -325,7 +325,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/general/el-hombrecito-de-jengibre",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "Este material integra lengua y matemática a través de actividades lúdicas, ideales para acompañar los primeros aprendizajes.\n\n🔎 ¿Qué incluye?\n• Cuento adaptado con pictogramas (favorece la comprensión y la inclusión)\n• Actividades de comprensión lectora\n• Propuestas de escritura y reconocimiento de palabras\n• Trabajo con vocales (completar, identificar y leer)\n• Juegos de asociación, sopa de letras y selección múltiple\n• Actividades de orientación espacial (direcciones)\n• Propuestas matemáticas (conteo, series numéricas y problemas simples)\n• Rompecabezas para armar\n• Juegos didácticos imprimibles:\n• Memotest de personajes\n• Juego “Encontrá el personaje”\n\n🎯 Ideal para:\n• Nivel Inicial\n• Primer Ciclo de Primaria\n• Trabajo en el aula o en casa\n• Docentes de apoyo e inclusión\n\n💡 Beneficios del material:\n✔ Integra lengua y matemática en una misma propuesta\n✔ Estimula la comprensión, la memoria y la atención\n✔ Favorece la oralidad y el vocabulario\n✔ Promueve el aprendizaje significativo a través del juego\n\n📂 Formato: Digital (PDF descargable)\n🖨 Listo para imprimir y usar las veces que necesites",
+      "descripcionLarga": "Este material integra lengua y matemÃ¡tica a travÃ©s de actividades lÃºdicas, ideales para acompaÃ±ar los primeros aprendizajes.\n\nð Â¿QuÃ© incluye?\nâ¢ Cuento adaptado con pictogramas (favorece la comprensiÃ³n y la inclusiÃ³n)\nâ¢ Actividades de comprensiÃ³n lectora\nâ¢ Propuestas de escritura y reconocimiento de palabras\nâ¢ Trabajo con vocales (completar, identificar y leer)\nâ¢ Juegos de asociaciÃ³n, sopa de letras y selecciÃ³n mÃºltiple\nâ¢ Actividades de orientaciÃ³n espacial (direcciones)\nâ¢ Propuestas matemÃ¡ticas (conteo, series numÃ©ricas y problemas simples)\nâ¢ Rompecabezas para armar\nâ¢ Juegos didÃ¡cticos imprimibles:\nâ¢ Memotest de personajes\nâ¢ Juego âEncontrÃ¡ el personajeâ\n\nð¯ Ideal para:\nâ¢ Nivel Inicial\nâ¢ Primer Ciclo de Primaria\nâ¢ Trabajo en el aula o en casa\nâ¢ Docentes de apoyo e inclusiÃ³n\n\nð¡ Beneficios del material:\nâ Integra lengua y matemÃ¡tica en una misma propuesta\nâ Estimula la comprensiÃ³n, la memoria y la atenciÃ³n\nâ Favorece la oralidad y el vocabulario\nâ Promueve el aprendizaje significativo a travÃ©s del juego\n\nð Formato: Digital (PDF descargable)\nð¨ Listo para imprimir y usar las veces que necesites",
       "tematica": "lengua",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -339,7 +339,7 @@
     {
       "id": "canciones-y-poemas",
       "nombre": "Canciones y Poemas",
-      "descripcion": "Un material ideal para aprender, jugar y disfrutar a través de la música y la poesía 🎶📚💛",
+      "descripcion": "Un material ideal para aprender, jugar y disfrutar a travÃ©s de la mÃºsica y la poesÃ­a ð¶ðð",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 6300,
@@ -347,7 +347,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/general/cucu-cantaba-la-rana-canciones-y-poemas",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "Este cuadernillo propone actividades lúdicas a partir de la canción tradicional “Cucú cantaba la rana”, favoreciendo el desarrollo del lenguaje, la memoria y la expresión.\n\n🔎 ¿Qué incluye?\n• Canción “Cucú cantaba la rana” adaptada con pictogramas\n• Actividades de comprensión y secuenciación\n• Propuestas de lectoescritura (palabras, sílabas y reconocimiento)\n• Juegos de asociación y observación\n• Actividades de memoria y atención\n• Propuestas de expresión artística (dibujar, completar, crear)\n• Trabajo con rimas y vocabulario\n• Actividades para cantar, repetir y dramatizar\n\n🎯 Ideal para:\n• Nivel Inicial\n• Primer Ciclo de Primaria\n• Actividades en el aula o en casa\n• Docentes de apoyo e inclusión\n\n💡 Beneficios del material:\n✔ Estimula el lenguaje oral y la memoria auditiva\n✔ Favorece la comprensión a través de pictogramas\n✔ Promueve la participación activa y el disfrute\n✔ Integra aprendizaje y juego en una propuesta significativa\n\n📂 Formato: Digital (PDF descargable)\n🖨 Listo para imprimir y utilizar las veces que necesites",
+      "descripcionLarga": "Este cuadernillo propone actividades lÃºdicas a partir de la canciÃ³n tradicional âCucÃº cantaba la ranaâ, favoreciendo el desarrollo del lenguaje, la memoria y la expresiÃ³n.\n\nð Â¿QuÃ© incluye?\nâ¢ CanciÃ³n âCucÃº cantaba la ranaâ adaptada con pictogramas\nâ¢ Actividades de comprensiÃ³n y secuenciaciÃ³n\nâ¢ Propuestas de lectoescritura (palabras, sÃ­labas y reconocimiento)\nâ¢ Juegos de asociaciÃ³n y observaciÃ³n\nâ¢ Actividades de memoria y atenciÃ³n\nâ¢ Propuestas de expresiÃ³n artÃ­stica (dibujar, completar, crear)\nâ¢ Trabajo con rimas y vocabulario\nâ¢ Actividades para cantar, repetir y dramatizar\n\nð¯ Ideal para:\nâ¢ Nivel Inicial\nâ¢ Primer Ciclo de Primaria\nâ¢ Actividades en el aula o en casa\nâ¢ Docentes de apoyo e inclusiÃ³n\n\nð¡ Beneficios del material:\nâ Estimula el lenguaje oral y la memoria auditiva\nâ Favorece la comprensiÃ³n a travÃ©s de pictogramas\nâ Promueve la participaciÃ³n activa y el disfrute\nâ Integra aprendizaje y juego en una propuesta significativa\n\nð Formato: Digital (PDF descargable)\nð¨ Listo para imprimir y utilizar las veces que necesites",
       "tematica": "lengua",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -361,7 +361,7 @@
     {
       "id": "cuadernillo-de-vocales",
       "nombre": "Cuadernillo de Vocales",
-      "descripcion": "Un material didáctico pensado especialmente para docentes de nivel inicial y primer ciclo, ideal para acompañar el proceso de alfabetización de manera lúdica y significativa 💛",
+      "descripcion": "Un material didÃ¡ctico pensado especialmente para docentes de nivel inicial y primer ciclo, ideal para acompaÃ±ar el proceso de alfabetizaciÃ³n de manera lÃºdica y significativa ð",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 4300,
@@ -369,7 +369,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/general/cuadernillo-de-vocales",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "Este cuadernillo propone trabajar cada vocal a través de:\n\n🔤 Repaso de trazos en imprenta mayúscula y minúscula\n🧠 Adivinanzas para estimular la comprensión y el pensamiento\n🎨 Actividades de asociación imagen–palabra\n✏️ Espacios para leer, completar, dibujar y pintar\n📚 Ejercicios finales de recorrido del abecedario\n\nPerfecto para usar en el aula, en rincones de alfabetización o como cuadernillo de trabajo individual.\n\n🖨️ Listo para imprimir y usar\n🎯 Ideal para fortalecer la conciencia fonológica y el reconocimiento de vocales de forma divertida.",
+      "descripcionLarga": "Este cuadernillo propone trabajar cada vocal a travÃ©s de:\n\nð¤ Repaso de trazos en imprenta mayÃºscula y minÃºscula\nð§  Adivinanzas para estimular la comprensiÃ³n y el pensamiento\nð¨ Actividades de asociaciÃ³n imagenâpalabra\nâï¸ Espacios para leer, completar, dibujar y pintar\nð Ejercicios finales de recorrido del abecedario\n\nPerfecto para usar en el aula, en rincones de alfabetizaciÃ³n o como cuadernillo de trabajo individual.\n\nð¨ï¸ Listo para imprimir y usar\nð¯ Ideal para fortalecer la conciencia fonolÃ³gica y el reconocimiento de vocales de forma divertida.",
       "tematica": "lengua",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -383,8 +383,8 @@
     },
     {
       "id": "mis-primeros-numeros-1-al-10",
-      "nombre": "Mis Primeros Nùmeros (1 al 10)",
-      "descripcion": "Un recurso pensado para que los más pequeños aprendan los números de forma lúdica, clara y motivadora.",
+      "nombre": "Mis Primeros NÃ¹meros (1 al 10)",
+      "descripcion": "Un recurso pensado para que los mÃ¡s pequeÃ±os aprendan los nÃºmeros de forma lÃºdica, clara y motivadora.",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 5300,
@@ -392,7 +392,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/general/mis-primeros-numeros-1-al-10",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "Este cuadernillo permite a los niños iniciarse en el mundo de los números a través de propuestas visuales, rimas y actividades prácticas.\n\n🔎 ¿Qué incluye?\n• Trabajo completo con los números del 1 al 10\n• Reconocimiento del número y su nombre\n• Actividades de trazado (grafomotricidad)\n• Asociación número-cantidad\n• Búsqueda e identificación de números\n• Conteo a partir de imágenes\n• Propuestas de coloreado según cantidad\n• Series numéricas simples\n• Versos y rimas para cada número (favorecen la memoria y comprensión).\n\n🎯 Ideal para:\n• Nivel Inicial\n• Primeros pasos en 1° grado\n• Apoyo escolar\n• Trabajo en el aula o en casa\n\n💡 Beneficios del material:\n✔ Favorece el reconocimiento numérico\n✔ Desarrolla habilidades de conteo\n✔ Estimula la motricidad fina\n✔ Integra aprendizaje con juego y lenguaje\n✔ Presenta los contenidos de forma clara y progresiva",
+      "descripcionLarga": "Este cuadernillo permite a los niÃ±os iniciarse en el mundo de los nÃºmeros a travÃ©s de propuestas visuales, rimas y actividades prÃ¡cticas.\n\nð Â¿QuÃ© incluye?\nâ¢ Trabajo completo con los nÃºmeros del 1 al 10\nâ¢ Reconocimiento del nÃºmero y su nombre\nâ¢ Actividades de trazado (grafomotricidad)\nâ¢ AsociaciÃ³n nÃºmero-cantidad\nâ¢ BÃºsqueda e identificaciÃ³n de nÃºmeros\nâ¢ Conteo a partir de imÃ¡genes\nâ¢ Propuestas de coloreado segÃºn cantidad\nâ¢ Series numÃ©ricas simples\nâ¢ Versos y rimas para cada nÃºmero (favorecen la memoria y comprensiÃ³n).\n\nð¯ Ideal para:\nâ¢ Nivel Inicial\nâ¢ Primeros pasos en 1Â° grado\nâ¢ Apoyo escolar\nâ¢ Trabajo en el aula o en casa\n\nð¡ Beneficios del material:\nâ Favorece el reconocimiento numÃ©rico\nâ Desarrolla habilidades de conteo\nâ Estimula la motricidad fina\nâ Integra aprendizaje con juego y lenguaje\nâ Presenta los contenidos de forma clara y progresiva",
       "tematica": "matematica",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -406,7 +406,7 @@
     {
       "id": "pack-abecedario-argentino",
       "nombre": "Pack Abecedario Argentino",
-      "descripcion": "Un material educativo pensado para aprender las letras de una manera significativa, visual y con identidad nacional. Ideal para nivel inicial y primer ciclo 📚💙",
+      "descripcion": "Un material educativo pensado para aprender las letras de una manera significativa, visual y con identidad nacional. Ideal para nivel inicial y primer ciclo ðð",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 4000,
@@ -414,7 +414,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/general/pack-abecedario-argentino",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "Incluye 4 versiones (Todo en A4):\n🔤 Con sílabas\n🔠 Con las 4 grafías (mayúscula, minúscula y cursiva)\n🖼 Con sílaba + imágen\n⭐ Edición especial con marco mundialista",
+      "descripcionLarga": "Incluye 4 versiones (Todo en A4):\nð¤ Con sÃ­labas\nð  Con las 4 grafÃ­as (mayÃºscula, minÃºscula y cursiva)\nð¼ Con sÃ­laba + imÃ¡gen\nâ­ EdiciÃ³n especial con marco mundialista",
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -427,7 +427,7 @@
     },
     {
       "id": "dia-nacional-de-la-memoria-por-la-verdad-y-la-justicia",
-      "nombre": "Día Nacional de la Memoria por la Verdad y la Justicia",
+      "nombre": "DÃ­a Nacional de la Memoria por la Verdad y la Justicia",
       "descripcion": "Recurso pensado para trabajar esta fecha tan importante en el aula de forma clara, respetuosa y significativa.",
       "tipo": "cuadernillo",
       "acceso": "pago",
@@ -436,7 +436,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/general/24-de-marzo-dia-de-la-memoria-por-la-verdad-y-la-justicia",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "El material incluye:\n\n📄 Infografías explicativas\n🕊️ Tarjetas del pañuelo blanco con acróstico\n🧠 Actividades de comprensión y reflexión\n🔎 Sopa de letras y crucigrama\n🧩 Rompecabezas\n🪪 Actividad de identidad con modelo de DNI\n🏷️ Plantilla de stickers con elementos representativos de la efeméride\n\n📂 El recurso se entrega en:\n✔ 1 PDF de 47 hojas tamaño A4 listo para imprimir\n✔ 1 carpeta con todas las actividades en formato JPG (imagen) para que puedas pegarlas en Word y ajustar el tamaño según tus necesidades.\n\nUn material completo para trabajar con los estudiantes los valores de\nMEMORIA • VERDAD • JUSTICIA",
+      "descripcionLarga": "El material incluye:\n\nð InfografÃ­as explicativas\nðï¸ Tarjetas del paÃ±uelo blanco con acrÃ³stico\nð§  Actividades de comprensiÃ³n y reflexiÃ³n\nð Sopa de letras y crucigrama\nð§© Rompecabezas\nðªª Actividad de identidad con modelo de DNI\nð·ï¸ Plantilla de stickers con elementos representativos de la efemÃ©ride\n\nð El recurso se entrega en:\nâ 1 PDF de 47 hojas tamaÃ±o A4 listo para imprimir\nâ 1 carpeta con todas las actividades en formato JPG (imagen) para que puedas pegarlas en Word y ajustar el tamaÃ±o segÃºn tus necesidades.\n\nUn material completo para trabajar con los estudiantes los valores de\nMEMORIA â¢ VERDAD â¢ JUSTICIA",
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -449,8 +449,8 @@
     },
     {
       "id": "dia-mundial-del-agua",
-      "nombre": "Día Mundial del Agua",
-      "descripcion": "Recurso educativo pensado para trabajar el 22 de marzo: Día Mundial del Agua.",
+      "nombre": "DÃ­a Mundial del Agua",
+      "descripcion": "Recurso educativo pensado para trabajar el 22 de marzo: DÃ­a Mundial del Agua.",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 4300,
@@ -458,7 +458,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/general/22-de-marzo-dia-mundial-del-agua",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "🔹 Infografía sobre el Día Mundial del Agua\n🔹 Actividades de comprensión a partir de la infografía\n🔹 Flipbook del ciclo del agua para armar\n🔹 Actividades para ordenar y reconocer el ciclo del agua\n🔹 Crucigrama temático\n🔹 Sopa de letras\n🔹 Actividades de clasificación de acciones para cuidar el agua\n🔹 Propuestas de reflexión sobre la importancia del cuidado del agua\n🔹 Actividad de dibujo y producción escrita\n🔹 Material para **recortar y trabajar de forma manipulativa**\n\n📁 Además del PDF del cuadernillo, vas a recibir una carpeta con todas las actividades en formato JPG (imagen) para que puedas insertarlas fácilmente en tu planificación o pegarlas en un documento de Word y dimensionarlas al tamaño que prefieras para trabajar en clase.\n\n✨ Un recurso ideal para trabajar contenidos de Ciencias Naturales, promover la conciencia ambiental y generar actividades significativas en el aula.",
+      "descripcionLarga": "ð¹ InfografÃ­a sobre el DÃ­a Mundial del Agua\nð¹ Actividades de comprensiÃ³n a partir de la infografÃ­a\nð¹ Flipbook del ciclo del agua para armar\nð¹ Actividades para ordenar y reconocer el ciclo del agua\nð¹ Crucigrama temÃ¡tico\nð¹ Sopa de letras\nð¹ Actividades de clasificaciÃ³n de acciones para cuidar el agua\nð¹ Propuestas de reflexiÃ³n sobre la importancia del cuidado del agua\nð¹ Actividad de dibujo y producciÃ³n escrita\nð¹ Material para **recortar y trabajar de forma manipulativa**\n\nð AdemÃ¡s del PDF del cuadernillo, vas a recibir una carpeta con todas las actividades en formato JPG (imagen) para que puedas insertarlas fÃ¡cilmente en tu planificaciÃ³n o pegarlas en un documento de Word y dimensionarlas al tamaÃ±o que prefieras para trabajar en clase.\n\nâ¨ Un recurso ideal para trabajar contenidos de Ciencias Naturales, promover la conciencia ambiental y generar actividades significativas en el aula.",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
       "precioTachado": 5300,
@@ -470,8 +470,8 @@
     },
     {
       "id": "dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas",
-      "nombre": "Día del Veterano y de los Caídos en la Guerra de Malvinas",
-      "descripcion": "En el marco del 2 de abril, Día del Veterano y de los Caídos en la Guerra de Malvinas, te presento este cuadernillo diseñado para abordar la efeméride de manera respetuosa, significativa y adaptada para los más peques.",
+      "nombre": "DÃ­a del Veterano y de los CaÃ­dos en la Guerra de Malvinas",
+      "descripcion": "En el marco del 2 de abril, DÃ­a del Veterano y de los CaÃ­dos en la Guerra de Malvinas, te presento este cuadernillo diseÃ±ado para abordar la efemÃ©ride de manera respetuosa, significativa y adaptada para los mÃ¡s peques.",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 6500,
@@ -479,7 +479,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/cuadernillo-malvinas",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "📚 ¿Qué incluye este material?\n✔ Texto informativo accesible con actividades de comprensión\n✔ Preguntas guiadas para trabajar la interpretación\n✔ Ejercicios de completar, ordenar y asociación de palabras\n✔ Sopa de letras, crucigramas y código secreto\n✔ Actividades lúdicas: laberintos, unir puntos y buscar y encontrar\n✔ Propuestas de dibujo, pintura y expresión creativa\n✔ Secuencias para recortar y armar\n✔ Espacios de reflexión sobre los valores: memoria, respeto y paz\n✔ Pasapalabras\n\n💡 Además:\nIncluye el cuadernillo en PDF (34 Hojas A4) listo para imprimir y una carpeta extra con todas las actividades en formato imagen 🖼️, ideal para que cada docente pueda adaptarlas y utilizarlas según sus necesidades.\n\n✨ BONUS DOCENTE ✨\nTambién vas a encontrar un plan de clases completo con su fundamentación pedagógica, listo para usar, que te va a ayudar a organizar y aprovechar al máximo cada actividad del material.",
+      "descripcionLarga": "ð Â¿QuÃ© incluye este material?\nâ Texto informativo accesible con actividades de comprensiÃ³n\nâ Preguntas guiadas para trabajar la interpretaciÃ³n\nâ Ejercicios de completar, ordenar y asociaciÃ³n de palabras\nâ Sopa de letras, crucigramas y cÃ³digo secreto\nâ Actividades lÃºdicas: laberintos, unir puntos y buscar y encontrar\nâ Propuestas de dibujo, pintura y expresiÃ³n creativa\nâ Secuencias para recortar y armar\nâ Espacios de reflexiÃ³n sobre los valores: memoria, respeto y paz\nâ Pasapalabras\n\nð¡ AdemÃ¡s:\nIncluye el cuadernillo en PDF (34 Hojas A4) listo para imprimir y una carpeta extra con todas las actividades en formato imagen ð¼ï¸, ideal para que cada docente pueda adaptarlas y utilizarlas segÃºn sus necesidades.\n\nâ¨ BONUS DOCENTE â¨\nTambiÃ©n vas a encontrar un plan de clases completo con su fundamentaciÃ³n pedagÃ³gica, listo para usar, que te va a ayudar a organizar y aprovechar al mÃ¡ximo cada actividad del material.",
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -493,7 +493,7 @@
     {
       "id": "pasapalabra-malvinas",
       "nombre": "Pasapalabra Malvinas",
-      "descripcion": "Actividad lista para trabajar esta efeméride de manera lúdica 💙",
+      "descripcion": "Actividad lista para trabajar esta efemÃ©ride de manera lÃºdica ð",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 4000,
@@ -501,7 +501,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/pasapalabra-malvinas",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "🧩 ¿Qué incluye este material?\n✔️ Pasapalabras completo para trabajar en clase\n✔️ Versión para completar por los estudiantes\n✔️ Referencias con respuestas e imágenes\n✔️ Actividad ideal para primer y segundo ciclo\n✔️ 📂 PDF y Carpeta con todas las actividades en formato imágen\n👉 Para que puedas adaptarlas y dimensionarlas a tu gusto.",
+      "descripcionLarga": "ð§© Â¿QuÃ© incluye este material?\nâï¸ Pasapalabras completo para trabajar en clase\nâï¸ VersiÃ³n para completar por los estudiantes\nâï¸ Referencias con respuestas e imÃ¡genes\nâï¸ Actividad ideal para primer y segundo ciclo\nâï¸ ð PDF y Carpeta con todas las actividades en formato imÃ¡gen\nð Para que puedas adaptarlas y dimensionarlas a tu gusto.",
       "tematica": "efemerides",
       "nivel": "Segundo Ciclo",
       "nivelGrupo": "2ciclo",
@@ -514,8 +514,8 @@
     },
     {
       "id": "dia-mundial-de-la-salud",
-      "nombre": "Día Mundial de la Salud",
-      "descripcion": "Un recurso completo para trabajar hábitos saludables de forma divertida y significativa en el aula 💚",
+      "nombre": "DÃ­a Mundial de la Salud",
+      "descripcion": "Un recurso completo para trabajar hÃ¡bitos saludables de forma divertida y significativa en el aula ð",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 6300,
@@ -523,7 +523,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-mundial-de-la-salud",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "📚 ¿Qué incluye?\n✔ Actividades de recorte y pegado\n✔ Sopa de letras y crucigrama\n✔ Clasificación de hábitos saludables\n✔ Verdadero o falso\n✔ Unir con imágenes\n✔ Encuentra las diferencias\n✔ Actividades de reflexión y expresión\n✔ Grafomotricidad\n\n🧠 Ideal para los más peques\n🎨 Propuestas simples, visuales y accesibles\n✂️ Listo para imprimir y usar\n\n💛 Un material pensado para aprender jugando y construir hábitos saludables desde pequeños.",
+      "descripcionLarga": "ð Â¿QuÃ© incluye?\nâ Actividades de recorte y pegado\nâ Sopa de letras y crucigrama\nâ ClasificaciÃ³n de hÃ¡bitos saludables\nâ Verdadero o falso\nâ Unir con imÃ¡genes\nâ Encuentra las diferencias\nâ Actividades de reflexiÃ³n y expresiÃ³n\nâ Grafomotricidad\n\nð§  Ideal para los mÃ¡s peques\nð¨ Propuestas simples, visuales y accesibles\nâï¸ Listo para imprimir y usar\n\nð Un material pensado para aprender jugando y construir hÃ¡bitos saludables desde pequeÃ±os.",
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -537,8 +537,8 @@
     },
     {
       "id": "pasapalabra-dia-mundial-de-la-salud",
-      "nombre": "Pasapalabra Día Mundial de la Salud",
-      "descripcion": "Propuesta lúdica y educativa para trabajar el 7 de abril: Día Mundial de la Salud de una forma dinámica, participativa y significativa en el aula.",
+      "nombre": "Pasapalabra DÃ­a Mundial de la Salud",
+      "descripcion": "Propuesta lÃºdica y educativa para trabajar el 7 de abril: DÃ­a Mundial de la Salud de una forma dinÃ¡mica, participativa y significativa en el aula.",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 3500,
@@ -546,7 +546,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/pasapalabra-dia-mundial-de-la-salud",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "📦 ¿Qué incluye este material?\n\n✔ Rosco de Pasapalabra completo\n✔ Tarjetas con definiciones y respuestas\n✔ Versión con imágenes (ideal para acompañar la comprensión)\n✔ Fichas para recortar y pegar\n✔ Hoja de registro para completar\n✔ Gran variedad de palabras relacionadas a la salud (hábitos, cuerpo, alimentación, emociones y más)",
+      "descripcionLarga": "ð¦ Â¿QuÃ© incluye este material?\n\nâ Rosco de Pasapalabra completo\nâ Tarjetas con definiciones y respuestas\nâ VersiÃ³n con imÃ¡genes (ideal para acompaÃ±ar la comprensiÃ³n)\nâ Fichas para recortar y pegar\nâ Hoja de registro para completar\nâ Gran variedad de palabras relacionadas a la salud (hÃ¡bitos, cuerpo, alimentaciÃ³n, emociones y mÃ¡s)",
       "tematica": "efemerides",
       "nivel": "Primaria",
       "nivelGrupo": "2ciclo",
@@ -561,7 +561,7 @@
     {
       "id": "los-tres-cerditos",
       "nombre": "Los Tres Cerditos",
-      "descripcion": "Un recurso didáctico completo basado en el clásico cuento de los tres cerditos, ideal para trabajar en nivel inicial y primaria.",
+      "descripcion": "Un recurso didÃ¡ctico completo basado en el clÃ¡sico cuento de los tres cerditos, ideal para trabajar en nivel inicial y primaria.",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 6500,
@@ -569,7 +569,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/los-tres-cerditos",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "📖 Incluye el cuento adaptado en imprenta mayúscula y con pictogramas de los personajes, favoreciendo la comprensión y el acceso a la lectura para todos los estudiantes.\n\nActividades variadas para aprender jugando:\n🧠 Comprensión lectora\n✏️ Completar oraciones\n🔤 Conciencia fonológica (P, M, L)\n🔎 Sopa de letras y crucigrama\n🧩 Rompecabezas y secuencias del cuento\n🎨 Actividades de dibujo y coloreo\n\n💡 Ideal para trabajar el cuento en profundidad y abordar contenidos de Prácticas del Lenguaje de forma lúdica.",
+      "descripcionLarga": "ð Incluye el cuento adaptado en imprenta mayÃºscula y con pictogramas de los personajes, favoreciendo la comprensiÃ³n y el acceso a la lectura para todos los estudiantes.\n\nActividades variadas para aprender jugando:\nð§  ComprensiÃ³n lectora\nâï¸ Completar oraciones\nð¤ Conciencia fonolÃ³gica (P, M, L)\nð Sopa de letras y crucigrama\nð§© Rompecabezas y secuencias del cuento\nð¨ Actividades de dibujo y coloreo\n\nð¡ Ideal para trabajar el cuento en profundidad y abordar contenidos de PrÃ¡cticas del Lenguaje de forma lÃºdica.",
       "tematica": "lengua",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -580,8 +580,8 @@
     },
     {
       "id": "dia-de-las-americas",
-      "nombre": "Día de las Américas",
-      "descripcion": "¿Buscás una propuesta dinámica, divertida y significativa para trabajar el Día de las Américas en el aula?",
+      "nombre": "DÃ­a de las AmÃ©ricas",
+      "descripcion": "Â¿BuscÃ¡s una propuesta dinÃ¡mica, divertida y significativa para trabajar el DÃ­a de las AmÃ©ricas en el aula?",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 3500,
@@ -589,7 +589,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/3-pistas-1-pais-dia-de-las-americas",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "🔎 ¿De qué se trata?\nA partir de 3 pistas (comidas, músicas, lugares y costumbres), los alumnos deberán descubrir qué país es 🧠🌍\n\n💛 ¿Qué incluye?\n✔️ Actividades listas para imprimir\n✔️ Propuesta tipo juego (¡súper motivadora!)\n✔️ Países de América con elementos culturales representativos",
+      "descripcionLarga": "ð Â¿De quÃ© se trata?\nA partir de 3 pistas (comidas, mÃºsicas, lugares y costumbres), los alumnos deberÃ¡n descubrir quÃ© paÃ­s es ð§ ð\n\nð Â¿QuÃ© incluye?\nâï¸ Actividades listas para imprimir\nâï¸ Propuesta tipo juego (Â¡sÃºper motivadora!)\nâï¸ PaÃ­ses de AmÃ©rica con elementos culturales representativos",
       "tematica": "efemerides",
       "nivel": "Primarias",
       "nivelGrupo": "1ciclo",
@@ -602,8 +602,8 @@
     },
     {
       "id": "dia-mundial-de-la-tierra",
-      "nombre": "Día Mundial de la Tierra",
-      "descripcion": "Propuesta completa, significativa y divertida para trabajar el 22 de abril 📚✨",
+      "nombre": "DÃ­a Mundial de la Tierra",
+      "descripcion": "Propuesta completa, significativa y divertida para trabajar el 22 de abril ðâ¨",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 6000,
@@ -611,7 +611,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-mundial-de-la-tierra",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "Este cuadernillo incluye una variedad de actividades pensadas para que los peques aprendan a cuidar nuestro planeta mientras juegan:\n\n✨️ Plan de Clases ( Con Fundamentación y objetivos)\n🌿 Dibujos y consignas de reflexión\n🎨 Actividades de pintar y completar palabras\n♻️ Clasificación de residuos (recortar y pegar)\n🔍 Sopa de letras y crucigrama\n😊 Caritas de la Tierra (acciones buenas y malas)\n🔎 Encuentra las diferencias\n✏️ Grafomotricidad y más propuestas lúdicas\n\n💡 Ideal para los más peques.\n\n📲 ACTIVIDAD INTERACTIVA\n¡Sumamos tecnología al aprendizaje! 🙌\nEscaneá el código QR y accedé al memotest ecológico 🎉 donde los chicos podrán seguir aprendiendo de manera dinámica y divertida 🌍💫",
+      "descripcionLarga": "Este cuadernillo incluye una variedad de actividades pensadas para que los peques aprendan a cuidar nuestro planeta mientras juegan:\n\nâ¨ï¸ Plan de Clases ( Con FundamentaciÃ³n y objetivos)\nð¿ Dibujos y consignas de reflexiÃ³n\nð¨ Actividades de pintar y completar palabras\nâ»ï¸ ClasificaciÃ³n de residuos (recortar y pegar)\nð Sopa de letras y crucigrama\nð Caritas de la Tierra (acciones buenas y malas)\nð Encuentra las diferencias\nâï¸ Grafomotricidad y mÃ¡s propuestas lÃºdicas\n\nð¡ Ideal para los mÃ¡s peques.\n\nð² ACTIVIDAD INTERACTIVA\nÂ¡Sumamos tecnologÃ­a al aprendizaje! ð\nEscaneÃ¡ el cÃ³digo QR y accedÃ© al memotest ecolÃ³gico ð donde los chicos podrÃ¡n seguir aprendiendo de manera dinÃ¡mica y divertida ðð«",
       "tematica": "efemerides",
       "nivel": "Primaria",
       "nivelGrupo": "1ciclo",
@@ -625,8 +625,8 @@
     },
     {
       "id": "dia-del-libro",
-      "nombre": "Día del Libro",
-      "descripcion": "Recurso educativo pensado para celebrar el 23 de abril - Día Internacional del Libro, fomentando la lectura de manera lúdica y significativa.",
+      "nombre": "DÃ­a del Libro",
+      "descripcion": "Recurso educativo pensado para celebrar el 23 de abril - DÃ­a Internacional del Libro, fomentando la lectura de manera lÃºdica y significativa.",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 6000,
@@ -634,7 +634,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-mundial-del-libro",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "En este cuadernillo encontrarás propuestas variadas para que los niños aprendan y se diviertan:\n\n✨️ Plan de Clases (con fundamentación y objetivos)\n📖 Actividades de lectura y escritura\n✏️ Completar palabras con vocales\n🔤 Ordenar letras y descubrir palabras\n🧩 Crucigrama y sopa de letras\n🎨 Expresión creativa: diseñar la tapa de un libro\n🌀 Actividades de grafomotricidad\n🧠 Verdadero o falso\n📚 Ficha de lectura\n🎭 Mini libro y secuencias para ordenar\n🎉 Material visual listo para imprimir\n📲 Juego Didáctico Digital (memotest de cuentos)",
+      "descripcionLarga": "En este cuadernillo encontrarÃ¡s propuestas variadas para que los niÃ±os aprendan y se diviertan:\n\nâ¨ï¸ Plan de Clases (con fundamentaciÃ³n y objetivos)\nð Actividades de lectura y escritura\nâï¸ Completar palabras con vocales\nð¤ Ordenar letras y descubrir palabras\nð§© Crucigrama y sopa de letras\nð¨ ExpresiÃ³n creativa: diseÃ±ar la tapa de un libro\nð Actividades de grafomotricidad\nð§  Verdadero o falso\nð Ficha de lectura\nð­ Mini libro y secuencias para ordenar\nð Material visual listo para imprimir\nð² Juego DidÃ¡ctico Digital (memotest de cuentos)",
       "tematica": "efemerides",
       "nivel": "Primaria",
       "nivelGrupo": "1ciclo",
@@ -648,8 +648,8 @@
     },
     {
       "id": "dia-del-animal",
-      "nombre": "Día del Animal",
-      "descripcion": "Incluye propuestas variadas para que los peques aprendan sobre los animales mientras desarrollan habilidades de lectura, escritura, observación y reflexión.",
+      "nombre": "DÃ­a del Animal",
+      "descripcion": "Incluye propuestas variadas para que los peques aprendan sobre los animales mientras desarrollan habilidades de lectura, escritura, observaciÃ³n y reflexiÃ³n.",
       "tipo": "cuadernillo",
       "acceso": "pago",
       "precio": 6000,
@@ -657,7 +657,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-del-animal",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "📄 Secuencia Didáctica (Con Fundamentación, Propósitos y Contenidos)\n🐾 Comprensión de infografía\n🐾 Ordenar letras y formar palabras\n🐾 Sopa de letras\n🐾 Clasificación de animales\n🐾 Relación animal-hábitat\n🐾 Completar sílabas\n🐾 Actividades de conteo\n🐾 Crucigrama\n🐾 Encuentra las diferencias\n🐾 Propuestas de reflexión sobre el cuidado animal\n🐾 Juego interactivo + rompecabezas\n\n📚 Ideal para Nivel Inicial y Primer Ciclo\n🎨 Actividades listas para imprimir\n💻 Incluye propuesta interactiva\n📝 Perfecto para abordar la efeméride de forma integral",
+      "descripcionLarga": "ð Secuencia DidÃ¡ctica (Con FundamentaciÃ³n, PropÃ³sitos y Contenidos)\nð¾ ComprensiÃ³n de infografÃ­a\nð¾ Ordenar letras y formar palabras\nð¾ Sopa de letras\nð¾ ClasificaciÃ³n de animales\nð¾ RelaciÃ³n animal-hÃ¡bitat\nð¾ Completar sÃ­labas\nð¾ Actividades de conteo\nð¾ Crucigrama\nð¾ Encuentra las diferencias\nð¾ Propuestas de reflexiÃ³n sobre el cuidado animal\nð¾ Juego interactivo + rompecabezas\n\nð Ideal para Nivel Inicial y Primer Ciclo\nð¨ Actividades listas para imprimir\nð» Incluye propuesta interactiva\nð Perfecto para abordar la efemÃ©ride de forma integral",
       "tematica": "efemerides",
       "nivel": "Primaria",
       "nivelGrupo": "1ciclo",
@@ -671,8 +671,8 @@
     },
     {
       "id": "plataforma-interactiva-dia-del-trabajador",
-      "nombre": "Plataforma Interactiva Día del Trabajador",
-      "descripcion": "¿Querés que tus estudiantes, pacientes o hijos celebren el Día del Trabajador de una forma divertida, significativa y totalmente diferente? 💼🎮",
+      "nombre": "Plataforma Interactiva DÃ­a del Trabajador",
+      "descripcion": "Â¿QuerÃ©s que tus estudiantes, pacientes o hijos celebren el DÃ­a del Trabajador de una forma divertida, significativa y totalmente diferente? ð¼ð®",
       "tipo": "juego",
       "acceso": "pago",
       "precio": 3500,
@@ -680,7 +680,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-del-trabajador-plataforma-interactiva",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "Plataforma Interactiva del Día del Trabajador 2026 🗓️\nUna experiencia educativa digital completa, pensada especialmente para los más peques.\n\n🎮 7 JUEGOS EN UNA SOLA PROPUESTA:\n📚 Explorá los oficios\n❓ Quiz con temporizador\n🧩 Memotest\n🔍 Sopa de letras\n✍️ Completá la frase\n🔗 Unir trabajador y herramienta\n🔡 Armá la palabra\n\n🌟 ¿Por qué este recurso es diferente?\n🔊 Guía de voz en cada actividad (¡como tener una maestra digital!)\n🏆 Sistema de puntaje, medallas y confeti\n🖨️ Certificado imprimible personalizado\n♿ 100% accesible (modo oscuro, texto ajustable y sin movimiento)\n💡 Datos curiosos + 💭 preguntas de reflexión final\n\n📲 Usalo donde quieras: aula, casa o tablet\n✔️ Sin instalación\n✔️ Sin registro\n✔️ Listo para usar",
+      "descripcionLarga": "Plataforma Interactiva del DÃ­a del Trabajador 2026 ðï¸\nUna experiencia educativa digital completa, pensada especialmente para los mÃ¡s peques.\n\nð® 7 JUEGOS EN UNA SOLA PROPUESTA:\nð ExplorÃ¡ los oficios\nâ Quiz con temporizador\nð§© Memotest\nð Sopa de letras\nâï¸ CompletÃ¡ la frase\nð Unir trabajador y herramienta\nð¡ ArmÃ¡ la palabra\n\nð Â¿Por quÃ© este recurso es diferente?\nð GuÃ­a de voz en cada actividad (Â¡como tener una maestra digital!)\nð Sistema de puntaje, medallas y confeti\nð¨ï¸ Certificado imprimible personalizado\nâ¿ 100% accesible (modo oscuro, texto ajustable y sin movimiento)\nð¡ Datos curiosos + ð­ preguntas de reflexiÃ³n final\n\nð² Usalo donde quieras: aula, casa o tablet\nâï¸ Sin instalaciÃ³n\nâï¸ Sin registro\nâï¸ Listo para usar",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
       "precioTachado": 5500,
@@ -692,7 +692,7 @@
     {
       "id": "pack-mundial",
       "nombre": "Pack Mundial",
-      "descripcion": "📚 Incluye 4 PDF con más de 50 hojas de ambiente alfabetizador\n🇦🇷 Inspirado en el Mundial 2026 y la Selección Argentina ⚽",
+      "descripcion": "ð Incluye 4 PDF con mÃ¡s de 50 hojas de ambiente alfabetizador\nð¦ð· Inspirado en el Mundial 2026 y la SelecciÃ³n Argentina â½",
       "tipo": "cuadernillo",
       "acceso": "gratis",
       "precio": 0,
@@ -700,7 +700,7 @@
       "link": "https://drive.google.com/drive/folders/19CSBH5AERU0mqpa0om07QVeP7_SnqPBU?usp=sharing",
       "activo": true,
       "destacado": false,
-      "descripcionLarga": "✨ El pack contiene:\n\n- Banderín de “Bienvenidos”\n- Organizador semanal\n- Calendario 2026\n- Grilla numérica 0–100\n- Tabla pitagórica\n- Etiquetas para los nombres",
+      "descripcionLarga": "â¨ El pack contiene:\n\n- BanderÃ­n de âBienvenidosâ\n- Organizador semanal\n- Calendario 2026\n- Grilla numÃ©rica 0â100\n- Tabla pitagÃ³rica\n- Etiquetas para los nombres",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
       "meses": [
