@@ -83,7 +83,7 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .img-prog-bar{height:100%;background:var(--primary);transition:width .3s;}
 .mini-label{font-size:.73rem;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em;}
 .mini-label .mini-count{font-weight:400;text-transform:none;color:var(--ink-4);font-size:.68rem;}
-.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.mini-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;}
 .mini-slot{aspect-ratio:1;border-radius:8px;border:1.5px dashed var(--line);background:var(--bg-2);display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;overflow:hidden;transition:border-color .15s,background .15s;color:var(--ink-4);position:relative;}
 .mini-slot:hover{border-color:var(--primary);background:var(--primary-soft);}
 .mini-slot img{width:100%;height:100%;object-fit:cover;}
@@ -293,6 +293,10 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
       <div class="img-prog" id="img-prog"><div class="img-prog-bar" id="img-bar" style="width:0%"></div></div>
       <div class="mini-label">Páginas internas <span class="mini-count" id="mini-count">(0/6)</span></div>
       <div class="mini-grid" id="mini-grid">
+        <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
+        <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
+        <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
+        <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
         <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
         <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
         <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
@@ -589,7 +593,7 @@ function actualizarMiniCount(){
   const slots = document.querySelectorAll('#mini-grid .mini-slot');
   const filled = Array.from(slots).filter(s => s.querySelector('img')).length;
   const cc = document.getElementById('mini-count');
-  if(cc) cc.textContent = `(${filled}/6)`;
+  if(cc) cc.textContent = `(${filled}/10)`;
 }
 
 // ── Estado ────────────────────────────────────────────────────
@@ -1171,10 +1175,17 @@ function limpiarForm(){
   document.querySelector('.etiq-btn[data-v=""]').classList.add('active');
   etiqVal='';idManual=false;miniB64=[];imgRutaExistente=null;
   quitImg({stopPropagation:()=>{},preventDefault:()=>{}});
-  document.querySelectorAll('.mini-slot').forEach(s=>{
-    s.innerHTML=`＋<input type="file" accept="image/*" onchange="agregarMini(this)" />`;
-    delete s.dataset.b64; delete s.dataset.nombre; delete s.dataset.existente; delete s.dataset.subida;
-  });
+  // Regenerar exactamente 10 slots limpios
+  const mg=document.getElementById('mini-grid');
+  if(mg){
+    mg.innerHTML='';
+    for(let i=0;i<10;i++){
+      const l=document.createElement('label');
+      l.className='mini-slot';
+      l.innerHTML='＋<input type="file" accept="image/*" onchange="agregarMini(this)" />';
+      mg.appendChild(l);
+    }
+  }
   actualizarMiniCount();
   syncPreview();
 }
