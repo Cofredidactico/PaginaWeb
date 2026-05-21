@@ -92,8 +92,22 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 .hero-g{
   position:relative;padding:64px 0 60px;overflow:hidden;
   background:
-    radial-gradient(ellipse 70% 60% at 15% 0%, rgba(46,125,50,.10), transparent 60%),
-    radial-gradient(ellipse 70% 60% at 90% 100%, rgba(255,138,76,.08), transparent 60%);
+    radial-gradient(ellipse 80% 70% at 10% -10%, rgba(46,125,50,.13), transparent 55%),
+    radial-gradient(ellipse 60% 60% at 95% 110%, rgba(255,138,76,.10), transparent 55%),
+    radial-gradient(ellipse 40% 40% at 60% 50%, rgba(74,143,92,.05), transparent 60%),
+    var(--bg);
+}
+.hero-g::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(74,143,92,.07) 1px, transparent 0);
+  background-size:32px 32px;
+}
+.hero-g::after{
+  content:'';position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle, rgba(74,143,92,.07) 0%, transparent 70%);
+  top:-200px;right:-200px;pointer-events:none;
 }
 .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center;}
 .hero-badge{
@@ -192,11 +206,12 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 .sec-hd{margin-bottom:36px;}
 .sec-badge{
   display:inline-flex;align-items:center;gap:6px;
-  background:linear-gradient(135deg,var(--green-soft),rgba(46,125,50,.04));
+  background:linear-gradient(135deg,var(--green-soft),rgba(74,143,92,.08));
   color:var(--green);
   padding:7px 16px;border-radius:99px;font-size:.78rem;font-weight:800;
   letter-spacing:.06em;text-transform:uppercase;
-  border:1px solid rgba(46,125,50,.16);margin-bottom:14px;
+  border:1px solid rgba(74,143,92,.2);margin-bottom:14px;
+  box-shadow:0 2px 8px rgba(74,143,92,.1);
 }
 .sec-h{font-size:clamp(2rem,4vw,2.6rem);margin-bottom:10px;}
 .sec-h em{
@@ -233,7 +248,11 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
   transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .25s;
   position:relative;
 }
-.card:hover{transform:translateY(-6px);border-color:rgba(46,125,50,.25);box-shadow:var(--s-3);}
+.card:hover{
+  transform:translateY(-8px) scale(1.01);
+  border-color:rgba(74,143,92,.3);
+  box-shadow:0 20px 50px -12px rgba(74,143,92,.2), 0 8px 20px rgba(26,39,68,.08);
+}
 .card-img-link{display:block;}
 .card-img{
   position:relative;aspect-ratio:4/5;overflow:hidden;
@@ -271,11 +290,14 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 .card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);}
 .price-gratis{font-family:var(--f-display);font-weight:800;font-size:1.25rem;color:var(--green);display:flex;align-items:center;gap:6px;}
 .btn-card{
-  background:var(--green);color:#fff;
-  padding:8px 14px;border-radius:10px;font-size:.82rem;font-weight:700;
-  transition:background .2s, transform .2s;
+  background:linear-gradient(135deg,var(--green),#2E7D32);color:#fff;
+  padding:9px 16px;border-radius:10px;font-size:.82rem;font-weight:700;
+  transition:background .2s, transform .15s, box-shadow .2s;
+  box-shadow:0 3px 10px rgba(74,143,92,.3);
+  display:inline-flex;align-items:center;gap:6px;
 }
-.card:hover .btn-card{background:var(--green-2);}
+.btn-card:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(74,143,92,.4);}
+.card:hover .btn-card{background:linear-gradient(135deg,#2E7D32,#1B5E20);}
 
 /* ─── Estado vacío ─── */
 .empty{text-align:center;padding:60px 20px;color:var(--ink-3);grid-column:1/-1;}
@@ -285,9 +307,21 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 /* ─── Newsletter (más prominente acá) ─── */
 .nl{
   background:
-    radial-gradient(ellipse 60% 80% at 50% 0%, rgba(46,125,50,.08), transparent 70%),
-    linear-gradient(180deg,var(--bg-2),#F0EAD8);
+    radial-gradient(ellipse 80% 100% at 50% -20%, rgba(74,143,92,.12), transparent 65%),
+    radial-gradient(ellipse 50% 60% at 10% 100%, rgba(255,138,76,.06), transparent 60%),
+    linear-gradient(180deg,var(--bg-2),#EDE4D6);
   text-align:center;position:relative;overflow:hidden;
+}
+.nl-card{
+  background:rgba(255,255,255,.7);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(26,39,68,.07);
+  border-radius:28px;
+  padding:56px 40px;
+  max-width:620px;
+  margin:0 auto;
+  box-shadow:0 20px 60px -20px rgba(74,143,92,.15), var(--s-1);
+  position:relative;z-index:1;
 }
 .nl .wrap{position:relative;z-index:1;}
 .nl-icon{
@@ -313,21 +347,42 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 .nl::after{bottom:22%;right:9%;font-size:2rem;opacity:.18;transform:rotate(15deg);}
 
 /* ─── Por qué gratis ─── */
-.porque-gratis{background:linear-gradient(180deg,var(--bg),var(--bg-2));}
-.pq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;}
-.pq{
-  background:#fff;border-radius:var(--r-lg);padding:28px 24px 26px;
-  border:1px solid rgba(26,39,68,.07);box-shadow:var(--s-1);
+.porque-gratis{
+  background:linear-gradient(180deg,var(--bg),var(--bg-2));
   position:relative;overflow:hidden;
 }
-.pq-em{
-  width:50px;height:50px;border-radius:14px;
-  background:var(--green-soft);
-  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
-  margin-bottom:14px;
+.porque-gratis::before{
+  content:'';position:absolute;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle, rgba(74,143,92,.06) 0%, transparent 70%);
+  bottom:-200px;left:-100px;pointer-events:none;
 }
-.pq h3{font-size:1.05rem;margin-bottom:6px;}
-.pq p{font-size:.92rem;color:var(--ink-3);margin:0;line-height:1.55;}
+.pq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;position:relative;}
+.pq-grid::before{
+  content:'';position:absolute;top:50%;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--line),transparent);
+  display:none;
+}
+.pq{
+  background:transparent;padding:36px 32px;
+  border-right:1px solid rgba(26,39,68,.07);
+  position:relative;
+}
+.pq:last-child{border-right:none;}
+.pq-num{
+  font-family:var(--f-display);font-size:4rem;font-weight:800;
+  color:var(--green-soft);line-height:1;margin-bottom:12px;
+  position:absolute;top:24px;right:24px;
+}
+.pq-em{
+  width:56px;height:56px;border-radius:16px;
+  background:linear-gradient(135deg,var(--green-soft),rgba(74,143,92,.04));
+  border:1px solid rgba(74,143,92,.15);
+  display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+  margin-bottom:18px;box-shadow:0 4px 12px rgba(74,143,92,.1);
+}
+.pq h3{font-size:1.1rem;margin-bottom:8px;font-weight:800;}
+.pq p{font-size:.93rem;color:var(--ink-3);margin:0;line-height:1.6;}
 
 /* ─── Footer ─── */
 footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
@@ -354,6 +409,17 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
 /* ─── Reveal ─── */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s, transform .7s;}
 .reveal.in{opacity:1;transform:translateY(0);}
+
+/* ─── Hero entrance animations ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes badgePop{0%{opacity:0;transform:scale(.8) translateY(8px);}70%{transform:scale(1.05) translateY(-2px);}100%{opacity:1;transform:scale(1) translateY(0);}}
+@keyframes packFloat{0%,100%{transform:rotate(-4deg) translateY(0);}50%{transform:rotate(-4deg) translateY(-10px);}}
+.hero-badge{animation:badgePop .55s cubic-bezier(.2,.8,.2,1) both;}
+.hero-g h1{animation:fadeUp .65s .1s cubic-bezier(.2,.8,.2,1) both;}
+.hero-g p.lead{animation:fadeUp .65s .22s cubic-bezier(.2,.8,.2,1) both;}
+.hero-cta{animation:fadeUp .65s .34s cubic-bezier(.2,.8,.2,1) both;}
+.hero-promesa{animation:fadeUp .65s .46s cubic-bezier(.2,.8,.2,1) both;}
+.pack{animation:packFloat 4s ease-in-out infinite;}
 
 @media (max-width:840px){
   .hero-grid{grid-template-columns:1fr;}
@@ -451,16 +517,19 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
     </div>
     <div class="pq-grid">
       <div class="pq reveal">
+        <div class="pq-num">01</div>
         <div class="pq-em">🤝</div>
         <h3>Para que nos conozcas</h3>
         <p>Queremos que pruebes la calidad antes de pagar nada. Si te gusta, sabés que el resto del catálogo va por el mismo camino.</p>
       </div>
       <div class="pq reveal">
+        <div class="pq-num">02</div>
         <div class="pq-em">👩‍🏫</div>
         <h3>Porque también soy docente</h3>
         <p>Sé lo que cuesta armar materiales lindos para el aula. Estos recursos son mi forma de devolver a la comunidad.</p>
       </div>
       <div class="pq reveal">
+        <div class="pq-num">03</div>
         <div class="pq-em">📬</div>
         <h3>Para construir comunidad</h3>
         <p>Al suscribirte a la newsletter recibís nuevos recursos cada semana, antes que nadie. Sin spam, podés bajarte cuando quieras.</p>
@@ -472,15 +541,17 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
 <!-- Newsletter (PROMINENTE en esta página) -->
 <section class="sec nl" id="newsletter">
   <div class="wrap">
-    <div class="nl-icon" aria-hidden="true">✉️</div>
-    <div class="sec-badge">🎁 Recibí más cada semana</div>
-    <h2 class="sec-h">Nuevos recursos <em>todos los miércoles</em></h2>
-    <p class="sec-sub" style="margin:0 auto;text-align:center;">Dejá tu email y recibí material exclusivo, actividades inéditas y descuentos antes que nadie. Sin spam, podés bajarte cuando quieras.</p>
-    <form class="nl-form" id="nl-form" onsubmit="return suscribirse(event);">
-      <input type="email" required placeholder="tu@email.com" id="nl-email" />
-      <button class="btn btn-green">¡Me apunto!</button>
-    </form>
-    <p class="nl-mini" id="nl-msg">🔒 Tus datos están seguros · 1 email por semana · Cancelás cuando quieras</p>
+    <div class="nl-card">
+      <div class="nl-icon" aria-hidden="true">✉️</div>
+      <div class="sec-badge" style="margin:0 auto 14px;">🎁 Recibí más cada semana</div>
+      <h2 class="sec-h">Nuevos recursos <em>todos los miércoles</em></h2>
+      <p class="sec-sub" style="margin:12px auto 0;text-align:center;">Dejá tu email y recibí material exclusivo, actividades inéditas y descuentos antes que nadie. Sin spam, podés bajarte cuando quieras.</p>
+      <form class="nl-form" id="nl-form" onsubmit="return suscribirse(event);">
+        <input type="email" required placeholder="tu@email.com" id="nl-email" />
+        <button class="btn btn-green">¡Me apunto! →</button>
+      </form>
+      <p class="nl-mini" id="nl-msg">🔒 Tus datos están seguros · 1 email por semana · Cancelás cuando quieras</p>
+    </div>
   </div>
 </section>
 

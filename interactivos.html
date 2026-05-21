@@ -79,7 +79,25 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 .btn-sm{padding:8px 14px;font-size:.85rem;}
 
 /* ─── Hero ─── */
-.hero-i{position:relative;padding:64px 0 56px;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 15% 0%, rgba(123,97,255,.10), transparent 60%),radial-gradient(ellipse 70% 60% at 90% 100%, rgba(33,150,243,.10), transparent 60%);}
+.hero-i{
+  position:relative;padding:64px 0 56px;overflow:hidden;
+  background:
+    radial-gradient(ellipse 80% 70% at 5% -10%, rgba(123,97,255,.13), transparent 55%),
+    radial-gradient(ellipse 60% 60% at 98% 110%, rgba(94,63,224,.10), transparent 55%),
+    radial-gradient(ellipse 40% 40% at 55% 50%, rgba(123,97,255,.04), transparent 60%),
+    var(--bg);
+}
+.hero-i::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle at 1px 1px, rgba(123,97,255,.06) 1px, transparent 0);
+  background-size:32px 32px;
+}
+.hero-i::after{
+  content:'';position:absolute;
+  width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle, rgba(123,97,255,.07) 0%, transparent 70%);
+  top:-300px;right:-250px;pointer-events:none;
+}
 .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--line);padding:8px 16px;border-radius:99px;font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);box-shadow:var(--s-1);}
 .hero-i h1{font-size:clamp(2.2rem, 5vw, 3.6rem);margin:18px 0 18px;text-wrap:balance;}
@@ -113,22 +131,38 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 
 /* ─── Grid de interactivos ─── */
 .grid-i{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px;}
-.card-i{background:#fff;border-radius:var(--r-lg);border:1px solid rgba(26,39,68,.07);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--s-1);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s, border-color .25s;position:relative;}
-.card-i:hover{transform:translateY(-5px);box-shadow:var(--s-3);border-color:rgba(123,97,255,.25);}
+.card-i{background:#fff;border-radius:var(--r-lg);border:1px solid rgba(26,39,68,.07);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--s-1);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s, border-color .25s;position:relative;}
+.card-i:hover{
+  transform:translateY(-8px) scale(1.01);
+  box-shadow:0 20px 50px -12px rgba(123,97,255,.22), 0 8px 20px rgba(26,39,68,.08);
+  border-color:rgba(123,97,255,.3);
+}
 .card-i-media{position:relative;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg,#F3E8FF,#E3F2FD);}
 .card-i-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
 .card-i:hover .card-i-media img{transform:scale(1.05);}
-.card-i-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,39,68,0) 50%,rgba(26,39,68,.6) 100%);display:flex;align-items:flex-end;justify-content:center;padding:14px;}
+.card-i-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(26,39,68,0) 40%,rgba(26,39,68,.65) 100%);
+  display:flex;align-items:flex-end;justify-content:center;padding:14px;
+  transition:background .3s;
+}
+.card-i:hover .card-i-overlay{
+  background:linear-gradient(180deg,rgba(123,97,255,.05) 0%,rgba(26,39,68,.7) 100%);
+}
 .card-i-play{
   position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:64px;height:64px;border-radius:50%;
-  background:rgba(255,255,255,.96);backdrop-filter:blur(8px);
+  width:68px;height:68px;border-radius:50%;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 14px 30px rgba(26,39,68,.25);
-  transition:transform .25s;
-  font-size:1.4rem;
+  box-shadow:0 14px 40px rgba(26,39,68,.3), 0 0 0 6px rgba(255,255,255,.25);
+  transition:transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s;
+  font-size:1.5rem;opacity:.92;
 }
-.card-i:hover .card-i-play{transform:translate(-50%,-50%) scale(1.1);}
+.card-i:hover .card-i-play{
+  transform:translate(-50%,-50%) scale(1.15);
+  opacity:1;
+  box-shadow:0 20px 50px rgba(123,97,255,.3), 0 0 0 8px rgba(255,255,255,.3);
+}
 .card-i-tag{position:absolute;top:12px;left:12px;background:#fff;padding:5px 11px;border-radius:99px;font-size:.7rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);box-shadow:var(--s-1);}
 .card-i-tag.gratis{background:var(--green);color:#fff;}
 .card-i-tag.pago{background:var(--gold);color:#fff;}
@@ -141,8 +175,17 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 .card-i-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);}
 .card-i-foot .price{font-family:var(--f-display);font-weight:800;font-size:1rem;color:var(--ink);}
 .card-i-foot .price.gratis{color:var(--green);}
-.card-i-foot .btn-play{background:linear-gradient(135deg,var(--purple),#5E3FE0);color:#fff;padding:8px 14px;border-radius:10px;font-size:.84rem;font-weight:800;display:inline-flex;gap:6px;align-items:center;transition:transform .2s, box-shadow .2s;}
-.card-i:hover .btn-play{box-shadow:0 6px 16px rgba(123,97,255,.4);}
+.card-i-foot .btn-play{
+  background:linear-gradient(135deg,var(--purple),#5E3FE0);color:#fff;
+  padding:9px 16px;border-radius:10px;font-size:.84rem;font-weight:800;
+  display:inline-flex;gap:6px;align-items:center;
+  transition:transform .2s, box-shadow .2s;
+  box-shadow:0 3px 10px rgba(123,97,255,.3);
+}
+.card-i:hover .btn-play{
+  transform:translateY(-1px);
+  box-shadow:0 8px 20px rgba(123,97,255,.45);
+}
 
 /* ─── Filtros ─── */
 .filtros-i{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;align-items:center;}
@@ -153,12 +196,39 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 .chip-i.on .count{background:rgba(255,255,255,.18);color:#fff;}
 
 /* ─── Cómo funciona ─── */
-.como{background:linear-gradient(180deg,#fff,var(--bg-2));}
-.como-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
-.como-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 22px;text-align:left;position:relative;box-shadow:var(--s-1);}
-.como-step{position:absolute;top:18px;right:18px;font-family:var(--f-display);font-weight:800;font-size:2rem;color:var(--purple-soft);line-height:1;}
-.como-em{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--purple-soft),#E3F2FD);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:14px;}
-.como-card h3{font-size:1.05rem;margin-bottom:6px;}
+.como{
+  background:linear-gradient(180deg,#fff,var(--bg-2));
+  position:relative;overflow:hidden;
+}
+.como::before{
+  content:'';position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle, rgba(123,97,255,.05) 0%, transparent 70%);
+  top:-200px;right:-150px;pointer-events:none;
+}
+.como-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:0;position:relative;
+}
+.como-grid::before{
+  content:'';position:absolute;top:52px;left:calc(16.6% + 24px);right:calc(16.6% + 24px);
+  height:2px;background:linear-gradient(90deg,var(--purple-soft),rgba(123,97,255,.1),var(--purple-soft));
+  border-radius:99px;
+}
+.como-card{
+  background:transparent;padding:32px 28px;text-align:left;position:relative;
+}
+.como-step{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),#5E3FE0);
+  color:#fff;font-family:var(--f-display);font-weight:800;font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;
+  box-shadow:0 4px 14px rgba(123,97,255,.35);
+  position:relative;z-index:1;
+}
+.como-em{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--purple-soft),#EDE9FF);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:14px;border:1px solid rgba(123,97,255,.12);}
+.como-card h3{font-size:1.08rem;margin-bottom:8px;font-weight:800;}
 .como-card p{font-size:.92rem;color:var(--ink-3);margin:0;line-height:1.55;}
 
 /* ─── Footer ─── */
@@ -180,10 +250,15 @@ footer{background:var(--ink);color:#D1D7E0;padding:48px 0 24px;}
 /* WhatsApp flotante deshabilitado — descomentar cuando el número esté listo */
 
 /* ═════════ MODAL IFRAME — el corazón de la página ═════════ */
-.modal{position:fixed;inset:0;background:rgba(15,20,30,.88);backdrop-filter:blur(8px);z-index:100;display:none;flex-direction:column;animation:modalIn .25s ease;}
-.modal.open{display:flex;}
-@keyframes modalIn{from{opacity:0;}to{opacity:1;}}
-.modal-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 22px;color:#fff;flex:none;}
+.modal{position:fixed;inset:0;background:rgba(15,20,30,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:100;display:none;flex-direction:column;}
+.modal.open{display:flex;animation:modalFadeIn .3s cubic-bezier(.2,.8,.2,1) both;}
+@keyframes modalFadeIn{from{opacity:0;}to{opacity:1;}}
+.modal-stage{flex:1;position:relative;margin:0 22px 22px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.4);animation:modalSlideIn .35s .05s cubic-bezier(.2,.8,.2,1) both;}
+.modal-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 22px;color:#fff;flex:none;
+  background:linear-gradient(180deg,rgba(15,20,30,.6),transparent);
+}
 .modal-tt{font-family:var(--f-display);font-weight:800;font-size:1rem;display:flex;align-items:center;gap:10px;}
 .modal-tt .modal-em{font-size:1.2rem;}
 .modal-clock{
@@ -226,6 +301,18 @@ footer{background:var(--ink);color:#D1D7E0;padding:48px 0 24px;}
 /* ─── Reveal ─── */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s, transform .7s;}
 .reveal.in{opacity:1;transform:translateY(0);}
+
+/* ─── Hero & card entrance animations ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes badgePop{0%{opacity:0;transform:scale(.8) translateY(8px);}70%{transform:scale(1.05) translateY(-2px);}100%{opacity:1;transform:scale(1) translateY(0);}}
+@keyframes mockFloat{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-8px) rotate(.5deg);}}
+@keyframes modalSlideIn{from{opacity:0;transform:scale(.96) translateY(10px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.hero-badge{animation:badgePop .55s cubic-bezier(.2,.8,.2,1) both;}
+.hero-i h1{animation:fadeUp .65s .1s cubic-bezier(.2,.8,.2,1) both;}
+.hero-i p.lead{animation:fadeUp .65s .22s cubic-bezier(.2,.8,.2,1) both;}
+.hero-cta{animation:fadeUp .65s .34s cubic-bezier(.2,.8,.2,1) both;}
+.hero-points{animation:fadeUp .65s .46s cubic-bezier(.2,.8,.2,1) both;}
+.mock{animation:mockFloat 5s ease-in-out infinite;}
 
 /* ─── Empty ─── */
 .empty{text-align:center;padding:60px 20px;color:var(--ink-3);grid-column:1/-1;}
@@ -318,23 +405,23 @@ footer{background:var(--ink);color:#D1D7E0;padding:48px 0 24px;}
       <h2 class="sec-h">3 pasos para <em>probar</em> y usar en clase</h2>
     </div>
     <div class="como-grid">
-      <div class="como-card">
-        <span class="como-step">01</span>
+      <div class="como-card reveal">
+        <div class="como-step">01</div>
         <div class="como-em">🖱️</div>
         <h3>Elegí un recurso</h3>
-        <p>Filtrá por nivel o temática y mirá el que te interese.</p>
+        <p>Filtrá por nivel o temática y hacé clic en el que te interese.</p>
       </div>
-      <div class="como-card">
-        <span class="como-step">02</span>
+      <div class="como-card reveal">
+        <div class="como-step">02</div>
         <div class="como-em">⏱️</div>
         <h3>Probalo unos segundos</h3>
-        <p>Hacé clic en "Probar" y la plataforma se abre acá mismo. Sin descargas.</p>
+        <p>La plataforma se abre acá mismo. Sin descargas, sin registros.</p>
       </div>
-      <div class="como-card">
-        <span class="como-step">03</span>
+      <div class="como-card reveal">
+        <div class="como-step">03</div>
         <div class="como-em">🚀</div>
-        <h3>Jugá completo o llevatelo</h3>
-        <p>Si es gratis, te llevamos a la versión completa. Si es de pago, podés sumarlo a tu aula.</p>
+        <h3>Jugá completo o llevátelo</h3>
+        <p>Si es gratis, te llevamos a la versión completa. Si es de pago, sumalo a tu aula.</p>
       </div>
     </div>
   </div>
