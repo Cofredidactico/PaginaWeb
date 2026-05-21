@@ -147,8 +147,8 @@ collections:
                 widget: "list"
                 required: false
                 hint: "Subí 2-4 imágenes de páginas internas. ¡Aumenta MUCHO la conversión!"
-                summary: "Muestra"
-                field: {label: "Imagen", name: "img", widget: "image"}
+                summary: "🖼️ Vista {{index}}"
+                field: {label: "Imagen interna", name: "imagen", widget: "image"}
 
               # ── Detalles ──────────────────
               - label: "✓ Qué incluye"
