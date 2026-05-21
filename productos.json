@@ -39,7 +39,7 @@
       "paginas": 34,
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/revolucion-de-mayo-con-plataforma-interactiva",
-      "linkHotmart": "https://cofredidactico.empretienda.com.ar/novedades/revolucion-de-mayo-con-plataforma-interactiva",
+      "linkHotmart": "",
       "etiqueta": "nuevo",
       "activo": true,
       "destacado": true,
@@ -105,14 +105,14 @@
       "activo": true,
       "destacado": true,
       "testimonios": [],
-      "relacionados": [
-        {
-          "id": "revolucion-mayo"
-        }
-      ],
       "incluye": [
         {
           "texto": "Propuestas lúdicas y significativas"
+        }
+      ],
+      "relacionados": [
+        {
+          "id": "revolucion-mayo"
         }
       ]
     },
@@ -638,20 +638,23 @@
       "destacado": false
     }
   ],
+  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
   "config": {
-    "links": {
-      "email": "cofredidacticoo@gmail.com",
-      "whatsapp": "https://wa.me/5491165298256?text=Hola!%20Tengo%20una%20consulta%20sobre%20los%20materiales%20de%20Cofre%20Did%C3%A1ctico%20%F0%9F%93%9A",
-      "hotmart": "https://hotmart.com/es/market/materiales-educativos",
-      "empretienda": "https://cofredidactico.empretienda.com.ar/",
-      "instagram": "https://www.instagram.com/cofredidactico/"
+    "anuncio": {
+      "activo": false,
+      "texto": "🎉 Envíos gratis esta semana — usá el código DOCENTE10",
+      "color": "#FF8A4C"
     },
-    "brevo": {
-      "listIds": "",
-      "emailField": "EMAIL",
-      "formAction": "https://26529e2e.sibforms.com/serve/MUIFAL5aDmHkI8zmiGQYczSKOqDTPfVD-wgfkB5oBIBRLt5BAkqNQbEA11bVTSMXj-KC14n9FyIXoCysBPvTPKdic_urix91YTh_7ojru7jwleUzJe1ylWNdVb_WAdHBTQf9rQuQ4uPmNf0VmYL2Sdv3vdrNyk4Z8JOqqnMohXF7mY8tRu1EmjcYQp4wE7UUrJOAczqXMxa_X8pyPQ=="
+    "stats": {
+      "docentes": "+1000",
+      "paises": "+10",
+      "descargas": "+2.000"
     },
     "semana": {
+      "activo": true,
+      "titulo": "Para esta semana",
+      "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
+      "etiqueta": "🗓️ Esta semana",
       "productos": [
         {
           "id": "revolucion-mayo"
@@ -659,24 +662,21 @@
         {
           "id": "dia-de-la-escarapela"
         }
-      ],
-      "etiqueta": "🗓️ Esta semana",
-      "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
-      "titulo": "Para esta semana",
-      "activo": true
+      ]
     },
-    "stats": {
-      "descargas": "+2.000",
-      "paises": "+10",
-      "docentes": "+1000"
+    "brevo": {
+      "formAction": "https://26529e2e.sibforms.com/serve/MUIFAL5aDmHkI8zmiGQYczSKOqDTPfVD-wgfkB5oBIBRLt5BAkqNQbEA11bVTSMXj-KC14n9FyIXoCysBPvTPKdic_urix91YTh_7ojru7jwleUzJe1ylWNdVb_WAdHBTQf9rQuQ4uPmNf0VmYL2Sdv3vdrNyk4Z8JOqqnMohXF7mY8tRu1EmjcYQp4wE7UUrJOAczqXMxa_X8pyPQ==",
+      "emailField": "EMAIL",
+      "listIds": ""
     },
-    "anuncio": {
-      "color": "#FF8A4C",
-      "texto": "🎉 Envíos gratis esta semana — usá el código DOCENTE10",
-      "activo": false
+    "links": {
+      "instagram": "https://www.instagram.com/cofredidactico/",
+      "empretienda": "https://cofredidactico.empretienda.com.ar/",
+      "hotmart": "https://hotmart.com/es/market/materiales-educativos",
+      "whatsapp": "https://wa.me/5491165298256?text=Hola!%20Tengo%20una%20consulta%20sobre%20los%20materiales%20de%20Cofre%20Did%C3%A1ctico%20%F0%9F%93%9A",
+      "email": "cofredidacticoo@gmail.com"
     }
   },
-  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
   "tematicas": [
     {
       "id": "lengua",
