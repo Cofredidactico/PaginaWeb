@@ -614,7 +614,8 @@
       "nivelGrupo": "1ciclo",
       "precioTachado": 7500,
       "paginas": 22,
-      "formato": "PDF-A4-Color"
+      "formato": "PDF-A4-Color",
+      "linkHotmart": "https://pay.hotmart.com/P105259080B"
     },
     {
       "id": "dia-de-las-americas",
