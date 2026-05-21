@@ -348,6 +348,57 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
 .nl::before{top:18%;left:8%;transform:rotate(-10deg);}
 .nl::after{bottom:22%;right:9%;font-size:2rem;opacity:.18;transform:rotate(15deg);}
 
+/* ─── Cafecito ─── */
+.cafecito{
+  padding:56px 0;
+  background:linear-gradient(180deg,var(--bg-2),var(--bg));
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.cafecito::before{
+  content:'☕';position:absolute;
+  font-size:14rem;opacity:.04;
+  top:-2rem;right:-2rem;line-height:1;pointer-events:none;
+}
+.cafecito-card{
+  display:inline-flex;flex-direction:column;align-items:center;gap:16px;
+  background:#fff;border:1px solid var(--line);border-radius:28px;
+  padding:40px 48px;
+  box-shadow:0 12px 40px -10px rgba(26,39,68,.1), var(--s-1);
+  max-width:500px;width:100%;
+  position:relative;z-index:1;
+}
+.cafecito-emoji{
+  width:72px;height:72px;border-radius:20px;
+  background:linear-gradient(135deg,#FFFBF0,#FFF3D4);
+  border:1.5px solid rgba(217,119,87,.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.2rem;
+  box-shadow:0 8px 20px rgba(217,119,87,.12);
+}
+.cafecito-card h3{
+  font-size:1.3rem;font-weight:800;letter-spacing:-.03em;
+  color:var(--ink);margin:0;
+}
+.cafecito-card p{
+  font-size:.95rem;color:var(--ink-3);line-height:1.6;
+  margin:0;max-width:340px;
+}
+.cafecito-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#D97757,#B85A3E);
+  color:#fff;padding:13px 28px;border-radius:14px;
+  font-weight:800;font-size:.95rem;letter-spacing:-.01em;
+  text-decoration:none;
+  box-shadow:0 6px 20px rgba(217,119,87,.35);
+  transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .2s;
+}
+.cafecito-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 28px rgba(217,119,87,.45);
+}
+.cafecito-mini{font-size:.78rem;color:var(--ink-4);}
+
 /* ─── Por qué gratis ─── */
 .porque-gratis{
   background:linear-gradient(180deg,var(--bg),var(--bg-2));
@@ -506,6 +557,21 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
       <div class="card"><div class="card-img skeleton"></div><div class="card-body"><div class="skeleton" style="height:14px;border-radius:6px;margin-bottom:8px;"></div><div class="skeleton" style="height:32px;border-radius:6px;"></div></div></div>
       <div class="card"><div class="card-img skeleton"></div><div class="card-body"><div class="skeleton" style="height:14px;border-radius:6px;margin-bottom:8px;"></div><div class="skeleton" style="height:32px;border-radius:6px;"></div></div></div>
       <div class="card"><div class="card-img skeleton"></div><div class="card-body"><div class="skeleton" style="height:14px;border-radius:6px;margin-bottom:8px;"></div><div class="skeleton" style="height:32px;border-radius:6px;"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Cafecito -->
+<section class="cafecito">
+  <div class="wrap" style="display:flex;justify-content:center;">
+    <div class="cafecito-card reveal">
+      <div class="cafecito-emoji">☕</div>
+      <h3>¿Te sirvió el material?</h3>
+      <p>Si estos recursos te ayudaron en el aula y querés apoyar el proyecto, podés invitarme un cafecito. ¡Cada uno ayuda a seguir creando!</p>
+      <a href="https://cafecito.app/cofredidactico" target="_blank" rel="noopener" class="cafecito-btn">
+        ☕ Invitame un cafecito
+      </a>
+      <span class="cafecito-mini">Opcional y con mucho amor 💛</span>
     </div>
   </div>
 </section>
