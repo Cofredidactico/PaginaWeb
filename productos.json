@@ -107,12 +107,14 @@
       ],
       "paginas": 34,
       "formato": "PDF-A4-Color",
-      "link": "https://cofredidactico.empretienda.com.ar/novedades/revolucion-de-mayo",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/revolucion-de-mayo-con-plataforma-interactiva",
       "etiqueta": "nuevo",
       "activo": true,
       "destacado": true,
       "relacionados": [
-        "dia-de-la-escarapela"
+        {
+          "id": "dia-de-la-escarapela"
+        }
       ],
       "testimonios": [
         {
