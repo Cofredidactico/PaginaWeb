@@ -231,12 +231,23 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 <div class="token-overlay" id="token-overlay">
   <div class="token-card">
     <h2>🔑 Conectar con GitHub</h2>
-    <p>Para cargar y guardar productos necesitás un <a href="https://github.com/settings/tokens/new?scopes=repo&description=Cofre+Panel" target="_blank" rel="noopener">Personal Access Token (scope repo) →</a></p>
+    <p>Para cargar y guardar productos necesitás un <strong>Personal Access Token</strong> de GitHub.</p>
+    <div style="background:var(--bg-1);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:.82rem;color:var(--ink-3);line-height:1.7;">
+      <strong style="color:var(--ink);">Cómo generarlo (solo una vez):</strong><br>
+      1. Andá a <a href="https://github.com/settings/tokens/new?scopes=repo&description=Cofre+Panel" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700;">github.com/settings/tokens →</a><br>
+      2. Poné cualquier nombre · Expiration: <strong>No expiration</strong><br>
+      3. Tildá solo <strong>repo</strong> · Clic en "Generate token"<br>
+      4. Copiá el token (empieza con <code>ghp_</code>) y pegalo acá
+    </div>
     <div class="token-row">
-      <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx" />
+      <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off"
+        onkeydown="if(event.key==='Enter')guardarToken()" />
       <button class="btn btn-primary btn-sm" onclick="guardarToken()">✓ Conectar</button>
     </div>
-    <div style="text-align:center;margin-top:12px;">
+    <p style="font-size:.75rem;color:var(--ink-4);margin-top:10px;text-align:center;">
+      🔒 Se guarda solo en este navegador. Nunca sale de tu computadora.
+    </p>
+    <div style="text-align:center;margin-top:8px;">
       <button onclick="cerrarOverlay()" style="font-size:.78rem;color:var(--ink-4);font-weight:600;">Configurar después</button>
     </div>
   </div>
@@ -617,7 +628,7 @@ function pilClick(){
 function actualizarPill(){
   const tk=getToken(),pill=$('#gh-pill');
   if(tk){pill.className='gh-pill ok';$('#gh-txt').textContent='GitHub conectado';}
-  else{pill.className='gh-pill';$('#gh-txt').textContent='Sin conectar';}
+  else{pill.className='gh-pill';$('#gh-txt').textContent='⚠️ Sin token — clic para conectar';}
   const lbl=tk?'💾 Guardar':'💾 Descargar JSON';
   ['btn-h','btn-f'].forEach(id=>{const b=$(`#${id}`);if(b)b.textContent=lbl;});
 }
@@ -648,8 +659,23 @@ async function cargarProductoExistente(){
     poblarFormulario(prod);
     toast('Producto cargado ✓','ok');
   }catch(e){
-    toast('❌ '+e.message,'err');
-  }finally{setLoading(false);}
+    setLoading(false);
+    const msg = e.message.includes('401') ? 'Token inválido o expirado — clic en el badge para reconectar' :
+                e.message.includes('404') ? 'No se encontró el archivo productos.json en GitHub' :
+                e.message.includes('No se encontró el producto') ? e.message :
+                'Error de conexión: ' + e.message;
+    toast('❌ ' + msg, 'err');
+    // Mostrar mensaje en pantalla también
+    const lo = document.getElementById('loading-overlay');
+    if(lo) {
+      lo.innerHTML = `<div style="text-align:center;padding:24px;max-width:400px;">
+        <div style="font-size:2rem;margin-bottom:12px;">❌</div>
+        <div style="font-weight:700;color:var(--ink);margin-bottom:8px;">${msg}</div>
+        <button class="btn btn-primary" onclick="document.getElementById('loading-overlay').classList.remove('show');document.getElementById('token-overlay').classList.add('show');" style="margin-top:12px;">🔑 Reconectar</button>
+      </div>`;
+      lo.classList.add('show');
+    }
+  }
 }
 
 function setLoading(show,txt=''){

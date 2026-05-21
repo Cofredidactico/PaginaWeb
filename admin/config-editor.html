@@ -278,7 +278,7 @@ function toast(msg, type='success'){
   setTimeout(() => el.classList.remove('show'), 3000);
 }
 
-function getToken(){ return localStorage.getItem('gh_token') || ''; }
+function getToken(){ return localStorage.getItem('gh_token_panel') || ''; }
 
 function mostrarModal(){ document.getElementById('token-modal').classList.add('open'); }
 function cerrarModal(){ document.getElementById('token-modal').classList.remove('open'); }
@@ -286,7 +286,7 @@ function cerrarModal(){ document.getElementById('token-modal').classList.remove(
 function guardarToken(){
   const v = document.getElementById('token-input').value.trim();
   if (!v){ toast('Ingresá un token válido','error'); return; }
-  localStorage.setItem('gh_token', v);
+  localStorage.setItem('gh_token_panel', v);
   cerrarModal();
   toast('Token guardado ✓');
   cargar();
