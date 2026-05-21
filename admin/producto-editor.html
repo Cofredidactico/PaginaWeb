@@ -82,11 +82,18 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .img-prog{height:3px;background:var(--bg-2);border-radius:0 0 12px 12px;display:none;overflow:hidden;}
 .img-prog-bar{height:100%;background:var(--primary);transition:width .3s;}
 .mini-label{font-size:.73rem;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em;}
+.mini-label .mini-count{font-weight:400;text-transform:none;color:var(--ink-4);font-size:.68rem;}
 .mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
-.mini-slot{aspect-ratio:1;border-radius:8px;border:1.5px dashed var(--line);background:var(--bg-2);display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;overflow:hidden;transition:border-color .15s;color:var(--ink-4);}
-.mini-slot:hover{border-color:var(--primary);}
+.mini-slot{aspect-ratio:1;border-radius:8px;border:1.5px dashed var(--line);background:var(--bg-2);display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;overflow:hidden;transition:border-color .15s,background .15s;color:var(--ink-4);position:relative;}
+.mini-slot:hover{border-color:var(--primary);background:var(--primary-soft);}
 .mini-slot img{width:100%;height:100%;object-fit:cover;}
 .mini-slot input{display:none;}
+.mini-slot .mini-rm{
+  display:none;position:absolute;top:3px;right:3px;
+  background:rgba(26,39,68,.75);color:#fff;border-radius:5px;
+  padding:2px 5px;font-size:.6rem;font-weight:700;
+}
+.mini-slot:hover .mini-rm{display:block;}
 
 /* Form */
 .form-col{display:flex;flex-direction:column;gap:10px;}
@@ -95,6 +102,17 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .card-h .ico{font-size:1rem;}
 .card-h span{font-weight:700;font-size:.9rem;}
 .card-h .opt{font-size:.66rem;background:var(--bg-2);color:var(--ink-4);padding:2px 7px;border-radius:99px;font-weight:700;margin-left:auto;}
+.card-h .req{font-size:.66rem;background:var(--primary-soft);color:var(--primary-dark);padding:2px 7px;border-radius:99px;font-weight:700;margin-left:auto;}
+/* Input con copy button */
+.input-with-btn{display:flex;gap:6px;}
+.input-with-btn input{flex:1;}
+.input-with-btn .copy-btn{padding:0 10px;border-radius:8px;background:var(--bg-2);color:var(--ink-3);font-size:.75rem;font-weight:700;transition:background .15s;white-space:nowrap;flex:none;}
+.input-with-btn .copy-btn:hover{background:var(--bg-3);}
+/* Progreso de completitud mejorado */
+.comp-bar-wrap{margin-bottom:8px;}
+.comp-bar{height:4px;background:var(--bg-2);border-radius:99px;overflow:hidden;margin-top:4px;}
+.comp-bar-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--green));border-radius:99px;transition:width .4s cubic-bezier(.2,.8,.2,1);}
+.comp-pct{font-size:.72rem;font-weight:700;color:var(--ink-3);}
 
 .field{margin-bottom:11px;}
 .field:last-child{margin-bottom:0;}
@@ -103,6 +121,9 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(217,119,87,.1);}
 .field input.err{border-color:var(--red);}
 .field textarea{resize:vertical;min-height:58px;line-height:1.5;}
+.field textarea.large{min-height:160px;font-size:.9rem;line-height:1.7;}
+.char-count{font-size:.68rem;color:var(--ink-4);text-align:right;margin-top:2px;}
+.char-count.warn{color:#B45309;}
 .field-hint{font-size:.7rem;color:var(--ink-4);margin-top:3px;line-height:1.4;}
 .field-err{font-size:.7rem;color:var(--red);margin-top:3px;font-weight:600;display:none;}
 .field-err.show{display:block;}
@@ -132,6 +153,14 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .tgl .sl::before{content:'';position:absolute;height:15px;width:15px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
 .tgl input:checked+.sl{background:var(--green);}
 .tgl input:checked+.sl::before{transform:translateX(17px);}
+
+/* Meses chips */
+.meses-chips{display:flex;flex-wrap:wrap;gap:5px;}
+.mes-chip{padding:5px 10px;border-radius:99px;font-size:.74rem;font-weight:700;
+  border:1.5px solid var(--line);background:#fff;color:var(--ink-3);
+  cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent;}
+.mes-chip:hover{border-color:var(--primary);color:var(--primary);}
+.mes-chip.on{background:var(--primary-soft);border-color:var(--primary);color:var(--primary-dark);}
 
 /* Etiquetas */
 .etiq-group{display:flex;gap:5px;flex-wrap:wrap;}
@@ -250,13 +279,16 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
         <input type="file" id="img-file" accept="image/*" />
       </label>
       <div class="img-prog" id="img-prog"><div class="img-prog-bar" id="img-bar" style="width:0%"></div></div>
-      <div class="mini-label">Páginas internas (opcional)</div>
+      <div class="mini-label">Páginas internas <span class="mini-count" id="mini-count">(0/6)</span></div>
       <div class="mini-grid" id="mini-grid">
         <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
         <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
         <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
+        <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
+        <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
+        <label class="mini-slot">＋<input type="file" accept="image/*" onchange="agregarMini(this)" /></label>
       </div>
-      <div class="field-hint">2-4 imágenes internas aumentan mucho la conversión.</div>
+      <div class="field-hint">2-4 imágenes de páginas internas aumentan mucho la conversión. Arrastrá para reordenar.</div>
     </div>
 
     <!-- COL 2: FORMULARIO -->
@@ -299,25 +331,39 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
           </div>
           <div class="field">
             <label>Meses recomendados</label>
-            <select id="f-meses" multiple size="4" style="height:auto;">
-              <option value="1">Enero</option><option value="2">Febrero</option>
-              <option value="3">Marzo</option><option value="4">Abril</option>
-              <option value="5">Mayo</option><option value="6">Junio</option>
-              <option value="7">Julio</option><option value="8">Agosto</option>
-              <option value="9">Septiembre</option><option value="10">Octubre</option>
-              <option value="11">Noviembre</option><option value="12">Diciembre</option>
-            </select>
-            <div class="field-hint">Ctrl/Cmd + clic para elegir varios. Ej: efemérides.</div>
+            <div class="meses-chips" id="meses-chips">
+              <button type="button" class="mes-chip" data-m="1" onclick="toggleMes(this)">Ene</button>
+              <button type="button" class="mes-chip" data-m="2" onclick="toggleMes(this)">Feb</button>
+              <button type="button" class="mes-chip" data-m="3" onclick="toggleMes(this)">Mar</button>
+              <button type="button" class="mes-chip" data-m="4" onclick="toggleMes(this)">Abr</button>
+              <button type="button" class="mes-chip" data-m="5" onclick="toggleMes(this)">May</button>
+              <button type="button" class="mes-chip" data-m="6" onclick="toggleMes(this)">Jun</button>
+              <button type="button" class="mes-chip" data-m="7" onclick="toggleMes(this)">Jul</button>
+              <button type="button" class="mes-chip" data-m="8" onclick="toggleMes(this)">Ago</button>
+              <button type="button" class="mes-chip" data-m="9" onclick="toggleMes(this)">Sep</button>
+              <button type="button" class="mes-chip" data-m="10" onclick="toggleMes(this)">Oct</button>
+              <button type="button" class="mes-chip" data-m="11" onclick="toggleMes(this)">Nov</button>
+              <button type="button" class="mes-chip" data-m="12" onclick="toggleMes(this)">Dic</button>
+            </div>
+            <div class="field-hint">Tocá para activar/desactivar. Podés elegir varios.</div>
           </div>
         </div>
         <div class="field">
           <label>Descripción corta <span style="color:var(--primary)">*</span></label>
-          <textarea id="f-desc" rows="2" placeholder="1-2 frases para la card del catálogo." oninput="syncPreview()"></textarea>
+          <textarea id="f-desc" rows="3" placeholder="1-2 frases para la card del catálogo." oninput="syncPreview();contarChars(this,'cc-desc')"></textarea>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:3px;">
+            <div class="field-err" id="err-desc">La descripción es obligatoria.</div>
+            <div class="char-count" id="cc-desc"></div>
+          </div>
           <div class="field-err" id="err-desc">La descripción es obligatoria.</div>
         </div>
         <div class="field">
           <label>Descripción larga <span style="opacity:.45;font-weight:400;text-transform:none;font-size:.65rem;">opcional</span></label>
-          <textarea id="f-desc-larga" rows="2" placeholder="Más detallada, para la página del producto."></textarea>
+          <textarea id="f-desc-larga" rows="7" class="large" placeholder="Más detallada, para la página del producto. Podés usar emojis, saltos de línea y listas para organizarla." oninput="autoResize(this);contarChars(this,'cc-desc-larga')"></textarea>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:3px;">
+            <div class="field-hint">Aparece en la ficha del producto. Saltos de línea = párrafos.</div>
+            <div class="char-count" id="cc-desc-larga"></div>
+          </div>
         </div>
       </div>
 
@@ -468,7 +514,13 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
           <a class="prev-cta" href="#" onclick="return false;">🛒 Ver en tienda</a>
           <div class="prev-cta-hotmart" id="prev-hotmart">🔥 Comprar en Hotmart</div>
           <div class="comp">
-            <div class="comp-title">Completitud</div>
+            <div class="comp-bar-wrap">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div class="comp-title" style="margin-bottom:0;">Completitud</div>
+                <div class="comp-pct" id="comp-pct">0%</div>
+              </div>
+              <div class="comp-bar"><div class="comp-bar-fill" id="comp-bar-fill" style="width:0%"></div></div>
+            </div>
             <div class="comp-items" id="comp-items"></div>
           </div>
         </div>
@@ -491,6 +543,42 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 <script>
 const $=s=>document.querySelector(s);
 const GH_REPO='Cofredidactico/PaginaWeb',GH_FILE='productos.json',GH_BRANCH='main',KEY='gh_token_panel';
+
+// ── UX helpers ────────────────────────────────────────────────
+function autoResize(el){
+  el.style.height='auto';
+  el.style.height=(el.scrollHeight+2)+'px';
+}
+
+function contarChars(el, countId){
+  const n = el.value.length;
+  const cc = document.getElementById(countId);
+  if(!cc) return;
+  cc.textContent = n > 0 ? n + ' caracteres' : '';
+  cc.classList.toggle('warn', n > 500);
+}
+
+function toggleMes(btn){
+  btn.classList.toggle('on');
+}
+
+function getMesesSeleccionados(){
+  return Array.from(document.querySelectorAll('.mes-chip.on'))
+    .map(b => parseInt(b.dataset.m));
+}
+
+function setMesesSeleccionados(arr){
+  document.querySelectorAll('.mes-chip').forEach(b => {
+    b.classList.toggle('on', arr && arr.map(Number).includes(parseInt(b.dataset.m)));
+  });
+}
+
+function actualizarMiniCount(){
+  const slots = document.querySelectorAll('#mini-grid .mini-slot');
+  const filled = Array.from(slots).filter(s => s.querySelector('img')).length;
+  const cc = document.getElementById('mini-count');
+  if(cc) cc.textContent = `(${filled}/6)`;
+}
 
 // ── Estado ────────────────────────────────────────────────────
 let imgBase64=null,imgNombre=null,imgRutaExistente=null;
@@ -575,7 +663,11 @@ function poblarFormulario(p){
   $('#f-nombre').value=p.nombre||'';
   $('#f-id').value=p.id||'';
   $('#f-desc').value=p.descripcion||'';
-  $('#f-desc-larga').value=p.descripcionLarga||'';
+  const dlEl=$('#f-desc-larga');
+  dlEl.value=p.descripcionLarga||'';
+  if(dlEl.value) setTimeout(()=>autoResize(dlEl),50);
+  contarChars(dlEl,'cc-desc-larga');
+  contarChars($('#f-desc'),'cc-desc');
   $('#f-nivel').value=p.nivel||'';
   $('#f-link').value=p.link||'';
   $('#f-linkHotmart').value=p.linkHotmart||'';
@@ -595,8 +687,7 @@ function poblarFormulario(p){
   $('#f-nivelGrupo').value=p.nivelGrupo||'';
 
   // Meses (multi-select)
-  const mesesSel=$('#f-meses');
-  Array.from(mesesSel.options).forEach(o=>{o.selected=Array.isArray(p.meses)&&p.meses.map(String).includes(String(o.value));});
+  setMesesSeleccionados(Array.isArray(p.meses)?p.meses:[]);
 
   // Plataforma interactiva
   $('#f-demoUrl').value=p.demoUrl||'';
@@ -769,6 +860,15 @@ function actualizarComp(){
 }
 
 // ── Validar ───────────────────────────────────────────────────
+  // Barra de progreso
+  const total_items = document.querySelectorAll('#comp-items .ci').length;
+  const done_items = document.querySelectorAll('#comp-items .ci.done').length;
+  const pct = total_items ? Math.round(done_items/total_items*100) : 0;
+  const barFill = document.getElementById('comp-bar-fill');
+  const pctEl = document.getElementById('comp-pct');
+  if(barFill) barFill.style.width = pct + '%';
+  if(pctEl){ pctEl.textContent = pct + '%'; pctEl.style.color = pct===100?'var(--green)':pct>60?'var(--primary)':'var(--ink-4)'; }
+}
 function validar(){
   let ok=true;
   [{id:'f-nombre',err:'err-nombre',fn:v=>v.trim().length>0},
@@ -903,7 +1003,7 @@ function buildProd(ruta){
   const fm=$('#f-formato').value.trim();if(fm)p.formato=fm;
 
   // Meses (multi)
-  const meses=Array.from($('#f-meses').selectedOptions).map(o=>+o.value).filter(n=>n>0);
+  const meses=getMesesSeleccionados();
   if(meses.length)p.meses=meses;
 
   // Plataforma interactiva
@@ -945,7 +1045,7 @@ function limpiarForm(){
   $('#f-precio').value=0;$('#f-precio-old').value='';$('#f-previewSegundos').value='';
   $('#f-tipo').value='cuadernillo';$('#f-tematica').value='';$('#f-nivelGrupo').value='';
   $('#f-acceso').value='pago';$('#f-activo').checked=true;$('#f-destacado').checked=false;
-  Array.from($('#f-meses').options).forEach(o=>o.selected=false);
+  setMesesSeleccionados([]);
   $('#incluye-list').innerHTML='';
   $('#testi-list').innerHTML='';
   $('#rel-list').innerHTML='';
