@@ -164,48 +164,6 @@
       "testimonios": []
     },
     {
-      "id": "pack-mundial",
-      "nombre": "Pack Mundial",
-      "descripcion": "📚 Incluye 4 PDF con más de 50 hojas de ambiente alfabetizador\n🇦🇷 Inspirado en el Mundial 2026 y la Selección Argentina ⚽",
-      "descripcionLarga": "✨ El pack contiene:\n• Banderín de “Bienvenidos”\n• Organizador semanal\n• Calendario 2026\n• Grilla numérica 0–100\n• Tabla pitagórica\n• Etiquetas para los nombres",
-      "tipo": "cuadernillo",
-      "tematica": "lengua",
-      "nivel": "Primer Ciclo",
-      "nivelGrupo": "1ciclo",
-      "meses": [],
-      "precio": 0,
-      "acceso": "gratis",
-      "imagen": "images/producto-1779286790757.jpg",
-      "previews": [],
-      "incluye": [
-        {
-          "texto": "• Banderín de “Bienvenidos”"
-        },
-        {
-          "texto": "• Etiquetas para los nombres"
-        },
-        {
-          "texto": "• Tabla pitagórica"
-        },
-        {
-          "texto": "• Calendario 2026"
-        },
-        {
-          "texto": "• Organizador semanal"
-        },
-        {
-          "texto": "• Grilla numérica 0–100"
-        }
-      ],
-      "paginas": 60,
-      "formato": "PDF-A4-Color",
-      "link": "https://drive.google.com/drive/folders/19CSBH5AERU0mqpa0om07QVeP7_SnqPBU?usp=sharing",
-      "activo": true,
-      "destacado": false,
-      "relacionados": [],
-      "testimonios": []
-    },
-    {
       "id": "plataforma-interactiva-revolucion-de-mayo",
       "nombre": "Plataforma Interactiva - Revolución de Mayo",
       "descripcion": "Plataforma Educativa",
