@@ -57,7 +57,10 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .search-box input{width:100%;padding:10px 16px 10px 38px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:.88rem;background:#fff;}
 .search-box input:focus{outline:none;border-color:var(--primary);}
 .search-box::before{content:'🔍';position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:.85rem;}
-.filters{display:flex;gap:6px;flex-wrap:wrap;}
+.filters{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.sort-select{padding:8px 12px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font:inherit;font-size:.84rem;font-weight:700;color:var(--ink-2);cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'><path d='M1 1l4 4 4-4' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;transition:border-color .2s;}
+.sort-select:focus{outline:none;border-color:var(--primary);}
+.sort-sep{width:1px;height:24px;background:var(--line);margin:0 4px;}
 .fb{padding:6px 12px;border-radius:99px;font-size:.76rem;font-weight:700;border:1.5px solid var(--line);background:#fff;color:var(--ink-3);cursor:pointer;transition:all .15s;}
 .fb:hover{border-color:var(--primary);color:var(--primary);}
 .fb.active{background:var(--primary-soft);border-color:var(--primary);color:var(--primary-dark);}
@@ -149,6 +152,16 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
       <button class="fb" data-f="gratis" onclick="setFilter(this)">🎁 Gratis</button>
       <button class="fb" data-f="destacado" onclick="setFilter(this)">⭐ Destacados</button>
       <button class="fb" data-f="incompleto" onclick="setFilter(this)">⚠️ Incompletos</button>
+      <div class="sort-sep"></div>
+      <select class="sort-select" id="sort-select" onchange="render()">
+        <option value="reciente">📅 Más reciente</option>
+        <option value="antiguo">📅 Más antiguo</option>
+        <option value="nombre-az">🔤 Nombre A→Z</option>
+        <option value="nombre-za">🔤 Nombre Z→A</option>
+        <option value="precio-asc">💰 Precio: menor→mayor</option>
+        <option value="precio-desc">💰 Precio: mayor→menor</option>
+        <option value="activo">✅ Activos primero</option>
+      </select>
     </div>
     <div class="count" id="count"></div>
   </div>
@@ -219,6 +232,7 @@ function setFilter(btn){
 
 function render(){
   const q=($('#q').value||'').toLowerCase();
+  const sortVal = ($('#sort-select') ? $('#sort-select').value : 'reciente');
   let prods=_prods.filter(p=>{
     if(q&&!(p.nombre||'').toLowerCase().includes(q)&&!(p.tipo||'').toLowerCase().includes(q)&&!(p.tematica||'').toLowerCase().includes(q))return false;
     if(_filter==='activo')return p.activo;
@@ -228,6 +242,16 @@ function render(){
     if(_filter==='incompleto')return esIncompleto(p);
     return true;
   });
+
+  // Ordenar
+  prods = [...prods];
+  if(sortVal==='nombre-az') prods.sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'','es'));
+  else if(sortVal==='nombre-za') prods.sort((a,b)=>(b.nombre||'').localeCompare(a.nombre||'','es'));
+  else if(sortVal==='precio-asc') prods.sort((a,b)=>(a.precio||0)-(b.precio||0));
+  else if(sortVal==='precio-desc') prods.sort((a,b)=>(b.precio||0)-(a.precio||0));
+  else if(sortVal==='antiguo') {} // ya están en orden de creación
+  else if(sortVal==='activo') prods.sort((a,b)=>(b.activo?1:0)-(a.activo?1:0));
+  else prods = [...prods].reverse(); // reciente = último creado primero
 
   $('#count').textContent=`${prods.length} producto${prods.length!==1?'s':''}`;
 
