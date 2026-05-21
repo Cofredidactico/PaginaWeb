@@ -159,7 +159,11 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
 .pbadge{padding:2px 7px;border-radius:99px;font-size:.65rem;font-weight:700;}
 .pb-etiq{background:var(--primary-soft);color:var(--primary-dark);}
 .pb-dest{background:var(--green-soft);color:var(--green);}
-.prev-cta{display:block;text-align:center;background:var(--primary);color:#fff;padding:8px;border-radius:8px;font-weight:700;font-size:.8rem;}
+.prev-cta{display:block;text-align:center;background:var(--primary);color:#fff;padding:8px;border-radius:8px;font-weight:700;font-size:.8rem;margin-bottom:6px;}
+.prev-cta-hotmart{display:none;text-align:center;background:linear-gradient(135deg,#EF4E23,#D63B12);color:#fff;padding:7px;border-radius:8px;font-weight:700;font-size:.78rem;margin-bottom:10px;}
+.prev-cta-hotmart.show{display:block;}
+.prev-intl{display:none;align-items:center;gap:4px;background:#EFF6FF;color:#1D4ED8;font-size:.62rem;font-weight:800;padding:3px 7px;border-radius:99px;border:1px solid #BFDBFE;margin-bottom:8px;}
+.prev-intl.show{display:inline-flex;}
 
 /* Completitud */
 .comp{margin-top:11px;border-top:1px solid var(--line);padding-top:11px;}
@@ -460,7 +464,9 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
           <div class="prev-desc" id="prev-desc" style="color:var(--ink-4);font-style:italic;">Descripción corta...</div>
           <div class="prev-price" id="prev-price"><span class="cur">$0</span></div>
           <div class="prev-badges" id="prev-badges"></div>
+          <div class="prev-intl" id="prev-intl">🌍 Internacional</div>
           <a class="prev-cta" href="#" onclick="return false;">🛒 Ver en tienda</a>
+          <div class="prev-cta-hotmart" id="prev-hotmart">🔥 Comprar en Hotmart</div>
           <div class="comp">
             <div class="comp-title">Completitud</div>
             <div class="comp-items" id="comp-items"></div>
@@ -734,6 +740,12 @@ function syncPreview(){
   if(etiqVal)badges+=`<span class="pbadge pb-etiq">${etiqLabels[etiqVal]||etiqVal}</span>`;
   if(dest)badges+=`<span class="pbadge pb-dest">⭐ Destacado</span>`;
   $('#prev-badges').innerHTML=badges;
+  // Hotmart preview
+  const linkHotmart = $('#f-linkHotmart') ? $('#f-linkHotmart').value.trim() : '';
+  const hotmartEl = document.getElementById('prev-hotmart');
+  const intlEl = document.getElementById('prev-intl');
+  if (hotmartEl) hotmartEl.classList.toggle('show', !!linkHotmart);
+  if (intlEl) intlEl.classList.toggle('show', !!linkHotmart);
   actualizarComp();
 }
 
