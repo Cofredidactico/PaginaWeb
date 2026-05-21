@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Configuración · Cofre Didáctico</title>
+<link rel="icon" href="../logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#D97757; --primary-dark:#B85A3E; --primary-soft:#FBE5DC;
+  --accent:#FF8A4C; --green:#4A8F5C; --green-soft:#DBEDDF;
+  --red:#EF4444; --red-soft:#FEE2E2;
+  --ink:#1A2744; --ink-2:#3E4A65; --ink-3:#6B7280; --ink-4:#9CA3AF;
+  --bg-1:#FBF7F2; --bg-2:#F5EFE7; --bg-3:#EDE4D6;
+  --line:#E8DFD0;
+  --r:14px; --r-lg:20px;
+  --s-1:0 1px 3px rgba(26,39,68,.06),0 1px 2px rgba(26,39,68,.04);
+  --s-2:0 10px 30px -10px rgba(26,39,68,.12),0 4px 12px rgba(26,39,68,.05);
+  --f:'Inter',system-ui,sans-serif; --f-d:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{font-family:var(--f);background:var(--bg-1);color:var(--ink);min-height:100%;}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+
+/* Header */
+.hdr{padding:22px 0;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10;}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand img{height:42px;border-radius:8px;}
+.brand-tx{font-family:var(--f-d);font-weight:700;font-size:1.15rem;}
+.brand-tx em{color:var(--primary);font-style:normal;}
+.brand-sub{font-size:.78rem;color:var(--ink-4);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-top:1px;}
+.hdr-actions{display:flex;gap:10px;align-items:center;}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;padding:10px 18px;border-radius:12px;font-size:.9rem;transition:transform .12s,box-shadow .2s,background .2s;}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 20px -8px rgba(217,119,87,.5);}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 28px -10px rgba(217,119,87,.7);}
+.btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+.btn-ghost{background:var(--bg-2);color:var(--ink);}
+.btn-ghost:hover{background:var(--bg-3);}
+.btn-green{background:var(--green);color:#fff;}
+.btn-green:hover{background:#2E7D32;}
+
+/* Hero */
+.hero{padding:36px 0 28px;}
+.hero h1{font-family:var(--f-d);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:6px;}
+.hero h1 em{color:var(--primary);font-style:normal;}
+.hero p{color:var(--ink-3);font-size:.98rem;}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--ink);color:#fff;padding:12px 22px;border-radius:14px;
+  font-weight:700;font-size:.9rem;z-index:100;
+  opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;
+  display:flex;align-items:center;gap:10px;
+  box-shadow:0 8px 30px rgba(26,39,68,.3);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.toast.success{background:#166534;}
+.toast.error{background:#991B1B;}
+
+/* Secciones */
+.sections{display:flex;flex-direction:column;gap:24px;padding:0 0 60px;}
+
+.sec-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+  overflow:hidden;box-shadow:var(--s-1);
+}
+.sec-head{
+  display:flex;align-items:center;gap:14px;
+  padding:20px 24px;border-bottom:1px solid var(--line);
+  cursor:pointer;user-select:none;
+  transition:background .15s;
+}
+.sec-head:hover{background:var(--bg-1);}
+.sec-em{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;flex:none;
+}
+.sec-em.orange{background:linear-gradient(135deg,#FFF0E8,#FFE0CC);}
+.sec-em.blue{background:linear-gradient(135deg,#EFF6FF,#DBEAFE);}
+.sec-em.green{background:linear-gradient(135deg,#ECFDF5,#D1FAE5);}
+.sec-em.purple{background:linear-gradient(135deg,#F5F3FF,#EDE9FF);}
+.sec-em.pink{background:linear-gradient(135deg,#FDF2F8,#FCE7F3);}
+.sec-info{flex:1;}
+.sec-title{font-family:var(--f-d);font-weight:700;font-size:1rem;margin-bottom:2px;}
+.sec-desc{font-size:.82rem;color:var(--ink-4);}
+.sec-chevron{color:var(--ink-4);font-size:1.1rem;transition:transform .2s;flex:none;}
+.sec-card.open .sec-chevron{transform:rotate(180deg);}
+.sec-body{padding:24px;display:none;flex-direction:column;gap:20px;}
+.sec-card.open .sec-body{display:flex;}
+
+/* Campos */
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-size:.8rem;font-weight:700;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase;}
+.field input[type=text],
+.field input[type=email],
+.field input[type=url],
+.field textarea{
+  padding:11px 14px;border-radius:12px;border:1.5px solid var(--line);
+  font:inherit;font-size:.92rem;color:var(--ink);background:#fff;
+  transition:border-color .2s,box-shadow .2s;width:100%;
+  -webkit-appearance:none;
+}
+.field input:focus,.field textarea:focus{
+  outline:none;border-color:var(--primary);
+  box-shadow:0 0 0 3px var(--primary-soft);
+}
+.field textarea{resize:vertical;min-height:80px;line-height:1.5;}
+.field-hint{font-size:.76rem;color:var(--ink-4);margin-top:2px;}
+
+/* Field row (2 col) */
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:600px){.field-row{grid-template-columns:1fr;}}
+
+/* Toggle switch */
+.toggle-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;background:var(--bg-1);border-radius:12px;border:1px solid var(--line);}
+.toggle-info{flex:1;}
+.toggle-label{font-weight:700;font-size:.92rem;color:var(--ink);}
+.toggle-sub{font-size:.78rem;color:var(--ink-4);margin-top:2px;}
+.toggle{position:relative;width:46px;height:26px;flex:none;}
+.toggle input{opacity:0;width:0;height:0;position:absolute;}
+.toggle-slider{
+  position:absolute;inset:0;background:var(--line);border-radius:99px;
+  cursor:pointer;transition:background .2s;
+}
+.toggle-slider::before{
+  content:'';position:absolute;width:20px;height:20px;border-radius:50%;
+  background:#fff;top:3px;left:3px;
+  transition:transform .2s;
+  box-shadow:0 1px 4px rgba(26,39,68,.2);
+}
+.toggle input:checked + .toggle-slider{background:var(--green);}
+.toggle input:checked + .toggle-slider::before{transform:translateX(20px);}
+
+/* Color picker */
+.color-wrap{display:flex;align-items:center;gap:10px;}
+.color-preview{
+  width:40px;height:40px;border-radius:10px;border:2px solid var(--line);
+  cursor:pointer;flex:none;overflow:hidden;position:relative;
+}
+.color-preview input[type=color]{
+  position:absolute;inset:-4px;width:calc(100%+8px);height:calc(100%+8px);
+  border:none;padding:0;cursor:pointer;opacity:0;
+}
+.color-hex{
+  flex:1;padding:11px 14px;border-radius:12px;border:1.5px solid var(--line);
+  font:inherit;font-size:.92rem;font-family:monospace;color:var(--ink);
+  transition:border-color .2s;
+}
+.color-hex:focus{outline:none;border-color:var(--primary);}
+
+/* Productos semana */
+.semana-prods{display:flex;flex-direction:column;gap:8px;}
+.semana-prod{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-1);border-radius:10px;border:1px solid var(--line);}
+.semana-prod-n{flex:1;font-size:.88rem;font-weight:600;color:var(--ink-2);}
+.semana-prod-id{font-size:.76rem;color:var(--ink-4);font-family:monospace;}
+.semana-prod-rm{color:var(--ink-4);padding:4px 8px;border-radius:8px;font-size:.8rem;transition:background .15s,color .15s;}
+.semana-prod-rm:hover{background:var(--red-soft);color:var(--red);}
+.semana-add{display:flex;gap:8px;margin-top:4px;}
+.semana-add select{
+  flex:1;padding:9px 12px;border-radius:10px;border:1.5px solid var(--line);
+  font:inherit;font-size:.86rem;background:#fff;color:var(--ink);
+  -webkit-appearance:none;
+}
+.semana-add button{padding:9px 16px;border-radius:10px;background:var(--primary);color:#fff;font-weight:700;font-size:.86rem;}
+
+/* Divider */
+.divider{height:1px;background:var(--line);margin:4px 0;}
+
+/* Save bar */
+.save-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  z-index:20;transform:translateY(100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);
+}
+.save-bar.show{transform:translateY(0);}
+.save-bar-msg{font-size:.88rem;color:var(--ink-3);}
+.save-bar-msg strong{color:var(--ink);}
+
+/* Loading */
+.loading{text-align:center;padding:48px;color:var(--ink-4);}
+.spinner{width:32px;height:32px;border:3px solid var(--line);border-top-color:var(--primary);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 12px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* Token modal */
+.modal-bg{position:fixed;inset:0;background:rgba(26,39,68,.5);backdrop-filter:blur(4px);z-index:50;display:none;align-items:center;justify-content:center;padding:24px;}
+.modal-bg.open{display:flex;}
+.modal{background:#fff;border-radius:var(--r-lg);padding:32px;max-width:480px;width:100%;box-shadow:var(--s-2);}
+.modal h3{font-family:var(--f-d);font-size:1.2rem;font-weight:700;margin-bottom:8px;}
+.modal p{color:var(--ink-3);font-size:.9rem;line-height:1.6;margin-bottom:20px;}
+.modal .field{margin-bottom:16px;}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a href="index.html" class="brand">
+      <img src="../logo.png" alt="" onerror="this.style.display='none'" />
+      <div>
+        <div class="brand-tx">Cofre <em>Didáctico</em></div>
+        <div class="brand-sub">Configuración del sitio</div>
+      </div>
+    </a>
+    <div class="hdr-actions">
+      <a href="../" target="_blank" rel="noopener" class="btn btn-ghost">👀 Ver sitio</a>
+      <a href="index.html" class="btn btn-ghost">← Panel</a>
+    </div>
+  </div>
+</header>
+
+<!-- Token modal -->
+<div class="modal-bg" id="token-modal">
+  <div class="modal">
+    <h3>🔑 Token de GitHub</h3>
+    <p>Para guardar cambios necesitás un Personal Access Token de GitHub con permiso <code>contents:write</code>. Se guarda solo en este navegador.</p>
+    <div class="field">
+      <label>Token</label>
+      <input type="text" id="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxx" />
+    </div>
+    <p style="font-size:.78rem;color:var(--ink-4);">
+      Generalo en <a href="https://github.com/settings/tokens/new?scopes=repo&description=Cofre+Didactico" target="_blank" style="color:var(--primary);font-weight:700;">github.com/settings/tokens</a> → "Generate new token (classic)" → tildar <strong>repo</strong>.
+    </p>
+    <div class="modal-actions" style="margin-top:20px;">
+      <button class="btn btn-ghost" onclick="cerrarModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="guardarToken()">Guardar token</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>Configuración <em>del sitio</em> ⚙️</h1>
+    <p>Editá todo desde acá sin tocar código ni archivos.</p>
+  </div>
+
+  <div id="main-content">
+    <div class="loading">
+      <div class="spinner"></div>
+      <div>Cargando configuración…</div>
+    </div>
+  </div>
+</main>
+
+<!-- Save bar -->
+<div class="save-bar" id="save-bar">
+  <div class="save-bar-msg"><strong>Tenés cambios sin guardar</strong> · Guardá para que se apliquen en el sitio</div>
+  <div style="display:flex;gap:10px;">
+    <button class="btn btn-ghost" onclick="descartarCambios()">Descartar</button>
+    <button class="btn btn-primary" id="save-btn" onclick="guardar()">💾 Guardar cambios</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+const REPO = 'Cofredidactico/PaginaWeb';
+const JSON_PATH = 'productos.json';
+
+let _data = null;
+let _sha = null;
+let _dirty = false;
+
+// ── Helpers ──
+function toast(msg, type='success'){
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = `toast show ${type}`;
+  setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+function getToken(){ return localStorage.getItem('gh_token') || ''; }
+
+function mostrarModal(){ document.getElementById('token-modal').classList.add('open'); }
+function cerrarModal(){ document.getElementById('token-modal').classList.remove('open'); }
+
+function guardarToken(){
+  const v = document.getElementById('token-input').value.trim();
+  if (!v){ toast('Ingresá un token válido','error'); return; }
+  localStorage.setItem('gh_token', v);
+  cerrarModal();
+  toast('Token guardado ✓');
+  cargar();
+}
+
+function marcarDirty(){
+  _dirty = true;
+  document.getElementById('save-bar').classList.add('show');
+}
+
+function descartarCambios(){
+  _dirty = false;
+  document.getElementById('save-bar').classList.remove('show');
+  renderConfig();
+  toast('Cambios descartados');
+}
+
+// ── Cargar JSON desde GitHub ──
+async function cargar(){
+  try {
+    const token = getToken();
+    const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${JSON_PATH}`, { headers });
+    if (res.status === 401){ mostrarModal(); return; }
+    const file = await res.json();
+    _sha = file.sha;
+    _data = JSON.parse(atob(file.content.replace(/\n/g,'')));
+    renderConfig();
+  } catch(e){
+    document.getElementById('main-content').innerHTML = `<div class="loading" style="color:var(--red)">⚠️ Error cargando: ${e.message}<br><br><button class="btn btn-primary" onclick="mostrarModal()">Configurar token</button></div>`;
+  }
+}
+
+// ── Guardar JSON en GitHub ──
+async function guardar(){
+  const token = getToken();
+  if (!token){ mostrarModal(); return; }
+  const btn = document.getElementById('save-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Guardando…';
+
+  try {
+    // Leer config actual del formulario
+    const c = _data.config;
+
+    // Anuncio
+    c.anuncio.activo = document.getElementById('anuncio-activo').checked;
+    c.anuncio.texto = document.getElementById('anuncio-texto').value.trim();
+    c.anuncio.color = document.getElementById('anuncio-color').value;
+
+    // Stats
+    c.stats.docentes = document.getElementById('stat-docentes').value.trim();
+    c.stats.paises = document.getElementById('stat-paises').value.trim();
+
+    // Links
+    c.links.instagram = document.getElementById('link-instagram').value.trim();
+    c.links.email = document.getElementById('link-email').value.trim();
+    c.links.empretienda = document.getElementById('link-empretienda').value.trim();
+    c.links.hotmart = document.getElementById('link-hotmart').value.trim();
+    c.links.whatsapp = document.getElementById('link-whatsapp').value.trim();
+
+    // Semana
+    c.semana.activo = document.getElementById('semana-activo').checked;
+    c.semana.titulo = document.getElementById('semana-titulo').value.trim();
+    c.semana.subtitulo = document.getElementById('semana-subtitulo').value.trim();
+    c.semana.etiqueta = document.getElementById('semana-etiqueta').value.trim();
+
+    // Brevo
+    c.brevo.formAction = document.getElementById('brevo-action').value.trim();
+
+    // Subir
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(_data, null, 2))));
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${JSON_PATH}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: '⚙️ Actualizar configuración del sitio',
+        content,
+        sha: _sha,
+      })
+    });
+
+    if (!res.ok){
+      const err = await res.json();
+      if (res.status === 401){ mostrarModal(); return; }
+      throw new Error(err.message || res.statusText);
+    }
+
+    const result = await res.json();
+    _sha = result.content.sha;
+    _dirty = false;
+    document.getElementById('save-bar').classList.remove('show');
+    toast('✅ Guardado correctamente · El sitio se actualiza en ~1 min');
+  } catch(e){
+    toast(`Error: ${e.message}`, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '💾 Guardar cambios';
+  }
+}
+
+// ── Render del formulario ──
+function renderConfig(){
+  const c = _data.config;
+  const prods = _data.productos || [];
+
+  document.getElementById('main-content').innerHTML = `
+  <div class="sections">
+
+    <!-- ANUNCIO -->
+    <div class="sec-card open" id="sec-anuncio">
+      <div class="sec-head" onclick="toggleSec('sec-anuncio')">
+        <div class="sec-em orange">📢</div>
+        <div class="sec-info">
+          <div class="sec-title">Banner de anuncio</div>
+          <div class="sec-desc">Barra superior con mensaje destacado</div>
+        </div>
+        <div class="sec-chevron">▾</div>
+      </div>
+      <div class="sec-body">
+        <div class="toggle-wrap">
+          <div class="toggle-info">
+            <div class="toggle-label">Mostrar banner</div>
+            <div class="toggle-sub">Aparece en la parte superior del sitio</div>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="anuncio-activo" ${c.anuncio?.activo?'checked':''} onchange="marcarDirty()">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="field">
+          <label>Texto del banner</label>
+          <input type="text" id="anuncio-texto" value="${escHtml(c.anuncio?.texto||'')}" placeholder="🎉 Mensaje del banner..." oninput="marcarDirty()">
+          <div class="field-hint">Podés usar emojis al principio para darle vida.</div>
+        </div>
+        <div class="field">
+          <label>Color de fondo</label>
+          <div class="color-wrap">
+            <div class="color-preview" style="background:${c.anuncio?.color||'#FF8A4C'}">
+              <input type="color" id="anuncio-color-picker" value="${c.anuncio?.color||'#FF8A4C'}"
+                oninput="document.getElementById('anuncio-color').value=this.value;document.querySelector('.color-preview').style.background=this.value;marcarDirty()">
+            </div>
+            <input type="text" class="color-hex" id="anuncio-color" value="${c.anuncio?.color||'#FF8A4C'}" maxlength="7"
+              oninput="document.getElementById('anuncio-color-picker').value=this.value;document.querySelector('.color-preview').style.background=this.value;marcarDirty()">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS HERO -->
+    <div class="sec-card" id="sec-stats">
+      <div class="sec-head" onclick="toggleSec('sec-stats')">
+        <div class="sec-em blue">📊</div>
+        <div class="sec-info">
+          <div class="sec-title">Estadísticas del hero</div>
+          <div class="sec-desc">Los números que aparecen debajo de los botones del inicio</div>
+        </div>
+        <div class="sec-chevron">▾</div>
+      </div>
+      <div class="sec-body">
+        <div class="field-row">
+          <div class="field">
+            <label>👩‍🏫 Docentes felices</label>
+            <input type="text" id="stat-docentes" value="${escHtml(c.stats?.docentes||'+500')}" placeholder="+500" oninput="marcarDirty()">
+          </div>
+          <div class="field">
+            <label>🌍 Países</label>
+            <input type="text" id="stat-paises" value="${escHtml(c.stats?.paises||'+12')}" placeholder="+12" oninput="marcarDirty()">
+          </div>
+        </div>
+        <div class="field-hint" style="background:var(--bg-1);padding:10px 12px;border-radius:10px;border:1px solid var(--line);">
+          💡 El número de recursos se calcula automáticamente desde el catálogo. Los demás los escribís vos.
+        </div>
+      </div>
+    </div>
+
+    <!-- ESTA SEMANA -->
+    <div class="sec-card" id="sec-semana">
+      <div class="sec-head" onclick="toggleSec('sec-semana')">
+        <div class="sec-em green">🗓️</div>
+        <div class="sec-info">
+          <div class="sec-title">Sección "Esta semana"</div>
+          <div class="sec-desc">Productos destacados en la home según la efeméride</div>
+        </div>
+        <div class="sec-chevron">▾</div>
+      </div>
+      <div class="sec-body">
+        <div class="toggle-wrap">
+          <div class="toggle-info">
+            <div class="toggle-label">Mostrar sección</div>
+            <div class="toggle-sub">Aparece en la home entre el hero y el catálogo</div>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" id="semana-activo" ${c.semana?.activo?'checked':''} onchange="marcarDirty()">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Título</label>
+            <input type="text" id="semana-titulo" value="${escHtml(c.semana?.titulo||'Para esta semana')}" oninput="marcarDirty()">
+          </div>
+          <div class="field">
+            <label>Etiqueta del badge</label>
+            <input type="text" id="semana-etiqueta" value="${escHtml(c.semana?.etiqueta||'🗓️ Esta semana')}" oninput="marcarDirty()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Subtítulo</label>
+          <input type="text" id="semana-subtitulo" value="${escHtml(c.semana?.subtitulo||'')}" oninput="marcarDirty()">
+        </div>
+        <div class="field">
+          <label>Productos destacados</label>
+          <div class="semana-prods" id="semana-prods">
+            ${renderSemanaProds(c.semana?.productos||[], prods)}
+          </div>
+          <div class="semana-add" style="margin-top:10px;">
+            <select id="semana-prod-select">
+              <option value="">— Elegir producto —</option>
+              ${prods.filter(p=>p.activo).map(p=>`<option value="${p.id}">${p.nombre}</option>`).join('')}
+            </select>
+            <button onclick="agregarProdSemana()">+ Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LINKS -->
+    <div class="sec-card" id="sec-links">
+      <div class="sec-head" onclick="toggleSec('sec-links')">
+        <div class="sec-em purple">🔗</div>
+        <div class="sec-info">
+          <div class="sec-title">Links del sitio</div>
+          <div class="sec-desc">Redes sociales, tiendas y contacto</div>
+        </div>
+        <div class="sec-chevron">▾</div>
+      </div>
+      <div class="sec-body">
+        <div class="field-row">
+          <div class="field">
+            <label>📸 Instagram</label>
+            <input type="url" id="link-instagram" value="${escHtml(c.links?.instagram||'')}" placeholder="https://instagram.com/..." oninput="marcarDirty()">
+          </div>
+          <div class="field">
+            <label>✉️ Email</label>
+            <input type="email" id="link-email" value="${escHtml(c.links?.email||'')}" placeholder="tu@email.com" oninput="marcarDirty()">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>🏪 Empretienda</label>
+            <input type="url" id="link-empretienda" value="${escHtml(c.links?.empretienda||'')}" placeholder="https://tu.empretienda.com.ar" oninput="marcarDirty()">
+          </div>
+          <div class="field">
+            <label>🔥 Hotmart</label>
+            <input type="url" id="link-hotmart" value="${escHtml(c.links?.hotmart||'')}" placeholder="https://hotmart.com/..." oninput="marcarDirty()">
+          </div>
+        </div>
+        <div class="field">
+          <label>💬 WhatsApp (URL completa)</label>
+          <input type="url" id="link-whatsapp" value="${escHtml(c.links?.whatsapp||'')}" placeholder="https://wa.me/549..." oninput="marcarDirty()">
+          <div class="field-hint">Cuando tengas el número habilitado, pegá acá la URL de wa.me.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEWSLETTER / BREVO -->
+    <div class="sec-card" id="sec-brevo">
+      <div class="sec-head" onclick="toggleSec('sec-brevo')">
+        <div class="sec-em pink">📧</div>
+        <div class="sec-info">
+          <div class="sec-title">Newsletter (Brevo)</div>
+          <div class="sec-desc">URL del formulario de suscripción</div>
+        </div>
+        <div class="sec-chevron">▾</div>
+      </div>
+      <div class="sec-body">
+        <div class="field">
+          <label>URL del formulario Brevo</label>
+          <input type="url" id="brevo-action" value="${escHtml(c.brevo?.formAction||'')}" placeholder="https://sibforms.com/serve/..." oninput="marcarDirty()">
+          <div class="field-hint">La URL que obtuviste de Brevo al crear el formulario embebido.</div>
+        </div>
+        <div style="background:var(--bg-1);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:.82rem;color:var(--ink-3);line-height:1.6;">
+          ✅ Estado: ${c.brevo?.formAction ? '<strong style="color:var(--green)">Configurado</strong>' : '<strong style="color:var(--red)">No configurado</strong>'}
+        </div>
+      </div>
+    </div>
+
+  </div>`;
+
+  // Abrir la primera sección por defecto
+  document.querySelector('.sec-card.open .sec-body').style.display = 'flex';
+}
+
+function renderSemanaProds(semProds, allProds){
+  if (!semProds.length) return '<div style="color:var(--ink-4);font-size:.86rem;padding:8px 0;">Sin productos seleccionados</div>';
+  return semProds.map(sp => {
+    const p = allProds.find(x => x.id === sp.id);
+    return `<div class="semana-prod" id="sp-${sp.id}">
+      <div class="semana-prod-n">${p ? p.nombre : '—'}</div>
+      <div class="semana-prod-id">${sp.id}</div>
+      <button class="semana-prod-rm" onclick="quitarProdSemana('${sp.id}')">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function toggleSec(id){
+  const el = document.getElementById(id);
+  const body = el.querySelector('.sec-body');
+  const isOpen = el.classList.contains('open');
+  el.classList.toggle('open', !isOpen);
+  body.style.display = isOpen ? 'none' : 'flex';
+}
+
+function agregarProdSemana(){
+  const sel = document.getElementById('semana-prod-select');
+  const id = sel.value;
+  if (!id) return;
+  const prods = _data.config.semana.productos || [];
+  if (prods.find(p => p.id === id)) { toast('Ya está en la lista','error'); return; }
+  _data.config.semana.productos = [...prods, {id}];
+  const allProds = _data.productos || [];
+  document.getElementById('semana-prods').innerHTML = renderSemanaProds(_data.config.semana.productos, allProds);
+  sel.value = '';
+  marcarDirty();
+}
+
+function quitarProdSemana(id){
+  _data.config.semana.productos = (_data.config.semana.productos||[]).filter(p => p.id !== id);
+  const allProds = _data.productos || [];
+  document.getElementById('semana-prods').innerHTML = renderSemanaProds(_data.config.semana.productos, allProds);
+  marcarDirty();
+}
+
+function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+// ── Init ──
+// Inicializar secciones: mostrar la primera, ocultar el resto
+document.addEventListener('DOMContentLoaded', () => {
+  if (getToken()){
+    cargar();
+  } else {
+    mostrarModal();
+  }
+});
+
+// Inicializar display de sec-body cuando se renderiza
+const observer = new MutationObserver(() => {
+  document.querySelectorAll('.sec-card').forEach(card => {
+    const body = card.querySelector('.sec-body');
+    if (body) body.style.display = card.classList.contains('open') ? 'flex' : 'none';
+  });
+});
+observer.observe(document.getElementById('main-content'), {childList: true, subtree: true});
+</script>
+
+</body>
+</html>
