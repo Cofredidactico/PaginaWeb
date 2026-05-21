@@ -59,10 +59,10 @@ collections:
             min: 0
             fields:
               # ── Identidad ─────────────────
-              - {label: "📝 Nombre del producto", name: "nombre", widget: "string", hint: "Ej: Cuadernillo de Vocales — Nivel Inicial"}
-              - {label: "📄 Descripción corta", name: "descripcion", widget: "text", hint: "1-2 frases. Se muestra en la card del catálogo."}
+              - {label: "📝 Nombre del producto", name: "nombre", widget: "string", required: false, hint: "Ej: Cuadernillo de Vocales — Nivel Inicial"}
+              - {label: "📄 Descripción corta", name: "descripcion", widget: "text", required: false, hint: "1-2 frases. Se muestra en la card del catálogo."}
               - {label: "📖 Descripción larga (opcional)", name: "descripcionLarga", widget: "text", required: false, hint: "Aparece en la página del producto. Más detallada."}
-              - {label: "🆔 ID único (URL del producto)", name: "id", widget: "string", hint: "Solo minúsculas y guiones. Ej: cuadernillo-vocales", pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"]}
+              - {label: "🆔 ID único (URL del producto)", name: "id", widget: "string", required: false, hint: "Solo minúsculas y guiones. Ej: cuadernillo-vocales", pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"]}
 
               # ── Clasificación ─────────────
               - label: "📦 Tipo"
@@ -137,18 +137,18 @@ collections:
                 options:
                   - { label: "💳 Pago", value: "pago" }
                   - { label: "🎁 Gratis", value: "gratis" }
-              - {label: "💵 Precio (ARS)", name: "precio", widget: "number", default: 0, value_type: "int", min: 0, hint: "Poné 0 si es gratis"}
+              - {label: "💵 Precio (ARS)", name: "precio", widget: "number", default: 0, value_type: "int", min: 0, hint: "Poné 0 si es gratis", required: false}
               - {label: "💸 Precio tachado (antes)", name: "precioTachado", widget: "number", required: false, value_type: "int", min: 0, hint: "Para mostrar descuento (precio anterior)"}
 
               # ── Imágenes ──────────────────
-              - {label: "📷 Imagen principal", name: "imagen", widget: "image", hint: "Ideal 1200×900px. Aparece en el catálogo y página del producto."}
+              - {label: "📷 Imagen principal", name: "imagen", widget: "image", required: false, hint: "Ideal 1200×900px. Aparece en el catálogo y página del producto."}
               - label: "📸 Vistas previas (galería de páginas internas)"
                 name: "previews"
                 widget: "list"
                 required: false
                 hint: "Subí 2-4 imágenes de páginas internas. ¡Aumenta MUCHO la conversión!"
-                summary: "🖼️ Vista {{index}}"
-                field: {label: "Imagen interna", name: "imagen", widget: "image"}
+                summary: "Muestra"
+                field: {label: "Imagen interna", name: "imagen", widget: "image", required: false}
 
               # ── Detalles ──────────────────
               - label: "✓ Qué incluye"
@@ -157,12 +157,12 @@ collections:
                 required: false
                 hint: "Una línea por ítem. Aparece como lista con ✓"
                 summary: "✓ {{fields.texto}}"
-                field: {label: "Ítem", name: "texto", widget: "string"}
+                field: {label: "Ítem", name: "texto", widget: "string", required: false}
               - {label: "📄 Cantidad de páginas", name: "paginas", widget: "number", required: false, value_type: "int", min: 1}
               - {label: "📐 Formato", name: "formato", widget: "string", required: false, hint: "Ej: PDF · A4 · Color y B&N"}
 
               # ── Compra ────────────────────
-              - {label: "🛒 Link principal de compra (Empretienda)", name: "link", widget: "string", pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "URL del producto en tu tienda principal (Empretienda). Si la plataforma es paga, este link se usa al terminar el preview."}
+              - {label: "🛒 Link de compra (Empretienda)", name: "link", widget: "string", required: false, pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "URL del producto en Empretienda. Podés dejarlo vacío si aún no está publicado."}
               - {label: "🔥 Link de Hotmart (opcional)", name: "linkHotmart", widget: "string", required: false, pattern: ['^https?://.+', "Tiene que empezar con http:// o https://"], hint: "Si lo completás, en la ficha del producto aparece un segundo botón 'Comprar en Hotmart'."}
 
               # ── Visibilidad ───────────────
@@ -187,7 +187,7 @@ collections:
                 required: false
                 hint: "IDs de productos que aparecen como 'Combinalo con…' en esta ficha. Si lo dejás vacío, se completan automáticamente por temática + nivel."
                 summary: "🔗 {{fields.id}}"
-                field: {label: "ID del producto", name: "id", widget: "string", pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"]}
+                field: {label: "ID del producto", name: "id", widget: "string", pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"], required: false}
 
               # ── Testimonios ───────────
               - label: "💬 Testimonios de docentes (anónimos)"
@@ -197,9 +197,9 @@ collections:
                 hint: "Aparecen en la ficha del producto. Animá a tus docentes a comentarte por DM y publicalas acá."
                 summary: "“{{fields.texto}}” — {{fields.inicial}} ({{fields.ciudad}})"
                 fields:
-                  - {label: "Inicial (1 letra)", name: "inicial", widget: "string", hint: "Ej: M, S, R…"}
+                  - {label: "Inicial (1 letra)", name: "inicial", widget: "string", hint: "Ej: M, S, R…", required: false}
                   - {label: "Ciudad / Provincia", name: "ciudad", widget: "string", required: false, hint: "Ej: La Plata, Bs. As."}
-                  - {label: "Testimonio", name: "texto", widget: "text"}
+                  - {label: "Testimonio", name: "texto", widget: "text", required: false}
 
   # ─────────────────────────────────────────
   # ⚙️ CONFIGURACIÓN GENERAL
@@ -224,16 +224,16 @@ collections:
                 fields:
                   - {label: "Activar banner", name: "activo", widget: "boolean", default: false}
                   - {label: "Texto del anuncio", name: "texto", widget: "string", required: false}
-                  - {label: "Color de fondo (hex)", name: "color", widget: "string", default: "#FF8A4C"}
+                  - {label: "Color de fondo (hex)", name: "color", widget: "string", default: "#FF8A4C", required: false}
 
               - label: "📊 Números del hero"
                 name: "stats"
                 widget: "object"
                 collapsed: false
                 fields:
-                  - {label: "Docentes felices", name: "docentes", widget: "string", default: "+500"}
-                  - {label: "Países", name: "paises", widget: "string", default: "+12"}
-                  - {label: "Descargas", name: "descargas", widget: "string", default: "+2.000"}
+                  - {label: "Docentes felices", name: "docentes", widget: "string", default: "+500", required: false}
+                  - {label: "Países", name: "paises", widget: "string", default: "+12", required: false}
+                  - {label: "Descargas", name: "descargas", widget: "string", default: "+2.000", required: false}
 
               - label: "🗓️ Sección 'Para esta semana'"
                 name: "semana"
@@ -242,15 +242,15 @@ collections:
                 hint: "Bloque destacado arriba del catálogo para resaltar 2-4 materiales rotativos (próxima efeméride, contenido estacional)."
                 fields:
                   - {label: "Activar sección", name: "activo", widget: "boolean", default: true}
-                  - {label: "Etiqueta (badge)", name: "etiqueta", widget: "string", default: "🗓️ Esta semana"}
-                  - {label: "Título", name: "titulo", widget: "string", default: "Para esta semana"}
+                  - {label: "Etiqueta (badge)", name: "etiqueta", widget: "string", default: "🗓️ Esta semana", required: false}
+                  - {label: "Título", name: "titulo", widget: "string", default: "Para esta semana", required: false}
                   - {label: "Subtítulo", name: "subtitulo", widget: "text", required: false, default: "Materiales seleccionados según la efeméride o el contenido del mes."}
                   - label: "📦 IDs de productos a destacar (2-4)"
                     name: "productos"
                     widget: "list"
                     summary: "📦 {{fields.id}}"
                     hint: "Poné el ID interno de cada producto, ej: 'cuadernillo-vocales'. El mismo ID que usás en cada producto."
-                    field: {label: "ID del producto", name: "id", widget: "string", pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"]}
+                    field: {label: "ID del producto", name: "id", widget: "string", pattern: ['^[a-z0-9-]+$', "Solo minúsculas, números y guiones"], required: false}
 
               - label: "📧 Newsletter (Brevo)"
                 name: "brevo"
@@ -259,7 +259,7 @@ collections:
                 hint: "Para conectar Brevo: Brevo → Contactos → Formularios → Embed → copiá la URL del atributo action=\"...\". Vacío = modo demo."
                 fields:
                   - {label: "URL del formulario Brevo", name: "formAction", widget: "string", required: false, hint: "Empieza con https://sibforms.com/serve/..."}
-                  - {label: "Nombre del campo email en Brevo", name: "emailField", widget: "string", default: "EMAIL"}
+                  - {label: "Nombre del campo email en Brevo", name: "emailField", widget: "string", default: "EMAIL", required: false}
                   - {label: "IDs de listas (opcional)", name: "listIds", widget: "string", required: false, hint: "Si querés segmentar: ej '10' o '10,12'. Opcional."}
 
               - label: "🔗 Links de contacto"
@@ -278,6 +278,6 @@ collections:
             widget: "list"
             summary: "{{fields.emoji}} {{fields.nombre}}"
             fields:
-              - {label: "ID (sin espacios)", name: "id", widget: "string"}
-              - {label: "Nombre", name: "nombre", widget: "string"}
-              - {label: "Emoji", name: "emoji", widget: "string"}
+              - {label: "ID (sin espacios)", name: "id", widget: "string", required: false}
+              - {label: "Nombre", name: "nombre", widget: "string", required: false}
+              - {label: "Emoji", name: "emoji", widget: "string", required: false}
