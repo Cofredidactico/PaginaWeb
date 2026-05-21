@@ -108,7 +108,16 @@
       "precio": 5500,
       "precioTachado": 7500,
       "imagen": "images/producto-1778559946157.jpg",
-      "previews": [],
+      "previews": [
+        "images/preview-dia-de-la-escarapela-1779406209774.jpg",
+        "images/preview-dia-de-la-escarapela-1779406213120.jpg",
+        "images/preview-dia-de-la-escarapela-1779406221132.jpg",
+        "images/preview-dia-de-la-escarapela-1779406224401.jpg",
+        "images/preview-dia-de-la-escarapela-1779406235924.jpg",
+        "images/preview-dia-de-la-escarapela-1779406239811.jpg",
+        "images/preview-dia-de-la-escarapela-1779406242521.jpg",
+        "images/preview-dia-de-la-escarapela-1779406245988.jpg"
+      ],
       "paginas": 25,
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-de-la-escarapela-con-plataforma-interactiva",
