@@ -25,16 +25,21 @@
         "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 4.jpg",
         "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 5.jpg",
         "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 6.jpg",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 7.webp",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 8.webp",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 9.webp",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 10.webp",
-        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 11.webp"
+        "/PaginaWeb/images/Publicación Revolución de Mayo - Cofre Didáctico 7.webp"
       ],
       "incluye": [
-        "",
-        "",
-        ""
+        {
+          "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos."
+        },
+        {
+          "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo"
+        },
+        {
+          "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio"
+        },
+        {
+          "texto": "👒 Vendedores ambulantes de la época colonial con ilustraciones y descripciones"
+        }
       ],
       "paginas": 34,
       "formato": "PDF-A4-Color",
@@ -44,18 +49,20 @@
       "activo": true,
       "destacado": true,
       "relacionados": [
-        "revolucion-mayo"
+        {
+          "id": "revolucion-mayo"
+        }
       ],
       "testimonios": [
         {
           "inicial": "M",
           "ciudad": "La Plata, Bs. As.",
-          "texto": "Las nenas y nenes estuvieron éncantados toda la semana. El material es divino y se nota el trabajo detrás."
+          "texto": "¡Hermoso material! Se nota el amor y la dedicación en cada actividad. Mis alumnos trabajaron súper motivados y participaron muchísimo durante toda la semana de la Revolución de Mayo.” — Docente de 2° grado"
         },
         {
           "inicial": "S",
-          "ciudad": "Córdoba",
-          "texto": "Me salvó una semana entera de planificación. Llegó la PDF y al toque imprimí. Gracias Vir!"
+          "ciudad": "Cipolletti, Río Negro",
+          "texto": "El cuadernillo está pensado de manera muy didáctica y visual. Me encantó la variedad de propuestas y la calidad de las imágenes. ¡Un recurso completo y listo para usar!” — Docente de Nivel Primario"
         }
       ]
     },
