@@ -13,7 +13,7 @@
 <link rel="icon" href="logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
 
 <style>
 /* ═════════════════════════════════════════════════════════
@@ -31,13 +31,14 @@
   --r:14px; --r-lg:20px;
   --s-1:0 2px 8px rgba(26,39,68,.07);
   --s-2:0 12px 32px -8px rgba(26,39,68,.14);
-  --f:'Inter',system-ui,sans-serif;
-  --f-display:'Fraunces',Georgia,serif;
+  --f:'Plus Jakarta Sans',system-ui,sans-serif;
+  --f-display:'Plus Jakarta Sans',system-ui,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{
-  margin:0; font-family:var(--f-body); font-size:16px; line-height:1.6;
+  margin:0; font-family:var(--f); font-size:16px; line-height:1.65;
+  font-weight:400; -webkit-font-smoothing:antialiased; letter-spacing:-.01em;
   color:var(--ink); background:var(--bg);
   background-image: radial-gradient(circle at 1px 1px, rgba(26,39,68,.04) 1px, transparent 0);
   background-size: 28px 28px;
@@ -46,7 +47,7 @@ body{
 img{max-width:100%;display:block;}
 button{font:inherit;color:inherit;cursor:pointer;border:none;background:none;}
 a{color:inherit;text-decoration:none;}
-h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin:0;}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin:0;}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
 
 /* ─── Header (idéntico al index) ─── */
@@ -58,7 +59,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
   border-bottom:1px solid rgba(26,39,68,.07);
 }
 .hdr-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:24px;}
-.brand{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:800;font-size:1.1rem;}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:800;font-size:1.1rem;letter-spacing:-.03em;}
 .brand img{width:40px;height:40px;border-radius:10px;object-fit:cover;}
 .brand strong{color:var(--accent);}
 .nav{display:flex;align-items:center;gap:6px;}
@@ -81,7 +82,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 .btn:active{transform:translateY(0);}
 .btn-primary{background:linear-gradient(135deg,var(--accent),#FF6B35);color:#fff;box-shadow:0 4px 14px rgba(255,138,76,.3);}
 .btn-primary:hover{box-shadow:0 8px 24px rgba(255,138,76,.4);}
-.btn-green{background:linear-gradient(135deg,var(--green),var(--green-2));color:#fff;box-shadow:0 4px 14px rgba(46,125,50,.3);}
+.btn-green{background:linear-gradient(135deg,#4A8F5C,#2E7D32);color:#fff;box-shadow:0 4px 14px rgba(46,125,50,.3);}
 .btn-green:hover{box-shadow:0 8px 24px rgba(46,125,50,.4);}
 .btn-ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink);}
 .btn-ghost:hover{border-color:var(--primary);color:var(--primary);}
@@ -120,6 +121,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 .hero-g h1{
   font-size:clamp(2.4rem, 5.2vw, 4rem);
   margin:18px 0 18px;text-wrap:balance;
+  letter-spacing:-.04em;font-weight:800;line-height:1.08;
 }
 .hero-g h1 em{
   font-style:normal;
@@ -175,7 +177,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
   background:radial-gradient(circle at 35% 30%, #FFB07A, var(--accent) 60%, #FF6B35);
   box-shadow:0 8px 20px rgba(255,107,53,.4), inset -4px -6px 12px rgba(0,0,0,.12);
   z-index:2;display:flex;align-items:center;justify-content:center;
-  font-family:var(--f-display);font-weight:800;font-size:1.5rem;color:#fff;letter-spacing:-.02em;
+  font-family:var(--f-display);font-weight:800;font-size:1.5rem;color:#fff;letter-spacing:-.04em;
 }
 .pack-knot::before, .pack-knot::after{
   content:'';position:absolute;width:44px;height:60px;background:linear-gradient(135deg,var(--accent),#FF6B35);
@@ -213,7 +215,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
   border:1px solid rgba(74,143,92,.2);margin-bottom:14px;
   box-shadow:0 2px 8px rgba(74,143,92,.1);
 }
-.sec-h{font-size:clamp(2rem,4vw,2.6rem);margin-bottom:10px;}
+.sec-h{font-size:clamp(2rem,4vw,2.6rem);margin-bottom:10px;letter-spacing:-.035em;font-weight:800;}
 .sec-h em{
   font-style:normal;
   background:linear-gradient(135deg,var(--green),var(--accent));
