@@ -594,7 +594,7 @@ function actualizarMiniCount(){
 
 // ── Estado ────────────────────────────────────────────────────
 let imgBase64=null,imgNombre=null,imgRutaExistente=null;
-let idManual=false,etiqVal='',miniB64=[];
+let idManual=false,etiqVal='';
 let _allData=null,_sha=null,_prodOriginal=null;
 
 // ── Detectar modo edición ─────────────────────────────────────
@@ -669,8 +669,16 @@ async function cargarJSON(){
     if(!r.ok)throw new Error(r.status);
     const meta=await r.json();
     _sha=meta.sha;
-    _allData=JSON.parse(decodeURIComponent(escape(atob(meta.content.replace(/\n/g,'')))));
-  }catch(e){toast('No se pudo cargar productos.json: '+e.message,'err');}
+    // Decodificar base64 con soporte completo para UTF-8 (tildes, ñ, emojis)
+    const raw = atob(meta.content.replace(/\n/g,''));
+    const bytes = new Uint8Array(raw.length);
+    for(let i=0;i<raw.length;i++) bytes[i]=raw.charCodeAt(i);
+    const jsonStr = new TextDecoder('utf-8').decode(bytes);
+    _allData = JSON.parse(jsonStr);
+  }catch(e){
+    toast('No se pudo cargar productos.json: '+e.message,'err');
+    throw e; // relanzar para que cargarProductoExistente lo capture
+  }
 }
 
 // ── Cargar producto para editar ───────────────────────────────
@@ -684,6 +692,7 @@ async function cargarProductoExistente(){
     if(!prod)throw new Error(`No se encontró el producto con ID: ${editId}`);
     _prodOriginal=prod;
     poblarFormulario(prod);
+    setLoading(false);
     toast('Producto cargado ✓','ok');
   }catch(e){
     setLoading(false);
@@ -767,16 +776,27 @@ function poblarFormulario(p){
   $('#rel-list').innerHTML='';
   if(Array.isArray(p.relacionados))p.relacionados.forEach(r=>agregarRel(typeof r==='string'?r:(r&&r.id)));
 
-  // Imagen existente
+  // Imagen principal existente
   if(p.imagen&&!p.imagen.includes('placeholder')){
     imgRutaExistente=p.imagen;
-    const drop=$('#img-drop');
-    drop.classList.add('has-img');
-    drop.innerHTML=`<img class="img-preview" src="../${p.imagen}" onerror="this.src=''" /><button class="img-remove" onclick="quitImg(event)">✕ Quitar</button>`;
+    const dropEl=$('#img-drop');
+    dropEl.classList.add('has-img');
+    dropEl.innerHTML=`<img class="img-preview" src="../${p.imagen}" onerror="this.src=''" /><button class="img-remove" onclick="quitImg(event)">✕ Quitar</button>`;
     $('#prev-img').innerHTML=`<img src="../${p.imagen}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='📦'" />`;
   }
 
-  idManual=true; // En edición no regenerar el ID
+  // Previews existentes en los mini-slots
+  const previews=(p.previews||[]).map(x=>typeof x==='string'?x:(x&&(x.imagen||x.img))).filter(Boolean);
+  const slots=document.querySelectorAll('#mini-grid .mini-slot');
+  previews.forEach((ruta,i)=>{
+    if(!slots[i])return;
+    const src=ruta.startsWith('http')?ruta:'../'+ruta;
+    slots[i].innerHTML=`<img src="${src}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.opacity='.3'" /><button class="mini-rm" onclick="quitarMini(this)" title="Quitar">✕</button>`;
+    slots[i].dataset.existente=ruta;
+  });
+  actualizarMiniCount();
+
+  idManual=true;
   syncPreview();
 }
 
@@ -813,12 +833,31 @@ function quitImg(e){
 }
 function agregarMini(input){
   if(!input.files[0])return;
+  const file=input.files[0];
+  if(file.size>4*1024*1024){toast('Imagen supera 4MB','err');return;}
+  const ext=file.name.split('.').pop().toLowerCase();
+  const nombre=`preview-${slug($('#f-nombre').value||'producto')}-${Date.now()}.${ext}`;
   const r=new FileReader();
   r.onload=e=>{
-    input.parentElement.innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;" />`;
-    miniB64.push(e.target.result.split(',')[1]);
+    const slot=input.parentElement;
+    slot.innerHTML=`<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;" /><button class="mini-rm" onclick="quitarMini(this)" title="Quitar">✕</button>`;
+    // Guardar base64 + nombre en el slot para usarlo al guardar
+    slot.dataset.b64=e.target.result.split(',')[1];
+    slot.dataset.nombre=nombre;
+    slot.dataset.existente='';
+    actualizarMiniCount();
+    syncPreview();
   };
-  r.readAsDataURL(input.files[0]);
+  r.readAsDataURL(file);
+}
+
+function quitarMini(btn){
+  const slot=btn.parentElement;
+  slot.innerHTML=`＋<input type="file" accept="image/*" onchange="agregarMini(this)" />`;
+  delete slot.dataset.b64;
+  delete slot.dataset.nombre;
+  delete slot.dataset.existente;
+  actualizarMiniCount();
 }
 
 // ── Slug ──────────────────────────────────────────────────────
@@ -901,7 +940,7 @@ function actualizarComp(){
     {l:'Descripción',ok:$('#f-desc').value.trim().length>5},
     {l:'Precio / acceso',ok:$('#f-acceso').value==='gratis'||+$('#f-precio').value>0},
     {l:'Link de compra',ok:$('#f-link').value.trim().startsWith('http')},
-    {l:'Páginas internas',ok:miniB64.length>0,warn:true},
+    {l:'Páginas internas',ok:Array.from(document.querySelectorAll('#mini-grid .mini-slot')).some(s=>s.querySelector('img')),warn:true},
   ];
   const done=checks.filter(c=>c.ok).length,total=checks.length;
   $('#comp-items').innerHTML=checks.map(c=>{
@@ -924,7 +963,7 @@ function actualizarComp(){
 function validar(){
   let ok=true;
   [{id:'f-nombre',err:'err-nombre',fn:v=>v.trim().length>0},
-   {id:'f-id',err:'err-id',fn:v=>/^[a-z0-9-]+$/.test(v.trim())},
+   {id:'f-id',err:'err-id',fn:v=>{if(!v.trim()){$('#f-id').value=slug($('#f-nombre').value);v=$('#f-id').value;}return /^[a-z0-9-]+$/.test(v.trim());}},
    {id:'f-desc',err:'err-desc',fn:v=>v.trim().length>5},
    {id:'f-link',err:'err-link',fn:v=>!v.trim()||v.trim().startsWith('http')},
    {id:'f-linkHotmart',err:'err-linkHotmart',fn:v=>!v.trim()||v.trim().startsWith('https://pay.hotmart.com')||v.trim().startsWith('https://hotmart.com')},
@@ -942,9 +981,20 @@ async function guardarProducto(){
   const btns=['btn-h','btn-f'].map(id=>$(`#${id}`));
   btns.forEach(b=>{b.disabled=true;b.innerHTML='<div class="spin"></div> Guardando...';});
   try{
-    // Subir imagen nueva si hay
+    // Subir imagen principal
     let rutaImagen=imgRutaExistente||'images/placeholder-vocales.svg';
     if(imgBase64&&imgNombre)rutaImagen=await subirImg(imgBase64,imgNombre);
+
+    // Subir imágenes internas (previews) que son nuevas
+    const miniSlots=document.querySelectorAll('#mini-grid .mini-slot');
+    for(const slot of miniSlots){
+      if(slot.dataset.b64 && slot.dataset.nombre && !slot.dataset.subida){
+        try{
+          await subirImg(slot.dataset.b64, slot.dataset.nombre);
+          slot.dataset.subida='1';
+        }catch(e){console.warn('Error subiendo preview:',e);}
+      }
+    }
 
     const prod=buildProd(rutaImagen);
     const tk=getToken();
@@ -968,7 +1018,11 @@ async function guardarProducto(){
     }
     _allData.productos=prods;
 
-    const nc=btoa(unescape(encodeURIComponent(JSON.stringify(_allData,null,2))));
+    // Codificar a base64 con soporte UTF-8 completo (tildes, ñ, emojis)
+    const jsonBytes = new TextEncoder().encode(JSON.stringify(_allData,null,2));
+    let binaryStr = '';
+    jsonBytes.forEach(b => binaryStr += String.fromCharCode(b));
+    const nc = btoa(binaryStr);
     const msg=modoEdicion?`📝 Actualizar: ${prod.nombre}`:`✨ Crear: ${prod.nombre}`;
     const pr=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,
       {method:'PUT',headers:{Authorization:`Bearer ${tk}`,Accept:'application/vnd.github+json','Content-Type':'application/json'},
@@ -1001,7 +1055,11 @@ async function eliminarProducto(){
   try{
     if(!_allData||!_sha)await cargarJSON();
     _allData.productos=(_allData.productos||[]).filter(p=>p.id!==editId&&p.nombre!==decodeURIComponent(editId));
-    const nc=btoa(unescape(encodeURIComponent(JSON.stringify(_allData,null,2))));
+    // Codificar a base64 con soporte UTF-8 completo (tildes, ñ, emojis)
+    const jsonBytes = new TextEncoder().encode(JSON.stringify(_allData,null,2));
+    let binaryStr = '';
+    jsonBytes.forEach(b => binaryStr += String.fromCharCode(b));
+    const nc = btoa(binaryStr);
     const pr=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,
       {method:'PUT',headers:{Authorization:`Bearer ${tk}`,Accept:'application/vnd.github+json','Content-Type':'application/json'},
        body:JSON.stringify({message:`🗑️ Eliminar: ${nombre}`,content:nc,sha:_sha,branch:GH_BRANCH})});
@@ -1075,6 +1133,14 @@ function buildProd(ruta){
   const rel=Array.from($('#rel-list').querySelectorAll('input')).map(i=>i.value.trim()).filter(Boolean);
   if(rel.length)p.relacionados=rel.map(id=>({id}));
 
+  // Previews: rutas de imágenes internas ya subidas o existentes
+  const previewRutas=[];
+  document.querySelectorAll('#mini-grid .mini-slot').forEach(slot=>{
+    if(slot.dataset.existente)previewRutas.push(slot.dataset.existente);
+    else if(slot.dataset.nombre)previewRutas.push('images/'+slot.dataset.nombre); // se subirá en guardar
+  });
+  if(previewRutas.length)p.previews=previewRutas;
+
   return p;
 }
 
@@ -1105,7 +1171,11 @@ function limpiarForm(){
   document.querySelector('.etiq-btn[data-v=""]').classList.add('active');
   etiqVal='';idManual=false;miniB64=[];imgRutaExistente=null;
   quitImg({stopPropagation:()=>{},preventDefault:()=>{}});
-  document.querySelectorAll('.mini-slot').forEach(s=>{s.innerHTML=`＋<input type="file" accept="image/*" onchange="agregarMini(this)" />`;});
+  document.querySelectorAll('.mini-slot').forEach(s=>{
+    s.innerHTML=`＋<input type="file" accept="image/*" onchange="agregarMini(this)" />`;
+    delete s.dataset.b64; delete s.dataset.nombre; delete s.dataset.existente; delete s.dataset.subida;
+  });
+  actualizarMiniCount();
   syncPreview();
 }
 
