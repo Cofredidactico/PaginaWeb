@@ -337,9 +337,18 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
           </div>
         </div>
         <div class="field" style="margin:0;">
-          <label>Link de compra <span style="color:var(--primary)">*</span></label>
+          <label>Link de compra — Empretienda <span style="color:var(--primary)">*</span></label>
           <input id="f-link" placeholder="https://cofredidactico.empretienda.com.ar/..." oninput="syncPreview()" />
           <div class="field-err" id="err-link">Ingresá una URL válida (https://...).</div>
+        </div>
+        <div class="field" style="margin-top:10px;margin-bottom:0;">
+          <label style="display:flex;align-items:center;gap:7px;">
+            🔥 Link de compra — Hotmart
+            <span style="background:#FEF3C7;color:#B45309;font-size:.68rem;font-weight:800;padding:2px 8px;border-radius:99px;letter-spacing:.04em;">INTERNACIONAL</span>
+          </label>
+          <input id="f-linkHotmart" placeholder="https://pay.hotmart.com/..." oninput="syncPreview()" />
+          <div class="field-hint">Si lo completás, aparecerá un segundo botón "Comprar en Hotmart" en la ficha del producto. Ideal para ventas fuera de Argentina.</div>
+          <div class="field-err" id="err-linkHotmart">Ingresá una URL válida de Hotmart (https://...).</div>
         </div>
       </div>
 
@@ -563,6 +572,7 @@ function poblarFormulario(p){
   $('#f-desc-larga').value=p.descripcionLarga||'';
   $('#f-nivel').value=p.nivel||'';
   $('#f-link').value=p.link||'';
+  $('#f-linkHotmart').value=p.linkHotmart||'';
   $('#f-formato').value=p.formato||'';
   $('#f-precio').value=p.precio||0;
   $('#f-precio-old').value=p.precioTachado||'';
@@ -753,6 +763,7 @@ function validar(){
    {id:'f-id',err:'err-id',fn:v=>/^[a-z0-9-]+$/.test(v.trim())},
    {id:'f-desc',err:'err-desc',fn:v=>v.trim().length>5},
    {id:'f-link',err:'err-link',fn:v=>!v.trim()||v.trim().startsWith('http')},
+   {id:'f-linkHotmart',err:'err-linkHotmart',fn:v=>!v.trim()||v.trim().startsWith('https://pay.hotmart.com')||v.trim().startsWith('https://hotmart.com')},
   ].forEach(({id,err,fn})=>{
     const el=$(`#${id}`),errEl=$(`#${err}`);
     if(!fn(el.value)){el.classList.add('err');errEl.classList.add('show');ok=false;}
@@ -868,6 +879,7 @@ function buildProd(ruta){
     activo:$('#f-activo').checked,
     destacado:$('#f-destacado').checked,
   };
+  const lkH=$('#f-linkHotmart').value.trim();if(lkH)p.linkHotmart=lkH;
   const dl=$('#f-desc-larga').value.trim();if(dl)p.descripcionLarga=dl;
   const tm=$('#f-tematica').value;if(tm)p.tematica=tm;
   const nv=$('#f-nivel').value.trim();if(nv)p.nivel=nv;
@@ -917,7 +929,7 @@ function descargarJSON(prod){
 
 function limpiarForm(){
   if(modoEdicion&&_prodOriginal){poblarFormulario(_prodOriginal);return;}
-  ['f-nombre','f-id','f-desc','f-desc-larga','f-nivel','f-link','f-formato','f-demoUrl','f-linkGratis'].forEach(id=>$(`#${id}`).value='');
+  ['f-nombre','f-id','f-desc','f-desc-larga','f-nivel','f-link','f-linkHotmart','f-formato','f-demoUrl','f-linkGratis'].forEach(id=>$(`#${id}`).value='');
   $('#f-precio').value=0;$('#f-precio-old').value='';$('#f-previewSegundos').value='';
   $('#f-tipo').value='cuadernillo';$('#f-tematica').value='';$('#f-nivelGrupo').value='';
   $('#f-acceso').value='pago';$('#f-activo').checked=true;$('#f-destacado').checked=false;
