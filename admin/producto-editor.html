@@ -270,7 +270,8 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
         <span class="dot"></span><span id="gh-txt">Sin conectar</span>
       </div>
     </div>
-    <div style="display:flex;gap:8px;">
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="btn btn-ghost btn-sm" id="btn-conectar" onclick="pilClick()" style="display:none;">🔑 Conectar</button>
       <button class="btn btn-ghost btn-sm" onclick="limpiarForm()">Limpiar</button>
       <button class="btn btn-primary" id="btn-h" onclick="guardarProducto()">💾 Guardar</button>
     </div>
@@ -613,7 +614,17 @@ function configurarModo(){
 }
 
 // ── Token ─────────────────────────────────────────────────────
-const getToken=()=>localStorage.getItem(KEY)||'';
+const getToken=()=>{
+  // Lee de ambas claves por compatibilidad con versiones anteriores
+  return localStorage.getItem(KEY) || localStorage.getItem('gh_token') || '';
+};
+// Migrar token viejo a la nueva clave si existe
+(()=>{
+  const old=localStorage.getItem('gh_token');
+  if(old && !localStorage.getItem(KEY)){
+    localStorage.setItem(KEY,old);
+  }
+})();
 function guardarToken(){
   const v=$('#gh-token').value.trim();
   if(!v){toast('Ingresá un token','err');return;}
@@ -622,14 +633,30 @@ function guardarToken(){
 }
 function cerrarOverlay(){$('#token-overlay').classList.remove('show');}
 function pilClick(){
-  if(getToken()){if(confirm('¿Borrar token?')){localStorage.removeItem(KEY);actualizarPill();}}
-  else $('#token-overlay').classList.add('show');
+  if(getToken()){
+    if(confirm('¿Borrar token y reconectar?')){
+      localStorage.removeItem(KEY);
+      localStorage.removeItem('gh_token');
+      actualizarPill();
+    }
+  } else {
+    $('#token-overlay').classList.add('show');
+  }
 }
 function actualizarPill(){
   const tk=getToken(),pill=$('#gh-pill');
-  if(tk){pill.className='gh-pill ok';$('#gh-txt').textContent='GitHub conectado';}
-  else{pill.className='gh-pill';$('#gh-txt').textContent='⚠️ Sin token — clic para conectar';}
-  const lbl=tk?'💾 Guardar':'💾 Descargar JSON';
+  if(tk){
+    pill.className='gh-pill ok';
+    $('#gh-txt').textContent='GitHub conectado';
+    const bc=$('#btn-conectar');if(bc)bc.style.display='none';
+  } else {
+    pill.className='gh-pill';
+    $('#gh-txt').textContent='Sin token';
+    const bc=$('#btn-conectar');if(bc)bc.style.display='inline-flex';
+    // Mostrar overlay automáticamente si no hay token
+    setTimeout(()=>$('#token-overlay').classList.add('show'),300);
+  }
+  const lbl=tk?'💾 Guardar':'💾 Sin conexión';
   ['btn-h','btn-f'].forEach(id=>{const b=$(`#${id}`);if(b)b.textContent=lbl;});
 }
 
@@ -1090,13 +1117,18 @@ function toast(msg,type=''){
 
 // ── Init ──────────────────────────────────────────────────────
 configurarModo();
+// Limpiar token vacío o inválido que pueda haber quedado
+const _tk = getToken();
+if(_tk && _tk.length < 10){
+  localStorage.removeItem(KEY);
+  localStorage.removeItem('gh_token');
+}
 actualizarPill();
 if(getToken()){
   if(modoEdicion)cargarProductoExistente();
   else cargarJSON();
-}else{
-  setTimeout(()=>$('#token-overlay').classList.add('show'),500);
 }
+// Si no hay token, actualizarPill ya muestra el overlay
 syncPreview();
 if(!modoEdicion)agregarItem();
 </script>
