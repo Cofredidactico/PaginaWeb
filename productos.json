@@ -158,7 +158,9 @@
       "activo": true,
       "destacado": true,
       "relacionados": [
-        "revolucion-mayo"
+        {
+          "id": "revolucion-mayo"
+        }
       ],
       "testimonios": []
     },
