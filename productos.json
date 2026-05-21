@@ -687,6 +687,24 @@
         5
       ],
       "demoUrl": "https://cofredidactico.github.io/DiaDelTrabajador/"
+    },
+    {
+      "id": "pack-mundial",
+      "nombre": "Pack Mundial",
+      "descripcion": "📚 Incluye 4 PDF con más de 50 hojas de ambiente alfabetizador\n🇦🇷 Inspirado en el Mundial 2026 y la Selección Argentina ⚽",
+      "tipo": "cuadernillo",
+      "acceso": "gratis",
+      "precio": 0,
+      "imagen": "images/producto-1779331841013.jpg",
+      "link": "https://drive.google.com/drive/folders/19CSBH5AERU0mqpa0om07QVeP7_SnqPBU?usp=sharing",
+      "activo": true,
+      "destacado": false,
+      "descripcionLarga": "✨ El pack contiene:\n\n- Banderín de “Bienvenidos”\n- Organizador semanal\n- Calendario 2026\n- Grilla numérica 0–100\n- Tabla pitagórica\n- Etiquetas para los nombres",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "meses": [
+        3
+      ]
     }
   ]
 }
