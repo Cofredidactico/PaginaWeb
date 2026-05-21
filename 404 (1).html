@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Página no encontrada · Cofre Didáctico</title>
+<link rel="icon" href="logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;1,9..144,700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --primary:#D97757;--accent:#FF8A4C;--green:#4A8F5C;
+  --ink:#1A2744;--ink-3:#6B7280;--ink-4:#9CA3AF;
+  --bg:#FBF7F2;--bg-2:#F5EFE7;--line:#E8DFD0;
+  --f:'Inter',system-ui,sans-serif;
+  --f-d:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{
+  font-family:var(--f);background:var(--bg);color:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:100vh;padding:24px;text-align:center;
+  background-image:radial-gradient(circle at 1px 1px,rgba(26,39,68,.04) 1px,transparent 0);
+  background-size:28px 28px;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Decoración de fondo */
+body::before{
+  content:'';position:fixed;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(217,119,87,.07) 0%,transparent 70%);
+  top:-200px;right:-200px;pointer-events:none;z-index:0;
+}
+body::after{
+  content:'';position:fixed;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(74,143,92,.06) 0%,transparent 70%);
+  bottom:-180px;left:-180px;pointer-events:none;z-index:0;
+}
+
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:28px;
+  padding:56px 48px;max-width:480px;width:100%;
+  box-shadow:0 20px 60px -20px rgba(26,39,68,.12),0 2px 8px rgba(26,39,68,.06);
+  position:relative;z-index:1;
+  animation:fadeUp .5s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.logo{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--f-d);font-weight:800;font-size:1.1rem;
+  color:var(--ink);margin-bottom:36px;
+  animation:fadeUp .5s .05s cubic-bezier(.2,.8,.2,1) both;
+}
+.logo img{width:38px;height:38px;border-radius:10px;object-fit:cover;}
+.logo strong{color:var(--accent);}
+
+.em-wrap{
+  width:96px;height:96px;border-radius:24px;
+  background:linear-gradient(135deg,var(--bg-2),#EDE4D6);
+  border:1px solid rgba(26,39,68,.06);
+  display:flex;align-items:center;justify-content:center;
+  font-size:3rem;margin:0 auto 24px;
+  box-shadow:0 8px 24px rgba(26,39,68,.07);
+  animation:fadeUp .5s .1s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.num{
+  font-family:var(--f-d);font-size:5rem;font-weight:800;line-height:1;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:8px;
+  animation:fadeUp .5s .12s cubic-bezier(.2,.8,.2,1) both;
+}
+
+h1{
+  font-family:var(--f-d);font-size:1.5rem;font-weight:700;
+  letter-spacing:-.02em;margin-bottom:12px;
+  animation:fadeUp .5s .16s cubic-bezier(.2,.8,.2,1) both;
+}
+
+p{
+  color:var(--ink-3);font-size:.95rem;line-height:1.6;
+  margin-bottom:32px;
+  animation:fadeUp .5s .2s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.actions{
+  display:flex;flex-direction:column;gap:10px;
+  animation:fadeUp .5s .25s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 24px;border-radius:14px;font-weight:700;font-size:.95rem;
+  text-decoration:none;transition:transform .18s,box-shadow .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:#fff;box-shadow:0 4px 14px rgba(217,119,87,.35);
+}
+.btn-primary:hover{box-shadow:0 8px 24px rgba(217,119,87,.45);}
+.btn-ghost{
+  background:var(--bg-2);color:var(--ink);
+  border:1.5px solid var(--line);
+}
+.btn-ghost:hover{border-color:var(--primary);color:var(--primary);}
+
+.footer-txt{
+  margin-top:32px;font-size:.78rem;color:var(--ink-4);
+  position:relative;z-index:1;
+  animation:fadeUp .5s .35s cubic-bezier(.2,.8,.2,1) both;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">
+    <img src="logo.png" alt="Cofre Didáctico" onerror="this.style.display='none'" />
+    <span>Cofre <strong>Didáctico</strong></span>
+  </div>
+
+  <div class="em-wrap">🗺️</div>
+  <div class="num">404</div>
+  <h1>Esta página no existe</h1>
+  <p>El recurso que buscás no está acá, o la URL cambió. ¡Pero tenemos muchos materiales esperándote en el catálogo!</p>
+
+  <div class="actions">
+    <a href="index.html" class="btn btn-primary">📚 Ir al catálogo →</a>
+    <a href="gratis.html" class="btn btn-ghost">🎁 Ver recursos gratis</a>
+  </div>
+</div>
+
+<p class="footer-txt">Cofre Didáctico · Recursos para docentes de todo el mundo 🌍</p>
+
+</body>
+</html>
