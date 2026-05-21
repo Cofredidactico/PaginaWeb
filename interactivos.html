@@ -177,9 +177,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:48px 0 24px;}
 .ft ul a:hover{color:#fff;}
 .ft-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.82rem;color:#A8B0BD;}
 
-/* ─── WhatsApp floating ─── */
-.wa{position:fixed;bottom:24px;right:24px;z-index:40;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:13px 20px;border-radius:99px;font-weight:700;font-size:.92rem;box-shadow:0 6px 20px rgba(37,211,102,.4);transition:transform .2s, box-shadow .2s;}
-.wa:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,211,102,.5);}
+/* WhatsApp flotante deshabilitado — descomentar cuando el número esté listo */
 
 /* ═════════ MODAL IFRAME — el corazón de la página ═════════ */
 .modal{position:fixed;inset:0;background:rgba(15,20,30,.88);backdrop-filter:blur(8px);z-index:100;display:none;flex-direction:column;animation:modalIn .25s ease;}
@@ -247,8 +245,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:48px 0 24px;}
   .hero-i{padding:40px 0 48px;}
   .hero-i h1{font-size:2rem;}
   .ft-grid{grid-template-columns:1fr;}
-  .wa span{display:none;}
-  .wa{padding:14px;}
+  /* .wa mobile — deshabilitado */
   .brand span{font-size:.95rem;}
   .nav-pill{padding:7px 11px;font-size:.82rem;}
   .modal-bar{padding:10px 14px;}
@@ -402,9 +399,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:48px 0 24px;}
   </div>
 </footer>
 
-<a href="#" class="wa" id="wa" target="_blank" rel="noopener">
-  <span style="font-size:1.2rem;">💬</span><span>Consultanos</span>
-</a>
+<!-- WhatsApp flotante deshabilitado — descomentar cuando el número esté listo -->
 
 <!-- ═════════ MODAL para iframe ═════════ -->
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-tt">
@@ -484,7 +479,7 @@ function listarInteractivos(){
 
 function aplicarConfig(){
   const L = (_data.config && _data.config.links) || {};
-  if (L.whatsapp) $('#wa').href = L.whatsapp;
+  // if (L.whatsapp) { const wa = $('#wa'); if (wa) wa.href = L.whatsapp; } // WhatsApp deshabilitado
   const social = $('#ft-social');
   if (L.instagram){ social.innerHTML += `<a href="${L.instagram}" target="_blank" rel="noopener">📸 Instagram</a>`; $('#ft-ig').href = L.instagram; }
   if (L.empretienda) social.innerHTML += `<a href="${L.empretienda}" target="_blank" rel="noopener">🏪 Tienda</a>`;

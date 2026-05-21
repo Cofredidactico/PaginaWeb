@@ -234,6 +234,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
   position:relative;
 }
 .card:hover{transform:translateY(-6px);border-color:rgba(46,125,50,.25);box-shadow:var(--s-3);}
+.card-img-link{display:block;}
 .card-img{
   position:relative;aspect-ratio:4/5;overflow:hidden;
   background:linear-gradient(135deg,var(--bg-2),var(--bg-3));
@@ -344,16 +345,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
 .ft ul a:hover{color:#fff;}
 .ft-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.82rem;color:#A8B0BD;}
 
-/* ─── WhatsApp floating ─── */
-.wa{
-  position:fixed;bottom:24px;right:24px;z-index:40;
-  display:flex;align-items:center;gap:10px;
-  background:#25D366;color:#fff;padding:13px 20px;border-radius:99px;
-  font-weight:700;font-size:.92rem;
-  box-shadow:0 6px 20px rgba(37,211,102,.4);
-  transition:transform .2s, box-shadow .2s;
-}
-.wa:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,211,102,.5);}
+/* WhatsApp flotante deshabilitado — descomentar cuando el número esté listo */
 
 /* ─── Skeleton ─── */
 @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
@@ -377,8 +369,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   .hero-g h1{font-size:2.2rem;}
   .nl-form{flex-direction:column;}
   .ft-grid{grid-template-columns:1fr;}
-  .wa span{display:none;}
-  .wa{padding:14px;}
+  /* .wa mobile — deshabilitado */
   .brand span{font-size:.95rem;}
   .nav-pill{padding:7px 11px;font-size:.82rem;}
 }
@@ -530,9 +521,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   </div>
 </footer>
 
-<a href="#" class="wa" id="wa" target="_blank" rel="noopener">
-  <span style="font-size:1.2rem;">💬</span><span>Consultanos</span>
-</a>
+<!-- WhatsApp flotante deshabilitado — descomentar cuando el número esté listo -->
 
 <script>
 const $ = (s, r=document) => r.querySelector(s);
@@ -556,7 +545,7 @@ fetch('productos.json?v=' + Date.now())
 function aplicarConfig(){
   const c = _data.config || {};
   const L = c.links || {};
-  if (L.whatsapp) $('#wa').href = L.whatsapp;
+  // if (L.whatsapp) { const wa = $('#wa'); if (wa) wa.href = L.whatsapp; } // WhatsApp deshabilitado
 
   const social = $('#ft-social');
   if (L.instagram) social.innerHTML += `<a href="${L.instagram}" target="_blank" rel="noopener">📸 Instagram</a>`;
@@ -587,22 +576,25 @@ function render(){
   grid.innerHTML = gratis.map((p, i) => {
     const tipo = `<div class="tag-tipo">${TIPO_LABELS[p.tipo]||p.tipo}</div>`;
     const fp = i < 3 ? 'fetchpriority="high"' : '';
+    const linkDescarga = p.linkGratis || p.link || '#';
     return `
-      <a href="index.html#/producto/${p.id}" class="card reveal" data-umami-event="click-producto-gratis" data-umami-event-id="${p.id}">
-        <div class="card-img">
-          <div class="ribbon-gratis">🎁 Gratis</div>${tipo}
-          <img src="${p.imagen}" alt="${p.nombre}" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
-        </div>
+      <div class="card reveal" data-umami-event="click-producto-gratis" data-umami-event-id="${p.id}">
+        <a href="${linkDescarga}" target="_blank" rel="noopener" class="card-img-link">
+          <div class="card-img">
+            <div class="ribbon-gratis">🎁 Gratis</div>${tipo}
+            <img src="${p.imagen}" alt="${p.nombre}" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
+          </div>
+        </a>
         <div class="card-body">
           ${p.nivel?`<div class="card-nivel">${p.nivel}</div>`:''}
           <h3 class="card-ttl">${p.nombre}</h3>
           <p class="card-desc">${p.descripcion||''}</p>
           <div class="card-foot">
             <div class="price-gratis">¡Gratis!</div>
-            <span class="btn-card">Descargar →</span>
+            <a href="${linkDescarga}" target="_blank" rel="noopener" class="btn-card" onclick="if(window.umami)umami.track('descarga-gratis',{id:'${p.id}'})">⬇️ Descargar →</a>
           </div>
         </div>
-      </a>`;
+      </div>`;
   }).join('');
 
   initReveal();
