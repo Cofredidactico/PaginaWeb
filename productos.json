@@ -86,8 +86,8 @@
       "meses": [
         5
       ],
-      "precio": 6500,
-      "precioTachado": 8900,
+      "precio": 7000,
+      "precioTachado": 9000,
       "acceso": "pago",
       "imagen": "images/revolucion-de-mayo-1778563135675.jpg",
       "previews": [
@@ -142,8 +142,8 @@
       "meses": [
         5
       ],
-      "precio": 6500,
-      "precioTachado": 8200,
+      "precio": 5500,
+      "precioTachado": 7500,
       "acceso": "pago",
       "imagen": "images/producto-1778559946157.jpg",
       "previews": [],
@@ -211,7 +211,7 @@
       "descripcion": "Plataforma Educativa",
       "tipo": "juego",
       "acceso": "pago",
-      "precio": 2500,
+      "precio": 3000,
       "imagen": "images/plataforma-interactiva-revolucion-de-mayo-1779300992311.jpeg",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/plataforma-interactiva-revolucion-de-mayo",
       "activo": true,
@@ -224,7 +224,8 @@
         5
       ],
       "demoUrl": "https://cofredidactico.github.io/RevoluciondeMayo/",
-      "previewSegundos": 25
+      "previewSegundos": 25,
+      "precioTachado": 4200
     },
     {
       "id": "plataforma-interactiva-dia-de-la-escarapela",
@@ -403,7 +404,7 @@
       "descripcion": "Un material didáctico pensado especialmente para docentes de nivel inicial y primer ciclo, ideal para acompañar el proceso de alfabetización de manera lúdica y significativa 💛",
       "tipo": "cuadernillo",
       "acceso": "pago",
-      "precio": 4000,
+      "precio": 4300,
       "imagen": "images/producto-1779308666567.jpg",
       "link": "https://drive.google.com/file/d/1DbFA-6DqwSxvm7wuik25eZVBaxX8CWsQ/view?usp=sharing",
       "activo": true,
