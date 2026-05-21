@@ -910,9 +910,6 @@ function actualizarComp(){
     return `<div class="ci ${cls}"><span class="dot">${icon}</span>${c.l}${!c.ok&&c.warn?' <span style="opacity:.55;font-size:.65rem;">(recomendado)</span>':''}</div>`;
   }).join('');
   $('#save-info').innerHTML=done===total?'✅ <strong>Listo para guardar</strong>':`<strong>${done}/${total}</strong> campos completos`;
-}
-
-// ── Validar ───────────────────────────────────────────────────
   // Barra de progreso
   const total_items = document.querySelectorAll('#comp-items .ci').length;
   const done_items = document.querySelectorAll('#comp-items .ci.done').length;
@@ -922,6 +919,8 @@ function actualizarComp(){
   if(barFill) barFill.style.width = pct + '%';
   if(pctEl){ pctEl.textContent = pct + '%'; pctEl.style.color = pct===100?'var(--green)':pct>60?'var(--primary)':'var(--ink-4)'; }
 }
+
+// ── Validar ───────────────────────────────────────────────────
 function validar(){
   let ok=true;
   [{id:'f-nombre',err:'err-nombre',fn:v=>v.trim().length>0},
