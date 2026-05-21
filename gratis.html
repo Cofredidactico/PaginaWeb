@@ -13,26 +13,26 @@
 <link rel="icon" href="logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
 /* ═════════════════════════════════════════════════════════
    COFRE DIDÁCTICO — Página de Recursos Gratuitos
    ═════════════════════════════════════════════════════════ */
 :root{
-  --ink:#1A2744; --ink-2:#3B4A66; --ink-3:#637082; --ink-4:#8A93A4;
-  --bg:#FDFCF8; --bg-2:#F5F0E8; --bg-3:#ECE5D8;
-  --line:#E8E0CE;
-  --primary:#2196F3; --primary-soft:#E3F2FD;
-  --accent:#FF8A4C; --accent-soft:#FFE9D9;
-  --green:#2E7D32; --green-soft:#E8F5E9; --green-2:#1B5E20;
-  --gold:#F4A300;
-  --r-sm:8px; --r:14px; --r-lg:22px; --r-xl:32px;
-  --s-1: 0 1px 2px rgba(26,39,68,.05);
-  --s-2: 0 2px 4px rgba(26,39,68,.04), 0 8px 24px rgba(26,39,68,.06);
-  --s-3: 0 12px 32px rgba(26,39,68,.10);
-  --f-display:'Outfit', system-ui, sans-serif;
-  --f-body:'Nunito', system-ui, sans-serif;
+  --primary:#D97757; --primary-dark:#B85A3E; --primary-soft:#FBE5DC;
+  --accent:#FF8A4C;
+  --green:#4A8F5C; --green-soft:#DBEDDF;
+  --purple:#7B61FF; --purple-soft:#EDE9FF;
+  --gold:#F5A623;
+  --ink:#1A2744; --ink-2:#3E4A65; --ink-3:#6B7280; --ink-4:#9CA3AF;
+  --bg:#FBF7F2; --bg-2:#F5EFE7; --bg-3:#EDE4D6;
+  --line:#E8DFD0;
+  --r:14px; --r-lg:20px;
+  --s-1:0 2px 8px rgba(26,39,68,.07);
+  --s-2:0 12px 32px -8px rgba(26,39,68,.14);
+  --f:'Inter',system-ui,sans-serif;
+  --f-display:'Fraunces',Georgia,serif;
 }
 *,*::before,*::after{box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
@@ -46,7 +46,7 @@ body{
 img{max-width:100%;display:block;}
 button{font:inherit;color:inherit;cursor:pointer;border:none;background:none;}
 a{color:inherit;text-decoration:none;}
-h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:0;}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;line-height:1.15;margin:0;}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
 
 /* ─── Header (idéntico al index) ─── */
@@ -344,7 +344,16 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
 .ft ul a:hover{color:#fff;}
 .ft-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.82rem;color:#A8B0BD;}
 
-/* WhatsApp flotante deshabilitado — descomentar cuando el número esté listo */
+/* ─── WhatsApp floating ─── */
+.wa{
+  position:fixed;bottom:24px;right:24px;z-index:40;
+  display:flex;align-items:center;gap:10px;
+  background:#25D366;color:#fff;padding:13px 20px;border-radius:99px;
+  font-weight:700;font-size:.92rem;
+  box-shadow:0 6px 20px rgba(37,211,102,.4);
+  transition:transform .2s, box-shadow .2s;
+}
+.wa:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,211,102,.5);}
 
 /* ─── Skeleton ─── */
 @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
@@ -368,7 +377,8 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   .hero-g h1{font-size:2.2rem;}
   .nl-form{flex-direction:column;}
   .ft-grid{grid-template-columns:1fr;}
-  /* .wa span y .wa mobile — deshabilitado */
+  .wa span{display:none;}
+  .wa{padding:14px;}
   .brand span{font-size:.95rem;}
   .nav-pill{padding:7px 11px;font-size:.82rem;}
 }
@@ -520,11 +530,9 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   </div>
 </footer>
 
-<!-- WhatsApp flotante deshabilitado
 <a href="#" class="wa" id="wa" target="_blank" rel="noopener">
   <span style="font-size:1.2rem;">💬</span><span>Consultanos</span>
 </a>
--->
 
 <script>
 const $ = (s, r=document) => r.querySelector(s);
@@ -548,7 +556,7 @@ fetch('productos.json?v=' + Date.now())
 function aplicarConfig(){
   const c = _data.config || {};
   const L = c.links || {};
-  // if (L.whatsapp) { const wa = $('#wa'); if (wa) wa.href = L.whatsapp; } // WhatsApp deshabilitado
+  if (L.whatsapp) $('#wa').href = L.whatsapp;
 
   const social = $('#ft-social');
   if (L.instagram) social.innerHTML += `<a href="${L.instagram}" target="_blank" rel="noopener">📸 Instagram</a>`;
