@@ -89,6 +89,7 @@
       "demoUrl": "https://cofredidactico.github.io/DiadelaEscarapela/",
       "mostrarEnInteractivos": false,
       "previewSegundos": 25,
+      "linkGratis": "",
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -109,51 +110,15 @@
         "images/preview-dia-de-la-escarapela-1779406242521.jpg",
         "images/preview-dia-de-la-escarapela-1779406245988.jpg"
       ],
+      "incluye": [],
       "paginas": 25,
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-de-la-escarapela-con-plataforma-interactiva",
+      "linkHotmart": "",
       "etiqueta": "nuevo",
       "activo": true,
       "destacado": true,
       "testimonios": [],
-      "incluye": [
-        {
-          "texto": "📄 Secuencia Didáctica (con fundamentación y actividades organizadas para trabajar la efeméride)"
-        },
-        {
-          "texto": "🎗️ Comprensión de infografía"
-        },
-        {
-          "texto": "🎗️ Completar oraciones"
-        },
-        {
-          "texto": "🎗️ Ordenar palabras y letras"
-        },
-        {
-          "texto": "🎗️ Sopa de letras"
-        },
-        {
-          "texto": "🎗️ Crucigrama temático"
-        },
-        {
-          "texto": "🎗️ Mensajes secretos y códigos"
-        },
-        {
-          "texto": "🎗️ Actividades de escritura guiada"
-        },
-        {
-          "texto": "🎗️ Dibujo y pintura de la escarapela 🎨"
-        },
-        {
-          "texto": "🎗️ Recortar y armar la escarapela ✂️"
-        },
-        {
-          "texto": "🎗️ Laberinto (¡ayudá a Belgrano!)"
-        },
-        {
-          "texto": "🎗️ Acróstico “ESCARAPELA”"
-        }
-      ],
       "relacionados": [
         {
           "id": "revolucion-mayo"
@@ -693,23 +658,20 @@
       "destacado": false
     }
   ],
-  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
   "config": {
-    "anuncio": {
-      "activo": false,
-      "texto": "🎉 Envíos gratis esta semana — usá el código DOCENTE10",
-      "color": "#FF8A4C"
+    "links": {
+      "email": "cofredidacticoo@gmail.com",
+      "whatsapp": "https://wa.me/5491165298256?text=Hola!%20Tengo%20una%20consulta%20sobre%20los%20materiales%20de%20Cofre%20Did%C3%A1ctico%20%F0%9F%93%9A",
+      "hotmart": "https://hotmart.com/es/market/materiales-educativos",
+      "empretienda": "https://cofredidactico.empretienda.com.ar/",
+      "instagram": "https://www.instagram.com/cofredidactico/"
     },
-    "stats": {
-      "docentes": "+1000",
-      "paises": "+10",
-      "descargas": "+2.000"
+    "brevo": {
+      "listIds": "",
+      "emailField": "EMAIL",
+      "formAction": "https://26529e2e.sibforms.com/serve/MUIFAL5aDmHkI8zmiGQYczSKOqDTPfVD-wgfkB5oBIBRLt5BAkqNQbEA11bVTSMXj-KC14n9FyIXoCysBPvTPKdic_urix91YTh_7ojru7jwleUzJe1ylWNdVb_WAdHBTQf9rQuQ4uPmNf0VmYL2Sdv3vdrNyk4Z8JOqqnMohXF7mY8tRu1EmjcYQp4wE7UUrJOAczqXMxa_X8pyPQ=="
     },
     "semana": {
-      "activo": true,
-      "titulo": "Para esta semana",
-      "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
-      "etiqueta": "🗓️ Esta semana",
       "productos": [
         {
           "id": "revolucion-mayo"
@@ -717,21 +679,24 @@
         {
           "id": "dia-de-la-escarapela"
         }
-      ]
+      ],
+      "etiqueta": "🗓️ Esta semana",
+      "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
+      "titulo": "Para esta semana",
+      "activo": true
     },
-    "brevo": {
-      "formAction": "https://26529e2e.sibforms.com/serve/MUIFAL5aDmHkI8zmiGQYczSKOqDTPfVD-wgfkB5oBIBRLt5BAkqNQbEA11bVTSMXj-KC14n9FyIXoCysBPvTPKdic_urix91YTh_7ojru7jwleUzJe1ylWNdVb_WAdHBTQf9rQuQ4uPmNf0VmYL2Sdv3vdrNyk4Z8JOqqnMohXF7mY8tRu1EmjcYQp4wE7UUrJOAczqXMxa_X8pyPQ==",
-      "emailField": "EMAIL",
-      "listIds": ""
+    "stats": {
+      "descargas": "+2.000",
+      "paises": "+10",
+      "docentes": "+1000"
     },
-    "links": {
-      "instagram": "https://www.instagram.com/cofredidactico/",
-      "empretienda": "https://cofredidactico.empretienda.com.ar/",
-      "hotmart": "https://hotmart.com/es/market/materiales-educativos",
-      "whatsapp": "https://wa.me/5491165298256?text=Hola!%20Tengo%20una%20consulta%20sobre%20los%20materiales%20de%20Cofre%20Did%C3%A1ctico%20%F0%9F%93%9A",
-      "email": "cofredidacticoo@gmail.com"
+    "anuncio": {
+      "color": "#FF8A4C",
+      "texto": "🎉 Envíos gratis esta semana — usá el código DOCENTE10",
+      "activo": false
     }
   },
+  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
   "tematicas": [
     {
       "id": "lengua",
