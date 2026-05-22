@@ -8,531 +8,88 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --primary:#D97757;--primary-soft:#FBE5DC;--accent:#FF8A4C;
-  --green:#4A8F5C;--green-soft:#DBEDDF;
-  --blue:#3B82F6;--blue-soft:#EFF6FF;
-  --purple:#7B61FF;--purple-soft:#EDE9FF;
-  --ink:#1A2744;--ink-2:#3E4A65;--ink-3:#6B7280;--ink-4:#9CA3AF;
-  --bg:#FBF7F2;--bg-2:#F5EFE7;--bg-3:#EDE4D6;--line:#E8DFD0;
-  --r:14px;--r-lg:20px;
-  --s-1:0 1px 3px rgba(26,39,68,.06),0 1px 2px rgba(26,39,68,.04);
-  --s-2:0 10px 30px -10px rgba(26,39,68,.12),0 4px 12px rgba(26,39,68,.05);
+  --primary:#D97757;--accent:#FF8A4C;
+  --ink:#1A2744;--ink-4:#9CA3AF;
+  --bg:#FBF7F2;--bg-2:#F5EFE7;--line:#E8DFD0;
   --f:'Inter',system-ui,sans-serif;--f-d:'Fraunces',Georgia,serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html,body{font-family:var(--f);background:var(--bg);color:var(--ink);min-height:100%;}
+html,body{font-family:var(--f);background:#0F1117;color:#fff;height:100%;overflow:hidden;}
 a{color:inherit;text-decoration:none;}
 button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
 
-/* Header */
-.hdr{padding:16px 0;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10;}
-.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.brand{display:flex;align-items:center;gap:12px;}
-.brand img{height:38px;border-radius:8px;}
-.brand-tx{font-family:var(--f-d);font-weight:700;font-size:1.05rem;}
-.brand-tx em{color:var(--primary);font-style:normal;}
-.brand-sub{font-size:.72rem;color:var(--ink-4);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-top:1px;}
-.btn{display:inline-flex;align-items:center;gap:7px;font-weight:700;padding:9px 16px;border-radius:10px;font-size:.88rem;transition:all .15s;}
-.btn-ghost{background:var(--bg-2);color:var(--ink);}
-.btn-ghost:hover{background:var(--bg-3);}
-.btn-primary{background:var(--primary);color:#fff;}
+.hdr{
+  padding:12px 24px;
+  background:rgba(15,17,23,.95);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  position:fixed;top:0;left:0;right:0;z-index:10;
+  backdrop-filter:blur(12px);
+}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand img{height:32px;border-radius:7px;}
+.brand-tx{font-family:var(--f-d);font-weight:700;font-size:.95rem;color:#fff;}
+.brand-tx em{color:var(--accent);font-style:normal;}
+.brand-sub{font-size:.68rem;color:rgba(255,255,255,.4);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-top:1px;}
+.hdr-actions{display:flex;gap:8px;align-items:center;}
+.btn{display:inline-flex;align-items:center;gap:6px;font-weight:700;padding:7px 14px;border-radius:9px;font-size:.82rem;transition:all .15s;}
+.btn-ghost{background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.1);}
+.btn-ghost:hover{background:rgba(255,255,255,.14);}
+.btn-ext{background:var(--primary);color:#fff;}
+.btn-ext:hover{opacity:.9;}
 
-/* Page */
-.page{padding:32px 0 60px;}
-.page-hd{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap;}
-.page-hd h1{font-family:var(--f-d);font-size:1.8rem;font-weight:700;}
-.page-hd h1 em{color:var(--primary);font-style:normal;}
+.frame-wrap{
+  position:fixed;
+  top:57px;left:0;right:0;bottom:0;
+}
+iframe{
+  width:100%;height:100%;
+  border:none;
+  display:block;
+}
 
-/* Token bar */
-.token-bar{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
-.token-bar p{font-size:.88rem;color:var(--ink-3);flex:1;}
-.token-bar p strong{color:var(--ink);}
-.token-input{flex:1;min-width:200px;padding:9px 13px;border:1.5px solid var(--line);border-radius:10px;font:inherit;font-size:.88rem;}
-.token-input:focus{outline:none;border-color:var(--primary);}
-.status-dot{width:10px;height:10px;border-radius:50%;background:var(--ink-4);flex:none;}
-.status-dot.ok{background:var(--green);}
-.status-dot.err{background:#EF4444;}
-
-/* Range pills */
-.range-pills{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
-.rpill{padding:7px 14px;border-radius:99px;font-size:.84rem;font-weight:700;border:1.5px solid var(--line);background:#fff;color:var(--ink-3);cursor:pointer;transition:all .15s;}
-.rpill:hover{border-color:var(--primary);color:var(--primary);}
-.rpill.on{background:var(--primary);color:#fff;border-color:var(--primary);}
-
-/* Stats grid */
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;}
-@media(max-width:760px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:440px){.stats-grid{grid-template-columns:1fr 1fr;}}
-.stat-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:20px 22px;box-shadow:var(--s-1);position:relative;overflow:hidden;}
-.stat-card .sc-em{position:absolute;top:14px;right:14px;font-size:1.4rem;opacity:.4;}
-.stat-card .sc-n{font-family:var(--f-d);font-size:2rem;font-weight:800;line-height:1;margin-bottom:6px;}
-.stat-card .sc-l{font-size:.8rem;color:var(--ink-3);font-weight:600;}
-.stat-card .sc-d{font-size:.74rem;margin-top:6px;font-weight:700;}
-.sc-d.up{color:var(--green);}
-.sc-d.dn{color:#EF4444;}
-
-/* Charts grid */
-.charts-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:20px;margin-bottom:20px;}
-@media(max-width:760px){.charts-grid{grid-template-columns:1fr;}}
-.chart-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:20px 22px;box-shadow:var(--s-1);}
-.chart-card h3{font-family:var(--f-d);font-size:1rem;font-weight:700;margin-bottom:16px;}
-.chart-wrap{height:180px;position:relative;}
-
-/* Tables */
-.table-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:20px 22px;box-shadow:var(--s-1);margin-bottom:20px;}
-.table-card h3{font-family:var(--f-d);font-size:1rem;font-weight:700;margin-bottom:14px;}
-.tbl{width:100%;border-collapse:collapse;}
-.tbl th{font-size:.72rem;font-weight:700;color:var(--ink-4);text-transform:uppercase;letter-spacing:.05em;padding:0 0 10px;text-align:left;border-bottom:1px solid var(--line);}
-.tbl td{padding:10px 0;font-size:.88rem;border-bottom:1px solid var(--line);vertical-align:middle;}
-.tbl tr:last-child td{border-bottom:none;}
-.tbl .bar-wrap{flex:1;background:var(--bg-2);border-radius:99px;height:6px;overflow:hidden;}
-.tbl .bar-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:99px;transition:width .4s;}
-.tbl .num{font-family:var(--f-d);font-weight:700;color:var(--ink);min-width:50px;text-align:right;}
-
-/* Skeleton */
-@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
-.skel{background:linear-gradient(110deg,var(--bg-2) 8%,var(--bg-3) 18%,var(--bg-2) 33%);background-size:200% 100%;animation:shimmer 1.4s linear infinite;border-radius:8px;}
-
-/* Empty/Error */
-.empty-state{text-align:center;padding:48px 24px;color:var(--ink-4);}
-.empty-state .es-em{font-size:2.4rem;margin-bottom:12px;}
-.empty-state p{font-size:.9rem;line-height:1.6;}
-.empty-state a{color:var(--primary);font-weight:700;}
-
-/* Canvas bar chart */
-canvas{display:block;width:100%!important;}
+/* Loading overlay */
+.loader{
+  position:absolute;inset:0;
+  background:#0F1117;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  z-index:5;transition:opacity .4s;
+}
+.loader.gone{opacity:0;pointer-events:none;}
+.spin{width:32px;height:32px;border:3px solid rgba(255,255,255,.1);border-top-color:var(--accent);border-radius:50%;animation:rot 1s linear infinite;}
+@keyframes rot{to{transform:rotate(360deg);}}
+.loader p{font-size:.88rem;color:rgba(255,255,255,.4);}
 </style>
 </head>
 <body>
 
 <header class="hdr">
-  <div class="wrap hdr-in">
-    <a href="index.html" class="brand">
-      <img src="../logo.png" alt="" onerror="this.style.display='none'" />
-      <div>
-        <div class="brand-tx">Cofre <em>Didáctico</em></div>
-        <div class="brand-sub">Analytics</div>
-      </div>
-    </a>
-    <div style="display:flex;gap:10px;">
-      <a href="../" target="_blank" class="btn btn-ghost">👀 Ver sitio</a>
-      <a href="index.html" class="btn btn-ghost">← Panel</a>
+  <div class="brand">
+    <img src="../logo.png" alt="" onerror="this.style.display='none'" />
+    <div>
+      <div class="brand-tx">Cofre <em>Didáctico</em></div>
+      <div class="brand-sub">Analytics</div>
     </div>
+  </div>
+  <div class="hdr-actions">
+    <a href="https://cloud.umami.is/share/QK8Q8h1iTqkbhjSu" target="_blank" rel="noopener" class="btn btn-ghost">↗ Ver en Umami</a>
+    <a href="../" target="_blank" rel="noopener" class="btn btn-ghost">👀 Ver sitio</a>
+    <a href="index.html" class="btn btn-ext">← Panel</a>
   </div>
 </header>
 
-<main class="wrap page">
-  <div class="page-hd">
-    <h1>📊 Analytics <em>del sitio</em></h1>
-    <div style="display:flex;gap:8px;align-items:center;">
-      <div class="status-dot" id="status-dot"></div>
-      <span id="status-txt" style="font-size:.82rem;color:var(--ink-4);">Sin conectar</span>
-    </div>
+<div class="frame-wrap">
+  <div class="loader" id="loader">
+    <div class="spin"></div>
+    <p>Cargando analytics...</p>
   </div>
+  <iframe
+    src="https://cloud.umami.is/share/QK8Q8h1iTqkbhjSu"
+    title="Analytics · Cofre Didáctico"
+    onload="document.getElementById('loader').classList.add('gone')"
+    allow="fullscreen"
+  ></iframe>
+</div>
 
-  <!-- Token bar -->
-  <div class="token-bar" id="token-bar">
-    <p><strong>Conectá tu cuenta de Umami</strong><br>Necesitás un API token de Umami Cloud para ver los datos.</p>
-    <input class="token-input" id="umami-token" type="password" placeholder="Token de Umami..." 
-      onkeydown="if(event.key==='Enter')conectar()" />
-    <button class="btn btn-primary" onclick="conectar()">Conectar</button>
-    <div style="font-size:.75rem;color:var(--ink-4);width:100%;">
-      En Umami Cloud → Profile → API Keys → Create key. 
-      <a href="https://cloud.umami.is/settings/api-keys" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700;">Ir ahora →</a>
-    </div>
-  </div>
-
-  <!-- Range selector -->
-  <div class="range-pills" id="range-pills" style="display:none;">
-    <button class="rpill" data-d="1" onclick="setRango(this)">Hoy</button>
-    <button class="rpill on" data-d="7" onclick="setRango(this)">7 días</button>
-    <button class="rpill" data-d="30" onclick="setRango(this)">30 días</button>
-    <button class="rpill" data-d="90" onclick="setRango(this)">90 días</button>
-    <span style="margin-left:auto;font-size:.8rem;color:var(--ink-4);" id="last-update"></span>
-  </div>
-
-  <!-- Stats -->
-  <div class="stats-grid" id="stats-grid">
-    <div class="stat-card"><div class="sc-em">👁️</div><div class="skel" style="height:32px;width:60%;margin-bottom:8px;"></div><div class="skel" style="height:12px;width:80%;"></div></div>
-    <div class="stat-card"><div class="sc-em">👤</div><div class="skel" style="height:32px;width:60%;margin-bottom:8px;"></div><div class="skel" style="height:12px;width:80%;"></div></div>
-    <div class="stat-card"><div class="sc-em">🛒</div><div class="skel" style="height:32px;width:60%;margin-bottom:8px;"></div><div class="skel" style="height:12px;width:80%;"></div></div>
-    <div class="stat-card"><div class="sc-em">📱</div><div class="skel" style="height:32px;width:60%;margin-bottom:8px;"></div><div class="skel" style="height:12px;width:80%;"></div></div>
-  </div>
-
-  <!-- Charts -->
-  <div class="charts-grid" id="charts-grid">
-    <div class="chart-card">
-      <h3>📈 Visitas por día</h3>
-      <div class="chart-wrap"><canvas id="chart-visitas"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <h3>🌍 Países</h3>
-      <div id="paises-list"><div class="skel" style="height:140px;"></div></div>
-    </div>
-  </div>
-
-  <!-- Tablas -->
-  <div class="charts-grid">
-    <div class="table-card">
-      <h3>📄 Páginas más visitadas</h3>
-      <div id="top-pages"><div class="skel" style="height:160px;"></div></div>
-    </div>
-    <div class="table-card">
-      <h3>🛒 Productos más clickeados</h3>
-      <div id="top-productos"><div class="skel" style="height:160px;"></div></div>
-    </div>
-  </div>
-
-  <div class="table-card">
-    <h3>📱 Dispositivos</h3>
-    <div id="dispositivos"><div class="skel" style="height:80px;"></div></div>
-  </div>
-</main>
-
-<script>
-const WEBSITE_ID = '52b78f4b-a423-415e-bea9-beb9a2424bcc';
-const API_BASE   = 'https://api.umami.is/v1';
-const TOKEN_KEY  = 'umami_api_token';
-
-let _token = '';
-let _dias  = 7;
-
-// ── Init ──────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem(TOKEN_KEY);
-  if (saved) {
-    document.getElementById('umami-token').value = saved;
-    _token = saved;
-    conectar(true);
-  }
-});
-
-// ── Conectar ──────────────────────────────────────────────────
-async function conectar(silent = false) {
-  const input = document.getElementById('umami-token');
-  const tok   = input.value.trim();
-  if (!tok) { alert('Ingresá el token de Umami'); return; }
-  _token = tok;
-
-  // Verificar token
-  try {
-    const r = await apiGet('/me');
-    if (!r || r.error) throw new Error(r?.error || 'Token inválido');
-    localStorage.setItem(TOKEN_KEY, tok);
-    setStatus(true, `Conectado como ${r.username || r.email || 'usuario'}`);
-    document.getElementById('token-bar').style.display = 'none';
-    document.getElementById('range-pills').style.display = 'flex';
-    cargarTodo();
-  } catch(e) {
-    setStatus(false, 'Token inválido');
-    if (!silent) alert('No se pudo conectar: ' + e.message);
-  }
-}
-
-function setStatus(ok, txt) {
-  document.getElementById('status-dot').className = 'status-dot ' + (ok ? 'ok' : 'err');
-  document.getElementById('status-txt').textContent = txt;
-}
-
-// ── API helper ────────────────────────────────────────────────
-async function apiGet(path, params = {}) {
-  const url = new URL(API_BASE + path);
-  Object.entries(params).forEach(([k,v]) => url.searchParams.set(k, v));
-  const r = await fetch(url, {
-    headers: { 'x-umami-api-key': _token, 'Accept': 'application/json' }
-  });
-  if (!r.ok) throw new Error(`HTTP ${r.status}`);
-  return r.json();
-}
-
-function getRango() {
-  const now   = Date.now();
-  const start = now - _dias * 86400000;
-  return { startAt: start, endAt: now, unit: _dias <= 1 ? 'hour' : _dias <= 7 ? 'day' : 'day' };
-}
-
-// ── Rango ─────────────────────────────────────────────────────
-function setRango(btn) {
-  document.querySelectorAll('.rpill').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  _dias = parseInt(btn.dataset.d);
-  cargarTodo();
-}
-
-// ── Cargar todo ───────────────────────────────────────────────
-async function cargarTodo() {
-  document.getElementById('last-update').textContent = 'Cargando...';
-  const { startAt, endAt, unit } = getRango();
-
-  await Promise.all([
-    cargarStats(startAt, endAt),
-    cargarVisitasDia(startAt, endAt, unit),
-    cargarPaises(startAt, endAt),
-    cargarPaginas(startAt, endAt),
-    cargarProductos(startAt, endAt),
-    cargarDispositivos(startAt, endAt),
-  ]);
-
-  document.getElementById('last-update').textContent =
-    'Actualizado ' + new Date().toLocaleTimeString('es-AR', {hour:'2-digit',minute:'2-digit'});
-}
-
-// ── Stats principales ─────────────────────────────────────────
-async function cargarStats(startAt, endAt) {
-  try {
-    const d = await apiGet(`/websites/${WEBSITE_ID}/stats`, { startAt, endAt });
-    document.getElementById('stats-grid').innerHTML = `
-      <div class="stat-card">
-        <div class="sc-em">👁️</div>
-        <div class="sc-n">${fmt(d.pageviews?.value ?? 0)}</div>
-        <div class="sc-l">Páginas vistas</div>
-        ${trend(d.pageviews?.change)}
-      </div>
-      <div class="stat-card">
-        <div class="sc-em">👤</div>
-        <div class="sc-n">${fmt(d.visitors?.value ?? 0)}</div>
-        <div class="sc-l">Visitantes únicos</div>
-        ${trend(d.visitors?.change)}
-      </div>
-      <div class="stat-card">
-        <div class="sc-em">🔗</div>
-        <div class="sc-n">${fmt(d.visits?.value ?? 0)}</div>
-        <div class="sc-l">Sesiones</div>
-        ${trend(d.visits?.change)}
-      </div>
-      <div class="stat-card">
-        <div class="sc-em">⏱️</div>
-        <div class="sc-n">${duracion(d.totaltime?.value ?? 0, d.visits?.value ?? 1)}</div>
-        <div class="sc-l">Tiempo promedio</div>
-      </div>`;
-  } catch(e) { console.error('stats', e); }
-}
-
-// ── Visitas por día ───────────────────────────────────────────
-async function cargarVisitasDia(startAt, endAt, unit) {
-  try {
-    const d = await apiGet(`/websites/${WEBSITE_ID}/pageviews`, { startAt, endAt, unit });
-    const labels = (d.pageviews||[]).map(x => {
-      const dt = new Date(x.x);
-      return unit === 'hour'
-        ? dt.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})
-        : dt.toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit'});
-    });
-    const vals = (d.pageviews||[]).map(x => x.y);
-    dibujarBarras('chart-visitas', labels, vals, '#D97757');
-  } catch(e) { console.error('pageviews', e); }
-}
-
-// ── Países ────────────────────────────────────────────────────
-async function cargarPaises(startAt, endAt) {
-  try {
-    const d = await apiGet(`/websites/${WEBSITE_ID}/countries`, { startAt, endAt, limit: 8 });
-    const items = d.data || d || [];
-    const max = items[0]?.visitors || 1;
-    document.getElementById('paises-list').innerHTML = items.length ? `
-      <table class="tbl">
-        <thead><tr><th>País</th><th style="text-align:right">Visitas</th></tr></thead>
-        <tbody>${items.map(x => `
-          <tr>
-            <td>
-              <div style="display:flex;align-items:center;gap:10px;">
-                <img src="https://flagcdn.com/20x15/${(x.country||'').toLowerCase()}.png"
-                  onerror="this.style.display='none'" style="border-radius:2px;" />
-                <span>${PAISES[x.country] || x.country}</span>
-              </div>
-            </td>
-            <td class="num">${fmt(x.visitors)}</td>
-          </tr>`).join('')}
-        </tbody>
-      </table>` : noData();
-  } catch(e) { console.error('paises', e); }
-}
-
-// ── Páginas ───────────────────────────────────────────────────
-async function cargarPaginas(startAt, endAt) {
-  try {
-    const d = await apiGet(`/websites/${WEBSITE_ID}/pages`, { startAt, endAt, limit: 8 });
-    const items = d.data || d || [];
-    const max = items[0]?.pageviews || 1;
-    document.getElementById('top-pages').innerHTML = items.length ? `
-      <table class="tbl">
-        <thead><tr><th>Página</th><th></th><th style="text-align:right">Vistas</th></tr></thead>
-        <tbody>${items.map(x => `
-          <tr>
-            <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.82rem;">
-              ${paginaLabel(x.x)}
-            </td>
-            <td style="width:100px;padding:0 12px;">
-              <div class="bar-wrap"><div class="bar-fill" style="width:${Math.round(x.pageviews/max*100)}%"></div></div>
-            </td>
-            <td class="num">${fmt(x.pageviews)}</td>
-          </tr>`).join('')}
-        </tbody>
-      </table>` : noData();
-  } catch(e) { console.error('paginas', e); }
-}
-
-// ── Productos más clickeados ──────────────────────────────────
-async function cargarProductos(startAt, endAt) {
-  try {
-    const d = await apiGet(`/websites/${WEBSITE_ID}/events`, {
-      startAt, endAt, limit: 10, eventName: 'click-producto'
-    });
-    const items = (d.data || d || []).slice(0,8);
-    const max   = items[0]?.x ? 1 : (items[0]?.count || 1);
-
-    // Intentar con eventos de tipo custom
-    const d2 = await apiGet(`/websites/${WEBSITE_ID}/event-data/fields`, {
-      startAt, endAt, eventName: 'click-producto', propertyName: 'nombre', limit: 8
-    }).catch(()=>null);
-
-    const rows = d2?.data?.length
-      ? d2.data.map(x => ({nombre: x.propertyValue, count: x.total}))
-      : items.map(x => ({nombre: x.x || x.eventName || '—', count: x.y || x.count || 0}));
-
-    const maxV = rows[0]?.count || 1;
-    document.getElementById('top-productos').innerHTML = rows.length ? `
-      <table class="tbl">
-        <thead><tr><th>Producto</th><th></th><th style="text-align:right">Clicks</th></tr></thead>
-        <tbody>${rows.map(x => `
-          <tr>
-            <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.82rem;">
-              ${x.nombre}
-            </td>
-            <td style="width:80px;padding:0 12px;">
-              <div class="bar-wrap"><div class="bar-fill" style="width:${Math.round(x.count/maxV*100)}%"></div></div>
-            </td>
-            <td class="num">${fmt(x.count)}</td>
-          </tr>`).join('')}
-        </tbody>
-      </table>` : noData('Sin datos de clicks todavía');
-  } catch(e) {
-    document.getElementById('top-productos').innerHTML = noData('Sin datos de clicks todavía');
-  }
-}
-
-// ── Dispositivos ──────────────────────────────────────────────
-async function cargarDispositivos(startAt, endAt) {
-  try {
-    const d = await apiGet(`/websites/${WEBSITE_ID}/devices`, { startAt, endAt });
-    const items = d.data || d || [];
-    const total = items.reduce((s,x) => s + (x.visitors||0), 0) || 1;
-    const DEVS  = { desktop:'🖥️ Desktop', mobile:'📱 Mobile', tablet:'📟 Tablet' };
-    document.getElementById('dispositivos').innerHTML = `
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        ${items.map(x => {
-          const pct = Math.round((x.visitors||0)/total*100);
-          return `<div style="flex:1;min-width:120px;background:var(--bg-1);border-radius:12px;padding:14px 16px;border:1px solid var(--line);">
-            <div style="font-size:1.4rem;margin-bottom:6px;">${DEVS[x.device]?.split(' ')[0]||'💻'}</div>
-            <div style="font-family:var(--f-d);font-size:1.4rem;font-weight:800;">${pct}%</div>
-            <div style="font-size:.78rem;color:var(--ink-3);margin-top:2px;">${DEVS[x.device]||x.device} · ${fmt(x.visitors)} visitas</div>
-          </div>`;
-        }).join('')}
-      </div>`;
-  } catch(e) { console.error('dispositivos', e); }
-}
-
-// ── Gráfico de barras (vanilla canvas) ───────────────────────
-function dibujarBarras(canvasId, labels, vals, color) {
-  const canvas = document.getElementById(canvasId);
-  if (!canvas) return;
-  const parent = canvas.parentElement;
-  canvas.width  = parent.offsetWidth || 400;
-  canvas.height = 180;
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-  const pad = { top: 10, right: 10, bottom: 32, left: 36 };
-  const chartW = W - pad.left - pad.right;
-  const chartH = H - pad.top - pad.bottom;
-  const max = Math.max(...vals, 1);
-
-  ctx.clearRect(0, 0, W, H);
-  ctx.font = '11px Inter, system-ui';
-  ctx.fillStyle = '#9CA3AF';
-
-  // Grid lines
-  [0, 0.25, 0.5, 0.75, 1].forEach(f => {
-    const y = pad.top + chartH * (1 - f);
-    ctx.beginPath();
-    ctx.strokeStyle = '#E8DFD0';
-    ctx.lineWidth = 1;
-    ctx.moveTo(pad.left, y);
-    ctx.lineTo(W - pad.right, y);
-    ctx.stroke();
-    if (f > 0) {
-      ctx.textAlign = 'right';
-      ctx.fillText(fmt(Math.round(max * f)), pad.left - 4, y + 4);
-    }
-  });
-
-  const bw = Math.max(4, chartW / labels.length - 3);
-  const step = chartW / labels.length;
-
-  // Show fewer labels if too many
-  const skip = Math.ceil(labels.length / 10);
-
-  labels.forEach((lbl, i) => {
-    const x = pad.left + i * step + step / 2;
-    const bh = chartH * (vals[i] / max);
-    const by = pad.top + chartH - bh;
-
-    // Bar with gradient
-    const grad = ctx.createLinearGradient(0, by, 0, by + bh);
-    grad.addColorStop(0, color);
-    grad.addColorStop(1, color + '88');
-    ctx.fillStyle = grad;
-    ctx.beginPath();
-    ctx.roundRect ? ctx.roundRect(x - bw/2, by, bw, bh, 3) : ctx.rect(x - bw/2, by, bw, bh);
-    ctx.fill();
-
-    // Label
-    if (i % skip === 0) {
-      ctx.fillStyle = '#9CA3AF';
-      ctx.textAlign = 'center';
-      ctx.fillText(lbl, x, H - 8);
-    }
-  });
-}
-
-// ── Helpers ───────────────────────────────────────────────────
-function fmt(n) {
-  if (n >= 1000) return (n/1000).toFixed(1).replace('.0','') + 'k';
-  return String(n || 0);
-}
-function duracion(totalSec, visits) {
-  const avg = Math.round(totalSec / visits);
-  if (isNaN(avg) || avg <= 0) return '—';
-  const m = Math.floor(avg / 60), s = avg % 60;
-  return m > 0 ? `${m}m ${s}s` : `${s}s`;
-}
-function trend(change) {
-  if (change == null) return '';
-  const up = change >= 0;
-  return `<div class="sc-d ${up?'up':'dn'}">${up?'↑':'↓'} ${Math.abs(change)}% vs período anterior</div>`;
-}
-function noData(msg = 'Sin datos para este período') {
-  return `<div style="text-align:center;padding:32px;color:var(--ink-4);font-size:.88rem;">${msg}</div>`;
-}
-function paginaLabel(path) {
-  if (!path || path === '/') return '🏠 Inicio';
-  if (path.includes('gratis')) return '🎁 Gratis';
-  if (path.includes('interactivos')) return '🎮 Interactivos';
-  if (path.includes('#/producto/')) return '📦 ' + path.split('/producto/')[1];
-  return path;
-}
-
-const PAISES = {
-  AR:'🇦🇷 Argentina', MX:'🇲🇽 México', CO:'🇨🇴 Colombia', CL:'🇨🇱 Chile',
-  PE:'🇵🇪 Perú', UY:'🇺🇾 Uruguay', ES:'🇪🇸 España', US:'🇺🇸 Estados Unidos',
-  BR:'🇧🇷 Brasil', BO:'🇧🇴 Bolivia', PY:'🇵🇾 Paraguay', VE:'🇻🇪 Venezuela',
-  EC:'🇪🇨 Ecuador', GT:'🇬🇹 Guatemala', HN:'🇭🇳 Honduras', PA:'🇵🇦 Panamá',
-};
-
-// Redibujar gráfico si cambia el tamaño
-window.addEventListener('resize', () => {
-  if (_token) cargarVisitasDia(...Object.values(getRango()));
-});
-</script>
 </body>
 </html>
