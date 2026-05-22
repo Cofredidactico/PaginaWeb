@@ -7,6 +7,7 @@
       "id": "revolucion-mayo",
       "tipo": "cuadernillo",
       "demoUrl": "https://cofredidactico.github.io/RevoluciondeMayo/",
+      "mostrarEnInteractivos": false,
       "previewSegundos": 25,
       "linkGratis": "",
       "tematica": "efemerides",
@@ -31,56 +32,14 @@
         "images/preview-revolucion-de-mayo-1779406090280.jpg",
         "images/preview-revolucion-de-mayo-1779406093099.jpg"
       ],
-      "incluye": [
-        {
-          "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos."
-        },
-        {
-          "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo"
-        },
-        {
-          "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio"
-        },
-        {
-          "texto": "👒 Vendedores ambulantes de la época colonial con ilustraciones y descripciones"
-        },
-        {
-          "texto": "✍️ Actividades de lectura, escritura y comprensión"
-        },
-        {
-          "texto": "🧩 Rompecabezas temáticos"
-        },
-        {
-          "texto": "🔎 Encuentra las diferencias y juegos de observación"
-        },
-        {
-          "texto": "📝 Crucigramas y sopa de letras"
-        },
-        {
-          "texto": "🖍️ Propuestas para colorear y dibujar"
-        },
-        {
-          "texto": "🧠 Actividades para ordenar secuencias y completar oraciones"
-        },
-        {
-          "texto": "🎨 Material visual listo para imprimir y utilizar en el aula"
-        },
-        {
-          "texto": "✂️ Recursos manipulativos para recortar, armar y aprender jugando"
-        }
-      ],
+      "incluye": [],
       "paginas": 34,
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/revolucion-de-mayo-con-plataforma-interactiva",
-      "linkHotmart": "",
+      "linkHotmart": "https://cofredidactico.empretienda.com.ar/novedades/revolucion-de-mayo-con-plataforma-interactiva",
       "etiqueta": "nuevo",
       "activo": true,
       "destacado": true,
-      "relacionados": [
-        {
-          "id": "revolucion-mayo"
-        }
-      ],
       "testimonios": [
         {
           "inicial": "M",
@@ -93,7 +52,11 @@
           "texto": "El cuadernillo está pensado de manera muy didáctica y visual. Me encantó la variedad de propuestas y la calidad de las imágenes. ¡Un recurso completo y listo para usar!” — Docente de Nivel Primario"
         }
       ],
-      "mostrarEnInteractivos": false
+      "relacionados": [
+        {
+          "id": "revolucion-mayo"
+        }
+      ]
     },
     {
       "nombre": "Plataforma Interactiva - Revolución de Mayo",
@@ -123,6 +86,9 @@
       "descripcionLarga": "Material educativo diseñado especialmente para acercar a los niños y niñas al significado de la escarapela argentina de una manera dinámica, visual y significativa.\n\nEl cuadernillo propone actividades pensadas para el Nivel Primario, combinando aprendizaje, creatividad y juego para trabajar una de nuestras efemérides más importantes. 💙🤍💙\n\n🎉✨️🎮 Plataforma Interactiva para aprender Jugando ( Podés utilizarlo desde cualquier dispositivo digital 💻🖥📲)\n\n📚 Ideal para Primer Ciclo\n🎨 Actividades listas para imprimir\n📝 Propuestas lúdicas y significativas\n💙 Perfecto para trabajar el 18 de mayo de forma lúdica e inclusiva.",
       "id": "dia-de-la-escarapela",
       "tipo": "cuadernillo",
+      "demoUrl": "https://cofredidactico.github.io/DiadelaEscarapela/",
+      "mostrarEnInteractivos": false,
+      "previewSegundos": 25,
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -150,6 +116,11 @@
       "activo": true,
       "destacado": true,
       "testimonios": [],
+      "relacionados": [
+        {
+          "id": "revolucion-mayo"
+        }
+      ],
       "incluye": [
         {
           "texto": "📄 Secuencia Didáctica (con fundamentación y actividades organizadas para trabajar la efeméride)"
@@ -187,15 +158,7 @@
         {
           "texto": "🎗️ Acróstico “ESCARAPELA”"
         }
-      ],
-      "relacionados": [
-        {
-          "id": "revolucion-mayo"
-        }
-      ],
-      "demoUrl": "https://cofredidactico.github.io/DiadelaEscarapela/",
-      "previewSegundos": 25,
-      "mostrarEnInteractivos": false
+      ]
     },
     {
       "nombre": "Plataforma Interactiva - Día de la Escarapela",
@@ -318,17 +281,17 @@
       "precio": 6300,
       "precioTachado": 7500,
       "imagen": "images/caperucita-roja-1779305432918.jpg",
+      "previews": [
+        "images/preview-caperucita-roja-1779413518435.jpg",
+        "images/preview-caperucita-roja-1779413522233.jpg",
+        "images/preview-caperucita-roja-1779413525531.jpg"
+      ],
       "paginas": 16,
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/general/caperucita-roja",
       "linkHotmart": "https://pay.hotmart.com/Q105219138W",
       "activo": true,
-      "destacado": false,
-      "previews": [
-        "images/preview-caperucita-roja-1779413518435.jpg",
-        "images/preview-caperucita-roja-1779413522233.jpg",
-        "images/preview-caperucita-roja-1779413525531.jpg"
-      ]
+      "destacado": false
     },
     {
       "nombre": "El Hombrecito de Jengibre",
@@ -346,17 +309,17 @@
       "precio": 6300,
       "precioTachado": 7500,
       "imagen": "images/el-hombrecito-de-jengibre-1779305565597.jpg",
-      "paginas": 35,
-      "formato": "PDF-A4-Color",
-      "link": "https://cofredidactico.empretienda.com.ar/general/el-hombrecito-de-jengibre",
-      "activo": true,
-      "destacado": false,
       "previews": [
         "images/preview-el-hombrecito-de-jengibre-1779413437673.jpg",
         "images/preview-el-hombrecito-de-jengibre-1779413441000.jpg",
         "images/preview-el-hombrecito-de-jengibre-1779413444668.jpg",
         "images/preview-el-hombrecito-de-jengibre-1779413447972.jpg"
-      ]
+      ],
+      "paginas": 35,
+      "formato": "PDF-A4-Color",
+      "link": "https://cofredidactico.empretienda.com.ar/general/el-hombrecito-de-jengibre",
+      "activo": true,
+      "destacado": false
     },
     {
       "nombre": "Canciones y Poemas",
@@ -730,23 +693,20 @@
       "destacado": false
     }
   ],
-  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
   "config": {
-    "anuncio": {
-      "activo": false,
-      "texto": "🎉 Envíos gratis esta semana — usá el código DOCENTE10",
-      "color": "#FF8A4C"
+    "links": {
+      "email": "cofredidacticoo@gmail.com",
+      "whatsapp": "https://wa.me/5491165298256?text=Hola!%20Tengo%20una%20consulta%20sobre%20los%20materiales%20de%20Cofre%20Did%C3%A1ctico%20%F0%9F%93%9A",
+      "hotmart": "https://hotmart.com/es/market/materiales-educativos",
+      "empretienda": "https://cofredidactico.empretienda.com.ar/",
+      "instagram": "https://www.instagram.com/cofredidactico/"
     },
-    "stats": {
-      "docentes": "+1000",
-      "paises": "+10",
-      "descargas": "+2.000"
+    "brevo": {
+      "listIds": "",
+      "emailField": "EMAIL",
+      "formAction": "https://26529e2e.sibforms.com/serve/MUIFAL5aDmHkI8zmiGQYczSKOqDTPfVD-wgfkB5oBIBRLt5BAkqNQbEA11bVTSMXj-KC14n9FyIXoCysBPvTPKdic_urix91YTh_7ojru7jwleUzJe1ylWNdVb_WAdHBTQf9rQuQ4uPmNf0VmYL2Sdv3vdrNyk4Z8JOqqnMohXF7mY8tRu1EmjcYQp4wE7UUrJOAczqXMxa_X8pyPQ=="
     },
     "semana": {
-      "activo": true,
-      "titulo": "Para esta semana",
-      "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
-      "etiqueta": "🗓️ Esta semana",
       "productos": [
         {
           "id": "revolucion-mayo"
@@ -754,21 +714,24 @@
         {
           "id": "dia-de-la-escarapela"
         }
-      ]
+      ],
+      "etiqueta": "🗓️ Esta semana",
+      "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
+      "titulo": "Para esta semana",
+      "activo": true
     },
-    "brevo": {
-      "formAction": "https://26529e2e.sibforms.com/serve/MUIFAL5aDmHkI8zmiGQYczSKOqDTPfVD-wgfkB5oBIBRLt5BAkqNQbEA11bVTSMXj-KC14n9FyIXoCysBPvTPKdic_urix91YTh_7ojru7jwleUzJe1ylWNdVb_WAdHBTQf9rQuQ4uPmNf0VmYL2Sdv3vdrNyk4Z8JOqqnMohXF7mY8tRu1EmjcYQp4wE7UUrJOAczqXMxa_X8pyPQ==",
-      "emailField": "EMAIL",
-      "listIds": ""
+    "stats": {
+      "descargas": "+2.000",
+      "paises": "+10",
+      "docentes": "+1000"
     },
-    "links": {
-      "instagram": "https://www.instagram.com/cofredidactico/",
-      "empretienda": "https://cofredidactico.empretienda.com.ar/",
-      "hotmart": "https://hotmart.com/es/market/materiales-educativos",
-      "whatsapp": "https://wa.me/5491165298256?text=Hola!%20Tengo%20una%20consulta%20sobre%20los%20materiales%20de%20Cofre%20Did%C3%A1ctico%20%F0%9F%93%9A",
-      "email": "cofredidacticoo@gmail.com"
+    "anuncio": {
+      "color": "#FF8A4C",
+      "texto": "🎉 Envíos gratis esta semana — usá el código DOCENTE10",
+      "activo": false
     }
   },
+  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
   "tematicas": [
     {
       "id": "lengua",
