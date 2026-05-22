@@ -2,8 +2,8 @@
   "productos": [
     {
       "nombre": "Revolución de Mayo",
-      "descripcion": "Material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario de una manera dinámica, significativa y atractiva para los estudiantes. 📚💙",
-      "descripcionLarga": "💡 Diseño profesional con una estética infantil, clara y atractiva para captar la atención de los estudiantes mientras aprenden sobre uno de los acontecimientos más importantes de nuestra historia.\n\nIdeal para:\n✔️ Nivel Primario\n✔️ Proyectos escolares\n✔️ Efemérides\n✔️ Trabajo en clase o tareas para el hogar\n✔️ Docentes que buscan propuestas innovadoras y listas para usar",
+      "descripcion": "Material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario 📚💙",
+      "descripcionLarga": "Material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario de una manera dinámica, significativa y atractiva para los estudiantes. 📚💙\n\nIdeal para:\n✔️ Nivel Primario\n✔️ Proyectos escolares\n✔️ Efemérides\n✔️ Trabajo en clase o tareas para el hogar\n✔️ Docentes que buscan propuestas innovadoras y listas para usar",
       "id": "revolucion-mayo",
       "tipo": "cuadernillo",
       "demoUrl": "https://cofredidactico.github.io/RevoluciondeMayo/",
