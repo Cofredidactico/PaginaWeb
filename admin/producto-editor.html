@@ -423,7 +423,14 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
         <div class="field">
           <label>URL de la plataforma</label>
           <input id="f-demoUrl" placeholder="https://cofredidactico.github.io/RevoluciondeMayo/" oninput="syncPreview()" />
-          <div class="field-hint">🟢 Si el producto tiene un juego online, pegá la URL acá. Aparecerá en "Recursos Interactivos" con preview embebido. Dejá vacío si no aplica.</div>
+          <div class="field-hint">🟢 Si el producto tiene un juego online, pegá la URL acá. Controlá con el toggle de abajo si aparece en la página Interactivos.</div>
+        </div>
+        <div class="tr" style="margin-bottom:10px;">
+          <div class="tinfo">
+            <div class="tl">Mostrar en página Interactivos</div>
+            <div class="td">Desactivá si la plataforma es solo un bonus del cuadernillo y ya la publicaste por separado.</div>
+          </div>
+          <label class="tgl"><input type="checkbox" id="f-mostrarEnInteractivos" checked /><span class="sl"></span></label>
         </div>
         <div class="g2">
           <div class="field">
@@ -446,7 +453,7 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
             <label>Temática</label>
             <select id="f-tematica">
               <option value="">— Sin temática —</option>
-              <option value="lengua">📖 Lengua</option>
+              <option value="literatura">📖 Literatura</option>
               <option value="matematica">🔢 Matemática</option>
               <option value="ciencias">🔬 Ciencias</option>
               <option value="efemerides">🗓️ Efemérides</option>
@@ -757,6 +764,7 @@ function poblarFormulario(p){
 
   // Plataforma interactiva
   $('#f-demoUrl').value=p.demoUrl||'';
+  $('#f-mostrarEnInteractivos').checked=p.mostrarEnInteractivos!==false;
   $('#f-previewSegundos').value=p.previewSegundos||'';
   $('#f-linkGratis').value=p.linkGratis||'';
 
@@ -991,13 +999,24 @@ async function guardarProducto(){
 
     // Subir imágenes internas (previews) que son nuevas
     const miniSlots=document.querySelectorAll('#mini-grid .mini-slot');
+    let miniErrores=0;
     for(const slot of miniSlots){
       if(slot.dataset.b64 && slot.dataset.nombre && !slot.dataset.subida){
         try{
           await subirImg(slot.dataset.b64, slot.dataset.nombre);
           slot.dataset.subida='1';
-        }catch(e){console.warn('Error subiendo preview:',e);}
+        }catch(e){
+          miniErrores++;
+          console.error('Error subiendo preview:',e);
+          // Marcar el slot con error para reintentar
+          slot.dataset.subida='error';
+          const img=slot.querySelector('img');
+          if(img)img.style.border='2px solid red';
+        }
       }
+    }
+    if(miniErrores>0){
+      toast(`⚠️ ${miniErrores} imagen(es) interna(s) no se pudieron subir. El resto se guardó.`,'err');
     }
 
     const prod=buildProd(rutaImagen);
@@ -1122,6 +1141,7 @@ function buildProd(ruta){
 
   // Plataforma interactiva
   const demo=$('#f-demoUrl').value.trim();if(demo)p.demoUrl=demo;
+  if(demo)p.mostrarEnInteractivos=$('#f-mostrarEnInteractivos').checked;
   const pSeg=+$('#f-previewSegundos').value;if(pSeg>0)p.previewSegundos=pSeg;
   const lkG=$('#f-linkGratis').value.trim();if(lkG)p.linkGratis=lkG;
 
@@ -1141,7 +1161,8 @@ function buildProd(ruta){
   const previewRutas=[];
   document.querySelectorAll('#mini-grid .mini-slot').forEach(slot=>{
     if(slot.dataset.existente)previewRutas.push(slot.dataset.existente);
-    else if(slot.dataset.nombre)previewRutas.push('images/'+slot.dataset.nombre); // se subirá en guardar
+    // Solo incluir nuevas si se subieron con éxito (subida='1') o aún no se intentaron
+    else if(slot.dataset.nombre && slot.dataset.subida!=='error')previewRutas.push('images/'+slot.dataset.nombre);
   });
   if(previewRutas.length)p.previews=previewRutas;
 
