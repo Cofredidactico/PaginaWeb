@@ -92,7 +92,8 @@
           "ciudad": "Cipolletti, Río Negro",
           "texto": "El cuadernillo está pensado de manera muy didáctica y visual. Me encantó la variedad de propuestas y la calidad de las imágenes. ¡Un recurso completo y listo para usar!” — Docente de Nivel Primario"
         }
-      ]
+      ],
+      "mostrarEnInteractivos": false
     },
     {
       "nombre": "Plataforma Interactiva - Revolución de Mayo",
