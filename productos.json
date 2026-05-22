@@ -2,8 +2,8 @@
   "productos": [
     {
       "nombre": "Revolución de Mayo",
-      "descripcion": "Secuencia de Actividades Revolución de Mayo",
-      "descripcionLarga": "🇦🇷✨ REVOLUCIÓN DE MAYO ✨🇦🇷\n\nLes traigo un material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario de una manera dinámica, significativa y atractiva para los estudiantes. 📚💙\n\n📦 ¿Qué encontrarás dentro del material?\n\n📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos.\n🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo\n🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio\n👒 Vendedores ambulantes de la época colonial con ilustraciones y descripciones\n✍️ Actividades de lectura, escritura y comprensión\n🧩 Rompecabezas temáticos\n🔎 Encuentra las diferencias y juegos de observación\n📝 Crucigramas y sopa de letras\n🖍️ Propuestas para colorear y dibujar\n🧠 Actividades para ordenar secuencias y completar oraciones\n🎨 Material visual listo para imprimir y utilizar en el aula\n✂️ Recursos manipulativos para recortar, armar y aprender jugando\n\n💡 Diseño profesional con una estética infantil, clara y atractiva para captar la atención de los estudiantes mientras aprenden sobre uno de los acontecimientos más importantes de nuestra historia.\n\nIdeal para:\n✔️ Nivel Primario\n✔️ Proyectos escolares\n✔️ Efemérides\n✔️ Trabajo en clase o tareas para el hogar\n✔️ Docentes que buscan propuestas innovadoras y listas para usar",
+      "descripcion": "Material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario de una manera dinámica, significativa y atractiva para los estudiantes. 📚💙",
+      "descripcionLarga": "💡 Diseño profesional con una estética infantil, clara y atractiva para captar la atención de los estudiantes mientras aprenden sobre uno de los acontecimientos más importantes de nuestra historia.\n\nIdeal para:\n✔️ Nivel Primario\n✔️ Proyectos escolares\n✔️ Efemérides\n✔️ Trabajo en clase o tareas para el hogar\n✔️ Docentes que buscan propuestas innovadoras y listas para usar",
       "id": "revolucion-mayo",
       "tipo": "cuadernillo",
       "demoUrl": "https://cofredidactico.github.io/RevoluciondeMayo/",
@@ -43,6 +43,30 @@
         },
         {
           "texto": "👒 Vendedores ambulantes de la época colonial con ilustraciones y descripciones"
+        },
+        {
+          "texto": "✍️ Actividades de lectura, escritura y comprensión"
+        },
+        {
+          "texto": "🧩 Rompecabezas temáticos"
+        },
+        {
+          "texto": "🔎 Encuentra las diferencias y juegos de observación"
+        },
+        {
+          "texto": "📝 Crucigramas y sopa de letras"
+        },
+        {
+          "texto": "🖍️ Propuestas para colorear y dibujar"
+        },
+        {
+          "texto": "🧠 Actividades para ordenar secuencias y completar oraciones"
+        },
+        {
+          "texto": "🎨 Material visual listo para imprimir y utilizar en el aula"
+        },
+        {
+          "texto": "✂️ Recursos manipulativos para recortar, armar y aprender jugando"
         }
       ],
       "paginas": 34,
