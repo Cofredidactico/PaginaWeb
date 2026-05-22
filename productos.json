@@ -119,7 +119,7 @@
     {
       "nombre": "Día de la Escarapela",
       "descripcion": "Secuencia de Actividades  Día de la Escarapela",
-      "descripcionLarga": "✨ Secuencia de Actividades: Día de la Escarapela 🇦🇷💙\n\nIncluye propuestas variadas para que los peques conozcan y valoren este símbolo patrio mientras desarrollan habilidades de lectura, escritura y pensamiento:\n\n📄 Secuencia Didáctica (con fundamentación y actividades organizadas para trabajar la efeméride)\n\n🎗️ Comprensión de infografía\n🎗️ Completar oraciones\n🎗️ Ordenar palabras y letras\n🎗️ Sopa de letras\n🎗️ Crucigrama temático\n🎗️ Mensajes secretos y códigos\n🎗️ Actividades de escritura guiada\n🎗️ Dibujo y pintura de la escarapela 🎨\n🎗️ Recortar y armar la escarapela ✂️\n🎗️ Laberinto (¡ayudá a Belgrano!)\n🎗️ Acróstico “ESCARAPELA”\n\n🎉✨️🎮 Plataforma Interactiva para aprender Jugando ( Podés utilizarlo desde cualquier dispositivo digital 💻🖥📲)\n\n📚 Ideal para Primer Ciclo\n🎨 Actividades listas para imprimir\n📝 Propuestas lúdicas y significativas\n💙 Perfecto para trabajar el 18 de mayo de forma lúdica e inclusiva.",
+      "descripcionLarga": "Material educativo diseñado especialmente para acercar a los niños y niñas al significado de la escarapela argentina de una manera dinámica, visual y significativa.\n\nEl cuadernillo propone actividades pensadas para el Nivel Primario, combinando aprendizaje, creatividad y juego para trabajar una de nuestras efemérides más importantes. 💙🤍💙\n\n🎉✨️🎮 Plataforma Interactiva para aprender Jugando ( Podés utilizarlo desde cualquier dispositivo digital 💻🖥📲)\n\n📚 Ideal para Primer Ciclo\n🎨 Actividades listas para imprimir\n📝 Propuestas lúdicas y significativas\n💙 Perfecto para trabajar el 18 de mayo de forma lúdica e inclusiva.",
       "id": "dia-de-la-escarapela",
       "tipo": "cuadernillo",
       "tematica": "efemerides",
@@ -154,7 +154,37 @@
           "texto": "📄 Secuencia Didáctica (con fundamentación y actividades organizadas para trabajar la efeméride)"
         },
         {
-          "texto": "🎉✨️🎮 Plataforma Interactiva para aprender Jugando ( Podés utilizarlo desde cualquier dispositivo digital 💻🖥📲)"
+          "texto": "🎗️ Comprensión de infografía"
+        },
+        {
+          "texto": "🎗️ Completar oraciones"
+        },
+        {
+          "texto": "🎗️ Ordenar palabras y letras"
+        },
+        {
+          "texto": "🎗️ Sopa de letras"
+        },
+        {
+          "texto": "🎗️ Crucigrama temático"
+        },
+        {
+          "texto": "🎗️ Mensajes secretos y códigos"
+        },
+        {
+          "texto": "🎗️ Actividades de escritura guiada"
+        },
+        {
+          "texto": "🎗️ Dibujo y pintura de la escarapela 🎨"
+        },
+        {
+          "texto": "🎗️ Recortar y armar la escarapela ✂️"
+        },
+        {
+          "texto": "🎗️ Laberinto (¡ayudá a Belgrano!)"
+        },
+        {
+          "texto": "🎗️ Acróstico “ESCARAPELA”"
         }
       ],
       "relacionados": [
