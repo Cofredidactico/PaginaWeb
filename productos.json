@@ -129,7 +129,7 @@
         5
       ],
       "acceso": "pago",
-      "precio": 5500,
+      "precio": 6500,
       "precioTachado": 7500,
       "imagen": "images/producto-1778559946157.jpg",
       "previews": [
@@ -161,7 +161,9 @@
         {
           "id": "revolucion-mayo"
         }
-      ]
+      ],
+      "demoUrl": "https://cofredidactico.github.io/DiadelaEscarapela/",
+      "previewSegundos": 25
     },
     {
       "nombre": "Plataforma Interactiva - Día de la Escarapela",
