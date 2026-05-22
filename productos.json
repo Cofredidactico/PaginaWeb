@@ -194,7 +194,8 @@
         }
       ],
       "demoUrl": "https://cofredidactico.github.io/DiadelaEscarapela/",
-      "previewSegundos": 25
+      "previewSegundos": 25,
+      "mostrarEnInteractivos": false
     },
     {
       "nombre": "Plataforma Interactiva - Día de la Escarapela",
