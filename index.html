@@ -52,6 +52,8 @@
   /* Type */
   --f-display:'Plus Jakarta Sans',system-ui,sans-serif;
   --f-body:'Nunito', system-ui, sans-serif;
+  --f:'Plus Jakarta Sans',system-ui,sans-serif;
+  --f-display:'Plus Jakarta Sans',system-ui,sans-serif;
 }
 
 *,*::before,*::after{box-sizing:border-box;}
@@ -62,7 +64,7 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 }
 body{
   margin:0;
-  font-family:var(--f-body);
+  font-family:var(--f);
   font-size:16px;
   line-height:1.6;
   color:var(--ink);
@@ -391,7 +393,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.035em;
   box-shadow:var(--s-3);
 }
 .card-img{
-  position:relative;aspect-ratio:4/5;overflow:hidden;
+  position:relative;aspect-ratio:3/4;overflow:hidden;
   background:linear-gradient(135deg,var(--bg-2),var(--bg-3));
 }
 /* Microtextura de papel (puntitos sutiles) sobre el fondo de la imagen */
@@ -1083,6 +1085,7 @@ body.in-detail footer{display:block;}
 @media(max-width:840px){
   .float-buy{display:flex;}
 }
+html{overflow-x:clip;}
 </style>
 <script type="application/ld+json" id="schema-org">
 {
