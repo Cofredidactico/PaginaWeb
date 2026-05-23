@@ -2,7 +2,11 @@
 <html lang="es">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <title>Cofre Didáctico — Recursos educativos para docentes</title>
 <meta name="description" content="Cuadernillos, juegos interactivos y láminas didácticas de calidad editorial. Diseñados por una docente, para docentes." />
 <meta name="theme-color" content="#1A2744" />
@@ -22,9 +26,8 @@
 <link rel="icon" href="logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
 
-<!-- ════ Umami Analytics (descomenta cuando crees tu cuenta) ════ -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="52b78f4b-a423-415e-bea9-beb9a2424bcc"></script>
 
 <style>
@@ -47,7 +50,7 @@
   --s-2: 0 2px 4px rgba(26,39,68,.04), 0 8px 24px rgba(26,39,68,.06);
   --s-3: 0 12px 32px rgba(26,39,68,.10);
   /* Type */
-  --f-display:'Outfit', system-ui, sans-serif;
+  --f-display:'Plus Jakarta Sans',system-ui,sans-serif;
   --f-body:'Nunito', system-ui, sans-serif;
 }
 
@@ -71,7 +74,7 @@ body{
 img{max-width:100%;display:block;}
 button{font:inherit;color:inherit;cursor:pointer;border:none;background:none;}
 a{color:inherit;text-decoration:none;}
-h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:0;}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.035em;line-height:1.1;margin:0;}
 
 /* ─── Layout shell ─── */
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
@@ -86,12 +89,6 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
   backdrop-filter:saturate(160%) blur(14px);
   -webkit-backdrop-filter:saturate(160%) blur(14px);
   border-bottom:1px solid rgba(26,39,68,.07);
-}
-@media(max-width:600px){
-  .hdr-in{transition:padding .2s;}
-  .hdr.compact .hdr-in{padding:8px 0;}
-  .hdr.compact .brand img{width:30px;height:30px;transition:all .2s;}
-  .hdr.compact .brand-sub{display:none;}
 }
 .hdr-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:24px;}
 .brand{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:800;font-size:1.1rem;}
@@ -394,7 +391,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
   box-shadow:var(--s-3);
 }
 .card-img{
-  position:relative;aspect-ratio:3/4;overflow:hidden;
+  position:relative;aspect-ratio:4/5;overflow:hidden;
   background:linear-gradient(135deg,var(--bg-2),var(--bg-3));
 }
 /* Microtextura de papel (puntitos sutiles) sobre el fondo de la imagen */
@@ -490,7 +487,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .card-share{display:none;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--bg-2);color:var(--ink-3);font-size:.9rem;transition:background .2s,color .2s;flex:none;cursor:pointer;border:none;}
 .card-share:hover{background:var(--primary-soft);color:var(--primary);}
 .card:hover .card-share,.card:focus-within .card-share{display:inline-flex;}
-.price{font-family:var(--f-display);font-weight:800;font-size:1.25rem;color:var(--primary);}
+.price{font-family:var(--f-display);font-weight:800;font-size:1.25rem;color:var(--ink);}
 .price.gratis{color:var(--green);}
 .price-tachado{font-size:.85rem;color:var(--ink-4);text-decoration:line-through;font-weight:700;margin-right:6px;}
 .btn-card{
@@ -685,59 +682,47 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
 
 /* ── Mobile (≤600px) ── */
 @media (max-width:600px){
-  /* Hero */
+  /* Hero — todo apilado y compacto */
   .hero{padding:32px 0 40px;}
   .hero h1{font-size:clamp(1.9rem,8vw,2.4rem);margin:14px 0 14px;}
   .hero p.lead{font-size:.95rem;margin-bottom:20px;}
   .hero-cta{flex-direction:column;gap:8px;}
   .hero-cta .btn{width:100%;justify-content:center;}
-  .hero-stats{grid-template-columns:repeat(3,1fr);border-radius:14px;}
+  .hero-stats{
+    grid-template-columns:repeat(3,1fr);
+    border-radius:14px;
+  }
   .stat-item{padding:12px 10px;gap:8px;}
   .stat-em{width:32px;height:32px;border-radius:9px;font-size:.9rem;}
   .stat-n{font-size:1.15rem;}
   .stat-l{font-size:.58rem;}
 
-  /* Catálogo — 2 columnas con imagen más alta */
+  /* Catálogo — 2 columnas compactas */
   .grid{grid-template-columns:repeat(2,1fr);gap:12px;}
   .card-body{padding:10px 12px 12px;gap:5px;}
   .card-nivel{font-size:.62rem;}
   .card-ttl{font-size:.88rem;line-height:1.2;}
-  .card-desc{display:none;}
+  .card-desc{display:none;}  /* ocultar desc en mobile para más cards visibles */
   .card-foot{padding-top:8px;}
-  .price{font-size:.98rem;}
+  .price{font-size:1rem;}
   .btn-card{padding:7px 10px;font-size:.75rem;border-radius:8px;}
   .ribbon{font-size:.62rem;padding:4px 9px;top:8px;left:8px;}
   .tag-tipo{font-size:.62rem;padding:4px 8px;top:8px;right:8px;}
   .card-intl{font-size:.58rem;padding:2px 6px;}
-  .card-off{font-size:.62rem;padding:3px 7px;}
 
-  /* Semana */
+  /* Sección "esta semana" */
   .semana-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
   .semana-card{padding:14px;}
 
-  /* Secciones */
+  /* Secciones generales */
   .sec{padding:44px 0;}
   .sec-h{font-size:1.7rem;}
   .wrap{padding:0 16px;}
 
-  /* Por qué — horizontal compacto como interactivos */
-  .feat-grid{
-    display:flex;gap:0;
-    background:var(--bg-2);border-radius:16px;
-    overflow:hidden;border:1px solid var(--line);
-  }
-  .feat{
-    flex:1;padding:16px 12px;text-align:center;
-    border-right:1px solid var(--line);
-    border-radius:0;box-shadow:none;
-    background:transparent;
-  }
-  .feat:last-child{border-right:none;}
-  .feat:hover{transform:none;box-shadow:none;}
-  .feat-em{font-size:1.4rem;top:10px;right:10px;}
-  .feat-num{font-size:1.8rem;top:10px;right:10px;}
-  .feat h3{font-size:.76rem;margin-bottom:4px;}
-  .feat p{font-size:.72rem;display:none;}
+  /* Por qué */
+  .feat-grid{grid-template-columns:1fr;gap:12px;}
+  .feat{padding:20px 18px 18px;}
+  .feat-num{font-size:2.2rem;}
 
   /* FAQ */
   .faq-q{font-size:.95rem;padding:16px;}
@@ -753,37 +738,22 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   .ft-bottom{flex-direction:column;text-align:center;gap:8px;}
   footer{padding:40px 0 20px;}
 
-  /* Ficha producto */
+  /* Detalle producto */
   .detail-grid{gap:20px;}
-  .detail-back{margin-bottom:16px;font-size:.88rem;min-height:44px;}
+  .detail-back{margin-bottom:16px;font-size:.88rem;}
   .detail-main-img{aspect-ratio:1/1;border-radius:12px;}
   .detail-price{margin:16px 0;}
   .detail-price .p-now{font-size:1.8rem;}
   .detail-cta{flex-direction:column;gap:8px;}
-  .detail-cta .btn{width:100%;justify-content:center;min-height:48px;}
+  .detail-cta .btn{width:100%;justify-content:center;}
   .detail-desc{font-size:.95rem;}
   .detail-incluye{padding:16px 18px;}
-  /* Thumbnails: scroll horizontal en mobile */
-  .detail-thumbs{
-    flex-wrap:nowrap;overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    scroll-snap-type:x mandatory;
-    padding-bottom:6px;gap:8px;
-    scrollbar-width:none;
-  }
-  .detail-thumbs::-webkit-scrollbar{display:none;}
-  .detail-thumb{
-    width:68px;height:68px;border-radius:10px;
-    scroll-snap-align:start;flex:none;
-  }
+  .detail-thumb-row{gap:6px;}
+  .detail-thumb{width:52px;height:52px;border-radius:8px;}
 
   /* Filter bar */
   .filter-bar{padding:8px 10px;gap:6px;}
-  .filter-bar select{font-size:16px;padding:8px 24px 8px 10px;} /* 16px evita zoom iOS */
-  .filter-bar .search input{font-size:16px;}
-
-  /* Scroll highlight al llegar al catálogo */
-  #catalogo.highlight .sec-h{color:var(--primary);transition:color .6s;}
+  .filter-bar select{font-size:.8rem;padding:8px 24px 8px 10px;}
 }
 
 /* ── Mobile pequeño (≤400px) ── */
@@ -800,8 +770,13 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
 }
 
 /* ─── Reveal animation ─── */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s, transform .7s;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.2,.8,.2,1), transform .6s cubic-bezier(.2,.8,.2,1);}
 .reveal.in{opacity:1;transform:translateY(0);}
+/* Reveal con delay escalonado para grillas */
+.reveal-d1{transition-delay:.05s;}
+.reveal-d2{transition-delay:.1s;}
+.reveal-d3{transition-delay:.15s;}
+.reveal-d4{transition-delay:.2s;}
 
 /* ─── Page transition ─── */
 @keyframes pageFadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
@@ -847,10 +822,6 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
 /* ═════ DETAIL VIEW ═════ */
 .detail-view{display:none;padding:32px 0 80px;}
 body.in-detail .detail-view{display:block;}
-@media(max-width:600px){
-  body.in-detail .detail-view{animation:detailSlideUp .35s cubic-bezier(.2,.8,.2,1) both;}
-}
-@keyframes detailSlideUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 body.in-detail .hero,
 body.in-detail .sec:not(.detail-view),
 body.in-detail .por-que,
@@ -867,7 +838,7 @@ body.in-detail footer{display:block;}
 .detail-main-img{aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;background:linear-gradient(135deg,var(--bg-2),var(--bg-3));box-shadow:var(--s-2);border:1px solid rgba(26,39,68,.06);}
 .detail-main-img img{width:100%;height:100%;object-fit:contain;}
 .detail-thumbs{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
-.detail-thumb{width:78px;height:78px;border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s,transform .2s;background:var(--bg-2);flex:none;}
+.detail-thumb{width:78px;height:78px;border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s,transform .2s;background:var(--bg-2);}
 .detail-thumb img{width:100%;height:100%;object-fit:cover;}
 .detail-thumb.active{border-color:var(--primary);transform:scale(1.05);}
 .detail-thumb:hover{border-color:var(--primary);}
@@ -925,12 +896,21 @@ body.in-detail footer{display:block;}
 /* ─── Combos sugeridos ─── */
 .detail-rel{margin-top:40px;}
 .detail-rel h3{font-size:1.15rem;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-.rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;}
+.rel-grid{
+  display:flex;gap:14px;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:8px;scrollbar-width:none;
+}
+.rel-grid::-webkit-scrollbar{display:none;}
 .rel-card{
   background:#fff;border:1px solid var(--line);border-radius:var(--r);
   overflow:hidden;display:flex;flex-direction:column;
   transition:transform .2s, box-shadow .2s, border-color .2s;
+  min-width:190px;max-width:210px;flex:none;
+  scroll-snap-align:start;
 }
+@media(max-width:600px){.rel-card{min-width:160px;max-width:175px;}}
 .rel-card:hover{transform:translateY(-3px);box-shadow:var(--s-2);border-color:rgba(33,150,243,.22);}
 .rel-img{aspect-ratio:4/3;background:linear-gradient(135deg,var(--bg-2),var(--bg-3));overflow:hidden;}
 .rel-img img{width:100%;height:100%;object-fit:cover;}
@@ -1166,10 +1146,6 @@ body.in-detail footer{display:block;}
     <label>Mes</label>
     <div class="sheet-chips" id="sheet-chips-mes"></div>
   </div>
-  <div class="sheet-group" id="sheet-tematica-group">
-    <label>Temática</label>
-    <div class="sheet-chips" id="sheet-chips-tematica"></div>
-  </div>
   <div class="sheet-actions">
     <button class="sheet-reset" onclick="resetSheet()">Limpiar</button>
     <button class="sheet-apply" onclick="aplicarSheet()">Ver resultados</button>
@@ -1201,7 +1177,7 @@ body.in-detail footer{display:block;}
       <h1>Propuestas que<br><em>enamoran</em> el aula</h1>
       <p class="lead">Cuadernillos, juegos interactivos y láminas de calidad editorial. Listos para imprimir, diseñados con amor para docentes.</p>
       <div class="hero-cta">
-        <a href="#catalogo" class="btn btn-primary btn-lg" onclick="highlightCatalogo()">Ver catálogo →</a>
+        <a href="#catalogo" class="btn btn-primary btn-lg">Ver catálogo →</a>
         <a href="#newsletter" class="btn btn-ghost btn-lg">📧 Suscribirme</a>
       </div>
       <div class="hero-stats">
@@ -1303,7 +1279,6 @@ body.in-detail footer{display:block;}
       <select id="sel-tipo" onchange="setFiltro('tipo',this.value)"></select>
       <select id="sel-nivel" onchange="setFiltro('nivel',this.value)"></select>
       <select id="sel-mes" onchange="setFiltro('mes',this.value)"></select>
-      <select id="sel-tematica" onchange="setFiltro('tematica',this.value)"></select>
       <button class="filter-clear" id="filter-clear" hidden onclick="limpiarFiltros()">✕ Limpiar</button>
     </div>
     <!-- Botón que abre el sheet en mobile -->
@@ -1446,7 +1421,6 @@ let _data = null;
 let _filtroTipo = 'todos';
 let _filtroNivel = 'todos';
 let _filtroMes = 'todos';
-let _filtroTematica = 'todos';
 let _q = '';
 
 // ── Cargar JSON ──
@@ -1668,23 +1642,8 @@ function render(){
       `<option value="${m.id}" ${String(_filtroMes)===String(m.id)?'selected':''}>${m.label}</option>`).join('');
   selMes.classList.toggle('activo', _filtroMes !== 'todos');
 
-  // Select temática
-  const TEMATICA_LABELS = {
-    literatura:'📖 Literatura', matematica:'🔢 Matemática', ciencias:'🔬 Ciencias',
-    efemerides:'🗓️ Efemérides', juegos:'🎮 Juegos', laminas:'🖼️ Láminas'
-  };
-  const tematicasEnUso = new Set(prods.map(p=>p.tematica).filter(Boolean));
-  const selTem = $('#sel-tematica');
-  if(selTem){
-    selTem.innerHTML = `<option value="todos" ${_filtroTematica==='todos'?'selected':''}>🏷️ Temática: Todas</option>` +
-      [...tematicasEnUso].map(t =>
-        `<option value="${t}" ${_filtroTematica===t?'selected':''}>${TEMATICA_LABELS[t]||t}</option>`).join('');
-    selTem.classList.toggle('activo', _filtroTematica !== 'todos');
-    selTem.style.display = tematicasEnUso.size ? '' : 'none';
-  }
-
   // Botón "limpiar filtros"
-  const algunoActivo = _filtroTipo !== 'todos' || _filtroNivel !== 'todos' || _filtroMes !== 'todos' || _filtroTematica !== 'todos' || _q;
+  const algunoActivo = _filtroTipo !== 'todos' || _filtroNivel !== 'todos' || _filtroMes !== 'todos' || _q;
   $('#filter-clear').hidden = !algunoActivo;
 
   // Filtrar
@@ -1693,7 +1652,6 @@ function render(){
     if (_filtroTipo !== 'todos' && _filtroTipo !== 'gratis' && p.tipo !== _filtroTipo) return false;
     if (_filtroNivel !== 'todos' && p.nivelGrupo !== _filtroNivel) return false;
     if (_filtroMes !== 'todos' && !(p.meses||[]).includes(Number(_filtroMes))) return false;
-    if (_filtroTematica !== 'todos' && p.tematica !== _filtroTematica) return false;
     if (_q && !((p.nombre||'').toLowerCase() + ' ' + (p.descripcion||'').toLowerCase()).includes(_q.toLowerCase())) return false;
     return true;
   });
@@ -1710,17 +1668,16 @@ function render(){
 }
 
 function setFiltro(dim, t){
-  if (dim === 'tipo')     _filtroTipo     = t;
-  if (dim === 'nivel')    _filtroNivel    = t;
-  if (dim === 'mes')      _filtroMes      = t;
-  if (dim === 'tematica') _filtroTematica = t;
+  if (dim === 'tipo')  _filtroTipo  = t;
+  if (dim === 'nivel') _filtroNivel = t;
+  if (dim === 'mes')   _filtroMes   = t;
   render();
   actualizarSheetBadge();
 }
 function limpiarFiltros(){
-  _filtroTipo='todos'; _filtroNivel='todos'; _filtroMes='todos'; _filtroTematica='todos'; _q='';
+  _filtroTipo='todos'; _filtroNivel='todos'; _filtroMes='todos'; _q='';
   const q = $('#q'); if (q) q.value = '';
-  ['sel-tipo','sel-nivel','sel-mes','sel-tematica'].forEach(id=>{ const el=$('#'+id); if(el){el.value='todos';el.classList.remove('activo');} });
+  ['sel-tipo','sel-nivel','sel-mes'].forEach(id=>{ const el=$('#'+id); if(el){el.value='todos';el.classList.remove('activo');} });
   render();
   actualizarSheetBadge();
 }
@@ -1820,16 +1777,7 @@ function renderDetalle(p){
       })();
 
   const incluye = (p.incluye||[]).length
-    ? `<div class="detail-section open">
-        <div class="detail-section-hd" onclick="toggleSection(this)">
-          <span>✨ Qué incluye</span><span class="ds-arrow">▾</span>
-        </div>
-        <div class="detail-section-body">
-          <div class="detail-incluye" style="margin-bottom:0;border:none;padding:0;">
-            <ul>${p.incluye.map(i => `<li>${i.texto||i}</li>`).join('')}</ul>
-          </div>
-        </div>
-      </div>` : '';
+    ? `<div class="detail-incluye"><h3>✨ Qué incluye</h3><ul>${p.incluye.map(i => `<li>${i.texto||i}</li>`).join('')}</ul></div>` : '';
 
   const specs = [];
   if (p.paginas) specs.push(`<div class="detail-spec"><span class="detail-spec-l">Páginas</span><span class="detail-spec-v">${p.paginas}</span></div>`);
@@ -1912,6 +1860,7 @@ function renderDetalle(p){
         ${hotmartBtn}
         ${demoBtn}
         <button class="btn btn-ghost btn-lg" data-id="${p.id}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="compartir(this.dataset.id,this.dataset.nombre)">🔗 Compartir</button>
+        <a href="https://wa.me/?text=${encodeURIComponent(p.nombre + ' – ' + window.location.origin + window.location.pathname + '#/producto/' + p.id)}" target="_blank" rel="noopener" class="btn btn-ghost btn-lg" style="background:#25D366;color:#fff;border:none;">💬 WhatsApp</a>
       </div>
       ${incluye}
       ${specsHtml}
@@ -2002,12 +1951,12 @@ function compartir(id, nombre){
 })();
 
 // ─── 2. Bottom sheet de filtros ───
-let _sheetTipo = 'todos', _sheetNivel = 'todos', _sheetMes = 'todos', _sheetTematica = 'todos', _sheetQ = '';
+let _sheetTipo = 'todos', _sheetNivel = 'todos', _sheetMes = 'todos', _sheetQ = '';
 
 function abrirSheet(){
   // Sincronizar estado actual del filtro al sheet
   _sheetTipo = _filtroTipo; _sheetNivel = _filtroNivel;
-  _sheetMes = _filtroMes; _sheetTematica = _filtroTematica; _sheetQ = _q;
+  _sheetMes = _filtroMes; _sheetQ = _q;
   const sq = document.getElementById('sheet-q');
   if (sq) sq.value = _sheetQ;
   poblarSheetChips();
@@ -2042,41 +1991,19 @@ function poblarSheetChips(){
   const mesesEnUso = new Set();
   prods.forEach(p => (p.meses||[]).forEach(m => mesesEnUso.add(Number(m))));
   const mesGroup = document.getElementById('sheet-mes-group');
-  if (!mesesEnUso.size){ mesGroup.hidden = true; }
-  else {
-    mesGroup.hidden = false;
-    document.getElementById('sheet-chips-mes').innerHTML =
-      `<button class="sheet-chip ${_sheetMes==='todos'?'on':''}" onclick="selSheet('mes','todos',this)">📅 Todos</button>` +
-      MESES.filter(m=>mesesEnUso.has(m.id)).map(m =>
-        `<button class="sheet-chip ${String(_sheetMes)===String(m.id)?'on':''}" onclick="selSheet('mes',${m.id},this)">${m.label}</button>`
-      ).join('');
-  }
-
-  // Chips de temática
-  const TEMATICA_LABELS2 = {
-    literatura:'📖 Literatura', matematica:'🔢 Matemática', ciencias:'🔬 Ciencias',
-    efemerides:'🗓️ Efemérides', juegos:'🎮 Juegos', laminas:'🖼️ Láminas'
-  };
-  const tematicasSheet = new Set(prods.map(p=>p.tematica).filter(Boolean));
-  const temGroup = document.getElementById('sheet-tematica-group');
-  if(temGroup){
-    if(!tematicasSheet.size){ temGroup.hidden = true; }
-    else {
-      temGroup.hidden = false;
-      document.getElementById('sheet-chips-tematica').innerHTML =
-        `<button class="sheet-chip ${_sheetTematica==='todos'?'on':''}" onclick="selSheet('tematica','todos',this)">🏷️ Todas</button>` +
-        [...tematicasSheet].map(t =>
-          `<button class="sheet-chip ${_sheetTematica===t?'on':''}" onclick="selSheet('tematica','${t}',this)">${TEMATICA_LABELS2[t]||t}</button>`
-        ).join('');
-    }
-  }
+  if (!mesesEnUso.size){ mesGroup.hidden = true; return; }
+  mesGroup.hidden = false;
+  document.getElementById('sheet-chips-mes').innerHTML =
+    `<button class="sheet-chip ${_sheetMes==='todos'?'on':''}" onclick="selSheet('mes','todos',this)">📅 Todos</button>` +
+    MESES.filter(m=>mesesEnUso.has(m.id)).map(m =>
+      `<button class="sheet-chip ${String(_sheetMes)===String(m.id)?'on':''}" onclick="selSheet('mes',${m.id},this)">${m.label}</button>`
+    ).join('');
 }
 
 function selSheet(dim, val, el){
   if (dim==='tipo') _sheetTipo=val;
   if (dim==='nivel') _sheetNivel=val;
   if (dim==='mes') _sheetMes=String(val);
-  if (dim==='tematica') _sheetTematica=val;
   // Toggle visual — solo uno activo por grupo
   const group = el.closest('.sheet-chips');
   if (group) group.querySelectorAll('.sheet-chip').forEach(b => b.classList.toggle('on', b===el));
@@ -2086,7 +2013,7 @@ function aplicarSheet(){
   const sq = document.getElementById('sheet-q');
   if (sq) _sheetQ = sq.value;
   _filtroTipo = _sheetTipo; _filtroNivel = _sheetNivel;
-  _filtroMes = _sheetMes; _filtroTematica = _sheetTematica; _q = _sheetQ;
+  _filtroMes = _sheetMes; _q = _sheetQ;
   const mainQ = document.getElementById('q');
   if (mainQ) mainQ.value = _q;
   cerrarSheet();
@@ -2097,13 +2024,13 @@ function aplicarSheet(){
 }
 
 function resetSheet(){
-  _sheetTipo='todos'; _sheetNivel='todos'; _sheetMes='todos'; _sheetTematica='todos'; _sheetQ='';
+  _sheetTipo='todos'; _sheetNivel='todos'; _sheetMes='todos'; _sheetQ='';
   const sq = document.getElementById('sheet-q'); if (sq) sq.value='';
   poblarSheetChips();
 }
 
 function actualizarSheetBadge(){
-  const activos = [_filtroTipo!=='todos', _filtroNivel!=='todos', _filtroMes!=='todos', _filtroTematica!=='todos', !!_q].filter(Boolean).length;
+  const activos = [_filtroTipo!=='todos', _filtroNivel!=='todos', _filtroMes!=='todos', !!_q].filter(Boolean).length;
   const badge = document.getElementById('filter-sheet-badge');
   if (!badge) return;
   badge.textContent = activos;
@@ -2282,26 +2209,7 @@ function ocultarFloatBuy(){
   if (bar._observer){ bar._observer.disconnect(); bar._observer = null; }
 }
 
-// ─── Highlight catálogo al llegar desde hero ───
-function highlightCatalogo(){
-  setTimeout(()=>{
-    const cat = document.getElementById('catalogo');
-    if(!cat) return;
-    const sh = cat.querySelector('.sec-h');
-    if(!sh) return;
-    sh.style.transition = 'color .4s';
-    sh.style.color = 'var(--primary)';
-    setTimeout(()=>{ sh.style.color = ''; }, 900);
-  }, 600);
-}
-
 // ─── Compartir producto ───
-function toggleSection(hd){
-  const sec = hd.closest('.detail-section');
-  if(!sec) return;
-  sec.classList.toggle('open');
-}
-
 function compartirProducto(e, id, nombre){
   e.preventDefault();
   e.stopPropagation();
@@ -2367,18 +2275,15 @@ function animarContador(el, target) {
     requestAnimationFrame(() => {
       const scrollY = window.scrollY;
       const heroH = collage.closest('.hero')?.offsetHeight || 600;
+      // Solo aplicar cuando el hero es visible
       if (scrollY < heroH * 1.5) {
         hcs.forEach((hc, i) => {
           const f = factors[i] || 0.03;
           const ty = scrollY * f;
+          // Preservar la rotación original
           const base = ['-3deg','2deg','1.5deg'][i] || '0deg';
           hc.style.transform = `rotate(${base}) translateY(${ty}px)`;
         });
-      }
-      // Header compacto en mobile al scrollear
-      if(window.innerWidth <= 600){
-        const hdr = document.getElementById('main-hdr');
-        if(hdr) hdr.classList.toggle('compact', scrollY > 60);
       }
       ticking = false;
     });
@@ -2404,6 +2309,49 @@ function animarContador(el, target) {
   });
 })();
 
+
+
+// ─── Detectar Instagram/Facebook IAB y mostrar banner ───
+(function(){
+  const ua = navigator.userAgent || '';
+  const isIAB = /Instagram|FBAN|FBAV|FB_IAB|FB4A|FBIOS|Line|Twitter|TikTok/i.test(ua);
+  if (!isIAB) return;
+  
+  const banner = document.getElementById('iab-banner');
+  const openBtn = document.getElementById('iab-open-btn');
+  if (!banner) return;
+  
+  // Setear la URL actual para el botón "Abrir"
+  if (openBtn) {
+    openBtn.href = window.location.href;
+    // En iOS, usar el scheme para forzar abrir en Safari
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    if (isIOS) {
+      openBtn.addEventListener('click', e => {
+        e.preventDefault();
+        window.location.href = window.location.href.replace(/^https?/, 'x-safari-https');
+        setTimeout(() => { window.open(window.location.href, '_blank'); }, 300);
+      });
+    } else {
+      openBtn.setAttribute('target', '_blank');
+      openBtn.setAttribute('rel', 'noopener');
+    }
+  }
+  
+  // Mostrar banner si no fue cerrado antes
+  if (!sessionStorage.getItem('iab_banner_closed')) {
+    banner.style.display = 'block';
+    // Agregar padding al body para que el banner no tape contenido
+    document.body.style.paddingBottom = (banner.offsetHeight + 10) + 'px';
+  }
+})();
+
+function cerrarIAB(){
+  const banner = document.getElementById('iab-banner');
+  if (banner) banner.style.display = 'none';
+  document.body.style.paddingBottom = '';
+  sessionStorage.setItem('iab_banner_closed', '1');
+}
 
 </script>
 

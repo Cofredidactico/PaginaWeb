@@ -2,7 +2,11 @@
 <html lang="es">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <title>Recursos gratis para docentes — Cofre Didáctico</title>
 <meta name="description" content="Descargá gratis cuadernillos, láminas y juegos educativos. Sin vueltas, listos para usar en tu aula." />
 <meta name="theme-color" content="#1A2744" />
@@ -503,6 +507,22 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
 <body>
 
 <!-- Header -->
+
+<!-- Instagram IAB Banner -->
+<div class="iab-banner" id="iab-banner">
+  <div class="iab-banner-inner">
+    <div style="font-size:1.4rem;">📱</div>
+    <p>
+      <strong>¡Mejor experiencia disponible!</strong>
+      <span>Abrí en tu navegador para ver el catálogo completo.</span>
+    </p>
+    <div class="iab-btns">
+      <a href="" class="iab-open" id="iab-open-btn">Abrir →</a>
+      <button class="iab-close" onclick="cerrarIAB()">✕</button>
+    </div>
+  </div>
+</div>
+
 <header class="hdr">
   <div class="wrap hdr-in">
     <a href="index.html" class="brand">
@@ -779,6 +799,49 @@ async function suscribirse(e){
   if (window.umami) umami.track('newsletter-suscripcion-gratis', { email });
   return false;
 }
+
+// ─── Detectar Instagram/Facebook IAB y mostrar banner ───
+(function(){
+  const ua = navigator.userAgent || '';
+  const isIAB = /Instagram|FBAN|FBAV|FB_IAB|FB4A|FBIOS|Line|Twitter|TikTok/i.test(ua);
+  if (!isIAB) return;
+  
+  const banner = document.getElementById('iab-banner');
+  const openBtn = document.getElementById('iab-open-btn');
+  if (!banner) return;
+  
+  // Setear la URL actual para el botón "Abrir"
+  if (openBtn) {
+    openBtn.href = window.location.href;
+    // En iOS, usar el scheme para forzar abrir en Safari
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    if (isIOS) {
+      openBtn.addEventListener('click', e => {
+        e.preventDefault();
+        window.location.href = window.location.href.replace(/^https?/, 'x-safari-https');
+        setTimeout(() => { window.open(window.location.href, '_blank'); }, 300);
+      });
+    } else {
+      openBtn.setAttribute('target', '_blank');
+      openBtn.setAttribute('rel', 'noopener');
+    }
+  }
+  
+  // Mostrar banner si no fue cerrado antes
+  if (!sessionStorage.getItem('iab_banner_closed')) {
+    banner.style.display = 'block';
+    // Agregar padding al body para que el banner no tape contenido
+    document.body.style.paddingBottom = (banner.offsetHeight + 10) + 'px';
+  }
+})();
+
+function cerrarIAB(){
+  const banner = document.getElementById('iab-banner');
+  if (banner) banner.style.display = 'none';
+  document.body.style.paddingBottom = '';
+  sessionStorage.setItem('iab_banner_closed', '1');
+}
+
 </script>
 
 </body>
