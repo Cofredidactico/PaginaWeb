@@ -383,10 +383,11 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
   position:relative;
 }
 .card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(33,150,243,.22);
-  box-shadow:var(--s-3);
+  transform:translateY(-8px) scale(1.01);
+  box-shadow:0 20px 48px rgba(26,39,68,.13),0 4px 14px rgba(26,39,68,.07);
+  border-color:rgba(33,150,243,.25);
 }
+.card:active{transform:translateY(-2px) scale(.99);}
 .card-img{
   position:relative;aspect-ratio:4/5;overflow:hidden;
   background:linear-gradient(135deg,var(--bg-2),var(--bg-3));
@@ -1082,6 +1083,21 @@ body.in-detail footer{display:block;}
 @media(max-width:840px){
   .float-buy{display:flex;}
 }
+
+/* ─── Page loader ─── */
+.page-loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .4s ease,visibility .4s ease;}
+.page-loader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+.loader-logo{width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-size:2.2rem;box-shadow:0 12px 32px rgba(33,150,243,.3);animation:loaderBob .9s ease-in-out infinite;}
+@keyframes loaderBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.loader-bar{width:120px;height:3px;background:var(--line);border-radius:99px;overflow:hidden;}
+.loader-bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:99px;animation:loaderFill .8s .2s cubic-bezier(.4,0,.2,1) forwards;}
+@keyframes loaderFill{to{width:100%;}}
+.loader-txt{font-size:.82rem;color:var(--ink-4);font-weight:600;}
+
+/* ─── Hero em highlight ─── */
+.hero-em-highlight{font-style:italic;position:relative;color:var(--accent);display:inline-block;}
+.hero-em-highlight::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--primary));border-radius:99px;transform:scaleX(0);transform-origin:left;animation:underlineIn .6s .8s cubic-bezier(.2,.8,.2,1) forwards;}
+@keyframes underlineIn{to{transform:scaleX(1);}}
 </style>
 <script type="application/ld+json" id="schema-org">
 {
@@ -1125,6 +1141,13 @@ body.in-detail footer{display:block;}
 </header>
 
 <!-- Bottom sheet de filtros (mobile) -->
+<!-- Page loader -->
+<div class="page-loader" id="page-loader">
+  <div class="loader-logo">📚</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  <div class="loader-txt">Cargando Cofre Didáctico…</div>
+</div>
+
 <div class="sheet-overlay" id="sheet-overlay" onclick="cerrarSheet()"></div>
 <div class="bottom-sheet" id="bottom-sheet">
   <div class="sheet-handle"></div>
@@ -1177,7 +1200,7 @@ body.in-detail footer{display:block;}
   <div class="wrap hero-grid">
     <div>
       <div class="hero-badge">✨ Recursos didácticos digitales</div>
-      <h1>Propuestas que<br><em>enamoran</em> el aula</h1>
+      <h1>Propuestas que<br><em class="hero-em-highlight">enamoran</em> el aula</h1>
       <p class="lead">Cuadernillos, juegos interactivos y láminas de calidad editorial. Listos para imprimir, diseñados con amor para docentes.</p>
       <div class="hero-cta">
         <a href="#catalogo" class="btn btn-primary btn-lg">Ver catálogo →</a>
@@ -1431,7 +1454,7 @@ let _q = '';
 // ── Cargar JSON ──
 fetch('productos.json?v=' + Date.now())
   .then(r => r.json())
-  .then(data => { _data = data; aplicarConfig(); renderSemana(); render(); routear(); })
+  .then(data => { _data = data; aplicarConfig(); renderSemana(); render(); routear(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); })
   .catch(err => {
     console.error('Error cargando productos.json', err);
     $('#grid').innerHTML = '<div class="empty" style="grid-column:1/-1;"><div class="empty-em">⚠️</div><h3>No pudimos cargar el catálogo</h3><p>Probá refrescando la página en unos segundos.</p></div>';
@@ -2038,6 +2061,33 @@ function activarDescColapsable(){
   }, 100);
 }
 
+// ─── Contador animado ───────────────────────────────────
+function animarContador(el, valorFinal){
+  if(!el) return;
+  const str = String(valorFinal);
+  const prefix = str.startsWith('+') ? '+' : '';
+  const num = parseInt(str.replace(/\D/g,''));
+  if(isNaN(num)){ el.textContent = valorFinal; return; }
+
+  let iniciado = false;
+  const obs = new IntersectionObserver(entries => {
+    if(!entries[0].isIntersecting || iniciado) return;
+    iniciado = true;
+    obs.disconnect();
+    const dur = 1400;
+    const start = performance.now();
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    const tick = now => {
+      const p = Math.min((now - start) / dur, 1);
+      el.textContent = prefix + Math.round(ease(p) * num).toLocaleString('es-AR');
+      if(p < 1) requestAnimationFrame(tick);
+      else el.textContent = valorFinal;
+    };
+    requestAnimationFrame(tick);
+  }, {threshold: 0.5});
+  obs.observe(el);
+}
+
 function compartir(id, nombre){
   const url = location.origin + location.pathname + '#/producto/' + id;
   if (navigator.share){
@@ -2460,6 +2510,22 @@ function animarContador(el, target) {
   });
 })();
 
+
+// ─── Transición suave entre páginas ─────────────────────
+document.querySelectorAll('a[href]').forEach(a => {
+  const href = a.getAttribute('href') || '';
+  if(!href || href.startsWith('#') || href.startsWith('javascript') ||
+     href.startsWith('mailto') || a.target === '_blank') return;
+  if(href.includes('gratis.html') || href.includes('interactivos.html')){
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.body.style.opacity = '0';
+      document.body.style.transform = 'translateY(-4px)';
+      document.body.style.transition = 'opacity .18s ease, transform .18s ease';
+      setTimeout(() => { window.location.href = href; }, 190);
+    });
+  }
+});
 
 </script>
 
