@@ -501,7 +501,6 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   .brand img{width:34px;height:34px;}
   .brand span{display:none;}
 }
-html{overflow-x:clip;}
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="52b78f4b-a423-415e-bea9-beb9a2424bcc"></script>
 </head>
@@ -637,7 +636,7 @@ html{overflow-x:clip;}
       <h2 class="sec-h">Nuevos recursos <em>todos los miércoles</em></h2>
       <p class="sec-sub" style="margin:12px auto 0;text-align:center;">Dejá tu email y recibí material exclusivo, actividades inéditas y descuentos antes que nadie. Sin spam, podés bajarte cuando quieras.</p>
       <form class="nl-form" id="nl-form" onsubmit="return suscribirse(event);">
-        <input type="email" required placeholder="tu@email.com" id="nl-email" />
+        <input type="email" required placeholder="tu@email.com" id="nl-email" / style="font-size:16px;">
         <button class="btn btn-green">¡Me apunto! →</button>
       </form>
       <p class="nl-mini" id="nl-msg">🔒 Tus datos están seguros · 1 email por semana · Cancelás cuando quieras</p>

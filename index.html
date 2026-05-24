@@ -673,22 +673,20 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   /* Footer */
   .ft-grid{grid-template-columns:1fr 1fr;gap:28px;}
 
-  /* Detail */
-  .detail-grid{grid-template-columns:1fr;gap:24px;}
+  /* Detail — tablet */
+  .detail-grid{grid-template-columns:1fr;gap:0;}
   .detail-gallery{position:static;}
   .detail-price .p-now{font-size:2rem;}
   .detail-main-img{
     aspect-ratio:unset;
-    max-height:60vh;
-    width:100%;
+    height:45vh;
+    min-height:220px;
+    max-height:380px;
+    border-radius:var(--r-lg) var(--r-lg) 0 0;
+    box-shadow:none;
   }
-  .detail-main-img img{
-    width:100%;
-    height:100%;
-    max-height:60vh;
-    object-fit:cover;
-    object-position:top center;
-  }
+  .detail-main-img img{object-fit:cover;object-position:top center;}
+  .detail-info{padding:20px 0 0;}
 }
 
 /* ── Mobile (≤600px) ── */
@@ -749,32 +747,67 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   .ft-bottom{flex-direction:column;text-align:center;gap:8px;}
   footer{padding:40px 0 20px;}
 
-  /* Detalle producto */
-  .detail-grid{gap:16px;}
-  .detail-back{margin-bottom:12px;font-size:.88rem;}
-  /* Imagen proporcional en mobile — máx 55% de la pantalla de alto */
+  /* Detalle producto — mobile */
+  .detail-view{padding-top:0;}
+  .detail-grid{gap:0;}
+  .detail-back{
+    position:absolute;top:12px;left:12px;z-index:5;
+    background:rgba(255,255,255,.9);backdrop-filter:blur(8px);
+    border-radius:99px;padding:8px 14px;font-size:.84rem;
+    margin-bottom:0;min-height:36px;
+    border:1px solid rgba(26,39,68,.08);
+  }
+  .detail-gallery{position:relative;}
   .detail-main-img{
     aspect-ratio:unset;
-    border-radius:12px;
+    height:42vh;
+    min-height:200px;
+    max-height:320px;
+    border-radius:0;
     width:100%;
-    max-height:55vh;
-    overflow:hidden;
+    box-shadow:none;
+    border:none;
   }
   .detail-main-img img{
-    width:100%;
-    height:100%;
-    max-height:55vh;
     object-fit:cover;
     object-position:top center;
+    width:100%;height:100%;
   }
-  .detail-price{margin:14px 0;}
-  .detail-price .p-now{font-size:1.8rem;}
-  .detail-cta{flex-direction:column;gap:8px;}
-  .detail-cta .btn{width:100%;justify-content:center;min-height:48px;}
-  .detail-desc{font-size:.95rem;}
-  .detail-incluye{padding:14px 16px;}
-  .detail-thumb-row{gap:6px;}
-  .detail-thumb{width:56px;height:56px;border-radius:8px;}
+  .detail-thumbs{
+    flex-wrap:nowrap;overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    gap:8px;padding:12px 16px;
+    background:#fff;border-bottom:1px solid var(--line);
+    scrollbar-width:none;margin-top:0;
+  }
+  .detail-thumbs::-webkit-scrollbar{display:none;}
+  .detail-thumb{
+    width:56px;height:56px;border-radius:8px;
+    flex:none;scroll-snap-align:start;
+  }
+  .detail-info{
+    padding:18px 0 80px;
+  }
+  .detail-info h1{font-size:1.45rem;line-height:1.25;margin-bottom:10px;}
+  .detail-meta{gap:6px;margin-bottom:14px;}
+  .detail-price{margin:14px 0 16px;}
+  .detail-price .p-now{font-size:1.75rem;}
+  .detail-price .p-old{font-size:1rem;}
+  .detail-cta{
+    flex-direction:column;gap:8px;
+    margin-bottom:20px;
+  }
+  .detail-cta .btn{
+    width:100%;justify-content:center;
+    min-height:50px;font-size:1rem;
+  }
+  .detail-desc{font-size:.93rem;line-height:1.65;margin:14px 0 18px;}
+  .detail-incluye{padding:14px 16px;margin-bottom:14px;}
+  .detail-specs{grid-template-columns:1fr 1fr;gap:8px;padding:14px;}
+  .detail-spec-v{font-size:.88rem;}
+  .detail-section{margin-bottom:10px;}
+  .detail-section-hd{padding:12px 16px;font-size:.9rem;}
 
   /* Filter bar */
   .filter-bar{padding:8px 10px;gap:6px;}
@@ -791,9 +824,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   .grid{gap:10px;}
   .card-body{padding:8px 10px 10px;}
   .card-ttl{font-size:.82rem;}
-  .detail-price .p-now{font-size:1.5rem;}
-  .detail-main-img{max-height:45vh;}
-  .detail-main-img img{max-height:45vh;}
+  .detail-price .p-now{font-size:1.6rem;}
 }
 
 /* ─── Reveal animation ─── */
@@ -1887,7 +1918,7 @@ function renderDetalle(p){
         ${hotmartBtn}
         ${demoBtn}
         <button class="btn btn-ghost btn-lg" data-id="${p.id}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="compartir(this.dataset.id,this.dataset.nombre)">🔗 Compartir</button>
-        <a href="https://wa.me/?text=${encodeURIComponent(p.nombre + ' – ' + window.location.origin + window.location.pathname + '#/producto/' + p.id)}" target="_blank" rel="noopener" class="btn btn-ghost btn-lg" style="background:#25D366;color:#fff;border:none;">💬 WhatsApp</a>
+
       </div>
       ${incluye}
       ${specsHtml}

@@ -17,7 +17,7 @@
 <link rel="icon" href="logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
 /* ═════════════════════════════════════════════════════════
@@ -113,7 +113,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 .hero-pt .pt-em{width:32px;height:32px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);font-size:.95rem;}
 
 /* Hero mockup: laptop simplificada */
-.mock{position:relative;aspect-ratio:16/9;}
+.mock{position:relative;aspect-ratio:5/4;}
 .mock-screen{position:absolute;left:6%;top:0;right:6%;height:78%;background:#fff;border:8px solid #2A3142;border-radius:18px 18px 8px 8px;overflow:hidden;box-shadow:0 22px 50px rgba(26,39,68,.18);}
 .mock-screen::before{content:'';position:absolute;top:0;left:0;right:0;height:18px;background:#1A2330;display:flex;}
 .mock-screen-bd{position:absolute;inset:18px 0 0;background:linear-gradient(135deg,#F3E8FF,#E3F2FD);display:flex;align-items:center;justify-content:center;padding:24px;}
@@ -193,7 +193,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 
 /* ─── Filtros ─── */
 .filtros-i{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;align-items:center;}
-.chip-i{background:#fff;border:1.5px solid var(--line);padding:8px 14px;border-radius:99px;font-size:.86rem;font-weight:700;color:var(--ink-2);transition:all .2s;}
+.chip-i{background:#fff;border:1.5px solid var(--line);padding:9px 16px;min-height:44px;border-radius:99px;font-size:.86rem;font-weight:700;color:var(--ink-2);transition:all .2s;}
 .chip-i:hover{border-color:var(--purple);color:var(--purple);}
 .chip-i.on{background:var(--ink);color:#fff;border-color:var(--ink);}
 .chip-i .count{margin-left:6px;font-size:.72rem;background:var(--bg-2);padding:1px 7px;border-radius:99px;color:var(--ink-3);}
@@ -419,7 +419,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:48px 0 24px;}
   .chip-i{
     flex:none;
     scroll-snap-align:start;
-    padding:8px 14px;
+    padding:9px 16px;min-height:44px;
     font-size:.82rem;
     white-space:nowrap;
     min-height:40px;
@@ -445,7 +445,6 @@ footer{background:var(--ink);color:#D1D7E0;padding:48px 0 24px;}
   .grid-i{grid-template-columns:1fr;} /* 1 col en pantallas muy chicas */
   .hero-i h1{font-size:1.65rem;}
 }
-html{overflow-x:clip;}
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="52b78f4b-a423-415e-bea9-beb9a2424bcc"></script>
 </head>
