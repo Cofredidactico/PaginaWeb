@@ -1145,6 +1145,10 @@ body.in-detail footer{display:block;}
     <label>Mes</label>
     <div class="sheet-chips" id="sheet-chips-mes"></div>
   </div>
+  <div class="sheet-group" id="sheet-tematica-group">
+    <label>Temática</label>
+    <div class="sheet-chips" id="sheet-chips-tematica"></div>
+  </div>
   <div class="sheet-actions">
     <button class="sheet-reset" onclick="resetSheet()">Limpiar</button>
     <button class="sheet-apply" onclick="aplicarSheet()">Ver resultados</button>
@@ -1277,6 +1281,7 @@ body.in-detail footer{display:block;}
       </div>
       <select id="sel-tipo" onchange="setFiltro('tipo',this.value)"></select>
       <select id="sel-nivel" onchange="setFiltro('nivel',this.value)"></select>
+      <select id="sel-tematica" onchange="setFiltro('tematica',this.value)"></select>
       <select id="sel-mes" onchange="setFiltro('mes',this.value)"></select>
       <button class="filter-clear" id="filter-clear" hidden onclick="limpiarFiltros()">✕ Limpiar</button>
     </div>
@@ -1420,6 +1425,7 @@ let _data = null;
 let _filtroTipo = 'todos';
 let _filtroNivel = 'todos';
 let _filtroMes = 'todos';
+let _filtroTematica = 'todos';
 let _q = '';
 
 // ── Cargar JSON ──
@@ -1641,8 +1647,28 @@ function render(){
       `<option value="${m.id}" ${String(_filtroMes)===String(m.id)?'selected':''}>${m.label}</option>`).join('');
   selMes.classList.toggle('activo', _filtroMes !== 'todos');
 
+  // Select temática
+  const TEMATICA_LABELS = {
+    literatura:'📖 Literatura', matematica:'🔢 Matemática',
+    ciencias:'🔬 Ciencias', efemerides:'🗓️ Efemérides',
+    juegos:'🎮 Juegos', laminas:'🖼️ Láminas'
+  };
+  const tematicasEnUso = new Set(prods.map(p=>p.tematica).filter(Boolean));
+  const selTem = $('#sel-tematica');
+  if(selTem){
+    if(!tematicasEnUso.size){ selTem.style.display='none'; }
+    else {
+      selTem.style.display='';
+      selTem.innerHTML = `<option value="todos" ${_filtroTematica==='todos'?'selected':''}>🏷️ Temática: Todas</option>` +
+        [...tematicasEnUso].sort().map(t =>
+          `<option value="${t}" ${_filtroTematica===t?'selected':''}>${TEMATICA_LABELS[t]||t}</option>`
+        ).join('');
+      selTem.classList.toggle('activo', _filtroTematica !== 'todos');
+    }
+  }
+
   // Botón "limpiar filtros"
-  const algunoActivo = _filtroTipo !== 'todos' || _filtroNivel !== 'todos' || _filtroMes !== 'todos' || _q;
+  const algunoActivo = _filtroTipo !== 'todos' || _filtroNivel !== 'todos' || _filtroMes !== 'todos' || _filtroTematica !== 'todos' || _q;
   $('#filter-clear').hidden = !algunoActivo;
 
   // Filtrar
@@ -1651,6 +1677,7 @@ function render(){
     if (_filtroTipo !== 'todos' && _filtroTipo !== 'gratis' && p.tipo !== _filtroTipo) return false;
     if (_filtroNivel !== 'todos' && p.nivelGrupo !== _filtroNivel) return false;
     if (_filtroMes !== 'todos' && !(p.meses||[]).includes(Number(_filtroMes))) return false;
+    if (_filtroTematica !== 'todos' && p.tematica !== _filtroTematica) return false;
     if (_q && !((p.nombre||'').toLowerCase() + ' ' + (p.descripcion||'').toLowerCase()).includes(_q.toLowerCase())) return false;
     return true;
   });
@@ -1667,16 +1694,17 @@ function render(){
 }
 
 function setFiltro(dim, t){
-  if (dim === 'tipo')  _filtroTipo  = t;
-  if (dim === 'nivel') _filtroNivel = t;
-  if (dim === 'mes')   _filtroMes   = t;
+  if (dim === 'tipo')     _filtroTipo     = t;
+  if (dim === 'nivel')    _filtroNivel    = t;
+  if (dim === 'mes')      _filtroMes      = t;
+  if (dim === 'tematica') _filtroTematica = t;
   render();
   actualizarSheetBadge();
 }
 function limpiarFiltros(){
-  _filtroTipo='todos'; _filtroNivel='todos'; _filtroMes='todos'; _q='';
+  _filtroTipo='todos'; _filtroNivel='todos'; _filtroMes='todos'; _filtroTematica='todos'; _q='';
   const q = $('#q'); if (q) q.value = '';
-  ['sel-tipo','sel-nivel','sel-mes'].forEach(id=>{ const el=$('#'+id); if(el){el.value='todos';el.classList.remove('activo');} });
+  ['sel-tipo','sel-nivel','sel-mes','sel-tematica'].forEach(id=>{ const el=$('#'+id); if(el){el.value='todos';el.classList.remove('activo');} });
   render();
   actualizarSheetBadge();
 }
@@ -2056,12 +2084,12 @@ function compartir(id, nombre){
 })();
 
 // ─── 2. Bottom sheet de filtros ───
-let _sheetTipo = 'todos', _sheetNivel = 'todos', _sheetMes = 'todos', _sheetQ = '';
+let _sheetTipo = 'todos', _sheetNivel = 'todos', _sheetMes = 'todos', _sheetTematica = 'todos', _sheetQ = '';
 
 function abrirSheet(){
   // Sincronizar estado actual del filtro al sheet
   _sheetTipo = _filtroTipo; _sheetNivel = _filtroNivel;
-  _sheetMes = _filtroMes; _sheetQ = _q;
+  _sheetMes = _filtroMes; _sheetTematica = _filtroTematica; _sheetQ = _q;
   const sq = document.getElementById('sheet-q');
   if (sq) sq.value = _sheetQ;
   poblarSheetChips();
@@ -2096,19 +2124,37 @@ function poblarSheetChips(){
   const mesesEnUso = new Set();
   prods.forEach(p => (p.meses||[]).forEach(m => mesesEnUso.add(Number(m))));
   const mesGroup = document.getElementById('sheet-mes-group');
-  if (!mesesEnUso.size){ mesGroup.hidden = true; return; }
-  mesGroup.hidden = false;
-  document.getElementById('sheet-chips-mes').innerHTML =
-    `<button class="sheet-chip ${_sheetMes==='todos'?'on':''}" onclick="selSheet('mes','todos',this)">📅 Todos</button>` +
-    MESES.filter(m=>mesesEnUso.has(m.id)).map(m =>
-      `<button class="sheet-chip ${String(_sheetMes)===String(m.id)?'on':''}" onclick="selSheet('mes',${m.id},this)">${m.label}</button>`
-    ).join('');
+  if (!mesesEnUso.size){ mesGroup.hidden = true; }
+  else {
+    mesGroup.hidden = false;
+    document.getElementById('sheet-chips-mes').innerHTML =
+      `<button class="sheet-chip ${_sheetMes==='todos'?'on':''}" onclick="selSheet('mes','todos',this)">📅 Todos</button>` +
+      MESES.filter(m=>mesesEnUso.has(m.id)).map(m =>
+        `<button class="sheet-chip ${String(_sheetMes)===String(m.id)?'on':''}" onclick="selSheet('mes',${m.id},this)">${m.label}</button>`
+      ).join('');
+  }
+  // Chips temática
+  const TEMATICA_LABELS_S = {literatura:'📖 Literatura',matematica:'🔢 Matemática',ciencias:'🔬 Ciencias',efemerides:'🗓️ Efemérides',juegos:'🎮 Juegos',laminas:'🖼️ Láminas'};
+  const tematicasSheet = new Set(prods.map(p=>p.tematica).filter(Boolean));
+  const temGroup = document.getElementById('sheet-tematica-group');
+  if(temGroup){
+    if(!tematicasSheet.size){ temGroup.hidden=true; }
+    else {
+      temGroup.hidden=false;
+      document.getElementById('sheet-chips-tematica').innerHTML =
+        `<button class="sheet-chip ${_sheetTematica==='todos'?'on':''}" onclick="selSheet('tematica','todos',this)">🏷️ Todas</button>` +
+        [...tematicasSheet].sort().map(t=>
+          `<button class="sheet-chip ${_sheetTematica===t?'on':''}" onclick="selSheet('tematica','${t}',this)">${TEMATICA_LABELS_S[t]||t}</button>`
+        ).join('');
+    }
+  };
 }
 
 function selSheet(dim, val, el){
   if (dim==='tipo') _sheetTipo=val;
   if (dim==='nivel') _sheetNivel=val;
   if (dim==='mes') _sheetMes=String(val);
+  if (dim==='tematica') _sheetTematica=val;
   // Toggle visual — solo uno activo por grupo
   const group = el.closest('.sheet-chips');
   if (group) group.querySelectorAll('.sheet-chip').forEach(b => b.classList.toggle('on', b===el));
@@ -2118,7 +2164,7 @@ function aplicarSheet(){
   const sq = document.getElementById('sheet-q');
   if (sq) _sheetQ = sq.value;
   _filtroTipo = _sheetTipo; _filtroNivel = _sheetNivel;
-  _filtroMes = _sheetMes; _q = _sheetQ;
+  _filtroMes = _sheetMes; _filtroTematica = _sheetTematica; _q = _sheetQ;
   const mainQ = document.getElementById('q');
   if (mainQ) mainQ.value = _q;
   cerrarSheet();
@@ -2129,13 +2175,13 @@ function aplicarSheet(){
 }
 
 function resetSheet(){
-  _sheetTipo='todos'; _sheetNivel='todos'; _sheetMes='todos'; _sheetQ='';
+  _sheetTipo='todos'; _sheetNivel='todos'; _sheetMes='todos'; _sheetTematica='todos'; _sheetQ='';
   const sq = document.getElementById('sheet-q'); if (sq) sq.value='';
   poblarSheetChips();
 }
 
 function actualizarSheetBadge(){
-  const activos = [_filtroTipo!=='todos', _filtroNivel!=='todos', _filtroMes!=='todos', !!_q].filter(Boolean).length;
+  const activos = [_filtroTipo!=='todos', _filtroNivel!=='todos', _filtroMes!=='todos', _filtroTematica!=='todos', !!_q].filter(Boolean).length;
   const badge = document.getElementById('filter-sheet-badge');
   if (!badge) return;
   badge.textContent = activos;

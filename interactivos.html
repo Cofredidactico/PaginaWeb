@@ -3,10 +3,6 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="format-detection" content="telephone=no" />
-<meta name="mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <title>Recursos Interactivos — Cofre Didáctico</title>
 <meta name="description" content="Plataformas interactivas para usar en el aula. Probalas directamente desde el navegador." />
 <meta name="theme-color" content="#1A2744" />
@@ -17,7 +13,7 @@
 <link rel="icon" href="logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
 /* ═════════════════════════════════════════════════════════
@@ -35,8 +31,8 @@
   --r:14px; --r-lg:20px;
   --s-1:0 2px 8px rgba(26,39,68,.07);
   --s-2:0 12px 32px -8px rgba(26,39,68,.14);
-  --f:'Plus Jakarta Sans',system-ui,sans-serif;
-  --f-display:'Plus Jakarta Sans',system-ui,sans-serif;
+  --f:'Inter',system-ui,sans-serif;
+  --f-display:'Fraunces',Georgia,serif;
 }
 *,*::before,*::after{box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
@@ -193,7 +189,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:700;letter-spacing:-.01em;l
 
 /* ─── Filtros ─── */
 .filtros-i{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;align-items:center;}
-.chip-i{background:#fff;border:1.5px solid var(--line);padding:9px 16px;min-height:44px;border-radius:99px;font-size:.86rem;font-weight:700;color:var(--ink-2);transition:all .2s;}
+.chip-i{background:#fff;border:1.5px solid var(--line);padding:8px 14px;border-radius:99px;font-size:.86rem;font-weight:700;color:var(--ink-2);transition:all .2s;}
 .chip-i:hover{border-color:var(--purple);color:var(--purple);}
 .chip-i.on{background:var(--ink);color:#fff;border-color:var(--ink);}
 .chip-i .count{margin-left:6px;font-size:.72rem;background:var(--bg-2);padding:1px 7px;border-radius:99px;color:var(--ink-3);}
@@ -419,7 +415,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:48px 0 24px;}
   .chip-i{
     flex:none;
     scroll-snap-align:start;
-    padding:9px 16px;min-height:44px;
+    padding:8px 14px;
     font-size:.82rem;
     white-space:nowrap;
     min-height:40px;
@@ -452,20 +448,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:48px 0 24px;}
 
 <!-- Header -->
 
-<!-- Instagram IAB Banner -->
-<div class="iab-banner" id="iab-banner">
-  <div class="iab-banner-inner">
-    <div style="font-size:1.4rem;">📱</div>
-    <p>
-      <strong>¡Mejor experiencia disponible!</strong>
-      <span>Abrí en tu navegador para ver el catálogo completo.</span>
-    </p>
-    <div class="iab-btns">
-      <a href="" class="iab-open" id="iab-open-btn">Abrir →</a>
-      <button class="iab-close" onclick="cerrarIAB()">✕</button>
-    </div>
-  </div>
-</div>
+
 
 <header class="hdr">
   <div class="wrap hdr-in">
@@ -874,46 +857,7 @@ function autoAbrir(){
 }
 
 // ─── Detectar Instagram/Facebook IAB y mostrar banner ───
-(function(){
-  const ua = navigator.userAgent || '';
-  const isIAB = /Instagram|FBAN|FBAV|FB_IAB|FB4A|FBIOS|Line|Twitter|TikTok/i.test(ua);
-  if (!isIAB) return;
-  
-  const banner = document.getElementById('iab-banner');
-  const openBtn = document.getElementById('iab-open-btn');
-  if (!banner) return;
-  
-  // Setear la URL actual para el botón "Abrir"
-  if (openBtn) {
-    openBtn.href = window.location.href;
-    // En iOS, usar el scheme para forzar abrir en Safari
-    const isIOS = /iPhone|iPad|iPod/i.test(ua);
-    if (isIOS) {
-      openBtn.addEventListener('click', e => {
-        e.preventDefault();
-        window.location.href = window.location.href.replace(/^https?/, 'x-safari-https');
-        setTimeout(() => { window.open(window.location.href, '_blank'); }, 300);
-      });
-    } else {
-      openBtn.setAttribute('target', '_blank');
-      openBtn.setAttribute('rel', 'noopener');
-    }
-  }
-  
-  // Mostrar banner si no fue cerrado antes
-  if (!sessionStorage.getItem('iab_banner_closed')) {
-    banner.style.display = 'block';
-    // Agregar padding al body para que el banner no tape contenido
-    document.body.style.paddingBottom = (banner.offsetHeight + 10) + 'px';
-  }
-})();
 
-function cerrarIAB(){
-  const banner = document.getElementById('iab-banner');
-  if (banner) banner.style.display = 'none';
-  document.body.style.paddingBottom = '';
-  sessionStorage.setItem('iab_banner_closed', '1');
-}
 
 </script>
 
