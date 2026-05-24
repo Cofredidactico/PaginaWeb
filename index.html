@@ -1516,6 +1516,9 @@ function aplicarConfig(){
         <span class="ft-btn-label">${label}</span>
        </a>`;
     if (L.instagram) btns.push(btn(L.instagram,'📸','Instagram','target="_blank" rel="noopener" data-umami-event="click-ig"'));
+    if (L.tiktok) btns.push(btn(L.tiktok,'🎵','TikTok','target="_blank" rel="noopener" data-umami-event="click-tiktok"'));
+    if (L.threads) btns.push(btn(L.threads,'🧵','Threads','target="_blank" rel="noopener" data-umami-event="click-threads"'));
+    if (L.facebook) btns.push(btn(L.facebook,'📘','Facebook','target="_blank" rel="noopener" data-umami-event="click-facebook"'));
     if (L.email) btns.push(btn(`mailto:${L.email}`,'✉️','Email',''));
     if (L.empretienda) btns.push(btn(L.empretienda,'🛍️','Tienda','target="_blank" rel="noopener" data-umami-event="click-empretienda"'));
     if (L.hotmart) btns.push(btn(L.hotmart,'🔥','Hotmart','target="_blank" rel="noopener"'));

@@ -2,12 +2,11 @@
   "productos": [
     {
       "nombre": "Revolución de Mayo",
-      "descripcion": "Material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario 📚💙",
-      "descripcionLarga": "Material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario de una manera dinámica, significativa y atractiva para los estudiantes. 📚💙\n\n📦 ¿Qué encontrarás dentro del material?\n\n 📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos.\n🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo\n🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio\n👒 Vendedores ambulantes de la época colonial con ilustraciones y descripciones\n✍️ Actividades de lectura, escritura y comprensión\n🧩 Rompecabezas temáticos\n🔎 Encuentra las diferencias y juegos de observación\n📝 Crucigramas y sopa de letras\n🖍️ Propuestas para colorear y dibujar\n🧠 Actividades para ordenar secuencias y completar oraciones\n🎨 Material visual listo para imprimir y utilizar en el aula\n✂️ Recursos manipulativos para recortar, armar y aprender jugando\n\n💡 Diseño profesional con una estética infantil, clara y atractiva para captar la atención de los estudiantes mientras aprenden sobre uno de los acontecimientos más importantes de nuestra historia.\n\nIdeal para:\n✔️ Nivel Primario\n✔️ Proyectos escolares\n✔️ Efemérides\n✔️ Trabajo en clase o tareas para el hogar\n✔️ Docentes que buscan propuestas innovadoras y listas para usar",
+      "descripcion": "Secuencia de Actividades Revolución de Mayo",
+      "descripcionLarga": "🇦🇷✨ REVOLUCIÓN DE MAYO ✨🇦🇷\n\nLes traigo un material completo, visual e interactivo pensado especialmente para trabajar la Semana de Mayo en el Nivel Primario de una manera dinámica, significativa y atractiva para los estudiantes. 📚💙\n\n📦 ¿Qué encontrarás dentro del material?\n\n📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos.\n🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo\n🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio\n👒 Vendedores ambulantes de la época colonial con ilustraciones y descripciones\n✍️ Actividades de lectura, escritura y comprensión\n🧩 Rompecabezas temáticos\n🔎 Encuentra las diferencias y juegos de observación\n📝 Crucigramas y sopa de letras\n🖍️ Propuestas para colorear y dibujar\n🧠 Actividades para ordenar secuencias y completar oraciones\n🎨 Material visual listo para imprimir y utilizar en el aula\n✂️ Recursos manipulativos para recortar, armar y aprender jugando\n\n💡 Diseño profesional con una estética infantil, clara y atractiva para captar la atención de los estudiantes mientras aprenden sobre uno de los acontecimientos más importantes de nuestra historia.\n\nIdeal para:\n✔️ Nivel Primario\n✔️ Proyectos escolares\n✔️ Efemérides\n✔️ Trabajo en clase o tareas para el hogar\n✔️ Docentes que buscan propuestas innovadoras y listas para usar",
       "id": "revolucion-mayo",
       "tipo": "cuadernillo",
       "demoUrl": "https://cofredidactico.github.io/RevoluciondeMayo/",
-      "mostrarEnInteractivos": false,
       "previewSegundos": 25,
       "linkGratis": "",
       "tematica": "efemerides",
@@ -32,7 +31,20 @@
         "images/preview-revolucion-de-mayo-1779406090280.jpg",
         "images/preview-revolucion-de-mayo-1779406093099.jpg"
       ],
-      "incluye": [],
+      "incluye": [
+        {
+          "texto": "📘Secuencia Didáctica de 8 clases con fundamentación, propósitos, objetivos y contenidos."
+        },
+        {
+          "texto": "🧉 Secuencia completa de los hechos ocurridos del 18 al 25 de Mayo"
+        },
+        {
+          "texto": "🏛️ Actividades sobre el Cabildo Abierto y el Primer Gobierno Patrio"
+        },
+        {
+          "texto": "👒 Vendedores ambulantes de la época colonial con ilustraciones y descripciones"
+        }
+      ],
       "paginas": 34,
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/revolucion-de-mayo-con-plataforma-interactiva",
@@ -40,6 +52,11 @@
       "etiqueta": "nuevo",
       "activo": true,
       "destacado": true,
+      "relacionados": [
+        {
+          "id": "revolucion-mayo"
+        }
+      ],
       "testimonios": [
         {
           "inicial": "M",
@@ -50,11 +67,6 @@
           "inicial": "S",
           "ciudad": "Cipolletti, Río Negro",
           "texto": "El cuadernillo está pensado de manera muy didáctica y visual. Me encantó la variedad de propuestas y la calidad de las imágenes. ¡Un recurso completo y listo para usar!” — Docente de Nivel Primario"
-        }
-      ],
-      "relacionados": [
-        {
-          "id": "revolucion-mayo"
         }
       ]
     },
@@ -83,13 +95,9 @@
     {
       "nombre": "Día de la Escarapela",
       "descripcion": "Secuencia de Actividades  Día de la Escarapela",
-      "descripcionLarga": "Material educativo diseñado especialmente para acercar a los niños y niñas al significado de la escarapela argentina de una manera dinámica, visual y significativa.\n\n📚 Incluye: \n📄 Secuencia Didáctica (con fundamentación y actividades organizadas para trabajar la efeméride)\n\n🎗️ Comprensión de infografía\n🎗️ Completar oraciones\n🎗️ Ordenar palabras y letras\n🎗️ Sopa de letras\n🎗️ Crucigrama temático\n🎗️ Mensajes secretos y códigos\n🎗️ Actividades de escritura guiada\n🎗️ Dibujo y pintura de la escarapela 🎨\n🎗️ Recortar y armar la escarapela ✂️\n🎗️ Laberinto (¡ayudá a Belgrano!)\n🎗️ Acróstico “ESCARAPELA”\n\n🎉✨️🎮 Plataforma Interactiva para aprender Jugando ( Podés utilizarlo desde cualquier dispositivo digital 💻🖥📲)\n\n📚 Ideal para Primer Ciclo\n🎨 Actividades listas para imprimir\n📝 Propuestas lúdicas y significativas\n💙 Perfecto para trabajar el 18 de mayo de forma lúdica e inclusiva.",
+      "descripcionLarga": "✨ Secuencia de Actividades: Día de la Escarapela 🇦🇷💙\n\nIncluye propuestas variadas para que los peques conozcan y valoren este símbolo patrio mientras desarrollan habilidades de lectura, escritura y pensamiento:\n\n📄 Secuencia Didáctica (con fundamentación y actividades organizadas para trabajar la efeméride)\n\n🎗️ Comprensión de infografía\n🎗️ Completar oraciones\n🎗️ Ordenar palabras y letras\n🎗️ Sopa de letras\n🎗️ Crucigrama temático\n🎗️ Mensajes secretos y códigos\n🎗️ Actividades de escritura guiada\n🎗️ Dibujo y pintura de la escarapela 🎨\n🎗️ Recortar y armar la escarapela ✂️\n🎗️ Laberinto (¡ayudá a Belgrano!)\n🎗️ Acróstico “ESCARAPELA”\n\n🎉✨️🎮 Plataforma Interactiva para aprender Jugando ( Podés utilizarlo desde cualquier dispositivo digital 💻🖥📲)\n\n📚 Ideal para Primer Ciclo\n🎨 Actividades listas para imprimir\n📝 Propuestas lúdicas y significativas\n💙 Perfecto para trabajar el 18 de mayo de forma lúdica e inclusiva.",
       "id": "dia-de-la-escarapela",
       "tipo": "cuadernillo",
-      "demoUrl": "https://cofredidactico.github.io/DiadelaEscarapela/",
-      "mostrarEnInteractivos": false,
-      "previewSegundos": 25,
-      "linkGratis": "",
       "tematica": "efemerides",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -97,7 +105,7 @@
         5
       ],
       "acceso": "pago",
-      "precio": 6500,
+      "precio": 5500,
       "precioTachado": 7500,
       "imagen": "images/producto-1778559946157.jpg",
       "previews": [
@@ -110,15 +118,18 @@
         "images/preview-dia-de-la-escarapela-1779406242521.jpg",
         "images/preview-dia-de-la-escarapela-1779406245988.jpg"
       ],
-      "incluye": [],
       "paginas": 25,
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-de-la-escarapela-con-plataforma-interactiva",
-      "linkHotmart": "",
       "etiqueta": "nuevo",
       "activo": true,
       "destacado": true,
       "testimonios": [],
+      "incluye": [
+        {
+          "texto": "Propuestas lúdicas y significativas"
+        }
+      ],
       "relacionados": [
         {
           "id": "revolucion-mayo"
@@ -236,7 +247,7 @@
       "descripcionLarga": "🔹 ¿Qué incluye este cuadernillo?\n✔️ Cuento adaptado con pictogramas\n✔️ Actividades de comprensión lectora\n✔️ Secuencia para trabajar las vocales A – E – I – O – U\n✔️ Propuestas de lectura, escritura y juego\n✔️ Actividades claras y listas para usar\n✔️ Incluye plan de clases con proyecto: \"Libro de las Vocales del Bosque\"\n✔️ Material imprimible ( 14 hojas tamaño A4 )\n\n🔹 Ideal para:\n📚 Lectura compartida\n✏️ Primeros lectores\n🧠 Trabajo de comprensión\n👦👧 Aulas diversas y apoyos visuales\n\n📥 Formato: PDF descargable\n📌 Nivel: Inicial y Primer Ciclo",
       "id": "caperucita-roja",
       "tipo": "cuadernillo",
-      "tematica": "literatura",
+      "tematica": "lengua",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
       "meses": [
@@ -246,11 +257,6 @@
       "precio": 6300,
       "precioTachado": 7500,
       "imagen": "images/caperucita-roja-1779305432918.jpg",
-      "previews": [
-        "images/preview-caperucita-roja-1779413518435.jpg",
-        "images/preview-caperucita-roja-1779413522233.jpg",
-        "images/preview-caperucita-roja-1779413525531.jpg"
-      ],
       "paginas": 16,
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/general/caperucita-roja",
@@ -264,7 +270,7 @@
       "descripcionLarga": "Este material integra lengua y matemática a través de actividades lúdicas, ideales para acompañar los primeros aprendizajes.\n\n🔎 ¿Qué incluye?\n• Cuento adaptado con pictogramas (favorece la comprensión y la inclusión)\n• Actividades de comprensión lectora\n• Propuestas de escritura y reconocimiento de palabras\n• Trabajo con vocales (completar, identificar y leer)\n• Juegos de asociación, sopa de letras y selección múltiple\n• Actividades de orientación espacial (direcciones)\n• Propuestas matemáticas (conteo, series numéricas y problemas simples)\n• Rompecabezas para armar\n• Juegos didácticos imprimibles:\n• Memotest de personajes\n• Juego “Encontrá el personaje”\n\n🎯 Ideal para:\n• Nivel Inicial\n• Primer Ciclo de Primaria\n• Trabajo en el aula o en casa\n• Docentes de apoyo e inclusión\n\n💡 Beneficios del material:\n✔ Integra lengua y matemática en una misma propuesta\n✔ Estimula la comprensión, la memoria y la atención\n✔ Favorece la oralidad y el vocabulario\n✔ Promueve el aprendizaje significativo a través del juego\n\n📂 Formato: Digital (PDF descargable)\n🖨 Listo para imprimir y usar las veces que necesites",
       "id": "el-hombrecito-de-jengibre",
       "tipo": "cuadernillo",
-      "tematica": "literatura",
+      "tematica": "lengua",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
       "meses": [
@@ -274,12 +280,6 @@
       "precio": 6300,
       "precioTachado": 7500,
       "imagen": "images/el-hombrecito-de-jengibre-1779305565597.jpg",
-      "previews": [
-        "images/preview-el-hombrecito-de-jengibre-1779413437673.jpg",
-        "images/preview-el-hombrecito-de-jengibre-1779413441000.jpg",
-        "images/preview-el-hombrecito-de-jengibre-1779413444668.jpg",
-        "images/preview-el-hombrecito-de-jengibre-1779413447972.jpg"
-      ],
       "paginas": 35,
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/general/el-hombrecito-de-jengibre",
@@ -292,7 +292,7 @@
       "descripcionLarga": "Este cuadernillo propone actividades lúdicas a partir de la canción tradicional “Cucú cantaba la rana”, favoreciendo el desarrollo del lenguaje, la memoria y la expresión.\n\n🔎 ¿Qué incluye?\n• Canción “Cucú cantaba la rana” adaptada con pictogramas\n• Actividades de comprensión y secuenciación\n• Propuestas de lectoescritura (palabras, sílabas y reconocimiento)\n• Juegos de asociación y observación\n• Actividades de memoria y atención\n• Propuestas de expresión artística (dibujar, completar, crear)\n• Trabajo con rimas y vocabulario\n• Actividades para cantar, repetir y dramatizar\n\n🎯 Ideal para:\n• Nivel Inicial\n• Primer Ciclo de Primaria\n• Actividades en el aula o en casa\n• Docentes de apoyo e inclusión\n\n💡 Beneficios del material:\n✔ Estimula el lenguaje oral y la memoria auditiva\n✔ Favorece la comprensión a través de pictogramas\n✔ Promueve la participación activa y el disfrute\n✔ Integra aprendizaje y juego en una propuesta significativa\n\n📂 Formato: Digital (PDF descargable)\n🖨 Listo para imprimir y utilizar las veces que necesites",
       "id": "canciones-y-poemas",
       "tipo": "cuadernillo",
-      "tematica": "literatura",
+      "tematica": "lengua",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
       "meses": [
@@ -314,7 +314,7 @@
       "descripcionLarga": "Este cuadernillo propone trabajar cada vocal a través de:\n\n🔤 Repaso de trazos en imprenta mayúscula y minúscula\n🧠 Adivinanzas para estimular la comprensión y el pensamiento\n🎨 Actividades de asociación imagen–palabra\n✏️ Espacios para leer, completar, dibujar y pintar\n📚 Ejercicios finales de recorrido del abecedario\n\nPerfecto para usar en el aula, en rincones de alfabetización o como cuadernillo de trabajo individual.\n\n🖨️ Listo para imprimir y usar\n🎯 Ideal para fortalecer la conciencia fonológica y el reconocimiento de vocales de forma divertida.",
       "id": "cuadernillo-de-vocales",
       "tipo": "cuadernillo",
-      "tematica": "literatura",
+      "tematica": "lengua",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
       "meses": [
@@ -514,7 +514,7 @@
       "descripcionLarga": "📖 Incluye el cuento adaptado en imprenta mayúscula y con pictogramas de los personajes, favoreciendo la comprensión y el acceso a la lectura para todos los estudiantes.\n\nActividades variadas para aprender jugando:\n🧠 Comprensión lectora\n✏️ Completar oraciones\n🔤 Conciencia fonológica (P, M, L)\n🔎 Sopa de letras y crucigrama\n🧩 Rompecabezas y secuencias del cuento\n🎨 Actividades de dibujo y coloreo\n\n💡 Ideal para trabajar el cuento en profundidad y abordar contenidos de Prácticas del Lenguaje de forma lúdica.",
       "id": "los-tres-cerditos",
       "tipo": "cuadernillo",
-      "tematica": "literatura",
+      "tematica": "lengua",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
       "acceso": "pago",
@@ -658,20 +658,23 @@
       "destacado": false
     }
   ],
+  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
   "config": {
-    "links": {
-      "email": "cofredidacticoo@gmail.com",
-      "whatsapp": "https://wa.me/5491165298256?text=Hola!%20Tengo%20una%20consulta%20sobre%20los%20materiales%20de%20Cofre%20Did%C3%A1ctico%20%F0%9F%93%9A",
-      "hotmart": "https://hotmart.com/es/market/materiales-educativos",
-      "empretienda": "https://cofredidactico.empretienda.com.ar/",
-      "instagram": "https://www.instagram.com/cofredidactico/"
+    "anuncio": {
+      "activo": false,
+      "texto": "🎉 Envíos gratis esta semana — usá el código DOCENTE10",
+      "color": "#FF8A4C"
     },
-    "brevo": {
-      "listIds": "",
-      "emailField": "EMAIL",
-      "formAction": "https://26529e2e.sibforms.com/serve/MUIFAL5aDmHkI8zmiGQYczSKOqDTPfVD-wgfkB5oBIBRLt5BAkqNQbEA11bVTSMXj-KC14n9FyIXoCysBPvTPKdic_urix91YTh_7ojru7jwleUzJe1ylWNdVb_WAdHBTQf9rQuQ4uPmNf0VmYL2Sdv3vdrNyk4Z8JOqqnMohXF7mY8tRu1EmjcYQp4wE7UUrJOAczqXMxa_X8pyPQ=="
+    "stats": {
+      "docentes": "+1000",
+      "paises": "+10",
+      "descargas": "+2.000"
     },
     "semana": {
+      "activo": true,
+      "titulo": "Para esta semana",
+      "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
+      "etiqueta": "🗓️ Esta semana",
       "productos": [
         {
           "id": "revolucion-mayo"
@@ -679,24 +682,24 @@
         {
           "id": "dia-de-la-escarapela"
         }
-      ],
-      "etiqueta": "🗓️ Esta semana",
-      "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
-      "titulo": "Para esta semana",
-      "activo": true
+      ]
     },
-    "stats": {
-      "descargas": "+2.000",
-      "paises": "+10",
-      "docentes": "+1000"
+    "brevo": {
+      "formAction": "https://26529e2e.sibforms.com/serve/MUIFAL5aDmHkI8zmiGQYczSKOqDTPfVD-wgfkB5oBIBRLt5BAkqNQbEA11bVTSMXj-KC14n9FyIXoCysBPvTPKdic_urix91YTh_7ojru7jwleUzJe1ylWNdVb_WAdHBTQf9rQuQ4uPmNf0VmYL2Sdv3vdrNyk4Z8JOqqnMohXF7mY8tRu1EmjcYQp4wE7UUrJOAczqXMxa_X8pyPQ==",
+      "emailField": "EMAIL",
+      "listIds": ""
     },
-    "anuncio": {
-      "color": "#FF8A4C",
-      "texto": "🎉 Envíos gratis esta semana — usá el código DOCENTE10",
-      "activo": false
+    "links": {
+      "instagram": "https://www.instagram.com/cofredidactico/",
+      "empretienda": "https://cofredidactico.empretienda.com.ar/",
+      "hotmart": "https://hotmart.com/es/market/materiales-educativos",
+      "whatsapp": "https://wa.me/5491165298256?text=Hola!%20Tengo%20una%20consulta%20sobre%20los%20materiales%20de%20Cofre%20Did%C3%A1ctico%20%F0%9F%93%9A",
+      "email": "cofredidacticoo@gmail.com",
+      "tiktok": "https://www.tiktok.com/@cofredidactico?_r=1&_t=ZS-96dFPAKYQzq",
+      "threads": "https://www.threads.com/@cofredidactico",
+      "facebook": "https://www.facebook.com/share/1GwMzuPN7i/"
     }
   },
-  "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
   "tematicas": [
     {
       "id": "lengua",
