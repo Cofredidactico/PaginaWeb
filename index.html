@@ -676,20 +676,21 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   /* Detail — tablet */
   .detail-grid{grid-template-columns:1fr;gap:0;}
   .detail-gallery{position:static;}
-  .detail-price .p-now{font-size:2rem;}
+  .detail-price .p-now{font-size:2.2rem;}
   .detail-main-img{
-    aspect-ratio:unset;
-    height:50vh;max-height:420px;min-height:240px;
+    aspect-ratio:3/2;
+    height:auto;
     border-radius:0;box-shadow:none;border:none;
   }
-  .detail-main-img img{object-fit:cover;object-position:top center;}
+  .detail-main-img img{object-fit:cover;object-position:center top;}
   .detail-info{padding:24px 0 0;}
   .detail-back{
-    position:fixed;top:70px;left:16px;z-index:40;
-    background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
-    border-radius:99px;padding:8px 16px;
+    position:fixed;top:72px;left:16px;z-index:41;
+    background:rgba(255,255,255,.95);backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-radius:99px;padding:9px 18px;font-size:.86rem;
     border:1px solid rgba(26,39,68,.1);
-    box-shadow:0 2px 8px rgba(26,39,68,.12);
+    box-shadow:0 2px 12px rgba(26,39,68,.15);
   }
 }
 
@@ -751,34 +752,24 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   .ft-bottom{flex-direction:column;text-align:center;gap:8px;}
   footer{padding:40px 0 20px;}
 
-  /* Detalle producto — mobile COMPLETO */
+  /* ═══════════════════════════════
+     FICHA DE PRODUCTO — MOBILE
+     Diseño tipo app, profesional
+     ═══════════════════════════════ */
+
+  /* Imagen: portada grande, impactante */
   .detail-view{padding-top:0;padding-bottom:0;}
   .detail-grid{gap:0;}
-
-  /* Botón volver — flotante sobre la imagen */
-  .detail-back{
-    position:fixed;
-    top:calc(60px + env(safe-area-inset-top));
-    left:12px;z-index:41;
-    background:rgba(255,255,255,.92);
-    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-    border-radius:99px;padding:8px 14px;
-    font-size:.84rem;font-weight:700;
-    border:1px solid rgba(26,39,68,.1);
-    box-shadow:0 2px 10px rgba(26,39,68,.15);
-    margin-bottom:0;min-height:38px;
-  }
-
-  /* Galería — imagen a ancho completo */
   .detail-gallery{position:relative;width:100%;}
+
   .detail-main-img{
-    aspect-ratio:unset;
-    height:38vh;
-    min-height:190px;
-    max-height:300px;
-    border-radius:0;
     width:100%;
+    height:56vw;
+    min-height:220px;
+    max-height:340px;
+    border-radius:0;
     box-shadow:none;border:none;
+    background:linear-gradient(180deg,var(--bg-3),var(--bg-2));
   }
   .detail-main-img img{
     width:100%;height:100%;
@@ -786,97 +777,190 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
     object-position:center top;
   }
 
-  /* Thumbnails — scroll horizontal compacto */
+  /* Botón volver — pill flotante sobre imagen */
+  .detail-back{
+    position:fixed;
+    top:calc(58px + env(safe-area-inset-top, 0px));
+    left:14px;z-index:41;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-radius:99px;
+    padding:8px 16px 8px 12px;
+    font-size:.82rem;font-weight:700;
+    color:var(--ink);
+    border:1px solid rgba(26,39,68,.08);
+    box-shadow:0 2px 14px rgba(26,39,68,.18);
+    margin-bottom:0;min-height:36px;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+
+  /* Thumbnails — scroll fino debajo de imagen */
   .detail-thumbs{
     display:flex;flex-wrap:nowrap;
     overflow-x:auto;-webkit-overflow-scrolling:touch;
     scroll-snap-type:x mandatory;
-    gap:6px;padding:10px 16px;
+    gap:6px;padding:10px 14px;
     background:#fff;
     border-bottom:1px solid var(--line);
     scrollbar-width:none;margin-top:0;
   }
   .detail-thumbs::-webkit-scrollbar{display:none;}
   .detail-thumb{
-    width:52px;height:52px;border-radius:8px;
-    flex:none;scroll-snap-align:start;border-width:1.5px;
+    width:54px;height:54px;border-radius:9px;
+    flex:none;scroll-snap-align:start;
+    border:2px solid transparent;
   }
+  .detail-thumb.active{border-color:var(--primary);}
 
-  /* Info del producto — card redondeada sobre la imagen */
+  /* Card de info — fondo blanco con esquinas redondeadas */
   .detail-info{
-    padding:18px 0 120px;
-    background:var(--bg);
+    background:#fff;
+    padding:20px 18px 130px;
+    border-radius:0;
   }
+
+  /* Tags */
+  .detail-meta{
+    display:flex;gap:6px;flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+  .detail-meta .tag{
+    font-size:.68rem;padding:4px 10px;
+    border-radius:99px;font-weight:700;
+  }
+
+  /* Título */
   .detail-info h1{
-    font-size:1.35rem;line-height:1.2;
-    margin-bottom:8px;
-    letter-spacing:-.02em;
+    font-size:1.3rem;font-weight:800;
+    line-height:1.2;letter-spacing:-.025em;
+    margin:0 0 14px;color:var(--ink);
   }
-  .detail-meta{gap:5px;margin-bottom:12px;flex-wrap:wrap;}
-  .detail-meta .tag{font-size:.7rem;padding:4px 10px;}
 
-  /* Precio compacto */
+  /* Precio — grande y llamativo */
   .detail-price{
-    margin:12px 0 14px;
-    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    display:flex;align-items:center;
+    gap:10px;flex-wrap:wrap;
+    margin:0 0 18px;
+    padding:14px 16px;
+    background:linear-gradient(135deg,var(--primary-soft),rgba(255,138,76,.08));
+    border-radius:14px;
+    border:1px solid rgba(217,119,87,.12);
   }
-  .detail-price .p-now{font-size:1.8rem;line-height:1;}
-  .detail-price .p-old{font-size:.95rem;}
-  .detail-price .p-off{font-size:.72rem;padding:3px 8px;}
+  .detail-price .p-now{
+    font-family:var(--f-display);
+    font-size:2rem;font-weight:800;
+    color:var(--primary);line-height:1;
+  }
+  .detail-price .p-now.gratis{color:var(--green);}
+  .detail-price .p-old{
+    font-size:.9rem;color:var(--ink-4);
+    text-decoration:line-through;font-weight:600;
+  }
+  .detail-price .p-off{
+    background:linear-gradient(135deg,#EF4444,#DC2626);
+    color:#fff;font-size:.72rem;font-weight:900;
+    padding:3px 9px;border-radius:99px;
+  }
 
-  /* Botones CTA — ancho completo, bien grandes */
+  /* Botones CTA — prominentes, ancho completo */
   .detail-cta{
     flex-direction:column;gap:10px;
-    margin-bottom:20px;
+    margin-bottom:22px;
   }
   .detail-cta .btn{
-    width:100%;
-    justify-content:center;
-    min-height:52px;
-    font-size:.97rem;
-    border-radius:14px;
+    width:100%;justify-content:center;
+    min-height:54px;font-size:1rem;font-weight:800;
+    border-radius:16px;letter-spacing:-.01em;
+  }
+  .detail-cta .btn-primary{
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+    box-shadow:0 6px 20px rgba(217,119,87,.35);
+    border:none;
+  }
+  .detail-cta .btn-hotmart{
+    background:linear-gradient(135deg,#EF4E23,#D63B12);
+    box-shadow:0 6px 20px rgba(239,78,35,.3);
+  }
+  .detail-cta .btn-ghost{
+    border:2px solid var(--line);
+    min-height:46px;font-size:.9rem;
   }
 
-  /* Descripción */
+  /* Descripción — colapsable */
   .detail-desc{
-    font-size:.92rem;line-height:1.65;
-    margin:0 0 16px;
-    max-height:120px;
+    font-size:.91rem;line-height:1.7;
+    color:var(--ink-2);
+    margin:0 0 4px;
+    max-height:110px;
     overflow:hidden;
     position:relative;
   }
+  .detail-desc::after{
+    content:'';
+    position:absolute;bottom:0;left:0;right:0;
+    height:40px;
+    background:linear-gradient(transparent,#fff);
+    pointer-events:none;
+  }
   .detail-desc.expanded{max-height:none;}
+  .detail-desc.expanded::after{display:none;}
   .detail-desc-toggle{
     display:block;
     color:var(--primary);font-weight:700;font-size:.84rem;
-    margin:-8px 0 16px;background:none;border:none;cursor:pointer;
+    margin:6px 0 18px;
+    background:none;border:none;cursor:pointer;
     padding:0;text-align:left;
+    -webkit-tap-highlight-color:transparent;
   }
 
-  /* Secciones: incluye, specs */
-  .detail-incluye{padding:14px 16px;margin-bottom:12px;border-radius:12px;}
-  .detail-incluye h3{font-size:.95rem;margin-bottom:10px;}
-  .detail-incluye li{font-size:.88rem;}
+  /* Separador entre secciones */
+  .detail-section-sep{
+    height:1px;background:var(--line);
+    margin:0 0 16px;
+  }
+
+  /* Qué incluye — más compact */
+  .detail-incluye{
+    padding:16px;margin-bottom:14px;
+    border-radius:14px;border:1px solid var(--line);
+    background:#fff;
+  }
+  .detail-incluye h3{font-size:.9rem;margin-bottom:12px;font-weight:800;}
+  .detail-incluye li{font-size:.86rem;padding:5px 0;}
+  .detail-incluye li::before{width:18px;height:18px;min-width:18px;}
+
+  /* Specs — grid 2 col compacto */
   .detail-specs{
     grid-template-columns:1fr 1fr;
-    gap:8px;padding:12px;
-    border-radius:12px;margin-bottom:12px;
+    gap:8px;padding:14px;
+    border-radius:14px;
+    margin-bottom:14px;
+    background:var(--bg-2);
+    border:1px solid var(--line);
   }
-  .detail-spec-l{font-size:.66rem;}
-  .detail-spec-v{font-size:.84rem;}
+  .detail-spec{padding:6px 8px;background:#fff;border-radius:10px;}
+  .detail-spec-l{font-size:.62rem;letter-spacing:.04em;}
+  .detail-spec-v{font-size:.86rem;margin-top:2px;}
 
   /* Testimonios */
-  .testi{padding:14px 16px;gap:10px;}
-  .testi-av{width:34px;height:34px;font-size:.9rem;}
-  .testi-tx{font-size:.86rem;}
+  .detail-testi{margin:14px 0 8px;}
+  .detail-testi h3{font-size:.9rem;margin-bottom:10px;font-weight:800;}
+  .testi{padding:14px;gap:10px;border-radius:12px;}
+  .testi-av{width:36px;height:36px;font-size:.88rem;flex:none;}
+  .testi-tx{font-size:.85rem;line-height:1.5;}
+  .testi-meta{font-size:.74rem;}
 
   /* Relacionados */
-  .detail-rel h3{font-size:.95rem;margin-bottom:12px;}
-  .rel-card{min-width:140px;}
+  .detail-rel{margin-top:20px;}
+  .detail-rel h3{font-size:.9rem;margin-bottom:12px;font-weight:800;}
+  .rel-card{min-width:148px;max-width:165px;}
+  .rel-bd{padding:10px 12px;}
+  .rel-tt{font-size:.84rem;}
+  .rel-pr{font-size:.78rem;}
 
   /* Filter bar */
   .filter-bar{padding:8px 10px;gap:6px;}
-  .filter-bar select{font-size:.8rem;padding:8px 24px 8px 10px;}
+  .filter-bar select{font-size:16px;padding:8px 24px 8px 10px;}
 }
 
 /* ── Mobile pequeño (≤400px) ── */
