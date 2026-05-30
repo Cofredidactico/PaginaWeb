@@ -491,6 +491,15 @@ button{font:inherit;border:none;cursor:pointer;background:none;color:inherit;}
           <div class="tinfo"><div class="tl">Destacado en el home</div><div class="td">Sección especial de la página principal.</div></div>
           <label class="tgl"><input type="checkbox" id="f-destacado" onchange="syncPreview()" /><span class="sl"></span></label>
         </div>
+        <div class="tr" style="background:linear-gradient(135deg,rgba(255,152,0,.06),rgba(255,193,7,.04));border-radius:10px;padding:10px 12px;margin-top:8px;border:1px solid rgba(255,152,0,.15);">
+          <div class="tinfo">
+            <div class="tl" style="display:flex;align-items:center;gap:6px;">
+              <span>📅</span> Mostrar en "Esta semana"
+            </div>
+            <div class="td">Aparece en la sección destacada del inicio. Ideal para efemérides y materiales del momento.</div>
+          </div>
+          <label class="tgl"><input type="checkbox" id="f-esta-semana" onchange="actualizarComp()" /><span class="sl"></span></label>
+        </div>
         <div class="field" style="margin-top:12px;margin-bottom:0;">
           <label>ID único <span style="color:var(--primary)">*</span> <span style="opacity:.45;font-weight:400;text-transform:none;font-size:.65rem;">URL del producto</span></label>
           <input id="f-id" placeholder="cuadernillo-vocales" oninput="idManual=true" />
@@ -750,6 +759,11 @@ function poblarFormulario(p){
   $('#f-paginas').value=p.paginas||'';
   $('#f-activo').checked=p.activo!==false;
   $('#f-destacado').checked=!!p.destacado;
+  // Cargar "esta semana" — revisar si el id está en config.semana.productos
+  if(window._allData && window._allData.config && window._allData.config.semana){
+    const semProds = window._allData.config.semana.productos || [];
+    $('#f-esta-semana').checked = semProds.some(s => s.id === p.id);
+  }
 
   // Tipo / Temática / Acceso
   if(p.tipo)$('#f-tipo').value=p.tipo;
@@ -1041,6 +1055,16 @@ async function guardarProducto(){
     }
     _allData.productos=prods;
 
+    // Sincronizar "Esta semana" en config.semana.productos
+    if(_allData.config && _allData.config.semana){
+      const esSemana = $('#f-esta-semana') && $('#f-esta-semana').checked;
+      let semProds = _allData.config.semana.productos || [];
+      const yaEsta = semProds.some(s => s.id === prod.id);
+      if(esSemana && !yaEsta) semProds.push({id: prod.id});
+      else if(!esSemana && yaEsta) semProds = semProds.filter(s => s.id !== prod.id);
+      _allData.config.semana.productos = semProds;
+    }
+
     // Codificar a base64 con soporte UTF-8 completo (tildes, ñ, emojis)
     const jsonBytes = new TextEncoder().encode(JSON.stringify(_allData,null,2));
     let binaryStr = '';
@@ -1187,7 +1211,7 @@ function limpiarForm(){
   ['f-nombre','f-id','f-desc','f-desc-larga','f-nivel','f-link','f-linkHotmart','f-formato','f-demoUrl','f-linkGratis'].forEach(id=>$(`#${id}`).value='');
   $('#f-precio').value=0;$('#f-precio-old').value='';$('#f-previewSegundos').value='';
   $('#f-tipo').value='cuadernillo';$('#f-tematica').value='';$('#f-nivelGrupo').value='';
-  $('#f-acceso').value='pago';$('#f-activo').checked=true;$('#f-destacado').checked=false;
+  $('#f-acceso').value='pago';$('#f-activo').checked=true;$('#f-destacado').checked=false;$('#f-esta-semana').checked=false;
   setMesesSeleccionados([]);
   $('#incluye-list').innerHTML='';
   $('#testi-list').innerHTML='';
