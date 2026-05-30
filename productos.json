@@ -656,6 +656,39 @@
       "link": "https://drive.google.com/drive/folders/19CSBH5AERU0mqpa0om07QVeP7_SnqPBU?usp=sharing",
       "activo": true,
       "destacado": false
+    },
+    {
+      "id": "17-de-junio-martin-miguel-de-guemes",
+      "nombre": "17 de Junio - Martín Miguel de Güemes",
+      "descripcion": "Propuesta pensada para acercar a los niños y niñas a la figura de Martín Miguel de Güemes",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 6000,
+      "imagen": "images/producto-1780100502391.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/17-de-junio-martin-miguel-de-guemes",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "Se acerca el 17 de junio y preparamos una propuesta pensada para acercar a los niños y niñas a la figura de Martín Miguel de Güemes a través de experiencias de aprendizaje significativas, promoviendo el conocimiento de nuestra historia y el valor de quienes lucharon por la independencia.\n\n📚 ¿QUÉ INCLUYE EL MATERIAL?\n\n✅ Cuadernillo de 27 páginas listo para imprimir.\n✅ Secuencia didáctica completa con fundamentación, propósitos y contenidos.\n✅ Infografía ilustrada sobre la vida de Güemes.\n✅ Comprensión lectora.\n✅ Actividades de escritura.\n✅ Ordenar letras y palabras.\n✅ Secuencia temporal de la vida de Güemes.\n✅ Sopa de letras.\n✅ Crucigrama.\n✅ Verdadero o falso.\n✅ Laberinto.\n✅ Actividades de observación.\n✅ Recortable para armar un Gaucho Infernal.\n✅ Tarjeta acróstico para colorear y regalar.\n\n🎨 Además, el material incluye una carpeta con todas las actividades en formato imagen, para que cada docente pueda dimensionar las actividades a su gusto.",
+      "tematica": "efemerides",
+      "nivel": "Primer Ciclo",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 8000,
+      "paginas": 24,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        6
+      ],
+      "previews": [
+        "images/preview-producto-1780100506892.jpg",
+        "images/preview-producto-1780100509744.jpg",
+        "images/preview-producto-1780100517267.jpg",
+        "images/preview-producto-1780100521118.jpg",
+        "images/preview-producto-1780100524413.jpg",
+        "images/preview-producto-1780100527878.jpg",
+        "images/preview-producto-1780100531213.jpg",
+        "images/preview-producto-1780100534078.jpg",
+        "images/preview-producto-1780100536918.jpg"
+      ]
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
