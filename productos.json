@@ -670,7 +670,7 @@
       "destacado": true,
       "descripcionLarga": "Se acerca el 17 de junio y preparamos una propuesta pensada para acercar a los niños y niñas a la figura de Martín Miguel de Güemes a través de experiencias de aprendizaje significativas, promoviendo el conocimiento de nuestra historia y el valor de quienes lucharon por la independencia.\n\n📚 ¿QUÉ INCLUYE EL MATERIAL?\n\n✅ Cuadernillo de 27 páginas listo para imprimir.\n✅ Secuencia didáctica completa con fundamentación, propósitos y contenidos.\n✅ Infografía ilustrada sobre la vida de Güemes.\n✅ Comprensión lectora.\n✅ Actividades de escritura.\n✅ Ordenar letras y palabras.\n✅ Secuencia temporal de la vida de Güemes.\n✅ Sopa de letras.\n✅ Crucigrama.\n✅ Verdadero o falso.\n✅ Laberinto.\n✅ Actividades de observación.\n✅ Recortable para armar un Gaucho Infernal.\n✅ Tarjeta acróstico para colorear y regalar.\n\n🎨 Además, el material incluye una carpeta con todas las actividades en formato imagen, para que cada docente pueda dimensionar las actividades a su gusto.",
       "tematica": "efemerides",
-      "nivel": "Primer Ciclo",
+      "nivel": "Primaria",
       "nivelGrupo": "1ciclo",
       "precioTachado": 8000,
       "paginas": 24,
@@ -711,9 +711,6 @@
       "productos": [
         {
           "id": "revolucion-mayo"
-        },
-        {
-          "id": "17-de-junio-martin-miguel-de-guemes"
         }
       ]
     },
