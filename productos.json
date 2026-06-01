@@ -689,6 +689,36 @@
         "images/preview-producto-1780100534078.jpg",
         "images/preview-producto-1780100536918.jpg"
       ]
+    },
+    {
+      "id": "17-de-junio-martin-miguel-de-guemes-segundo-ciclo",
+      "nombre": "17 de Junio - Martín Miguel de Güemes (Segundo Ciclo)",
+      "descripcion": "Cuadernillo didáctico especialmente diseñado para trabajar el 17 de junio en segundo ciclo de una manera significativa, dinámica y atractiva. 📚🐎",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 6000,
+      "imagen": "images/producto-1780292508864.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/17-de-junio-martin-miguel-de-guemes-segundo-ciclo",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "🇦🇷✨ ¡MARTÍN MIGUEL DE GÜEMES! (Segundo Ciclo) ✨🇦🇷\n\n📚 ¿QUÉ INCLUYE EL MATERIAL?\n✅ Cuadernillo de 21 páginas listo para imprimir.\n✅ Secuencia didáctica completa con fundamentación, propósitos y contenidos.\n✅ Infografía ilustrada sobre la vida de Güemes.\n✅ Actividades de comprensión lectora.\n✅ Verdadero o falso con justificación.\n✅ Cuadros históricos para completar.\n✅ Producción escrita: “Carta de un gaucho”.\n✅ Acertijos temáticos.\n✅ Línea de tiempo.\n✅ Publicación de Instagram histórica.\n✅ Crucigrama.\n✅ Sopa de letras.\n✅ Tarjeta para el cuaderno o carpeta del estudiante.\n✅ Acróstico creativo.\n\n🎨 Además, el material incluye una carpeta con todas las actividades en formato imagen para que cada docente pueda adaptarlas al tamaño que necesite.\n\n📖 Una propuesta pensada para conocer la vida de Martín Miguel de Güemes, la importancia de los Gauchos Infernales y su valioso aporte a la defensa de nuestra independencia.\n\n✨ Diseño visual atractivo, actividades variadas y propuestas que favorecen la comprensión, la participación y el aprendizaje significativo.",
+      "nivel": "Primaria",
+      "nivelGrupo": "2ciclo",
+      "precioTachado": 8000,
+      "meses": [
+        6
+      ],
+      "previews": [
+        "images/preview-producto-1780292511362.jpg",
+        "images/preview-producto-1780292513720.jpg",
+        "images/preview-producto-1780292516500.jpg",
+        "images/preview-producto-1780292524156.jpg",
+        "images/preview-producto-1780292526807.jpg",
+        "images/preview-producto-1780292529605.jpg",
+        "images/preview-producto-1780292532230.jpg",
+        "images/preview-producto-1780292535596.jpg",
+        "images/preview-producto-1780292538440.jpg"
+      ]
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
@@ -714,6 +744,9 @@
         },
         {
           "id": "17-de-junio-martin-miguel-de-guemes"
+        },
+        {
+          "id": "17-de-junio-martin-miguel-de-guemes-segundo-ciclo"
         }
       ]
     },
