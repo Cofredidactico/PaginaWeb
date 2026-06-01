@@ -659,7 +659,7 @@
     },
     {
       "id": "17-de-junio-martin-miguel-de-guemes",
-      "nombre": "17 de Junio - Martín Miguel de Güemes",
+      "nombre": "17 de Junio - Martín Miguel de Güemes (Primer Ciclo)",
       "descripcion": "Propuesta pensada para acercar a los niños y niñas a la figura de Martín Miguel de Güemes",
       "tipo": "cuadernillo",
       "acceso": "pago",
@@ -711,9 +711,6 @@
       "productos": [
         {
           "id": "revolucion-mayo"
-        },
-        {
-          "id": "17-de-junio-martin-miguel-de-guemes"
         }
       ]
     },
