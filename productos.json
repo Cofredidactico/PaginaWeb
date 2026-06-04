@@ -734,7 +734,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/20-de-junio-dia-de-la-bandera",
       "activo": true,
       "destacado": true,
-      "descripcionLarga": "📚 ¿Qué incluye este material?\n\n✅ Cuadernillo de 27 páginas listo para imprimir.\n✅ Secuencia didáctica completa con fundamentación, propósitos y contenidos.\n✅ Infografía informativa sobre Manuel Belgrano y la creación de la bandera.\n✅ Actividades de comprensión lectora.\n✅ Completar oraciones y ordenar palabras.\n✅ Crucigrama temático.\n✅ Sopa de letras.\n✅ Mensajes secretos y códigos.\n✅ Actividades de dibujo y coloreado.\n✅ Laberintos.\n✅ Línea de tiempo de Manuel Belgrano.\n✅ Fichas para recortar y secuenciar.\n✅ Bandera nacional para armar.\n✅ Acróstico de la palabra BANDERA.\n✅ Actividades lúdicas y significativas para primer ciclo del Nivel Primario.\n\n🎨 Diseñado con ilustraciones atractivas, consignas claras y propuestas que favorecen la participación activa de los estudiantes.",
+      "descripcionLarga": "📚 ¿Qué incluye este material?\n\n✅ Cuadernillo de 27 páginas listo para imprimir.\n✅ Infografía informativa sobre Manuel Belgrano y la creación de la bandera.\n✅ Actividades de comprensión lectora.\n✅ Completar oraciones y ordenar palabras.\n✅ Crucigrama temático.\n✅ Sopa de letras.\n✅ Mensajes secretos y códigos.\n✅ Actividades de dibujo y coloreado.\n✅ Laberintos.\n✅ Línea de tiempo de Manuel Belgrano.\n✅ Fichas para recortar y secuenciar.\n✅ Bandera nacional para armar.\n✅ Acróstico de la palabra BANDERA.\n✅ Actividades lúdicas y significativas para primer ciclo del Nivel Primario.\n\n🎨 Diseñado con ilustraciones atractivas, consignas claras y propuestas que favorecen la participación activa de los estudiantes.",
       "tematica": "efemerides",
       "nivel": "Primario",
       "nivelGrupo": "1ciclo",
@@ -781,9 +781,6 @@
         },
         {
           "id": "17-de-junio-martin-miguel-de-guemes-segundo-ciclo"
-        },
-        {
-          "id": "20-de-junio-dia-de-la-bandera"
         }
       ]
     },
