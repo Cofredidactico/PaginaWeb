@@ -722,6 +722,40 @@
         "images/preview-producto-1780292538440.jpg"
       ],
       "etiqueta": "nuevo"
+    },
+    {
+      "id": "20-de-junio-dia-de-la-bandera",
+      "nombre": "20 de Junio Día de la Bandera",
+      "descripcion": "Una propuesta didáctica pensada para que los más peques aprendan sobre la Bandera Argentina y la vida de Manuel Belgrano de manera significativa, divertida y participativa.",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 6300,
+      "imagen": "images/20-de-junio-dia-de-la-bandera-1780608065235.jpg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/20-de-junio-dia-de-la-bandera",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "📚 ¿Qué incluye este material?\n\n✅ Cuadernillo de 27 páginas listo para imprimir.\n✅ Secuencia didáctica completa con fundamentación, propósitos y contenidos.\n✅ Infografía informativa sobre Manuel Belgrano y la creación de la bandera.\n✅ Actividades de comprensión lectora.\n✅ Completar oraciones y ordenar palabras.\n✅ Crucigrama temático.\n✅ Sopa de letras.\n✅ Mensajes secretos y códigos.\n✅ Actividades de dibujo y coloreado.\n✅ Laberintos.\n✅ Línea de tiempo de Manuel Belgrano.\n✅ Fichas para recortar y secuenciar.\n✅ Bandera nacional para armar.\n✅ Acróstico de la palabra BANDERA.\n✅ Actividades lúdicas y significativas para primer ciclo del Nivel Primario.\n\n🎨 Diseñado con ilustraciones atractivas, consignas claras y propuestas que favorecen la participación activa de los estudiantes.",
+      "tematica": "efemerides",
+      "nivel": "Primario",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 9000,
+      "etiqueta": "nuevo",
+      "paginas": 27,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        6
+      ],
+      "previews": [
+        "images/preview-20-de-junio-dia-de-la-bandera-1780608068160.jpg",
+        "images/preview-20-de-junio-dia-de-la-bandera-1780608071473.jpg",
+        "images/preview-20-de-junio-dia-de-la-bandera-1780608074640.jpg",
+        "images/preview-20-de-junio-dia-de-la-bandera-1780608079641.jpg",
+        "images/preview-20-de-junio-dia-de-la-bandera-1780608082763.jpg",
+        "images/preview-20-de-junio-dia-de-la-bandera-1780608086095.jpg",
+        "images/preview-20-de-junio-dia-de-la-bandera-1780608089506.jpg",
+        "images/preview-20-de-junio-dia-de-la-bandera-1780608093679.jpg",
+        "images/preview-20-de-junio-dia-de-la-bandera-1780608096556.jpg"
+      ]
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
@@ -747,6 +781,9 @@
         },
         {
           "id": "17-de-junio-martin-miguel-de-guemes-segundo-ciclo"
+        },
+        {
+          "id": "20-de-junio-dia-de-la-bandera"
         }
       ]
     },
