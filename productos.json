@@ -484,7 +484,17 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-mundial-de-la-salud",
       "linkHotmart": "https://pay.hotmart.com/X105209388C",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-dia-mundial-de-la-salud-1780788720196.jpg",
+        "images/preview-dia-mundial-de-la-salud-1780788723352.jpg",
+        "images/preview-dia-mundial-de-la-salud-1780788725868.jpg",
+        "images/preview-dia-mundial-de-la-salud-1780788728350.jpg",
+        "images/preview-dia-mundial-de-la-salud-1780788734651.jpg",
+        "images/preview-dia-mundial-de-la-salud-1780788737399.jpg",
+        "images/preview-dia-mundial-de-la-salud-1780788739792.jpg",
+        "images/preview-dia-mundial-de-la-salud-1780788742226.jpg"
+      ]
     },
     {
       "nombre": "Pasapalabra Día Mundial de la Salud",
