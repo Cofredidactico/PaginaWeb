@@ -10,13 +10,15 @@
 <!-- Open Graph -->
 <meta property="og:title" content="Cofre Didáctico — Recursos educativos" id="og-title" />
 <meta property="og:description" content="Cuadernillos, juegos interactivos y láminas para el aula." id="og-desc" />
-<meta property="og:image" content="preview.jpg" id="og-image" />
+<meta property="og:image" content="https://cofredidactico.github.io/PaginaWeb/preview.png" id="og-image" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://cofredidactico.github.io/PaginaWeb/" id="og-url" />
 <meta property="og:type" content="website" id="og-type" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Cofre Didáctico" id="tw-title" />
 <meta name="twitter:description" content="Recursos didácticos para docentes." id="tw-desc" />
-<meta name="twitter:image" content="preview.jpg" id="tw-image" />
+<meta name="twitter:image" content="https://cofredidactico.github.io/PaginaWeb/preview.png" id="tw-image" />
 <meta property="og:locale" content="es_AR" />
 
 <link rel="icon" href="logo.png" />
@@ -1377,7 +1379,7 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
 -->
 
 <!-- ═════════ JS — todo en vanilla, sin frameworks ═════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const $ = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
 
@@ -2270,7 +2272,7 @@ function activarSwipeGaleria(imagenes){
 // ─── Meta tags dinámicos + Schema.org por producto ───
 function actualizarMeta(p){
   const BASE = 'https://cofredidactico.github.io/PaginaWeb/';
-  const img = p.imagen ? (p.imagen.startsWith('http') ? p.imagen : BASE + p.imagen) : BASE + 'preview.jpg';
+  const img = p.imagen ? (p.imagen.startsWith('http') ? p.imagen : BASE + p.imagen) : BASE + 'preview.png';
   const precio = p.acceso === 'gratis' ? 'Gratis' : '$' + (p.precio||0).toLocaleString('es-AR');
   const desc = (p.descripcion||'').substring(0,160);
   const titulo = `${p.nombre} · Cofre Didáctico`;
@@ -2315,12 +2317,12 @@ function resetearMeta(){
   const set = (id, val) => { const el = document.getElementById(id); if (el) el.setAttribute('content', val); };
   set('og-title', 'Cofre Didáctico — Recursos educativos');
   set('og-desc', 'Cuadernillos, juegos interactivos y láminas para el aula.');
-  set('og-image', BASE + 'preview.jpg');
+  set('og-image', BASE + 'preview.png');
   set('og-url', BASE);
   set('og-type', 'website');
   set('tw-title', 'Cofre Didáctico');
   set('tw-desc', 'Recursos didácticos para docentes.');
-  set('tw-image', BASE + 'preview.jpg');
+  set('tw-image', BASE + 'preview.png');
   document.title = 'Cofre Didáctico';
 
   const schemaEl = document.getElementById('schema-org');
