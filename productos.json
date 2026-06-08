@@ -369,7 +369,10 @@
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/general/mis-primeros-numeros-1-al-10",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-mis-primeros-numeros-1-al-10-1780884051626.jpg"
+      ]
     },
     {
       "nombre": "Pack Abecedario Argentino",
