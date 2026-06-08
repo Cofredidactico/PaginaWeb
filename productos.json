@@ -318,7 +318,13 @@
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/general/cucu-cantaba-la-rana-canciones-y-poemas",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-canciones-y-poemas-1780883925298.jpg",
+        "images/preview-canciones-y-poemas-1780883928139.jpg",
+        "images/preview-canciones-y-poemas-1780883930364.jpg",
+        "images/preview-canciones-y-poemas-1780883932584.jpg"
+      ]
     },
     {
       "nombre": "Cuadernillo de Vocales",
