@@ -440,7 +440,17 @@
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/general/22-de-marzo-dia-mundial-del-agua",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-dia-mundial-del-agua-1780884909368.jpg",
+        "images/preview-dia-mundial-del-agua-1780884911986.jpg",
+        "images/preview-dia-mundial-del-agua-1780884914314.jpg",
+        "images/preview-dia-mundial-del-agua-1780884916940.jpg",
+        "images/preview-dia-mundial-del-agua-1780884919803.jpg",
+        "images/preview-dia-mundial-del-agua-1780884922316.jpg",
+        "images/preview-dia-mundial-del-agua-1780884928862.jpg",
+        "images/preview-dia-mundial-del-agua-1780884932713.jpg"
+      ]
     },
     {
       "nombre": "Día del Veterano y de los Caídos en la Guerra de Malvinas",
