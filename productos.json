@@ -551,7 +551,12 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/pasapalabra-dia-mundial-de-la-salud",
       "linkHotmart": "https://pay.hotmart.com/S105209893G",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-pasapalabra-dia-mundial-de-la-salud-1780884663002.jpg",
+        "images/preview-pasapalabra-dia-mundial-de-la-salud-1780884666795.jpg",
+        "images/preview-pasapalabra-dia-mundial-de-la-salud-1780884670541.jpg"
+      ]
     },
     {
       "nombre": "Los Tres Cerditos",
