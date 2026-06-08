@@ -600,7 +600,17 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-mundial-de-la-tierra",
       "linkHotmart": "https://pay.hotmart.com/A105382532J",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-dia-mundial-de-la-tierra-1780882705330.jpg",
+        "images/preview-dia-mundial-de-la-tierra-1780882707751.jpg",
+        "images/preview-dia-mundial-de-la-tierra-1780882709926.jpg",
+        "images/preview-dia-mundial-de-la-tierra-1780882712949.jpg",
+        "images/preview-dia-mundial-de-la-tierra-1780882716182.jpg",
+        "images/preview-dia-mundial-de-la-tierra-1780882719288.jpg",
+        "images/preview-dia-mundial-de-la-tierra-1780882721922.jpg",
+        "images/preview-dia-mundial-de-la-tierra-1780882724812.jpg"
+      ]
     },
     {
       "nombre": "Día del Libro",
