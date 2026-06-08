@@ -439,7 +439,18 @@
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/cuadernillo-malvinas",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas-1780882241872.jpg",
+        "images/preview-dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas-1780882249153.jpg",
+        "images/preview-dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas-1780882251666.jpg",
+        "images/preview-dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas-1780882254067.jpg",
+        "images/preview-dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas-1780882256357.jpg",
+        "images/preview-dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas-1780882260566.jpg",
+        "images/preview-dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas-1780882263476.jpg",
+        "images/preview-dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas-1780882266005.jpg",
+        "images/preview-dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas-1780882268630.jpg"
+      ]
     },
     {
       "nombre": "Pasapalabra Malvinas",
