@@ -263,7 +263,12 @@
       "link": "https://cofredidactico.empretienda.com.ar/general/caperucita-roja",
       "linkHotmart": "https://pay.hotmart.com/Q105219138W",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-caperucita-roja-1780883762847.jpg",
+        "images/preview-caperucita-roja-1780883766628.jpg",
+        "images/preview-caperucita-roja-1780883770110.jpg"
+      ]
     },
     {
       "nombre": "El Hombrecito de Jengibre",
