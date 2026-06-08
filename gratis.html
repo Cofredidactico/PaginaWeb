@@ -437,21 +437,33 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
 .pq h3{font-size:1.1rem;margin-bottom:8px;font-weight:800;}
 .pq p{font-size:.93rem;color:var(--ink-3);margin:0;line-height:1.6;}
 
-/* ─── Footer ─── */
-footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
-.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;}
-.ft-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px;color:#fff;font-family:var(--f-display);font-weight:800;font-size:1.15rem;}
-.ft-brand img{width:40px;height:40px;border-radius:10px;}
+/* ─── Footer (igual que el index) ─── */
+footer{background:var(--ink);color:#D1D7E0;padding:0;}
+.ft-main{padding:36px 0 28px;border-bottom:1px solid rgba(255,255,255,.08);}
+.ft-grid{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.ft-brand{display:flex;align-items:center;gap:10px;color:#fff;font-family:var(--f-display);font-weight:800;font-size:1.1rem;}
+.ft-brand img{width:44px;height:44px;border-radius:10px;object-fit:cover;}
 .ft-brand strong{color:var(--accent);}
-.ft p{font-size:.92rem;color:#A8B0BD;line-height:1.6;max-width:320px;}
-.ft-social{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
-.ft-social a{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);padding:8px 14px;border-radius:10px;font-size:.85rem;font-weight:700;transition:background .2s;}
-.ft-social a:hover{background:rgba(255,255,255,.12);}
-.ft h4{color:#fff;font-size:.92rem;margin-bottom:14px;letter-spacing:.04em;text-transform:uppercase;}
-.ft ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
-.ft ul a{font-size:.92rem;color:#A8B0BD;transition:color .2s;}
-.ft ul a:hover{color:#fff;}
-.ft-bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:.82rem;color:#A8B0BD;}
+.ft-nav-links{display:flex;gap:18px;flex-wrap:wrap;}
+.ft-nav-links a{color:rgba(255,255,255,.62);font-size:.88rem;transition:color .15s;font-weight:600;}
+.ft-nav-links a:hover{color:#fff;}
+.ft-social-row{display:flex;gap:10px;flex-wrap:wrap;}
+.ft-social-btn{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  min-width:60px;padding:10px 12px;border-radius:12px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);
+  text-decoration:none;color:#fff;
+  transition:background .15s,transform .15s,border-color .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.ft-social-btn:hover{background:rgba(255,255,255,.18);transform:translateY(-3px);border-color:rgba(255,255,255,.25);}
+.ft-social-btn .ft-btn-icon{font-size:1.2rem;line-height:1;}
+.ft-social-btn .ft-btn-label{font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.55);line-height:1;}
+.ft-bottom-wrap{background:rgba(0,0,0,.2);}
+.ft-bottom{padding:14px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:.76rem;color:rgba(255,255,255,.38);}
+.ft-bottom a{color:rgba(255,255,255,.5);transition:color .15s;}
+.ft-bottom a:hover{color:#fff;}
+@media(max-width:640px){.ft-grid{flex-direction:column;align-items:flex-start;gap:18px;}.ft-bottom{flex-direction:column;text-align:center;gap:6px;}}
 
 /* WhatsApp flotante deshabilitado — descomentar cuando el número esté listo */
 
@@ -627,39 +639,33 @@ footer{background:var(--ink);color:#D1D7E0;padding:56px 0 24px;}
   </div>
 </section>
 
-<!-- Footer -->
+<!-- Footer (igual que el index) -->
 <footer>
-  <div class="wrap">
-    <div class="ft-grid">
-      <div>
-        <div class="ft-brand">
-          <img src="logo.png" alt="" onerror="this.style.display='none'" />
+  <div class="ft-main">
+    <div class="wrap">
+      <div class="ft-grid">
+        <a href="index.html" class="ft-brand">
+          <img src="logo.png" alt="Cofre Didáctico" onerror="this.style.display='none'" />
           <span>Cofre <strong>Didáctico</strong></span>
-        </div>
-        <p>Propuestas y recursos digitales para tus clases. Diseñados con amor para docentes de todo el mundo.</p>
-        <div class="ft-social" id="ft-social"></div>
-      </div>
-      <div>
-        <h4>Recursos</h4>
-        <ul>
-          <li><a href="index.html#catalogo">Catálogo completo</a></li>
-          <li><a href="gratis.html">🎁 Recursos gratis</a></li>
-          <li><a href="index.html#por-que">Por qué Cofre</a></li>
-          <li><a href="index.html#faq">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Comprar</h4>
-        <ul id="ft-comprar"></ul>
-      </div>
-      <div>
-        <h4>Comunidad</h4>
-        <ul id="ft-comunidad"></ul>
+        </a>
+        <nav class="ft-nav-links">
+          <a href="index.html#catalogo">Catálogo</a>
+          <a href="gratis.html">🎁 Gratis</a>
+          <a href="interactivos.html">🎮 Interactivos</a>
+          <a href="index.html#por-que">Nosotros</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="#newsletter">Newsletter</a>
+        </nav>
+        <div class="ft-social-row" id="ft-social-row"></div>
       </div>
     </div>
-    <div class="ft-bottom">
-      <span>© <span id="year"></span> Cofre Didáctico · Hecho con ❤️ para docentes</span>
-      <span>v3 · Recursos gratis</span>
+  </div>
+  <div class="ft-bottom-wrap">
+    <div class="wrap">
+      <div class="ft-bottom">
+        <span>© <span id="year"></span> Cofre Didáctico · Hecho con ❤️ para docentes de todo el mundo</span>
+        <span id="ft-email-link"></span>
+      </div>
     </div>
   </div>
 </footer>
@@ -690,19 +696,23 @@ function aplicarConfig(){
   const L = c.links || {};
   // if (L.whatsapp) { const wa = $('#wa'); if (wa) wa.href = L.whatsapp; } // WhatsApp deshabilitado
 
-  const social = $('#ft-social');
-  if (L.instagram) social.innerHTML += `<a href="${L.instagram}" target="_blank" rel="noopener">📸 Instagram</a>`;
-  if (L.empretienda) social.innerHTML += `<a href="${L.empretienda}" target="_blank" rel="noopener">🏪 Tienda</a>`;
-  if (L.email) social.innerHTML += `<a href="mailto:${L.email}">✉️ Email</a>`;
-
-  const c1 = $('#ft-comprar');
-  if (L.empretienda) c1.innerHTML += `<li><a href="${L.empretienda}" target="_blank" rel="noopener">Empretienda</a></li>`;
-  if (L.hotmart) c1.innerHTML += `<li><a href="${L.hotmart}" target="_blank" rel="noopener">Hotmart</a></li>`;
-  if (L.email) c1.innerHTML += `<li><a href="mailto:${L.email}">Contacto</a></li>`;
-
-  const c2 = $('#ft-comunidad');
-  if (L.instagram) c2.innerHTML += `<li><a href="${L.instagram}" target="_blank" rel="noopener">Instagram</a></li>`;
-  c2.innerHTML += `<li><a href="#newsletter">Newsletter</a></li>`;
+  // Footer — botones de redes con ícono + etiqueta (igual que el index)
+  const ftSocialRow = $('#ft-social-row');
+  if (ftSocialRow) {
+    const btn = (href, icon, label, extra='') =>
+      `<a href="${href}" class="ft-social-btn" ${extra}><span class="ft-btn-icon">${icon}</span><span class="ft-btn-label">${label}</span></a>`;
+    const btns = [];
+    if (L.instagram) btns.push(btn(L.instagram,'📸','Instagram','target="_blank" rel="noopener" data-umami-event="click-ig"'));
+    if (L.tiktok) btns.push(btn(L.tiktok,'🎵','TikTok','target="_blank" rel="noopener" data-umami-event="click-tiktok"'));
+    if (L.threads) btns.push(btn(L.threads,'🧵','Threads','target="_blank" rel="noopener" data-umami-event="click-threads"'));
+    if (L.facebook) btns.push(btn(L.facebook,'📘','Facebook','target="_blank" rel="noopener" data-umami-event="click-facebook"'));
+    if (L.email) btns.push(btn(`mailto:${L.email}`,'✉️','Email',''));
+    if (L.empretienda) btns.push(btn(L.empretienda,'🛍️','Tienda','target="_blank" rel="noopener" data-umami-event="click-empretienda"'));
+    if (L.hotmart) btns.push(btn(L.hotmart,'🔥','Hotmart','target="_blank" rel="noopener"'));
+    ftSocialRow.innerHTML = btns.join('');
+  }
+  const ftEmail = $('#ft-email-link');
+  if (ftEmail && L.email) ftEmail.innerHTML = `<a href="mailto:${L.email}">${L.email}</a>`;
 
   $('#year').textContent = new Date().getFullYear();
 }
@@ -785,6 +795,22 @@ async function suscribirse(e){
 
 // ─── Detectar Instagram/Facebook IAB y mostrar banner ───
 
+
+// ─── Transición suave entre páginas (igual que el index) ───
+document.querySelectorAll('a[href]').forEach(a => {
+  const href = a.getAttribute('href') || '';
+  if(!href || href.startsWith('#') || href.startsWith('javascript') || href.startsWith('mailto') || a.target === '_blank') return;
+  if(href.includes('index.html') || href.includes('gratis.html') || href.includes('interactivos.html')){
+    a.addEventListener('click', e => {
+      if(e.metaKey || e.ctrlKey) return;
+      e.preventDefault();
+      document.body.style.opacity = '0';
+      document.body.style.transform = 'translateY(-4px)';
+      document.body.style.transition = 'opacity .18s ease, transform .18s ease';
+      setTimeout(() => { window.location.href = href; }, 190);
+    });
+  }
+});
 
 </script>
 
