@@ -397,7 +397,11 @@
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/general/pack-abecedario-argentino",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-pack-abecedario-argentino-1780885203706.jpg",
+        "images/preview-pack-abecedario-argentino-1780885206558.jpg"
+      ]
     },
     {
       "nombre": "Día Nacional de la Memoria por la Verdad y la Justicia",
