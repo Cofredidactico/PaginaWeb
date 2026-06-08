@@ -633,7 +633,10 @@
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/3-pistas-1-pais-dia-de-las-americas",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-dia-de-las-americas-1780885504478.jpg"
+      ]
     },
     {
       "nombre": "Día Mundial de la Tierra",
