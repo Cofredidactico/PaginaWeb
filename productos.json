@@ -495,7 +495,11 @@
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/pasapalabra-malvinas",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-pasapalabra-malvinas-1780884783640.jpg",
+        "images/preview-pasapalabra-malvinas-1780884786757.jpg"
+      ]
     },
     {
       "nombre": "Día Mundial de la Salud",
