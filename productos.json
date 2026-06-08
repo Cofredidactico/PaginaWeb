@@ -419,7 +419,17 @@
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/general/24-de-marzo-dia-de-la-memoria-por-la-verdad-y-la-justicia",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-dia-nacional-de-la-memoria-por-la-verdad-y-la-justicia-1780885008781.jpg",
+        "images/preview-dia-nacional-de-la-memoria-por-la-verdad-y-la-justicia-1780885011279.jpg",
+        "images/preview-dia-nacional-de-la-memoria-por-la-verdad-y-la-justicia-1780885013835.jpg",
+        "images/preview-dia-nacional-de-la-memoria-por-la-verdad-y-la-justicia-1780885017199.jpg",
+        "images/preview-dia-nacional-de-la-memoria-por-la-verdad-y-la-justicia-1780885019701.jpg",
+        "images/preview-dia-nacional-de-la-memoria-por-la-verdad-y-la-justicia-1780885022597.jpg",
+        "images/preview-dia-nacional-de-la-memoria-por-la-verdad-y-la-justicia-1780885026064.jpg",
+        "images/preview-dia-nacional-de-la-memoria-por-la-verdad-y-la-justicia-1780885029075.jpg"
+      ]
     },
     {
       "nombre": "Día Mundial del Agua",
