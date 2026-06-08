@@ -656,7 +656,17 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-del-animal",
       "linkHotmart": "https://pay.hotmart.com/K105564032Y",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-dia-del-animal-1780882962636.jpg",
+        "images/preview-dia-del-animal-1780882967799.jpg",
+        "images/preview-dia-del-animal-1780882972145.jpg",
+        "images/preview-dia-del-animal-1780882978364.jpg",
+        "images/preview-dia-del-animal-1780882981363.jpg",
+        "images/preview-dia-del-animal-1780883089367.jpg",
+        "images/preview-dia-del-animal-1780883093269.jpg",
+        "images/preview-dia-del-animal-1780883095914.jpg"
+      ]
     },
     {
       "nombre": "Plataforma Interactiva Día del Trabajador",
