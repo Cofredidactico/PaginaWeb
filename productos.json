@@ -201,7 +201,12 @@
       "formato": "PDF-A4-Color",
       "link": "https://drive.google.com/file/d/1n-aGzfK0Tf3I_oDAERFLyERhVKkylTDf/view?usp=sharing",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-ambiente-alfabetizador-de-mesa-1780888696800.jpg",
+        "images/preview-ambiente-alfabetizador-de-mesa-1780888699538.jpg",
+        "images/preview-ambiente-alfabetizador-de-mesa-1780888702932.jpg"
+      ]
     },
     {
       "nombre": "Abecedario Silábico",
