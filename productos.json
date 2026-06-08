@@ -177,7 +177,10 @@
       "formato": "PDF-A4-Color",
       "link": "https://drive.google.com/file/d/1iGEiTepCUoU9kjxnTNkjoOLVY9yKfINk/view?usp=drive_link",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-moldeo-trazo-y-busco-1780888608693.jpg"
+      ]
     },
     {
       "nombre": "Ambiente alfabetizador de Mesa",
