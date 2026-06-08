@@ -285,7 +285,13 @@
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/general/el-hombrecito-de-jengibre",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-el-hombrecito-de-jengibre-1780883686972.jpg",
+        "images/preview-el-hombrecito-de-jengibre-1780883689133.jpg",
+        "images/preview-el-hombrecito-de-jengibre-1780883691799.jpg",
+        "images/preview-el-hombrecito-de-jengibre-1780883696211.jpg"
+      ]
     },
     {
       "nombre": "Canciones y Poemas",
