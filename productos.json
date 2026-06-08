@@ -347,7 +347,10 @@
       "link": "https://cofredidactico.empretienda.com.ar/general/cuadernillo-de-vocales",
       "linkHotmart": "https://pay.hotmart.com/Q105216639U",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-cuadernillo-de-vocales-1780884482628.jpg"
+      ]
     },
     {
       "nombre": "Mis Primeros Números (1 al 10)",
