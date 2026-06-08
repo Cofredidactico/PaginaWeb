@@ -644,7 +644,17 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/dia-mundial-del-libro",
       "linkHotmart": "https://pay.hotmart.com/S105439405X",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "previews": [
+        "images/preview-dia-del-libro-1780883845091.jpg",
+        "images/preview-dia-del-libro-1780883847391.jpg",
+        "images/preview-dia-del-libro-1780883850884.jpg",
+        "images/preview-dia-del-libro-1780883853520.jpg",
+        "images/preview-dia-del-libro-1780883855963.jpg",
+        "images/preview-dia-del-libro-1780883858321.jpg",
+        "images/preview-dia-del-libro-1780883860644.jpg",
+        "images/preview-dia-del-libro-1780883865074.jpg"
+      ]
     },
     {
       "nombre": "Día del Animal",
