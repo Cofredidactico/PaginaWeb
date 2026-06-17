@@ -881,6 +881,29 @@
         "images/preview-20-de-junio-dia-de-la-bandera-1780608093679.jpg",
         "images/preview-20-de-junio-dia-de-la-bandera-1780608096556.jpg"
       ]
+    },
+    {
+      "id": "martin-miguel-de-guemes",
+      "nombre": "MARTÍN MIGUEL DE GÜEMES",
+      "descripcion": "Llega el 17 de Junio ​​y te traemos una plataforma interactiva para que tus chicos aprendan sobre Martín Miguel de Güemes jugando 🎮✨",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 3000,
+      "imagen": "images/placeholder-vocales.svg",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/plataforma-interactiva-martin-miguel-de-guemes",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "📚 ¿Qué vas a encontrar?\n\n⭐ Biografía interactiva.\n⭐ Línea de tiempo ilustrada.\n⭐ Crucigrama temático.\n⭐ Sopa de letras.\n⭐ Actividad de unir con flechas.\n⭐ Ordenar hechos cronológicamente.\n⭐ Verdadero o falso.\n⭐ Preguntas de opción múltiple.\n⭐ Desafío final para poner a prueba lo aprendido.\n⭐ Lectura en voz alta.\n⭐ Texto ampliado (Imprenta Mayúscula y Minúscula), alto contraste, modo nocturno y modo calmo.",
+      "tematica": "efemerides",
+      "nivel": "Nivel Primario",
+      "nivelGrupo": "multinivel",
+      "precioTachado": 5000,
+      "etiqueta": "nuevo",
+      "meses": [
+        6
+      ],
+      "demoUrl": "https://cofredidactico.github.io/MiguelMartindeGuemes/",
+      "mostrarEnInteractivos": true
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
@@ -909,6 +932,9 @@
         },
         {
           "id": "17-de-junio-martin-miguel-de-guemes"
+        },
+        {
+          "id": "martin-miguel-de-guemes"
         }
       ]
     },
