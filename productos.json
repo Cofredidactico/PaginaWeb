@@ -854,7 +854,7 @@
       "descripcion": "Una propuesta didáctica pensada para que los más peques aprendan sobre la Bandera Argentina y la vida de Manuel Belgrano de manera significativa, divertida y participativa.",
       "tipo": "cuadernillo",
       "acceso": "pago",
-      "precio": 6300,
+      "precio": 7300,
       "imagen": "images/20-de-junio-dia-de-la-bandera-1780608065235.jpg",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/20-de-junio-dia-de-la-bandera",
       "activo": true,
@@ -863,7 +863,7 @@
       "tematica": "efemerides",
       "nivel": "Primario",
       "nivelGrupo": "1ciclo",
-      "precioTachado": 9000,
+      "precioTachado": 10000,
       "etiqueta": "nuevo",
       "paginas": 27,
       "formato": "PDF-A4-Color",
@@ -956,9 +956,6 @@
       "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
       "etiqueta": "🗓️ Esta semana",
       "productos": [
-        {
-          "id": "20-de-junio-dia-de-la-bandera"
-        },
         {
           "id": "17-de-junio-martin-miguel-de-guemes-segundo-ciclo"
         },
