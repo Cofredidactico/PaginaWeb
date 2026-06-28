@@ -888,7 +888,7 @@
       "descripcion": "Llega el 17 de Junio ​​y te traemos una plataforma interactiva para que tus chicos aprendan sobre Martín Miguel de Güemes jugando 🎮✨",
       "tipo": "cuadernillo",
       "acceso": "pago",
-      "precio": 3000,
+      "precio": 3500,
       "imagen": "images/martin-miguel-de-guemes-1781739081130.jpeg",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/plataforma-interactiva-martin-miguel-de-guemes",
       "activo": true,
@@ -956,9 +956,6 @@
       "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
       "etiqueta": "🗓️ Esta semana",
       "productos": [
-        {
-          "id": "martin-miguel-de-guemes"
-        },
         {
           "id": "9-de-julio-dia-de-la-independencia"
         }
