@@ -789,7 +789,7 @@
       "descripcion": "Propuesta pensada para acercar a los niños y niñas a la figura de Martín Miguel de Güemes",
       "tipo": "cuadernillo",
       "acceso": "pago",
-      "precio": 6300,
+      "precio": 7300,
       "imagen": "images/producto-1780100502391.jpg",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/17-de-junio-martin-miguel-de-guemes",
       "activo": true,
@@ -798,7 +798,7 @@
       "tematica": "efemerides",
       "nivel": "Primaria",
       "nivelGrupo": "1ciclo",
-      "precioTachado": 8000,
+      "precioTachado": 10000,
       "paginas": 24,
       "formato": "PDF-A4-Color",
       "meses": [
@@ -956,9 +956,6 @@
       "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
       "etiqueta": "🗓️ Esta semana",
       "productos": [
-        {
-          "id": "17-de-junio-martin-miguel-de-guemes"
-        },
         {
           "id": "martin-miguel-de-guemes"
         },
