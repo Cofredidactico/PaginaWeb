@@ -904,6 +904,38 @@
       ],
       "demoUrl": "https://cofredidactico.github.io/MiguelMartindeGuemes/",
       "mostrarEnInteractivos": true
+    },
+    {
+      "id": "9-de-julio-dia-de-la-independencia",
+      "nombre": "9 de Julio - Día de la Independencia",
+      "descripcion": "Un material pensado para que los estudiantes aprendan sobre nuestra Independencia de manera divertida, significativa y participativa.",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 7000,
+      "imagen": "images/producto-1782660995327.png",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/9-de-julio-dia-de-la-independencia",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "📚 ¿QUÉ ENCONTRARÁS?\n🇦🇷 Infografía ilustrada y de fácil comprensión.\n📝 Actividades de comprensión lectora.\n✅ Verdadero o falso y opción múltiple.\n✍️ Completar oraciones y ordenar palabras.\n🧩 Crucigrama, sopa de letras y mensaje secreto.\n🔤 Ordenar letras y unir imágenes con palabras.\n🎨 Propuestas para dibujar y colorear.\n✂️ Secuencia cronológica recortable.\n🏛️ Armado de la Casa Histórica de Tucumán.\n🌟 Laberintos.\n🔎 \"Detectives de la Independencia\".\n💙 Tarjeta acróstico con la palabra INDEPENDENCIA para llevar a casa.",
+      "tematica": "efemerides",
+      "nivel": "Nivel Primario",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 10000,
+      "paginas": 30,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        7
+      ],
+      "previews": [
+        "images/preview-producto-1782660998132.png",
+        "images/preview-producto-1782661000661.png",
+        "images/preview-producto-1782661005143.png",
+        "images/preview-producto-1782661009857.png",
+        "images/preview-producto-1782661015077.png",
+        "images/preview-producto-1782661017748.png",
+        "images/preview-producto-1782661020670.png",
+        "images/preview-producto-1782661023211.png"
+      ]
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
@@ -935,6 +967,9 @@
         },
         {
           "id": "martin-miguel-de-guemes"
+        },
+        {
+          "id": "9-de-julio-dia-de-la-independencia"
         }
       ]
     },
