@@ -823,7 +823,7 @@
       "descripcion": "Cuadernillo didáctico especialmente diseñado para trabajar el 17 de junio en segundo ciclo de una manera significativa, dinámica y atractiva. 📚🐎",
       "tipo": "cuadernillo",
       "acceso": "pago",
-      "precio": 6300,
+      "precio": 7300,
       "imagen": "images/producto-1780292508864.jpg",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/17-de-junio-martin-miguel-de-guemes-segundo-ciclo",
       "activo": true,
@@ -831,7 +831,7 @@
       "descripcionLarga": "🇦🇷✨ ¡MARTÍN MIGUEL DE GÜEMES! (Segundo Ciclo) ✨🇦🇷\n\n📚 ¿QUÉ INCLUYE EL MATERIAL?\n✅ Cuadernillo de 21 páginas listo para imprimir.\n✅ Secuencia didáctica completa con fundamentación, propósitos y contenidos.\n✅ Infografía ilustrada sobre la vida de Güemes.\n✅ Actividades de comprensión lectora.\n✅ Verdadero o falso con justificación.\n✅ Cuadros históricos para completar.\n✅ Producción escrita: “Carta de un gaucho”.\n✅ Acertijos temáticos.\n✅ Línea de tiempo.\n✅ Publicación de Instagram histórica.\n✅ Crucigrama.\n✅ Sopa de letras.\n✅ Tarjeta para el cuaderno o carpeta del estudiante.\n✅ Acróstico creativo.\n\n🎨 Además, el material incluye una carpeta con todas las actividades en formato imagen para que cada docente pueda adaptarlas al tamaño que necesite.\n\n📖 Una propuesta pensada para conocer la vida de Martín Miguel de Güemes, la importancia de los Gauchos Infernales y su valioso aporte a la defensa de nuestra independencia.\n\n✨ Diseño visual atractivo, actividades variadas y propuestas que favorecen la comprensión, la participación y el aprendizaje significativo.",
       "nivel": "Primaria",
       "nivelGrupo": "2ciclo",
-      "precioTachado": 8000,
+      "precioTachado": 10000,
       "meses": [
         6
       ],
@@ -956,9 +956,6 @@
       "subtitulo": "Materiales seleccionados según la efeméride o el contenido del mes.",
       "etiqueta": "🗓️ Esta semana",
       "productos": [
-        {
-          "id": "17-de-junio-martin-miguel-de-guemes-segundo-ciclo"
-        },
         {
           "id": "17-de-junio-martin-miguel-de-guemes"
         },
