@@ -326,7 +326,7 @@
       "formato": "PDF-A4-Color",
       "link": "https://cofredidactico.empretienda.com.ar/general/cucu-cantaba-la-rana-canciones-y-poemas",
       "activo": true,
-      "destacado": false,
+      "destacado": true,
       "previews": [
         "images/preview-canciones-y-poemas-1780883925298.jpg",
         "images/preview-canciones-y-poemas-1780883928139.jpg",
@@ -964,6 +964,9 @@
         },
         {
           "id": "los-tres-cerditos"
+        },
+        {
+          "id": "canciones-y-poemas"
         }
       ]
     },
