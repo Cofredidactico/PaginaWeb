@@ -612,7 +612,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/los-tres-cerditos",
       "linkHotmart": "https://pay.hotmart.com/P105259080B",
       "activo": true,
-      "destacado": false,
+      "destacado": true,
       "previews": [
         "images/preview-los-tres-cerditos-1780882579449.jpg",
         "images/preview-los-tres-cerditos-1780882582098.jpg",
@@ -961,6 +961,9 @@
         },
         {
           "id": "caperucita-roja"
+        },
+        {
+          "id": "los-tres-cerditos"
         }
       ]
     },
