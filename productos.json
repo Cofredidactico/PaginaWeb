@@ -936,6 +936,39 @@
         "images/preview-producto-1782661020670.png",
         "images/preview-producto-1782661023211.png"
       ]
+    },
+    {
+      "id": "17-de-agosto-san-martin",
+      "nombre": "17 de Agosto - San Martín",
+      "descripcion": "Cuadernillo con propuestas lúdicas que permiten conocer la vida, los logros y los valores de José de San Martín mientras los niños juegan, leen, escriben y crean. ✨",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 7300,
+      "imagen": "images/producto-1785103958065.png",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/17-de-agosto-jose-de-san-martin",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "Cuadernillo con propuestas lúdicas que permiten conocer la vida, los logros y los valores de José de San Martín mientras los niños juegan, leen, escriben y crean. ✨\n\n📦 ¿Qué vas a encontrar?\n\n📖 Infografía ilustrada y de fácil comprensión.\n✍️ Actividades de lectura y escritura.\n🧠 Comprensión lectora.\n🧩 Crucigrama y sopa de letras.\n🔎 \"Detectives de San Martín\".\n🗺️ Línea de tiempo para recortar y ordenar.\n🎨 Dibujar, pintar y completar.\n🔐 Código secreto.\n🌄 Laberinto: ¡Ayudá a San Martín a cruzar los Andes!\n✅ Verdadero o Falso.\n📝 Acróstico para trabajar valores.\n🎁 ¡Y muchas actividades más!\n\n💙 Un recurso ideal para trabajar la efeméride del 17 de Agosto de manera significativa, creativa y entretenida.\n\n👩‍🏫 Perfecto para docentes del Nivel Primario y también para acompañar el aprendizaje en casa.\n\n💻 Material de 30 Páginas A4 en formato PDF (Diseño y calidad profesional), listo para descargar e imprimir.",
+      "tematica": "efemerides",
+      "nivel": "Primaria",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 9300,
+      "paginas": 30,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        8
+      ],
+      "previews": [
+        "images/preview-producto-1785103960952.png",
+        "images/preview-producto-1785103963796.png",
+        "images/preview-producto-1785103966029.png",
+        "images/preview-producto-1785103968436.png",
+        "images/preview-producto-1785103970574.png",
+        "images/preview-producto-1785103972898.png",
+        "images/preview-producto-1785103975399.png",
+        "images/preview-producto-1785103977976.png",
+        "images/preview-producto-1785103982177.png"
+      ]
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
@@ -967,6 +1000,9 @@
         },
         {
           "id": "canciones-y-poemas"
+        },
+        {
+          "id": "17-de-agosto-san-martin"
         }
       ]
     },
