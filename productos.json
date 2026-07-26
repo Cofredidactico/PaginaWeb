@@ -943,7 +943,7 @@
       "descripcion": "Cuadernillo con propuestas lúdicas que permiten conocer la vida, los logros y los valores de José de San Martín mientras los niños juegan, leen, escriben y crean. ✨",
       "tipo": "cuadernillo",
       "acceso": "pago",
-      "precio": 7300,
+      "precio": 7500,
       "imagen": "images/producto-1785103958065.png",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/17-de-agosto-jose-de-san-martin",
       "activo": true,
@@ -952,7 +952,7 @@
       "tematica": "efemerides",
       "nivel": "Primaria",
       "nivelGrupo": "1ciclo",
-      "precioTachado": 9300,
+      "precioTachado": 9500,
       "paginas": 30,
       "formato": "PDF-A4-Color",
       "meses": [
