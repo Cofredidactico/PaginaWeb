@@ -905,7 +905,8 @@
         6
       ],
       "demoUrl": "https://cofredidactico.github.io/MiguelMartindeGuemes/",
-      "mostrarEnInteractivos": true
+      "mostrarEnInteractivos": true,
+      "previewSegundos": 90
     },
     {
       "id": "9-de-julio-dia-de-la-independencia",
