@@ -969,6 +969,28 @@
         "images/preview-producto-1785103977976.png",
         "images/preview-producto-1785103982177.png"
       ]
+    },
+    {
+      "id": "plataforma-interactiva-jose-de-san-martin",
+      "nombre": "Plataforma Interactiva - José de San Martín",
+      "descripcion": "Presentamos una plataforma educativa 100% interactiva, creada para que los estudiantes aprendan sobre José de San Martín jugando, explorando y resolviendo desafíos que fortalecen la comprensión de los contenidos de una manera significativa.",
+      "tipo": "juego",
+      "acceso": "pago",
+      "precio": 4300,
+      "imagen": "images/producto-1785605976557.png",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/plataforma-interactiva-jose-de-san-martin",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "🎖️ ¿Qué encontrarás en la plataforma?\n\n📖 Biografía completa de José de San Martín.\n🗓️ Línea de tiempo con los principales acontecimientos de su vida.\n🏔️ Información sobre el Cruce de los Andes, las campañas libertadoras y su legado.\n🖼️ Galería con ilustraciones temáticas de excelente calidad.\n🎮 Gran variedad de actividades y juegos interactivos para reforzar los contenidos.\n\n🧩 Entre las actividades encontrarás:\n✅ Rompecabezas.\n✅ Crucigramas.\n✅ Juegos de memoria.\n✅ Trivia histórica.\n✅ Preguntas de opción múltiple.\n✅ Verdadero o Falso.\n✅ Relacionar conceptos.\n✅ Identificación de imágenes.\n✅ Juegos de observación.\n✅ ¡Y muchas propuestas más!\n\n📈 Las actividades presentan una complejidad progresiva, adaptándose al nivel educativo de los estudiantes. De esta manera, comienzan con desafíos más sencillos y avanzan hacia propuestas que requieren mayor análisis, comprensión y reflexión, respetando los diferentes ritmos de aprendizaje.\n\n♿ Además, la plataforma incorpora herramientas de accesibilidad e inclusión, permitiendo que cada estudiante aprenda de la forma que mejor se adapte a sus necesidades.\n\n💛 Herramientas disponibles:\n🔊 Leer en voz alta.\n🔠 Texto ampliado para una mejor visualización.\n🔡 Cambio entre imprenta mayúscula e imprenta minúscula.\n📚 Modo de lectura fácil para favorecer la comprensión lectora.\n🎵 Música de fondo para crear un ambiente de aprendizaje más agradable.\n\n💻 Diseño moderno, intuitivo y atractivo.\n📱 Compatible con computadoras, notebooks, tablets y celulares.\n🖥️ Ideal para trabajar con proyector, pantalla digital o de manera individual.\n\n🎯 Ideal para:\n👩‍🏫 Docentes de Nivel Primario.\n🏫 Escuelas.\n👨‍👩‍👧 Familias.\n📖 Proyectos áulicos y actividades por el 17 de Agosto.\n\n💡 Una propuesta que combina historia, gamificación, tecnología e inclusión, promoviendo un aprendizaje activo, motivador y significativo.\n\n🎁 ¡ATENCIÓN! Si ya adquiriste el Cuadernillo de José de San Martín, no necesitas comprar esta plataforma. Como agradecimiento por tu compra, ya fue incorporada sin costo adicional a la carpeta compartida del material, para que puedas comenzar a utilizarla inmediatamente.",
+      "nivel": "Primario",
+      "nivelGrupo": "multinivel",
+      "precioTachado": 6000,
+      "meses": [
+        8
+      ],
+      "demoUrl": "https://cofredidactico.github.io/SanMartin/",
+      "mostrarEnInteractivos": true,
+      "previewSegundos": 90
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
@@ -991,6 +1013,9 @@
       "productos": [
         {
           "id": "17-de-agosto-san-martin"
+        },
+        {
+          "id": "plataforma-interactiva-jose-de-san-martin"
         }
       ]
     },
