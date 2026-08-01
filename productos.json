@@ -993,7 +993,8 @@
       ],
       "demoUrl": "https://cofredidactico.github.io/SanMartin/",
       "mostrarEnInteractivos": true,
-      "previewSegundos": 90
+      "previewSegundos": 270,
+      "tematica": "juegos"
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
