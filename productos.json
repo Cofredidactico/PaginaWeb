@@ -78,7 +78,7 @@
       "id": "plataforma-interactiva-revolucion-de-mayo",
       "tipo": "juego",
       "demoUrl": "https://cofredidactico.github.io/RevoluciondeMayo/",
-      "previewSegundos": 25,
+      "previewSegundos": 90,
       "tematica": "juegos",
       "nivel": "Primer Ciclo",
       "nivelGrupo": "1ciclo",
@@ -91,7 +91,8 @@
       "imagen": "images/plataforma-interactiva-revolucion-de-mayo-1779300992311.jpeg",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/plataforma-interactiva-revolucion-de-mayo",
       "activo": true,
-      "destacado": false
+      "destacado": false,
+      "mostrarEnInteractivos": true
     },
     {
       "nombre": "Día de la Escarapela",
