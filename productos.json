@@ -995,6 +995,37 @@
       "mostrarEnInteractivos": true,
       "previewSegundos": 300,
       "tematica": "juegos"
+    },
+    {
+      "id": "los-suenos-del-sapo",
+      "nombre": "Los Sueños del Sapo",
+      "descripcion": "Un material pensado para que los niños disfruten de la literatura mientras desarrollan habilidades de lectura, escritura, observación y comprensión de una manera divertida y significativa. ❤️📚",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 6300,
+      "imagen": "images/producto-1785983496230.png",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/los-suenos-del-sapo",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "📖 ¿Qué incluye?\n\n✅ Cuento ilustrado (En imprenta mayúscula y pictogramas de los sueños)\n✅ Actividades de comprensión lectora.\n✅ Completar palabras con vocales.\n✅ Verdadero o falso.\n✅ Completar oraciones.\n✅ Ordenar los sueños según la secuencia del cuento.\n✅ Ordenar letras para formar palabras.\n✅ Unir imágenes con sus palabras.\n✅ Dibujar y pintar.\n✅ Laberinto: ayudá al sapo a llegar a su sueño.\n✅ Encontrá las 5 diferencias.\n✅ Dos actividades de \"Busca y encontrá\" con ilustraciones exclusivas.\n✅ Sopa de letras.\n✅ Actividades de conciencia fonológica (SA - SE - SI - SO - SU).\n✅ Juegos para reconocer sonidos iniciales.\n✅ Producción artística sobre los propios sueños.\n✅ Reflexión final sobre el mensaje del cuento.\n\n🎯 Ideal para:\n🍎 1.º y 2.º grado del Nivel Primario.\n👩‍🏫 Docentes, apoyo escolar y trabajo en casa.\n\n📂 Recibirás:\n\n📄 Cuadernillo completo en PDF listo para imprimir (22 hojas A4).\n🖼️ Todas las actividades en formato imagen para que puedas adaptarlas al tamaño que necesites.\n🎨 Ilustraciones coloridas y pensadas especialmente para llamar la atención de los más pequeños.\n\n✨ Un recurso que combina literatura, juego y aprendizaje para que cada niño pueda desarrollar la imaginación mientras fortalece la lectura y la escritura.",
+      "tematica": "literatura",
+      "nivel": "Primaria",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 8000,
+      "paginas": 22,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        8
+      ],
+      "previews": [
+        "images/preview-producto-1785983501135.png",
+        "images/preview-producto-1785983503995.png",
+        "images/preview-producto-1785983506857.png",
+        "images/preview-producto-1785983509647.png",
+        "images/preview-producto-1785983512820.png",
+        "images/preview-producto-1785983520474.png",
+        "images/preview-producto-1785983523494.png"
+      ]
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
@@ -1020,6 +1051,9 @@
         },
         {
           "id": "plataforma-interactiva-jose-de-san-martin"
+        },
+        {
+          "id": "los-suenos-del-sapo"
         }
       ]
     },
