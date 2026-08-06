@@ -994,7 +994,19 @@
       "demoUrl": "https://cofredidactico.github.io/SanMartin/",
       "mostrarEnInteractivos": true,
       "previewSegundos": 300,
-      "tematica": "juegos"
+      "tematica": "juegos",
+      "previews": [
+        "images/preview-plataforma-interactiva-jose-de-san-martin-1785986960436.jpeg",
+        "images/preview-plataforma-interactiva-jose-de-san-martin-1785986967734.jpeg",
+        "images/preview-plataforma-interactiva-jose-de-san-martin-1785986975627.jpeg",
+        "images/preview-plataforma-interactiva-jose-de-san-martin-1785986981195.jpeg",
+        "images/preview-plataforma-interactiva-jose-de-san-martin-1785986985751.jpeg",
+        "images/preview-plataforma-interactiva-jose-de-san-martin-1785986990812.jpeg",
+        "images/preview-plataforma-interactiva-jose-de-san-martin-1785986996156.jpeg",
+        "images/preview-plataforma-interactiva-jose-de-san-martin-1785987003378.jpeg",
+        "images/preview-plataforma-interactiva-jose-de-san-martin-1785987010537.jpeg",
+        "images/preview-plataforma-interactiva-jose-de-san-martin-1785987020046.jpeg"
+      ]
     },
     {
       "id": "los-suenos-del-sapo",
