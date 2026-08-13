@@ -1,7 +1,7 @@
 # Cofre Didáctico — Sitio web v3
 
 Sitio estático, rápido (<1s de carga), sin dependencias de servidor.
-Catálogo cargado desde `productos.json`. Admin con Decap CMS sobre GitHub.
+Catálogo cargado desde `productos.json`. Admin con Sveltia CMS sobre GitHub.
 
 ---
 
@@ -9,17 +9,25 @@ Catálogo cargado desde `productos.json`. Admin con Decap CMS sobre GitHub.
 
 ```
 PaginaWeb/
-├── index.html          ← La tienda pública
-├── productos.json      ← Catálogo de productos (lo edita Decap)
-├── logo.png            ← Logo de la marca (poné el tuyo acá)
-├── preview.jpg         ← Imagen para previews de WhatsApp/IG (1200×630)
-├── images/             ← Carpeta de imágenes de productos
-│   └── (Decap sube acá automáticamente)
+├── index.html            ← La tienda pública (home + catálogo + fichas)
+├── interactivos.html     ← Página de juegos/plataformas interactivas
+├── gratis.html           ← Página de recursos gratuitos
+├── 404.html              ← Página de error
+├── productos.json        ← Catálogo + configuración del sitio (lo edita el CMS)
+├── logo.png              ← Logo de la marca
+├── preview.png           ← Imagen para previews de WhatsApp/IG (1200×630)
+├── preview-interactivos.png / preview-gratis.png ← Previews por página
+├── sitemap.xml · robots.txt · .nojekyll ← Archivos de SEO/hosting
+├── images/               ← Imágenes de productos (el CMS sube acá y convierte a WebP)
 ├── admin/
-│   ├── index.html      ← Shell de Decap CMS
-│   └── config.yml      ← Configuración del admin
-└── README.md           ← Este archivo
+│   ├── index.html        ← Shell de Sveltia CMS + panel propio de utilidades
+│   └── config.yml        ← Configuración del CMS
+└── README.md             ← Este archivo
 ```
+
+> **Identidad de marca unificada:** las tres páginas públicas usan el mismo
+> color primario (`#2196F3`), acento (`#FF8A4C`) y tipografías (**Outfit** para
+> títulos, **Nunito** para texto). Si cambiás uno, cambialo en las tres.
 
 ---
 
@@ -82,7 +90,7 @@ Generan un formulario embebido que pegás directo en `#newsletter`.
 
 ## 🎨 Cambiar el banner de anuncio (oferta, novedad)
 
-1. Decap → **⚙️ Configuración general** → **📢 Banner**.
+1. Sveltia → **⚙️ Configuración general** → **📢 Banner**.
 2. Activalo, escribí el texto, elegí el color.
 3. Save.
 
@@ -99,9 +107,9 @@ GitHub Pages ya lo hace solo. Cada commit a `main` republica el sitio en 30-60 s
 | Problema | Solución |
 |---|---|
 | No me deja loguear en `/admin/` | Asegurate de que el repo en `config.yml` (`Cofredidactico/PaginaWeb`) y la branch (`main`) coincidan con la realidad. |
-| Cambié algo en Decap pero no aparece online | Esperá 1 minuto. GitHub Pages tarda en republicar. Si pasaron 5 min, mirá la pestaña "Actions" del repo. |
+| Cambié algo en el CMS pero no aparece online | Esperá 1 minuto. GitHub Pages tarda en republicar. Si pasaron 5 min, mirá la pestaña "Actions" del repo. |
 | La imagen se ve cortada | Las cards usan ratio 4:3. Subí imágenes en formato horizontal o cuadrado. 1200×900 es ideal. |
-| Quiero cambiar los textos del FAQ | Hoy están en `index.html`. Si querés que sean editables desde Decap, avisame y lo agrego. |
+| Quiero cambiar los textos del FAQ | Hoy están en `index.html`. Si querés que sean editables desde el CMS, avisame y lo agrego. |
 
 ---
 

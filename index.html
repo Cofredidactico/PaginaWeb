@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 <title>Cofre Didáctico — Recursos educativos para docentes</title>
 <meta name="description" content="Cuadernillos, juegos interactivos y láminas didácticas de calidad editorial. Diseñados por una docente, para docentes." />
 <meta name="theme-color" content="#1A2744" />
@@ -598,8 +598,20 @@ footer{background:var(--ink);color:#D1D7E0;padding:0;}
 .ft-social-btn .ft-btn-icon{font-size:1.2rem;line-height:1;}
 .ft-social-btn .ft-btn-label{font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.55);line-height:1;}
 
-/* WhatsApp flotante deshabilitado — activar cuando el número esté disponible */
-/* .wa{ position:fixed;bottom:24px;right:24px;z-index:40; ... } */
+/* WhatsApp flotante — visible solo si hay número en la config (lo controla el JS) */
+.wa{
+  position:fixed;bottom:22px;right:22px;z-index:40;
+  align-items:center;gap:8px;
+  padding:13px 20px;border-radius:99px;
+  background:linear-gradient(135deg,#25D366,#1EBE5A);color:#fff;
+  font-family:var(--f-display);font-weight:800;font-size:.95rem;
+  box-shadow:0 8px 24px rgba(37,211,102,.4);
+  transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .2s;
+}
+.wa:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(37,211,102,.5);}
+.wa:active{transform:translateY(0);}
+.wa:focus-visible{outline:3px solid rgba(37,211,102,.5);outline-offset:2px;}
+@media (max-width:560px){ .wa span:last-child{display:none;} .wa{padding:14px;} }
 
 /* ─── Mobile menu (simple drawer) ─── */
 .menu-btn{display:none;}
@@ -1118,7 +1130,7 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
   const vp = document.querySelector('meta[name="viewport"]');
   if(vp){
     vp.setAttribute('content',
-      'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no'
+      'width=device-width, initial-scale=1.0, shrink-to-fit=no'
     );
   }
 
@@ -1316,7 +1328,7 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
       <details class="faq"><summary>¿Cómo descargo los materiales?</summary><div class="faq-bd">Después de pagar en Empretienda u Hotmart, recibís un email con el link de descarga. Para los materiales gratuitos, dejás tu email en el formulario de la home y te llega al instante.</div></details>
       <details class="faq"><summary>¿Funcionan en cualquier país?</summary><div class="faq-bd">¡Sí! Son archivos digitales en PDF. Las medidas están en A4 (estándar en Argentina y España). En otros países puede que necesites ajustar la impresora.</div></details>
       <details class="faq"><summary>¿Puedo imprimir en casa?</summary><div class="faq-bd">Sí. Están diseñados para impresora doméstica o copistería. Recomendamos color para aprovechar el diseño, aunque muchos también funcionan en blanco y negro.</div></details>
-      <details class="faq"><summary>¿Y si no recibo el email?</summary><div class="faq-bd">Revisá la carpeta de spam. Si en 30 minutos no llegó, escribinos a <a href="" id="faq-mail" style="color:var(--primary);font-weight:700;"><span class="__cf_email__" data-cfemail="97f4f8f1e5f2f3fef3f6f4e3fef4f8f8d7f0faf6fefbb9f4f8fa">[email&#160;protected]</span></a> con el comprobante y te lo enviamos.</div></details>
+      <details class="faq"><summary>¿Y si no recibo el email?</summary><div class="faq-bd">Revisá la carpeta de spam. Si en 30 minutos no llegó, escribinos a <a href="mailto:cofredidacticoo@gmail.com" id="faq-mail" style="color:var(--primary);font-weight:700;">cofredidacticoo@gmail.com</a> con el comprobante y te lo enviamos.</div></details>
       <details class="faq"><summary>¿Puedo revender o compartir?</summary><div class="faq-bd">Los materiales son de uso personal y educativo. No se permite revender, distribuir masivamente ni modificar con fines comerciales. Sí podés usarlos en tus clases y compartir el link de la tienda con colegas.</div></details>
       <details class="faq"><summary>¿Hacen factura?</summary><div class="faq-bd">La plataforma de pago genera el comprobante automáticamente. Si necesitás factura específica, escribinos.</div></details>
     </div>
@@ -1372,11 +1384,10 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
   </div>
 </footer>
 
-<!-- WhatsApp flotante deshabilitado — descomentar cuando el número esté listo
-<a href="#" class="wa" id="wa" target="_blank" rel="noopener">
+<!-- WhatsApp flotante — se muestra solo si hay número en la config -->
+<a href="#" class="wa" id="wa" target="_blank" rel="noopener" data-umami-event="click-whatsapp" style="display:none;">
   <span style="font-size:1.2rem;">💬</span><span>Consultanos</span>
 </a>
--->
 
 <!-- ═════════ JS — todo en vanilla, sin frameworks ═════════ -->
 <script>
@@ -1414,9 +1425,9 @@ let _filtroTematica = 'todos';
 let _q = '';
 
 // ── Cargar JSON ──
-fetch('productos.json?v=' + Date.now())
+fetch('productos.json?v=' + new Date().toISOString().slice(0,10))
   .then(r => r.json())
-  .then(data => { _data = data; aplicarConfig(); renderSemana(); render(); routear(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); })
+  .then(data => { _data = data; aplicarConfig(); renderSemana(); render(); routear(); generarSchemaProductos(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); })
   .catch(err => {
     console.error('Error cargando productos.json', err);
     $('#grid').innerHTML = '<div class="empty" style="grid-column:1/-1;"><div class="empty-em">⚠️</div><h3>No pudimos cargar el catálogo</h3><p>Probá refrescando la página en unos segundos.</p></div>';
@@ -1442,8 +1453,8 @@ function aplicarConfig(){
 
   // Links
   const L = c.links || {};
-  // WhatsApp flotante deshabilitado — cuando actives el número, descomenta la siguiente línea y el elemento <a id="wa"> en el HTML
-  // if (L.whatsapp) { const wa = $('#wa'); if (wa) wa.href = L.whatsapp; }
+  // WhatsApp flotante — se activa automáticamente si hay número cargado en la config
+  if (L.whatsapp) { const wa = $('#wa'); if (wa){ wa.href = L.whatsapp; wa.style.display = 'inline-flex'; } }
   if (L.email) $('#faq-mail').href = 'mailto:'+L.email;
   // Footer — botones con ícono + etiqueta
   const ftSocialRow = document.getElementById('ft-social-row');
@@ -1467,6 +1478,41 @@ function aplicarConfig(){
   if (ftEmail && L.email) ftEmail.innerHTML = `<a href="mailto:${L.email}" style="color:rgba(255,255,255,.38);">${L.email}</a>`;
 
   $('#year').textContent = new Date().getFullYear();
+}
+
+// ── Datos estructurados de producto (JSON-LD para Google) ──
+// Genera un ItemList con cada material activo → Google puede mostrar precio y disponibilidad.
+function generarSchemaProductos(){
+  const BASE = 'https://cofredidactico.github.io/PaginaWeb/';
+  const prods = (_data.productos || []).filter(p => p.activo);
+  if (!prods.length) return;
+  const items = prods.map((p, i) => {
+    const imgRel = normImg(p.imagen);
+    const prod = {
+      "@type": "Product",
+      "name": p.nombre,
+      "description": (p.descripcion || '').slice(0, 300),
+      "sku": p.id || undefined,
+      "image": imgRel ? BASE + imgRel : undefined,
+      "brand": { "@type": "Brand", "name": "Cofre Didáctico" },
+      "url": BASE + '#/producto/' + (p.id || '')
+    };
+    const precio = p.acceso === 'gratis' ? 0 : (p.precio || 0);
+    prod.offers = {
+      "@type": "Offer",
+      "price": precio,
+      "priceCurrency": "ARS",
+      "availability": "https://schema.org/InStock",
+      "url": p.link || (BASE + '#/producto/' + (p.id || ''))
+    };
+    return { "@type": "ListItem", "position": i + 1, "item": prod };
+  });
+  const schema = { "@context": "https://schema.org", "@type": "ItemList", "itemListElement": items };
+  const el = document.createElement('script');
+  el.type = 'application/ld+json';
+  el.id = 'schema-productos';
+  el.textContent = JSON.stringify(schema);
+  document.head.appendChild(el);
 }
 
 // ── Helpers ──
@@ -1514,7 +1560,7 @@ function cardHTML(p, i, opts){
     <div class="card-peek">${uniq.length} vistas previas</div>
     <div class="card-dots">${uniq.map((_,k)=>`<i class="${k===0?'on':''}"></i>`).join('')}</div>`;
   } else {
-    mediaInner = `<img src="${p.imagen}" alt="${p.nombre}" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded')" onerror="this.style.display='none'" />`;
+    mediaInner = `<img src="${uniq[0]||normImg(p.imagen)}" alt="${p.nombre}" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded')" onerror="this.style.display='none'" />`;
   }
 
   return `
@@ -1739,7 +1785,7 @@ async function suscribirse(e){
       msg.textContent = '✅ ¡Listo! Revisá tu casilla en unos minutos.';
       msg.style.color = 'var(--green)';
       $('#nl-form').reset();
-      if (window.umami) umami.track('newsletter-suscripcion', { email });
+      if (window.umami) umami.track('newsletter-suscripcion');
     }catch(err){
       msg.textContent = '⚠️ Hubo un problema. Escribinos a ' + ((_data.config.links||{}).email||'cofredidacticoo@gmail.com');
       msg.style.color = 'var(--accent)';
