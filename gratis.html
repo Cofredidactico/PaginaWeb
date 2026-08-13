@@ -19,6 +19,10 @@
 <meta name="twitter:description" content="Materiales 100% gratis para tu aula. Descargá hoy y empezá a usarlos." />
 <meta name="twitter:image" content="https://cofredidactico.github.io/PaginaWeb/preview-gratis.png" />
 <link rel="icon" href="logo.png" />
+<link rel="manifest" href="manifest.json" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Cofre Didáctico" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -30,6 +34,7 @@
 :root{
   --primary:#2196F3; --primary-dark:#1976D2; --primary-soft:#E3F2FD;
   --accent:#FF8A4C;
+  --card:#FFFFFF; --hdr-bg:rgba(253,252,248,.85); --dot:rgba(26,39,68,.04);
   --green:#4A8F5C; --green-soft:#DBEDDF;
   --purple:#7B61FF; --purple-soft:#EDE9FF;
   --gold:#F5A623;
@@ -42,13 +47,34 @@
   --f:'Nunito',system-ui,sans-serif;
   --f-display:'Outfit',system-ui,sans-serif;
 }
+/* ─── Tema oscuro (automático por sistema + toggle manual) ─── */
+:root[data-theme="dark"]{
+  --ink:#EEF1F6; --ink-2:#C3CAD6; --ink-3:#96A0B0; --ink-4:#6E7889;
+  --bg:#121722; --bg-2:#1A2130; --bg-3:#222B3C; --line:#2C3648;
+  --card:#1B2230; --hdr-bg:rgba(18,23,34,.85); --dot:rgba(255,255,255,.045);
+  --primary:#54ABF5; --primary-dark:#8CC6F8; --primary-soft:#16283A;
+  --accent:#FF9B63; --green:#5CC47B; --green-soft:#16281C; --gold:#F4B740;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#EEF1F6; --ink-2:#C3CAD6; --ink-3:#96A0B0; --ink-4:#6E7889;
+    --bg:#121722; --bg-2:#1A2130; --bg-3:#222B3C; --line:#2C3648;
+    --card:#1B2230; --hdr-bg:rgba(18,23,34,.85); --dot:rgba(255,255,255,.045);
+    --primary:#54ABF5; --primary-dark:#8CC6F8; --primary-soft:#16283A;
+    --accent:#FF9B63; --green:#5CC47B; --green-soft:#16281C; --gold:#F4B740;
+  }
+}
+.theme-toggle{width:40px;height:40px;border-radius:10px;flex:none;display:inline-flex;align-items:center;justify-content:center;background:var(--card);border:1.5px solid var(--line);color:var(--ink);font-size:1.1rem;transition:background .15s,border-color .15s,transform .15s;}
+.theme-toggle:hover{border-color:var(--primary);transform:translateY(-1px);}
+.theme-toggle:focus-visible{outline:3px solid var(--primary-soft);outline-offset:2px;}
+
 *,*::before,*::after{box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{
   margin:0; font-family:var(--f); font-size:16px; line-height:1.65;
   font-weight:400; -webkit-font-smoothing:antialiased; letter-spacing:-.01em;
   color:var(--ink); background:var(--bg);
-  background-image: radial-gradient(circle at 1px 1px, rgba(26,39,68,.04) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 0);
   background-size: 28px 28px;
   -webkit-font-smoothing:antialiased;
 }
@@ -61,7 +87,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
 /* ─── Header (idéntico al index) ─── */
 .hdr{
   position:sticky; top:0; z-index:50;
-  background:rgba(253,252,248,.85);
+  background:var(--hdr-bg);
   backdrop-filter:saturate(160%) blur(14px);
   -webkit-backdrop-filter:saturate(160%) blur(14px);
   border-bottom:1px solid rgba(26,39,68,.07);
@@ -92,7 +118,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
 .btn-primary:hover{box-shadow:0 8px 24px rgba(255,138,76,.4);}
 .btn-green{background:linear-gradient(135deg,#4A8F5C,#2E7D32);color:#fff;box-shadow:0 4px 14px rgba(46,125,50,.3);}
 .btn-green:hover{box-shadow:0 8px 24px rgba(46,125,50,.4);}
-.btn-ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink);}
+.btn-ghost{background:var(--card);border:1.5px solid var(--line);color:var(--ink);}
 .btn-ghost:hover{border-color:var(--primary);color:var(--primary);}
 .btn-lg{padding:15px 28px;font-size:1rem;}
 .btn-sm{padding:8px 14px;font-size:.85rem;}
@@ -121,7 +147,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
 .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center;}
 .hero-badge{
   display:inline-flex;align-items:center;gap:6px;
-  background:#fff;border:1.5px solid var(--green-soft);
+  background:var(--card);border:1.5px solid var(--green-soft);
   padding:8px 16px;border-radius:99px;font-size:.78rem;font-weight:800;
   letter-spacing:.06em;text-transform:uppercase;color:var(--green);
   box-shadow:var(--s-1);
@@ -146,8 +172,8 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;}
 .hero-promesa{
   display:flex;gap:24px;align-items:center;flex-wrap:wrap;
-  background:rgba(255,255,255,.65);
-  border:1px solid rgba(26,39,68,.06);
+  background:var(--card);
+  border:1px solid var(--line);
   border-radius:18px;padding:16px 22px;
   backdrop-filter:blur(8px);box-shadow:var(--s-1);
 }
@@ -196,7 +222,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
 .pack-knot::after{right:-30px;transform:rotate(25deg);}
 .pack-stamp{
   position:absolute;top:-20px;right:-30px;
-  background:#fff;color:var(--green);
+  background:var(--card);color:var(--green);
   padding:10px 16px;border-radius:99px;font-size:.78rem;font-weight:800;
   letter-spacing:.06em;text-transform:uppercase;
   box-shadow:var(--s-2);
@@ -252,7 +278,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
   .tag-tipo{font-size:.62rem;padding:4px 8px;top:10px;right:10px;}
 }
 .card{
-  background:#fff;border-radius:var(--r-lg);border:1px solid rgba(26,39,68,.07);
+  background:var(--card);border-radius:var(--r-lg);border:1px solid rgba(26,39,68,.07);
   overflow:hidden;cursor:pointer;display:flex;flex-direction:column;
   box-shadow:var(--s-1);
   transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .25s;
@@ -323,9 +349,9 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
   text-align:center;position:relative;overflow:hidden;
 }
 .nl-card{
-  background:rgba(255,255,255,.7);
+  background:var(--card);
   backdrop-filter:blur(12px);
-  border:1px solid rgba(26,39,68,.07);
+  border:1px solid var(--line);
   border-radius:28px;
   padding:56px 40px;
   max-width:620px;
@@ -336,7 +362,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
 .nl .wrap{position:relative;z-index:1;}
 .nl-icon{
   width:72px;height:72px;border-radius:20px;
-  background:#fff;display:flex;align-items:center;justify-content:center;
+  background:var(--card);display:flex;align-items:center;justify-content:center;
   font-size:2rem;margin:0 auto 18px;
   box-shadow:0 10px 24px rgba(46,125,50,.18), 0 1px 2px rgba(26,39,68,.06);
   border:1px solid rgba(26,39,68,.05);transform:rotate(-6deg);
@@ -345,7 +371,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
 .nl-form{display:flex;gap:8px;max-width:480px;margin:24px auto 0;}
 .nl-form input{
   flex:1;padding:15px 18px;border-radius:12px;border:1.5px solid var(--line);
-  font:inherit;background:#fff;color:var(--ink);
+  font:inherit;background:var(--card);color:var(--ink);
 }
 .nl-form input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px var(--green-soft);}
 .nl-mini{font-size:.82rem;color:var(--ink-3);margin-top:14px;}
@@ -370,7 +396,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
 }
 .cafecito-card{
   display:inline-flex;flex-direction:column;align-items:center;gap:16px;
-  background:#fff;border:1px solid var(--line);border-radius:28px;
+  background:var(--card);border:1px solid var(--line);border-radius:28px;
   padding:40px 48px;
   box-shadow:0 12px 40px -10px rgba(26,39,68,.1), var(--s-1);
   max-width:500px;width:100%;
@@ -519,6 +545,9 @@ footer{background:var(--ink);color:#D1D7E0;padding:0;}
 }
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="52b78f4b-a423-415e-bea9-beb9a2424bcc"></script>
+<script>
+(function(){try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
+</script>
 </head>
 <body>
 
@@ -538,6 +567,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:0;}
       <a href="index.html#faq" class="hide-mobile">FAQ</a>
       <a href="gratis.html" class="active hide-mobile">🎁 Gratis</a>
       <a href="#newsletter" class="btn btn-ghost btn-sm hide-xs">📧 Newsletter</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema" onclick="cambiarTema()">🌙</button>
     </nav>
   </div>
 </header>
@@ -822,5 +852,12 @@ document.querySelectorAll('a[href]').forEach(a => {
 
 </script>
 
+<script>
+function temaActual(){var a=document.documentElement.getAttribute('data-theme');if(a)return a;return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+function pintarIconoTema(){var b=document.getElementById('theme-toggle');if(b)b.textContent=temaActual()==='dark'?'☀️':'🌙';}
+function cambiarTema(){var n=temaActual()==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem('tema',n);}catch(e){}pintarIconoTema();}
+pintarIconoTema();
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('service-worker.js').catch(function(){});});}
+</script>
 </body>
 </html>

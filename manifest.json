@@ -1,0 +1,18 @@
+{
+  "name": "Cofre Didáctico — Recursos para docentes",
+  "short_name": "Cofre Didáctico",
+  "description": "Cuadernillos, juegos interactivos y láminas didácticas de calidad editorial.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FDFCF8",
+  "theme_color": "#2196F3",
+  "lang": "es",
+  "categories": ["education", "shopping"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
