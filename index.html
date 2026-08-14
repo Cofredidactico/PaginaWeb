@@ -381,6 +381,8 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
   box-shadow:0 4px 14px rgba(239,78,35,.32);
 }
 .btn-hotmart:hover{box-shadow:0 8px 24px rgba(239,78,35,.42);}
+.btn-pin{background:#E60023;color:#fff;box-shadow:0 4px 14px rgba(230,0,35,.3);}
+.btn-pin:hover{box-shadow:0 8px 24px rgba(230,0,35,.42);}
 .btn-lg{padding:15px 28px;font-size:1rem;}
 .btn-sm{padding:8px 14px;font-size:.85rem;}
 
@@ -2493,6 +2495,7 @@ function renderDetalle(p){
         ${hotmartBtn}
         ${demoBtn}
         <button class="btn btn-ghost btn-lg" data-id="${p.id}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="compartir(this.dataset.id,this.dataset.nombre)">🔗 Compartir</button>
+        <button class="btn btn-pin btn-lg" data-id="${p.id}" data-img="${normImg(p.imagen)}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="guardarPinterest(this)" data-umami-event="pin-guardar" title="Guardar en Pinterest">📌 Guardar</button>
       </div>
 
       <!-- Testimonios al final -->
@@ -2692,6 +2695,15 @@ function animarContador(el, valorFinal){
   obs.observe(el);
 }
 
+function guardarPinterest(el){
+  const BASE = 'https://cofredidactico.github.io/PaginaWeb/';
+  const url = BASE + '#/producto/' + el.dataset.id;
+  const media = BASE + (el.dataset.img || '');
+  const desc = (el.dataset.nombre || 'Recurso didáctico') + ' — Cofre Didáctico';
+  const pin = 'https://www.pinterest.com/pin/create/button/?url=' + encodeURIComponent(url) +
+              '&media=' + encodeURIComponent(media) + '&description=' + encodeURIComponent(desc);
+  window.open(pin, '_blank', 'noopener,noreferrer,width=750,height=650');
+}
 function compartir(id, nombre){
   const url = location.origin + location.pathname + '#/producto/' + id;
   if (navigator.share){
