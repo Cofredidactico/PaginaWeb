@@ -250,6 +250,10 @@
   /* En mobile la navegación vive en la barra inferior: limpiamos el header */
   .hdr .nav a{display:none !important;}
   .hdr .nav{gap:0;}
+  /* En la ficha manda la barra de compra fija: ocultamos lo demás para no chocar */
+  body.in-detail .bottom-nav,
+  body.in-detail .cofre-fab,
+  body.in-detail .to-top{display:none !important;}
 }
 
 /* ─── "Abrí el Cofre" — regalo gamificado ─── */
@@ -317,6 +321,7 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 }
 body{
   margin:0;
+  -webkit-tap-highlight-color:transparent;
   font-family:var(--f-body);
   font-size:16px;
   line-height:1.6;
@@ -1024,6 +1029,7 @@ footer{background:var(--footer-bg);color:#D1D7E0;padding:0;}
   .detail-price .p-now{font-size:1.8rem;}
   .detail-cta{flex-direction:column;gap:8px;}
   .detail-cta .btn{width:100%;justify-content:center;}
+  .detail-cta .cta-sec{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
   .detail-desc{font-size:.95rem;}
   .detail-incluye{padding:16px 18px;}
   .detail-thumb-row{gap:6px;}
@@ -1140,6 +1146,7 @@ body.in-detail footer{display:block;}
   }
 }
 .detail-cta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;}
+.cta-sec{display:contents;}
 .detail-incluye{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 24px;margin-bottom:20px;}
 .detail-incluye h3{font-size:1.05rem;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
 .detail-incluye ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
@@ -2510,8 +2517,10 @@ function renderDetalle(p){
         <a href="${p.link||'#'}" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-umami-event="click-comprar" data-umami-event-id="${p.id}">${cta}</a>
         ${hotmartBtn}
         ${demoBtn}
-        <button class="btn btn-ghost btn-lg" data-id="${p.id}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="compartir(this.dataset.id,this.dataset.nombre)">🔗 Compartir</button>
-        <button class="btn btn-pin btn-lg" data-id="${p.id}" data-img="${normImg(p.imagen)}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="guardarPinterest(this)" data-umami-event="pin-guardar" title="Guardar en Pinterest">📌 Guardar</button>
+        <div class="cta-sec">
+          <button class="btn btn-ghost btn-lg" data-id="${p.id}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="compartir(this.dataset.id,this.dataset.nombre)">🔗 Compartir</button>
+          <button class="btn btn-pin btn-lg" data-id="${p.id}" data-img="${normImg(p.imagen)}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="guardarPinterest(this)" data-umami-event="pin-guardar" title="Guardar en Pinterest">📌 Guardar</button>
+        </div>
       </div>
 
       <!-- Testimonios al final -->
