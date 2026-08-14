@@ -191,6 +191,27 @@
   .lb-close{width:40px;height:40px;}
 }
 
+/* ─── Flipbook: hojear las páginas como una revista ─── */
+.flipbook{position:fixed;inset:0;z-index:210;background:rgba(8,11,18,.94);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px;}
+.flipbook.on{display:flex;animation:lbIn .2s ease;}
+.fb-book{perspective:1900px;max-width:90vw;max-height:84vh;}
+.fb-page{transform-style:preserve-3d;will-change:transform;border-radius:6px;overflow:hidden;background:var(--card);box-shadow:0 30px 80px rgba(0,0,0,.6);}
+.fb-page img{display:block;max-width:90vw;max-height:84vh;object-fit:contain;}
+.fb-close,.fb-nav{position:absolute;background:rgba(255,255,255,.13);color:#fff;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .15s,transform .15s;backdrop-filter:blur(6px);cursor:pointer;}
+.fb-close{top:18px;right:20px;width:44px;height:44px;font-size:1.25rem;}
+.fb-nav{top:50%;transform:translateY(-50%);width:56px;height:56px;font-size:2.2rem;line-height:1;padding-bottom:4px;}
+.fb-prev{left:18px;} .fb-next{right:18px;}
+.fb-close:hover,.fb-nav:hover{background:rgba(255,255,255,.26);}
+.fb-nav:hover{transform:translateY(-50%) scale(1.08);}
+.fb-nav[disabled]{opacity:.3;pointer-events:none;}
+.fb-counter{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.85);background:rgba(0,0,0,.45);padding:6px 15px;border-radius:99px;font-weight:700;font-size:.88rem;}
+.fb-hint{position:absolute;bottom:22px;right:22px;color:rgba(255,255,255,.6);font-size:.78rem;}
+/* Botón para abrir el flipbook desde la ficha */
+.fb-open{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:12px;padding:12px 18px;border-radius:12px;font-weight:800;font-size:.95rem;background:var(--bg-2);color:var(--ink);border:1.5px solid var(--line);transition:all .18s;}
+.fb-open:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px);}
+@media (max-width:560px){ .fb-nav{width:44px;height:44px;font-size:1.7rem;} .fb-hint{display:none;} }
+@media (prefers-reduced-motion:reduce){ .fb-page{transition:none !important;} }
+
 /* ─── Barra de navegación inferior (mobile, estilo app) ─── */
 .bottom-nav{
   position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;
@@ -2445,6 +2466,7 @@ function renderDetalle(p){
         <div class="detail-dots">
           ${imagenes.map((_,i) => `<div class="detail-dot ${i===0?'active':''}" onclick="irAFoto(${i})"></div>`).join('')}
         </div>` : ''}
+      ${imagenes.length > 1 ? `<button class="fb-open" type="button" onclick="abrirFlipbook()" data-umami-event="flipbook-abrir">📖 Hojear las páginas</button>` : ''}
     </div>
     <div class="detail-info">
       <div class="detail-meta">${tags.join('')}</div>
@@ -2548,6 +2570,63 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') cerrarLightbox();
   else if (e.key === 'ArrowLeft') lbNav(-1);
   else if (e.key === 'ArrowRight') lbNav(1);
+});
+
+// ── Flipbook: hojear las páginas de muestra ──
+let _fbIdx = 0, _fbAnim = false;
+function abrirFlipbook(){
+  if (!_galeria.length) return;
+  _fbIdx = _detailIdx || 0;
+  fbRender();
+  const o = document.getElementById('flipbook');
+  o.classList.add('on'); o.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  if (window.umami) umami.track('flipbook-abierto');
+}
+function cerrarFlip(){
+  const o = document.getElementById('flipbook');
+  if (o){ o.classList.remove('on'); o.setAttribute('aria-hidden','true'); }
+  document.body.style.overflow = '';
+}
+function fbRender(){
+  const img = document.getElementById('fb-img'); if (img) img.src = _galeria[_fbIdx];
+  const c = document.getElementById('fb-counter'); if (c) c.textContent = `${_fbIdx+1} / ${_galeria.length}`;
+  fbUpdateNav();
+}
+function fbUpdateNav(){
+  const p = document.getElementById('fb-prev'), n = document.getElementById('fb-next');
+  if (p) p.disabled = _fbIdx <= 0;
+  if (n) n.disabled = _fbIdx >= _galeria.length - 1;
+}
+function flipNext(){ fbFlip(1); }
+function flipPrev(){ fbFlip(-1); }
+function fbFlip(dir){
+  if (_fbAnim) return;
+  const n = _fbIdx + dir; if (n < 0 || n >= _galeria.length) return;
+  const pg = document.getElementById('fb-page'), img = document.getElementById('fb-img');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !pg){ _fbIdx = n; fbRender(); return; }
+  _fbAnim = true;
+  pg.style.transformOrigin = dir > 0 ? 'left center' : 'right center';
+  pg.style.transition = 'transform .28s ease-in';
+  pg.style.transform = `rotateY(${dir>0?-90:90}deg)`;
+  setTimeout(() => {
+    _fbIdx = n; if (img) img.src = _galeria[_fbIdx];
+    const c = document.getElementById('fb-counter'); if (c) c.textContent = `${_fbIdx+1} / ${_galeria.length}`;
+    pg.style.transition = 'none';
+    pg.style.transform = `rotateY(${dir>0?90:-90}deg)`;
+    void pg.offsetWidth; // reflow
+    pg.style.transition = 'transform .28s ease-out';
+    pg.style.transform = 'rotateY(0deg)';
+    setTimeout(() => { _fbAnim = false; fbUpdateNav(); }, 290);
+  }, 280);
+}
+document.addEventListener('keydown', (e) => {
+  const o = document.getElementById('flipbook');
+  if (!o || !o.classList.contains('on')) return;
+  if (e.key === 'Escape') cerrarFlip();
+  else if (e.key === 'ArrowLeft') flipPrev();
+  else if (e.key === 'ArrowRight') flipNext();
 });
 
 function irAFoto(idx){
@@ -3056,7 +3135,7 @@ document.querySelectorAll('a[href]').forEach(a => {
 
 // ── "Abrí el Cofre" — regalo gamificado ──
 // 👉 Cambiá "desc" para que coincida con el descuento que configuraste en Empretienda.
-const CUPON = { codigo: 'COFRE', desc: '15%' };
+const CUPON = { codigo: 'COFRE', desc: '10%' };
 function _cofreInit(){
   const c = document.getElementById('cofre-code-txt'); if (c) c.textContent = CUPON.codigo;
   const d = document.getElementById('cofre-desc'); if (d) d.textContent = CUPON.desc;
@@ -3204,7 +3283,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
     <div class="cofre-reveal">
       <div class="cofre-stage"><div class="cofre-glow"></div><img class="cofre-logo" src="logo.png" alt="" onerror="this.style.display='none'" /></div>
       <h3>🎉 ¡Es tuyo!</h3>
-      <p>Tu cupón de <strong id="cofre-desc">15%</strong> de descuento:</p>
+      <p>Tu cupón de <strong id="cofre-desc">10%</strong> de descuento:</p>
       <div class="cofre-code"><span id="cofre-code-txt">COFRE</span><button class="cofre-copy" type="button" onclick="copiarCupon(this)">Copiar</button></div>
       <p class="cofre-note">Pegalo al momento de pagar en Empretienda. Válido en toda la tienda.</p>
       <a class="btn btn-primary btn-lg" style="width:100%;justify-content:center;" href="#catalogo" onclick="cerrarCofre()" data-umami-event="cofre-ver-catalogo">Ver catálogo →</a>
@@ -3219,6 +3298,16 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
   <img class="lb-img" id="lb-img" alt="Vista ampliada" onclick="lbToggleZoom(event)" />
   <button class="lb-nav lb-next" type="button" onclick="lbNav(1,event)" aria-label="Siguiente">›</button>
   <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<!-- Flipbook: hojear páginas de muestra -->
+<div class="flipbook" id="flipbook" aria-hidden="true" onclick="if(event.target.id==='flipbook')cerrarFlip()">
+  <button class="fb-close" type="button" onclick="cerrarFlip()" aria-label="Cerrar">✕</button>
+  <button class="fb-nav fb-prev" id="fb-prev" type="button" onclick="flipPrev()" aria-label="Página anterior">‹</button>
+  <div class="fb-book"><div class="fb-page" id="fb-page"><img id="fb-img" alt="Página de muestra" /></div></div>
+  <button class="fb-nav fb-next" id="fb-next" type="button" onclick="flipNext()" aria-label="Página siguiente">›</button>
+  <div class="fb-counter" id="fb-counter"></div>
+  <div class="fb-hint">← → para hojear</div>
 </div>
 
 </body>
