@@ -34,7 +34,7 @@
 :root{
   --primary:#2196F3; --primary-dark:#1976D2; --primary-soft:#E3F2FD;
   --accent:#FF8A4C;
-  --card:#FFFFFF; --hdr-bg:rgba(253,252,248,.85); --dot:rgba(26,39,68,.04);
+  --card:#FFFFFF; --hdr-bg:rgba(253,252,248,.85); --dot:rgba(26,39,68,.04); --footer-bg:#1A2744;
   --green:#4A8F5C; --green-soft:#DBEDDF;
   --purple:#7B61FF; --purple-soft:#EDE9FF;
   --gold:#F5A623;
@@ -53,7 +53,7 @@
   --bg:#121722; --bg-2:#1A2130; --bg-3:#222B3C; --line:#2C3648;
   --card:#1B2230; --hdr-bg:rgba(18,23,34,.85); --dot:rgba(255,255,255,.045);
   --primary:#54ABF5; --primary-dark:#8CC6F8; --primary-soft:#16283A;
-  --accent:#FF9B63; --green:#5CC47B; --green-soft:#16281C; --gold:#F4B740;
+  --accent:#FF9B63; --green:#5CC47B; --green-soft:#16281C; --gold:#F4B740; --footer-bg:#0F141D;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
@@ -61,7 +61,7 @@
     --bg:#121722; --bg-2:#1A2130; --bg-3:#222B3C; --line:#2C3648;
     --card:#1B2230; --hdr-bg:rgba(18,23,34,.85); --dot:rgba(255,255,255,.045);
     --primary:#54ABF5; --primary-dark:#8CC6F8; --primary-soft:#16283A;
-    --accent:#FF9B63; --green:#5CC47B; --green-soft:#16281C; --gold:#F4B740;
+    --accent:#FF9B63; --green:#5CC47B; --green-soft:#16281C; --gold:#F4B740; --footer-bg:#0F141D;
   }
 }
 .theme-toggle{width:40px;height:40px;border-radius:10px;flex:none;display:inline-flex;align-items:center;justify-content:center;background:var(--card);border:1.5px solid var(--line);color:var(--ink);font-size:1.1rem;transition:background .15s,border-color .15s,transform .15s;}
@@ -472,7 +472,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.03em;l
 .pq p{font-size:.93rem;color:var(--ink-3);margin:0;line-height:1.6;}
 
 /* ─── Footer (igual que el index) ─── */
-footer{background:var(--ink);color:#D1D7E0;padding:0;}
+footer{background:var(--footer-bg);color:#D1D7E0;padding:0;}
 .ft-main{padding:36px 0 28px;border-bottom:1px solid rgba(255,255,255,.08);}
 .ft-grid{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
 .ft-brand{display:flex;align-items:center;gap:10px;color:#fff;font-family:var(--f-display);font-weight:800;font-size:1.1rem;}

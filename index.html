@@ -54,6 +54,9 @@
   --accent:#FF8A4C; --accent-soft:#FFE9D9;
   --green:#2E7D32; --green-soft:#E8F5E9;
   --gold:#F4A300;
+  --cta-bg:#1A2744; --cta-bg-h:#2196F3; --cta-fg:#ffffff; /* botón "Ver más" */
+  --warm-ink:#C75200; /* texto cálido legible (badge "Esta semana") */
+  --footer-bg:#1A2744; /* footer siempre oscuro en ambos temas */
   /* Radius / shadow */
   --r-sm:8px; --r:14px; --r-lg:22px; --r-xl:32px;
   --s-1: 0 1px 2px rgba(26,39,68,.05);
@@ -77,6 +80,9 @@
   --accent:#FF9B63; --accent-soft:#33221A;
   --green:#5CC47B; --green-soft:#16281C;
   --gold:#F4B740;
+  --cta-bg:#2F6FE0; --cta-bg-h:#1E5FCC; --cta-fg:#ffffff;
+  --warm-ink:#FFB07A;
+  --footer-bg:#0F141D;
   --s-1: 0 1px 2px rgba(0,0,0,.4);
   --s-2: 0 2px 4px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.45);
   --s-3: 0 12px 32px rgba(0,0,0,.55);
@@ -94,6 +100,9 @@
     --accent:#FF9B63; --accent-soft:#33221A;
     --green:#5CC47B; --green-soft:#16281C;
     --gold:#F4B740;
+    --cta-bg:#2F6FE0; --cta-bg-h:#1E5FCC; --cta-fg:#ffffff;
+    --warm-ink:#FFB07A;
+    --footer-bg:#0F141D;
     --s-1: 0 1px 2px rgba(0,0,0,.4);
     --s-2: 0 2px 4px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.45);
     --s-3: 0 12px 32px rgba(0,0,0,.55);
@@ -371,8 +380,8 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .semana-hd .sec-h{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:6px;}
 .semana-badge{
   display:inline-flex;align-items:center;gap:6px;
-  background:linear-gradient(135deg,var(--accent-soft),#FFF3E6);
-  color:#C75200;border:1px solid rgba(255,138,76,.22);
+  background:var(--accent-soft);
+  color:var(--warm-ink);border:1px solid rgba(255,138,76,.22);
   padding:6px 14px;border-radius:99px;font-size:.74rem;font-weight:800;
   letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;
 }
@@ -522,11 +531,12 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .price.gratis{color:var(--green);}
 .price-tachado{font-size:.85rem;color:var(--ink-4);text-decoration:line-through;font-weight:700;margin-right:6px;}
 .btn-card{
-  background:var(--ink);color:#fff;
+  background:var(--cta-bg);color:var(--cta-fg);
   padding:8px 14px;border-radius:10px;font-size:.82rem;font-weight:700;
-  transition:background .2s, transform .2s;
+  box-shadow:0 2px 8px rgba(33,150,243,.18);
+  transition:background .2s, transform .2s, box-shadow .2s;
 }
-.card:hover .btn-card{background:var(--primary);}
+.card:hover .btn-card{background:var(--cta-bg-h);box-shadow:0 4px 14px rgba(33,150,243,.28);}
 
 /* ─── Estado vacío ─── */
 .empty{text-align:center;padding:60px 20px;color:var(--ink-3);}
@@ -534,7 +544,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .empty h3{font-size:1.4rem;color:var(--ink);margin-bottom:8px;}
 
 /* ─── ¿Por qué? ─── */
-.por-que{background:linear-gradient(180deg,#fff,var(--bg-2));}
+.por-que{background:linear-gradient(180deg,var(--card),var(--bg-2));}
 .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
 .feat{
   background:var(--card);border-radius:var(--r-lg);padding:30px 26px 26px;
@@ -616,7 +626,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .nl{
   background:
     radial-gradient(ellipse 60% 80% at 50% 0%, rgba(33,150,243,.07), transparent 70%),
-    linear-gradient(180deg,var(--bg-2),#F0EAD8);
+    linear-gradient(180deg,var(--bg-2),var(--bg-3));
   text-align:center;position:relative;overflow:hidden;
 }
 .nl .wrap{position:relative;z-index:1;}
@@ -646,7 +656,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .nl::after{bottom:22%;right:9%;font-size:2rem;opacity:.18;transform:rotate(15deg);}
 
 /* ─── Footer ─── */
-footer{background:var(--ink);color:#D1D7E0;padding:0;}
+footer{background:var(--footer-bg);color:#D1D7E0;padding:0;}
 /* Footer compacto — top strip + bottom bar */
 .ft-main{padding:36px 0 28px;border-bottom:1px solid rgba(255,255,255,.08);}
 .ft-grid{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
@@ -691,21 +701,6 @@ footer{background:var(--ink);color:#D1D7E0;padding:0;}
 .ft-social-btn:hover{background:rgba(255,255,255,.18);transform:translateY(-3px);border-color:rgba(255,255,255,.25);}
 .ft-social-btn .ft-btn-icon{font-size:1.2rem;line-height:1;}
 .ft-social-btn .ft-btn-label{font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.55);line-height:1;}
-
-/* WhatsApp flotante — visible solo si hay número en la config (lo controla el JS) */
-.wa{
-  position:fixed;bottom:22px;right:22px;z-index:40;
-  align-items:center;gap:8px;
-  padding:13px 20px;border-radius:99px;
-  background:linear-gradient(135deg,#25D366,#1EBE5A);color:#fff;
-  font-family:var(--f-display);font-weight:800;font-size:.95rem;
-  box-shadow:0 8px 24px rgba(37,211,102,.4);
-  transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .2s;
-}
-.wa:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(37,211,102,.5);}
-.wa:active{transform:translateY(0);}
-.wa:focus-visible{outline:3px solid rgba(37,211,102,.5);outline-offset:2px;}
-@media (max-width:560px){ .wa span:last-child{display:none;} .wa{padding:14px;} }
 
 /* ─── Mobile menu (simple drawer) ─── */
 .menu-btn{display:none;}
@@ -1077,7 +1072,7 @@ body.in-detail footer{display:block;}
   min-height:44px;display:inline-flex;align-items:center;
   -webkit-tap-highlight-color:transparent;
 }
-.sheet-chip:hover,.sheet-chip.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+.sheet-chip:hover,.sheet-chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink);}
 .sheet-actions{display:flex;gap:10px;margin-top:4px;}
 .sheet-apply{
   flex:1;padding:13px;border-radius:12px;
@@ -1489,11 +1484,6 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
   </div>
 </footer>
 
-<!-- WhatsApp flotante — se muestra solo si hay número en la config -->
-<a href="#" class="wa" id="wa" target="_blank" rel="noopener" data-umami-event="click-whatsapp" style="display:none;">
-  <span style="font-size:1.2rem;">💬</span><span>Consultanos</span>
-</a>
-
 <!-- ═════════ JS — todo en vanilla, sin frameworks ═════════ -->
 <script>
 const $ = (s, r=document) => r.querySelector(s);
@@ -1595,8 +1585,6 @@ function aplicarConfig(){
 
   // Links
   const L = c.links || {};
-  // WhatsApp flotante — se activa automáticamente si hay número cargado en la config
-  if (L.whatsapp) { const wa = $('#wa'); if (wa){ wa.href = L.whatsapp; wa.style.display = 'inline-flex'; } }
   if (L.email) $('#faq-mail').href = 'mailto:'+L.email;
   // Footer — botones con ícono + etiqueta
   const ftSocialRow = document.getElementById('ft-social-row');
