@@ -69,7 +69,7 @@
 .theme-toggle:focus-visible{outline:3px solid var(--primary-soft);outline-offset:2px;}
 
 /* ─── Barra de navegación inferior (mobile) + volver arriba ─── */
-.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--hdr-bg);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));}
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--hdr-bg);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));}
 .bottom-nav a,.bottom-nav button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 4px;border-radius:12px;font-size:.64rem;font-weight:800;color:var(--ink-3);background:none;transition:color .15s,background .15s;text-align:center;text-decoration:none;cursor:pointer;}
 .bottom-nav .bn-ico{font-size:1.25rem;line-height:1;}
 .bottom-nav a.active{color:var(--primary);}
@@ -580,6 +580,7 @@ footer{background:var(--footer-bg);color:#D1D7E0;padding:0;}
       <a href="index.html#faq" class="hide-mobile">FAQ</a>
       <a href="gratis.html" class="active hide-mobile">🎁 Gratis</a>
       <a href="#newsletter" class="btn btn-ghost btn-sm hide-xs">📧 Newsletter</a>
+      <a href="herramientas.html">🧰 Aula</a>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema" onclick="cambiarTema()">🌙</button>
     </nav>
   </div>
@@ -873,7 +874,8 @@ pintarIconoTema();
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('service-worker.js').catch(function(){});});}
 </script>
 <button class="to-top" id="to-top" type="button" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-<nav class="bottom-nav" aria-label="Navegación principal"><a href="index.html#catalogo"><span class="bn-ico">🛍️</span>Catálogo</a><a href="gratis.html" class="active"><span class="bn-ico">🎁</span>Gratis</a><a href="interactivos.html"><span class="bn-ico">🎮</span>Interactivos</a><a href="index.html"><span class="bn-ico">🏠</span>Inicio</a></nav>
+<nav class="bottom-nav" aria-label="Navegación principal"><a href="index.html#catalogo"><span class="bn-ico">🛍️</span>Catálogo</a><a href="gratis.html" class="active"><span class="bn-ico">🎁</span>Gratis</a><a href="interactivos.html"><span class="bn-ico">🎮</span>Interactivos</a>
+  <a href="herramientas.html"><span class="bn-ico">🧰</span>Aula</a><a href="index.html"><span class="bn-ico">🏠</span>Inicio</a></nav>
 <script>(function(){var t=document.getElementById("to-top");if(!t)return;window.addEventListener("scroll",function(){t.classList.toggle("show",window.scrollY>600);},{passive:true});})();</script>
 </body>
 </html>
