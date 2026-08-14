@@ -493,6 +493,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 }
 .sec-h{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:10px;}
 .sec-sub{color:var(--ink-3);max-width:600px;font-size:1.05rem;}
+.ig-embed{max-width:1000px;margin:28px auto 0;}
 
 /* ─── Barra de filtros compacta ─── */
 .filter-bar{
@@ -1666,6 +1667,21 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
       <details class="faq"><summary>¿Y si no recibo el email?</summary><div class="faq-bd">Revisá la carpeta de spam. Si en 30 minutos no llegó, escribinos a <a href="mailto:cofredidacticoo@gmail.com" id="faq-mail" style="color:var(--primary);font-weight:700;">cofredidacticoo@gmail.com</a> con el comprobante y te lo enviamos.</div></details>
       <details class="faq"><summary>¿Puedo revender o compartir?</summary><div class="faq-bd">Los materiales son de uso personal y educativo. No se permite revender, distribuir masivamente ni modificar con fines comerciales. Sí podés usarlos en tus clases y compartir el link de la tienda con colegas.</div></details>
       <details class="faq"><summary>¿Hacen factura?</summary><div class="faq-bd">La plataforma de pago genera el comprobante automáticamente. Si necesitás factura específica, escribinos.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- Instagram (feed Behold) -->
+<section class="sec" id="instagram">
+  <div class="wrap">
+    <div class="sec-hd" style="text-align:center;">
+      <div class="sec-badge">📸 Comunidad</div>
+      <h2 class="sec-h">Seguinos en <em>Instagram</em></h2>
+      <p class="sec-sub" style="margin:10px auto 0;">Ideas para el aula, novedades y el detrás de escena. Sumate a la comunidad docente.</p>
+    </div>
+    <div class="ig-embed"><behold-widget feed-id="8IEyvLbNL09gpd3oIe7a"></behold-widget></div>
+    <div style="text-align:center;margin-top:22px;">
+      <a href="https://www.instagram.com/cofredidactico/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-umami-event="click-ig">📸 Seguir @cofredidactico</a>
     </div>
   </div>
 </section>
@@ -3323,6 +3339,15 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
   <div class="fb-counter" id="fb-counter"></div>
   <div class="fb-hint">← → para hojear</div>
 </div>
+
+<!-- Behold: cargador del feed de Instagram -->
+<script>
+(() => {
+  if (window.__bhldScript) return; window.__bhldScript = true;
+  const d = document, s = d.createElement("script"); s.type = "module";
+  s.src = "https://w.behold.so/widget.js"; setTimeout(() => { d.head.append(s); }, 0);
+})();
+</script>
 
 </body>
 </html>
