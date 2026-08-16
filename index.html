@@ -163,7 +163,7 @@
 /* ─── Lightbox de galería (visor de imágenes) ─── */
 .lightbox{
   position:fixed;inset:0;z-index:200;
-  background:rgba(8,11,18,.93);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  background:#080b12;
   display:none;align-items:center;justify-content:center;padding:24px;
 }
 .lightbox.on{display:flex;animation:lbIn .2s ease;}
@@ -192,7 +192,7 @@
 }
 
 /* ─── Flipbook: hojear las páginas como una revista ─── */
-.flipbook{position:fixed;inset:0;z-index:210;background:rgba(8,11,18,.94);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px;}
+.flipbook{position:fixed;inset:0;z-index:210;background:#080b12;display:none;align-items:center;justify-content:center;padding:24px;}
 .flipbook.on{display:flex;animation:lbIn .2s ease;}
 .fb-book{perspective:1900px;max-width:90vw;max-height:84vh;}
 .fb-page{transform-style:preserve-3d;will-change:transform;border-radius:6px;overflow:hidden;background:var(--card);box-shadow:0 30px 80px rgba(0,0,0,.6);}
