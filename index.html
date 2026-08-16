@@ -388,6 +388,43 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .btn-hotmart:hover{box-shadow:0 8px 24px rgba(239,78,35,.42);}
 .btn-pin{background:#E60023;color:#fff;box-shadow:0 4px 14px rgba(230,0,35,.3);}
 .btn-pin:hover{box-shadow:0 8px 24px rgba(230,0,35,.42);}
+
+/* ─── Command palette (⌘K) ─── */
+.cmdk{position:fixed;inset:0;z-index:160;display:none;justify-content:center;align-items:flex-start;padding:12vh 20px 20px;background:rgba(10,14,22,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+.cmdk.on{display:flex;animation:lbIn .18s ease;}
+.cmdk-box{width:100%;max-width:600px;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--s-3);overflow:hidden;transform:translateY(-8px);animation:cmdkIn .22s cubic-bezier(.2,.8,.2,1) forwards;}
+@keyframes cmdkIn{to{transform:none;}}
+.cmdk-input-row{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);}
+.cmdk-ico{font-size:1.1rem;opacity:.7;}
+.cmdk-input-row input{flex:1;border:none;background:none;font:inherit;font-size:1.05rem;color:var(--ink);outline:none;}
+.cmdk-mic{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;background:var(--bg-2);color:var(--ink-2);transition:all .15s;flex:none;}
+.cmdk-mic:hover{background:var(--primary-soft);color:var(--primary);}
+.cmdk-mic.rec{background:var(--accent);color:#fff;animation:micPulse 1s infinite;}
+@keyframes micPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,138,76,.5);}50%{box-shadow:0 0 0 8px rgba(255,138,76,0);}}
+.cmdk-esc{font-size:.68rem;font-weight:800;color:var(--ink-4);background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:3px 7px;}
+.cmdk-results{max-height:46vh;overflow-y:auto;padding:8px;}
+.cmdk-sec{font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-4);padding:10px 12px 6px;}
+.cmdk-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:11px;cursor:pointer;}
+.cmdk-item.active,.cmdk-item:hover{background:var(--bg-2);}
+.cmdk-item .ci-ico{width:38px;height:38px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:var(--bg-3);overflow:hidden;}
+.cmdk-item .ci-ico img{width:100%;height:100%;object-fit:cover;}
+.cmdk-item .ci-tx{min-width:0;flex:1;}
+.cmdk-item .ci-tt{font-weight:700;font-size:.96rem;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cmdk-item .ci-sub{font-size:.78rem;color:var(--ink-4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cmdk-item .ci-go{font-size:.9rem;color:var(--ink-4);opacity:0;}
+.cmdk-item.active .ci-go{opacity:1;}
+.cmdk-empty{padding:30px 12px;text-align:center;color:var(--ink-4);font-size:.92rem;}
+.cmdk-foot{display:flex;gap:16px;padding:10px 16px;border-top:1px solid var(--line);font-size:.72rem;color:var(--ink-4);font-weight:600;}
+.cmdk-hint{display:none;align-items:center;gap:5px;padding:6px 11px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line);color:var(--ink-3);font-size:.8rem;font-weight:700;cursor:pointer;transition:border-color .15s;}
+.cmdk-hint:hover{border-color:var(--primary);color:var(--primary);}
+.cmdk-hint kbd{font-family:var(--f-body);font-weight:800;background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:.72rem;}
+@media (min-width:841px){ .cmdk-hint{display:inline-flex;} }
+
+/* ─── Toasts ─── */
+.toast-c{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:320;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;}
+.toast{background:var(--ink);color:var(--bg);font-weight:700;font-size:.9rem;padding:11px 18px;border-radius:12px;box-shadow:var(--s-3);opacity:0;transform:translateY(12px);transition:opacity .25s,transform .25s;}
+.toast.on{opacity:1;transform:none;}
+@media (max-width:700px){ .toast-c{bottom:80px;} }
 .btn-lg{padding:15px 28px;font-size:1rem;}
 .btn-sm{padding:8px 14px;font-size:.85rem;}
 
@@ -1437,6 +1474,7 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
       <a href="gratis.html" class="nav-pill nav-pill-green">🎁 Gratis</a>
       <a href="#newsletter" class="btn btn-ghost btn-sm hide-xs">📧 Newsletter</a>
       <a href="herramientas.html">🧰 Aula</a>
+      <button class="cmdk-hint" type="button" onclick="abrirCmdk()" aria-label="Buscador rápido"><span>🔍 Buscar</span><kbd>⌘K</kbd></button>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema" onclick="cambiarTema()">🌙</button>
     </nav>
   </div>
@@ -3187,7 +3225,8 @@ function _cofreInit(){
     // Auto-abrir una sola vez, tras unos segundos, si no hay otro popup abierto
     setTimeout(() => {
       const exitOpen = document.querySelector('.exit-overlay.on');
-      if (!exitOpen && !document.body.classList.contains('in-detail')) abrirCofre();
+      const cmdkOpen = document.querySelector('.cmdk.on');
+      if (!exitOpen && !cmdkOpen && !document.body.classList.contains('in-detail')) abrirCofre();
       try{ localStorage.setItem('cofre_visto','1'); }catch(e){}
     }, 7000);
   }
@@ -3217,12 +3256,104 @@ function abrirRegalo(){
   if (window.umami) umami.track('cofre-reclamado');
 }
 function copiarCupon(btn){
-  const done = () => { const t = btn.textContent; btn.textContent = '¡Copiado! ✓'; setTimeout(() => btn.textContent = t, 1600); };
+  const done = () => { const t = btn.textContent; btn.textContent = '¡Copiado! ✓'; setTimeout(() => btn.textContent = t, 1600); if (typeof toast === 'function') toast('✓ Cupón ' + CUPON.codigo + ' copiado'); };
   if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(CUPON.codigo).then(done).catch(done); }
   else { const ta = document.createElement('textarea'); ta.value = CUPON.codigo; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} ta.remove(); done(); }
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape'){ const o = document.getElementById('cofre-overlay'); if (o && o.classList.contains('on')) cerrarCofre(); } });
 _cofreInit();
+
+// ── Sistema de toasts ──
+function toast(msg){
+  let c = document.getElementById('toast-c');
+  if (!c){ c = document.createElement('div'); c.id = 'toast-c'; c.className = 'toast-c'; document.body.appendChild(c); }
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; c.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('on'));
+  setTimeout(() => { t.classList.remove('on'); setTimeout(() => t.remove(), 320); }, 2200);
+}
+
+// ── Command palette (⌘K) ──
+let _cmdkItems = [], _cmdkIdx = 0;
+const CMDK_ACCIONES = [
+  {tt:'Ir al catálogo', sub:'Ver todos los materiales', ico:'🛍️', run:()=>{ location.hash=''; const el=document.getElementById('catalogo'); if(el) el.scrollIntoView({behavior:'smooth'}); }},
+  {tt:'Recursos gratis', sub:'gratis.html', ico:'🎁', run:()=>location.href='gratis.html'},
+  {tt:'Juegos interactivos', sub:'interactivos.html', ico:'🎮', run:()=>location.href='interactivos.html'},
+  {tt:'Herramientas para el aula', sub:'herramientas.html', ico:'🧰', run:()=>location.href='herramientas.html'},
+  {tt:'Newsletter', sub:'Suscribirme gratis', ico:'✉️', run:()=>{ location.hash=''; const el=document.getElementById('newsletter'); if(el) el.scrollIntoView({behavior:'smooth'}); }},
+  {tt:'Cambiar tema claro / oscuro', sub:'', ico:'🌓', run:()=>cambiarTema()},
+];
+function abrirCmdk(){
+  const o = document.getElementById('cmdk'); if(!o) return;
+  o.classList.add('on'); o.setAttribute('aria-hidden','false');
+  const inp = document.getElementById('cmdk-input'); if(inp){ inp.value=''; setTimeout(()=>inp.focus(),40); }
+  cmdkRender('');
+  if (window.umami) umami.track('cmdk-abierto');
+}
+function cerrarCmdk(){ const o = document.getElementById('cmdk'); if(o){ o.classList.remove('on'); o.setAttribute('aria-hidden','true'); } }
+function cmdkRender(q){
+  q = (q||'').trim().toLowerCase();
+  const res = document.getElementById('cmdk-results'); if(!res) return;
+  const prods = (_data && _data.productos ? _data.productos : []).filter(p => p.activo);
+  let matched = q ? prods.filter(p => ((p.nombre||'')+' '+(p.descripcion||'')+' '+(p.nivel||'')+' '+(p.tematica||'')).toLowerCase().includes(q)) : prods;
+  matched = matched.slice(0, 6);
+  const acc = CMDK_ACCIONES.filter(a => !q || a.tt.toLowerCase().includes(q));
+  _cmdkItems = []; let html = '';
+  if (matched.length){
+    html += '<div class="cmdk-sec">Materiales</div>';
+    matched.forEach(p => {
+      const idx = _cmdkItems.length;
+      _cmdkItems.push({ run: () => { cerrarCmdk(); location.hash = '#/producto/' + p.id; } });
+      const img = normImg(p.imagen);
+      const precio = p.acceso === 'gratis' ? 'Gratis' : '$' + (p.precio||0).toLocaleString('es-AR');
+      html += `<div class="cmdk-item" data-i="${idx}" onclick="cmdkRun(${idx})"><div class="ci-ico">${img?`<img src="${img}" alt="">`:'📦'}</div><div class="ci-tx"><div class="ci-tt">${p.nombre}</div><div class="ci-sub">${(p.nivel||TIPO_LABELS[p.tipo]||p.tipo||'')} · ${precio}</div></div><span class="ci-go">↵</span></div>`;
+    });
+  }
+  if (acc.length){
+    html += '<div class="cmdk-sec">Ir a</div>';
+    acc.forEach(a => {
+      const idx = _cmdkItems.length; _cmdkItems.push({ run: a.run });
+      html += `<div class="cmdk-item" data-i="${idx}" onclick="cmdkRun(${idx})"><div class="ci-ico">${a.ico}</div><div class="ci-tx"><div class="ci-tt">${a.tt}</div>${a.sub?`<div class="ci-sub">${a.sub}</div>`:''}</div><span class="ci-go">↵</span></div>`;
+    });
+  }
+  if (!_cmdkItems.length) html = `<div class="cmdk-empty">Sin resultados para “${q}”. Probá otra palabra.</div>`;
+  res.innerHTML = html; _cmdkIdx = 0; cmdkHighlight();
+}
+function cmdkHighlight(){
+  const items = document.querySelectorAll('#cmdk-results .cmdk-item');
+  items.forEach((el,i) => el.classList.toggle('active', i === _cmdkIdx));
+  const act = items[_cmdkIdx]; if (act) act.scrollIntoView({block:'nearest'});
+}
+function cmdkRun(i){ const it = _cmdkItems[i]; if (it && it.run) it.run(); }
+function cmdkVoz(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const mic = document.getElementById('cmdk-mic');
+  if (!SR){ toast('Tu navegador no soporta búsqueda por voz'); return; }
+  const rec = new SR(); rec.lang = 'es-AR'; rec.interimResults = false; rec.maxAlternatives = 1;
+  if (mic) mic.classList.add('rec');
+  rec.onresult = e => { const t = e.results[0][0].transcript; const inp = document.getElementById('cmdk-input'); if(inp){ inp.value = t; cmdkRender(t); } };
+  rec.onerror = () => toast('No pude escuchar, probá de nuevo');
+  rec.onend = () => { if (mic) mic.classList.remove('rec'); };
+  try{ rec.start(); }catch(e){ if (mic) mic.classList.remove('rec'); }
+}
+(function(){
+  const inp = document.getElementById('cmdk-input');
+  if (inp) inp.addEventListener('input', e => cmdkRender(e.target.value));
+  document.addEventListener('keydown', e => {
+    const cmdk = document.getElementById('cmdk');
+    const open = cmdk && cmdk.classList.contains('on');
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k'){ e.preventDefault(); open ? cerrarCmdk() : abrirCmdk(); return; }
+    if (e.key === '/' && !open){
+      const tag = (e.target.tagName||'').toLowerCase();
+      if (tag !== 'input' && tag !== 'textarea' && !e.target.isContentEditable){ e.preventDefault(); abrirCmdk(); }
+      return;
+    }
+    if (!open) return;
+    if (e.key === 'Escape') cerrarCmdk();
+    else if (e.key === 'ArrowDown'){ e.preventDefault(); _cmdkIdx = Math.min(_cmdkItems.length-1, _cmdkIdx+1); cmdkHighlight(); }
+    else if (e.key === 'ArrowUp'){ e.preventDefault(); _cmdkIdx = Math.max(0, _cmdkIdx-1); cmdkHighlight(); }
+    else if (e.key === 'Enter'){ e.preventDefault(); cmdkRun(_cmdkIdx); }
+  });
+})();
 
 // ── Botón "volver arriba": mostrar tras scrollear ──
 (function(){
@@ -3288,6 +3419,20 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
       <button class="btn btn-primary" type="submit">Quiero recursos gratis</button>
     </form>
     <a class="exit-alt" href="gratis.html">O ver la sección de recursos gratis →</a>
+  </div>
+</div>
+
+<!-- Command palette (⌘K) -->
+<div class="cmdk" id="cmdk" aria-hidden="true" onclick="if(event.target.id==='cmdk')cerrarCmdk()">
+  <div class="cmdk-box" role="dialog" aria-modal="true" aria-label="Buscador rápido">
+    <div class="cmdk-input-row">
+      <span class="cmdk-ico">🔍</span>
+      <input id="cmdk-input" type="text" placeholder="Buscá un material o navegá…" autocomplete="off" spellcheck="false" />
+      <button class="cmdk-mic" id="cmdk-mic" type="button" title="Buscar por voz" aria-label="Buscar por voz" onclick="cmdkVoz()">🎙️</button>
+      <kbd class="cmdk-esc">Esc</kbd>
+    </div>
+    <div class="cmdk-results" id="cmdk-results"></div>
+    <div class="cmdk-foot"><span>↑ ↓ moverse</span><span>↵ abrir</span><span>⌘K / Ctrl K</span></div>
   </div>
 </div>
 
