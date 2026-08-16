@@ -315,6 +315,20 @@
 
 *,*::before,*::after{box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+
+/* Transiciones suaves entre páginas (navegadores compatibles) */
+@view-transition{ navigation: auto; }
+@media (prefers-reduced-motion:reduce){ @view-transition{ navigation: none; } }
+
+/* Barra de progreso de carga (tipo YouTube) */
+#topbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:400;background:linear-gradient(90deg,var(--primary),var(--accent));box-shadow:0 0 10px rgba(33,150,243,.55);opacity:0;transition:width .2s ease,opacity .35s;pointer-events:none;border-radius:0 3px 3px 0;}
+#topbar.on{opacity:1;}
+
+/* Tilt 3D en las cards (solo dispositivos con mouse) */
+@media (hover:hover) and (pointer:fine){
+  .card{transform-style:preserve-3d;}
+  .card .card-img,.card .card-body{transition:transform .2s;}
+}
 /* Fix viewport height en mobile browsers con barra de URL */
 @supports(height:100dvh){
   .detail-view,.sec{min-height:unset;}
@@ -1453,6 +1467,9 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
 </head>
 <body>
 
+<!-- Barra de progreso de carga -->
+<div id="topbar"></div>
+
 <!-- Banner anuncio (se muestra solo si está activo) -->
 <div class="anuncio" id="anuncio" style="display:none;"></div>
 
@@ -1871,11 +1888,48 @@ function renderChipsActivos(){
   cont.innerHTML = chips.join('');
 }
 
+// ── Barra de progreso de carga + transiciones ──
+let _npTimer = null;
+function npStart(){
+  const b = document.getElementById('topbar'); if (!b) return;
+  clearInterval(_npTimer); b.classList.add('on'); let w = 8; b.style.width = w + '%';
+  _npTimer = setInterval(() => { w += Math.max(.5, (92 - w) * 0.09); if (w > 92) w = 92; b.style.width = w.toFixed(1) + '%'; }, 200);
+}
+function npDone(){
+  const b = document.getElementById('topbar'); if (!b) return;
+  clearInterval(_npTimer); b.style.width = '100%';
+  setTimeout(() => { b.classList.remove('on'); setTimeout(() => { b.style.width = '0'; }, 350); }, 220);
+}
+function withVT(fn){
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (document.startViewTransition && !reduce) document.startViewTransition(fn); else fn();
+}
+// Tilt 3D en las cards (solo mouse)
+function initTilt(){
+  if (!window.matchMedia || !window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  ['grid','semana-grid'].forEach(id => {
+    const cont = document.getElementById(id); if (!cont || cont._tilt) return; cont._tilt = true;
+    cont.addEventListener('pointermove', e => {
+      const card = e.target.closest && e.target.closest('.card'); if (!card) return;
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = `perspective(900px) rotateX(${(-py*5).toFixed(2)}deg) rotateY(${(px*5).toFixed(2)}deg) translateY(-6px)`;
+    });
+    cont.addEventListener('pointerout', e => {
+      const card = e.target.closest && e.target.closest('.card');
+      if (card && (!e.relatedTarget || !card.contains(e.relatedTarget))) card.style.transform = '';
+    });
+  });
+}
+
 // ── Cargar JSON ──
+npStart();
 fetch('productos.json?v=' + new Date().toISOString().slice(0,10))
   .then(r => r.json())
-  .then(data => { _data = data; aplicarConfig(); leerFiltrosDeURL(); renderSemana(); render(); routear(); generarSchemaProductos(); renderHeroCollage(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); })
+  .then(data => { _data = data; aplicarConfig(); leerFiltrosDeURL(); renderSemana(); render(); routear(); generarSchemaProductos(); renderHeroCollage(); initTilt(); npDone(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); })
   .catch(err => {
+    npDone();
     console.error('Error cargando productos.json', err);
     $('#grid').innerHTML = '<div class="empty" style="grid-column:1/-1;"><div class="empty-em">⚠️</div><h3>No pudimos cargar el catálogo</h3><p>Probá refrescando la página en unos segundos.</p></div>';
   });
@@ -2372,7 +2426,17 @@ function routear(){
 }
 let _originalTitle = '';
 window.addEventListener('DOMContentLoaded', () => { _originalTitle = document.title; });
-window.addEventListener('hashchange', routear);
+window.addEventListener('hashchange', () => withVT(routear));
+
+// Mostrar la barra de progreso al navegar a otra página del sitio
+document.addEventListener('click', e => {
+  const a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+  if (a.target === '_blank' || a.hasAttribute('download') || !href || href[0] === '#' ||
+      href.startsWith('mailto:') || href.startsWith('http') || href.startsWith('tel:')) return;
+  if (/\.html($|[?#])/.test(href)) npStart();
+}, true);
 
 function renderDetalle(p){
   document.body.classList.add('in-detail');
