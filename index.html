@@ -170,10 +170,11 @@
 @keyframes lbIn{from{opacity:0;}to{opacity:1;}}
 .lb-img{
   max-width:92vw;max-height:86vh;object-fit:contain;border-radius:10px;
-  cursor:zoom-in;transition:transform .3s cubic-bezier(.2,.8,.2,1);
+  cursor:zoom-in;transition:opacity .3s;
   box-shadow:0 30px 80px rgba(0,0,0,.6);
+  touch-action:none;will-change:transform;transform-origin:center center;
 }
-.lb-img.zoom{cursor:zoom-out;transform:scale(1.9);}
+.lb-img.zoom{cursor:grab;}
 .lb-close,.lb-nav{
   position:absolute;background:rgba(255,255,255,.13);color:#fff;
   display:flex;align-items:center;justify-content:center;border-radius:50%;
@@ -186,7 +187,6 @@
 .lb-nav:hover{transform:translateY(-50%) scale(1.08);}
 .lb-counter{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.85);font-weight:700;font-size:.88rem;background:rgba(0,0,0,.45);padding:6px 15px;border-radius:99px;}
 @media (max-width:560px){
-  .lb-img.zoom{transform:scale(1.5);}
   .lb-nav{width:44px;height:44px;font-size:1.7rem;}
   .lb-close{width:40px;height:40px;}
 }
@@ -376,8 +376,18 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
   backdrop-filter:saturate(160%) blur(14px);
   -webkit-backdrop-filter:saturate(160%) blur(14px);
   border-bottom:1px solid rgba(26,39,68,.07);
+  transition:box-shadow .28s ease, border-color .28s ease, background .28s ease;
 }
-.hdr-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:24px;}
+/* Al scrollear: más vidrio, sombra sutil y header más compacto (clase propia
+   'glass' para no chocar con '.scrolled', que revela el buscador del header) */
+.hdr.glass{
+  backdrop-filter:saturate(185%) blur(20px);
+  -webkit-backdrop-filter:saturate(185%) blur(20px);
+  box-shadow:0 8px 28px -14px rgba(26,39,68,.30);
+  border-bottom-color:transparent;
+}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:24px;transition:padding .28s ease;}
+.hdr.glass .hdr-in{padding:9px 0;}
 .brand{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:800;font-size:1.1rem;}
 .brand img{width:40px;height:40px;border-radius:10px;object-fit:cover;}
 .brand strong{color:var(--accent);}
@@ -757,6 +767,19 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
   opacity:0;position:relative;z-index:0;
 }
 .card-img img.loaded{opacity:1;}
+/* Skeleton shimmer mientras carga la imagen (#5) */
+.card-skel{
+  position:absolute;inset:0;z-index:2;pointer-events:none;opacity:1;transition:opacity .4s ease;
+  background:linear-gradient(100deg,
+    transparent 18%,
+    color-mix(in srgb, #fff 55%, transparent) 50%,
+    transparent 82%);
+  background-size:220% 100%;
+  animation:skelShimmer 1.25s ease-in-out infinite;
+}
+.card-img.media-ready .card-skel{opacity:0;}
+@keyframes skelShimmer{0%{background-position:180% 0;}100%{background-position:-80% 0;}}
+@media (prefers-reduced-motion:reduce){ .card-skel{animation:none;opacity:.5;} }
 .card:hover .card-img img{transform:scale(1.04);}
 .card-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.4),transparent 50%);pointer-events:none;z-index:1;}
 
@@ -1755,7 +1778,7 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
 <!-- ¿Por qué? -->
 <section class="sec por-que" id="por-que">
   <div class="wrap">
-    <div class="sec-hd" style="text-align:center;">
+    <div class="sec-hd reveal" style="text-align:center;">
       <div class="sec-badge">✨ Nuestra promesa</div>
       <h2 class="sec-h">¿Por qué elegir <em>Cofre Didáctico</em>?</h2>
     </div>
@@ -1771,11 +1794,11 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
 <!-- FAQ -->
 <section class="sec" id="faq">
   <div class="wrap">
-    <div class="sec-hd" style="text-align:center;">
+    <div class="sec-hd reveal" style="text-align:center;">
       <div class="sec-badge">❓ Preguntas frecuentes</div>
       <h2 class="sec-h">Todo lo que necesitás <em>saber</em></h2>
     </div>
-    <div class="faq-list">
+    <div class="faq-list reveal">
       <details class="faq"><summary>¿Cómo descargo los materiales?</summary><div class="faq-bd">Después de pagar en Empretienda u Hotmart, recibís un email con el link de descarga. Para los materiales gratuitos, dejás tu email en el formulario de la home y te llega al instante.</div></details>
       <details class="faq"><summary>¿Funcionan en cualquier país?</summary><div class="faq-bd">¡Sí! Son archivos digitales en PDF. Las medidas están en A4 (estándar en Argentina y España). En otros países puede que necesites ajustar la impresora.</div></details>
       <details class="faq"><summary>¿Puedo imprimir en casa?</summary><div class="faq-bd">Sí. Están diseñados para impresora doméstica o copistería. Recomendamos color para aprovechar el diseño, aunque muchos también funcionan en blanco y negro.</div></details>
@@ -1789,7 +1812,7 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
 <!-- Instagram (feed Behold) -->
 <section class="sec" id="instagram">
   <div class="wrap">
-    <div class="sec-hd" style="text-align:center;">
+    <div class="sec-hd reveal" style="text-align:center;">
       <div class="sec-badge">📸 Comunidad</div>
       <h2 class="sec-h">Seguinos en <em>Instagram</em></h2>
       <p class="sec-sub" style="margin:10px auto 0;">Ideas para el aula, novedades y el detrás de escena. Sumate a la comunidad docente.</p>
@@ -2148,17 +2171,18 @@ function cardHTML(p, i, opts){
   if (hasCarousel){
     // Slides
     mediaInner = `<div class="card-carousel" data-count="${uniq.length}">
-      ${uniq.map((src, k) => `<div class="card-slide ${k===0?'on':''}"><img src="${src}" alt="${p.nombre} - vista ${k+1}" width="800" height="1000" sizes="(max-width:600px) 46vw, 280px" loading="lazy" decoding="async" ${k===0?fp:''} onload="this.classList.add('loaded')" /></div>`).join('')}
+      ${uniq.map((src, k) => `<div class="card-slide ${k===0?'on':''}"><img src="${src}" alt="${p.nombre} - vista ${k+1}" width="800" height="1000" sizes="(max-width:600px) 46vw, 280px" loading="lazy" decoding="async" ${k===0?fp:''} onload="this.classList.add('loaded');var _p=this.closest('.card-img');if(_p)_p.classList.add('media-ready')" /></div>`).join('')}
     </div>
     <div class="card-peek">${uniq.length} vistas previas</div>
     <div class="card-dots">${uniq.map((_,k)=>`<i class="${k===0?'on':''}"></i>`).join('')}</div>`;
   } else {
-    mediaInner = `<img src="${uniq[0]||normImg(p.imagen)}" alt="${p.nombre}" width="800" height="1000" sizes="(max-width:600px) 46vw, 280px" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded')" onerror="this.style.display='none'" />`;
+    mediaInner = `<img src="${uniq[0]||normImg(p.imagen)}" alt="${p.nombre}" width="800" height="1000" sizes="(max-width:600px) 46vw, 280px" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded');var _p=this.closest('.card-img');if(_p)_p.classList.add('media-ready')" onerror="this.style.display='none'" />`;
   }
 
   return `
     <a href="#/producto/${p.id}" class="card reveal" style="--i:${i};--tc:${TS.c}" data-id="${p.id}" data-umami-event="click-producto" data-umami-event-id="${p.id}" data-umami-event-nombre="${p.nombre}">
       <div class="card-img">
+        <span class="card-skel" aria-hidden="true"></span>
         ${ribbon}${tipo}${offBadge}
         ${mediaInner}
       </div>
@@ -2395,14 +2419,27 @@ window.addEventListener('popstate', () => {
 
 // ── Reveal animation ──
 function initReveal(){
+  const items = $$('.reveal');
+  if (!('IntersectionObserver' in window)){ items.forEach(el=>el.classList.add('in')); return; }
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
     });
-  }, { rootMargin:'50px' });
-  $$('.reveal').forEach(el => { if(!el.classList.contains('in')) obs.observe(el); });
+  }, { rootMargin:'0px 0px -8% 0px' });
+  items.forEach(el => { if(!el.classList.contains('in')) obs.observe(el); });
+  // Red de seguridad: nada queda oculto si algo falla
+  setTimeout(() => { $$('.reveal:not(.in)').forEach(el => el.classList.add('in')); }, 2600);
 }
 initReveal();
+
+// ── Header "vidrio" al scrollear (#7) ──
+(function(){
+  const hdr = document.getElementById('main-hdr'); if (!hdr) return;
+  let ticking = false;
+  function upd(){ hdr.classList.toggle('glass', (window.scrollY||window.pageYOffset) > 8); ticking = false; }
+  window.addEventListener('scroll', () => { if (!ticking){ ticking = true; requestAnimationFrame(upd); } }, { passive:true });
+  upd();
+})();
 
 // ── Confeti de celebración (canvas, sin librerías) ──
 function lanzarConfeti(){
@@ -2753,6 +2790,7 @@ function abrirLightbox(idx){
 function lbActualizar(){
   const img = document.getElementById('lb-img');
   if (img){ img.src = _galeria[_detailIdx]; img.classList.remove('zoom'); }
+  if (typeof lbReset === 'function') lbReset();
   const c = document.getElementById('lb-counter');
   if (c) c.textContent = `${_detailIdx+1} / ${_galeria.length}`;
   const solo = _galeria.length < 2;
@@ -2764,8 +2802,30 @@ function cerrarLightbox(){
   const lb = document.getElementById('lightbox');
   if (lb){ lb.classList.remove('on'); lb.setAttribute('aria-hidden','true'); }
   document.body.style.overflow = '';
+  if (typeof lbReset === 'function') lbReset();
 }
-function lbToggleZoom(e){ if(e) e.stopPropagation(); const i=document.getElementById('lb-img'); if(i) i.classList.toggle('zoom'); }
+// ── Zoom con pellizco (pinch) + arrastre en el lightbox (#6) ──
+let _lbScale=1,_lbX=0,_lbY=0,_lbPinched=false;
+const _lbPts=new Map(); let _lbStartDist=0,_lbStartScale=1,_lbPanStart=null;
+function lbApply(){ const i=document.getElementById('lb-img'); if(!i)return; i.style.transform=`translate(${_lbX}px,${_lbY}px) scale(${_lbScale})`; i.classList.toggle('zoom',_lbScale>1.02); }
+function lbReset(){ _lbScale=1;_lbX=0;_lbY=0;_lbPts.clear();_lbPanStart=null; lbApply(); }
+function lbClampPan(){ const i=document.getElementById('lb-img'); if(!i)return; const mx=(i.clientWidth*(_lbScale-1))/2+30, my=(i.clientHeight*(_lbScale-1))/2+30; _lbX=Math.max(-mx,Math.min(mx,_lbX)); _lbY=Math.max(-my,Math.min(my,_lbY)); }
+function lbToggleZoom(e){ if(e) e.stopPropagation(); if(_lbPinched){ _lbPinched=false; return; } if(_lbScale>1.02){ lbReset(); } else { _lbScale=2.5; _lbX=0;_lbY=0; lbApply(); } }
+function initLbZoom(){
+  const img=document.getElementById('lb-img'); if(!img||img._z)return; img._z=true;
+  img.addEventListener('pointerdown',e=>{ try{img.setPointerCapture(e.pointerId);}catch(_){}
+    _lbPts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(_lbPts.size===2){ _lbPinched=true; const p=[..._lbPts.values()]; _lbStartDist=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y)||1; _lbStartScale=_lbScale; }
+    else if(_lbPts.size===1 && _lbScale>1.02){ _lbPanStart={x:e.clientX-_lbX,y:e.clientY-_lbY}; }
+  });
+  img.addEventListener('pointermove',e=>{ if(!_lbPts.has(e.pointerId))return; _lbPts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(_lbPts.size===2){ const p=[..._lbPts.values()]; const d=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y); _lbScale=Math.max(1,Math.min(4,_lbStartScale*(d/_lbStartDist))); lbClampPan(); lbApply(); }
+    else if(_lbPts.size===1 && _lbScale>1.02 && _lbPanStart){ _lbX=e.clientX-_lbPanStart.x; _lbY=e.clientY-_lbPanStart.y; lbClampPan(); lbApply(); }
+  });
+  function up(e){ _lbPts.delete(e.pointerId); if(_lbPts.size<2)_lbStartDist=0; if(_lbScale<1.05 && _lbPts.size===0) lbReset(); }
+  img.addEventListener('pointerup',up); img.addEventListener('pointercancel',up);
+}
+document.addEventListener('DOMContentLoaded', initLbZoom);
 function lbBackdrop(e){ if (e.target && e.target.id === 'lightbox') cerrarLightbox(); }
 document.addEventListener('keydown', (e) => {
   const lb = document.getElementById('lightbox');
