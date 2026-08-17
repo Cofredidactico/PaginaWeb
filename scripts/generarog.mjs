@@ -47,7 +47,10 @@ for (const p of productos) {
   const descBase = (p.descripcion || p.subtitulo || 'Recurso educativo para el aula, hecho por una docente para docentes.')
     .replace(/\s+/g, ' ').trim().slice(0, 155);
   const desc = `${precioTxt} · ${descBase}`;
-  const img = normImg(p.imagen);
+  // Preferimos la tarjeta apaisada premium (1200×630) si existe; si no, la foto del producto.
+  const ogLocal = `og/${p.id}.jpg`;
+  const tieneOg = fs.existsSync(path.join(ROOT, ogLocal));
+  const img = tieneOg ? (BASE + ogLocal) : normImg(p.imagen);
   const url = `${BASE}p/${p.id}.html`;
   const destino = `../index.html#/producto/${p.id}`;
 
@@ -80,7 +83,10 @@ for (const p of productos) {
 <meta property="og:type" content="product">
 <meta property="og:title" content="${esc(titulo)}">
 <meta property="og:description" content="${esc(desc)}">
-<meta property="og:image" content="${esc(img)}">
+<meta property="og:image" content="${esc(img)}">${tieneOg ? `
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(nombre)} — Cofre Didáctico">` : ''}
 <meta property="og:url" content="${esc(url)}">
 <meta property="og:locale" content="es_AR">
 <meta property="product:price:amount" content="${p.acceso === 'gratis' ? '0' : String(p.precio || 0)}">
