@@ -208,6 +208,19 @@
 .fb-hint{position:absolute;bottom:22px;right:22px;color:rgba(255,255,255,.6);font-size:.78rem;}
 /* Botón para abrir el flipbook desde la ficha */
 .fb-open{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:12px;padding:12px 18px;border-radius:12px;font-weight:800;font-size:.95rem;background:var(--bg-2);color:var(--ink);border:1.5px solid var(--line);transition:all .18s;}
+
+/* ─── Placa para Instagram Stories ─── */
+.btn-placa{flex-basis:100%;width:100%;}
+.placa-modal{position:fixed;inset:0;z-index:230;background:rgba(8,11,18,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;flex-direction:column;gap:16px;}
+.placa-modal.on{display:flex;animation:lbIn .2s ease;}
+.placa-canvas-wrap{position:relative;max-width:min(340px,80vw);width:100%;}
+.placa-canvas-wrap canvas{width:100%;height:auto;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6);display:block;background:#fff;}
+.placa-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:min(340px,80vw);width:100%;}
+.placa-actions .btn{flex:1;min-width:130px;justify-content:center;}
+.placa-title{color:#fff;font-family:var(--f-display);font-weight:800;font-size:1.05rem;text-align:center;margin:0;}
+.placa-sub{color:rgba(255,255,255,.7);font-size:.82rem;text-align:center;margin:-6px 0 0;max-width:320px;line-height:1.35;}
+.placa-close{position:absolute;top:16px;right:18px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.13);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.25rem;backdrop-filter:blur(6px);cursor:pointer;border:none;z-index:2;}
+.placa-close:hover{background:rgba(255,255,255,.26);}
 .fb-open:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px);}
 @media (max-width:560px){ .fb-nav{width:44px;height:44px;font-size:1.7rem;} .fb-hint{display:none;} }
 @media (prefers-reduced-motion:reduce){ .fb-page{transition:none !important;} }
@@ -2623,6 +2636,7 @@ function renderDetalle(p){
           <button class="btn btn-ghost btn-lg" data-id="${p.id}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="compartir(this.dataset.id,this.dataset.nombre)">🔗 Compartir</button>
           <button class="btn btn-pin btn-lg" data-id="${p.id}" data-img="${normImg(p.imagen)}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="guardarPinterest(this)" data-umami-event="pin-guardar" title="Guardar en Pinterest">📌 Guardar</button>
         </div>
+        <button class="btn btn-ghost btn-lg btn-placa" data-id="${p.id}" onclick="abrirPlaca(this.dataset.id)" data-umami-event="placa-abrir" data-umami-event-id="${p.id}">📲 Crear placa para Instagram</button>
       </div>
 
       <!-- Testimonios al final -->
@@ -2839,6 +2853,195 @@ function compartir(id, nombre){
     navigator.clipboard.writeText(url).then(() => alert('¡Link copiado! Ya podés compartirlo 📝'));
   }
   if (window.umami) umami.track('compartir-producto', { id });
+}
+
+// ══════════════════════════════════════════
+// PLACA PARA INSTAGRAM STORIES (canvas 1080×1920)
+// ══════════════════════════════════════════
+let _placaBlob = null, _placaNombre = 'cofre-didactico';
+async function abrirPlaca(id){
+  const p = (_data && _data.productos || []).find(x => x.id === id);
+  if (!p){ return; }
+  const modal = document.getElementById('placa');
+  modal.classList.add('on'); modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  try { if (document.fonts && document.fonts.ready) await document.fonts.ready; } catch(e){}
+  await dibujarPlaca(p);
+  // Mostrar botón compartir solo si el dispositivo puede compartir archivos
+  const sh = document.getElementById('placa-share');
+  if (sh) sh.style.display = (navigator.canShare && navigator.share) ? 'inline-flex' : 'none';
+  if (window.umami) umami.track('placa-generada', { id });
+}
+function cerrarPlaca(){
+  const modal = document.getElementById('placa');
+  modal.classList.remove('on'); modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape'){ const m = document.getElementById('placa'); if (m && m.classList.contains('on')) cerrarPlaca(); }
+});
+function _cargarImg(src){
+  return new Promise(res => {
+    const im = new Image();
+    im.crossOrigin = 'anonymous';
+    im.onload = () => res(im);
+    im.onerror = () => res(null);
+    im.src = src;
+  });
+}
+function _wrapText(ctx, text, maxW){
+  const words = String(text||'').split(/\s+/); const lines = []; let line = '';
+  for (const w of words){
+    const test = line ? line + ' ' + w : w;
+    if (ctx.measureText(test).width > maxW && line){ lines.push(line); line = w; }
+    else line = test;
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+async function dibujarPlaca(p){
+  const cv = document.getElementById('placa-canvas');
+  const ctx = cv.getContext('2d');
+  const W = 1080, H = 1920;
+  ctx.clearRect(0,0,W,H);
+  // Fondo degradado marca
+  const g = ctx.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,'#2196F3'); g.addColorStop(.55,'#1E88E5'); g.addColorStop(1,'#0D63C4');
+  ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+  // Blobs decorativos
+  ctx.save();
+  ctx.globalAlpha = .14; ctx.fillStyle = '#FF8A4C';
+  ctx.beginPath(); ctx.arc(920,180,220,0,Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(120,1760,260,0,Math.PI*2); ctx.fill();
+  ctx.globalAlpha = .1; ctx.fillStyle = '#fff';
+  ctx.beginPath(); ctx.arc(150,320,120,0,Math.PI*2); ctx.fill();
+  ctx.restore();
+  // Marca arriba
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.font = '800 62px Outfit, sans-serif';
+  ctx.fillStyle = '#fff'; ctx.fillText('Cofre ', W/2 - 70, 165);
+  const wCofre = ctx.measureText('Cofre ').width;
+  ctx.fillStyle = '#FFB07A'; ctx.textAlign = 'left';
+  ctx.fillText('Didáctico', W/2 - 70 + wCofre/2, 165);
+  ctx.textAlign = 'center';
+  ctx.font = '700 30px Nunito, sans-serif'; ctx.fillStyle = 'rgba(255,255,255,.85)';
+  ctx.fillText('Materiales educativos para docentes', W/2, 210);
+  // Tarjeta blanca
+  const cardX = 80, cardY = 300, cardW = W-160, cardH = 1240, rad = 46;
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,.25)'; ctx.shadowBlur = 50; ctx.shadowOffsetY = 20;
+  ctx.fillStyle = '#fff';
+  ctx.beginPath(); ctx.roundRect(cardX, cardY, cardW, cardH, rad); ctx.fill();
+  ctx.restore();
+  // Imagen del producto (cover) en zona superior de la tarjeta
+  const imgH = 760, imgY = cardY, imgAreaX = cardX, imgAreaW = cardW;
+  ctx.save();
+  ctx.beginPath(); ctx.roundRect(imgAreaX, imgY, imgAreaW, imgH, [rad,rad,0,0]); ctx.clip();
+  ctx.fillStyle = '#EAF3FB'; ctx.fillRect(imgAreaX, imgY, imgAreaW, imgH);
+  const im = await _cargarImg(normImg(p.imagen));
+  if (im && im.width){
+    const ar = im.width/im.height, arBox = imgAreaW/imgH;
+    let dw, dh, dx, dy;
+    if (ar > arBox){ dh = imgH; dw = dh*ar; dx = imgAreaX-(dw-imgAreaW)/2; dy = imgY; }
+    else { dw = imgAreaW; dh = dw/ar; dx = imgAreaX; dy = imgY-(dh-imgH)/2; }
+    ctx.drawImage(im, dx, dy, dw, dh);
+  } else {
+    ctx.fillStyle = '#B9D4EC'; ctx.font = '120px sans-serif'; ctx.textAlign='center';
+    ctx.fillText('📚', imgAreaX+imgAreaW/2, imgY+imgH/2+40);
+  }
+  ctx.restore();
+  // Badge de oferta
+  const esGratis = p.acceso === 'gratis';
+  const pct = (!esGratis && p.precioTachado && p.precioTachado > p.precio)
+    ? Math.round((1 - p.precio/p.precioTachado)*100) : 0;
+  if (esGratis || pct >= 5){
+    ctx.save();
+    ctx.fillStyle = esGratis ? '#22A06B' : '#FF6B35';
+    const bw = 260, bh = 92, bx = cardX+40, by = imgY+40;
+    ctx.beginPath(); ctx.roundRect(bx, by, bw, bh, 20); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = '800 46px Outfit, sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(esGratis ? '¡GRATIS!' : ('−'+pct+'% OFF'), bx+bw/2, by+bh/2+2);
+    ctx.restore();
+  }
+  // Texto: nombre + precio, centrados verticalmente en la zona bajo la imagen
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.font = '800 58px Outfit, sans-serif';
+  const lines = _wrapText(ctx, p.nombre, cardW-120).slice(0,3);
+  const lineH = 70;
+  const hasOld = !esGratis && p.precioTachado && p.precioTachado > p.precio;
+  const priceH = esGratis ? 92 : (hasOld ? 60 : 0) + 100;
+  const gap = 34;
+  const blockH = lines.length*lineH + gap + priceH;
+  const regTop = imgY + imgH, regBot = cardY + cardH;
+  const top = regTop + Math.max(24, (regBot - regTop - blockH)/2);
+  // Nombre
+  ctx.fillStyle = '#12233A'; ctx.font = '800 58px Outfit, sans-serif';
+  let ny = top + 58;
+  lines.forEach(ln => { ctx.fillText(ln, W/2, ny); ny += lineH; });
+  // Precio
+  let py = top + lines.length*lineH + gap;
+  if (esGratis){
+    ctx.fillStyle = '#22A06B'; ctx.font = '800 84px Outfit, sans-serif';
+    ctx.fillText('¡Gratis! 🎁', W/2, py + 74);
+  } else {
+    if (hasOld){
+      ctx.fillStyle = '#9AA7B4'; ctx.font = '600 40px Nunito, sans-serif';
+      const old = '$'+Number(p.precioTachado).toLocaleString('es-AR');
+      ctx.fillText(old, W/2, py + 38);
+      const ow = ctx.measureText(old).width;
+      ctx.strokeStyle = '#9AA7B4'; ctx.lineWidth = 3; ctx.beginPath();
+      ctx.moveTo(W/2-ow/2, py+24); ctx.lineTo(W/2+ow/2, py+24); ctx.stroke();
+      py += 60;
+    }
+    ctx.fillStyle = '#2196F3'; ctx.font = '800 92px Outfit, sans-serif';
+    ctx.fillText('$'+Number(p.precio||0).toLocaleString('es-AR'), W/2, py + 84);
+  }
+  // CTA pill inferior
+  ctx.save();
+  const pillW = 620, pillH = 118, pillX = (W-pillW)/2, pillY = 1710;
+  ctx.fillStyle = '#FF8A4C';
+  ctx.beginPath(); ctx.roundRect(pillX, pillY, pillW, pillH, 60); ctx.fill();
+  ctx.fillStyle = '#fff'; ctx.font = '800 44px Outfit, sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('🛍️  Conseguilo en la tienda', W/2, pillY+pillH/2+2);
+  ctx.restore();
+  // Handle
+  ctx.fillStyle = 'rgba(255,255,255,.9)'; ctx.font = '700 34px Nunito, sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('@cofredidactico', W/2, 1868);
+  // Exportar a blob
+  _placaNombre = 'cofre-' + String(p.id||'material').replace(/[^a-z0-9]+/gi,'-').toLowerCase();
+  try {
+    cv.toBlob(b => { _placaBlob = b; }, 'image/png');
+  } catch(e){ _placaBlob = null; }
+}
+function descargarPlaca(){
+  const cv = document.getElementById('placa-canvas');
+  const finish = (blob) => {
+    if (!blob){ toast('No se pudo generar la imagen 😕'); return; }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = _placaNombre + '.png';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+    if (typeof toast === 'function') toast('¡Placa descargada! 📲 Subila a tu historia');
+    if (window.umami) umami.track('placa-descargada');
+  };
+  if (_placaBlob) finish(_placaBlob);
+  else cv.toBlob(finish, 'image/png');
+}
+async function compartirPlaca(){
+  const cv = document.getElementById('placa-canvas');
+  const blob = _placaBlob || await new Promise(r => cv.toBlob(r, 'image/png'));
+  if (!blob) return;
+  const file = new File([blob], _placaNombre + '.png', { type: 'image/png' });
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [file] })){
+      await navigator.share({ files: [file], title: 'Cofre Didáctico' });
+      if (window.umami) umami.track('placa-compartida');
+    } else { descargarPlaca(); }
+  } catch(e){ /* usuario canceló */ }
 }
 
 
@@ -3556,6 +3759,18 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
   <button class="fb-nav fb-next" id="fb-next" type="button" onclick="flipNext()" aria-label="Página siguiente">›</button>
   <div class="fb-counter" id="fb-counter"></div>
   <div class="fb-hint">← → para hojear</div>
+</div>
+
+<!-- Placa para Instagram Stories -->
+<div class="placa-modal" id="placa" aria-hidden="true" onclick="if(event.target.id==='placa')cerrarPlaca()">
+  <button class="placa-close" type="button" onclick="cerrarPlaca()" aria-label="Cerrar">✕</button>
+  <p class="placa-title">📲 Tu placa lista para compartir</p>
+  <div class="placa-canvas-wrap"><canvas id="placa-canvas" width="1080" height="1920"></canvas></div>
+  <div class="placa-actions">
+    <button class="btn btn-primary btn-lg" type="button" onclick="descargarPlaca()">⬇️ Descargar</button>
+    <button class="btn btn-ghost btn-lg" id="placa-share" type="button" onclick="compartirPlaca()" style="display:none;">📤 Compartir</button>
+  </div>
+  <p class="placa-sub">Descargala y subila a tu historia de Instagram. ¡Etiquetanos! 💙</p>
 </div>
 
 <!-- Behold: cargador del feed de Instagram -->
