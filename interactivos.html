@@ -10,17 +10,17 @@
 <meta property="og:description" content="Plataformas interactivas. Probalas acá mismo, jugá completo gratis o sumalas a tu aula." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://cofredidactico.github.io/PaginaWeb/interactivos.html" />
-<meta property="og:image" content="https://cofredidactico.github.io/PaginaWeb/preview-interactivos.png" />
+<meta property="og:image" content="https://cofredidactico.github.io/PaginaWeb/previewinteractivos.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="es_AR" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Recursos Interactivos — Cofre Didáctico" />
 <meta name="twitter:description" content="Plataformas interactivas. Probalas acá mismo, jugá completo gratis o sumala a tu aula." />
-<meta name="twitter:image" content="https://cofredidactico.github.io/PaginaWeb/preview-interactivos.png" />
+<meta name="twitter:image" content="https://cofredidactico.github.io/PaginaWeb/previewinteractivos.png" />
 <link rel="icon" href="logo.png" />
 <link rel="manifest" href="manifest.json" />
-<link rel="apple-touch-icon" href="icon-192.png" />
+<link rel="apple-touch-icon" href="icon192.png" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-title" content="Cofre Didáctico" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -948,7 +948,7 @@ function temaActual(){var a=document.documentElement.getAttribute('data-theme');
 function pintarIconoTema(){var b=document.getElementById('theme-toggle');if(b)b.textContent=temaActual()==='dark'?'☀️':'🌙';}
 function cambiarTema(){var n=temaActual()==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem('tema',n);}catch(e){}pintarIconoTema();}
 pintarIconoTema();
-if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('service-worker.js').catch(function(){});});}
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('serviceworker.js').catch(function(){});});}
 </script>
 <button class="to-top" id="to-top" type="button" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <nav class="bottom-nav" aria-label="Navegación principal"><a href="index.html#catalogo"><span class="bn-ico">🛍️</span>Catálogo</a><a href="gratis.html"><span class="bn-ico">🎁</span>Gratis</a><a href="interactivos.html" class="active"><span class="bn-ico">🎮</span>Interactivos</a>

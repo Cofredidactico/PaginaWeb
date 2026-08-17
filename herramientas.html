@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="logo.png" />
 <link rel="manifest" href="manifest.json" />
-<link rel="apple-touch-icon" href="icon-192.png" />
+<link rel="apple-touch-icon" href="icon192.png" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-title" content="Cofre Didáctico" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -538,7 +538,7 @@ function toggleSemAuto(){
 
 /* ── Volver arriba + SW ── */
 window.addEventListener('scroll',()=>{ const t=$('#to-top'); if(t)t.classList.toggle('show',scrollY>500); },{passive:true});
-if('serviceWorker' in navigator){ window.addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js').catch(()=>{})); }
+if('serviceWorker' in navigator){ window.addEventListener('load',()=>navigator.serviceWorker.register('serviceworker.js').catch(()=>{})); }
 </script>
 </body>
 </html>

@@ -11,8 +11,8 @@ const SHELL = [
   './interactivos.html',
   './gratis.html',
   './logo.png',
-  './icon-192.png',
-  './icon-512.png',
+  './icon192.png',
+  './icon512.png',
   './manifest.json'
 ];
 
