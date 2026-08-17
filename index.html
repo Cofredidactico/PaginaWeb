@@ -2854,8 +2854,14 @@ function guardarPinterest(el){
               '&media=' + encodeURIComponent(media) + '&description=' + encodeURIComponent(desc);
   window.open(pin, '_blank', 'noopener,noreferrer,width=750,height=650');
 }
+// Link a la mini-página de compartir (con tarjeta OG por producto).
+// Cae al link con # si por algún motivo no existiera la mini-página.
+function urlProducto(id){
+  const dir = location.pathname.replace(/[^/]*$/, '');
+  return location.origin + dir + 'p/' + id + '.html';
+}
 function compartir(id, nombre){
-  const url = location.origin + location.pathname + '#/producto/' + id;
+  const url = urlProducto(id);
   if (navigator.share){
     navigator.share({title:nombre + ' — Cofre Didáctico', url}).catch(()=>{});
   } else {
@@ -3372,7 +3378,7 @@ function ocultarFloatBuy(){
 function compartirProducto(e, id, nombre){
   e.preventDefault();
   e.stopPropagation();
-  const url = location.origin + location.pathname + '#/producto/' + id;
+  const url = urlProducto(id);
   if (navigator.share){
     navigator.share({ title: nombre + ' · Cofre Didáctico', url });
   } else {
@@ -3802,7 +3808,21 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
         // Worker aislado en /onesignal/ para no pisar el service worker de la PWA
         serviceWorkerPath: "PaginaWeb/onesignal/OneSignalSDKWorker.js",
         serviceWorkerParam: { scope: "/PaginaWeb/onesignal/" },
-        allowLocalhostAsSecureOrigin: true
+        allowLocalhostAsSecureOrigin: true,
+        // Cartelito de suscripción en español, amigable y con la voz de la marca
+        promptOptions: {
+          slidedown: {
+            prompts: [{
+              type: "push",
+              autoPrompt: false,
+              text: {
+                actionMessage: "¿Querés enterarte primero cuando subimos material nuevo y ofertas para tus clases? 🎁",
+                acceptButton: "¡Sí, avisame!",
+                cancelButton: "Ahora no"
+              }
+            }]
+          }
+        }
       });
       actualizarBotonPush();
       if (OneSignal.Notifications && OneSignal.Notifications.addEventListener)
@@ -3827,7 +3847,12 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
     window.OneSignalDeferred = window.OneSignalDeferred || [];
     OneSignalDeferred.push(async function(OneSignal) {
       try {
-        await OneSignal.Notifications.requestPermission();
+        // Muestra el cartelito en español; si no está disponible, cae al pedido nativo
+        if (OneSignal.Slidedown && OneSignal.Slidedown.promptPush) {
+          await OneSignal.Slidedown.promptPush({ force: true });
+        } else {
+          await OneSignal.Notifications.requestPermission();
+        }
         actualizarBotonPush();
         if (Notification.permission === 'granted' && typeof toast === 'function') toast('¡Listo! Te avisaremos del material nuevo 🔔');
         if (window.umami) umami.track('push-activado');
