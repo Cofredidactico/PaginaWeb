@@ -472,6 +472,14 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
     radial-gradient(ellipse 70% 60% at 15% 0%, rgba(33,150,243,.10), transparent 60%),
     radial-gradient(ellipse 70% 60% at 90% 100%, rgba(255,138,76,.10), transparent 60%);
 }
+/* Fondo "vivo" según la hora del día (#8) */
+.hero::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.85;transition:background .8s ease;background:transparent;}
+body.tod-morning   .hero::after{background:radial-gradient(ellipse 90% 70% at 18% -12%, rgba(255,208,128,.26), transparent 62%);}
+body.tod-afternoon .hero::after{background:radial-gradient(ellipse 90% 70% at 85% -12%, rgba(110,185,255,.20), transparent 62%);}
+body.tod-night     .hero::after{background:linear-gradient(180deg, rgba(52,74,140,.22), transparent 55%),radial-gradient(ellipse 70% 60% at 80% 0%, rgba(120,110,200,.16), transparent 60%);}
+/* Saludo personalizado */
+.hero-hola{font-family:var(--f-display);font-weight:800;color:var(--accent);font-size:.92rem;margin-bottom:10px;min-height:1.1em;letter-spacing:.01em;opacity:0;transform:translateY(6px);transition:opacity .5s, transform .5s;}
+.hero-hola.on{opacity:1;transform:none;}
 /* Materiales escolares flotando suavemente en el fondo del hero */
 .hero > .wrap{position:relative;z-index:2;}
 .hero-float{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
@@ -767,6 +775,8 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
   opacity:0;position:relative;z-index:0;
 }
 .card-img img.loaded{opacity:1;}
+/* Parallax en las portadas (solo touch): la imagen deriva sobre su fondo temático */
+.grid.px-live .card-img img,.semana-grid.px-live .card-img img{transition:none;will-change:transform;}
 /* Skeleton shimmer mientras carga la imagen (#5) */
 .card-skel{
   position:absolute;inset:0;z-index:2;pointer-events:none;opacity:1;transition:opacity .4s ease;
@@ -1671,6 +1681,7 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
   </div>
   <div class="wrap">
     <div class="hero-i">
+      <div class="hero-hola" id="hero-hola" aria-live="polite"></div>
       <div class="hero-badge">✨ Recursos didácticos digitales</div>
       <h1>Propuestas que<br><em class="hero-em-highlight">enamoran</em> el aula</h1>
       <p class="lead">Cuadernillos, juegos interactivos y láminas de calidad editorial. Listos para imprimir, diseñados con amor para docentes.</p>
@@ -2361,6 +2372,7 @@ function render(){
   grid.innerHTML = filtrados.map((p, i) => cardHTML(p, i)).join('');
   activarCarruseles();
   initReveal();
+  if (window.pxObserve) window.pxObserve();
 }
 
 function setFiltro(dim, t){
@@ -2432,13 +2444,61 @@ function initReveal(){
 }
 initReveal();
 
-// ── Header "vidrio" al scrollear (#7) ──
+// ── Header "vidrio" al scrollear ──
 (function(){
   const hdr = document.getElementById('main-hdr'); if (!hdr) return;
   let ticking = false;
   function upd(){ hdr.classList.toggle('glass', (window.scrollY||window.pageYOffset) > 8); ticking = false; }
   window.addEventListener('scroll', () => { if (!ticking){ ticking = true; requestAnimationFrame(upd); } }, { passive:true });
   upd();
+})();
+
+// ── Fondo "vivo" + saludo según la hora y la estación (#8) ──
+(function(){
+  const d = new Date(), h = d.getHours(), m = d.getMonth();
+  let tod, hola, emo;
+  if (h < 6)       { tod='night';     hola='Buenas noches'; emo='🌙'; }
+  else if (h < 12) { tod='morning';   hola='Buenos días';   emo='☀️'; }
+  else if (h < 20) { tod='afternoon'; hola='Buenas tardes';  emo='🌤️'; }
+  else             { tod='night';     hola='Buenas noches'; emo='🌙'; }
+  document.body.classList.add('tod-' + tod);
+  // Estación (hemisferio sur — Argentina)
+  const est = (m===11||m<=1) ? 'verano' : (m<=4) ? 'otono' : (m<=7) ? 'invierno' : 'primavera';
+  document.body.classList.add('season-' + est);
+  const el = document.getElementById('hero-hola');
+  if (el){ el.textContent = `${emo} ¡${hola}, seño!`; requestAnimationFrame(() => el.classList.add('on')); }
+})();
+
+// ── Parallax en las portadas (solo touch, respeta reduced-motion) (#7) ──
+(function(){
+  if (!window.matchMedia) return;
+  if (!matchMedia('(pointer:coarse)').matches) return;
+  if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const active = new Set(); let ticking = false;
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => {
+      const img = e.target.querySelector('.card-img img'); if (!img) return;
+      if (e.isIntersecting) active.add(img); else { active.delete(img); img.style.transform=''; }
+    });
+  }, { rootMargin:'12% 0px' });
+  function upd(){
+    const mid = innerHeight/2;
+    active.forEach(img => { const r = img.getBoundingClientRect(); if (!r.height) return;
+      const off = ((r.top + r.height/2) - mid) / mid;
+      img.style.transform = 'translateY(' + (off*9).toFixed(1) + 'px) scale(1.05)';
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => { if (!ticking){ ticking = true; requestAnimationFrame(upd); } }, { passive:true });
+  window.addEventListener('resize', upd, { passive:true });
+  window.pxObserve = function(){
+    active.clear();
+    document.querySelectorAll('#grid .card,#semana-grid .card').forEach(c => io.observe(c));
+    const g = document.getElementById('grid'); if (g) g.classList.add('px-live');
+    const sg = document.getElementById('semana-grid'); if (sg) sg.classList.add('px-live');
+    requestAnimationFrame(upd);
+  };
+  if (document.querySelector('#grid .card')) window.pxObserve();
 })();
 
 // ── Confeti de celebración (canvas, sin librerías) ──
