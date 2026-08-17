@@ -918,6 +918,11 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .nl .wrap{position:relative;z-index:1;}
 .nl .sec-badge,.nl .sec-h,.nl .sec-sub{margin-left:auto;margin-right:auto;}
 .nl .sec-sub{text-align:center;}
+.nl-push{margin-top:16px;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.nl-push-or{color:var(--ink-3);font-size:.82rem;}
+.btn-push{border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-weight:800;}
+.btn-push:hover{border-color:var(--primary);color:var(--primary);}
+.btn-push.is-on{border-color:var(--green);color:var(--green);cursor:default;}
 .nl-icon{
   width:64px;height:64px;border-radius:18px;
   background:var(--card);display:flex;align-items:center;justify-content:center;
@@ -1773,6 +1778,10 @@ html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
       <button class="btn btn-primary">¡Me apunto!</button>
     </form>
     <p class="nl-mini" id="nl-msg">🔒 Tus datos están seguros. 1 email por semana, los miércoles.</p>
+    <div class="nl-push">
+      <span class="nl-push-or">o si preferís</span>
+      <button type="button" class="btn btn-ghost btn-push" id="btn-push" onclick="activarAvisos()" style="display:none;">🔔 Avisame de material nuevo</button>
+    </div>
   </div>
 </section>
 
@@ -3780,6 +3789,54 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
   const d = document, s = d.createElement("script"); s.type = "module";
   s.src = "https://w.behold.so/widget.js"; setTimeout(() => { d.head.append(s); }, 0);
 })();
+</script>
+
+<!-- OneSignal Web Push: notificaciones de material nuevo y ofertas -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    try {
+      await OneSignal.init({
+        appId: "b1a4554d-e8b0-4ad9-beac-348c4fd3ac98",
+        // Worker aislado en /onesignal/ para no pisar el service worker de la PWA
+        serviceWorkerPath: "PaginaWeb/onesignal/OneSignalSDKWorker.js",
+        serviceWorkerParam: { scope: "/PaginaWeb/onesignal/" },
+        allowLocalhostAsSecureOrigin: true
+      });
+      actualizarBotonPush();
+      if (OneSignal.Notifications && OneSignal.Notifications.addEventListener)
+        OneSignal.Notifications.addEventListener('permissionChange', actualizarBotonPush);
+    } catch (e) { /* OneSignal no disponible */ }
+  });
+
+  function _pushSoportado(){ return ('Notification' in window) && ('serviceWorker' in navigator) && ('PushManager' in window); }
+
+  function actualizarBotonPush() {
+    const btn = document.getElementById('btn-push');
+    if (!btn) return;
+    if (!_pushSoportado()) { btn.style.display = 'none'; return; }
+    const perm = Notification.permission;
+    if (perm === 'granted') { btn.style.display = 'inline-flex'; btn.textContent = '🔔 Avisos activados'; btn.classList.add('is-on'); btn.disabled = true; }
+    else if (perm === 'denied') { btn.style.display = 'none'; }
+    else { btn.style.display = 'inline-flex'; btn.textContent = '🔔 Avisame de material nuevo'; btn.classList.remove('is-on'); btn.disabled = false; }
+  }
+
+  function activarAvisos() {
+    if (!_pushSoportado()) { if (typeof toast === 'function') toast('Tu navegador no admite estos avisos 😕'); return; }
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      try {
+        await OneSignal.Notifications.requestPermission();
+        actualizarBotonPush();
+        if (Notification.permission === 'granted' && typeof toast === 'function') toast('¡Listo! Te avisaremos del material nuevo 🔔');
+        if (window.umami) umami.track('push-activado');
+      } catch (e) {}
+    });
+  }
+
+  // Mostrar el botón aun si OneSignal tarda en cargar
+  document.addEventListener('DOMContentLoaded', function(){ setTimeout(actualizarBotonPush, 900); });
 </script>
 
 </body>
