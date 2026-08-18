@@ -25,7 +25,8 @@
 <meta name="apple-mobile-web-app-title" content="Cofre Didáctico" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" /></noscript>
 
 <style>
 /* ═════════════════════════════════════════════════════════
@@ -500,10 +501,27 @@ footer{background:var(--footer-bg);color:#D1D7E0;padding:0;}
   .grid-i{grid-template-columns:1fr;} /* 1 col en pantallas muy chicas */
   .hero-i h1{font-size:1.65rem;}
 }
+/* Fix navegador interno de Instagram/Facebook (IAB) */
+html.is-iab,html.is-iab body{max-width:100vw!important;overflow-x:hidden!important;width:100%!important;}
+html.is-iab .hdr{width:100%!important;}
+html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="52b78f4b-a423-415e-bea9-beb9a2424bcc"></script>
 <script>
 (function(){try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
+// Fix navegador interno de Instagram/Facebook (IAB): zoom, viewport y ancho
+(function(){
+  var ua = navigator.userAgent || '';
+  if(!/Instagram|FBAN|FBAV|FB_IAB|FB4A|FBIOS/i.test(ua)) return;
+  var vp = document.querySelector('meta[name="viewport"]');
+  if(vp) vp.setAttribute('content','width=device-width, initial-scale=1.0, shrink-to-fit=no');
+  document.documentElement.style.zoom = '1';
+  document.documentElement.style.webkitTextSizeAdjust = '100%';
+  document.documentElement.classList.add('is-iab');
+  var fixWidth = function(){ var w = window.innerWidth; if(document.body){ document.body.style.maxWidth = w+'px'; document.body.style.overflowX = 'hidden'; } };
+  window.addEventListener('DOMContentLoaded', fixWidth);
+  window.addEventListener('resize', fixWidth);
+})();
 </script>
 </head>
 <body>
