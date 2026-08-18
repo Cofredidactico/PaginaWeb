@@ -2090,7 +2090,7 @@ function renderHeroCollage(){
   const pick = [...dest, ...prods.filter(p => !p.destacado)].slice(0, 3);
   if (pick.length < 3){ cont.style.display = 'none'; return; }
   cont.innerHTML = pick.map((p,i) =>
-    `<div class="hero-cover c${i+1}"><img src="${normImg(p.imagen)}" alt="" onerror="this.closest('.hero-cover').style.display='none'" /></div>`
+    `<div class="hero-cover c${i+1}"><img src="${imgOpt(p.imagen,520)}" alt="" onerror="this.onerror=null;this.src='${_imgAbs(p.imagen)}'" /></div>`
   ).join('');
 }
 
@@ -2155,6 +2155,12 @@ function imgOpt(ruta, w){
   const abs = _imgAbs(ruta); if (!abs) return '';
   const host = abs.replace(/^https?:\/\//i,'');
   return 'https://wsrv.nl/?url=' + encodeURIComponent(host) + '&w=' + (w||600) + '&output=webp&q=80&we';
+}
+// Asigna a un <img> la versión optimizada y cae al original si el CDN falla.
+function setImgOpt(el, ruta, w){
+  if (!el) return; const orig = _imgAbs(ruta);
+  el.onerror = function(){ el.onerror = null; if (orig) el.src = orig; };
+  el.src = imgOpt(ruta, w);
 }
 
 // Estilo por temática: color + emoji (para el chip y el degradado de la portada)
@@ -2514,6 +2520,20 @@ initReveal();
   if (document.querySelector('#grid .card')) window.pxObserve();
 })();
 
+// ── Precarga inteligente: al apuntar/tocar una card, precargar su ficha (#3) ──
+(function(){
+  const done = new Set();
+  function pre(e){
+    const card = e.target.closest && e.target.closest('.card'); if (!card) return;
+    const href = card.getAttribute('href') || ''; const m = href.match(/#\/producto\/(.+)$/); if (!m) return;
+    const id = decodeURIComponent(m[1]); if (done.has(id)) return; done.add(id);
+    const p = (typeof _data!=='undefined' && _data && _data.productos || []).find(x => x.id === id); if (!p) return;
+    const im = new Image(); im.src = imgOpt(p.imagen, 900);   // deja la imagen de la ficha lista en caché
+  }
+  document.addEventListener('pointerover', pre, { passive:true });
+  document.addEventListener('touchstart', pre, { passive:true });
+})();
+
 // ── Confeti de celebración (canvas, sin librerías) ──
 function lanzarConfeti(){
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -2765,12 +2785,12 @@ function renderDetalle(p){
   $('#detail-content').innerHTML = `
     <div class="detail-gallery">
       <div class="detail-main-img" style="position:relative;">
-        <img id="detail-main" src="${imagenes[0]}" alt="${p.nombre}" style="cursor:zoom-in;" onclick="abrirLightbox(_detailIdx)" />
+        <img id="detail-main" src="${imgOpt(imagenes[0],900)}" alt="${p.nombre}" style="cursor:zoom-in;" onclick="abrirLightbox(_detailIdx)" onerror="this.onerror=null;this.src='${_imgAbs(imagenes[0])}'" />
         <div class="detail-img-badge" onclick="abrirLightbox(_detailIdx)" style="cursor:pointer;">🔍 ${imagenes.length > 1 ? imagenes.length+' fotos · ' : ''}Ampliar</div>
       </div>
       ${imagenes.length > 1 ? `
         <div class="detail-thumbs">
-          ${imagenes.map((img,i) => `<div class="detail-thumb ${i===0?'active':''}" onclick="cambiarImgDot('${img}',this,${i})"><img src="${img}" alt="Muestra ${i+1}" loading="lazy" /></div>`).join('')}
+          ${imagenes.map((img,i) => `<div class="detail-thumb ${i===0?'active':''}" onclick="cambiarImgDot('${img}',this,${i})"><img src="${imgOpt(img,160)}" alt="Muestra ${i+1}" loading="lazy" onerror="this.onerror=null;this.src='${_imgAbs(img)}'" /></div>`).join('')}
         </div>
         <div class="detail-dots">
           ${imagenes.map((_,i) => `<div class="detail-dot ${i===0?'active':''}" onclick="irAFoto(${i})"></div>`).join('')}
@@ -2838,7 +2858,7 @@ function renderDetalle(p){
 }
 
 function cambiarImg(src, el){
-  $('#detail-main').src = src;
+  setImgOpt($('#detail-main'), src, 900);
   $$('.detail-thumb').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
 }
@@ -2862,7 +2882,7 @@ function abrirLightbox(idx){
 }
 function lbActualizar(){
   const img = document.getElementById('lb-img');
-  if (img){ img.src = _galeria[_detailIdx]; img.classList.remove('zoom'); }
+  if (img){ setImgOpt(img, _galeria[_detailIdx], 1400); img.classList.remove('zoom'); }
   if (typeof lbReset === 'function') lbReset();
   const c = document.getElementById('lb-counter');
   if (c) c.textContent = `${_detailIdx+1} / ${_galeria.length}`;
@@ -2925,7 +2945,7 @@ function cerrarFlip(){
   document.body.style.overflow = '';
 }
 function fbRender(){
-  const img = document.getElementById('fb-img'); if (img) img.src = _galeria[_fbIdx];
+  const img = document.getElementById('fb-img'); if (img) setImgOpt(img, _galeria[_fbIdx], 1400);
   const c = document.getElementById('fb-counter'); if (c) c.textContent = `${_fbIdx+1} / ${_galeria.length}`;
   fbUpdateNav();
 }
@@ -2947,7 +2967,7 @@ function fbFlip(dir){
   pg.style.transition = 'transform .28s ease-in';
   pg.style.transform = `rotateY(${dir>0?-90:90}deg)`;
   setTimeout(() => {
-    _fbIdx = n; if (img) img.src = _galeria[_fbIdx];
+    _fbIdx = n; if (img) setImgOpt(img, _galeria[_fbIdx], 1400);
     const c = document.getElementById('fb-counter'); if (c) c.textContent = `${_fbIdx+1} / ${_galeria.length}`;
     pg.style.transition = 'none';
     pg.style.transform = `rotateY(${dir>0?90:-90}deg)`;
@@ -3989,9 +4009,15 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
 <!-- Behold: cargador del feed de Instagram -->
 <script>
 (() => {
-  if (window.__bhldScript) return; window.__bhldScript = true;
-  const d = document, s = d.createElement("script"); s.type = "module";
-  s.src = "https://w.behold.so/widget.js"; setTimeout(() => { d.head.append(s); }, 0);
+  if (window.__bhldScript) return;
+  function load(){ if (window.__bhldScript) return; window.__bhldScript = true;
+    const d = document, s = d.createElement("script"); s.type = "module";
+    s.src = "https://w.behold.so/widget.js"; d.head.append(s); }
+  const sec = document.getElementById('instagram');
+  // Carga el feed de Instagram solo cuando la sección está por verse (#5)
+  if (!sec || !('IntersectionObserver' in window)){ setTimeout(load, 2500); return; }
+  const io = new IntersectionObserver((es) => { if (es.some(e => e.isIntersecting)){ io.disconnect(); load(); } }, { rootMargin:'400px' });
+  io.observe(sec);
 })();
 </script>
 

@@ -1,15 +1,17 @@
 /* Cofre Didáctico — Service Worker
    Estrategia:
    - App shell (HTML, logo, íconos): cache-first, con actualización en segundo plano.
-   - productos.json: network-first (siempre intenta lo último; usa caché si no hay red).
+   - productos.json: stale-while-revalidate (responde al instante desde caché y
+     refresca en segundo plano; usa caché si no hay red).
    - Navegaciones offline: cae al index cacheado.
 */
-const CACHE = 'cofre-v1';
+const CACHE = 'cofre-v2';
 const SHELL = [
   './',
   './index.html',
   './interactivos.html',
   './gratis.html',
+  './herramientas.html',
   './logo.png',
   './icon192.png',
   './icon512.png',
@@ -17,7 +19,12 @@ const SHELL = [
 ];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  e.waitUntil(
+    caches.open(CACHE)
+      // addAll falla entero si algún archivo no está; lo hacemos tolerante
+      .then(c => Promise.all(SHELL.map(u => c.add(u).catch(() => {}))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', (e) => {
@@ -31,23 +38,28 @@ self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  if (url.origin !== location.origin) return; // no interceptar terceros (fuentes, analytics)
+  if (url.origin !== location.origin) return; // no interceptar terceros (fuentes, analytics, CDN de imágenes)
 
-  // Catálogo: network-first
+  // Catálogo: stale-while-revalidate (ignora el ?v= para reusar la caché)
   if (url.pathname.endsWith('productos.json')) {
     e.respondWith(
-      fetch(req).then(res => {
-        const copy = res.clone();
-        caches.open(CACHE).then(c => c.put(req, copy));
-        return res;
-      }).catch(() => caches.match(req))
+      caches.open(CACHE).then(async (cache) => {
+        const cached = await cache.match(req, { ignoreSearch: true });
+        const fetching = fetch(req).then((res) => {
+          if (res && res.ok) cache.put(req, res.clone());
+          return res;
+        }).catch(() => null);
+        if (cached) return cached;                 // instantáneo; el fetch refresca en segundo plano
+        const net = await fetching;
+        return net || new Response('{}', { headers: { 'Content-Type': 'application/json' } });
+      })
     );
     return;
   }
 
   // Navegaciones: intentar red, caer a index cacheado offline
   if (req.mode === 'navigate') {
-    e.respondWith(fetch(req).catch(() => caches.match('./index.html')));
+    e.respondWith(fetch(req).catch(() => caches.match(req, { ignoreSearch: true }).then(r => r || caches.match('./index.html'))));
     return;
   }
 

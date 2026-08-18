@@ -516,6 +516,18 @@ footer{background:var(--footer-bg);color:#D1D7E0;padding:0;}
 
 /* ─── Skeleton ─── */
 @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+/* Botón "Ver muestra" + lightbox de previsualización (#16) */
+.btn-muestra{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:2px;padding:9px 12px;border-radius:10px;font-weight:800;font-size:.82rem;background:var(--bg-2);color:var(--ink);border:1.5px solid var(--line);cursor:pointer;transition:all .15s;}
+.btn-muestra:hover{border-color:var(--primary,#2196F3);color:var(--primary,#2196F3);}
+.glb{position:fixed;inset:0;z-index:220;background:#080b12;display:none;align-items:center;justify-content:center;padding:22px;}
+.glb.on{display:flex;}
+.glb img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6);}
+.glb-close,.glb-nav{position:absolute;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;border-radius:50%;cursor:pointer;border:none;backdrop-filter:blur(6px);transition:background .15s;}
+.glb-close{top:18px;right:20px;width:44px;height:44px;font-size:1.25rem;}
+.glb-nav{top:50%;transform:translateY(-50%);width:52px;height:52px;font-size:2rem;line-height:1;}
+.glb-prev{left:16px;} .glb-next{right:16px;}
+.glb-close:hover,.glb-nav:hover{background:rgba(255,255,255,.28);}
+.glb-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.9);background:rgba(0,0,0,.45);padding:6px 15px;border-radius:99px;font-weight:700;font-size:.85rem;}
 .skeleton{background:linear-gradient(110deg,var(--bg-2) 8%,var(--bg-3) 18%,var(--bg-2) 33%);background-size:200% 100%;animation:shimmer 1.6s linear infinite;}
 
 /* ─── Reveal ─── */
@@ -808,6 +820,7 @@ function render(){
           ${p.nivel?`<div class="card-nivel">${p.nivel}</div>`:''}
           <h3 class="card-ttl">${p.nombre}</h3>
           <p class="card-desc">${p.descripcion||''}</p>
+          ${(p.previews||[]).length ? `<button type="button" class="btn-muestra" onclick="abrirMuestra('${p.id}')" data-umami-event="ver-muestra-gratis" data-umami-event-id="${p.id}">👁️ Ver muestra (${(p.previews||[]).length + 1} págs.)</button>` : ''}
           <div class="card-foot">
             <div class="price-gratis">¡Gratis!</div>
             <a href="${linkDescarga}" target="_blank" rel="noopener" class="btn-card" onclick="if(window.umami)umami.track('descarga-gratis',{id:'${p.id}'})">⬇️ Descargar →</a>
@@ -888,6 +901,50 @@ pintarIconoTema();
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('serviceworker.js').catch(function(){});});}
 </script>
 <button class="to-top" id="to-top" type="button" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Lightbox de muestra (previsualización del material gratis) -->
+<div class="glb" id="glb" aria-hidden="true" onclick="if(event.target.id==='glb')cerrarMuestra()">
+  <button class="glb-close" type="button" onclick="cerrarMuestra()" aria-label="Cerrar">✕</button>
+  <button class="glb-nav glb-prev" type="button" onclick="glbNav(-1,event)" aria-label="Anterior">‹</button>
+  <img id="glb-img" alt="Muestra del material" />
+  <button class="glb-nav glb-next" type="button" onclick="glbNav(1,event)" aria-label="Siguiente">›</button>
+  <div class="glb-counter" id="glb-counter"></div>
+</div>
+<script>
+(function(){
+  let _mg = [], _mi = 0;
+  function _mAct(){
+    const im = document.getElementById('glb-img'); if (!im) return;
+    const orig = _imgAbs(_mg[_mi]); im.onerror = function(){ im.onerror=null; if(orig) im.src=orig; };
+    im.src = imgOpt(_mg[_mi], 1400);
+    const c = document.getElementById('glb-counter'); if (c) c.textContent = (_mi+1)+' / '+_mg.length;
+    const solo = _mg.length < 2;
+    document.querySelectorAll('.glb-nav').forEach(n => n.style.display = solo ? 'none' : '');
+    if (c) c.style.display = solo ? 'none' : '';
+  }
+  window.abrirMuestra = function(id){
+    const p = (_data && _data.productos || []).find(x => x.id === id); if (!p) return;
+    const prevs = (p.previews||[]).map(x => typeof x === 'string' ? x : (x && (x.imagen || x.img))).filter(Boolean);
+    _mg = [p.imagen, ...prevs].filter(Boolean); _mi = 0;
+    if (!_mg.length) return;
+    _mAct();
+    const g = document.getElementById('glb'); g.classList.add('on'); g.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    if (window.umami) umami.track('muestra-abierta', { id });
+  };
+  window.glbNav = function(d, e){ if(e) e.stopPropagation(); _mi = (_mi + d + _mg.length) % _mg.length; _mAct(); };
+  window.cerrarMuestra = function(){
+    const g = document.getElementById('glb'); if (g){ g.classList.remove('on'); g.setAttribute('aria-hidden','true'); }
+    document.body.style.overflow = '';
+  };
+  document.addEventListener('keydown', function(e){
+    const g = document.getElementById('glb'); if (!g || !g.classList.contains('on')) return;
+    if (e.key === 'Escape') cerrarMuestra();
+    else if (e.key === 'ArrowLeft') glbNav(-1);
+    else if (e.key === 'ArrowRight') glbNav(1);
+  });
+})();
+</script>
 <nav class="bottom-nav" aria-label="Navegación principal"><a href="index.html#catalogo"><span class="bn-ico">🛍️</span>Catálogo</a><a href="gratis.html" class="active"><span class="bn-ico">🎁</span>Gratis</a><a href="interactivos.html"><span class="bn-ico">🎮</span>Interactivos</a>
   <a href="herramientas.html"><span class="bn-ico">🧰</span>Aula</a><a href="index.html"><span class="bn-ico">🏠</span>Inicio</a></nav>
 <script>(function(){var t=document.getElementById("to-top");if(!t)return;window.addEventListener("scroll",function(){t.classList.toggle("show",window.scrollY>600);},{passive:true});})();</script>
