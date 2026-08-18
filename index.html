@@ -2022,9 +2022,13 @@ fetch('productos.json?v=' + new Date().toISOString().slice(0,10))
   .then(data => { _data = data; aplicarConfig(); leerFiltrosDeURL(); renderSemana(); render(); routear(); generarSchemaProductos(); renderHeroCollage(); initTilt(); npDone(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); })
   .catch(err => {
     npDone();
+    const ldr=document.getElementById('page-loader');if(ldr)ldr.classList.add('hidden');
     console.error('Error cargando productos.json', err);
     $('#grid').innerHTML = '<div class="empty" style="grid-column:1/-1;"><div class="empty-em">⚠️</div><h3>No pudimos cargar el catálogo</h3><p>Probá refrescando la página en unos segundos.</p></div>';
   });
+// Red de seguridad: nunca dejar la pantalla de carga tapando (p.ej. si la red
+// cuelga en el navegador de Instagram)
+setTimeout(function(){ const ldr=document.getElementById('page-loader'); if(ldr) ldr.classList.add('hidden'); }, 5000);
 
 // ── Aplicar configuración global ──
 function aplicarConfig(){
@@ -3686,6 +3690,8 @@ function animarContador(el, target) {
         (href.includes('index.html') && !href.includes('#'))) {
       a.addEventListener('click', e => {
         e.preventDefault();
+        // En el navegador de Instagram el fundido deja pantalla negra: navegar directo
+        if (document.documentElement.classList.contains('is-iab')) { window.location.href = href; return; }
         document.body.classList.add('page-leaving');
         setTimeout(() => { window.location.href = href; }, 200);
       });
@@ -3702,12 +3708,19 @@ document.querySelectorAll('a[href]').forEach(a => {
   if(href.includes('gratis.html') || href.includes('interactivos.html')){
     a.addEventListener('click', e => {
       e.preventDefault();
+      if (document.documentElement.classList.contains('is-iab')) { window.location.href = href; return; }
       document.body.style.opacity = '0';
       document.body.style.transform = 'translateY(-4px)';
       document.body.style.transition = 'opacity .18s ease, transform .18s ease';
       setTimeout(() => { window.location.href = href; }, 190);
     });
   }
+});
+// Restaura la visibilidad al mostrarse la página (arregla la "pantalla negra"
+// de la caché atrás/adelante en el navegador de Instagram)
+window.addEventListener('pageshow', function(){
+  document.body.style.opacity = ''; document.body.style.transform = ''; document.body.style.transition = '';
+  document.body.classList.remove('page-leaving');
 });
 
 // ── "Abrí el Cofre" — regalo gamificado ──

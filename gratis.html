@@ -900,12 +900,18 @@ document.querySelectorAll('a[href]').forEach(a => {
     a.addEventListener('click', e => {
       if(e.metaKey || e.ctrlKey) return;
       e.preventDefault();
+      if (document.documentElement.classList.contains('is-iab')) { window.location.href = href; return; }
       document.body.style.opacity = '0';
       document.body.style.transform = 'translateY(-4px)';
       document.body.style.transition = 'opacity .18s ease, transform .18s ease';
       setTimeout(() => { window.location.href = href; }, 190);
     });
   }
+});
+// Restaura la visibilidad al mostrarse (arregla la "pantalla negra" de la caché
+// atrás/adelante en el navegador de Instagram)
+window.addEventListener('pageshow', function(){
+  document.body.style.opacity = ''; document.body.style.transform = ''; document.body.style.transition = '';
 });
 
 </script>
