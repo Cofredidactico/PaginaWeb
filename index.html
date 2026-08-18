@@ -2139,9 +2139,22 @@ function normImg(ruta){
   // Quitar slash inicial si queda
   ruta = ruta.replace(/^\//, '');
   // Encodear espacios si los hay
-  return ruta.split('/').map((part, i, arr) => 
+  return ruta.split('/').map((part, i, arr) =>
     i === arr.length - 1 ? encodeURIComponent(part).replace(/%2F/g,'/') : part
   ).join('/');
+}
+// Optimiza imágenes al vuelo (CDN gratis wsrv.nl): redimensiona + comprime + WebP.
+// Baja las miniaturas de ~800KB a ~50KB sin re-subir nada. Cae al original si falla.
+function _imgAbs(ruta){
+  const r = normImg(ruta); if (!r) return '';
+  if (/^https?:\/\//i.test(r)) return r;
+  const base = location.origin + location.pathname.replace(/[^/]*$/, '');
+  return base + r.replace(/^\//,'');
+}
+function imgOpt(ruta, w){
+  const abs = _imgAbs(ruta); if (!abs) return '';
+  const host = abs.replace(/^https?:\/\//i,'');
+  return 'https://wsrv.nl/?url=' + encodeURIComponent(host) + '&w=' + (w||600) + '&output=webp&q=80&we';
 }
 
 // Estilo por temática: color + emoji (para el chip y el degradado de la portada)
@@ -2182,12 +2195,12 @@ function cardHTML(p, i, opts){
   if (hasCarousel){
     // Slides
     mediaInner = `<div class="card-carousel" data-count="${uniq.length}">
-      ${uniq.map((src, k) => `<div class="card-slide ${k===0?'on':''}"><img src="${src}" alt="${p.nombre} - vista ${k+1}" width="800" height="1000" sizes="(max-width:600px) 46vw, 280px" loading="lazy" decoding="async" ${k===0?fp:''} onload="this.classList.add('loaded');var _p=this.closest('.card-img');if(_p)_p.classList.add('media-ready')" /></div>`).join('')}
+      ${uniq.map((src, k) => `<div class="card-slide ${k===0?'on':''}"><img src="${imgOpt(src,600)}" alt="${p.nombre} - vista ${k+1}" width="800" height="1000" sizes="(max-width:600px) 46vw, 280px" loading="lazy" decoding="async" ${k===0?fp:''} onload="this.classList.add('loaded');var _p=this.closest('.card-img');if(_p)_p.classList.add('media-ready')" onerror="this.onerror=null;this.src='${src}'" /></div>`).join('')}
     </div>
     <div class="card-peek">${uniq.length} vistas previas</div>
     <div class="card-dots">${uniq.map((_,k)=>`<i class="${k===0?'on':''}"></i>`).join('')}</div>`;
   } else {
-    mediaInner = `<img src="${uniq[0]||normImg(p.imagen)}" alt="${p.nombre}" width="800" height="1000" sizes="(max-width:600px) 46vw, 280px" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded');var _p=this.closest('.card-img');if(_p)_p.classList.add('media-ready')" onerror="this.style.display='none'" />`;
+    mediaInner = `<img src="${imgOpt(uniq[0]||p.imagen,600)}" alt="${p.nombre}" width="800" height="1000" sizes="(max-width:600px) 46vw, 280px" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded');var _p=this.closest('.card-img');if(_p)_p.classList.add('media-ready')" onerror="this.onerror=null;this.src='${uniq[0]||normImg(p.imagen)}'" />`;
   }
 
   return `

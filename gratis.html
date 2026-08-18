@@ -735,7 +735,21 @@ const TIPO_LABELS = {
 
 let _data = null;
 
-fetch('productos.json?v=' + Date.now())
+// Optimiza imágenes al vuelo (CDN gratis wsrv.nl): redimensiona + comprime + WebP.
+// Baja las miniaturas de ~800KB a ~50KB sin re-subir nada. Cae al original si falla.
+function _imgAbs(ruta){
+  if (!ruta) return '';
+  if (/^https?:\/\//i.test(ruta)) return ruta;
+  const base = location.origin + location.pathname.replace(/[^/]*$/, '');
+  return base + String(ruta).replace(/^\//,'');
+}
+function imgOpt(ruta, w){
+  const abs = _imgAbs(ruta); if (!abs) return '';
+  const host = abs.replace(/^https?:\/\//i,'');
+  return 'https://wsrv.nl/?url=' + encodeURIComponent(host) + '&w=' + (w||600) + '&output=webp&q=80&we';
+}
+
+fetch('productos.json?v=' + new Date().toISOString().slice(0,10))
   .then(r => r.json())
   .then(data => { _data = data; aplicarConfig(); render(); })
   .catch(err => {
@@ -787,7 +801,7 @@ function render(){
         <a href="${linkDescarga}" target="_blank" rel="noopener" class="card-img-link">
           <div class="card-img">
             <div class="ribbon-gratis">🎁 Gratis</div>${tipo}
-            <img src="${p.imagen}" alt="${p.nombre}" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
+            <img src="${imgOpt(p.imagen, 600)}" alt="${p.nombre}" width="600" height="750" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded')" onerror="this.onerror=null;this.src='${_imgAbs(p.imagen)}'" />
           </div>
         </a>
         <div class="card-body">

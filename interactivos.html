@@ -684,7 +684,20 @@ let _activeItem = null;
 let _timerId = null;
 let _secsLeft = 30;
 
-fetch('productos.json?v=' + Date.now())
+// Optimiza imágenes al vuelo (CDN gratis wsrv.nl): redimensiona + comprime + WebP.
+function _imgAbs(ruta){
+  if (!ruta) return '';
+  if (/^https?:\/\//i.test(ruta)) return ruta;
+  const base = location.origin + location.pathname.replace(/[^/]*$/, '');
+  return base + String(ruta).replace(/^\//,'');
+}
+function imgOpt(ruta, w){
+  const abs = _imgAbs(ruta); if (!abs) return '';
+  const host = abs.replace(/^https?:\/\//i,'');
+  return 'https://wsrv.nl/?url=' + encodeURIComponent(host) + '&w=' + (w||600) + '&output=webp&q=80&we';
+}
+
+fetch('productos.json?v=' + new Date().toISOString().slice(0,10))
   .then(r => r.json())
   .then(data => { _data = data; aplicarConfig(); render(); autoAbrir(); })
   .catch(err => {
@@ -794,7 +807,7 @@ function render(){
       <div class="card-i reveal" data-id="${x.id}">
         <div class="card-i-media" onclick="abrirModal('${x.id}')">
           ${acceso}${ribbon}
-          <img src="${x.imagen}" alt="${x.nombre}" loading="lazy" onerror="this.style.display='none'" />
+          <img src="${imgOpt(x.imagen,600)}" alt="${x.nombre}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${_imgAbs(x.imagen)}'" />
           <div class="card-i-overlay"></div>
           <div class="card-i-play" aria-hidden="true">▶</div>
         </div>
