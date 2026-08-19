@@ -2079,23 +2079,12 @@ setTimeout(function(){ const ldr=document.getElementById('page-loader'); if(ldr)
 // ── Aplicar configuración global ──
 function aplicarConfig(){
   const c = _data.config || {};
-  // Anuncio
+  // Anuncio (solo el que se configura manualmente desde el editor)
   if (c.anuncio && c.anuncio.activo){
     const a = $('#anuncio');
     a.textContent = c.anuncio.texto;
     a.style.background = c.anuncio.color || '#FF8A4C';
     a.style.display = 'block';
-  } else {
-    // Banner automático por efeméride: si hay materiales para el mes actual, se anuncia solo
-    const mes = new Date().getMonth() + 1;
-    const MES = ['','enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-    const hayDelMes = (_data.productos||[]).some(p => p.activo && Array.isArray(p.meses) && p.meses.map(Number).includes(mes));
-    if (hayDelMes){
-      const a = $('#anuncio');
-      a.innerHTML = `🗓️ Materiales de ${MES[mes]} listos para tu aula · <a href="?mes=${mes}#catalogo" style="color:#fff;text-decoration:underline;font-weight:800;">Ver ahora →</a>`;
-      a.style.background = 'var(--primary)';
-      a.style.display = 'block';
-    }
   }
   // Stats con animación de conteo
   if (c.stats){
