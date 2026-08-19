@@ -25,6 +25,8 @@
 <meta name="apple-mobile-web-app-title" content="Cofre Didáctico" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://wsrv.nl" crossorigin />
+<link rel="dns-prefetch" href="https://wsrv.nl" />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" /></noscript>
 
@@ -978,6 +980,20 @@ document.querySelectorAll('a[href]').forEach(a => {
 window.addEventListener('pageshow', function(){
   document.body.style.opacity = ''; document.body.style.transform = ''; document.body.style.transition = '';
 });
+// Precalienta las otras secciones + el catálogo (Instagram no cachea con service
+// worker => la 1ra navegación es lenta; bajándolas en segundo plano abren rápido)
+(function(){
+  function _warm(){
+    const here = location.pathname.split('/').pop() || 'index.html';
+    ['index.html','gratis.html','interactivos.html','herramientas.html'].forEach(function(u){
+      if (u === here) return;
+      try{ const l = document.createElement('link'); l.rel = 'prefetch'; l.href = u; document.head.appendChild(l); }catch(e){}
+      try{ fetch(u, { cache:'force-cache' }).catch(function(){}); }catch(e){}
+    });
+    try{ fetch('productos.json?v=' + new Date().toISOString().slice(0,10), { cache:'force-cache' }).catch(function(){}); }catch(e){}
+  }
+  if ('requestIdleCallback' in window) requestIdleCallback(_warm, { timeout: 3000 }); else setTimeout(_warm, 1800);
+})();
 
 </script>
 
