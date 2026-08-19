@@ -531,7 +531,9 @@ body.tod-night     .hero::after{background:linear-gradient(180deg, rgba(52,74,14
   grid-template-columns:repeat(3,1fr);
   gap:0;
   background:var(--glass);
-  border:1px solid rgba(26,39,68,.07);
+  backdrop-filter:saturate(150%) blur(12px);
+  -webkit-backdrop-filter:saturate(150%) blur(12px);
+  border:1px solid rgba(255,255,255,.35);
   border-radius:20px;
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
@@ -1241,8 +1243,39 @@ body.in-detail footer{display:block;}
 .detail-back:hover{background:var(--bg-2);color:var(--ink);}
 .detail-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start;}
 .detail-gallery{position:sticky;top:90px;}
-.detail-main-img{aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;background:linear-gradient(135deg,var(--bg-2),var(--bg-3));box-shadow:var(--s-2);border:1px solid rgba(26,39,68,.06);}
+.detail-main-img{aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(26,39,68,.06);
+  /* Sombra 3D premium + reflejo (como producto físico) */
+  box-shadow:0 34px 60px -26px rgba(26,39,68,.45), 0 10px 24px rgba(26,39,68,.12);
+  -webkit-box-reflect:below 4px linear-gradient(rgba(0,0,0,.22), transparent 42%);
+}
 .detail-main-img img{width:100%;height:100%;object-fit:contain;}
+/* Brillo sutil en la portada */
+.detail-main-img::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:2;background:linear-gradient(135deg, rgba(255,255,255,.14) 0%, transparent 32%);}
+
+/* ✨ Partículas al tocar (#12) */
+.tap-particle{position:fixed;top:0;left:0;width:9px;height:9px;border-radius:50%;pointer-events:none;z-index:900;will-change:transform,opacity;}
+/* 🎬 Micro-pop flotante (#4) */
+.micro-pop{position:fixed;z-index:900;pointer-events:none;font-size:1.5rem;will-change:transform,opacity;}
+/* 💎 Glass (#2) — se degrada a fondo sólido donde no hay soporte / en Instagram */
+.glassy{background:var(--glass, rgba(255,255,255,.55));backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border:1px solid rgba(255,255,255,.4);}
+/* 🔍 Sugerencias de búsqueda con miniaturas (#10) */
+.search{position:relative;}
+.search-suggest{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:120;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--s-2);overflow:hidden;max-height:62vh;overflow-y:auto;display:none;}
+.search-suggest.on{display:block;animation:lbIn .16s ease;}
+.ss-item{display:flex;align-items:center;gap:12px;padding:9px 12px;cursor:pointer;text-decoration:none;color:var(--ink);transition:background .12s;}
+.ss-item:hover,.ss-item.active{background:var(--bg-2);}
+.ss-thumb{width:46px;height:46px;border-radius:8px;object-fit:cover;background:var(--bg-2);flex:none;}
+.ss-body{flex:1;min-width:0;}
+.ss-name{font-weight:800;font-size:.9rem;line-height:1.15;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.ss-price{font-size:.82rem;font-weight:800;color:var(--primary);}
+.ss-price.gratis{color:var(--green);}
+.ss-empty{padding:16px;text-align:center;color:var(--ink-3);font-size:.88rem;}
+/* 🌈 Vista mosaico / masonry (#1) */
+.view-toggle{display:inline-flex;background:var(--bg-2);border-radius:10px;padding:3px;gap:2px;}
+.view-toggle button{border:none;background:transparent;color:var(--ink-3);width:36px;height:30px;border-radius:8px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.view-toggle button.on{background:var(--card);color:var(--primary);box-shadow:var(--s-1);}
+.grid.masonry{grid-auto-rows:8px;align-items:start;}
+.grid.masonry .card{align-self:start;}
 .detail-thumbs{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
 .detail-thumb{width:78px;height:78px;border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s,transform .2s;background:var(--bg-2);}
 .detail-thumb img{width:100%;height:100%;object-fit:cover;}
@@ -1810,6 +1843,10 @@ body.has-iab-bar .hdr{top:48px;}
     <div class="cat-toolbar">
       <div class="cat-count" id="cat-count"></div>
       <div class="cat-sort">
+        <div class="view-toggle" role="group" aria-label="Vista del catálogo">
+          <button type="button" data-v="grid" class="on" onclick="setVista('grid')" title="Vista cuadrícula" aria-label="Vista cuadrícula">▦</button>
+          <button type="button" data-v="masonry" onclick="setVista('masonry')" title="Vista mosaico" aria-label="Vista mosaico">▤</button>
+        </div>
         <label for="sel-orden">Ordenar:</label>
         <select id="sel-orden" onchange="setOrden(this.value)" aria-label="Ordenar catálogo">
           <option value="destacados">Destacados</option>
@@ -2065,7 +2102,7 @@ function initTilt(){
 npStart();
 fetch('productos.json?v=' + new Date().toISOString().slice(0,10))
   .then(r => r.json())
-  .then(data => { _data = data; aplicarConfig(); leerFiltrosDeURL(); renderSemana(); render(); routear(); generarSchemaProductos(); renderHeroCollage(); initTilt(); npDone(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); })
+  .then(data => { _data = data; aplicarConfig(); leerFiltrosDeURL(); renderSemana(); render(); routear(); generarSchemaProductos(); renderHeroCollage(); initTilt(); if(typeof setVista==='function')setVista(_vista); npDone(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); })
   .catch(err => {
     npDone();
     const ldr=document.getElementById('page-loader');if(ldr)ldr.classList.add('hidden');
@@ -2432,6 +2469,7 @@ function render(){
   activarCarruseles();
   initReveal();
   if (window.pxObserve) window.pxObserve();
+  if (typeof layoutMasonry === 'function'){ if (_vista==='masonry') grid.classList.add('masonry'); requestAnimationFrame(layoutMasonry); }
 }
 
 function setFiltro(dim, t){
@@ -2573,6 +2611,97 @@ initReveal();
   document.addEventListener('pointerover', pre, { passive:true });
   document.addEventListener('touchstart', pre, { passive:true });
 })();
+
+// ═══════ Mejoras visuales ═══════
+
+// #12 — Partículas al tocar/click
+(function(){
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const COLORS = ['#2196F3','#FF8A4C','#22A06B','#EC407A','#7C4DFF','#FFC107'];
+  let last = 0;
+  // 'click' (no 'pointerdown') para que no salten al scrollear
+  document.addEventListener('click', function(e){
+    if (!e.clientX && !e.clientY) return;           // ignora clicks por teclado
+    const now = Date.now(); if (now - last < 120) return; last = now;
+    const t = e.target;
+    if (t && t.closest && t.closest('input,textarea,select,.lightbox,.flipbook,.placa-modal,.search-suggest')) return;
+    const n = 6;
+    for (let i=0;i<n;i++){
+      const p = document.createElement('span'); p.className = 'tap-particle';
+      p.style.background = COLORS[(Math.random()*COLORS.length)|0];
+      document.body.appendChild(p);
+      const ang = (Math.PI*2)*(i/n) + Math.random()*0.6;
+      const dist = 22 + Math.random()*32;
+      const dx = Math.cos(ang)*dist, dy = Math.sin(ang)*dist;
+      p.animate([
+        { transform:`translate(${e.clientX}px,${e.clientY}px) scale(1)`, opacity:1 },
+        { transform:`translate(${e.clientX+dx}px,${e.clientY+dy-8}px) scale(.2)`, opacity:0 }
+      ], { duration: 520+Math.random()*160, easing:'cubic-bezier(.2,.7,.3,1)' }).onfinish = () => p.remove();
+    }
+  }, { passive:true });
+})();
+
+// #4 — Micro-pop: hace flotar un símbolo desde un punto (feedback "de app cara")
+function microPop(x, y, sym){
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const el = document.createElement('div'); el.className = 'micro-pop'; el.textContent = sym || '✓';
+  document.body.appendChild(el);
+  el.style.left = (x-12)+'px'; el.style.top = (y-16)+'px';
+  el.animate([
+    { transform:'translateY(0) scale(.6)', opacity:0 },
+    { transform:'translateY(-8px) scale(1.15)', opacity:1, offset:.3 },
+    { transform:'translateY(-42px) scale(1)', opacity:0 }
+  ], { duration: 900, easing:'cubic-bezier(.2,.8,.2,1)' }).onfinish = () => el.remove();
+}
+function microPopAt(el, sym){ if(!el) return; const r = el.getBoundingClientRect(); microPop(r.left + r.width/2, r.top, sym); }
+
+// #10 — Búsqueda viva con miniaturas
+(function(){
+  const input = document.getElementById('q'); if (!input) return;
+  const wrap = input.closest('.search'); if (!wrap) return;
+  const box = document.createElement('div'); box.className = 'search-suggest'; box.id = 'search-suggest';
+  wrap.appendChild(box);
+  function cerrar(){ box.classList.remove('on'); box.innerHTML = ''; }
+  function buscar(q){
+    q = (q||'').trim().toLowerCase();
+    if (q.length < 2){ cerrar(); return; }
+    const prods = (typeof _data!=='undefined' && _data && _data.productos || []).filter(p => p.activo && p.tipo!=='juego');
+    const hits = prods.filter(p => ((p.nombre||'')+' '+(p.descripcion||'')).toLowerCase().includes(q)).slice(0,6);
+    if (!hits.length){ box.innerHTML = '<div class="ss-empty">Sin coincidencias 🔍</div>'; box.classList.add('on'); return; }
+    box.innerHTML = hits.map(function(p){
+      const pr = p.acceso==='gratis' ? '<span class="ss-price gratis">¡Gratis!</span>' : '<span class="ss-price">$'+(p.precio||0).toLocaleString('es-AR')+'</span>';
+      return '<a class="ss-item" href="#/producto/'+p.id+'"><img class="ss-thumb" src="'+imgOpt(p.imagen,120)+'" alt="" loading="lazy" onerror="this.onerror=null;this.src=\''+_imgAbs(p.imagen)+'\'"><div class="ss-body"><div class="ss-name">'+(p.nombre||'')+'</div>'+pr+'</div></a>';
+    }).join('');
+    box.classList.add('on');
+  }
+  input.addEventListener('input', function(e){ buscar(e.target.value); });
+  input.addEventListener('focus', function(e){ if ((e.target.value||'').trim().length>=2) buscar(e.target.value); });
+  document.addEventListener('click', function(e){ if (!wrap.contains(e.target)) cerrar(); });
+  box.addEventListener('click', function(){ setTimeout(cerrar, 60); });
+})();
+
+// #1 — Vista mosaico (masonry) con toggle
+let _vista = 'grid';
+try{ _vista = localStorage.getItem('cofre_vista') || 'grid'; }catch(e){}
+function setVista(v){
+  _vista = v; try{ localStorage.setItem('cofre_vista', v); }catch(e){}
+  const g = document.getElementById('grid'); if (g) g.classList.toggle('masonry', v==='masonry');
+  document.querySelectorAll('.view-toggle button').forEach(function(b){ b.classList.toggle('on', b.dataset.v===v); });
+  layoutMasonry();
+}
+function layoutMasonry(){
+  const g = document.getElementById('grid'); if (!g) return;
+  const cards = g.querySelectorAll('.card');
+  if (!g.classList.contains('masonry')){ cards.forEach(function(c){ c.style.gridRowEnd=''; }); return; }
+  const rah = 8, gap = parseInt(getComputedStyle(g).rowGap) || 24;
+  cards.forEach(function(c){
+    c.style.gridRowEnd = '';
+    const h = c.getBoundingClientRect().height;
+    c.style.gridRowEnd = 'span ' + Math.ceil((h + gap) / (rah + gap));
+  });
+}
+window.addEventListener('resize', function(){ clearTimeout(window._mzT); window._mzT = setTimeout(layoutMasonry, 160); });
+document.addEventListener('load', function(e){ if (e.target && e.target.tagName === 'IMG' && _vista==='masonry'){ clearTimeout(window._mzT2); window._mzT2 = setTimeout(layoutMasonry, 60); } }, true);
 
 // ── Confeti de celebración (canvas, sin librerías) ──
 function lanzarConfeti(){
@@ -3646,6 +3775,7 @@ function compartirProducto(e, id, nombre){
       btn.textContent = '✓';
       btn.style.background = 'var(--green-soft)';
       btn.style.color = 'var(--green)';
+      if (typeof microPopAt === 'function') microPopAt(btn, '🔗');
       setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; }, 1800);
     });
   }
@@ -3821,7 +3951,7 @@ function abrirRegalo(){
   if (window.umami) umami.track('cofre-reclamado');
 }
 function copiarCupon(btn){
-  const done = () => { const t = btn.textContent; btn.textContent = '¡Copiado! ✓'; setTimeout(() => btn.textContent = t, 1600); if (typeof toast === 'function') toast('✓ Cupón ' + CUPON.codigo + ' copiado'); };
+  const done = () => { const t = btn.textContent; btn.textContent = '¡Copiado! ✓'; setTimeout(() => btn.textContent = t, 1600); if (typeof toast === 'function') toast('✓ Cupón ' + CUPON.codigo + ' copiado'); if (typeof microPopAt === 'function') microPopAt(btn, '✓'); };
   if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(CUPON.codigo).then(done).catch(done); }
   else { const ta = document.createElement('textarea'); ta.value = CUPON.codigo; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} ta.remove(); done(); }
 }
