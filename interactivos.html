@@ -508,6 +508,13 @@ html.is-iab,html.is-iab body{max-width:100vw!important;overflow-x:hidden!importa
 html.is-iab .hdr{width:100%!important;}
 html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
 html.is-iab *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+/* Barra "Abrir en tu navegador" (solo dentro del navegador de Instagram) */
+.iab-bar{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;align-items:center;gap:8px;padding:9px 12px;background:linear-gradient(135deg,#2196F3,#0D63C4);color:#fff;font-weight:700;font-size:.82rem;box-shadow:0 3px 14px rgba(0,0,0,.22);}
+.iab-bar .iab-txt{flex:1;line-height:1.25;}
+.iab-bar .iab-act{background:#fff;color:#1565C0;border:none;border-radius:8px;padding:7px 13px;font-weight:800;font-size:.8rem;cursor:pointer;white-space:nowrap;}
+.iab-bar .iab-x{background:rgba(255,255,255,.22);color:#fff;border:none;border-radius:7px;width:28px;height:28px;font-size:.85rem;cursor:pointer;flex:none;line-height:1;}
+body.has-iab-bar{padding-top:48px;}
+body.has-iab-bar .hdr{top:48px;}
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="52b78f4b-a423-415e-bea9-beb9a2424bcc"></script>
 <script>
@@ -524,6 +531,39 @@ html.is-iab *{backdrop-filter:none!important;-webkit-backdrop-filter:none!import
   var fixWidth = function(){ var w = window.innerWidth; if(document.body){ document.body.style.maxWidth = w+'px'; document.body.style.overflowX = 'hidden'; } };
   window.addEventListener('DOMContentLoaded', fixWidth);
   window.addEventListener('resize', fixWidth);
+})();
+// Barra "Abrir en tu navegador" dentro del navegador de Instagram/Facebook
+(function(){
+  var ua = navigator.userAgent || '';
+  if(!/Instagram|FBAN|FBAV|FB_IAB|FB4A|FBIOS/i.test(ua)) return;
+  try{ if(sessionStorage.getItem('iabbar_x')==='1') return; }catch(e){}
+  var isAndroid = /Android/i.test(ua);
+  function build(){
+    if(!document.body || document.getElementById('iab-bar')) return;
+    var bar = document.createElement('div');
+    bar.id = 'iab-bar'; bar.className = 'iab-bar';
+    bar.innerHTML = '<span class="iab-txt">🚀 Para verlo más rápido, abrí esto en tu navegador</span>'
+      + '<button class="iab-act" type="button">' + (isAndroid ? 'Abrir' : 'Cómo') + '</button>'
+      + '<button class="iab-x" type="button" aria-label="Cerrar">✕</button>';
+    document.body.appendChild(bar);
+    document.body.classList.add('has-iab-bar');
+    bar.querySelector('.iab-x').addEventListener('click', function(){
+      bar.remove(); document.body.classList.remove('has-iab-bar');
+      try{ sessionStorage.setItem('iabbar_x','1'); }catch(e){}
+    });
+    bar.querySelector('.iab-act').addEventListener('click', function(){
+      var url = location.href;
+      if(isAndroid){
+        var host = location.host + location.pathname + location.search;
+        window.location.href = 'intent://' + host + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
+      } else {
+        bar.querySelector('.iab-txt').textContent = 'Tocá  ⋯  (arriba a la derecha) → "Abrir en el navegador"';
+        var b = this; try{ navigator.clipboard && navigator.clipboard.writeText(url); }catch(e){}
+        b.textContent = 'Link copiado ✓'; setTimeout(function(){ b.textContent = 'Cómo'; }, 3000);
+      }
+    });
+  }
+  if(document.body) build(); else document.addEventListener('DOMContentLoaded', build);
 })();
 </script>
 </head>
