@@ -1516,6 +1516,11 @@ body.in-detail footer{display:block;}
 html.is-iab,html.is-iab body{max-width:100vw!important;overflow-x:hidden!important;width:100%!important;}
 html.is-iab .hdr{width:100%!important;}
 html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
+/* El navegador de Instagram (WebView) renderiza mal backdrop-filter a pantalla
+   completa (se ve NEGRO y traba): lo desactivamos ahí. */
+html.is-iab *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+/* Regalo flotante: sólo en computadora (en el celular estorbaba/ralentizaba) */
+@media (max-width:700px){ .cofre-fab{display:none!important;} }
 </style>
 <script type="application/ld+json" id="schema-org">
 {
@@ -3736,13 +3741,18 @@ function _cofreInit(){
     const m = document.getElementById('cofre-modal'); if (m) m.classList.add('revealed');
     if (fab){ const s = fab.querySelector('span:last-child'); if (s) s.textContent = 'Tu cupón'; }
   } else if (!visto){
-    // Auto-abrir una sola vez, tras unos segundos, si no hay otro popup abierto
-    setTimeout(() => {
-      const exitOpen = document.querySelector('.exit-overlay.on');
-      const cmdkOpen = document.querySelector('.cmdk.on');
-      if (!exitOpen && !cmdkOpen && !document.body.classList.contains('in-detail')) abrirCofre();
-      try{ localStorage.setItem('cofre_visto','1'); }catch(e){}
-    }, 7000);
+    // Auto-abrir sólo en computadora: en celular y en el navegador de Instagram
+    // el overlay a pantalla completa ralentizaba / se veía negro.
+    const esChico = (window.matchMedia && window.matchMedia('(max-width:700px)').matches)
+      || document.documentElement.classList.contains('is-iab');
+    if (!esChico){
+      setTimeout(() => {
+        const exitOpen = document.querySelector('.exit-overlay.on');
+        const cmdkOpen = document.querySelector('.cmdk.on');
+        if (!exitOpen && !cmdkOpen && !document.body.classList.contains('in-detail')) abrirCofre();
+        try{ localStorage.setItem('cofre_visto','1'); }catch(e){}
+      }, 7000);
+    }
   }
 }
 function abrirCofre(){
