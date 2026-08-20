@@ -11,7 +11,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const BASE = 'https://cofredidactico.github.io/PaginaWeb/';
+const BASE = 'https://cofredidactico.com.ar/';
 const ROOT = path.resolve(process.cwd());
 const OUT_DIR = path.join(ROOT, 'p');
 
