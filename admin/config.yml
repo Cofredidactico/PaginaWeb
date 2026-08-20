@@ -1,7 +1,7 @@
 # ════════════════════════════════════════════════════════════════
 #  Sveltia CMS — Panel admin de Cofre Didáctico
 # ════════════════════════════════════════════════════════════════
-#  URL:    https://cofredidactico.github.io/PaginaWeb/admin/
+#  URL:    https://cofredidactico.com.ar/admin/
 #  Login:  GitHub Personal Access Token (scope "repo")
 # ════════════════════════════════════════════════════════════════
 
@@ -20,9 +20,9 @@ backend:
 media_folder: "images"
 public_folder: "/PaginaWeb/images"
 
-site_url: https://cofredidactico.github.io/PaginaWeb/
-display_url: https://cofredidactico.github.io/PaginaWeb/
-logo_url: https://cofredidactico.github.io/PaginaWeb/logo.png
+site_url: https://cofredidactico.com.ar/
+display_url: https://cofredidactico.com.ar/
+logo_url: https://cofredidactico.com.ar/logo.png
 locale: es
 
 # Optimización automática de imágenes al subir
