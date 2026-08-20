@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://cofredidactico.github.io/PaginaWeb/sitemap.xml
+Sitemap: https://cofredidactico.com.ar/sitemap.xml

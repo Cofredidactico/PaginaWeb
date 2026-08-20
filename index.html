@@ -10,15 +10,15 @@
 <!-- Open Graph -->
 <meta property="og:title" content="Cofre Didáctico — Recursos educativos" id="og-title" />
 <meta property="og:description" content="Cuadernillos, juegos interactivos y láminas para el aula." id="og-desc" />
-<meta property="og:image" content="https://cofredidactico.github.io/PaginaWeb/preview.png" id="og-image" />
+<meta property="og:image" content="https://cofredidactico.com.ar/preview.png" id="og-image" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://cofredidactico.github.io/PaginaWeb/" id="og-url" />
+<meta property="og:url" content="https://cofredidactico.com.ar/" id="og-url" />
 <meta property="og:type" content="website" id="og-type" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Cofre Didáctico" id="tw-title" />
 <meta name="twitter:description" content="Recursos didácticos para docentes." id="tw-desc" />
-<meta name="twitter:image" content="https://cofredidactico.github.io/PaginaWeb/preview.png" id="tw-image" />
+<meta name="twitter:image" content="https://cofredidactico.com.ar/preview.png" id="tw-image" />
 <meta property="og:locale" content="es_AR" />
 
 <link rel="icon" href="logo.png" />
@@ -1567,11 +1567,11 @@ body.has-iab-bar .hdr{top:48px;}
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Cofre Didáctico",
-  "url": "https://cofredidactico.github.io/PaginaWeb/",
+  "url": "https://cofredidactico.com.ar/",
   "description": "Cuadernillos, juegos interactivos y láminas de calidad editorial para docentes.",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://cofredidactico.github.io/PaginaWeb/#catalogo?q={search_term_string}",
+    "target": "https://cofredidactico.com.ar/#catalogo?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
@@ -2174,7 +2174,7 @@ function renderHeroCollage(){
 // ── Datos estructurados de producto (JSON-LD para Google) ──
 // Genera un ItemList con cada material activo → Google puede mostrar precio y disponibilidad.
 function generarSchemaProductos(){
-  const BASE = 'https://cofredidactico.github.io/PaginaWeb/';
+  const BASE = 'https://cofredidactico.com.ar/';
   const prods = (_data.productos || []).filter(p => p.activo);
   if (!prods.length) return;
   const items = prods.map((p, i) => {
@@ -2491,7 +2491,11 @@ function limpiarFiltros(){
   escribirFiltrosEnURL(true);
 }
 
-$('#q').addEventListener('input', e => { _q = e.target.value; const h=$('#hdr-q'); if(h)h.value=_q; render(); escribirFiltrosEnURL(false); });
+// Debounce del buscador: no re-dibujar el catálogo en cada tecla (evita que se
+// trabe en el celular). Espera a que dejes de escribir.
+let _searchT = null;
+function _renderDebounced(){ clearTimeout(_searchT); _searchT = setTimeout(() => { render(); escribirFiltrosEnURL(false); }, 240); }
+$('#q').addEventListener('input', e => { _q = e.target.value; const h=$('#hdr-q'); if(h)h.value=_q; _renderDebounced(); });
 
 // ── Filtros reflejados en la URL (compartibles + botón "atrás") ──
 function escribirFiltrosEnURL(push){
@@ -2674,7 +2678,8 @@ function microPopAt(el, sym){ if(!el) return; const r = el.getBoundingClientRect
     }).join('');
     box.classList.add('on');
   }
-  input.addEventListener('input', function(e){ buscar(e.target.value); });
+  let _ssT = null;
+  input.addEventListener('input', function(e){ const v = e.target.value; clearTimeout(_ssT); _ssT = setTimeout(function(){ buscar(v); }, 200); });
   input.addEventListener('focus', function(e){ if ((e.target.value||'').trim().length>=2) buscar(e.target.value); });
   document.addEventListener('click', function(e){ if (!wrap.contains(e.target)) cerrar(); });
   box.addEventListener('click', function(){ setTimeout(cerrar, 60); });
@@ -3217,7 +3222,7 @@ function animarContador(el, valorFinal){
 }
 
 function guardarPinterest(el){
-  const BASE = 'https://cofredidactico.github.io/PaginaWeb/';
+  const BASE = 'https://cofredidactico.com.ar/';
   const url = BASE + '#/producto/' + el.dataset.id;
   const media = BASE + (el.dataset.img || '');
   const desc = (el.dataset.nombre || 'Recurso didáctico') + ' — Cofre Didáctico';
@@ -3476,8 +3481,7 @@ async function compartirPlaca(){
       _q = e.target.value;
       const mainQ = document.getElementById('q');
       if (mainQ) mainQ.value = _q;
-      render();
-      escribirFiltrosEnURL(false);
+      if (typeof _renderDebounced === 'function') _renderDebounced(); else { render(); escribirFiltrosEnURL(false); }
     });
   }
 })();
@@ -3654,7 +3658,7 @@ function activarSwipeGaleria(imagenes){
 
 // ─── Meta tags dinámicos + Schema.org por producto ───
 function actualizarMeta(p){
-  const BASE = 'https://cofredidactico.github.io/PaginaWeb/';
+  const BASE = 'https://cofredidactico.com.ar/';
   const img = p.imagen ? (p.imagen.startsWith('http') ? p.imagen : BASE + p.imagen) : BASE + 'preview.png';
   const precio = p.acceso === 'gratis' ? 'Gratis' : '$' + (p.precio||0).toLocaleString('es-AR');
   const desc = (p.descripcion||'').substring(0,160);
@@ -3696,7 +3700,7 @@ function actualizarMeta(p){
 }
 
 function resetearMeta(){
-  const BASE = 'https://cofredidactico.github.io/PaginaWeb/';
+  const BASE = 'https://cofredidactico.com.ar/';
   const set = (id, val) => { const el = document.getElementById(id); if (el) el.setAttribute('content', val); };
   set('og-title', 'Cofre Didáctico — Recursos educativos');
   set('og-desc', 'Cuadernillos, juegos interactivos y láminas para el aula.');
@@ -3998,9 +4002,9 @@ function cmdkRender(q){
     matched.forEach(p => {
       const idx = _cmdkItems.length;
       _cmdkItems.push({ run: () => { cerrarCmdk(); location.hash = '#/producto/' + p.id; } });
-      const img = normImg(p.imagen);
+      const img = imgOpt(p.imagen, 96);
       const precio = p.acceso === 'gratis' ? 'Gratis' : '$' + (p.precio||0).toLocaleString('es-AR');
-      html += `<div class="cmdk-item" data-i="${idx}" onclick="cmdkRun(${idx})"><div class="ci-ico">${img?`<img src="${img}" alt="">`:'📦'}</div><div class="ci-tx"><div class="ci-tt">${p.nombre}</div><div class="ci-sub">${(p.nivel||TIPO_LABELS[p.tipo]||p.tipo||'')} · ${precio}</div></div><span class="ci-go">↵</span></div>`;
+      html += `<div class="cmdk-item" data-i="${idx}" onclick="cmdkRun(${idx})"><div class="ci-ico">${img?`<img src="${img}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${_imgAbs(p.imagen)}'">`:'📦'}</div><div class="ci-tx"><div class="ci-tt">${p.nombre}</div><div class="ci-sub">${(p.nivel||TIPO_LABELS[p.tipo]||p.tipo||'')} · ${precio}</div></div><span class="ci-go">↵</span></div>`;
     });
   }
   if (acc.length){
@@ -4032,7 +4036,7 @@ function cmdkVoz(){
 }
 (function(){
   const inp = document.getElementById('cmdk-input');
-  if (inp) inp.addEventListener('input', e => cmdkRender(e.target.value));
+  if (inp){ let _ckT=null; inp.addEventListener('input', e => { const v=e.target.value; clearTimeout(_ckT); _ckT=setTimeout(()=>cmdkRender(v),160); }); }
   document.addEventListener('keydown', e => {
     const cmdk = document.getElementById('cmdk');
     const open = cmdk && cmdk.classList.contains('on');
@@ -4225,8 +4229,8 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
       await OneSignal.init({
         appId: "b1a4554d-e8b0-4ad9-beac-348c4fd3ac98",
         // Worker aislado en /onesignal/ para no pisar el service worker de la PWA
-        serviceWorkerPath: "PaginaWeb/onesignal/OneSignalSDKWorker.js",
-        serviceWorkerParam: { scope: "/PaginaWeb/onesignal/" },
+        serviceWorkerPath: "onesignal/OneSignalSDKWorker.js",
+        serviceWorkerParam: { scope: "/onesignal/" },
         allowLocalhostAsSecureOrigin: true,
         // Cartelito de suscripción en español, amigable y con la voz de la marca
         promptOptions: {
