@@ -5,7 +5,7 @@
      refresca en segundo plano; usa caché si no hay red).
    - Navegaciones offline: cae al index cacheado.
 */
-const CACHE = 'cofre-v2';
+const CACHE = 'cofre-v3';
 const SHELL = [
   './',
   './index.html',
