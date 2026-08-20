@@ -782,7 +782,7 @@ body.tod-night     .hero::after{background:linear-gradient(180deg, rgba(52,74,14
 }
 .card-img img.loaded{opacity:1;}
 /* Parallax en las portadas (solo touch): la imagen deriva sobre su fondo temático */
-.grid.px-live .card-img img,.semana-grid.px-live .card-img img{transition:none;will-change:transform;}
+.grid.px-live .card-img img,.semana-grid.px-live .card-img img{transition:none;}
 /* Skeleton shimmer mientras carga la imagen (#5) */
 .card-skel{
   position:absolute;inset:0;z-index:2;pointer-events:none;opacity:1;transition:opacity .4s ease;
@@ -2608,12 +2608,14 @@ initReveal();
     });
   }, { rootMargin:'12% 0px' });
   function upd(){
+    ticking = false;
+    // No hacer NADA mientras se ve la ficha de un producto (evita el scroll lento)
+    if (document.body.classList.contains('in-detail')) return;
     const mid = innerHeight/2;
     active.forEach(img => { const r = img.getBoundingClientRect(); if (!r.height) return;
       const off = ((r.top + r.height/2) - mid) / mid;
       img.style.transform = 'translateY(' + (off*9).toFixed(1) + 'px) scale(1.05)';
     });
-    ticking = false;
   }
   window.addEventListener('scroll', () => { if (!ticking){ ticking = true; requestAnimationFrame(upd); } }, { passive:true });
   window.addEventListener('resize', upd, { passive:true });
