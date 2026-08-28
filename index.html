@@ -2,29 +2,42 @@
 <html lang="es">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+<meta name="google-site-verification" content="cR-QgifRxasxfV6PbHRzgI81t4CUOxIQViHk_DWYypI" />
 <title>Cofre Didáctico — Recursos educativos para docentes</title>
-<meta name="description" content="Cuadernillos, juegos interactivos y láminas didácticas de calidad editorial. Diseñados por una docente, para docentes." />
+<meta name="description" content="Cuadernillos, efemérides, juegos interactivos y láminas para imprimir. ✨ Recursos didácticos de calidad, creados por un docente y pensados para enriquecer y acompañar cada una de tus clases. 📚" />
 <meta name="theme-color" content="#1A2744" />
 
 <!-- Open Graph -->
 <meta property="og:title" content="Cofre Didáctico — Recursos educativos" id="og-title" />
-<meta property="og:description" content="Cuadernillos, juegos interactivos y láminas para el aula." id="og-desc" />
-<meta property="og:image" content="https://cofredidactico.github.io/PaginaWeb/preview.png" id="og-image" />
+<meta property="og:description" content="Cuadernillos, efemérides, juegos interactivos y láminas para imprimir. ✨ Recursos didácticos de calidad, creados por un docente y pensados para enriquecer y acompañar cada una de tus clases. 📚" id="og-desc" />
+<meta property="og:image" content="https://cofredidactico.com.ar/preview.png" id="og-image" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://cofredidactico.github.io/PaginaWeb/" id="og-url" />
+<meta property="og:url" content="https://cofredidactico.com.ar/" id="og-url" />
 <meta property="og:type" content="website" id="og-type" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Cofre Didáctico" id="tw-title" />
-<meta name="twitter:description" content="Recursos didácticos para docentes." id="tw-desc" />
-<meta name="twitter:image" content="https://cofredidactico.github.io/PaginaWeb/preview.png" id="tw-image" />
+<meta name="twitter:description" content="Cuadernillos, efemérides, juegos interactivos y láminas para imprimir. ✨ Recursos didácticos de calidad, creados por un docente y pensados para enriquecer y acompañar cada una de tus clases. 📚" id="tw-desc" />
+<meta name="twitter:image" content="https://cofredidactico.com.ar/preview.png" id="tw-image" />
 <meta property="og:locale" content="es_AR" />
 
+<link rel="icon" type="image/png" sizes="192x192" href="icon192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="icon512.png" />
 <link rel="icon" href="logo.png" />
+
+<!-- PWA (instalable + offline) -->
+<link rel="manifest" href="manifest.json" />
+<link rel="apple-touch-icon" href="icon192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Cofre Didáctico" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://wsrv.nl" crossorigin />
+<link rel="dns-prefetch" href="https://wsrv.nl" />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" /></noscript>
 
 <!-- ════ Umami Analytics (descomenta cuando crees tu cuenta) ════ -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="52b78f4b-a423-415e-bea9-beb9a2424bcc"></script>
@@ -39,34 +52,315 @@
   --ink:#1A2744; --ink-2:#3B4A66; --ink-3:#637082; --ink-4:#8A93A4;
   --bg:#FDFCF8; --bg-2:#F5F0E8; --bg-3:#ECE5D8;
   --line:#E8E0CE;
+  --card:#FFFFFF;                 /* superficie de tarjetas/inputs */
+  --hdr-bg:rgba(253,252,248,.85); /* fondo del header sticky */
+  --dot:rgba(26,39,68,.04);       /* patrón de puntitos del fondo */
+  --glass:rgba(255,255,255,.72);  /* vidrio (hero-stats) */
   --primary:#2196F3; --primary-soft:#E3F2FD;
   --accent:#FF8A4C; --accent-soft:#FFE9D9;
-  --green:#2196F3; --green-soft:#E3F2FD;
+  --green:#2E7D32; --green-soft:#E8F5E9;
   --gold:#F4A300;
+  --cta-bg:#1A2744; --cta-bg-h:#2196F3; --cta-fg:#ffffff; /* botón "Ver más" */
+  --warm-ink:#C75200; /* texto cálido legible (badge "Esta semana") */
+  --footer-bg:#1A2744; /* footer siempre oscuro en ambos temas */
   /* Radius / shadow */
   --r-sm:8px; --r:14px; --r-lg:22px; --r-xl:32px;
   --s-1: 0 1px 2px rgba(26,39,68,.05);
   --s-2: 0 2px 4px rgba(26,39,68,.04), 0 8px 24px rgba(26,39,68,.06);
   --s-3: 0 12px 32px rgba(26,39,68,.10);
   /* Type */
-  --f-display:'Bricolage Grotesque','Nunito',system-ui,sans-serif;
+  --f-display:'Outfit', system-ui, sans-serif;
   --f-body:'Nunito', system-ui, sans-serif;
+}
+
+/* ─── Tema oscuro (automático por sistema + toggle manual) ─── */
+:root[data-theme="dark"]{
+  --ink:#EEF1F6; --ink-2:#C3CAD6; --ink-3:#96A0B0; --ink-4:#6E7889;
+  --bg:#121722; --bg-2:#1A2130; --bg-3:#222B3C;
+  --line:#2C3648;
+  --card:#1B2230;
+  --hdr-bg:rgba(18,23,34,.85);
+  --dot:rgba(255,255,255,.045);
+  --glass:rgba(35,43,60,.72);
+  --primary:#54ABF5; --primary-soft:#16283A;
+  --accent:#FF9B63; --accent-soft:#33221A;
+  --green:#5CC47B; --green-soft:#16281C;
+  --gold:#F4B740;
+  --cta-bg:#2F6FE0; --cta-bg-h:#1E5FCC; --cta-fg:#ffffff;
+  --warm-ink:#FFB07A;
+  --footer-bg:#0F141D;
+  --s-1: 0 1px 2px rgba(0,0,0,.4);
+  --s-2: 0 2px 4px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.45);
+  --s-3: 0 12px 32px rgba(0,0,0,.55);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#EEF1F6; --ink-2:#C3CAD6; --ink-3:#96A0B0; --ink-4:#6E7889;
+    --bg:#121722; --bg-2:#1A2130; --bg-3:#222B3C;
+    --line:#2C3648;
+    --card:#1B2230;
+    --hdr-bg:rgba(18,23,34,.85);
+    --dot:rgba(255,255,255,.045);
+    --glass:rgba(35,43,60,.72);
+    --primary:#54ABF5; --primary-soft:#16283A;
+    --accent:#FF9B63; --accent-soft:#33221A;
+    --green:#5CC47B; --green-soft:#16281C;
+    --gold:#F4B740;
+    --cta-bg:#2F6FE0; --cta-bg-h:#1E5FCC; --cta-fg:#ffffff;
+    --warm-ink:#FFB07A;
+    --footer-bg:#0F141D;
+    --s-1: 0 1px 2px rgba(0,0,0,.4);
+    --s-2: 0 2px 4px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.45);
+    --s-3: 0 12px 32px rgba(0,0,0,.55);
+  }
+}
+/* Botón de tema en el header */
+.theme-toggle{
+  width:40px;height:40px;border-radius:10px;flex:none;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--card);border:1.5px solid var(--line);color:var(--ink);
+  font-size:1.1rem;transition:background .15s,border-color .15s,transform .15s;
+}
+.theme-toggle:hover{border-color:var(--primary);transform:translateY(-1px);}
+.theme-toggle:focus-visible{outline:3px solid var(--primary-soft);outline-offset:2px;}
+.theme-toggle span{display:inline-block;transition:transform .1s;}
+.theme-toggle.spin span{animation:themeSpin .5s cubic-bezier(.4,1.4,.5,1);}
+@keyframes themeSpin{0%{transform:rotate(0) scale(1);}50%{transform:rotate(180deg) scale(.4);}100%{transform:rotate(360deg) scale(1);}}
+@media (prefers-reduced-motion:reduce){.theme-toggle.spin span{animation:none;}}
+
+/* ─── Pop-up de salida (exit-intent) ─── */
+.exit-overlay{
+  position:fixed;inset:0;z-index:120;
+  background:rgba(10,14,22,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;
+}
+.exit-overlay.on{opacity:1;visibility:visible;}
+.exit-modal{
+  position:relative;max-width:420px;width:100%;
+  background:var(--card);color:var(--ink);
+  border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:34px 30px 28px;text-align:center;box-shadow:var(--s-3);
+  transform:translateY(12px) scale(.98);transition:transform .25s cubic-bezier(.2,.8,.2,1);
+}
+.exit-overlay.on .exit-modal{transform:translateY(0) scale(1);}
+.exit-x{
+  position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+  background:var(--bg-2);color:var(--ink-3);
+}
+.exit-x:hover{background:var(--bg-3);color:var(--ink);}
+.exit-emoji{font-size:2.6rem;margin-bottom:8px;}
+.exit-modal h3{font-size:1.5rem;margin-bottom:8px;}
+.exit-modal p{color:var(--ink-3);font-size:.98rem;margin-bottom:18px;}
+.exit-form{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+.exit-form input{
+  width:100%;padding:13px 16px;border-radius:12px;
+  border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;
+}
+.exit-form input:focus{outline:none;border-color:var(--primary);}
+.exit-form .btn{justify-content:center;width:100%;}
+.exit-alt{font-size:.86rem;color:var(--ink-3);font-weight:700;}
+.exit-alt:hover{color:var(--primary);}
+@media (prefers-reduced-motion:reduce){
+  .exit-overlay,.exit-modal{transition:none;}
+}
+
+/* ─── Lightbox de galería (visor de imágenes) ─── */
+.lightbox{
+  position:fixed;inset:0;z-index:200;
+  background:#080b12;
+  display:none;align-items:center;justify-content:center;padding:24px;
+}
+.lightbox.on{display:flex;animation:lbIn .2s ease;}
+@keyframes lbIn{from{opacity:0;}to{opacity:1;}}
+.lb-img{
+  max-width:92vw;max-height:86vh;object-fit:contain;border-radius:10px;
+  cursor:zoom-in;transition:opacity .3s;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  touch-action:none;will-change:transform;transform-origin:center center;
+}
+.lb-img.zoom{cursor:grab;}
+.lb-close,.lb-nav{
+  position:absolute;background:rgba(255,255,255,.13);color:#fff;
+  display:flex;align-items:center;justify-content:center;border-radius:50%;
+  transition:background .15s,transform .15s;backdrop-filter:blur(6px);
+}
+.lb-close{top:18px;right:20px;width:44px;height:44px;font-size:1.25rem;}
+.lb-nav{top:50%;transform:translateY(-50%);width:54px;height:54px;font-size:2.1rem;line-height:1;padding-bottom:4px;}
+.lb-prev{left:18px;} .lb-next{right:18px;}
+.lb-close:hover,.lb-nav:hover{background:rgba(255,255,255,.26);}
+.lb-nav:hover{transform:translateY(-50%) scale(1.08);}
+.lb-counter{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.85);font-weight:700;font-size:.88rem;background:rgba(0,0,0,.45);padding:6px 15px;border-radius:99px;}
+@media (max-width:560px){
+  .lb-nav{width:44px;height:44px;font-size:1.7rem;}
+  .lb-close{width:40px;height:40px;}
+}
+
+/* ─── Flipbook: hojear las páginas como una revista ─── */
+.flipbook{position:fixed;inset:0;z-index:210;background:#080b12;display:none;align-items:center;justify-content:center;padding:24px;}
+.flipbook.on{display:flex;animation:lbIn .2s ease;}
+.fb-book{perspective:1900px;max-width:90vw;max-height:84vh;}
+.fb-page{transform-style:preserve-3d;will-change:transform;border-radius:6px;overflow:hidden;background:var(--card);box-shadow:0 30px 80px rgba(0,0,0,.6);}
+.fb-page img{display:block;max-width:90vw;max-height:84vh;object-fit:contain;}
+.fb-close,.fb-nav{position:absolute;background:rgba(255,255,255,.13);color:#fff;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .15s,transform .15s;backdrop-filter:blur(6px);cursor:pointer;}
+.fb-close{top:18px;right:20px;width:44px;height:44px;font-size:1.25rem;}
+.fb-nav{top:50%;transform:translateY(-50%);width:56px;height:56px;font-size:2.2rem;line-height:1;padding-bottom:4px;}
+.fb-prev{left:18px;} .fb-next{right:18px;}
+.fb-close:hover,.fb-nav:hover{background:rgba(255,255,255,.26);}
+.fb-nav:hover{transform:translateY(-50%) scale(1.08);}
+.fb-nav[disabled]{opacity:.3;pointer-events:none;}
+.fb-counter{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.85);background:rgba(0,0,0,.45);padding:6px 15px;border-radius:99px;font-weight:700;font-size:.88rem;}
+.fb-hint{position:absolute;bottom:22px;right:22px;color:rgba(255,255,255,.6);font-size:.78rem;}
+/* Botón para abrir el flipbook desde la ficha */
+.fb-open{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:12px;padding:12px 18px;border-radius:12px;font-weight:800;font-size:.95rem;background:var(--bg-2);color:var(--ink);border:1.5px solid var(--line);transition:all .18s;}
+
+/* ─── Placa para Instagram Stories ─── */
+.btn-placa{flex-basis:100%;width:100%;}
+.placa-modal{position:fixed;inset:0;z-index:230;background:rgba(8,11,18,.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;flex-direction:column;gap:16px;}
+.placa-modal.on{display:flex;animation:lbIn .2s ease;}
+.placa-canvas-wrap{position:relative;max-width:min(340px,80vw);width:100%;}
+.placa-canvas-wrap canvas{width:100%;height:auto;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6);display:block;background:#fff;}
+.placa-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:min(340px,80vw);width:100%;}
+.placa-actions .btn{flex:1;min-width:130px;justify-content:center;}
+.placa-title{color:#fff;font-family:var(--f-display);font-weight:800;font-size:1.05rem;text-align:center;margin:0;}
+.placa-sub{color:rgba(255,255,255,.7);font-size:.82rem;text-align:center;margin:-6px 0 0;max-width:320px;line-height:1.35;}
+.placa-close{position:absolute;top:16px;right:18px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.13);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.25rem;backdrop-filter:blur(6px);cursor:pointer;border:none;z-index:2;}
+.placa-close:hover{background:rgba(255,255,255,.26);}
+.fb-open:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px);}
+@media (max-width:560px){ .fb-nav{width:44px;height:44px;font-size:1.7rem;} .fb-hint{display:none;} }
+@media (prefers-reduced-motion:reduce){ .fb-page{transition:none !important;} }
+
+/* ─── Barra de navegación inferior (mobile, estilo app) ─── */
+.bottom-nav{
+  position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;
+  grid-template-columns:repeat(5,1fr);gap:2px;
+  background:var(--hdr-bg);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);
+  border-top:1px solid var(--line);
+  padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));
+}
+.bottom-nav a,.bottom-nav button{
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:7px 4px;border-radius:12px;font-size:.64rem;font-weight:800;letter-spacing:.01em;
+  color:var(--ink-3);background:none;transition:color .15s,background .15s;text-align:center;
+}
+.bottom-nav .bn-ico{font-size:1.25rem;line-height:1;}
+.bottom-nav a.active{color:var(--primary);}
+.bottom-nav a:active,.bottom-nav button:active{background:var(--bg-2);}
+
+/* ─── Botón "volver arriba" ─── */
+.to-top{
+  position:fixed;right:18px;bottom:18px;z-index:85;
+  width:46px;height:46px;border-radius:50%;
+  background:var(--card);border:1.5px solid var(--line);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:800;
+  box-shadow:var(--s-2);cursor:pointer;
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .2s,transform .2s,visibility .2s,border-color .15s,color .15s;
+}
+.to-top.show{opacity:1;visibility:visible;transform:none;}
+.to-top:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px);}
+.to-top:focus-visible{outline:3px solid var(--primary-soft);outline-offset:2px;}
+
+@media (max-width:700px){
+  .bottom-nav{display:grid;}
+  body{padding-bottom:64px;}
+  .to-top{bottom:76px;right:14px;width:42px;height:42px;}
+  /* En mobile la navegación vive en la barra inferior: limpiamos el header */
+  .hdr .nav a{display:none !important;}
+  .hdr .nav{gap:0;}
+  /* En la ficha manda la barra de compra fija: ocultamos lo demás para no chocar */
+  body.in-detail .bottom-nav,
+  body.in-detail .cofre-fab,
+  body.in-detail .to-top{display:none !important;}
+}
+
+/* ─── "Abrí el Cofre" — regalo gamificado ─── */
+.cofre-fab{
+  position:fixed;left:16px;bottom:18px;z-index:88;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 16px;border-radius:99px;
+  background:linear-gradient(135deg,var(--accent),#FF6B35);color:#fff;
+  font-family:var(--f-display);font-weight:800;font-size:.9rem;cursor:pointer;
+  box-shadow:0 8px 22px rgba(255,138,76,.4);
+  animation:cofreFabIn .4s .6s both, cofrePulse 2.6s 1.4s ease-in-out infinite;
+}
+.cofre-fab .cf-ico{font-size:1.15rem;line-height:1;}
+.cofre-fab:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(255,138,76,.55);}
+.cofre-fab:focus-visible{outline:3px solid #fff;outline-offset:2px;}
+@keyframes cofreFabIn{from{opacity:0;transform:translateY(14px) scale(.8);}to{opacity:1;transform:none;}}
+@keyframes cofrePulse{0%,100%{box-shadow:0 8px 22px rgba(255,138,76,.4);}50%{box-shadow:0 10px 34px rgba(255,138,76,.75);}}
+@media (max-width:700px){ .cofre-fab{bottom:74px;left:12px;padding:11px;} .cofre-fab span:last-child{display:none;} .cofre-fab .cf-ico{font-size:1.35rem;} }
+
+.cofre-overlay{
+  position:fixed;inset:0;z-index:130;
+  background:rgba(10,14,22,.62);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;visibility:hidden;transition:opacity .28s,visibility .28s;
+}
+.cofre-overlay.on{opacity:1;visibility:visible;}
+.cofre-modal{
+  position:relative;width:100%;max-width:420px;
+  background:var(--card);color:var(--ink);border:1px solid var(--line);
+  border-radius:24px;padding:34px 28px 26px;text-align:center;box-shadow:var(--s-3);overflow:hidden;
+  transform:translateY(16px) scale(.95);transition:transform .32s cubic-bezier(.2,.8,.2,1);
+}
+.cofre-overlay.on .cofre-modal{transform:none;}
+.cofre-modal::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--primary),var(--accent));}
+.cofre-x{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:var(--bg-2);color:var(--ink-3);font-size:1rem;z-index:2;}
+.cofre-x:hover{background:var(--bg-3);color:var(--ink);}
+.cofre-stage{position:relative;width:150px;height:150px;margin:2px auto 16px;display:flex;align-items:center;justify-content:center;}
+.cofre-glow{position:absolute;inset:-10%;border-radius:50%;background:radial-gradient(circle,rgba(255,138,76,.4),transparent 62%);animation:cofreGlow 2.4s ease-in-out infinite;}
+.cofre-logo{position:relative;width:132px;height:132px;object-fit:contain;filter:drop-shadow(0 12px 26px rgba(255,138,76,.4));transition:transform .5s cubic-bezier(.2,1.5,.4,1);}
+.cofre-stage.shake .cofre-logo{animation:cofreShake .55s;}
+.cofre-stage.pop .cofre-logo{transform:scale(1.16) rotate(-2deg);}
+@keyframes cofreShake{0%,100%{transform:rotate(0);}18%{transform:rotate(-8deg);}36%{transform:rotate(7deg);}54%{transform:rotate(-5deg);}72%{transform:rotate(4deg);}88%{transform:rotate(-2deg);}}
+@keyframes cofreGlow{0%,100%{opacity:.45;transform:scale(.9);}50%{opacity:.95;transform:scale(1.08);}}
+.cofre-modal h3{font-size:1.55rem;margin:0 0 8px;}
+.cofre-modal p{color:var(--ink-3);font-size:.98rem;margin:0 0 18px;}
+.cofre-code{display:flex;align-items:stretch;max-width:290px;margin:0 auto 12px;border:2px dashed var(--primary);border-radius:13px;overflow:hidden;background:var(--primary-soft);}
+.cofre-code span{flex:1;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:800;font-size:1.45rem;letter-spacing:.14em;color:var(--primary);padding:12px 8px;}
+.cofre-copy{background:var(--primary);color:#fff;font-weight:800;padding:0 16px;font-size:.88rem;white-space:nowrap;transition:filter .15s;}
+.cofre-copy:hover{filter:brightness(1.1);}
+.cofre-note{font-size:.84rem !important;color:var(--ink-4) !important;margin-bottom:16px !important;}
+.cofre-reveal{display:none;}
+.cofre-modal.revealed .cofre-closed{display:none;}
+.cofre-modal.revealed .cofre-reveal{display:block;animation:cofreRevealIn .42s ease;}
+@keyframes cofreRevealIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion:reduce){
+  .cofre-fab{animation:cofreFabIn .4s both;}
+  .cofre-glow,.cofre-stage.shake .cofre-logo{animation:none;}
 }
 
 *,*::before,*::after{box-sizing:border-box;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+
+/* Transiciones suaves entre páginas (navegadores compatibles) */
+@view-transition{ navigation: auto; }
+@media (prefers-reduced-motion:reduce){ @view-transition{ navigation: none; } }
+
+/* Barra de progreso de carga (tipo YouTube) */
+#topbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:400;background:linear-gradient(90deg,var(--primary),var(--accent));box-shadow:0 0 10px rgba(33,150,243,.55);opacity:0;transition:width .2s ease,opacity .35s;pointer-events:none;border-radius:0 3px 3px 0;}
+#topbar.on{opacity:1;}
+
+/* Tilt 3D en las cards (solo dispositivos con mouse) */
+@media (hover:hover) and (pointer:fine){
+  .card{transform-style:preserve-3d;}
+  .card .card-img,.card .card-body{transition:transform .2s;}
+}
 /* Fix viewport height en mobile browsers con barra de URL */
 @supports(height:100dvh){
   .detail-view,.sec{min-height:unset;}
 }
 body{
   margin:0;
+  -webkit-tap-highlight-color:transparent;
   font-family:var(--f-body);
   font-size:16px;
   line-height:1.6;
   color:var(--ink);
   background:var(--bg);
-  background-image: radial-gradient(circle at 1px 1px, rgba(26,39,68,.04) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 0);
   background-size: 28px 28px;
   -webkit-font-smoothing:antialiased;
 }
@@ -84,12 +378,22 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 /* ─── Header ─── */
 .hdr{
   position:sticky; top:0; z-index:50;
-  background:rgba(253,252,248,.85);
+  background:var(--hdr-bg);
   backdrop-filter:saturate(160%) blur(14px);
   -webkit-backdrop-filter:saturate(160%) blur(14px);
   border-bottom:1px solid rgba(26,39,68,.07);
+  transition:box-shadow .28s ease, border-color .28s ease, background .28s ease;
 }
-.hdr-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:24px;}
+/* Al scrollear: más vidrio, sombra sutil y header más compacto (clase propia
+   'glass' para no chocar con '.scrolled', que revela el buscador del header) */
+.hdr.glass{
+  backdrop-filter:saturate(185%) blur(20px);
+  -webkit-backdrop-filter:saturate(185%) blur(20px);
+  box-shadow:0 8px 28px -14px rgba(26,39,68,.30);
+  border-bottom-color:transparent;
+}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:24px;transition:padding .28s ease;}
+.hdr.glass .hdr-in{padding:9px 0;}
 .brand{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-weight:800;font-size:1.1rem;}
 .brand img{width:40px;height:40px;border-radius:10px;object-fit:cover;}
 .brand strong{color:var(--accent);}
@@ -118,13 +422,52 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .btn:active{transform:translateY(0);}
 .btn-primary{background:linear-gradient(135deg,var(--accent),#FF6B35);color:#fff;box-shadow:0 4px 14px rgba(255,138,76,.3);}
 .btn-primary:hover{box-shadow:0 8px 24px rgba(255,138,76,.4);}
-.btn-ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink);}
+.btn-ghost{background:var(--card);border:1.5px solid var(--line);color:var(--ink);}
 .btn-ghost:hover{border-color:var(--primary);color:var(--primary);}
 .btn-hotmart{
   background:linear-gradient(135deg,#EF4E23,#D63B12);color:#fff;
   box-shadow:0 4px 14px rgba(239,78,35,.32);
 }
 .btn-hotmart:hover{box-shadow:0 8px 24px rgba(239,78,35,.42);}
+.btn-pin{background:#E60023;color:#fff;box-shadow:0 4px 14px rgba(230,0,35,.3);}
+.btn-pin:hover{box-shadow:0 8px 24px rgba(230,0,35,.42);}
+
+/* ─── Command palette (⌘K) ─── */
+.cmdk{position:fixed;inset:0;z-index:160;display:none;justify-content:center;align-items:flex-start;padding:12vh 20px 20px;background:rgba(10,14,22,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+.cmdk.on{display:flex;animation:lbIn .18s ease;}
+.cmdk-box{width:100%;max-width:600px;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--s-3);overflow:hidden;transform:translateY(-8px);animation:cmdkIn .22s cubic-bezier(.2,.8,.2,1) forwards;}
+@keyframes cmdkIn{to{transform:none;}}
+.cmdk-input-row{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);}
+.cmdk-ico{font-size:1.1rem;opacity:.7;}
+.cmdk-input-row input{flex:1;border:none;background:none;font:inherit;font-size:1.05rem;color:var(--ink);outline:none;}
+.cmdk-mic{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;background:var(--bg-2);color:var(--ink-2);transition:all .15s;flex:none;}
+.cmdk-mic:hover{background:var(--primary-soft);color:var(--primary);}
+.cmdk-mic.rec{background:var(--accent);color:#fff;animation:micPulse 1s infinite;}
+@keyframes micPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,138,76,.5);}50%{box-shadow:0 0 0 8px rgba(255,138,76,0);}}
+.cmdk-esc{font-size:.68rem;font-weight:800;color:var(--ink-4);background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:3px 7px;}
+.cmdk-results{max-height:46vh;overflow-y:auto;padding:8px;}
+.cmdk-sec{font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-4);padding:10px 12px 6px;}
+.cmdk-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:11px;cursor:pointer;}
+.cmdk-item.active,.cmdk-item:hover{background:var(--bg-2);}
+.cmdk-item .ci-ico{width:38px;height:38px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:var(--bg-3);overflow:hidden;}
+.cmdk-item .ci-ico img{width:100%;height:100%;object-fit:cover;}
+.cmdk-item .ci-tx{min-width:0;flex:1;}
+.cmdk-item .ci-tt{font-weight:700;font-size:.96rem;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cmdk-item .ci-sub{font-size:.78rem;color:var(--ink-4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cmdk-item .ci-go{font-size:.9rem;color:var(--ink-4);opacity:0;}
+.cmdk-item.active .ci-go{opacity:1;}
+.cmdk-empty{padding:30px 12px;text-align:center;color:var(--ink-4);font-size:.92rem;}
+.cmdk-foot{display:flex;gap:16px;padding:10px 16px;border-top:1px solid var(--line);font-size:.72rem;color:var(--ink-4);font-weight:600;}
+.cmdk-hint{display:none;align-items:center;gap:5px;padding:6px 11px;border-radius:9px;background:var(--bg-2);border:1px solid var(--line);color:var(--ink-3);font-size:.8rem;font-weight:700;cursor:pointer;transition:border-color .15s;}
+.cmdk-hint:hover{border-color:var(--primary);color:var(--primary);}
+.cmdk-hint kbd{font-family:var(--f-body);font-weight:800;background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:.72rem;}
+@media (min-width:841px){ .cmdk-hint{display:inline-flex;} }
+
+/* ─── Toasts ─── */
+.toast-c{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:320;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;}
+.toast{background:var(--ink);color:var(--bg);font-weight:700;font-size:.9rem;padding:11px 18px;border-radius:12px;box-shadow:var(--s-3);opacity:0;transform:translateY(12px);transition:opacity .25s,transform .25s;}
+.toast.on{opacity:1;transform:none;}
+@media (max-width:700px){ .toast-c{bottom:80px;} }
 .btn-lg{padding:15px 28px;font-size:1rem;}
 .btn-sm{padding:8px 14px;font-size:.85rem;}
 
@@ -135,10 +478,31 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
     radial-gradient(ellipse 70% 60% at 15% 0%, rgba(33,150,243,.10), transparent 60%),
     radial-gradient(ellipse 70% 60% at 90% 100%, rgba(255,138,76,.10), transparent 60%);
 }
+/* Fondo "vivo" según la hora del día (#8) */
+.hero::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.85;transition:background .8s ease;background:transparent;}
+body.tod-morning   .hero::after{background:radial-gradient(ellipse 90% 70% at 18% -12%, rgba(255,208,128,.26), transparent 62%);}
+body.tod-afternoon .hero::after{background:radial-gradient(ellipse 90% 70% at 85% -12%, rgba(110,185,255,.20), transparent 62%);}
+body.tod-night     .hero::after{background:linear-gradient(180deg, rgba(52,74,140,.22), transparent 55%),radial-gradient(ellipse 70% 60% at 80% 0%, rgba(120,110,200,.16), transparent 60%);}
+/* Saludo personalizado */
+.hero-hola{font-family:var(--f-display);font-weight:800;color:var(--accent);font-size:.92rem;margin-bottom:10px;min-height:1.1em;letter-spacing:.01em;opacity:0;transform:translateY(6px);transition:opacity .5s, transform .5s;}
+.hero-hola.on{opacity:1;transform:none;}
+/* Materiales escolares flotando suavemente en el fondo del hero */
+.hero > .wrap{position:relative;z-index:2;}
+.hero-float{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.hero-float span{
+  position:absolute;font-size:2rem;opacity:.15;
+  animation:heroDrift ease-in-out infinite;will-change:transform;
+}
+@keyframes heroDrift{
+  0%,100%{transform:translateY(0) rotate(-4deg);}
+  50%{transform:translateY(-28px) rotate(6deg);}
+}
+@media (prefers-reduced-motion:reduce){ .hero-float span{animation:none;} }
+@media (max-width:600px){ .hero-float span{font-size:1.5rem;opacity:.12;} }
 
 .hero-badge{
   display:inline-flex;align-items:center;gap:6px;
-  background:#fff;border:1.5px solid var(--line);
+  background:var(--card);border:1.5px solid var(--line);
   padding:8px 16px;border-radius:99px;font-size:.78rem;font-weight:800;
   letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);
   box-shadow:var(--s-1);
@@ -169,8 +533,10 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:0;
-  background:rgba(255,255,255,.72);
-  border:1px solid rgba(26,39,68,.07);
+  background:var(--glass);
+  backdrop-filter:saturate(150%) blur(12px);
+  -webkit-backdrop-filter:saturate(150%) blur(12px);
+  border:1px solid rgba(255,255,255,.35);
   border-radius:20px;
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
@@ -235,11 +601,12 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 }
 .sec-h{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:10px;}
 .sec-sub{color:var(--ink-3);max-width:600px;font-size:1.05rem;}
+.ig-embed{max-width:1000px;margin:28px auto 0;}
 
 /* ─── Barra de filtros compacta ─── */
 .filter-bar{
   display:flex;flex-wrap:wrap;gap:10px;align-items:center;
-  background:#fff;border:1px solid var(--line);border-radius:16px;
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
   padding:10px 14px;margin-bottom:24px;
   box-shadow:var(--s-1);
 }
@@ -265,6 +632,67 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .filter-clear{font-size:.8rem;font-weight:700;color:var(--ink-4);background:var(--bg-2);padding:8px 12px;border-radius:10px;border:1.5px solid var(--line);transition:all .15s;white-space:nowrap;}
 .filter-clear:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
 .filter-clear[hidden]{display:none;}
+
+/* ─── Toolbar del catálogo: contador + orden ─── */
+.cat-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px;}
+.cat-count{font-size:.92rem;font-weight:700;color:var(--ink-3);}
+.cat-count strong{color:var(--ink);}
+.cat-sort{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--ink-3);font-weight:700;}
+.cat-sort select{
+  font:inherit;font-size:.86rem;font-weight:700;color:var(--ink);
+  background:var(--card);border:1.5px solid var(--line);border-radius:10px;
+  padding:8px 30px 8px 12px;cursor:pointer;
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' fill='none' stroke='%238A93A4' stroke-width='1.6' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat;background-position:right 10px center;
+  transition:border-color .15s;
+}
+.cat-sort select:hover{border-color:var(--primary);}
+.cat-sort select:focus-visible{outline:3px solid var(--primary-soft);outline-offset:1px;}
+/* Chips de filtros activos (removibles) */
+.cat-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.cat-chips:empty{display:none;}
+.cat-chip{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--primary-soft);color:var(--primary);
+  border:1px solid rgba(33,150,243,.2);
+  padding:6px 8px 6px 12px;border-radius:99px;font-size:.82rem;font-weight:700;
+  animation:chipIn .2s cubic-bezier(.2,.8,.2,1);
+}
+.cat-chip button{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:18px;height:18px;border-radius:50%;background:rgba(33,150,243,.18);
+  color:var(--primary);font-size:.7rem;line-height:1;transition:background .15s,transform .15s;
+}
+.cat-chip button:hover{background:var(--primary);color:#fff;transform:scale(1.1);}
+.cat-chip.clear-all{background:transparent;color:var(--ink-4);border-color:var(--line);}
+.cat-chip.clear-all:hover{color:var(--accent);border-color:var(--accent);}
+@keyframes chipIn{from{opacity:0;transform:translateY(-4px) scale(.9);}to{opacity:1;transform:none;}}
+
+/* ─── Collage de portadas en el hero (desktop) ─── */
+.hero-collage{
+  position:absolute; right:0; top:50%; transform:translateY(-50%);
+  width:520px; height:440px; pointer-events:none; display:none;
+}
+@media (min-width:1060px){ .hero-collage{display:block;} }
+.hero-cover{
+  position:absolute; border-radius:18px; overflow:hidden;
+  border:5px solid var(--card);
+  box-shadow:0 28px 64px -20px rgba(26,39,68,.45), 0 8px 22px rgba(26,39,68,.16);
+  animation:heroFloat 6s ease-in-out infinite;
+}
+.hero-cover img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;background:var(--bg-2);}
+.hero-cover.c1{ width:206px; right:170px; top:0;   transform:rotate(-8deg); z-index:2; animation-delay:0s; }
+.hero-cover.c2{ width:232px; right:6px;   top:56px; transform:rotate(6deg);  z-index:3; animation-delay:.9s; }
+.hero-cover.c3{ width:188px; right:262px; top:168px;transform:rotate(-3deg); z-index:1; animation-delay:1.7s; }
+@keyframes heroFloat{0%,100%{translate:0 0;}50%{translate:0 -15px;}}
+@media (prefers-reduced-motion:reduce){ .hero-cover{animation:none;} }
+
+/* Aparición escalonada de las cards (stagger) */
+.grid .card.reveal{transition-delay:calc(min(var(--i,0),11) * 45ms);}
+@media (prefers-reduced-motion:reduce){
+  .grid .card.reveal{transition-delay:0ms !important;}
+}
 @media(max-width:600px){
   .filter-bar{gap:8px;padding:8px 10px;}
   .filter-bar select{font-size:.8rem;padding:8px 26px 8px 10px;}
@@ -277,8 +705,8 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .semana-hd .sec-h{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:6px;}
 .semana-badge{
   display:inline-flex;align-items:center;gap:6px;
-  background:linear-gradient(135deg,var(--accent-soft),#FFF3E6);
-  color:#C75200;border:1px solid rgba(255,138,76,.22);
+  background:var(--accent-soft);
+  color:var(--warm-ink);border:1px solid rgba(255,138,76,.22);
   padding:6px 14px;border-radius:99px;font-size:.74rem;font-weight:800;
   letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;
 }
@@ -314,7 +742,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
   .tag-tipo{font-size:.62rem;padding:4px 8px;top:10px;right:10px;}
 }
 .card{
-  background:#fff;border-radius:var(--r-lg);border:1px solid rgba(26,39,68,.07);
+  background:var(--card);border-radius:var(--r-lg);border:1px solid rgba(26,39,68,.07);
   overflow:hidden;cursor:pointer;
   display:flex;flex-direction:column;
   box-shadow:var(--s-1);
@@ -327,9 +755,21 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
   border-color:rgba(33,150,243,.25);
 }
 .card:active{transform:translateY(-2px) scale(.99);}
+/* Portada con degradado dinámico según la temática del material */
 .card-img{
   position:relative;aspect-ratio:4/5;overflow:hidden;
-  background:linear-gradient(135deg,var(--bg-2),var(--bg-3));
+  background:linear-gradient(150deg, color-mix(in srgb, var(--tc,#94a3b8) 22%, var(--bg-2)), var(--bg-3) 78%);
+}
+/* Chip de temática (color propio por área) */
+.card-tema{
+  display:inline-flex;align-items:center;gap:5px;align-self:flex-start;
+  background:color-mix(in srgb, var(--tc,#64748B) 13%, var(--card));
+  color:var(--tc,#64748B);font-weight:800;font-size:.7rem;
+  padding:3px 10px;border-radius:99px;line-height:1.5;
+}
+/* Glow del hover teñido con el color de la temática */
+.card:hover{
+  box-shadow:0 20px 46px -14px color-mix(in srgb, var(--tc,#1A2744) 45%, transparent),0 4px 14px rgba(26,39,68,.08);
 }
 /* Microtextura de papel (puntitos sutiles) sobre el fondo de la imagen */
 .card-img::before{
@@ -343,6 +783,21 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
   opacity:0;position:relative;z-index:0;
 }
 .card-img img.loaded{opacity:1;}
+/* Parallax en las portadas (solo touch): la imagen deriva sobre su fondo temático */
+.grid.px-live .card-img img,.semana-grid.px-live .card-img img{transition:none;}
+/* Skeleton shimmer mientras carga la imagen (#5) */
+.card-skel{
+  position:absolute;inset:0;z-index:2;pointer-events:none;opacity:1;transition:opacity .4s ease;
+  background:linear-gradient(100deg,
+    transparent 18%,
+    color-mix(in srgb, #fff 55%, transparent) 50%,
+    transparent 82%);
+  background-size:220% 100%;
+  animation:skelShimmer 1.25s ease-in-out infinite;
+}
+.card-img.media-ready .card-skel{opacity:0;}
+@keyframes skelShimmer{0%{background-position:180% 0;}100%{background-position:-80% 0;}}
+@media (prefers-reduced-motion:reduce){ .card-skel{animation:none;opacity:.5;} }
 .card:hover .card-img img{transform:scale(1.04);}
 .card-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.4),transparent 50%);pointer-events:none;z-index:1;}
 
@@ -382,7 +837,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 
 .ribbon{
   position:absolute;top:14px;left:14px;
-  background:#fff;color:var(--ink);
+  background:var(--card);color:var(--ink);
   padding:6px 12px;border-radius:99px;font-size:.74rem;font-weight:800;
   letter-spacing:.04em;text-transform:uppercase;
   box-shadow:var(--s-2);
@@ -428,11 +883,12 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .price.gratis{color:var(--green);}
 .price-tachado{font-size:.85rem;color:var(--ink-4);text-decoration:line-through;font-weight:700;margin-right:6px;}
 .btn-card{
-  background:var(--ink);color:#fff;
+  background:var(--cta-bg);color:var(--cta-fg);
   padding:8px 14px;border-radius:10px;font-size:.82rem;font-weight:700;
-  transition:background .2s, transform .2s;
+  box-shadow:0 2px 8px rgba(33,150,243,.18);
+  transition:background .2s, transform .2s, box-shadow .2s;
 }
-.card:hover .btn-card{background:var(--primary);}
+.card:hover .btn-card{background:var(--cta-bg-h);box-shadow:0 4px 14px rgba(33,150,243,.28);}
 
 /* ─── Estado vacío ─── */
 .empty{text-align:center;padding:60px 20px;color:var(--ink-3);}
@@ -440,10 +896,10 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .empty h3{font-size:1.4rem;color:var(--ink);margin-bottom:8px;}
 
 /* ─── ¿Por qué? ─── */
-.por-que{background:linear-gradient(180deg,#fff,var(--bg-2));}
+.por-que{background:linear-gradient(180deg,var(--card),var(--bg-2));}
 .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;}
 .feat{
-  background:#fff;border-radius:var(--r-lg);padding:30px 26px 26px;
+  background:var(--card);border-radius:var(--r-lg);padding:30px 26px 26px;
   border:1px solid rgba(26,39,68,.07);box-shadow:var(--s-1);
   transition:transform .3s, box-shadow .3s, border-color .25s;
   position:relative;overflow:hidden;
@@ -480,7 +936,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 /* ─── FAQ ─── */
 .faq-list{max-width:780px;margin:0 auto;}
 .faq{
-  background:#fff;border-radius:var(--r);border:1px solid var(--line);
+  background:var(--card);border-radius:var(--r);border:1px solid var(--line);
   margin-bottom:12px;overflow:hidden;
   transition:border-color .2s,box-shadow .2s, transform .2s;
   position:relative;
@@ -522,15 +978,20 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .nl{
   background:
     radial-gradient(ellipse 60% 80% at 50% 0%, rgba(33,150,243,.07), transparent 70%),
-    linear-gradient(180deg,var(--bg-2),#F0EAD8);
+    linear-gradient(180deg,var(--bg-2),var(--bg-3));
   text-align:center;position:relative;overflow:hidden;
 }
 .nl .wrap{position:relative;z-index:1;}
 .nl .sec-badge,.nl .sec-h,.nl .sec-sub{margin-left:auto;margin-right:auto;}
 .nl .sec-sub{text-align:center;}
+.nl-push{margin-top:16px;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.nl-push-or{color:var(--ink-3);font-size:.82rem;}
+.btn-push{border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-weight:800;}
+.btn-push:hover{border-color:var(--primary);color:var(--primary);}
+.btn-push.is-on{border-color:var(--green);color:var(--green);cursor:default;}
 .nl-icon{
   width:64px;height:64px;border-radius:18px;
-  background:#fff;display:flex;align-items:center;justify-content:center;
+  background:var(--card);display:flex;align-items:center;justify-content:center;
   font-size:1.8rem;margin:0 auto 18px;
   box-shadow:0 8px 20px rgba(33,150,243,.18), 0 1px 2px rgba(26,39,68,.06);
   border:1px solid rgba(26,39,68,.05);
@@ -539,7 +1000,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .nl-form{display:flex;gap:8px;max-width:460px;margin:24px auto 0;}
 .nl-form input{
   flex:1;padding:14px 18px;border-radius:12px;border:1.5px solid var(--line);
-  font:inherit;background:#fff;color:var(--ink);
+  font:inherit;background:var(--card);color:var(--ink);
 }
 .nl-form input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-soft);}
 .nl-mini{font-size:.82rem;color:var(--ink-3);margin-top:14px;}
@@ -552,7 +1013,7 @@ h1,h2,h3,h4{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;l
 .nl::after{bottom:22%;right:9%;font-size:2rem;opacity:.18;transform:rotate(15deg);}
 
 /* ─── Footer ─── */
-footer{background:var(--ink);color:#D1D7E0;padding:0;}
+footer{background:var(--footer-bg);color:#D1D7E0;padding:0;}
 /* Footer compacto — top strip + bottom bar */
 .ft-main{padding:36px 0 28px;border-bottom:1px solid rgba(255,255,255,.08);}
 .ft-grid{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
@@ -598,9 +1059,6 @@ footer{background:var(--ink);color:#D1D7E0;padding:0;}
 .ft-social-btn .ft-btn-icon{font-size:1.2rem;line-height:1;}
 .ft-social-btn .ft-btn-label{font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.55);line-height:1;}
 
-/* WhatsApp flotante deshabilitado — activar cuando el número esté disponible */
-/* .wa{ position:fixed;bottom:24px;right:24px;z-index:40; ... } */
-
 /* ─── Mobile menu (simple drawer) ─── */
 .menu-btn{display:none;}
 /* ══════════════════════════════════════════
@@ -623,7 +1081,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:0;}
   .nav .hide-mobile{display:none;}
   .nav{gap:6px;}
   .hdr-in{gap:10px;}
-  .menu-btn{display:inline-flex;width:40px;height:40px;border-radius:10px;background:#fff;border:1.5px solid var(--line);align-items:center;justify-content:center;font-size:1.2rem;}
+  .menu-btn{display:inline-flex;width:40px;height:40px;border-radius:10px;background:var(--card);border:1.5px solid var(--line);align-items:center;justify-content:center;font-size:1.2rem;}
 
   /* Secciones */
   .sec{padding:56px 0;}
@@ -649,13 +1107,18 @@ footer{background:var(--ink);color:#D1D7E0;padding:0;}
   .hero-cta{flex-direction:column;gap:8px;}
   .hero-cta .btn{width:100%;justify-content:center;}
   .hero-stats{
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(3,minmax(0,1fr));
     border-radius:14px;
   }
-  .stat-item{padding:12px 10px;gap:8px;}
-  .stat-em{width:32px;height:32px;border-radius:9px;font-size:.9rem;}
+  .stat-item{padding:12px 8px;gap:8px;min-width:0;}
+  .stat-body{min-width:0;}
+  .stat-em{width:32px;height:32px;border-radius:9px;font-size:.9rem;flex:none;}
   .stat-n{font-size:1.15rem;}
-  .stat-l{font-size:.58rem;}
+  .stat-l{font-size:.58rem;white-space:normal;line-height:1.15;}
+  /* Barra de orden: full width sin desbordar (el toggle de vista + select) */
+  .cat-sort{width:100%;gap:8px;}
+  .cat-sort label{display:none;}
+  .cat-sort select{flex:1;min-width:0;}
 
   /* Catálogo — 2 columnas compactas */
   .grid{grid-template-columns:repeat(2,1fr);gap:12px;}
@@ -706,6 +1169,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:0;}
   .detail-price .p-now{font-size:1.8rem;}
   .detail-cta{flex-direction:column;gap:8px;}
   .detail-cta .btn{width:100%;justify-content:center;}
+  .detail-cta .cta-sec{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
   .detail-desc{font-size:.95rem;}
   .detail-incluye{padding:16px 18px;}
   .detail-thumb-row{gap:6px;}
@@ -759,7 +1223,7 @@ footer{background:var(--ink);color:#D1D7E0;padding:0;}
   background-size:200% 100%;animation:shimmer 1.6s linear infinite;
 }
 /* Skeleton cards con forma real */
-.card-skeleton{background:#fff;border-radius:var(--r-lg);border:1px solid rgba(26,39,68,.06);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--s-1);}
+.card-skeleton{background:var(--card);border-radius:var(--r-lg);border:1px solid rgba(26,39,68,.06);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--s-1);}
 .card-skeleton .sk-img{aspect-ratio:4/5;background:linear-gradient(110deg,var(--bg-2) 8%,var(--bg-3) 18%,var(--bg-2) 33%);background-size:200% 100%;animation:shimmer 1.6s linear infinite;}
 .card-skeleton .sk-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1;}
 .card-skeleton .sk-tag{height:10px;width:40%;border-radius:99px;background:linear-gradient(110deg,var(--bg-2) 8%,var(--bg-3) 18%,var(--bg-2) 33%);background-size:200% 100%;animation:shimmer 1.6s .08s linear infinite;}
@@ -787,8 +1251,39 @@ body.in-detail footer{display:block;}
 .detail-back:hover{background:var(--bg-2);color:var(--ink);}
 .detail-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start;}
 .detail-gallery{position:sticky;top:90px;}
-.detail-main-img{aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;background:linear-gradient(135deg,var(--bg-2),var(--bg-3));box-shadow:var(--s-2);border:1px solid rgba(26,39,68,.06);}
+.detail-main-img{aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;background:linear-gradient(135deg,var(--bg-2),var(--bg-3));border:1px solid rgba(26,39,68,.06);
+  /* Sombra 3D premium + reflejo (como producto físico) */
+  box-shadow:0 34px 60px -26px rgba(26,39,68,.45), 0 10px 24px rgba(26,39,68,.12);
+  -webkit-box-reflect:below 4px linear-gradient(rgba(0,0,0,.22), transparent 42%);
+}
 .detail-main-img img{width:100%;height:100%;object-fit:contain;}
+/* Brillo sutil en la portada */
+.detail-main-img::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:2;background:linear-gradient(135deg, rgba(255,255,255,.14) 0%, transparent 32%);}
+
+/* ✨ Partículas al tocar (#12) */
+.tap-particle{position:fixed;top:0;left:0;width:9px;height:9px;border-radius:50%;pointer-events:none;z-index:900;will-change:transform,opacity;}
+/* 🎬 Micro-pop flotante (#4) */
+.micro-pop{position:fixed;z-index:900;pointer-events:none;font-size:1.5rem;will-change:transform,opacity;}
+/* 💎 Glass (#2) — se degrada a fondo sólido donde no hay soporte / en Instagram */
+.glassy{background:var(--glass, rgba(255,255,255,.55));backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);border:1px solid rgba(255,255,255,.4);}
+/* 🔍 Sugerencias de búsqueda con miniaturas (#10) */
+.search{position:relative;}
+.search-suggest{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:120;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--s-2);overflow:hidden;max-height:62vh;overflow-y:auto;display:none;}
+.search-suggest.on{display:block;animation:lbIn .16s ease;}
+.ss-item{display:flex;align-items:center;gap:12px;padding:9px 12px;cursor:pointer;text-decoration:none;color:var(--ink);transition:background .12s;}
+.ss-item:hover,.ss-item.active{background:var(--bg-2);}
+.ss-thumb{width:46px;height:46px;border-radius:8px;object-fit:cover;background:var(--bg-2);flex:none;}
+.ss-body{flex:1;min-width:0;}
+.ss-name{font-weight:800;font-size:.9rem;line-height:1.15;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.ss-price{font-size:.82rem;font-weight:800;color:var(--primary);}
+.ss-price.gratis{color:var(--green);}
+.ss-empty{padding:16px;text-align:center;color:var(--ink-3);font-size:.88rem;}
+/* 🌈 Vista mosaico / masonry (#1) */
+.view-toggle{display:inline-flex;background:var(--bg-2);border-radius:10px;padding:3px;gap:2px;}
+.view-toggle button{border:none;background:transparent;color:var(--ink-3);width:36px;height:30px;border-radius:8px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.view-toggle button.on{background:var(--card);color:var(--primary);box-shadow:var(--s-1);}
+.grid.masonry{grid-auto-rows:8px;align-items:start;}
+.grid.masonry .card{align-self:start;}
 .detail-thumbs{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
 .detail-thumb{width:78px;height:78px;border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s,transform .2s;background:var(--bg-2);}
 .detail-thumb img{width:100%;height:100%;object-fit:cover;}
@@ -822,7 +1317,8 @@ body.in-detail footer{display:block;}
   }
 }
 .detail-cta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;}
-.detail-incluye{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 24px;margin-bottom:20px;}
+.cta-sec{display:contents;}
+.detail-incluye{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 24px;margin-bottom:20px;}
 .detail-incluye h3{font-size:1.05rem;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
 .detail-incluye ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
 .detail-incluye li{display:flex;align-items:flex-start;gap:10px;color:var(--ink-2);font-size:.95rem;padding:6px 0;border-bottom:1px dashed var(--line);}
@@ -841,7 +1337,7 @@ body.in-detail footer{display:block;}
 .detail-testi h3{font-size:1.05rem;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
 .testi-grid{display:grid;gap:14px;}
 .testi{
-  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
   padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
   position:relative;
 }
@@ -866,7 +1362,7 @@ body.in-detail footer{display:block;}
 .detail-rel h3{font-size:1.15rem;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
 .rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;}
 .rel-card{
-  background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
   overflow:hidden;display:flex;flex-direction:column;
   transition:transform .2s, box-shadow .2s, border-color .2s;
 }
@@ -912,7 +1408,7 @@ body.in-detail footer{display:block;}
 .filter-sheet-btn{
   display:none;
   width:100%;padding:11px 16px;border-radius:12px;
-  background:#fff;border:1.5px solid var(--line);
+  background:var(--card);border:1.5px solid var(--line);
   font-weight:700;font-size:.9rem;color:var(--ink-2);
   align-items:center;justify-content:space-between;gap:8px;
   box-shadow:var(--s-1);cursor:pointer;
@@ -937,7 +1433,7 @@ body.in-detail footer{display:block;}
 .sheet-overlay.open{display:block;opacity:1;}
 .bottom-sheet{
   position:fixed;bottom:0;left:0;right:0;z-index:61;
-  background:#fff;border-radius:24px 24px 0 0;
+  background:var(--card);border-radius:24px 24px 0 0;
   padding:0 20px 32px;
   transform:translateY(100%);
   transition:transform .32s cubic-bezier(.2,.8,.2,1);
@@ -966,12 +1462,12 @@ body.in-detail footer{display:block;}
 .sheet-chips{display:flex;flex-wrap:wrap;gap:8px;}
 .sheet-chip{
   padding:11px 18px;border-radius:99px;font-size:.9rem;font-weight:700;
-  border:1.5px solid var(--line);background:#fff;color:var(--ink-2);
+  border:1.5px solid var(--line);background:var(--card);color:var(--ink-2);
   cursor:pointer;transition:all .18s;
   min-height:44px;display:inline-flex;align-items:center;
   -webkit-tap-highlight-color:transparent;
 }
-.sheet-chip:hover,.sheet-chip.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+.sheet-chip:hover,.sheet-chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink);}
 .sheet-actions{display:flex;gap:10px;margin-top:4px;}
 .sheet-apply{
   flex:1;padding:13px;border-radius:12px;
@@ -1063,31 +1559,70 @@ body.in-detail footer{display:block;}
 html.is-iab,html.is-iab body{max-width:100vw!important;overflow-x:hidden!important;width:100%!important;}
 html.is-iab .hdr{width:100%!important;}
 html.is-iab .wrap{max-width:100%!important;padding:0 16px!important;}
-
-/* ══════ Mejoras v5: tipografía + tarjetas ══════ */
-h1,h2,h3,h4,.sec-h,.brand,.card-ttl{letter-spacing:-.015em;}
-.card{border:1.5px solid var(--line);border-radius:14px;box-shadow:none;transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s,border-color .22s;}
-.card:hover{transform:translateY(-5px);box-shadow:0 16px 34px -12px rgba(26,39,68,.25);border-color:var(--primary);}
-@media(hover:none){.card:hover{transform:none;box-shadow:none;border-color:var(--line);}}
-.card:active{transform:scale(.985);}
-input,select,textarea{font-size:16px;}
+/* El navegador de Instagram (WebView) renderiza mal backdrop-filter a pantalla
+   completa (se ve NEGRO y traba): lo desactivamos ahí. */
+html.is-iab *{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+/* Barra "Abrir en tu navegador" (solo dentro del navegador de Instagram) */
+.iab-bar{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;align-items:center;gap:8px;padding:9px 12px;background:linear-gradient(135deg,#2196F3,#0D63C4);color:#fff;font-weight:700;font-size:.82rem;box-shadow:0 3px 14px rgba(0,0,0,.22);}
+.iab-bar .iab-txt{flex:1;line-height:1.25;}
+.iab-bar .iab-act{background:#fff;color:#1565C0;border:none;border-radius:8px;padding:7px 13px;font-weight:800;font-size:.8rem;cursor:pointer;white-space:nowrap;}
+.iab-bar .iab-x{background:rgba(255,255,255,.22);color:#fff;border:none;border-radius:7px;width:28px;height:28px;font-size:.85rem;cursor:pointer;flex:none;line-height:1;}
+body.has-iab-bar{padding-top:48px;}
+body.has-iab-bar .hdr{top:48px;}
 </style>
 <script type="application/ld+json" id="schema-org">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Cofre Didáctico",
-  "url": "https://cofredidactico.github.io/PaginaWeb/",
+  "url": "https://cofredidactico.com.ar/",
   "description": "Cuadernillos, juegos interactivos y láminas de calidad editorial para docentes.",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://cofredidactico.github.io/PaginaWeb/#catalogo?q={search_term_string}",
+    "target": "https://cofredidactico.com.ar/#catalogo?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Cofre Didáctico",
+  "url": "https://cofredidactico.com.ar/",
+  "logo": "https://cofredidactico.com.ar/logo.png",
+  "description": "Materiales educativos para docentes: cuadernillos, juegos interactivos y láminas de calidad editorial, listos para imprimir.",
+  "sameAs": ["https://www.instagram.com/cofredidactico/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Cómo descargo los materiales?", "acceptedAnswer": { "@type": "Answer", "text": "Después de pagar en Empretienda u Hotmart recibís un email con el link de descarga. Para los materiales gratuitos, dejás tu email en el formulario de la home y te llega al instante." } },
+    { "@type": "Question", "name": "¿Funcionan en cualquier país?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Son archivos digitales en PDF. Las medidas están en A4 (estándar en Argentina y España). En otros países puede que necesites ajustar la impresora." } },
+    { "@type": "Question", "name": "¿Puedo imprimir en casa?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Están diseñados para impresora doméstica o copistería. Recomendamos color para aprovechar el diseño, aunque muchos también funcionan en blanco y negro." } },
+    { "@type": "Question", "name": "¿Puedo revender o compartir los materiales?", "acceptedAnswer": { "@type": "Answer", "text": "Los materiales son de uso personal y educativo. No se permite revender ni distribuir masivamente. Sí podés usarlos en tus clases y compartir el link de la tienda con colegas." } },
+    { "@type": "Question", "name": "¿Hacen factura?", "acceptedAnswer": { "@type": "Answer", "text": "La plataforma de pago genera el comprobante automáticamente. Si necesitás una factura específica, escribinos." } }
+  ]
+}
+</script>
+
+<!-- Anti-flash: aplicar el tema guardado antes de pintar -->
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('tema');
+    if(t === 'dark' || t === 'light'){ document.documentElement.setAttribute('data-theme', t); }
+  }catch(e){}
+})();
+</script>
 </head>
 <body>
+
+<!-- Barra de progreso de carga -->
+<div id="topbar"></div>
 
 <!-- Banner anuncio (se muestra solo si está activo) -->
 <div class="anuncio" id="anuncio" style="display:none;"></div>
@@ -1109,6 +1644,9 @@ input,select,textarea{font-size:16px;}
       <a href="interactivos.html" class="nav-pill nav-pill-blue">🎮 Interactivos</a>
       <a href="gratis.html" class="nav-pill nav-pill-green">🎁 Gratis</a>
       <a href="#newsletter" class="btn btn-ghost btn-sm hide-xs">📧 Newsletter</a>
+      <a href="herramientas.html">🧰 Aula</a>
+      <button class="cmdk-hint" type="button" onclick="abrirCmdk()" aria-label="Buscador rápido"><span>🔍 Buscar</span><kbd>⌘K</kbd></button>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar tema claro/oscuro" title="Cambiar tema" onclick="cambiarTema()">🌙</button>
     </nav>
   </div>
 </header>
@@ -1126,7 +1664,7 @@ input,select,textarea{font-size:16px;}
   const vp = document.querySelector('meta[name="viewport"]');
   if(vp){
     vp.setAttribute('content',
-      'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no'
+      'width=device-width, initial-scale=1.0, shrink-to-fit=no'
     );
   }
 
@@ -1149,6 +1687,40 @@ input,select,textarea{font-size:16px;}
 
   // Agregar clase al body para estilos específicos de IAB
   document.documentElement.classList.add('is-iab');
+})();
+
+// Barra "Abrir en tu navegador" dentro del navegador de Instagram/Facebook
+(function(){
+  var ua = navigator.userAgent || '';
+  if(!/Instagram|FBAN|FBAV|FB_IAB|FB4A|FBIOS/i.test(ua)) return;
+  try{ if(sessionStorage.getItem('iabbar_x')==='1') return; }catch(e){}
+  var isAndroid = /Android/i.test(ua);
+  function build(){
+    if(!document.body || document.getElementById('iab-bar')) return;
+    var bar = document.createElement('div');
+    bar.id = 'iab-bar'; bar.className = 'iab-bar';
+    bar.innerHTML = '<span class="iab-txt">🚀 Para verlo más rápido, abrí esto en tu navegador</span>'
+      + '<button class="iab-act" type="button">' + (isAndroid ? 'Abrir' : 'Cómo') + '</button>'
+      + '<button class="iab-x" type="button" aria-label="Cerrar">✕</button>';
+    document.body.appendChild(bar);
+    document.body.classList.add('has-iab-bar');
+    bar.querySelector('.iab-x').addEventListener('click', function(){
+      bar.remove(); document.body.classList.remove('has-iab-bar');
+      try{ sessionStorage.setItem('iabbar_x','1'); }catch(e){}
+    });
+    bar.querySelector('.iab-act').addEventListener('click', function(){
+      var url = location.href;
+      if(isAndroid){
+        var host = location.host + location.pathname + location.search;
+        window.location.href = 'intent://' + host + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
+      } else {
+        bar.querySelector('.iab-txt').textContent = 'Tocá  ⋯  (arriba a la derecha) → "Abrir en el navegador"';
+        var b = this; try{ navigator.clipboard && navigator.clipboard.writeText(url); }catch(e){}
+        b.textContent = 'Link copiado ✓'; setTimeout(function(){ b.textContent = 'Cómo'; }, 3000);
+      }
+    });
+  }
+  if(document.body) build(); else document.addEventListener('DOMContentLoaded', build);
 })();
 </script>
 
@@ -1209,8 +1781,19 @@ input,select,textarea{font-size:16px;}
 
 <!-- Hero -->
 <section class="hero">
+  <div class="hero-float" aria-hidden="true">
+    <span style="left:5%;top:22%;font-size:2.6rem;animation-duration:7s;">✏️</span>
+    <span style="left:14%;top:68%;animation-duration:9s;animation-delay:1.1s;">📚</span>
+    <span style="left:33%;top:14%;font-size:1.7rem;animation-duration:8s;animation-delay:.6s;">🔢</span>
+    <span style="left:44%;top:78%;font-size:1.8rem;animation-duration:10s;animation-delay:2s;">🎨</span>
+    <span style="left:62%;top:10%;animation-duration:7.5s;animation-delay:1.6s;">✨</span>
+    <span style="left:88%;top:26%;font-size:2.4rem;animation-duration:9s;animation-delay:.3s;">📐</span>
+    <span style="left:80%;top:70%;font-size:1.7rem;animation-duration:8.5s;animation-delay:2.4s;">🖍️</span>
+    <span style="left:70%;top:44%;font-size:1.6rem;animation-duration:11s;animation-delay:1.3s;">⭐</span>
+  </div>
   <div class="wrap">
     <div class="hero-i">
+      <div class="hero-hola" id="hero-hola" aria-live="polite"></div>
       <div class="hero-badge">✨ Recursos didácticos digitales</div>
       <h1>Propuestas que<br><em class="hero-em-highlight">enamoran</em> el aula</h1>
       <p class="lead">Cuadernillos, juegos interactivos y láminas de calidad editorial. Listos para imprimir, diseñados con amor para docentes.</p>
@@ -1243,6 +1826,7 @@ input,select,textarea{font-size:16px;}
       </div>
     </div>
 
+    <div class="hero-collage" id="hero-collage" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -1287,7 +1871,28 @@ input,select,textarea{font-size:16px;}
       <span id="filter-sheet-badge" class="filter-sheet-badge">0</span>
     </button>
 
-    <div class="grid" id="grid" style="margin-top:24px;">
+    <!-- Toolbar: contador de resultados + orden -->
+    <div class="cat-toolbar">
+      <div class="cat-count" id="cat-count"></div>
+      <div class="cat-sort">
+        <div class="view-toggle" role="group" aria-label="Vista del catálogo">
+          <button type="button" data-v="grid" class="on" onclick="setVista('grid')" title="Vista cuadrícula" aria-label="Vista cuadrícula">▦</button>
+          <button type="button" data-v="masonry" onclick="setVista('masonry')" title="Vista mosaico" aria-label="Vista mosaico">▤</button>
+        </div>
+        <label for="sel-orden">Ordenar:</label>
+        <select id="sel-orden" onchange="setOrden(this.value)" aria-label="Ordenar catálogo">
+          <option value="destacados">Destacados</option>
+          <option value="nuevo">Novedades</option>
+          <option value="precio-asc">Precio: menor a mayor</option>
+          <option value="precio-desc">Precio: mayor a menor</option>
+          <option value="nombre">Nombre A–Z</option>
+        </select>
+      </div>
+    </div>
+    <!-- Chips de filtros activos (removibles) -->
+    <div class="cat-chips" id="cat-chips"></div>
+
+    <div class="grid" id="grid" style="margin-top:20px;">
       <!-- Skeletons mientras carga JSON -->
       <div class="card-skeleton"><div class="sk-img"></div><div class="sk-body"><div class="sk-tag"></div><div class="sk-title"></div><div class="sk-title-2"></div><div class="sk-desc"></div><div class="sk-desc-2"></div><div class="sk-foot"><div class="sk-price"></div><div class="sk-btn"></div></div></div></div>
       <div class="card-skeleton"><div class="sk-img"></div><div class="sk-body"><div class="sk-tag"></div><div class="sk-title"></div><div class="sk-title-2"></div><div class="sk-desc"></div><div class="sk-desc-2"></div><div class="sk-foot"><div class="sk-price"></div><div class="sk-btn"></div></div></div></div>
@@ -1300,7 +1905,7 @@ input,select,textarea{font-size:16px;}
 <!-- ¿Por qué? -->
 <section class="sec por-que" id="por-que">
   <div class="wrap">
-    <div class="sec-hd" style="text-align:center;">
+    <div class="sec-hd reveal" style="text-align:center;">
       <div class="sec-badge">✨ Nuestra promesa</div>
       <h2 class="sec-h">¿Por qué elegir <em>Cofre Didáctico</em>?</h2>
     </div>
@@ -1316,17 +1921,32 @@ input,select,textarea{font-size:16px;}
 <!-- FAQ -->
 <section class="sec" id="faq">
   <div class="wrap">
-    <div class="sec-hd" style="text-align:center;">
+    <div class="sec-hd reveal" style="text-align:center;">
       <div class="sec-badge">❓ Preguntas frecuentes</div>
       <h2 class="sec-h">Todo lo que necesitás <em>saber</em></h2>
     </div>
-    <div class="faq-list">
+    <div class="faq-list reveal">
       <details class="faq"><summary>¿Cómo descargo los materiales?</summary><div class="faq-bd">Después de pagar en Empretienda u Hotmart, recibís un email con el link de descarga. Para los materiales gratuitos, dejás tu email en el formulario de la home y te llega al instante.</div></details>
       <details class="faq"><summary>¿Funcionan en cualquier país?</summary><div class="faq-bd">¡Sí! Son archivos digitales en PDF. Las medidas están en A4 (estándar en Argentina y España). En otros países puede que necesites ajustar la impresora.</div></details>
       <details class="faq"><summary>¿Puedo imprimir en casa?</summary><div class="faq-bd">Sí. Están diseñados para impresora doméstica o copistería. Recomendamos color para aprovechar el diseño, aunque muchos también funcionan en blanco y negro.</div></details>
-      <details class="faq"><summary>¿Y si no recibo el email?</summary><div class="faq-bd">Revisá la carpeta de spam. Si en 30 minutos no llegó, escribinos a <a href="" id="faq-mail" style="color:var(--primary);font-weight:700;"><span class="__cf_email__" data-cfemail="97f4f8f1e5f2f3fef3f6f4e3fef4f8f8d7f0faf6fefbb9f4f8fa">[email&#160;protected]</span></a> con el comprobante y te lo enviamos.</div></details>
+      <details class="faq"><summary>¿Y si no recibo el email?</summary><div class="faq-bd">Revisá la carpeta de spam. Si en 30 minutos no llegó, escribinos a <a href="mailto:cofredidacticoo@gmail.com" id="faq-mail" style="color:var(--primary);font-weight:700;">cofredidacticoo@gmail.com</a> con el comprobante y te lo enviamos.</div></details>
       <details class="faq"><summary>¿Puedo revender o compartir?</summary><div class="faq-bd">Los materiales son de uso personal y educativo. No se permite revender, distribuir masivamente ni modificar con fines comerciales. Sí podés usarlos en tus clases y compartir el link de la tienda con colegas.</div></details>
       <details class="faq"><summary>¿Hacen factura?</summary><div class="faq-bd">La plataforma de pago genera el comprobante automáticamente. Si necesitás factura específica, escribinos.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- Instagram (feed Behold) -->
+<section class="sec" id="instagram">
+  <div class="wrap">
+    <div class="sec-hd reveal" style="text-align:center;">
+      <div class="sec-badge">📸 Comunidad</div>
+      <h2 class="sec-h">Seguinos en <em>Instagram</em></h2>
+      <p class="sec-sub" style="margin:10px auto 0;">Ideas para el aula, novedades y el detrás de escena. Sumate a la comunidad docente.</p>
+    </div>
+    <div class="ig-embed"><behold-widget feed-id="8IEyvLbNL09gpd3oIe7a"></behold-widget></div>
+    <div style="text-align:center;margin-top:22px;">
+      <a href="https://www.instagram.com/cofredidactico/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-umami-event="click-ig">📸 Seguir @cofredidactico</a>
     </div>
   </div>
 </section>
@@ -1343,6 +1963,10 @@ input,select,textarea{font-size:16px;}
       <button class="btn btn-primary">¡Me apunto!</button>
     </form>
     <p class="nl-mini" id="nl-msg">🔒 Tus datos están seguros. 1 email por semana, los miércoles.</p>
+    <div class="nl-push">
+      <span class="nl-push-or">o si preferís</span>
+      <button type="button" class="btn btn-ghost btn-push" id="btn-push" onclick="activarAvisos()" style="display:none;">🔔 Avisame de material nuevo</button>
+    </div>
   </div>
 </section>
 
@@ -1380,16 +2004,38 @@ input,select,textarea{font-size:16px;}
   </div>
 </footer>
 
-<!-- WhatsApp flotante deshabilitado — descomentar cuando el número esté listo
-<a href="#" class="wa" id="wa" target="_blank" rel="noopener">
-  <span style="font-size:1.2rem;">💬</span><span>Consultanos</span>
-</a>
--->
-
 <!-- ═════════ JS — todo en vanilla, sin frameworks ═════════ -->
 <script>
 const $ = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+
+// ── Tema claro/oscuro ──
+function temaActual(){
+  const attr = document.documentElement.getAttribute('data-theme');
+  if (attr) return attr;
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+function pintarIconoTema(){
+  const btn = document.getElementById('theme-toggle');
+  if (btn) btn.innerHTML = '<span>' + (temaActual() === 'dark' ? '☀️' : '🌙') + '</span>';
+}
+function cambiarTema(){
+  const nuevo = temaActual() === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', nuevo);
+  try{ localStorage.setItem('tema', nuevo); }catch(e){}
+  pintarIconoTema();
+  const btn = document.getElementById('theme-toggle');
+  if (btn){ btn.classList.add('spin'); setTimeout(()=>btn.classList.remove('spin'), 520); }
+  if (window.umami) umami.track('cambio-tema', { tema: nuevo });
+}
+pintarIconoTema();
+// Si el sistema cambia y el usuario no eligió manualmente, reflejarlo
+if (window.matchMedia){
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    let guardado=null; try{ guardado=localStorage.getItem('tema'); }catch(e){}
+    if(!guardado) pintarIconoTema();
+  });
+}
 
 const TIPO_LABELS = {
   cuadernillo:'📓 Cuadernillo', juego:'🎮 Juego',
@@ -1420,20 +2066,89 @@ let _filtroNivel = 'todos';
 let _filtroMes = 'todos';
 let _filtroTematica = 'todos';
 let _q = '';
+let _orden = 'destacados';
+let _galeria = [];      // imágenes de la ficha abierta (para el lightbox)
+let _detailIdx = 0;     // índice de la imagen mostrada
+function setOrden(v){ _orden = v; render(); escribirFiltrosEnURL(true); }
+function quitarFiltro(dim){
+  if (dim === 'q'){ _q=''; const q=$('#q'); if(q)q.value=''; const h=$('#hdr-q'); if(h)h.value=''; }
+  else if (dim === 'tipo') _filtroTipo = 'todos';
+  else if (dim === 'nivel') _filtroNivel = 'todos';
+  else if (dim === 'tematica') _filtroTematica = 'todos';
+  else if (dim === 'mes') _filtroMes = 'todos';
+  render(); actualizarSheetBadge(); escribirFiltrosEnURL(true);
+}
+function renderChipsActivos(){
+  const cont = document.getElementById('cat-chips'); if (!cont) return;
+  const TIPO={cuadernillo:'📓 Cuadernillo',lamina:'🖼️ Lámina',pack:'🎁 Pack',otro:'📄 Otro'};
+  const NIV={inicial:'🧸 Inicial','1ciclo':'1° Ciclo','2ciclo':'2° Ciclo',secundaria:'🎒 Secundaria',multinivel:'🌎 Multinivel'};
+  const TEM={literatura:'📖 Literatura',matematica:'🔢 Matemática',ciencias:'🔬 Ciencias',efemerides:'🗓️ Efemérides',juegos:'🎮 Juegos',laminas:'🖼️ Láminas'};
+  const MES=['','Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  const chip=(dim,label)=>`<span class="cat-chip">${label}<button aria-label="Quitar filtro" onclick="quitarFiltro('${dim}')">✕</button></span>`;
+  const chips=[];
+  if (_q) chips.push(chip('q', `“${_q}”`));
+  if (_filtroTipo!=='todos') chips.push(chip('tipo', TIPO[_filtroTipo]||_filtroTipo));
+  if (_filtroNivel!=='todos') chips.push(chip('nivel', NIV[_filtroNivel]||_filtroNivel));
+  if (_filtroTematica!=='todos') chips.push(chip('tematica', TEM[_filtroTematica]||_filtroTematica));
+  if (_filtroMes!=='todos') chips.push(chip('mes', '📅 '+(MES[Number(_filtroMes)]||_filtroMes)));
+  if (chips.length>1) chips.push(`<button class="cat-chip clear-all" onclick="limpiarFiltros()">Limpiar todo ✕</button>`);
+  cont.innerHTML = chips.join('');
+}
+
+// ── Barra de progreso de carga + transiciones ──
+let _npTimer = null;
+function npStart(){
+  const b = document.getElementById('topbar'); if (!b) return;
+  clearInterval(_npTimer); b.classList.add('on'); let w = 8; b.style.width = w + '%';
+  _npTimer = setInterval(() => { w += Math.max(.5, (92 - w) * 0.09); if (w > 92) w = 92; b.style.width = w.toFixed(1) + '%'; }, 200);
+}
+function npDone(){
+  const b = document.getElementById('topbar'); if (!b) return;
+  clearInterval(_npTimer); b.style.width = '100%';
+  setTimeout(() => { b.classList.remove('on'); setTimeout(() => { b.style.width = '0'; }, 350); }, 220);
+}
+function withVT(fn){
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (document.startViewTransition && !reduce) document.startViewTransition(fn); else fn();
+}
+// Tilt 3D en las cards (solo mouse)
+function initTilt(){
+  if (!window.matchMedia || !window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  ['grid','semana-grid'].forEach(id => {
+    const cont = document.getElementById(id); if (!cont || cont._tilt) return; cont._tilt = true;
+    cont.addEventListener('pointermove', e => {
+      const card = e.target.closest && e.target.closest('.card'); if (!card) return;
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = `perspective(900px) rotateX(${(-py*5).toFixed(2)}deg) rotateY(${(px*5).toFixed(2)}deg) translateY(-6px)`;
+    });
+    cont.addEventListener('pointerout', e => {
+      const card = e.target.closest && e.target.closest('.card');
+      if (card && (!e.relatedTarget || !card.contains(e.relatedTarget))) card.style.transform = '';
+    });
+  });
+}
 
 // ── Cargar JSON ──
-fetch('productos.json?v=' + Date.now())
+npStart();
+fetch('productos.json?v=' + new Date().toISOString().slice(0,10))
   .then(r => r.json())
-  .then(data => { _data = data; aplicarConfig(); renderSemana(); render(); routear(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); })
+  .then(data => { _data = data; aplicarConfig(); leerFiltrosDeURL(); renderSemana(); render(); routear(); generarSchemaProductos(); renderHeroCollage(); initTilt(); if(typeof setVista==='function')setVista(_vista); npDone(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); })
   .catch(err => {
+    npDone();
+    const ldr=document.getElementById('page-loader');if(ldr)ldr.classList.add('hidden');
     console.error('Error cargando productos.json', err);
     $('#grid').innerHTML = '<div class="empty" style="grid-column:1/-1;"><div class="empty-em">⚠️</div><h3>No pudimos cargar el catálogo</h3><p>Probá refrescando la página en unos segundos.</p></div>';
   });
+// Red de seguridad: nunca dejar la pantalla de carga tapando (p.ej. si la red
+// cuelga en el navegador de Instagram)
+setTimeout(function(){ const ldr=document.getElementById('page-loader'); if(ldr) ldr.classList.add('hidden'); }, 5000);
 
 // ── Aplicar configuración global ──
 function aplicarConfig(){
   const c = _data.config || {};
-  // Anuncio
+  // Anuncio (solo el que se configura manualmente desde el editor)
   if (c.anuncio && c.anuncio.activo){
     const a = $('#anuncio');
     a.textContent = c.anuncio.texto;
@@ -1450,8 +2165,6 @@ function aplicarConfig(){
 
   // Links
   const L = c.links || {};
-  // WhatsApp flotante deshabilitado — cuando actives el número, descomenta la siguiente línea y el elemento <a id="wa"> en el HTML
-  // if (L.whatsapp) { const wa = $('#wa'); if (wa) wa.href = L.whatsapp; }
   if (L.email) $('#faq-mail').href = 'mailto:'+L.email;
   // Footer — botones con ícono + etiqueta
   const ftSocialRow = document.getElementById('ft-social-row');
@@ -1477,6 +2190,54 @@ function aplicarConfig(){
   $('#year').textContent = new Date().getFullYear();
 }
 
+// ── Collage de portadas del hero (solo desktop) ──
+function renderHeroCollage(){
+  const cont = document.getElementById('hero-collage');
+  if (!cont) return;
+  const prods = (_data.productos||[]).filter(p => p.activo && p.tipo !== 'juego' && p.imagen);
+  const dest = prods.filter(p => p.destacado);
+  const pick = [...dest, ...prods.filter(p => !p.destacado)].slice(0, 3);
+  if (pick.length < 3){ cont.style.display = 'none'; return; }
+  cont.innerHTML = pick.map((p,i) =>
+    `<div class="hero-cover c${i+1}"><img src="${imgOpt(p.imagen,520)}" alt="" onerror="this.onerror=null;this.src='${_imgAbs(p.imagen)}'" /></div>`
+  ).join('');
+}
+
+// ── Datos estructurados de producto (JSON-LD para Google) ──
+// Genera un ItemList con cada material activo → Google puede mostrar precio y disponibilidad.
+function generarSchemaProductos(){
+  const BASE = 'https://cofredidactico.com.ar/';
+  const prods = (_data.productos || []).filter(p => p.activo);
+  if (!prods.length) return;
+  const items = prods.map((p, i) => {
+    const imgRel = normImg(p.imagen);
+    const prod = {
+      "@type": "Product",
+      "name": p.nombre,
+      "description": (p.descripcion || '').slice(0, 300),
+      "sku": p.id || undefined,
+      "image": imgRel ? BASE + imgRel : undefined,
+      "brand": { "@type": "Brand", "name": "Cofre Didáctico" },
+      "url": BASE + '#/producto/' + (p.id || '')
+    };
+    const precio = p.acceso === 'gratis' ? 0 : (p.precio || 0);
+    prod.offers = {
+      "@type": "Offer",
+      "price": precio,
+      "priceCurrency": "ARS",
+      "availability": "https://schema.org/InStock",
+      "url": p.link || (BASE + '#/producto/' + (p.id || ''))
+    };
+    return { "@type": "ListItem", "position": i + 1, "item": prod };
+  });
+  const schema = { "@context": "https://schema.org", "@type": "ItemList", "itemListElement": items };
+  const el = document.createElement('script');
+  el.type = 'application/ld+json';
+  el.id = 'schema-productos';
+  el.textContent = JSON.stringify(schema);
+  document.head.appendChild(el);
+}
+
 // ── Helpers ──
 
 // Normaliza rutas de imagen: convierte rutas absolutas /PaginaWeb/... a relativas
@@ -1487,13 +2248,45 @@ function normImg(ruta){
   // Quitar slash inicial si queda
   ruta = ruta.replace(/^\//, '');
   // Encodear espacios si los hay
-  return ruta.split('/').map((part, i, arr) => 
+  return ruta.split('/').map((part, i, arr) =>
     i === arr.length - 1 ? encodeURIComponent(part).replace(/%2F/g,'/') : part
   ).join('/');
 }
+// Optimiza imágenes al vuelo (CDN gratis wsrv.nl): redimensiona + comprime + WebP.
+// Baja las miniaturas de ~800KB a ~50KB sin re-subir nada. Cae al original si falla.
+function _imgAbs(ruta){
+  const r = normImg(ruta); if (!r) return '';
+  if (/^https?:\/\//i.test(r)) return r;
+  const base = location.origin + location.pathname.replace(/[^/]*$/, '');
+  return base + r.replace(/^\//,'');
+}
+function imgOpt(ruta, w){
+  const abs = _imgAbs(ruta); if (!abs) return '';
+  const host = abs.replace(/^https?:\/\//i,'');
+  return 'https://wsrv.nl/?url=' + encodeURIComponent(host) + '&w=' + (w||600) + '&output=webp&q=80&we';
+}
+// Asigna a un <img> la versión optimizada y cae al original si el CDN falla.
+function setImgOpt(el, ruta, w){
+  if (!el) return; const orig = _imgAbs(ruta);
+  el.onerror = function(){ el.onerror = null; if (orig) el.src = orig; };
+  el.src = imgOpt(ruta, w);
+}
 
+// Estilo por temática: color + emoji (para el chip y el degradado de la portada)
+const TEMATICA_STYLE = {
+  lengua:     { e:'📖', n:'Lengua',      c:'#7C4DFF' },
+  literatura: { e:'📚', n:'Literatura',  c:'#7C4DFF' },
+  matematica: { e:'🔢', n:'Matemática',  c:'#2196F3' },
+  ciencias:   { e:'🔬', n:'Ciencias',    c:'#22A06B' },
+  efemerides: { e:'🗓️', n:'Efemérides',  c:'#FF8A4C' },
+  juegos:     { e:'🎮', n:'Juegos',      c:'#EC407A' },
+  laminas:    { e:'🖼️', n:'Láminas',     c:'#00ACC1' },
+  _def:       { e:'🏷️', n:'Material',    c:'#64748B' }
+};
 function cardHTML(p, i, opts){
   opts = opts || {};
+  const TS = TEMATICA_STYLE[p.tematica] || TEMATICA_STYLE._def;
+  const temaChip = p.tematica ? `<span class="card-tema">${TS.e} ${TS.n}</span>` : '';
   const r = RIBBON[p.etiqueta];
   const ribbon = r ? `<div class="ribbon ${r.cls}">${r.txt}</div>` : '';
   const tipo = `<div class="tag-tipo">${TIPO_LABELS[p.tipo]||p.tipo}</div>`;
@@ -1517,21 +2310,23 @@ function cardHTML(p, i, opts){
   if (hasCarousel){
     // Slides
     mediaInner = `<div class="card-carousel" data-count="${uniq.length}">
-      ${uniq.map((src, k) => `<div class="card-slide ${k===0?'on':''}"><img src="${src}" alt="${p.nombre} - vista ${k+1}" loading="lazy" decoding="async" ${k===0?fp:''} onload="this.classList.add('loaded')" /></div>`).join('')}
+      ${uniq.map((src, k) => `<div class="card-slide ${k===0?'on':''}"><img src="${imgOpt(src,600)}" alt="${p.nombre} - vista ${k+1}" width="800" height="1000" sizes="(max-width:600px) 46vw, 280px" loading="lazy" decoding="async" ${k===0?fp:''} onload="this.classList.add('loaded');var _p=this.closest('.card-img');if(_p)_p.classList.add('media-ready')" onerror="this.onerror=null;this.src='${src}'" /></div>`).join('')}
     </div>
     <div class="card-peek">${uniq.length} vistas previas</div>
     <div class="card-dots">${uniq.map((_,k)=>`<i class="${k===0?'on':''}"></i>`).join('')}</div>`;
   } else {
-    mediaInner = `<img src="${p.imagen}" alt="${p.nombre}" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded')" onerror="this.style.display='none'" />`;
+    mediaInner = `<img src="${imgOpt(uniq[0]||p.imagen,600)}" alt="${p.nombre}" width="800" height="1000" sizes="(max-width:600px) 46vw, 280px" loading="lazy" decoding="async" ${fp} onload="this.classList.add('loaded');var _p=this.closest('.card-img');if(_p)_p.classList.add('media-ready')" onerror="this.onerror=null;this.src='${uniq[0]||normImg(p.imagen)}'" />`;
   }
 
   return `
-    <a href="#/producto/${p.id}" class="card reveal" data-id="${p.id}" data-umami-event="click-producto" data-umami-event-id="${p.id}" data-umami-event-nombre="${p.nombre}">
+    <a href="#/producto/${p.id}" class="card reveal" style="--i:${i};--tc:${TS.c}" data-id="${p.id}" data-umami-event="click-producto" data-umami-event-id="${p.id}" data-umami-event-nombre="${p.nombre}">
       <div class="card-img">
+        <span class="card-skel" aria-hidden="true"></span>
         ${ribbon}${tipo}${offBadge}
         ${mediaInner}
       </div>
       <div class="card-body">
+        ${temaChip}
         ${p.nivel?`<div class="card-nivel">${p.nivel}</div>`:''}
         ${p.linkHotmart?`<div class="card-intl">🌍 Internacional</div>`:''}
         <h3 class="card-ttl">${p.nombre}</h3>
@@ -1681,15 +2476,32 @@ function render(){
     return true;
   });
 
+  // Ordenar
+  const orden = _orden || 'destacados';
+  if (orden === 'precio-asc')       filtrados.sort((a,b)=>(a.precio||0)-(b.precio||0));
+  else if (orden === 'precio-desc') filtrados.sort((a,b)=>(b.precio||0)-(a.precio||0));
+  else if (orden === 'nombre')      filtrados.sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'','es'));
+  else if (orden === 'nuevo')       filtrados.sort((a,b)=>((b.etiqueta==='nuevo')-(a.etiqueta==='nuevo')));
+  else /* destacados */             filtrados.sort((a,b)=>((b.destacado?1:0)-(a.destacado?1:0)));
+  const so = $('#sel-orden'); if (so && so.value !== orden) so.value = orden;
+
+  // Contador de resultados + chips activos
+  const cc = document.getElementById('cat-count');
+  if (cc){ const n = filtrados.length; cc.innerHTML = `<strong>${n}</strong> material${n===1?'':'es'}`; }
+  renderChipsActivos();
+
   const grid = $('#grid');
   if (!filtrados.length){
     grid.innerHTML = `<div class="empty" style="grid-column:1/-1;"><div class="empty-em">🔍</div><h3>Sin resultados</h3><p>Probá con otra palabra o cambiá los filtros.</p><button class="btn btn-ghost btn-sm" style="margin-top:14px;" onclick="limpiarFiltros()">Limpiar filtros</button></div>`;
+    if (cc) cc.innerHTML = '<strong>0</strong> materiales';
     return;
   }
 
   grid.innerHTML = filtrados.map((p, i) => cardHTML(p, i)).join('');
   activarCarruseles();
   initReveal();
+  if (window.pxObserve) window.pxObserve();
+  if (typeof layoutMasonry === 'function'){ if (_vista==='masonry') grid.classList.add('masonry'); requestAnimationFrame(layoutMasonry); }
 }
 
 function setFiltro(dim, t){
@@ -1699,27 +2511,273 @@ function setFiltro(dim, t){
   if (dim === 'tematica') _filtroTematica = t;
   render();
   actualizarSheetBadge();
+  escribirFiltrosEnURL(true);
 }
 function limpiarFiltros(){
   _filtroTipo='todos'; _filtroNivel='todos'; _filtroMes='todos'; _filtroTematica='todos'; _q='';
   const q = $('#q'); if (q) q.value = '';
+  const hq = $('#hdr-q'); if (hq) hq.value = '';
   ['sel-tipo','sel-nivel','sel-mes','sel-tematica'].forEach(id=>{ const el=$('#'+id); if(el){el.value='todos';el.classList.remove('activo');} });
   render();
   actualizarSheetBadge();
+  escribirFiltrosEnURL(true);
 }
 
-$('#q').addEventListener('input', e => { _q = e.target.value; render(); });
+// Debounce del buscador: no re-dibujar el catálogo en cada tecla (evita que se
+// trabe en el celular). Espera a que dejes de escribir.
+let _searchT = null;
+function _renderDebounced(){ clearTimeout(_searchT); _searchT = setTimeout(() => { render(); escribirFiltrosEnURL(false); }, 240); }
+$('#q').addEventListener('input', e => { _q = e.target.value; const h=$('#hdr-q'); if(h)h.value=_q; _renderDebounced(); });
+
+// ── Filtros reflejados en la URL (compartibles + botón "atrás") ──
+function escribirFiltrosEnURL(push){
+  const p = new URLSearchParams();
+  if (_filtroTipo     !== 'todos') p.set('tipo', _filtroTipo);
+  if (_filtroNivel    !== 'todos') p.set('nivel', _filtroNivel);
+  if (_filtroMes      !== 'todos') p.set('mes', _filtroMes);
+  if (_filtroTematica !== 'todos') p.set('tematica', _filtroTematica);
+  if (_q) p.set('q', _q);
+  if (_orden && _orden !== 'destacados') p.set('orden', _orden);
+  const qs = p.toString();
+  // Preservar solo el hash de ficha de producto (#/producto/...), no anclas de sección
+  const keepHash = (location.hash && location.hash.indexOf('#/') === 0) ? location.hash : '';
+  const url = location.pathname + (qs ? '?' + qs : '') + keepHash;
+  try { history[push ? 'pushState' : 'replaceState'](null, '', url); } catch(e){}
+}
+function leerFiltrosDeURL(){
+  const p = new URLSearchParams(location.search);
+  _filtroTipo     = p.get('tipo')     || 'todos';
+  _filtroNivel    = p.get('nivel')    || 'todos';
+  _filtroMes      = p.get('mes')      || 'todos';
+  _filtroTematica = p.get('tematica') || 'todos';
+  _q = p.get('q') || '';
+  _orden = p.get('orden') || 'destacados';
+  ['q','hdr-q'].forEach(id => { const el = document.getElementById(id); if (el) el.value = _q; });
+  const so = document.getElementById('sel-orden'); if (so) so.value = _orden;
+}
+window.addEventListener('popstate', () => {
+  if (!_data) return;
+  leerFiltrosDeURL();
+  render();
+  if (typeof actualizarSheetBadge === 'function') actualizarSheetBadge();
+});
 
 // ── Reveal animation ──
 function initReveal(){
+  const items = $$('.reveal');
+  if (!('IntersectionObserver' in window)){ items.forEach(el=>el.classList.add('in')); return; }
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
     });
-  }, { rootMargin:'50px' });
-  $$('.reveal').forEach(el => { if(!el.classList.contains('in')) obs.observe(el); });
+  }, { rootMargin:'0px 0px -8% 0px' });
+  items.forEach(el => { if(!el.classList.contains('in')) obs.observe(el); });
+  // Red de seguridad: nada queda oculto si algo falla
+  setTimeout(() => { $$('.reveal:not(.in)').forEach(el => el.classList.add('in')); }, 2600);
 }
 initReveal();
+
+// ── Header "vidrio" al scrollear ──
+(function(){
+  const hdr = document.getElementById('main-hdr'); if (!hdr) return;
+  let ticking = false;
+  function upd(){ hdr.classList.toggle('glass', (window.scrollY||window.pageYOffset) > 8); ticking = false; }
+  window.addEventListener('scroll', () => { if (!ticking){ ticking = true; requestAnimationFrame(upd); } }, { passive:true });
+  upd();
+})();
+
+// ── Fondo "vivo" + saludo según la hora y la estación (#8) ──
+(function(){
+  const d = new Date(), h = d.getHours(), m = d.getMonth();
+  let tod, hola, emo;
+  if (h < 6)       { tod='night';     hola='Buenas noches'; emo='🌙'; }
+  else if (h < 12) { tod='morning';   hola='Buenos días';   emo='☀️'; }
+  else if (h < 20) { tod='afternoon'; hola='Buenas tardes';  emo='🌤️'; }
+  else             { tod='night';     hola='Buenas noches'; emo='🌙'; }
+  document.body.classList.add('tod-' + tod);
+  // Estación (hemisferio sur — Argentina)
+  const est = (m===11||m<=1) ? 'verano' : (m<=4) ? 'otono' : (m<=7) ? 'invierno' : 'primavera';
+  document.body.classList.add('season-' + est);
+  const el = document.getElementById('hero-hola');
+  if (el){ el.textContent = `${emo} ¡${hola}, seño!`; requestAnimationFrame(() => el.classList.add('on')); }
+})();
+
+// ── Parallax en las portadas (solo touch, respeta reduced-motion) (#7) ──
+(function(){
+  if (!window.matchMedia) return;
+  if (!matchMedia('(pointer:coarse)').matches) return;
+  if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const active = new Set(); let ticking = false;
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => {
+      const img = e.target.querySelector('.card-img img'); if (!img) return;
+      if (e.isIntersecting) active.add(img); else { active.delete(img); img.style.transform=''; }
+    });
+  }, { rootMargin:'12% 0px' });
+  function upd(){
+    ticking = false;
+    // No hacer NADA mientras se ve la ficha de un producto (evita el scroll lento)
+    if (document.body.classList.contains('in-detail')) return;
+    const mid = innerHeight/2;
+    active.forEach(img => { const r = img.getBoundingClientRect(); if (!r.height) return;
+      const off = ((r.top + r.height/2) - mid) / mid;
+      img.style.transform = 'translateY(' + (off*9).toFixed(1) + 'px) scale(1.05)';
+    });
+  }
+  window.addEventListener('scroll', () => { if (!ticking){ ticking = true; requestAnimationFrame(upd); } }, { passive:true });
+  window.addEventListener('resize', upd, { passive:true });
+  window.pxObserve = function(){
+    active.clear();
+    document.querySelectorAll('#grid .card,#semana-grid .card').forEach(c => io.observe(c));
+    const g = document.getElementById('grid'); if (g) g.classList.add('px-live');
+    const sg = document.getElementById('semana-grid'); if (sg) sg.classList.add('px-live');
+    requestAnimationFrame(upd);
+  };
+  if (document.querySelector('#grid .card')) window.pxObserve();
+})();
+
+// ── Precarga inteligente: al apuntar/tocar una card, precargar su ficha (#3) ──
+(function(){
+  const done = new Set();
+  function pre(e){
+    const card = e.target.closest && e.target.closest('.card'); if (!card) return;
+    const href = card.getAttribute('href') || ''; const m = href.match(/#\/producto\/(.+)$/); if (!m) return;
+    const id = decodeURIComponent(m[1]); if (done.has(id)) return; done.add(id);
+    const p = (typeof _data!=='undefined' && _data && _data.productos || []).find(x => x.id === id); if (!p) return;
+    const im = new Image(); im.src = imgOpt(p.imagen, 900);   // deja la imagen de la ficha lista en caché
+  }
+  document.addEventListener('pointerover', pre, { passive:true });
+  document.addEventListener('touchstart', pre, { passive:true });
+})();
+
+// ═══════ Mejoras visuales ═══════
+
+// #12 — Partículas al tocar/click
+(function(){
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const COLORS = ['#2196F3','#FF8A4C','#22A06B','#EC407A','#7C4DFF','#FFC107'];
+  let last = 0;
+  // 'click' (no 'pointerdown') para que no salten al scrollear
+  document.addEventListener('click', function(e){
+    if (!e.clientX && !e.clientY) return;           // ignora clicks por teclado
+    const now = Date.now(); if (now - last < 120) return; last = now;
+    const t = e.target;
+    if (t && t.closest && t.closest('input,textarea,select,.lightbox,.flipbook,.placa-modal,.search-suggest')) return;
+    const n = 6;
+    for (let i=0;i<n;i++){
+      const p = document.createElement('span'); p.className = 'tap-particle';
+      p.style.background = COLORS[(Math.random()*COLORS.length)|0];
+      document.body.appendChild(p);
+      const ang = (Math.PI*2)*(i/n) + Math.random()*0.6;
+      const dist = 22 + Math.random()*32;
+      const dx = Math.cos(ang)*dist, dy = Math.sin(ang)*dist;
+      p.animate([
+        { transform:`translate(${e.clientX}px,${e.clientY}px) scale(1)`, opacity:1 },
+        { transform:`translate(${e.clientX+dx}px,${e.clientY+dy-8}px) scale(.2)`, opacity:0 }
+      ], { duration: 520+Math.random()*160, easing:'cubic-bezier(.2,.7,.3,1)' }).onfinish = () => p.remove();
+    }
+  }, { passive:true });
+})();
+
+// #4 — Micro-pop: hace flotar un símbolo desde un punto (feedback "de app cara")
+function microPop(x, y, sym){
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const el = document.createElement('div'); el.className = 'micro-pop'; el.textContent = sym || '✓';
+  document.body.appendChild(el);
+  el.style.left = (x-12)+'px'; el.style.top = (y-16)+'px';
+  el.animate([
+    { transform:'translateY(0) scale(.6)', opacity:0 },
+    { transform:'translateY(-8px) scale(1.15)', opacity:1, offset:.3 },
+    { transform:'translateY(-42px) scale(1)', opacity:0 }
+  ], { duration: 900, easing:'cubic-bezier(.2,.8,.2,1)' }).onfinish = () => el.remove();
+}
+function microPopAt(el, sym){ if(!el) return; const r = el.getBoundingClientRect(); microPop(r.left + r.width/2, r.top, sym); }
+
+// #10 — Búsqueda viva con miniaturas
+(function(){
+  const input = document.getElementById('q'); if (!input) return;
+  const wrap = input.closest('.search'); if (!wrap) return;
+  const box = document.createElement('div'); box.className = 'search-suggest'; box.id = 'search-suggest';
+  wrap.appendChild(box);
+  function cerrar(){ box.classList.remove('on'); box.innerHTML = ''; }
+  function buscar(q){
+    q = (q||'').trim().toLowerCase();
+    if (q.length < 2){ cerrar(); return; }
+    const prods = (typeof _data!=='undefined' && _data && _data.productos || []).filter(p => p.activo && p.tipo!=='juego');
+    const hits = prods.filter(p => ((p.nombre||'')+' '+(p.descripcion||'')).toLowerCase().includes(q)).slice(0,6);
+    if (!hits.length){ box.innerHTML = '<div class="ss-empty">Sin coincidencias 🔍</div>'; box.classList.add('on'); return; }
+    box.innerHTML = hits.map(function(p){
+      const pr = p.acceso==='gratis' ? '<span class="ss-price gratis">¡Gratis!</span>' : '<span class="ss-price">$'+(p.precio||0).toLocaleString('es-AR')+'</span>';
+      return '<a class="ss-item" href="#/producto/'+p.id+'"><img class="ss-thumb" src="'+imgOpt(p.imagen,120)+'" alt="" loading="lazy" onerror="this.onerror=null;this.src=\''+_imgAbs(p.imagen)+'\'"><div class="ss-body"><div class="ss-name">'+(p.nombre||'')+'</div>'+pr+'</div></a>';
+    }).join('');
+    box.classList.add('on');
+  }
+  let _ssT = null;
+  input.addEventListener('input', function(e){ const v = e.target.value; clearTimeout(_ssT); _ssT = setTimeout(function(){ buscar(v); }, 200); });
+  input.addEventListener('focus', function(e){ if ((e.target.value||'').trim().length>=2) buscar(e.target.value); });
+  document.addEventListener('click', function(e){ if (!wrap.contains(e.target)) cerrar(); });
+  box.addEventListener('click', function(){ setTimeout(cerrar, 60); });
+})();
+
+// #1 — Vista mosaico (masonry) con toggle
+let _vista = 'grid';
+try{ _vista = localStorage.getItem('cofre_vista') || 'grid'; }catch(e){}
+function setVista(v){
+  _vista = v; try{ localStorage.setItem('cofre_vista', v); }catch(e){}
+  const g = document.getElementById('grid'); if (g) g.classList.toggle('masonry', v==='masonry');
+  document.querySelectorAll('.view-toggle button').forEach(function(b){ b.classList.toggle('on', b.dataset.v===v); });
+  layoutMasonry();
+}
+function layoutMasonry(){
+  const g = document.getElementById('grid'); if (!g) return;
+  const cards = g.querySelectorAll('.card');
+  if (!g.classList.contains('masonry')){ cards.forEach(function(c){ c.style.gridRowEnd=''; }); return; }
+  const rah = 8, gap = parseInt(getComputedStyle(g).rowGap) || 24;
+  cards.forEach(function(c){
+    c.style.gridRowEnd = '';
+    const h = c.getBoundingClientRect().height;
+    c.style.gridRowEnd = 'span ' + Math.ceil((h + gap) / (rah + gap));
+  });
+}
+window.addEventListener('resize', function(){ clearTimeout(window._mzT); window._mzT = setTimeout(layoutMasonry, 160); });
+document.addEventListener('load', function(e){ if (e.target && e.target.tagName === 'IMG' && _vista==='masonry'){ clearTimeout(window._mzT2); window._mzT2 = setTimeout(layoutMasonry, 60); } }, true);
+
+// ── Confeti de celebración (canvas, sin librerías) ──
+function lanzarConfeti(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const cv = document.createElement('canvas');
+  cv.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:300;';
+  document.body.appendChild(cv);
+  const ctx = cv.getContext('2d');
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  cv.width = innerWidth*dpr; cv.height = innerHeight*dpr; ctx.scale(dpr, dpr);
+  const colors = ['#2196F3','#FF8A4C','#2E7D32','#F4A300','#54ABF5','#FF6B35'];
+  const parts = [];
+  for (let i=0;i<130;i++){
+    parts.push({
+      x: innerWidth/2 + (Math.random()-.5)*140, y: innerHeight/2 - 40,
+      vx: (Math.random()-.5)*12, vy: Math.random()*-15-5,
+      g: .32+Math.random()*.12, s: 6+Math.random()*7,
+      rot: Math.random()*6.28, vr:(Math.random()-.5)*.4,
+      c: colors[i%colors.length], shape: Math.random()<.5?0:1
+    });
+  }
+  let t = 0;
+  (function frame(){
+    t++; ctx.clearRect(0,0,innerWidth,innerHeight);
+    let alive = false;
+    parts.forEach(p => {
+      p.vy += p.g; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.vx *= .99;
+      if (p.y < innerHeight+40) alive = true;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot);
+      ctx.globalAlpha = Math.max(0, 1 - t/170); ctx.fillStyle = p.c;
+      if (p.shape===0) ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);
+      else { ctx.beginPath(); ctx.arc(0,0,p.s/2,0,6.28); ctx.fill(); }
+      ctx.restore();
+    });
+    if (alive && t < 180) requestAnimationFrame(frame); else cv.remove();
+  })();
+}
 
 // ── Newsletter (Brevo) ──
 async function suscribirse(e){
@@ -1747,7 +2805,8 @@ async function suscribirse(e){
       msg.textContent = '✅ ¡Listo! Revisá tu casilla en unos minutos.';
       msg.style.color = 'var(--green)';
       $('#nl-form').reset();
-      if (window.umami) umami.track('newsletter-suscripcion', { email });
+      lanzarConfeti();
+      if (window.umami) umami.track('newsletter-suscripcion');
     }catch(err){
       msg.textContent = '⚠️ Hubo un problema. Escribinos a ' + ((_data.config.links||{}).email||'cofredidacticoo@gmail.com');
       msg.style.color = 'var(--accent)';
@@ -1776,7 +2835,17 @@ function routear(){
 }
 let _originalTitle = '';
 window.addEventListener('DOMContentLoaded', () => { _originalTitle = document.title; });
-window.addEventListener('hashchange', routear);
+window.addEventListener('hashchange', () => withVT(routear));
+
+// Mostrar la barra de progreso al navegar a otra página del sitio
+document.addEventListener('click', e => {
+  const a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+  if (a.target === '_blank' || a.hasAttribute('download') || !href || href[0] === '#' ||
+      href.startsWith('mailto:') || href.startsWith('http') || href.startsWith('tel:')) return;
+  if (/\.html($|[?#])/.test(href)) npStart();
+}, true);
 
 function renderDetalle(p){
   document.body.classList.add('in-detail');
@@ -1784,6 +2853,7 @@ function renderDetalle(p){
   document.title = p.nombre + ' — Cofre Didáctico';
 
   const imagenes = [normImg(p.imagen), ...((p.previews||[]).map(x => normImg(typeof x === 'string' ? x : (x && (x.imagen || x.img)))).filter(Boolean))];
+  _galeria = imagenes; _detailIdx = 0;
   const tags = [];
   if (p.tipo) tags.push(`<span class="tag">${TIPO_LABELS[p.tipo]||p.tipo}</span>`);
   if (p.nivel) tags.push(`<span class="tag tag-accent">🎓 ${p.nivel}</span>`);
@@ -1923,16 +2993,17 @@ function renderDetalle(p){
   $('#detail-content').innerHTML = `
     <div class="detail-gallery">
       <div class="detail-main-img" style="position:relative;">
-        <img id="detail-main" src="${imagenes[0]}" alt="${p.nombre}" />
-        ${imagenes.length > 1 ? `<div class="detail-img-badge">📸 ${imagenes.length} fotos</div>` : ''}
+        <img id="detail-main" src="${imgOpt(imagenes[0],900)}" alt="${p.nombre}" style="cursor:zoom-in;" onclick="abrirLightbox(_detailIdx)" onerror="this.onerror=null;this.src='${_imgAbs(imagenes[0])}'" />
+        <div class="detail-img-badge" onclick="abrirLightbox(_detailIdx)" style="cursor:pointer;">🔍 ${imagenes.length > 1 ? imagenes.length+' fotos · ' : ''}Ampliar</div>
       </div>
       ${imagenes.length > 1 ? `
         <div class="detail-thumbs">
-          ${imagenes.map((img,i) => `<div class="detail-thumb ${i===0?'active':''}" onclick="cambiarImgDot('${img}',this,${i})"><img src="${img}" alt="Muestra ${i+1}" loading="lazy" /></div>`).join('')}
+          ${imagenes.map((img,i) => `<div class="detail-thumb ${i===0?'active':''}" onclick="cambiarImgDot('${img}',this,${i})"><img src="${imgOpt(img,160)}" alt="Muestra ${i+1}" loading="lazy" onerror="this.onerror=null;this.src='${_imgAbs(img)}'" /></div>`).join('')}
         </div>
         <div class="detail-dots">
           ${imagenes.map((_,i) => `<div class="detail-dot ${i===0?'active':''}" onclick="irAFoto(${i})"></div>`).join('')}
         </div>` : ''}
+      ${imagenes.length > 1 ? `<button class="fb-open" type="button" onclick="abrirFlipbook()" data-umami-event="flipbook-abrir">📖 Hojear las páginas</button>` : ''}
     </div>
     <div class="detail-info">
       <div class="detail-meta">${tags.join('')}</div>
@@ -1957,7 +3028,11 @@ function renderDetalle(p){
         <a href="${p.link||'#'}" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-umami-event="click-comprar" data-umami-event-id="${p.id}">${cta}</a>
         ${hotmartBtn}
         ${demoBtn}
-        <button class="btn btn-ghost btn-lg" data-id="${p.id}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="compartir(this.dataset.id,this.dataset.nombre)">🔗 Compartir</button>
+        <div class="cta-sec">
+          <button class="btn btn-ghost btn-lg" data-id="${p.id}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="compartir(this.dataset.id,this.dataset.nombre)">🔗 Compartir</button>
+          <button class="btn btn-pin btn-lg" data-id="${p.id}" data-img="${normImg(p.imagen)}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="guardarPinterest(this)" data-umami-event="pin-guardar" title="Guardar en Pinterest">📌 Guardar</button>
+        </div>
+        <button class="btn btn-ghost btn-lg btn-placa" data-id="${p.id}" onclick="abrirPlaca(this.dataset.id)" data-umami-event="placa-abrir" data-umami-event-id="${p.id}">📲 Crear placa para Instagram</button>
       </div>
 
       <!-- Testimonios al final -->
@@ -1991,16 +3066,132 @@ function renderDetalle(p){
 }
 
 function cambiarImg(src, el){
-  $('#detail-main').src = src;
+  setImgOpt($('#detail-main'), src, 900);
   $$('.detail-thumb').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
 }
 
 function cambiarImgDot(imgSrc, el, idx){
   cambiarImg(imgSrc, el);
+  _detailIdx = idx;
   // Actualizar dots
   $$('.detail-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
 }
+
+// ── Lightbox (galería a pantalla completa con zoom) ──
+function abrirLightbox(idx){
+  if (!_galeria.length) return;
+  if (typeof idx === 'number') _detailIdx = idx;
+  lbActualizar();
+  const lb = document.getElementById('lightbox');
+  lb.classList.add('on'); lb.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  if (window.umami) umami.track('lightbox-abierto');
+}
+function lbActualizar(){
+  const img = document.getElementById('lb-img');
+  if (img){ setImgOpt(img, _galeria[_detailIdx], 1400); img.classList.remove('zoom'); }
+  if (typeof lbReset === 'function') lbReset();
+  const c = document.getElementById('lb-counter');
+  if (c) c.textContent = `${_detailIdx+1} / ${_galeria.length}`;
+  const solo = _galeria.length < 2;
+  document.querySelectorAll('.lb-nav').forEach(n => n.style.display = solo ? 'none' : '');
+  if (c) c.style.display = solo ? 'none' : '';
+}
+function lbNav(d, e){ if(e) e.stopPropagation(); _detailIdx = (_detailIdx + d + _galeria.length) % _galeria.length; lbActualizar(); }
+function cerrarLightbox(){
+  const lb = document.getElementById('lightbox');
+  if (lb){ lb.classList.remove('on'); lb.setAttribute('aria-hidden','true'); }
+  document.body.style.overflow = '';
+  if (typeof lbReset === 'function') lbReset();
+}
+// ── Zoom con pellizco (pinch) + arrastre en el lightbox (#6) ──
+let _lbScale=1,_lbX=0,_lbY=0,_lbPinched=false;
+const _lbPts=new Map(); let _lbStartDist=0,_lbStartScale=1,_lbPanStart=null;
+function lbApply(){ const i=document.getElementById('lb-img'); if(!i)return; i.style.transform=`translate(${_lbX}px,${_lbY}px) scale(${_lbScale})`; i.classList.toggle('zoom',_lbScale>1.02); }
+function lbReset(){ _lbScale=1;_lbX=0;_lbY=0;_lbPts.clear();_lbPanStart=null; lbApply(); }
+function lbClampPan(){ const i=document.getElementById('lb-img'); if(!i)return; const mx=(i.clientWidth*(_lbScale-1))/2+30, my=(i.clientHeight*(_lbScale-1))/2+30; _lbX=Math.max(-mx,Math.min(mx,_lbX)); _lbY=Math.max(-my,Math.min(my,_lbY)); }
+function lbToggleZoom(e){ if(e) e.stopPropagation(); if(_lbPinched){ _lbPinched=false; return; } if(_lbScale>1.02){ lbReset(); } else { _lbScale=2.5; _lbX=0;_lbY=0; lbApply(); } }
+function initLbZoom(){
+  const img=document.getElementById('lb-img'); if(!img||img._z)return; img._z=true;
+  img.addEventListener('pointerdown',e=>{ try{img.setPointerCapture(e.pointerId);}catch(_){}
+    _lbPts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(_lbPts.size===2){ _lbPinched=true; const p=[..._lbPts.values()]; _lbStartDist=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y)||1; _lbStartScale=_lbScale; }
+    else if(_lbPts.size===1 && _lbScale>1.02){ _lbPanStart={x:e.clientX-_lbX,y:e.clientY-_lbY}; }
+  });
+  img.addEventListener('pointermove',e=>{ if(!_lbPts.has(e.pointerId))return; _lbPts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(_lbPts.size===2){ const p=[..._lbPts.values()]; const d=Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y); _lbScale=Math.max(1,Math.min(4,_lbStartScale*(d/_lbStartDist))); lbClampPan(); lbApply(); }
+    else if(_lbPts.size===1 && _lbScale>1.02 && _lbPanStart){ _lbX=e.clientX-_lbPanStart.x; _lbY=e.clientY-_lbPanStart.y; lbClampPan(); lbApply(); }
+  });
+  function up(e){ _lbPts.delete(e.pointerId); if(_lbPts.size<2)_lbStartDist=0; if(_lbScale<1.05 && _lbPts.size===0) lbReset(); }
+  img.addEventListener('pointerup',up); img.addEventListener('pointercancel',up);
+}
+document.addEventListener('DOMContentLoaded', initLbZoom);
+function lbBackdrop(e){ if (e.target && e.target.id === 'lightbox') cerrarLightbox(); }
+document.addEventListener('keydown', (e) => {
+  const lb = document.getElementById('lightbox');
+  if (!lb || !lb.classList.contains('on')) return;
+  if (e.key === 'Escape') cerrarLightbox();
+  else if (e.key === 'ArrowLeft') lbNav(-1);
+  else if (e.key === 'ArrowRight') lbNav(1);
+});
+
+// ── Flipbook: hojear las páginas de muestra ──
+let _fbIdx = 0, _fbAnim = false;
+function abrirFlipbook(){
+  if (!_galeria.length) return;
+  _fbIdx = _detailIdx || 0;
+  fbRender();
+  const o = document.getElementById('flipbook');
+  o.classList.add('on'); o.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  if (window.umami) umami.track('flipbook-abierto');
+}
+function cerrarFlip(){
+  const o = document.getElementById('flipbook');
+  if (o){ o.classList.remove('on'); o.setAttribute('aria-hidden','true'); }
+  document.body.style.overflow = '';
+}
+function fbRender(){
+  const img = document.getElementById('fb-img'); if (img) setImgOpt(img, _galeria[_fbIdx], 1400);
+  const c = document.getElementById('fb-counter'); if (c) c.textContent = `${_fbIdx+1} / ${_galeria.length}`;
+  fbUpdateNav();
+}
+function fbUpdateNav(){
+  const p = document.getElementById('fb-prev'), n = document.getElementById('fb-next');
+  if (p) p.disabled = _fbIdx <= 0;
+  if (n) n.disabled = _fbIdx >= _galeria.length - 1;
+}
+function flipNext(){ fbFlip(1); }
+function flipPrev(){ fbFlip(-1); }
+function fbFlip(dir){
+  if (_fbAnim) return;
+  const n = _fbIdx + dir; if (n < 0 || n >= _galeria.length) return;
+  const pg = document.getElementById('fb-page'), img = document.getElementById('fb-img');
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !pg){ _fbIdx = n; fbRender(); return; }
+  _fbAnim = true;
+  pg.style.transformOrigin = dir > 0 ? 'left center' : 'right center';
+  pg.style.transition = 'transform .28s ease-in';
+  pg.style.transform = `rotateY(${dir>0?-90:90}deg)`;
+  setTimeout(() => {
+    _fbIdx = n; if (img) setImgOpt(img, _galeria[_fbIdx], 1400);
+    const c = document.getElementById('fb-counter'); if (c) c.textContent = `${_fbIdx+1} / ${_galeria.length}`;
+    pg.style.transition = 'none';
+    pg.style.transform = `rotateY(${dir>0?90:-90}deg)`;
+    void pg.offsetWidth; // reflow
+    pg.style.transition = 'transform .28s ease-out';
+    pg.style.transform = 'rotateY(0deg)';
+    setTimeout(() => { _fbAnim = false; fbUpdateNav(); }, 290);
+  }, 280);
+}
+document.addEventListener('keydown', (e) => {
+  const o = document.getElementById('flipbook');
+  if (!o || !o.classList.contains('on')) return;
+  if (e.key === 'Escape') cerrarFlip();
+  else if (e.key === 'ArrowLeft') flipPrev();
+  else if (e.key === 'ArrowRight') flipNext();
+});
 
 function irAFoto(idx){
   const thumbs = $$('.detail-thumb');
@@ -2064,14 +3255,234 @@ function animarContador(el, valorFinal){
   obs.observe(el);
 }
 
+function guardarPinterest(el){
+  const BASE = 'https://cofredidactico.com.ar/';
+  const url = BASE + '#/producto/' + el.dataset.id;
+  const media = BASE + (el.dataset.img || '');
+  const desc = (el.dataset.nombre || 'Recurso didáctico') + ' — Cofre Didáctico';
+  const pin = 'https://www.pinterest.com/pin/create/button/?url=' + encodeURIComponent(url) +
+              '&media=' + encodeURIComponent(media) + '&description=' + encodeURIComponent(desc);
+  window.open(pin, '_blank', 'noopener,noreferrer,width=750,height=650');
+}
+// Link a la mini-página de compartir (con tarjeta OG por producto).
+// Cae al link con # si por algún motivo no existiera la mini-página.
+function urlProducto(id){
+  const dir = location.pathname.replace(/[^/]*$/, '');
+  return location.origin + dir + 'p/' + id + '.html';
+}
 function compartir(id, nombre){
-  const url = location.origin + location.pathname + '#/producto/' + id;
+  const url = urlProducto(id);
   if (navigator.share){
     navigator.share({title:nombre + ' — Cofre Didáctico', url}).catch(()=>{});
   } else {
     navigator.clipboard.writeText(url).then(() => alert('¡Link copiado! Ya podés compartirlo 📝'));
   }
   if (window.umami) umami.track('compartir-producto', { id });
+}
+
+// ══════════════════════════════════════════
+// PLACA PARA INSTAGRAM STORIES (canvas 1080×1920)
+// ══════════════════════════════════════════
+let _placaBlob = null, _placaNombre = 'cofre-didactico';
+async function abrirPlaca(id){
+  const p = (_data && _data.productos || []).find(x => x.id === id);
+  if (!p){ return; }
+  const modal = document.getElementById('placa');
+  modal.classList.add('on'); modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  try { if (document.fonts && document.fonts.ready) await document.fonts.ready; } catch(e){}
+  await dibujarPlaca(p);
+  // Mostrar botón compartir solo si el dispositivo puede compartir archivos
+  const sh = document.getElementById('placa-share');
+  if (sh) sh.style.display = (navigator.canShare && navigator.share) ? 'inline-flex' : 'none';
+  if (window.umami) umami.track('placa-generada', { id });
+}
+function cerrarPlaca(){
+  const modal = document.getElementById('placa');
+  modal.classList.remove('on'); modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape'){ const m = document.getElementById('placa'); if (m && m.classList.contains('on')) cerrarPlaca(); }
+});
+function _cargarImg(src){
+  return new Promise(res => {
+    const im = new Image();
+    im.crossOrigin = 'anonymous';
+    im.onload = () => res(im);
+    im.onerror = () => res(null);
+    im.src = src;
+  });
+}
+// Destello de 4 puntas (decoración de la placa)
+function _spark(ctx, x, y, s, color){
+  ctx.save(); ctx.fillStyle = color; ctx.translate(x,y);
+  ctx.beginPath();
+  ctx.moveTo(0,-s);
+  ctx.quadraticCurveTo(0,0, s,0);
+  ctx.quadraticCurveTo(0,0, 0,s);
+  ctx.quadraticCurveTo(0,0, -s,0);
+  ctx.quadraticCurveTo(0,0, 0,-s);
+  ctx.fill(); ctx.restore();
+}
+function _wrapText(ctx, text, maxW){
+  const words = String(text||'').split(/\s+/); const lines = []; let line = '';
+  for (const w of words){
+    const test = line ? line + ' ' + w : w;
+    if (ctx.measureText(test).width > maxW && line){ lines.push(line); line = w; }
+    else line = test;
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+async function dibujarPlaca(p){
+  const cv = document.getElementById('placa-canvas');
+  const ctx = cv.getContext('2d');
+  const W = 1080, H = 1920;
+  ctx.clearRect(0,0,W,H);
+  // ===== Fondo editorial crema con textura y acentos suaves de marca =====
+  ctx.fillStyle = '#FBF7F0'; ctx.fillRect(0,0,W,H);
+  const gTop = ctx.createRadialGradient(W-120,140,60, W-120,140,640);
+  gTop.addColorStop(0,'rgba(33,150,243,.16)'); gTop.addColorStop(1,'rgba(33,150,243,0)');
+  ctx.fillStyle = gTop; ctx.fillRect(0,0,W,H);
+  const gBot = ctx.createRadialGradient(120,H-150,60, 120,H-150,680);
+  gBot.addColorStop(0,'rgba(255,138,76,.15)'); gBot.addColorStop(1,'rgba(255,138,76,0)');
+  ctx.fillStyle = gBot; ctx.fillRect(0,0,W,H);
+  // Textura de puntitos (papel)
+  ctx.save(); ctx.fillStyle = 'rgba(26,39,68,.045)';
+  for (let yy=46; yy<H; yy+=34){ for (let xx=46; xx<W; xx+=34){ ctx.beginPath(); ctx.arc(xx,yy,2,0,6.283); ctx.fill(); } }
+  ctx.restore();
+  // Marco fino
+  ctx.strokeStyle = 'rgba(26,39,68,.10)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.roundRect(38,38,W-76,H-76,54); ctx.stroke();
+  // Destellos decorativos
+  _spark(ctx, 132, 252, 16, 'rgba(255,138,76,.55)');
+  _spark(ctx, W-136, 300, 22, 'rgba(33,150,243,.5)');
+  _spark(ctx, W-172, 1520, 15, 'rgba(255,138,76,.5)');
+  _spark(ctx, 128, 1470, 18, 'rgba(33,150,243,.42)');
+
+  // ===== Cabecera de marca =====
+  ctx.textBaseline = 'alphabetic';
+  ctx.font = '800 58px Outfit, sans-serif';
+  const w1 = ctx.measureText('Cofre ').width, w2 = ctx.measureText('Didáctico').width;
+  const sx = (W - (w1+w2))/2, brandY = 195;
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#12233A'; ctx.fillText('Cofre ', sx, brandY);
+  ctx.fillStyle = '#FF8A4C'; ctx.fillText('Didáctico', sx+w1, brandY);
+  ctx.textAlign = 'center';
+  ctx.font = '700 25px Nunito, sans-serif'; ctx.fillStyle = '#8A96A2';
+  ctx.fillText('M A T E R I A L E S   P A R A   D O C E N T E S', W/2, 238);
+  ctx.strokeStyle = 'rgba(255,138,76,.9)'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(W/2-46,278); ctx.lineTo(W/2+46,278); ctx.stroke();
+
+  // ===== Tarjeta con la portada del producto =====
+  const cardX=105, cardY=320, cardW=W-210, cardH=910, rad=42;
+  ctx.save();
+  ctx.shadowColor='rgba(26,39,68,.20)'; ctx.shadowBlur=54; ctx.shadowOffsetY=26;
+  ctx.fillStyle='#fff';
+  ctx.beginPath(); ctx.roundRect(cardX,cardY,cardW,cardH,rad); ctx.fill();
+  ctx.restore();
+  // Imagen (cover) con leve padding interno y bordes redondeados
+  const pad=20, ix=cardX+pad, iy=cardY+pad, iw=cardW-pad*2, ih=cardH-pad*2, irad=28;
+  ctx.save();
+  ctx.beginPath(); ctx.roundRect(ix,iy,iw,ih,irad); ctx.clip();
+  ctx.fillStyle='#EAF3FB'; ctx.fillRect(ix,iy,iw,ih);
+  const im = await _cargarImg(normImg(p.imagen));
+  if (im && im.width){
+    const ar=im.width/im.height, arBox=iw/ih; let dw,dh,dx,dy;
+    if (ar>arBox){ dh=ih; dw=dh*ar; dx=ix-(dw-iw)/2; dy=iy; }
+    else { dw=iw; dh=dw/ar; dx=ix; dy=iy-(dh-ih)/2; }
+    ctx.drawImage(im,dx,dy,dw,dh);
+  } else { ctx.fillStyle='#B9D4EC'; ctx.font='120px sans-serif'; ctx.textAlign='center'; ctx.fillText('📚',ix+iw/2,iy+ih/2+40); }
+  ctx.restore();
+
+  // ===== Badge de oferta / gratis =====
+  const esGratis = p.acceso==='gratis';
+  const pct = (!esGratis && p.precioTachado && p.precioTachado>p.precio) ? Math.round((1-p.precio/p.precioTachado)*100) : 0;
+  if (esGratis || pct>=5){
+    ctx.save();
+    ctx.fillStyle = esGratis ? '#22A06B' : '#FF6B35';
+    const bw=246, bh=84, bx=cardX+34, by=cardY+34;
+    ctx.shadowColor='rgba(26,39,68,.22)'; ctx.shadowBlur=20; ctx.shadowOffsetY=8;
+    ctx.beginPath(); ctx.roundRect(bx,by,bw,bh,22); ctx.fill();
+    ctx.shadowColor='transparent';
+    ctx.fillStyle='#fff'; ctx.font='800 40px Outfit, sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(esGratis?'¡GRATIS!':('−'+pct+'% OFF'), bx+bw/2, by+bh/2+2);
+    ctx.restore();
+  }
+
+  // ===== Nombre + precio (centrados entre la tarjeta y el botón) =====
+  ctx.textBaseline='alphabetic'; ctx.textAlign='center';
+  ctx.font='800 60px Outfit, sans-serif';
+  const lines=_wrapText(ctx, p.nombre, W-220).slice(0,3);
+  const lineH=72;
+  const hasOld=!esGratis && p.precioTachado && p.precioTachado>p.precio;
+  const priceH = esGratis ? 100 : (hasOld ? 58 : 0) + 104;
+  const gap=26;
+  const blockH = lines.length*lineH + gap + priceH;
+  const regTop=1288, regBot=1700;
+  const top = regTop + Math.max(0, (regBot-regTop-blockH)/2);
+  ctx.fillStyle='#12233A'; ctx.font='800 60px Outfit, sans-serif';
+  let ny=top+58; lines.forEach(l=>{ ctx.fillText(l,W/2,ny); ny+=lineH; });
+  let py=top + lines.length*lineH + gap;
+  if (esGratis){
+    ctx.fillStyle='#22A06B'; ctx.font='800 92px Outfit, sans-serif';
+    ctx.fillText('¡Gratis! 🎁', W/2, py+78);
+  } else {
+    if (hasOld){
+      ctx.fillStyle='#9AA7B4'; ctx.font='600 42px Nunito, sans-serif';
+      const old='$'+Number(p.precioTachado).toLocaleString('es-AR');
+      ctx.fillText(old,W/2,py+32);
+      const ow=ctx.measureText(old).width;
+      ctx.strokeStyle='#9AA7B4'; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(W/2-ow/2,py+18); ctx.lineTo(W/2+ow/2,py+18); ctx.stroke();
+      py+=58;
+    }
+    ctx.fillStyle='#2196F3'; ctx.font='800 98px Outfit, sans-serif';
+    ctx.fillText('$'+Number(p.precio||0).toLocaleString('es-AR'), W/2, py+90);
+  }
+
+  // ===== Botón + usuario =====
+  const pillW=650, pillH=120, pillX=(W-pillW)/2, pillY=1728;
+  const gp=ctx.createLinearGradient(pillX,0,pillX+pillW,0); gp.addColorStop(0,'#FF8A4C'); gp.addColorStop(1,'#FF6B35');
+  ctx.save(); ctx.shadowColor='rgba(255,107,53,.34)'; ctx.shadowBlur=30; ctx.shadowOffsetY=12;
+  ctx.fillStyle=gp; ctx.beginPath(); ctx.roundRect(pillX,pillY,pillW,pillH,60); ctx.fill();
+  ctx.restore();
+  ctx.fillStyle='#fff'; ctx.font='800 46px Outfit, sans-serif'; ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText('🛍️  Conseguilo en la tienda', W/2, pillY+pillH/2+2);
+  ctx.textBaseline='alphabetic'; ctx.fillStyle='#5A6B7B'; ctx.font='800 36px Nunito, sans-serif';
+  ctx.fillText('@cofredidactico', W/2, 1878);
+  // Exportar a blob
+  _placaNombre = 'cofre-' + String(p.id||'material').replace(/[^a-z0-9]+/gi,'-').toLowerCase();
+  try {
+    cv.toBlob(b => { _placaBlob = b; }, 'image/png');
+  } catch(e){ _placaBlob = null; }
+}
+function descargarPlaca(){
+  const cv = document.getElementById('placa-canvas');
+  const finish = (blob) => {
+    if (!blob){ toast('No se pudo generar la imagen 😕'); return; }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = _placaNombre + '.png';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
+    if (typeof toast === 'function') toast('¡Placa descargada! 📲 Subila a tu historia');
+    if (window.umami) umami.track('placa-descargada');
+  };
+  if (_placaBlob) finish(_placaBlob);
+  else cv.toBlob(finish, 'image/png');
+}
+async function compartirPlaca(){
+  const cv = document.getElementById('placa-canvas');
+  const blob = _placaBlob || await new Promise(r => cv.toBlob(r, 'image/png'));
+  if (!blob) return;
+  const file = new File([blob], _placaNombre + '.png', { type: 'image/png' });
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [file] })){
+      await navigator.share({ files: [file], title: 'Cofre Didáctico' });
+      if (window.umami) umami.track('placa-compartida');
+    } else { descargarPlaca(); }
+  } catch(e){ /* usuario canceló */ }
 }
 
 
@@ -2104,7 +3515,7 @@ function compartir(id, nombre){
       _q = e.target.value;
       const mainQ = document.getElementById('q');
       if (mainQ) mainQ.value = _q;
-      render();
+      if (typeof _renderDebounced === 'function') _renderDebounced(); else { render(); escribirFiltrosEnURL(false); }
     });
   }
 })();
@@ -2193,9 +3604,11 @@ function aplicarSheet(){
   _filtroMes = _sheetMes; _filtroTematica = _sheetTematica; _q = _sheetQ;
   const mainQ = document.getElementById('q');
   if (mainQ) mainQ.value = _q;
+  const hq = document.getElementById('hdr-q'); if (hq) hq.value = _q;
   cerrarSheet();
   render();
   actualizarSheetBadge();
+  escribirFiltrosEnURL(true);
   // Scroll suave al catálogo
   setTimeout(() => document.getElementById('catalogo').scrollIntoView({behavior:'smooth'}), 200);
 }
@@ -2279,7 +3692,7 @@ function activarSwipeGaleria(imagenes){
 
 // ─── Meta tags dinámicos + Schema.org por producto ───
 function actualizarMeta(p){
-  const BASE = 'https://cofredidactico.github.io/PaginaWeb/';
+  const BASE = 'https://cofredidactico.com.ar/';
   const img = p.imagen ? (p.imagen.startsWith('http') ? p.imagen : BASE + p.imagen) : BASE + 'preview.png';
   const precio = p.acceso === 'gratis' ? 'Gratis' : '$' + (p.precio||0).toLocaleString('es-AR');
   const desc = (p.descripcion||'').substring(0,160);
@@ -2321,15 +3734,15 @@ function actualizarMeta(p){
 }
 
 function resetearMeta(){
-  const BASE = 'https://cofredidactico.github.io/PaginaWeb/';
+  const BASE = 'https://cofredidactico.com.ar/';
   const set = (id, val) => { const el = document.getElementById(id); if (el) el.setAttribute('content', val); };
   set('og-title', 'Cofre Didáctico — Recursos educativos');
-  set('og-desc', 'Cuadernillos, juegos interactivos y láminas para el aula.');
+  set('og-desc', 'Cuadernillos, efemérides, juegos interactivos y láminas para imprimir. ✨ Recursos didácticos de calidad, creados por un docente y pensados para enriquecer y acompañar cada una de tus clases. 📚');
   set('og-image', BASE + 'preview.png');
   set('og-url', BASE);
   set('og-type', 'website');
   set('tw-title', 'Cofre Didáctico');
-  set('tw-desc', 'Recursos didácticos para docentes.');
+  set('tw-desc', 'Cuadernillos, efemérides, juegos interactivos y láminas para imprimir. ✨ Recursos didácticos de calidad, creados por un docente y pensados para enriquecer y acompañar cada una de tus clases. 📚');
   set('tw-image', BASE + 'preview.png');
   document.title = 'Cofre Didáctico';
 
@@ -2390,7 +3803,7 @@ function ocultarFloatBuy(){
 function compartirProducto(e, id, nombre){
   e.preventDefault();
   e.stopPropagation();
-  const url = location.origin + location.pathname + '#/producto/' + id;
+  const url = urlProducto(id);
   if (navigator.share){
     navigator.share({ title: nombre + ' · Cofre Didáctico', url });
   } else {
@@ -2400,6 +3813,7 @@ function compartirProducto(e, id, nombre){
       btn.textContent = '✓';
       btn.style.background = 'var(--green-soft)';
       btn.style.color = 'var(--green)';
+      if (typeof microPopAt === 'function') microPopAt(btn, '🔗');
       setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; }, 1800);
     });
   }
@@ -2479,6 +3893,8 @@ function animarContador(el, target) {
         (href.includes('index.html') && !href.includes('#'))) {
       a.addEventListener('click', e => {
         e.preventDefault();
+        // En el navegador de Instagram el fundido deja pantalla negra: navegar directo
+        if (document.documentElement.classList.contains('is-iab')) { window.location.href = href; return; }
         document.body.classList.add('page-leaving');
         setTimeout(() => { window.location.href = href; }, 200);
       });
@@ -2495,6 +3911,7 @@ document.querySelectorAll('a[href]').forEach(a => {
   if(href.includes('gratis.html') || href.includes('interactivos.html')){
     a.addEventListener('click', e => {
       e.preventDefault();
+      if (document.documentElement.classList.contains('is-iab')) { window.location.href = href; return; }
       document.body.style.opacity = '0';
       document.body.style.transform = 'translateY(-4px)';
       document.body.style.transition = 'opacity .18s ease, transform .18s ease';
@@ -2502,7 +3919,406 @@ document.querySelectorAll('a[href]').forEach(a => {
     });
   }
 });
+// Restaura la visibilidad al mostrarse la página (arregla la "pantalla negra"
+// de la caché atrás/adelante en el navegador de Instagram)
+window.addEventListener('pageshow', function(){
+  document.body.style.opacity = ''; document.body.style.transform = ''; document.body.style.transition = '';
+  document.body.classList.remove('page-leaving');
+});
 
+// Precalienta las otras secciones + el catálogo. El navegador de Instagram no
+// cachea con service worker, así que la 1ra navegación a cada apartado es lenta:
+// bajándolas en segundo plano al abrir, después abren al instante.
+(function(){
+  function _warm(){
+    const here = location.pathname.split('/').pop() || 'index.html';
+    ['index.html','gratis.html','interactivos.html','herramientas.html'].forEach(function(u){
+      if (u === here) return;
+      try{ const l = document.createElement('link'); l.rel = 'prefetch'; l.href = u; document.head.appendChild(l); }catch(e){}
+      try{ fetch(u).catch(function(){}); }catch(e){}
+    });
+    try{ fetch('productos.json?v=' + new Date().toISOString().slice(0,10)).catch(function(){}); }catch(e){}
+  }
+  if ('requestIdleCallback' in window) requestIdleCallback(_warm, { timeout: 3000 }); else setTimeout(_warm, 1800);
+})();
+
+// ── "Abrí el Cofre" — regalo gamificado ──
+// 👉 Cambiá "desc" para que coincida con el descuento que configuraste en Empretienda.
+const CUPON = { codigo: 'COFRE', desc: '10%' };
+function _cofreInit(){
+  const c = document.getElementById('cofre-code-txt'); if (c) c.textContent = CUPON.codigo;
+  const d = document.getElementById('cofre-desc'); if (d) d.textContent = CUPON.desc;
+  let claimed = false, visto = false;
+  try{ claimed = localStorage.getItem('cofre_regalo') === 'claimed'; visto = !!localStorage.getItem('cofre_visto'); }catch(e){}
+  const fab = document.getElementById('cofre-fab');
+  if (claimed){
+    const m = document.getElementById('cofre-modal'); if (m) m.classList.add('revealed');
+    if (fab){ const s = fab.querySelector('span:last-child'); if (s) s.textContent = 'Tu cupón'; }
+  } else if (!visto){
+    // Auto-abrir una sola vez, tras unos segundos, si no hay otro popup abierto
+    setTimeout(() => {
+      const exitOpen = document.querySelector('.exit-overlay.on');
+      const cmdkOpen = document.querySelector('.cmdk.on');
+      if (!exitOpen && !cmdkOpen && !document.body.classList.contains('in-detail')) abrirCofre();
+      try{ localStorage.setItem('cofre_visto','1'); }catch(e){}
+    }, 7000);
+  }
+}
+function abrirCofre(){
+  const o = document.getElementById('cofre-overlay'); if (!o) return;
+  o.classList.add('on'); document.body.style.overflow = 'hidden';
+  if (window.umami) umami.track('cofre-abierto');
+}
+function cerrarCofre(){
+  const o = document.getElementById('cofre-overlay'); if (o) o.classList.remove('on');
+  document.body.style.overflow = '';
+}
+function cofreBackdrop(e){ if (e.target && e.target.id === 'cofre-overlay') cerrarCofre(); }
+function abrirRegalo(){
+  const stage = document.getElementById('cofre-stage');
+  const m = document.getElementById('cofre-modal');
+  if (stage) stage.classList.add('shake');
+  setTimeout(() => {
+    if (stage){ stage.classList.remove('shake'); stage.classList.add('pop'); }
+    if (typeof lanzarConfeti === 'function') lanzarConfeti();
+    setTimeout(() => { if (m) m.classList.add('revealed'); }, 250);
+  }, 540);
+  try{ localStorage.setItem('cofre_regalo','claimed'); }catch(e){}
+  const fab = document.getElementById('cofre-fab');
+  if (fab){ const s = fab.querySelector('span:last-child'); if (s) s.textContent = 'Tu cupón'; }
+  if (window.umami) umami.track('cofre-reclamado');
+}
+function copiarCupon(btn){
+  const done = () => { const t = btn.textContent; btn.textContent = '¡Copiado! ✓'; setTimeout(() => btn.textContent = t, 1600); if (typeof toast === 'function') toast('✓ Cupón ' + CUPON.codigo + ' copiado'); if (typeof microPopAt === 'function') microPopAt(btn, '✓'); };
+  if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(CUPON.codigo).then(done).catch(done); }
+  else { const ta = document.createElement('textarea'); ta.value = CUPON.codigo; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} ta.remove(); done(); }
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape'){ const o = document.getElementById('cofre-overlay'); if (o && o.classList.contains('on')) cerrarCofre(); } });
+_cofreInit();
+
+// ── Sistema de toasts ──
+function toast(msg){
+  let c = document.getElementById('toast-c');
+  if (!c){ c = document.createElement('div'); c.id = 'toast-c'; c.className = 'toast-c'; document.body.appendChild(c); }
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; c.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('on'));
+  setTimeout(() => { t.classList.remove('on'); setTimeout(() => t.remove(), 320); }, 2200);
+}
+
+// ── Command palette (⌘K) ──
+let _cmdkItems = [], _cmdkIdx = 0;
+const CMDK_ACCIONES = [
+  {tt:'Ir al catálogo', sub:'Ver todos los materiales', ico:'🛍️', run:()=>{ location.hash=''; const el=document.getElementById('catalogo'); if(el) el.scrollIntoView({behavior:'smooth'}); }},
+  {tt:'Recursos gratis', sub:'gratis.html', ico:'🎁', run:()=>location.href='gratis.html'},
+  {tt:'Juegos interactivos', sub:'interactivos.html', ico:'🎮', run:()=>location.href='interactivos.html'},
+  {tt:'Herramientas para el aula', sub:'herramientas.html', ico:'🧰', run:()=>location.href='herramientas.html'},
+  {tt:'Newsletter', sub:'Suscribirme gratis', ico:'✉️', run:()=>{ location.hash=''; const el=document.getElementById('newsletter'); if(el) el.scrollIntoView({behavior:'smooth'}); }},
+  {tt:'Cambiar tema claro / oscuro', sub:'', ico:'🌓', run:()=>cambiarTema()},
+];
+function abrirCmdk(){
+  const o = document.getElementById('cmdk'); if(!o) return;
+  o.classList.add('on'); o.setAttribute('aria-hidden','false');
+  const inp = document.getElementById('cmdk-input'); if(inp){ inp.value=''; setTimeout(()=>inp.focus(),40); }
+  cmdkRender('');
+  if (window.umami) umami.track('cmdk-abierto');
+}
+function cerrarCmdk(){ const o = document.getElementById('cmdk'); if(o){ o.classList.remove('on'); o.setAttribute('aria-hidden','true'); } }
+function cmdkRender(q){
+  q = (q||'').trim().toLowerCase();
+  const res = document.getElementById('cmdk-results'); if(!res) return;
+  const prods = (_data && _data.productos ? _data.productos : []).filter(p => p.activo);
+  let matched = q ? prods.filter(p => ((p.nombre||'')+' '+(p.descripcion||'')+' '+(p.nivel||'')+' '+(p.tematica||'')).toLowerCase().includes(q)) : prods;
+  matched = matched.slice(0, 6);
+  const acc = CMDK_ACCIONES.filter(a => !q || a.tt.toLowerCase().includes(q));
+  _cmdkItems = []; let html = '';
+  if (matched.length){
+    html += '<div class="cmdk-sec">Materiales</div>';
+    matched.forEach(p => {
+      const idx = _cmdkItems.length;
+      _cmdkItems.push({ run: () => { cerrarCmdk(); location.hash = '#/producto/' + p.id; } });
+      const img = imgOpt(p.imagen, 96);
+      const precio = p.acceso === 'gratis' ? 'Gratis' : '$' + (p.precio||0).toLocaleString('es-AR');
+      html += `<div class="cmdk-item" data-i="${idx}" onclick="cmdkRun(${idx})"><div class="ci-ico">${img?`<img src="${img}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${_imgAbs(p.imagen)}'">`:'📦'}</div><div class="ci-tx"><div class="ci-tt">${p.nombre}</div><div class="ci-sub">${(p.nivel||TIPO_LABELS[p.tipo]||p.tipo||'')} · ${precio}</div></div><span class="ci-go">↵</span></div>`;
+    });
+  }
+  if (acc.length){
+    html += '<div class="cmdk-sec">Ir a</div>';
+    acc.forEach(a => {
+      const idx = _cmdkItems.length; _cmdkItems.push({ run: a.run });
+      html += `<div class="cmdk-item" data-i="${idx}" onclick="cmdkRun(${idx})"><div class="ci-ico">${a.ico}</div><div class="ci-tx"><div class="ci-tt">${a.tt}</div>${a.sub?`<div class="ci-sub">${a.sub}</div>`:''}</div><span class="ci-go">↵</span></div>`;
+    });
+  }
+  if (!_cmdkItems.length) html = `<div class="cmdk-empty">Sin resultados para “${q}”. Probá otra palabra.</div>`;
+  res.innerHTML = html; _cmdkIdx = 0; cmdkHighlight();
+}
+function cmdkHighlight(){
+  const items = document.querySelectorAll('#cmdk-results .cmdk-item');
+  items.forEach((el,i) => el.classList.toggle('active', i === _cmdkIdx));
+  const act = items[_cmdkIdx]; if (act) act.scrollIntoView({block:'nearest'});
+}
+function cmdkRun(i){ const it = _cmdkItems[i]; if (it && it.run) it.run(); }
+function cmdkVoz(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const mic = document.getElementById('cmdk-mic');
+  if (!SR){ toast('Tu navegador no soporta búsqueda por voz'); return; }
+  const rec = new SR(); rec.lang = 'es-AR'; rec.interimResults = false; rec.maxAlternatives = 1;
+  if (mic) mic.classList.add('rec');
+  rec.onresult = e => { const t = e.results[0][0].transcript; const inp = document.getElementById('cmdk-input'); if(inp){ inp.value = t; cmdkRender(t); } };
+  rec.onerror = () => toast('No pude escuchar, probá de nuevo');
+  rec.onend = () => { if (mic) mic.classList.remove('rec'); };
+  try{ rec.start(); }catch(e){ if (mic) mic.classList.remove('rec'); }
+}
+(function(){
+  const inp = document.getElementById('cmdk-input');
+  if (inp){ let _ckT=null; inp.addEventListener('input', e => { const v=e.target.value; clearTimeout(_ckT); _ckT=setTimeout(()=>cmdkRender(v),160); }); }
+  document.addEventListener('keydown', e => {
+    const cmdk = document.getElementById('cmdk');
+    const open = cmdk && cmdk.classList.contains('on');
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k'){ e.preventDefault(); open ? cerrarCmdk() : abrirCmdk(); return; }
+    if (e.key === '/' && !open){
+      const tag = (e.target.tagName||'').toLowerCase();
+      if (tag !== 'input' && tag !== 'textarea' && !e.target.isContentEditable){ e.preventDefault(); abrirCmdk(); }
+      return;
+    }
+    if (!open) return;
+    if (e.key === 'Escape') cerrarCmdk();
+    else if (e.key === 'ArrowDown'){ e.preventDefault(); _cmdkIdx = Math.min(_cmdkItems.length-1, _cmdkIdx+1); cmdkHighlight(); }
+    else if (e.key === 'ArrowUp'){ e.preventDefault(); _cmdkIdx = Math.max(0, _cmdkIdx-1); cmdkHighlight(); }
+    else if (e.key === 'Enter'){ e.preventDefault(); cmdkRun(_cmdkIdx); }
+  });
+})();
+
+// ── Botón "volver arriba": mostrar tras scrollear ──
+(function(){
+  const tt = document.getElementById('to-top');
+  if (!tt) return;
+  window.addEventListener('scroll', () => {
+    tt.classList.toggle('show', window.scrollY > 600);
+  }, {passive:true});
+})();
+
+// ── PWA: registrar el service worker ──
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('serviceworker.js').catch(() => {});
+  });
+}
+
+// ── Pop-up de salida (exit-intent) — solo desktop, una vez por sesión ──
+function abrirExit(){
+  let visto = false; try{ visto = sessionStorage.getItem('exitShown'); }catch(e){}
+  if (visto || document.body.classList.contains('in-detail')) return;
+  const cofreOpen = document.getElementById('cofre-overlay') && document.getElementById('cofre-overlay').classList.contains('on');
+  if (cofreOpen) return;
+  const ov = document.getElementById('exit-overlay');
+  if (!ov) return;
+  ov.classList.add('on');
+  try{ sessionStorage.setItem('exitShown','1'); }catch(e){}
+  if (window.umami) umami.track('exit-popup-visto');
+}
+function cerrarExit(e){
+  if (e && e.type === 'click' && e.target && e.target.id !== 'exit-overlay' && !e.target.classList.contains('exit-x')) return;
+  const ov = document.getElementById('exit-overlay');
+  if (ov) ov.classList.remove('on');
+}
+function exitSuscribir(e){
+  e.preventDefault();
+  const v = (document.getElementById('exit-email').value||'').trim();
+  if (!v) return false;
+  const nl = document.getElementById('nl-email'); if (nl) nl.value = v;
+  cerrarExit();
+  const sec = document.getElementById('newsletter'); if (sec) sec.scrollIntoView({behavior:'smooth'});
+  const form = document.getElementById('nl-form');
+  setTimeout(() => { if (form && form.requestSubmit) form.requestSubmit(); else if (typeof suscribirse === 'function') suscribirse(new Event('submit')); }, 450);
+  if (window.umami) umami.track('exit-popup-suscribir');
+  return false;
+}
+document.addEventListener('mouseout', (e) => {
+  if (e.clientY <= 0 && !e.relatedTarget && !e.toElement) abrirExit();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit(); });
+
+</script>
+
+<!-- Pop-up de salida (exit-intent) -->
+<div class="exit-overlay" id="exit-overlay" onclick="cerrarExit(event)">
+  <div class="exit-modal" role="dialog" aria-modal="true" aria-labelledby="exit-tt">
+    <button class="exit-x" type="button" onclick="cerrarExit()" aria-label="Cerrar">✕</button>
+    <div class="exit-emoji" aria-hidden="true">🎁</div>
+    <h3 id="exit-tt">¡Esperá! Llevate material gratis</h3>
+    <p>Dejanos tu email y te enviamos recursos gratis para tu aula, además de novedades y descuentos. Sin spam.</p>
+    <form class="exit-form" onsubmit="return exitSuscribir(event)">
+      <input type="email" required placeholder="tu@email.com" id="exit-email" aria-label="Tu email" />
+      <button class="btn btn-primary" type="submit">Quiero recursos gratis</button>
+    </form>
+    <a class="exit-alt" href="gratis.html">O ver la sección de recursos gratis →</a>
+  </div>
+</div>
+
+<!-- Command palette (⌘K) -->
+<div class="cmdk" id="cmdk" aria-hidden="true" onclick="if(event.target.id==='cmdk')cerrarCmdk()">
+  <div class="cmdk-box" role="dialog" aria-modal="true" aria-label="Buscador rápido">
+    <div class="cmdk-input-row">
+      <span class="cmdk-ico">🔍</span>
+      <input id="cmdk-input" type="text" placeholder="Buscá un material o navegá…" autocomplete="off" spellcheck="false" />
+      <button class="cmdk-mic" id="cmdk-mic" type="button" title="Buscar por voz" aria-label="Buscar por voz" onclick="cmdkVoz()">🎙️</button>
+      <kbd class="cmdk-esc">Esc</kbd>
+    </div>
+    <div class="cmdk-results" id="cmdk-results"></div>
+    <div class="cmdk-foot"><span>↑ ↓ moverse</span><span>↵ abrir</span><span>⌘K / Ctrl K</span></div>
+  </div>
+</div>
+
+<!-- Botón volver arriba -->
+<button class="to-top" id="to-top" type="button" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Barra de navegación inferior (mobile) -->
+<nav class="bottom-nav" aria-label="Navegación principal">
+  <a href="#catalogo" class="active"><span class="bn-ico">🛍️</span>Catálogo</a>
+  <a href="gratis.html"><span class="bn-ico">🎁</span>Gratis</a>
+  <a href="interactivos.html"><span class="bn-ico">🎮</span>Interactivos</a>
+  <a href="herramientas.html"><span class="bn-ico">🧰</span>Aula</a>
+  <button type="button" onclick="abrirSheet()"><span class="bn-ico">🔍</span>Buscar</button>
+</nav>
+
+<!-- "Abrí el Cofre" — regalo gamificado -->
+<button class="cofre-fab" id="cofre-fab" type="button" onclick="abrirCofre()" aria-label="Abrí tu regalo">
+  <span class="cf-ico">🎁</span><span>Tu regalo</span>
+</button>
+<div class="cofre-overlay" id="cofre-overlay" onclick="cofreBackdrop(event)">
+  <div class="cofre-modal" id="cofre-modal" role="dialog" aria-modal="true" aria-labelledby="cofre-title">
+    <button class="cofre-x" type="button" onclick="cerrarCofre()" aria-label="Cerrar">✕</button>
+    <div class="cofre-closed">
+      <div class="cofre-stage" id="cofre-stage">
+        <div class="cofre-glow"></div>
+        <img class="cofre-logo" src="logo.png" alt="Cofre Didáctico" onerror="this.style.display='none'" />
+      </div>
+      <h3 id="cofre-title">Tenés un regalo esperándote 🎁</h3>
+      <p>Abrí el cofre y llevate un descuento para estrenar tus materiales.</p>
+      <button class="btn btn-primary btn-lg" style="width:100%;justify-content:center;" type="button" onclick="abrirRegalo()">🔓 Abrir mi regalo</button>
+    </div>
+    <div class="cofre-reveal">
+      <div class="cofre-stage"><div class="cofre-glow"></div><img class="cofre-logo" src="logo.png" alt="" onerror="this.style.display='none'" /></div>
+      <h3>🎉 ¡Es tuyo!</h3>
+      <p>Tu cupón de <strong id="cofre-desc">10%</strong> de descuento:</p>
+      <div class="cofre-code"><span id="cofre-code-txt">COFRE</span><button class="cofre-copy" type="button" onclick="copiarCupon(this)">Copiar</button></div>
+      <p class="cofre-note">Pegalo al momento de pagar en Empretienda. Válido en toda la tienda.</p>
+      <a class="btn btn-primary btn-lg" style="width:100%;justify-content:center;" href="#catalogo" onclick="cerrarCofre()" data-umami-event="cofre-ver-catalogo">Ver catálogo →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox de galería -->
+<div class="lightbox" id="lightbox" aria-hidden="true" onclick="lbBackdrop(event)">
+  <button class="lb-close" type="button" onclick="cerrarLightbox()" aria-label="Cerrar">✕</button>
+  <button class="lb-nav lb-prev" type="button" onclick="lbNav(-1,event)" aria-label="Anterior">‹</button>
+  <img class="lb-img" id="lb-img" alt="Vista ampliada" onclick="lbToggleZoom(event)" />
+  <button class="lb-nav lb-next" type="button" onclick="lbNav(1,event)" aria-label="Siguiente">›</button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<!-- Flipbook: hojear páginas de muestra -->
+<div class="flipbook" id="flipbook" aria-hidden="true" onclick="if(event.target.id==='flipbook')cerrarFlip()">
+  <button class="fb-close" type="button" onclick="cerrarFlip()" aria-label="Cerrar">✕</button>
+  <button class="fb-nav fb-prev" id="fb-prev" type="button" onclick="flipPrev()" aria-label="Página anterior">‹</button>
+  <div class="fb-book"><div class="fb-page" id="fb-page"><img id="fb-img" alt="Página de muestra" /></div></div>
+  <button class="fb-nav fb-next" id="fb-next" type="button" onclick="flipNext()" aria-label="Página siguiente">›</button>
+  <div class="fb-counter" id="fb-counter"></div>
+  <div class="fb-hint">← → para hojear</div>
+</div>
+
+<!-- Placa para Instagram Stories -->
+<div class="placa-modal" id="placa" aria-hidden="true" onclick="if(event.target.id==='placa')cerrarPlaca()">
+  <button class="placa-close" type="button" onclick="cerrarPlaca()" aria-label="Cerrar">✕</button>
+  <p class="placa-title">📲 Tu placa lista para compartir</p>
+  <div class="placa-canvas-wrap"><canvas id="placa-canvas" width="1080" height="1920"></canvas></div>
+  <div class="placa-actions">
+    <button class="btn btn-primary btn-lg" type="button" onclick="descargarPlaca()">⬇️ Descargar</button>
+    <button class="btn btn-ghost btn-lg" id="placa-share" type="button" onclick="compartirPlaca()" style="display:none;">📤 Compartir</button>
+  </div>
+  <p class="placa-sub">Descargala y subila a tu historia de Instagram. ¡Etiquetanos! 💙</p>
+</div>
+
+<!-- Behold: cargador del feed de Instagram -->
+<script>
+(() => {
+  if (window.__bhldScript) return;
+  function load(){ if (window.__bhldScript) return; window.__bhldScript = true;
+    const d = document, s = d.createElement("script"); s.type = "module";
+    s.src = "https://w.behold.so/widget.js"; d.head.append(s); }
+  const sec = document.getElementById('instagram');
+  // Carga el feed de Instagram solo cuando la sección está por verse (#5)
+  if (!sec || !('IntersectionObserver' in window)){ setTimeout(load, 2500); return; }
+  const io = new IntersectionObserver((es) => { if (es.some(e => e.isIntersecting)){ io.disconnect(); load(); } }, { rootMargin:'400px' });
+  io.observe(sec);
+})();
+</script>
+
+<!-- OneSignal Web Push: notificaciones de material nuevo y ofertas -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    try {
+      await OneSignal.init({
+        appId: "b1a4554d-e8b0-4ad9-beac-348c4fd3ac98",
+        // Worker aislado en /onesignal/ para no pisar el service worker de la PWA
+        serviceWorkerPath: "onesignal/OneSignalSDKWorker.js",
+        serviceWorkerParam: { scope: "/onesignal/" },
+        allowLocalhostAsSecureOrigin: true,
+        // Cartelito de suscripción en español, amigable y con la voz de la marca
+        promptOptions: {
+          slidedown: {
+            prompts: [{
+              type: "push",
+              autoPrompt: false,
+              text: {
+                actionMessage: "¿Querés enterarte primero cuando subimos material nuevo y ofertas para tus clases? 🎁",
+                acceptButton: "¡Sí, avisame!",
+                cancelButton: "Ahora no"
+              }
+            }]
+          }
+        }
+      });
+      actualizarBotonPush();
+      if (OneSignal.Notifications && OneSignal.Notifications.addEventListener)
+        OneSignal.Notifications.addEventListener('permissionChange', actualizarBotonPush);
+    } catch (e) { /* OneSignal no disponible */ }
+  });
+
+  function _pushSoportado(){ return ('Notification' in window) && ('serviceWorker' in navigator) && ('PushManager' in window); }
+
+  function actualizarBotonPush() {
+    const btn = document.getElementById('btn-push');
+    if (!btn) return;
+    if (!_pushSoportado()) { btn.style.display = 'none'; return; }
+    const perm = Notification.permission;
+    if (perm === 'granted') { btn.style.display = 'inline-flex'; btn.textContent = '🔔 Avisos activados'; btn.classList.add('is-on'); btn.disabled = true; }
+    else if (perm === 'denied') { btn.style.display = 'none'; }
+    else { btn.style.display = 'inline-flex'; btn.textContent = '🔔 Avisame de material nuevo'; btn.classList.remove('is-on'); btn.disabled = false; }
+  }
+
+  function activarAvisos() {
+    if (!_pushSoportado()) { if (typeof toast === 'function') toast('Tu navegador no admite estos avisos 😕'); return; }
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      try {
+        // Muestra el cartelito en español; si no está disponible, cae al pedido nativo
+        if (OneSignal.Slidedown && OneSignal.Slidedown.promptPush) {
+          await OneSignal.Slidedown.promptPush({ force: true });
+        } else {
+          await OneSignal.Notifications.requestPermission();
+        }
+        actualizarBotonPush();
+        if (Notification.permission === 'granted' && typeof toast === 'function') toast('¡Listo! Te avisaremos del material nuevo 🔔');
+        if (window.umami) umami.track('push-activado');
+      } catch (e) {}
+    });
+  }
+
+  // Mostrar el botón aun si OneSignal tarda en cargar
+  document.addEventListener('DOMContentLoaded', function(){ setTimeout(actualizarBotonPush, 900); });
 </script>
 
 </body>
