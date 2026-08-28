@@ -1284,6 +1284,60 @@ body.in-detail footer{display:block;}
 .view-toggle button.on{background:var(--card);color:var(--primary);box-shadow:var(--s-1);}
 .grid.masonry{grid-auto-rows:8px;align-items:start;}
 .grid.masonry .card{align-self:start;}
+
+/* ❤️ Favoritos (#11) */
+.card-fav{position:absolute;top:10px;right:10px;z-index:4;width:36px;height:36px;border-radius:50%;border:none;cursor:pointer;background:rgba(255,255,255,.9);color:#c9d3dd;font-size:1.05rem;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(26,39,68,.14);transition:transform .15s, color .15s, background .15s;backdrop-filter:blur(4px);}
+.card-fav:hover{transform:scale(1.12);}
+.card-fav.on{color:#EC407A;}
+.card-fav.pop{animation:favPop .4s;}
+@keyframes favPop{0%{transform:scale(1)}40%{transform:scale(1.4)}100%{transform:scale(1)}}
+.fav-chip{display:none;align-items:center;gap:6px;background:var(--card);border:1.5px solid var(--line);border-radius:99px;padding:7px 14px;font-weight:800;font-size:.85rem;color:var(--ink);cursor:pointer;transition:all .15s;}
+.fav-chip.show{display:inline-flex;}
+.fav-chip.on{border-color:#EC407A;color:#EC407A;background:color-mix(in srgb,#EC407A 8%,var(--card));}
+
+/* 🕘 Vistos recientemente (#12) */
+.recientes{margin:8px 0 30px;}
+.recientes h3{font-size:1.05rem;margin:0 0 12px;display:flex;align-items:center;gap:8px;}
+.recientes-row{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
+.rec-card{flex:0 0 130px;scroll-snap-align:start;text-decoration:none;color:var(--ink);}
+.rec-card img{width:130px;height:150px;object-fit:cover;border-radius:12px;background:var(--bg-2);border:1px solid var(--line);}
+.rec-card .rc-n{font-weight:700;font-size:.82rem;margin-top:6px;line-height:1.15;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+
+/* 🛡️ Sellos de confianza (#18) */
+.trust{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px;}
+.trust span{display:inline-flex;align-items:center;gap:7px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:9px 13px;font-size:.82rem;font-weight:700;color:var(--ink-2);}
+.trust span b{color:var(--ink);}
+
+/* ⏳ Contador de oferta (#16) */
+.promo-bar{display:none;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;background:linear-gradient(135deg,#FF8A4C,#FF6B35);color:#fff;text-align:center;padding:9px 16px;font-weight:800;font-size:.9rem;}
+.promo-bar.on{display:flex;}
+.promo-time{display:inline-flex;gap:5px;}
+.promo-time b{background:rgba(255,255,255,.22);border-radius:7px;padding:3px 8px;font-variant-numeric:tabular-nums;min-width:34px;}
+
+/* 🎉 Efeméride del día (#20) */
+.efem-hoy{display:none;margin:0 0 20px;background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 12%,var(--card)),var(--card));border:1.5px solid color-mix(in srgb,var(--primary) 30%,var(--line));border-radius:16px;padding:14px 16px;align-items:center;gap:14px;}
+.efem-hoy.on{display:flex;}
+.efem-hoy .eh-ico{font-size:1.8rem;flex:none;}
+.efem-hoy .eh-tx{flex:1;min-width:0;}
+.efem-hoy .eh-tt{font-weight:800;font-size:.98rem;}
+.efem-hoy .eh-sub{font-size:.85rem;color:var(--ink-2);}
+.efem-hoy a.eh-btn{flex:none;background:var(--primary);color:#fff;font-weight:800;padding:9px 14px;border-radius:10px;font-size:.85rem;text-decoration:none;}
+
+/* Formas decorativas entre secciones (#2) */
+.sec-wave{display:block;width:100%;height:40px;margin-bottom:-1px;color:var(--bg-2);}
+@media(max-width:600px){ .sec-wave{height:26px;} .trust span{font-size:.76rem;padding:7px 10px;} }
+
+/* Tour de bienvenida (#14) */
+.tour-ov{position:fixed;inset:0;z-index:4000;pointer-events:none;}
+.tour-ov::before{content:"";position:absolute;inset:0;background:rgba(8,11,18,.62);pointer-events:auto;}
+.tour-spot{position:absolute;border-radius:16px;box-shadow:0 0 0 4px var(--primary),0 0 0 9999px rgba(8,11,18,.62);transition:all .35s cubic-bezier(.4,0,.2,1);pointer-events:none;}
+.tour-pop{position:absolute;max-width:290px;background:var(--card);color:var(--ink);border-radius:16px;padding:16px 18px;box-shadow:0 18px 50px rgba(8,11,18,.4);pointer-events:auto;transition:all .35s cubic-bezier(.4,0,.2,1);}
+.tour-tt{font-weight:800;font-size:1.02rem;margin-bottom:5px;}
+.tour-tx{font-size:.88rem;color:var(--ink-2);line-height:1.4;}
+.tour-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;}
+.tour-step{font-size:.78rem;color:var(--ink-2);font-weight:700;}
+.tour-skip{background:none;border:none;color:var(--ink-2);font-weight:700;cursor:pointer;font-size:.82rem;padding:6px 8px;}
+.tour-next{background:var(--primary);color:#fff;border:none;border-radius:10px;font-weight:800;cursor:pointer;font-size:.85rem;padding:8px 15px;}
 .detail-thumbs{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
 .detail-thumb{width:78px;height:78px;border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s,transform .2s;background:var(--bg-2);}
 .detail-thumb img{width:100%;height:100%;object-fit:cover;}
@@ -1627,6 +1681,9 @@ body.has-iab-bar .hdr{top:48px;}
 <!-- Banner anuncio (se muestra solo si está activo) -->
 <div class="anuncio" id="anuncio" style="display:none;"></div>
 
+<!-- Contador de oferta por tiempo limitado (#16, se muestra solo si está configurado) -->
+<div class="promo-bar" id="promo-bar"></div>
+
 <!-- Header -->
 <header class="hdr" id="main-hdr">
   <div class="wrap hdr-in">
@@ -1854,6 +1911,9 @@ body.has-iab-bar .hdr{top:48px;}
       <p class="sec-sub">Filtrá por tipo, nivel o mes. Buscá por nombre o explorá todo el catálogo.</p>
     </div>
 
+    <!-- Efeméride del día (#20) -->
+    <div class="efem-hoy" id="efem-hoy"></div>
+
     <!-- Barra de filtros desktop -->
     <div class="filter-bar">
       <div class="search">
@@ -1875,6 +1935,7 @@ body.has-iab-bar .hdr{top:48px;}
     <div class="cat-toolbar">
       <div class="cat-count" id="cat-count"></div>
       <div class="cat-sort">
+        <button class="fav-chip" id="fav-chip" type="button" onclick="toggleSoloFavs()">🤍 Favoritos</button>
         <div class="view-toggle" role="group" aria-label="Vista del catálogo">
           <button type="button" data-v="grid" class="on" onclick="setVista('grid')" title="Vista cuadrícula" aria-label="Vista cuadrícula">▦</button>
           <button type="button" data-v="masonry" onclick="setVista('masonry')" title="Vista mosaico" aria-label="Vista mosaico">▤</button>
@@ -1899,8 +1960,13 @@ body.has-iab-bar .hdr{top:48px;}
       <div class="card-skeleton"><div class="sk-img"></div><div class="sk-body"><div class="sk-tag"></div><div class="sk-title"></div><div class="sk-title-2"></div><div class="sk-desc"></div><div class="sk-desc-2"></div><div class="sk-foot"><div class="sk-price"></div><div class="sk-btn"></div></div></div></div>
       <div class="card-skeleton"><div class="sk-img"></div><div class="sk-body"><div class="sk-tag"></div><div class="sk-title"></div><div class="sk-title-2"></div><div class="sk-desc"></div><div class="sk-desc-2"></div><div class="sk-foot"><div class="sk-price"></div><div class="sk-btn"></div></div></div></div>
     </div>
+
+    <!-- Vistos recientemente (#12) -->
+    <div class="recientes" id="recientes" style="display:none;margin-top:34px;"></div>
   </div>
 </section>
+
+<svg class="sec-wave" style="color:var(--card)" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0,40 L0,18 C240,0 480,0 720,14 C960,28 1200,40 1440,20 L1440,40 Z"></path></svg>
 
 <!-- ¿Por qué? -->
 <section class="sec por-que" id="por-que">
@@ -2134,7 +2200,7 @@ function initTilt(){
 npStart();
 fetch('productos.json?v=' + new Date().toISOString().slice(0,10))
   .then(r => r.json())
-  .then(data => { _data = data; aplicarConfig(); leerFiltrosDeURL(); renderSemana(); render(); routear(); generarSchemaProductos(); renderHeroCollage(); initTilt(); if(typeof setVista==='function')setVista(_vista); npDone(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); })
+  .then(data => { _data = data; aplicarConfig(); leerFiltrosDeURL(); renderSemana(); render(); routear(); generarSchemaProductos(); renderHeroCollage(); initTilt(); if(typeof setVista==='function')setVista(_vista); renderRecientes(); initPromo(); initEfemHoy(); actualizarFavChip(); npDone(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); setTimeout(function(){ try{ if(!location.hash || location.hash==='#') iniciarTour(); }catch(e){} }, 1600); })
   .catch(err => {
     npDone();
     const ldr=document.getElementById('page-loader');if(ldr)ldr.classList.add('hidden');
@@ -2323,6 +2389,7 @@ function cardHTML(p, i, opts){
       <div class="card-img">
         <span class="card-skel" aria-hidden="true"></span>
         ${ribbon}${tipo}${offBadge}
+        <button class="card-fav ${esFav(p.id)?'on':''}" data-id="${p.id}" title="Guardar en favoritos" aria-label="Favorito" onclick="toggleFav(event,'${p.id}')">${esFav(p.id)?'❤️':'🤍'}</button>
         ${mediaInner}
       </div>
       <div class="card-body">
@@ -2467,6 +2534,7 @@ function render(){
 
   // Filtrar
   const filtrados = prods.filter(p => {
+    if (_soloFavs && !esFav(p.id)) return false;
     if (_filtroTipo === 'gratis' && p.acceso !== 'gratis') return false;
     if (_filtroTipo !== 'todos' && _filtroTipo !== 'gratis' && p.tipo !== _filtroTipo) return false;
     if (_filtroNivel !== 'todos' && p.nivelGrupo !== _filtroNivel) return false;
@@ -2741,6 +2809,125 @@ function layoutMasonry(){
 }
 window.addEventListener('resize', function(){ clearTimeout(window._mzT); window._mzT = setTimeout(layoutMasonry, 160); });
 document.addEventListener('load', function(e){ if (e.target && e.target.tagName === 'IMG' && _vista==='masonry'){ clearTimeout(window._mzT2); window._mzT2 = setTimeout(layoutMasonry, 60); } }, true);
+
+// ═══════ #7 Vibración sutil (haptics) ═══════
+function haptic(ms){ try{ if (navigator.vibrate && matchMedia('(pointer:coarse)').matches) navigator.vibrate(ms||12); }catch(e){} }
+
+// ═══════ #11 Favoritos (corazón, guardado en el celular) ═══════
+let _favs = [];
+try{ _favs = JSON.parse(localStorage.getItem('cofre_favs')||'[]'); if(!Array.isArray(_favs)) _favs=[]; }catch(e){ _favs=[]; }
+function esFav(id){ return _favs.indexOf(id) !== -1; }
+function _guardarFavs(){ try{ localStorage.setItem('cofre_favs', JSON.stringify(_favs)); }catch(e){} }
+function toggleFav(ev, id){
+  if(ev){ ev.preventDefault(); ev.stopPropagation(); }
+  const i = _favs.indexOf(id);
+  if (i === -1){ _favs.push(id); haptic(14); if (typeof toast==='function') toast('❤️ Agregado a favoritos'); }
+  else { _favs.splice(i,1); }
+  _guardarFavs();
+  // actualizar todos los corazones de ese producto
+  document.querySelectorAll('.card-fav[data-id="'+CSS.escape(id)+'"]').forEach(b=>{ const on=esFav(id); b.classList.toggle('on',on); b.textContent = on?'❤️':'🤍'; if(on) b.classList.add('pop'); setTimeout(()=>b.classList.remove('pop'),400); });
+  actualizarFavChip();
+  if (_soloFavs) render();
+}
+let _soloFavs = false;
+function actualizarFavChip(){
+  const chip = document.getElementById('fav-chip'); if(!chip) return;
+  chip.classList.toggle('show', _favs.length>0);
+  chip.classList.toggle('on', _soloFavs);
+  chip.innerHTML = (_soloFavs?'❤️':'🤍') + ' Favoritos' + (_favs.length?' ('+_favs.length+')':'');
+}
+function toggleSoloFavs(){ _soloFavs = !_soloFavs; if(_soloFavs && !_favs.length){ _soloFavs=false; if(typeof toast==='function') toast('Todavía no tenés favoritos 🤍'); } render(); actualizarFavChip(); }
+
+// ═══════ #12 Vistos recientemente ═══════
+let _recientes = [];
+try{ _recientes = JSON.parse(localStorage.getItem('cofre_recientes')||'[]'); if(!Array.isArray(_recientes)) _recientes=[]; }catch(e){ _recientes=[]; }
+function registrarVisto(id){
+  _recientes = [id, ..._recientes.filter(x=>x!==id)].slice(0,10);
+  try{ localStorage.setItem('cofre_recientes', JSON.stringify(_recientes)); }catch(e){}
+}
+function renderRecientes(){
+  const cont = document.getElementById('recientes'); if(!cont || !_data) return;
+  const prods = _recientes.map(id => (_data.productos||[]).find(p=>p.id===id && p.activo)).filter(Boolean).slice(0,8);
+  if (prods.length < 2){ cont.style.display='none'; return; }
+  cont.style.display='';
+  cont.innerHTML = '<h3>🕘 Vistos recientemente</h3><div class="recientes-row">' + prods.map(p =>
+    '<a class="rec-card" href="#/producto/'+p.id+'"><img src="'+imgOpt(p.imagen,260)+'" alt="'+(p.nombre||'').replace(/"/g,'&quot;')+'" loading="lazy" onerror="this.onerror=null;this.src=\''+_imgAbs(p.imagen)+'\'"><div class="rc-n">'+(p.nombre||'')+'</div></a>'
+  ).join('') + '</div>';
+}
+
+// ═══════ #16 Contador de oferta (si está configurado en el editor) ═══════
+function initPromo(){
+  const bar = document.getElementById('promo-bar'); if(!bar || !_data) return;
+  const promo = (_data.config && _data.config.promo) || null;
+  if (!promo || !promo.activo || !promo.fechaFin){ bar.classList.remove('on'); return; }
+  const fin = new Date(promo.fechaFin).getTime();
+  if (isNaN(fin) || fin <= Date.now()){ bar.classList.remove('on'); return; }
+  const txt = promo.texto || '🔥 Oferta por tiempo limitado';
+  function tick(){
+    const d = fin - Date.now();
+    if (d <= 0){ bar.classList.remove('on'); clearInterval(bar._t); return; }
+    const dd=Math.floor(d/864e5), hh=Math.floor(d%864e5/36e5), mm=Math.floor(d%36e5/6e4), ss=Math.floor(d%6e4/1e3);
+    bar.innerHTML = '<span>'+txt+'</span><span class="promo-time"><b>'+dd+'d</b><b>'+String(hh).padStart(2,'0')+'</b>:<b>'+String(mm).padStart(2,'0')+'</b>:<b>'+String(ss).padStart(2,'0')+'</b></span>';
+  }
+  tick(); bar.classList.add('on'); clearInterval(bar._t); bar._t = setInterval(tick, 1000);
+}
+
+// ═══════ #20 Efeméride del día ═══════
+const EFEMERIDES = [
+  {m:3,d:24,tt:'Día de la Memoria por la Verdad y la Justicia',k:['memoria','24 de marzo']},
+  {m:4,d:2, tt:'Día del Veterano y de los Caídos en Malvinas',k:['malvinas','veterano']},
+  {m:5,d:25,tt:'Día de la Revolución de Mayo',k:['revolución de mayo','25 de mayo']},
+  {m:6,d:17,tt:'Paso a la Inmortalidad de Güemes',k:['güemes','guemes']},
+  {m:6,d:20,tt:'Día de la Bandera',k:['bandera']},
+  {m:7,d:9, tt:'Día de la Independencia',k:['independencia','9 de julio']},
+  {m:8,d:17,tt:'Paso a la Inmortalidad del Gral. San Martín',k:['san martín','san martin']},
+  {m:10,d:12,tt:'Día del Respeto a la Diversidad Cultural',k:['diversidad','américas','americas','colón']}
+];
+function initEfemHoy(){
+  const box = document.getElementById('efem-hoy'); if(!box || !_data) return;
+  const hoy = new Date(); const ef = EFEMERIDES.find(e=>e.m===hoy.getMonth()+1 && e.d===hoy.getDate());
+  if (!ef){ box.classList.remove('on'); return; }
+  const prod = (_data.productos||[]).find(p => p.activo && ef.k.some(kw => ((p.nombre||'')+' '+(p.tematica||'')).toLowerCase().includes(kw)));
+  box.innerHTML = '<div class="eh-ico">🎉</div><div class="eh-tx"><div class="eh-tt">¡Hoy es el '+ef.tt+'!</div><div class="eh-sub">'+(prod?'Tenemos el material perfecto para tus clases de hoy.':'Preparate para la efeméride con nuestros materiales.')+'</div></div>'+(prod?'<a class="eh-btn" href="#/producto/'+prod.id+'">Ver material →</a>':'<a class="eh-btn" href="#catalogo">Ver catálogo →</a>');
+  box.classList.add('on');
+  if (typeof lanzarConfeti==='function' && !sessionStorage.getItem('efem_confeti')){ setTimeout(lanzarConfeti, 600); try{sessionStorage.setItem('efem_confeti','1');}catch(e){} }
+}
+
+// ═══════ #14 Tour de bienvenida (primera visita) ═══════
+function iniciarTour(force){
+  try{ if(!force && localStorage.getItem('cofre_tour')==='1') return; }catch(e){}
+  const pasos = [
+    {sel:'#catalogo .filter-bar, #catalogo .filter-sheet-btn', tt:'📚 Explorá el catálogo', tx:'Filtrá por tipo, nivel, mes o temática, y buscá lo que necesites.'},
+    {sel:'a[href="gratis.html"], .bottom-nav a[href="gratis.html"]', tt:'🎁 Material gratis', tx:'Descargá recursos sin costo dejando tu email.'},
+    {sel:'a[href="herramientas.html"], .bottom-nav a[href="herramientas.html"]', tt:'🧰 Herramientas para el aula', tx:'Ruleta, temporizador y más, para usar en clase.'},
+    {sel:'#cofre-fab', tt:'🎁 Tu regalo', tx:'Abrí el cofre y llevate un cupón de descuento.'}
+  ];
+  let i=0;
+  const ov=document.createElement('div'); ov.className='tour-ov'; ov.innerHTML='<div class="tour-spot"></div><div class="tour-pop"><div class="tour-tt"></div><div class="tour-tx"></div><div class="tour-nav"><span class="tour-step"></span><div><button class="tour-skip">Saltar</button><button class="tour-next">Siguiente</button></div></div></div>';
+  document.body.appendChild(ov);
+  const spot=ov.querySelector('.tour-spot'), pop=ov.querySelector('.tour-pop');
+  function cerrar(){ ov.remove(); try{localStorage.setItem('cofre_tour','1');}catch(e){} }
+  function mostrar(){
+    const paso=pasos[i]; let el=null; paso.sel.split(',').some(s=>{ el=document.querySelector(s.trim()); return el; });
+    if(!el){ i++; if(i>=pasos.length){cerrar();return;} return mostrar(); }
+    el.scrollIntoView({block:'center',behavior:'smooth'});
+    setTimeout(()=>{
+      const r=el.getBoundingClientRect(); const pad=8;
+      spot.style.cssText='top:'+(r.top-pad)+'px;left:'+(r.left-pad)+'px;width:'+(r.width+pad*2)+'px;height:'+(r.height+pad*2)+'px;';
+      ov.querySelector('.tour-tt').textContent=paso.tt; ov.querySelector('.tour-tx').textContent=paso.tx;
+      ov.querySelector('.tour-step').textContent=(i+1)+' / '+pasos.length;
+      ov.querySelector('.tour-next').textContent = i===pasos.length-1?'¡Listo!':'Siguiente';
+      // posicionar el pop debajo o arriba del spot
+      const below = r.bottom+180 < innerHeight;
+      pop.style.top = (below ? r.bottom+pad+10 : Math.max(10, r.top-pad-pop.offsetHeight-10))+'px';
+      pop.style.left = Math.max(10, Math.min(innerWidth-pop.offsetWidth-10, r.left))+'px';
+    }, 350);
+  }
+  ov.querySelector('.tour-next').onclick=()=>{ i++; if(i>=pasos.length){cerrar();} else mostrar(); };
+  ov.querySelector('.tour-skip').onclick=cerrar;
+  ov.addEventListener('click',e=>{ if(e.target===ov) cerrar(); });
+  mostrar();
+}
 
 // ── Confeti de celebración (canvas, sin librerías) ──
 function lanzarConfeti(){
@@ -3025,7 +3212,7 @@ function renderDetalle(p){
       <div class="detail-price">${precio}</div>
       ${precioBloque}
       <div class="detail-cta">
-        <a href="${p.link||'#'}" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-umami-event="click-comprar" data-umami-event-id="${p.id}">${cta}</a>
+        <a href="${p.link||'#'}" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-umami-event="click-comprar" data-umami-event-id="${p.id}" onpointerdown="if(typeof haptic==='function')haptic(15)">${cta}</a>
         ${hotmartBtn}
         ${demoBtn}
         <div class="cta-sec">
@@ -3033,6 +3220,14 @@ function renderDetalle(p){
           <button class="btn btn-pin btn-lg" data-id="${p.id}" data-img="${normImg(p.imagen)}" data-nombre="${(p.nombre||'').replace(/"/g,'&quot;')}" onclick="guardarPinterest(this)" data-umami-event="pin-guardar" title="Guardar en Pinterest">📌 Guardar</button>
         </div>
         <button class="btn btn-ghost btn-lg btn-placa" data-id="${p.id}" onclick="abrirPlaca(this.dataset.id)" data-umami-event="placa-abrir" data-umami-event-id="${p.id}">📲 Crear placa para Instagram</button>
+      </div>
+
+      <!-- Sellos de confianza (#18) -->
+      <div class="trust">
+        <span>⚡ <b>Descarga inmediata</b></span>
+        <span>🔒 <b>Pago seguro</b></span>
+        <span>👩‍🏫 <b>Hecho por docente</b></span>
+        <span>♾️ <b>Acceso permanente</b></span>
       </div>
 
       <!-- Testimonios al final -->
@@ -3063,6 +3258,7 @@ function renderDetalle(p){
   activarSwipeGaleria(imagenes);
   mostrarFloatBuy(p);
   activarDescColapsable();
+  try{ registrarVisto(p.id); renderRecientes(); }catch(e){}
 }
 
 function cambiarImg(src, el){
@@ -3966,6 +4162,7 @@ function _cofreInit(){
 }
 function abrirCofre(){
   const o = document.getElementById('cofre-overlay'); if (!o) return;
+  if (typeof haptic==='function') haptic(12);
   o.classList.add('on'); document.body.style.overflow = 'hidden';
   if (window.umami) umami.track('cofre-abierto');
 }
@@ -3977,6 +4174,7 @@ function cofreBackdrop(e){ if (e.target && e.target.id === 'cofre-overlay') cerr
 function abrirRegalo(){
   const stage = document.getElementById('cofre-stage');
   const m = document.getElementById('cofre-modal');
+  if (typeof haptic==='function') haptic(20);
   if (stage) stage.classList.add('shake');
   setTimeout(() => {
     if (stage){ stage.classList.remove('shake'); stage.classList.add('pop'); }
