@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Mi biblioteca — Cofre Didáctico</title>
+<meta name="description" content="Tus materiales de Cofre Didáctico, siempre a mano." />
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#1A2744" />
+<link rel="icon" href="logo.png" />
+<link rel="apple-touch-icon" href="icon192.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" />
+<script>(function(){try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+<style>
+:root{
+  --primary:#2196F3; --primary-dark:#1976D2; --primary-soft:#E3F2FD;
+  --accent:#FF8A4C; --accent-soft:#FFEBDD;
+  --card:#FFFFFF; --hdr-bg:rgba(251,247,242,.86); --dot:rgba(26,39,68,.05);
+  --green:#3E8A55; --green-soft:#DBEDDF; --purple:#7B61FF; --purple-soft:#EDE9FF; --gold:#C98500; --gold-soft:#FFF3D6;
+  --ink:#1A2744; --ink-2:#3E4A65; --ink-3:#6B7280; --ink-4:#9CA3AF;
+  --bg:#FBF7F2; --bg-2:#F5EFE7; --line:#E8DFD0; --danger:#C2412D; --danger-soft:#FDE8E4;
+  --r:14px; --r-lg:20px;
+  --s-1:0 2px 8px rgba(26,39,68,.07); --s-2:0 14px 34px -10px rgba(26,39,68,.18);
+  --f:'Nunito',system-ui,sans-serif; --f-display:'Outfit',system-ui,sans-serif;
+}
+:root[data-theme="dark"]{
+  --ink:#EEF1F6; --ink-2:#C3CAD6; --ink-3:#96A0B0; --ink-4:#6E7889;
+  --bg:#121722; --bg-2:#1A2130; --line:#2C3648; --card:#1B2230; --hdr-bg:rgba(18,23,34,.86); --dot:rgba(255,255,255,.045);
+  --primary:#54ABF5; --primary-dark:#8CC6F8; --primary-soft:#16283A; --accent:#FF9B63; --accent-soft:#33241B;
+  --green:#5CC47B; --green-soft:#16281C; --purple:#A592FF; --purple-soft:#241F3D; --gold:#F4B740; --gold-soft:#2E2614; --danger:#FF8A75; --danger-soft:#3A1E19;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#EEF1F6; --ink-2:#C3CAD6; --ink-3:#96A0B0; --ink-4:#6E7889;
+    --bg:#121722; --bg-2:#1A2130; --line:#2C3648; --card:#1B2230; --hdr-bg:rgba(18,23,34,.86); --dot:rgba(255,255,255,.045);
+    --primary:#54ABF5; --primary-dark:#8CC6F8; --primary-soft:#16283A; --accent:#FF9B63; --accent-soft:#33241B;
+    --green:#5CC47B; --green-soft:#16281C; --purple:#A592FF; --purple-soft:#241F3D; --gold:#F4B740; --gold-soft:#2E2614; --danger:#FF8A75; --danger-soft:#3A1E19;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--f);color:var(--ink);background:var(--bg);background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:22px 22px;min-height:100vh;display:flex;flex-direction:column;line-height:1.5}
+a{color:var(--primary);text-decoration:none}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 16px}
+/* header */
+.hdr{position:sticky;top:0;z-index:20;background:var(--hdr-bg);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);border-bottom:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-family:var(--f-display);font-weight:700;font-size:1.15rem;white-space:nowrap}
+.brand img{width:38px;height:38px;object-fit:contain}
+.brand strong{color:var(--accent);font-weight:800}
+.nav{display:flex;align-items:center;gap:8px}
+.lnk{font-weight:700;font-size:.9rem;color:var(--ink-2);padding:8px 12px;border-radius:10px}
+.lnk:hover{background:var(--bg-2)}
+.icon-btn{width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:var(--card);border:1.5px solid var(--line);font-size:1.05rem}
+.icon-btn:hover{border-color:var(--primary)}
+:focus-visible{outline:3px solid var(--primary);outline-offset:2px;border-radius:8px}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;border-radius:12px;padding:13px 20px;font-size:1rem;transition:transform .12s,background .15s,box-shadow .15s;white-space:nowrap}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 6px 16px -6px rgba(33,150,243,.6)}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px)}
+:root[data-theme="dark"] .btn-primary{color:#0B1626}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn-primary{color:#0B1626}}
+.btn-soft{background:var(--primary-soft);color:var(--primary-dark)}
+.btn-soft:hover{transform:translateY(-1px)}
+.btn-ghost{color:var(--ink-2);border:1.5px solid var(--line);background:var(--card)}
+.btn-sm{padding:9px 14px;font-size:.88rem;border-radius:10px}
+.btn[disabled]{opacity:.55;cursor:default;transform:none}
+.btn-link{color:var(--primary);font-weight:700;font-size:.9rem;padding:4px 2px}
+.btn-link[disabled]{color:var(--ink-4);cursor:default}
+/* login */
+main{flex:1}
+.login{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding:56px 0 72px}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:6px 12px;border-radius:999px}
+.login h1{font-family:var(--f-display);font-size:clamp(2rem,4.6vw,3rem);line-height:1.08;margin:16px 0 14px;letter-spacing:-.01em}
+.login h1 em{font-style:normal;color:var(--primary)}
+.lead{color:var(--ink-2);font-size:1.08rem;max-width:30em}
+.perks{list-style:none;margin-top:22px;display:grid;gap:10px}
+.perks li{display:flex;gap:10px;align-items:flex-start;color:var(--ink-2);font-weight:600}
+.perks li span{flex:none;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);font-size:.95rem}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;box-shadow:var(--s-2)}
+.panel h2{font-family:var(--f-display);font-size:1.35rem;margin-bottom:6px}
+.panel p.sub{color:var(--ink-3);font-size:.95rem;margin-bottom:18px}
+.coming{display:flex;gap:12px;align-items:center;background:var(--primary-soft);border-radius:12px;padding:10px;margin-bottom:18px}
+.coming img{width:52px;height:52px;border-radius:9px;object-fit:cover;flex:none;background:var(--bg-2)}
+.coming small{display:block;font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--primary-dark)}
+.coming b{font-size:.95rem;line-height:1.25;display:block}
+label.fld{display:block;font-weight:800;font-size:.85rem;color:var(--ink-2);margin-bottom:6px}
+.inp{width:100%;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:13px 14px;font-size:1.02rem;transition:border-color .15s,box-shadow .15s}
+.inp:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-soft)}
+.code{letter-spacing:.5em;text-align:center;font-family:var(--f-display);font-weight:800;font-size:1.6rem;padding:12px 10px}
+.row-btn{margin-top:14px;display:grid}
+.msg{margin-top:12px;font-size:.9rem;font-weight:700;border-radius:10px;padding:10px 12px;display:none}
+.msg.err{display:block;color:var(--danger);background:var(--danger-soft)}
+.msg.ok{display:block;color:var(--green);background:var(--green-soft)}
+.aux{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:12px;font-size:.88rem;color:var(--ink-3)}
+.help{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);font-size:.86rem;color:var(--ink-3)}
+.help a{font-weight:700}
+/* biblioteca */
+.lib-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:40px 0 20px}
+.lib-head h1{font-family:var(--f-display);font-size:clamp(1.7rem,3.6vw,2.4rem);line-height:1.1}
+.lib-head p{color:var(--ink-3);margin-top:6px;font-weight:600;word-break:break-word}
+.notice{display:flex;gap:12px;align-items:flex-start;border-radius:var(--r);padding:14px 16px;margin-bottom:18px;font-weight:600;font-size:.95rem}
+.notice .ic{font-size:1.2rem;line-height:1.3}
+.notice.ok{background:var(--green-soft);color:var(--green)}
+.notice.warn{background:var(--gold-soft);color:var(--ink)}
+.notice.warn b{color:var(--gold)}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{padding:8px 14px;border-radius:999px;font-weight:800;font-size:.86rem;background:var(--card);border:1.5px solid var(--line);color:var(--ink-2)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.chip .n{opacity:.6;margin-left:4px}
+.search{flex:1;min-width:200px;max-width:320px;margin-left:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;padding-bottom:40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--s-1);transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:var(--s-2)}
+.card.hl{border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-soft),var(--s-2)}
+.cover{position:relative;aspect-ratio:1/1;background:var(--bg-2);overflow:hidden}
+.cover img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
+.cover .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:2.4rem}
+.badge{position:absolute;z-index:2;left:10px;top:10px;font-size:.72rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:5px 9px;border-radius:999px;background:var(--card);color:var(--ink-2);box-shadow:var(--s-1)}
+.badge.plataforma{color:var(--purple)}
+.badge.juego{color:var(--accent)}
+.badge.cuadernillo{color:var(--primary-dark)}
+.new{position:absolute;z-index:2;right:10px;top:10px;font-size:.72rem;font-weight:800;padding:5px 9px;border-radius:999px;background:var(--accent);color:#fff}
+.body{padding:16px;display:flex;flex-direction:column;gap:12px;flex:1}
+.body h3{font-family:var(--f-display);font-size:1.08rem;line-height:1.25}
+.files{display:grid;gap:8px;margin-top:auto}
+.files>*{min-width:0}
+.file .btn{flex:none}
+.file{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:8px 8px 8px 12px;background:var(--bg)}
+.file .nm{flex:1;min-width:0;font-weight:700;font-size:.86rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file .sz{display:block;font-weight:600;color:var(--ink-4);font-size:.76rem}
+.pending{font-size:.86rem;color:var(--ink-3);background:var(--bg-2);border-radius:10px;padding:10px 12px;margin-top:auto}
+.empty{text-align:center;padding:60px 16px 80px;color:var(--ink-3)}
+.empty .big{font-size:3rem}
+.empty h2{font-family:var(--f-display);color:var(--ink);margin:8px 0}
+.skel{height:300px;border-radius:var(--r-lg);background:linear-gradient(90deg,var(--bg-2),var(--card),var(--bg-2));background-size:200% 100%;animation:sh 1.2s infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.foot{border-top:1px solid var(--line);padding:22px 0 calc(22px + env(safe-area-inset-bottom,0px));color:var(--ink-3);font-size:.85rem}
+.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);color:var(--bg);font-weight:700;padding:12px 18px;border-radius:12px;box-shadow:var(--s-2);transition:.25s;z-index:50;max-width:calc(100% - 32px)}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.demo{background:var(--gold-soft);color:var(--ink);text-align:center;font-weight:700;font-size:.85rem;padding:8px 16px}
+.hide{display:none!important}
+@media (max-width:820px){.login{grid-template-columns:1fr;gap:26px;padding:28px 0 48px}.perks{display:none}.search{max-width:none;margin-left:0}}
+@media (max-width:420px){.brand span{display:none}.panel{padding:22px 18px}.lnk{padding:8px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="demo hide" id="demoBar">Modo demostración: datos de ejemplo. El código de prueba es <b>123456</b>.</div>
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a href="index.html" class="brand"><img src="logo.png" alt="" onerror="this.style.display='none'" /><span>Cofre <strong>Didáctico</strong></span></a>
+    <nav class="nav">
+      <a href="index.html#catalogo" class="lnk">← Tienda</a>
+      <button class="lnk hide" id="salir" type="button">Salir</button>
+      <button class="icon-btn" id="tema" type="button" aria-label="Cambiar tema claro/oscuro">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Ingreso -->
+  <section class="wrap login hide" id="vLogin">
+    <div>
+      <span class="kicker">📚 Mi biblioteca</span>
+      <h1>Tus materiales,<br><em>siempre a mano.</em></h1>
+      <p class="lead">Entrá con el correo con el que compraste y encontrá todos tus cuadernillos, juegos y plataformas en un solo lugar.</p>
+      <ul class="perks">
+        <li><span>🔐</span>Sin contraseñas: te mandamos un código a tu correo.</li>
+        <li><span>⬇️</span>Descargá tus PDFs cuando quieras, desde cualquier dispositivo.</li>
+        <li><span>✨</span>Cada compra nueva aparece sola en tu biblioteca.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <div class="coming hide" id="coming"><img id="comingImg" alt="" onerror="this.remove()" /><div><small>Estás por abrir</small><b id="comingName"></b></div></div>
+      <form id="fEmail" novalidate>
+        <h2>Ingresar</h2>
+        <p class="sub">Usá el mismo correo que pusiste al comprar.</p>
+        <label class="fld" for="email">Correo electrónico</label>
+        <input class="inp" id="email" type="email" inputmode="email" autocomplete="email" placeholder="tucorreo@gmail.com" required />
+        <div class="row-btn"><button class="btn btn-primary" id="bEmail" type="submit">Enviarme el código</button></div>
+        <div class="msg" id="mEmail" role="alert"></div>
+      </form>
+      <form id="fCode" class="hide" novalidate>
+        <h2>Revisá tu correo</h2>
+        <p class="sub">Si <b id="sentTo"></b> tiene compras, te llegó un código de 6 números. Puede tardar un minuto; mirá también en Spam o Promociones.</p>
+        <label class="fld" for="code">Código</label>
+        <input class="inp code" id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••" required />
+        <div class="row-btn"><button class="btn btn-primary" id="bCode" type="submit">Entrar</button></div>
+        <div class="msg" id="mCode" role="alert"></div>
+        <div class="aux"><button type="button" class="btn-link" id="otro">← Usar otro correo</button><button type="button" class="btn-link" id="reenviar">Reenviar código</button></div>
+      </form>
+      <p class="help">¿Compraste por transferencia directa o no te llega el código? <a id="wa1" target="_blank" rel="noopener">Escribinos por WhatsApp</a> y te lo resolvemos.</p>
+    </div>
+  </section>
+
+  <!-- Biblioteca -->
+  <section class="wrap hide" id="vLib">
+    <div class="lib-head">
+      <div><h1>Mi biblioteca</h1><p id="who"></p></div>
+    </div>
+    <div id="notice"></div>
+    <div class="tools hide" id="tools">
+      <div class="chips" id="chips" role="group" aria-label="Filtrar por tipo"></div>
+      <input class="inp search" id="q" type="search" placeholder="Buscar material…" aria-label="Buscar material" />
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="wrap hide" id="vLoad"><div class="lib-head"><div><h1>Mi biblioteca</h1><p>Cargando tus materiales…</p></div></div>
+    <div class="grid"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div></section>
+</main>
+
+<footer class="foot"><div class="wrap"><span>© Cofre Didáctico · Material de uso personal del comprador. Cada descarga queda registrada a su nombre.</span><a id="wa2" target="_blank" rel="noopener">¿Necesitás ayuda?</a></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const CONFIG = {
+  url: "https://nsdjizuayflilgpzphlt.supabase.co",           // https://xxxx.supabase.co
+  key: "sb_publishable_F5yoVVkvQjdFIaLu1acLdg_FxIh5JGR",           // clave publicable (es pública, no es secreta)
+  whatsapp: "https://wa.me/5491165298256?text=" + encodeURIComponent("Hola! Necesito ayuda con Mi biblioteca de Cofre Didáctico"),
+};
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const SES = "cofre-biblioteca", PEND = "cofre-biblioteca-pend";
+const store = { get(k, s) { try { return JSON.parse((s || localStorage).getItem(k)); } catch { return null; } }, set(k, v, s) { try { (s || localStorage).setItem(k, JSON.stringify(v)); } catch {} }, del(k, s) { try { (s || localStorage).removeItem(k); } catch {} } };
+const DEMO = /[?&]demo=1/.test(location.search) || !/^https:\/\//.test(CONFIG.url);
+let sesion = store.get(SES), materiales = [], filtro = "todos", destacado = null, mat0 = null;
+
+// ---------- Tema ----------
+function temaActual() { const a = document.documentElement.getAttribute("data-theme"); if (a) return a; return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
+function pintarTema() { $("#tema").textContent = temaActual() === "dark" ? "☀️" : "🌙"; }
+$("#tema").onclick = () => { const n = temaActual() === "dark" ? "light" : "dark"; document.documentElement.setAttribute("data-theme", n); try { localStorage.setItem("tema", n); } catch {} pintarTema(); };
+pintarTema();
+$("#wa1").href = $("#wa2").href = CONFIG.whatsapp;
+
+// ---------- Servidor ----------
+async function api(body) {
+  if (DEMO) return demoApi(body);
+  const r = await fetch(CONFIG.url + "/functions/v1/biblioteca", { method: "POST", headers: { "Content-Type": "application/json", apikey: CONFIG.key }, body: JSON.stringify(body) });
+  let j = {}; try { j = await r.json(); } catch {}
+  if (r.status === 401 && j.error === "sesion") { salir(true); throw new Error("Tu sesión venció. Volvé a ingresar."); }
+  if (!r.ok) throw new Error(j.error || "No pudimos conectarnos. Probá de nuevo.");
+  return j;
+}
+
+// ---------- Llegada desde el botón "Descargar" de Empretienda ----------
+(function () {
+  const p = new URLSearchParams(location.search); const m = p.get("m"), k = p.get("k");
+  if (m && k) { store.set(PEND, { m, k }, sessionStorage); p.delete("m"); p.delete("k"); history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p : "") + location.hash); }
+})();
+const pend = () => store.get(PEND, sessionStorage) || {};
+
+function ver(id) { ["#vLogin", "#vLib", "#vLoad"].forEach((v) => $(v).classList.toggle("hide", v !== id)); $("#salir").classList.toggle("hide", id === "#vLogin"); }
+function msg(el, t, tipo = "err") { el.className = "msg " + (t ? tipo : ""); el.textContent = t || ""; }
+function toast(t) { const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 3200); }
+function salir(silencio) { store.del(SES); sesion = null; materiales = []; ver("#vLogin"); mostrarEmail(); if (!silencio) toast("Cerraste la sesión."); }
+$("#salir").onclick = () => salir();
+
+// ---------- Ingreso ----------
+let espera = 0, timer;
+function mostrarEmail() { $("#fEmail").classList.remove("hide"); $("#fCode").classList.add("hide"); msg($("#mEmail"), ""); }
+function cuentaReenvio() {
+  clearInterval(timer); espera = 45; const b = $("#reenviar");
+  const tick = () => { b.disabled = espera > 0; b.textContent = espera > 0 ? `Reenviar en ${espera}s` : "Reenviar código"; if (espera-- <= 0) clearInterval(timer); };
+  tick(); timer = setInterval(tick, 1000);
+}
+async function pedirCodigo(email) {
+  const b = $("#bEmail"); b.disabled = true; b.textContent = "Enviando…";
+  try {
+    await api({ accion: "codigo", email });
+    $("#sentTo").textContent = email; $("#fEmail").classList.add("hide"); $("#fCode").classList.remove("hide");
+    msg($("#mCode"), ""); $("#code").value = ""; $("#code").focus(); cuentaReenvio();
+  } catch (e) { msg($("#mEmail"), e.message); }
+  finally { b.disabled = false; b.textContent = "Enviarme el código"; }
+}
+$("#fEmail").onsubmit = (e) => { e.preventDefault(); const v = $("#email").value.trim(); if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return msg($("#mEmail"), "Revisá que el correo esté bien escrito."); pedirCodigo(v.toLowerCase()); };
+$("#otro").onclick = () => { mostrarEmail(); $("#email").focus(); };
+$("#reenviar").onclick = async () => { const email = $("#sentTo").textContent; try { await api({ accion: "codigo", email }); msg($("#mCode"), "Te mandamos un código nuevo.", "ok"); cuentaReenvio(); } catch (e) { msg($("#mCode"), e.message); } };
+$("#code").oninput = (e) => { e.target.value = e.target.value.replace(/\D/g, "").slice(0, 6); if (e.target.value.length === 6) $("#fCode").requestSubmit(); };
+$("#fCode").onsubmit = async (e) => {
+  e.preventDefault(); const codigo = $("#code").value; if (codigo.length !== 6) return msg($("#mCode"), "El código tiene 6 números.");
+  const b = $("#bCode"); b.disabled = true; b.textContent = "Entrando…";
+  try {
+    const r = await api({ accion: "entrar", email: $("#sentTo").textContent, codigo, ...pend() });
+    sesion = { token: r.token, email: r.email }; store.set(SES, sesion); mostrar(r);
+  } catch (err) { msg($("#mCode"), err.message); $("#code").select(); }
+  finally { b.disabled = false; b.textContent = "Entrar"; }
+};
+
+// ---------- Biblioteca ----------
+async function cargar() {
+  ver("#vLoad");
+  try { mostrar(await api({ accion: "mis", token: sesion.token, ...pend() })); }
+  catch (e) { if (sesion) { ver("#vLib"); $("#grid").innerHTML = ""; $("#notice").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)} <button class="btn-link" onclick="cargar()">Reintentar</button></div></div>`; } else toast(e.message); }
+}
+const TIPOS = { cuadernillo: ["📘", "Cuadernillo", "Cuadernillos"], plataforma: ["🎮", "Plataforma", "Plataformas"], juego: ["🧩", "Juego", "Juegos"] };
+const tam = (b) => (b >= 1e6 ? (b / 1e6).toFixed(1).replace(".", ",") + " MB" : b ? Math.max(1, Math.round(b / 1e3)) + " KB" : "");
+const nombreArchivo = (n) => n.replace(/\.[a-z0-9]+$/i, "").replace(/[_-]+/g, " ");
+function mostrar(r) {
+  materiales = r.materiales || []; const p = pend(); store.del(PEND, sessionStorage);
+  destacado = r.reclamo === "ok" || r.reclamo === "ya" ? p.m : null;
+  ver("#vLib");
+  const n = materiales.length;
+  $("#who").textContent = `${r.email} · ${n} ${n === 1 ? "material" : "materiales"}`;
+  const nombreDe = (id) => (materiales.find((m) => m.id === id) || {}).nombre || "tu material";
+  let html = "";
+  if (r.reclamo === "ok") html = `<div class="notice ok"><span class="ic">🎉</span><div>¡Gracias por tu compra! <b>${esc(nombreDe(p.m))}</b> ya está en tu biblioteca.</div></div>`;
+  else if (r.reclamo === "sin-orden") html = `<div class="notice warn"><span class="ic">🔎</span><div><b>No encontramos esa compra con ${esc(r.email)}.</b> Si compraste con otro correo, tocá "Salir" y entrá con ese. Si pagaste hace unos minutos, esperá un ratito y volvé a tocar "Descargar" en tu compra. ¿Sigue sin aparecer? <a href="${esc(CONFIG.whatsapp)}" target="_blank" rel="noopener">Escribinos</a>.</div></div>`;
+  else if (r.reclamo === "enlace-invalido") html = `<div class="notice warn"><span class="ic">🔗</span><div><b>Ese enlace no es válido.</b> Usá el botón "Descargar" del correo de tu compra, o <a href="${esc(CONFIG.whatsapp)}" target="_blank" rel="noopener">escribinos</a>.</div></div>`;
+  else if (r.reclamo === "revocado") html = `<div class="notice warn"><span class="ic">ℹ️</span><div>Ese material no está habilitado para este correo. <a href="${esc(CONFIG.whatsapp)}" target="_blank" rel="noopener">Escribinos</a> si creés que es un error.</div></div>`;
+  $("#notice").innerHTML = html;
+  const cuenta = materiales.reduce((a, m) => ((a[m.tipo] = (a[m.tipo] || 0) + 1), a), {});
+  const tipos = Object.keys(TIPOS).filter((t) => cuenta[t]);
+  $("#tools").classList.toggle("hide", n < 4);
+  if (!tipos.includes(filtro)) filtro = "todos";
+  $("#chips").innerHTML = [`<button class="chip" data-f="todos" aria-pressed="${filtro === "todos"}">Todos<span class="n">${n}</span></button>`]
+    .concat(tipos.length > 1 ? tipos.map((t) => `<button class="chip" data-f="${t}" aria-pressed="${filtro === t}">${TIPOS[t][0]} ${TIPOS[t][2]}<span class="n">${cuenta[t]}</span></button>`) : []).join("");
+  pintar();
+  if (destacado) setTimeout(() => { const el = document.querySelector(`[data-id="${CSS.escape(destacado)}"]`); if (el) el.scrollIntoView({ behavior: "smooth", block: "center" }); }, 150);
+}
+$("#chips").onclick = (e) => { const b = e.target.closest("[data-f]"); if (!b) return; filtro = b.dataset.f; document.querySelectorAll("#chips .chip").forEach((c) => c.setAttribute("aria-pressed", c === b)); pintar(); };
+$("#q").oninput = () => pintar();
+function pintar() {
+  const q = $("#q").value.trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const lista = materiales.filter((m) => (filtro === "todos" || m.tipo === filtro) && (!q || m.nombre.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").includes(q)));
+  if (!materiales.length) {
+    $("#grid").innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="big">📭</div><h2>Todavía no hay materiales acá</h2><p>Cuando compres, tocá "Descargar" en el correo de tu compra y van a aparecer en tu biblioteca.</p><p style="margin-top:14px"><a class="btn btn-soft" href="index.html#catalogo">Ver el catálogo</a></p></div>`;
+    return;
+  }
+  if (!lista.length) { $("#grid").innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="big">🔍</div><h2>No hay resultados</h2><p>Probá con otra palabra.</p></div>`; return; }
+  const reciente = Date.now() - 7 * 864e5;
+  $("#grid").innerHTML = lista.map((m) => {
+    const t = TIPOS[m.tipo] || TIPOS.cuadernillo;
+    const nuevo = m.desde && new Date(m.desde).getTime() > reciente;
+    let acciones;
+    if (m.tipo === "plataforma" && m.url) acciones = `<div class="files"><a class="btn btn-primary btn-sm" href="${esc(m.url)}" target="_blank" rel="noopener">▶ Abrir plataforma</a></div>`;
+    else if (m.archivos && m.archivos.length) acciones = `<div class="files">${m.archivos.map((f) => `<div class="file"><div class="nm" title="${esc(f.nombre)}">📄 ${esc(nombreArchivo(f.nombre))}<span class="sz">${esc(f.nombre.split(".").pop().toUpperCase())}${f.tam ? " · " + tam(f.tam) : ""}</span></div><button class="btn btn-soft btn-sm" data-dl="${esc(m.id)}" data-f="${esc(f.nombre)}">⬇ Descargar</button></div>`).join("")}</div>`;
+    else acciones = `<div class="pending">⏳ Estamos preparando los archivos de este material. Volvé a mirar en un rato.</div>`;
+    return `<article class="card${m.id === destacado ? " hl" : ""}" data-id="${esc(m.id)}">
+      <div class="cover"><div class="ph" aria-hidden="true">${t[0]}</div>${m.portada ? `<img src="${esc(m.portada)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
+        <span class="badge ${esc(m.tipo)}">${t[0]} ${t[1]}</span>${nuevo ? '<span class="new">Nuevo</span>' : ""}</div>
+      <div class="body"><h3>${esc(m.nombre)}</h3>${acciones}</div></article>`;
+  }).join("");
+}
+$("#grid").onclick = async (e) => {
+  const b = e.target.closest("[data-dl]"); if (!b || b.disabled) return;
+  const txt = b.textContent; b.disabled = true; b.textContent = "Preparando…";
+  try {
+    const r = await api({ accion: "descargar", token: sesion.token, material: b.dataset.dl, archivo: b.dataset.f });
+    const a = document.createElement("a"); a.href = r.url; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove();
+    toast("Descarga iniciada ✓");
+  } catch (err) { toast(err.message); }
+  finally { setTimeout(() => { b.disabled = false; b.textContent = txt; }, 1200); }
+};
+
+// ---------- Modo demostración (sin servidor, datos de ejemplo) ----------
+const CATALOGO = [{"id":"revolucion-mayo","nombre":"Revolución de Mayo","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/revolucion-de-mayo-1778563135675.jpg"},{"id":"plataforma-interactiva-revolucion-de-mayo","nombre":"Plataforma Interactiva - Revolución de Mayo","tipo":"plataforma","portada":"https://cofredidactico.com.ar/images/plataforma-interactiva-revolucion-de-mayo-1779300992311.jpeg"},{"id":"dia-de-la-escarapela","nombre":"Día de la Escarapela","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1778559946157.jpg"},{"id":"plataforma-interactiva-dia-de-la-escarapela","nombre":"Plataforma Interactiva - Día de la Escarapela","tipo":"plataforma","portada":"https://cofredidactico.com.ar/images/producto-1779302494886.jpeg"},{"id":"caperucita-roja","nombre":"Caperucita Roja","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/caperucita-roja-1779305432918.jpg"},{"id":"el-hombrecito-de-jengibre","nombre":"El Hombrecito de Jengibre","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/el-hombrecito-de-jengibre-1779305565597.jpg"},{"id":"canciones-y-poemas","nombre":"Cucú Cantaba la Rana - Canciones y Poemas","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/canciones-y-poemas-1779308396661.jpg"},{"id":"cuadernillo-de-vocales","nombre":"Cuadernillo de Vocales","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1779308666567.jpg"},{"id":"mis-primeros-numeros-1-al-10","nombre":"Mis Primeros Números (1 al 10)","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/mis-primeros-numeros-1-al-10-1779309059071.jpg"},{"id":"pack-abecedario-argentino","nombre":"Pack Abecedario Argentino","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1779309378120.jpg"},{"id":"dia-nacional-de-la-memoria-por-la-verdad-y-la-justicia","nombre":"24 de Marzo: Día de la Memoria por la Verdad y la Justicia","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1779309900388.jpg"},{"id":"dia-mundial-del-agua","nombre":"22 de Marzo: Día Mundial del Agua","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/dia-mundial-del-agua-1779310305144.jpg"},{"id":"dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas","nombre":"2 de Abril: Día del Veterano y de los Caídos en la Guerra de Malvinas","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas-1779311184296.jpg"},{"id":"pasapalabra-malvinas","nombre":"Pasapalabra Malvinas","tipo":"juego","portada":"https://cofredidactico.com.ar/images/pasapalabra-malvinas-1779312386462.jpg"},{"id":"dia-mundial-de-la-salud","nombre":"Día Mundial de la Salud","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/dia-mundial-de-la-salud-1779314025858.jpg"},{"id":"pasapalabra-dia-mundial-de-la-salud","nombre":"Pasapalabra Día Mundial de la Salud","tipo":"juego","portada":"https://cofredidactico.com.ar/images/producto-1779314453356.jpg"},{"id":"los-tres-cerditos","nombre":"Los Tres Cerditos","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/los-tres-cerditos-1779314989479.jpg"},{"id":"dia-de-las-americas","nombre":"3 Pistas, 1 País - Día de las Américas","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1779315425276.jpg"},{"id":"dia-mundial-de-la-tierra","nombre":"Día Mundial de la Tierra","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1779316324553.jpg"},{"id":"dia-del-libro","nombre":"Día Mundial del Libro","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1779318224468.jpg"},{"id":"dia-del-animal","nombre":"Día del Animal","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/dia-del-animal-1779319264897.jpg"},{"id":"plataforma-interactiva-dia-del-trabajador","nombre":"Plataforma Interactiva - Día del Trabajador","tipo":"plataforma","portada":"https://cofredidactico.com.ar/images/plataforma-interactiva-dia-del-trabajador-1779321227687.jpg"},{"id":"17-de-junio-martin-miguel-de-guemes","nombre":"17 de Junio - Martín Miguel de Güemes (Primer Ciclo)","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1780100502391.jpg"},{"id":"17-de-junio-martin-miguel-de-guemes-segundo-ciclo","nombre":"17 de Junio - Martín Miguel de Güemes (Segundo Ciclo)","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1780292508864.jpg"},{"id":"20-de-junio-dia-de-la-bandera","nombre":"20 de Junio - Día de la Bandera","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/20-de-junio-dia-de-la-bandera-1780608065235.jpg"},{"id":"martin-miguel-de-guemes","nombre":"Plataforma Interactiva - Martín Miguel de Güemes","tipo":"plataforma","portada":"https://cofredidactico.com.ar/images/martin-miguel-de-guemes-1781739081130.jpeg"},{"id":"9-de-julio-dia-de-la-independencia","nombre":"9 de Julio - Día de la Independencia","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1782660995327.png"},{"id":"17-de-agosto-san-martin","nombre":"17 de Agosto - José de San Martín","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1785103958065.png"},{"id":"plataforma-interactiva-jose-de-san-martin","nombre":"Plataforma Interactiva - José de San Martín","tipo":"plataforma","portada":"https://cofredidactico.com.ar/images/producto-1785605976557.png"},{"id":"los-suenos-del-sapo","nombre":"Los Sueños del Sapo","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1785983496230.png"}];
+const DEMO_MATS = [
+  { id: "17-de-junio-martin-miguel-de-guemes", nombre: "17 de Junio - Martín Miguel de Güemes (Primer Ciclo)", tipo: "cuadernillo", portada: "https://cofredidactico.com.ar/images/producto-1780100502391.jpg", archivos: [{ nombre: "Güemes - Primer Ciclo.pdf", tam: 18400000 }, { nombre: "Güemes - Láminas para imprimir.pdf", tam: 6200000 }] },
+  { id: "revolucion-mayo", nombre: "Revolución de Mayo", tipo: "cuadernillo", portada: "https://cofredidactico.com.ar/images/revolucion-de-mayo-1778563135675.jpg", archivos: [{ nombre: "Revolución de Mayo.pdf", tam: 22100000 }] },
+  { id: "plataforma-interactiva-revolucion-de-mayo", nombre: "Plataforma Interactiva - Revolución de Mayo", tipo: "plataforma", portada: "https://cofredidactico.com.ar/images/plataforma-interactiva-revolucion-de-mayo-1779300992311.jpeg", url: "https://cofredidactico.github.io/RevoluciondeMayo/", archivos: [] },
+  { id: "pasapalabra-malvinas", nombre: "Pasapalabra Malvinas", tipo: "juego", portada: "https://cofredidactico.com.ar/images/pasapalabra-malvinas-1779312386462.jpg", archivos: [{ nombre: "Pasapalabra Malvinas.pdf", tam: 4300000 }] },
+  { id: "los-suenos-del-sapo", nombre: "Los Sueños del Sapo", tipo: "cuadernillo", portada: "https://cofredidactico.com.ar/images/producto-1785983496230.png", archivos: [] },
+];
+async function demoApi(b) {
+  await new Promise((r) => setTimeout(r, 450));
+  if (b.accion === "codigo") return { ok: true };
+  const lista = () => DEMO_MATS.map((m, i) => ({ ...m, desde: new Date(Date.now() - (i === 0 ? 1 : 40) * 864e5).toISOString() }));
+  const recl = b.m ? (DEMO_MATS.some((m) => m.id === b.m) ? "ok" : "sin-orden") : null;
+  if (b.accion === "entrar") { if (b.codigo !== "123456") throw new Error("Ese código no es correcto."); return { token: "demo", email: b.email, reclamo: recl, materiales: lista() }; }
+  if (b.accion === "mis") return { email: (sesion && sesion.email) || "docente@gmail.com", reclamo: recl, materiales: lista() };
+  if (b.accion === "descargar") throw new Error("En la demostración no se descargan archivos.");
+}
+if (DEMO) { $("#demoBar").classList.remove("hide"); if (!pend().m && /[?&]demo=1/.test(location.search) && !sesion) store.set(PEND, { m: "17-de-junio-martin-miguel-de-guemes", k: "demo" }, sessionStorage); }
+
+// ---------- Inicio ----------
+(function () {
+  const p = pend();
+  if (p.m) {
+    const conocido = DEMO_MATS.find((m) => m.id === p.m) || CATALOGO.find((m) => m.id === p.m);
+    $("#comingName").textContent = conocido ? conocido.nombre : p.m.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase());
+    if (conocido && conocido.portada) $("#comingImg").src = conocido.portada; else $("#comingImg").remove();
+    $("#coming").classList.remove("hide");
+  }
+  if (sesion && sesion.token) cargar(); else { ver("#vLogin"); }
+})();
+</script>
+</body>
+</html>
