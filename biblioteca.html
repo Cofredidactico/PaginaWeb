@@ -400,7 +400,7 @@ function pintar() {
     const nuevo = m.desde && new Date(m.desde).getTime() > reciente;
     let acciones;
     if (m.tipo === "plataforma" && m.url) acciones = `<div class="files"><a class="btn btn-primary btn-sm" href="${esc(m.url)}" target="_blank" rel="noopener">▶ Abrir plataforma</a></div>`;
-    else if (m.archivos && m.archivos.length) acciones = `<div class="files">${m.archivos.map((f) => `<div class="file"><div class="nm" title="${esc(f.nombre)}">📄 ${esc(nombreArchivo(f.nombre))}<span class="sz">${esc(f.nombre.split(".").pop().toUpperCase())}${f.tam ? " · " + tam(f.tam) : ""}</span></div><button class="btn btn-soft btn-sm" data-dl="${esc(m.id)}" data-f="${esc(f.nombre)}">⬇ Descargar</button></div>`).join("")}${m.archivos.some((f) => /\.pdf$/i.test(f.nombre)) ? '<div class="licnote"><span>🔏</span><span>Tu copia se descarga con tu nombre y un código de licencia personal.</span></div>' : ""}</div>`;
+    else if (m.archivos && m.archivos.length) acciones = `<div class="files">${m.archivos.map((f) => `<div class="file"><div class="nm" title="${esc(f.nombre)}">📄 ${esc(nombreArchivo(f.nombre))}<span class="sz">${esc(f.nombre.split(".").pop().toUpperCase())}${f.tam ? " · " + tam(f.tam) : ""}</span></div><button class="btn btn-soft btn-sm" data-dl="${esc(m.id)}" data-f="${esc(f.nombre)}">⬇ Descargar</button></div>`).join("")}${m.archivos.some((f) => /\.pdf$/i.test(f.nombre)) ? '<div class="licnote"><span>🔏</span><span>Tu copia se descarga con tu nombre y un código de licencia en la tapa y la última página.</span></div>' : ""}</div>`;
     else acciones = `<div class="pending">⏳ Estamos preparando los archivos de este material. Volvé a mirar en un rato.</div>`;
     return `<article class="card${m.id === destacado ? " hl" : ""}" data-id="${esc(m.id)}">
       <div class="cover"><div class="ph" aria-hidden="true">${t[0]}</div>${m.portada ? `<img src="${esc(m.portada)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
@@ -428,10 +428,14 @@ async function personalizar(bytes, lic) {
   const doc = await PDFDocument.load(bytes, { updateMetadata: false });
   const font = await doc.embedFont(StandardFonts.Helvetica), negrita = await doc.embedFont(StandardFonts.HelveticaBold);
   const seguro = (t) => { try { font.encodeText(t); return t; } catch { return t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^\x20-\x7E\xA0-\xFF]/g, ""); } };
-  const texto = seguro([lic.nombre ? `Licencia de uso personal de ${lic.nombre}` : "Licencia de uso personal", lic.email, lic.orden ? `Orden #${lic.orden}` : "", lic.codigo].filter(Boolean).join("   ·   "));
+  // "ada maría PORCARIO" → "Ada María Porcario" (respeta de, del, la…)
+  const prolijo = (n) => String(n || "").trim().replace(/\s+/g, " ").toLowerCase().split(" ").map((w, i) => (i && /^(de|del|la|las|los|y|da|di|van|von)$/.test(w) ? w : w.replace(/(^|[-'])(\p{L})/gu, (x, a, b) => a + b.toUpperCase()))).join(" ");
+  const titular = prolijo(lic.nombre);
+  const texto = seguro([titular ? `Licencia de uso personal de ${titular}` : "Licencia de uso personal", lic.codigo].join("   ·   "));
   const qr = qrcode(0, "M"); qr.addData(lic.verificar); qr.make(); const nq = qr.getModuleCount();
   const tinta = rgb(0.2, 0.24, 0.33), blanco = rgb(1, 1, 1), paginas = doc.getPages();
   paginas.forEach((pg, i) => {
+    if (i !== 0 && i !== paginas.length - 1) return; // solo tapa y última página
     const mb = pg.getMediaBox(), W = mb.width, H = mb.height, X0 = mb.x, Y0 = mb.y;
     const rot = (((pg.getRotation().angle || 0) % 360) + 360) % 360, vw = rot % 180 ? H : W;
     // coordenadas "como se ve" → coordenadas de la página
@@ -440,18 +444,18 @@ async function personalizar(bytes, lic) {
     const rect = (x, y, w, h, color, opacity) => pg.drawRectangle({ ...P(x, y), width: w, height: h, color, opacity, rotate: R });
     const txt = (t, x, y, size, f, color) => pg.drawText(t, { ...P(x, y), size, font: f, color, rotate: R });
     // Franja con la licencia, abajo al centro
-    let size = 6.5, tw = font.widthOfTextAtSize(texto, size); if (tw > vw - 40) { size = size * (vw - 40) / tw; tw = vw - 40; }
-    rect((vw - tw) / 2 - 8, 5, tw + 16, size + 7, blanco, 0.86);
-    txt(texto, (vw - tw) / 2, 8.5, size, font, tinta);
+    let size = 9.5, tw = font.widthOfTextAtSize(texto, size); const max = vw - 150; if (tw > max) { size = size * max / tw; tw = max; }
+    rect((vw - tw) / 2 - 10, 6, tw + 20, size + 9, blanco, 0.88);
+    txt(texto, (vw - tw) / 2, 10.5, size, font, tinta);
     // QR de verificación en la portada y en la última página
-    if (i === 0 || i === paginas.length - 1) {
-      const S = 48, m = S / nq, x0 = vw - S - 14, y0 = 26;
+    {
+      const S = 52, m = S / nq, x0 = vw - S - 14, y0 = 30;
       rect(x0 - 5, y0 - 5, S + 10, S + 19, blanco, 0.94);
       for (let r = 0; r < nq; r++) for (let c = 0; c < nq; c++) if (qr.isDark(r, c)) rect(x0 + c * m, y0 + S - (r + 1) * m, m + 0.02, m + 0.02, tinta, 1);
       const et = "Verificar licencia", ew = negrita.widthOfTextAtSize(et, 5); txt(et, x0 + (S - ew) / 2, y0 + S + 4, 5, negrita, tinta);
     }
   });
-  doc.setSubject(seguro(`Licencia ${lic.codigo} · ${lic.nombre || lic.email}`));
+  doc.setSubject(seguro(`Licencia ${lic.codigo}${titular ? " · " + titular : ""}`));
   doc.setKeywords([lic.codigo, "Cofre Didáctico", "licencia de uso personal"]);
   return await doc.save({ useObjectStreams: false });
 }
@@ -494,7 +498,7 @@ async function verificar(codigo) {
     if (r.valido) {
       const desde = r.desde ? new Date(r.desde).toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric" }) : "";
       box.innerHTML = `<div class="seal ok">✓</div><h1>Licencia válida</h1>
-        <p>Esta copia de <b>${esc(r.material)}</b> es de uso personal de <b>${esc(r.titular)}</b>${r.email ? ` (${esc(r.email)})` : ""}${desde ? `, desde el ${esc(desde)}` : ""}.</p>
+        <p>Esta copia de <b>${esc(r.material)}</b> es de uso personal de <b>${esc(r.titular)}</b>${desde ? `, desde el ${esc(desde)}` : ""}.</p>
         <p>Si te la compartieron, podés conseguir tu propia copia y tenerla siempre a mano en tu biblioteca.</p>
         <div class="code">${esc(codigo)}</div>
         <div class="acts"><a class="btn btn-primary" href="${esc(r.producto)}">Conseguí tu copia</a>${tienda}</div>`;
