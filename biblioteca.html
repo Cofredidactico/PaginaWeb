@@ -102,6 +102,7 @@ label.fld{display:block;font-weight:800;font-size:.85rem;color:var(--ink-2);marg
 .aux{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:12px;font-size:.88rem;color:var(--ink-3)}
 .help{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);font-size:.86rem;color:var(--ink-3)}
 .help a{font-weight:700}
+.priv{margin-top:10px;font-size:.8rem;color:var(--ink-4)}
 /* biblioteca */
 .lib-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:40px 0 20px}
 .lib-head h1{font-family:var(--f-display);font-size:clamp(1.7rem,3.6vw,2.4rem);line-height:1.1}
@@ -351,6 +352,7 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
         <div class="aux"><button type="button" class="btn-link" id="otro">← Usar otro correo</button><button type="button" class="btn-link" id="reenviar">Reenviar código</button></div>
       </form>
       <p class="help">¿Compraste por transferencia directa o no te llega el código? <a id="wa1" target="_blank" rel="noopener">Escribinos por WhatsApp</a> y te lo resolvemos.</p>
+      <p class="priv">🔒 Usamos tu correo solo para darte acceso a tus compras y, si lo activás, avisarte de las próximas efemérides. No lo compartimos con nadie.</p>
     </div>
   </section>
 
@@ -490,9 +492,9 @@ $("#fCode").onsubmit = async (e) => {
 };
 
 // ---------- Biblioteca ----------
-async function cargar() {
-  ver("#vLoad");
-  try { mostrar(await api({ accion: "mis", token: sesion.token, ...pend(), ...(verComo ? { como: verComo } : {}) })); }
+async function cargar(fresco) {
+  if (!fresco) ver("#vLoad");
+  try { mostrar(await api({ accion: "mis", token: sesion.token, ...pend(), ...(verComo ? { como: verComo } : {}), ...(fresco ? { fresco: true } : {}) })); }
   catch (e) { if (sesion) { ver("#vLib"); $("#grid").innerHTML = ""; $("#notice").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)} <button class="btn-link" onclick="cargar()">Reintentar</button></div></div>`; } else toast(e.message); }
 }
 const TIPOS = { cuadernillo: ["📘", "Cuadernillo", "Cuadernillos"], plataforma: ["🎮", "Plataforma", "Plataformas"], juego: ["🧩", "Juego", "Juegos"] };
@@ -551,7 +553,7 @@ function pintar() {
         <button class="btn btn-soft btn-sm" type="button" data-dl="${esc(m.id)}" data-f="${esc(f.nombre)}">⬇ Descargar</button></div></div>`;
     }).join("")}${archivos.some((f) => /\.pdf$/i.test(f.nombre)) ? '<div class="licnote"><span>🔏</span><span>Tu copia lleva tu nombre y un código de licencia en la tapa y la última página.</span></div>' : ""}</div>`;
     else if (!gestor) acciones = `<div class="pending">⏳ Estamos preparando los archivos de este material. Volvé a mirar en un rato.</div>`;
-    if (gestor && m.tipo !== "plataforma") acciones += `<label class="drop" data-up="${esc(m.id)}"><input type="file" accept=".pdf,.zip,.png,.jpg,.jpeg" multiple hidden /><span class="drop-t">⬆ ${archivos.length ? "Subir otro archivo o reemplazar" : "Subí el PDF de este material"}</span><span class="drop-s">Arrastralo acá o tocá para elegir · máx. 50 MB, sin contraseña</span></label>`;
+    if (gestor && m.tipo !== "plataforma") acciones += `<label class="drop" data-up="${esc(m.id)}"><input type="file" accept=".pdf,.zip,.png,.jpg,.jpeg" multiple hidden /><span class="drop-t">⬆ ${archivos.length ? "Subir otro archivo o reemplazar" : "Subí el PDF de este material"}</span><span class="drop-s">Arrastralo acá o tocá para elegir · sin contraseña</span></label>`;
     const fechaTag = m.fecha ? `<span class="date">📅 ${esc(fechaLarga(m.fecha))}</span>` : "";
     const opinion = !window.__esAdmin && archivos.length + (m.url ? 1 : 0) > 0
       ? `<button class="rate" type="button" data-op="${esc(m.id)}" aria-label="${m.estrellas ? "Cambiar tu opinión" : "Calificar este material"}">${[1, 2, 3, 4, 5].map((i) => `<span class="${i <= (m.estrellas || 0) ? "on" : ""}">★</span>`).join("")}<em>${m.estrellas ? "Tu opinión" : "¿Qué te pareció?"}</em></button>` : "";
@@ -563,14 +565,20 @@ function pintar() {
 }
 
 // ---------- Copia personalizada (se arma en este dispositivo) ----------
+// Primero las copias propias en tu web (carpeta vendor/), y si faltan, el CDN público
 const LIBS = {
-  pdf: "https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js",
-  qr: "https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js",
-  pdfjs: "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js",
-  pdfjsWorker: "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js",
+  pdf: ["vendor/pdf-lib.min.js", "https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"],
+  qr: ["vendor/qrcode.js", "https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"],
+  pdfjs: ["vendor/pdf.min.js", "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"],
+  pdfjsWorker: ["vendor/pdf.worker.min.js", "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js"],
 };
 const cargados = {};
-function cargarScript(src) { return (cargados[src] ||= new Promise((ok, mal) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => { delete cargados[src]; mal(new Error("No se pudo preparar la descarga. Revisá tu conexión y probá de nuevo.")); }; document.head.appendChild(s); })); }
+function unScript(src) { return new Promise((ok, mal) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => { s.remove(); mal(); }; document.head.appendChild(s); }); }
+function cargarScript(srcs) {
+  const lista = [].concat(srcs), k = lista[0];
+  return (cargados[k] ||= (async () => { for (const src of lista) { try { await unScript(src); return; } catch {} } delete cargados[k]; throw new Error("No se pudo preparar la descarga. Revisá tu conexión y probá de nuevo."); })());
+}
+async function textoDe(srcs) { for (const src of [].concat(srcs)) { try { const r = await fetch(src); if (r.ok) return await r.text(); } catch {} } throw new Error("No se pudieron mostrar las páginas. Revisá tu conexión."); }
 async function bajar(url, alAvanzar) {
   const r = await fetch(url); if (!r.ok) throw new Error("No se pudo descargar el archivo. Probá de nuevo.");
   const total = +r.headers.get("content-length") || 0; if (!r.body || !total) return new Uint8Array(await r.arrayBuffer());
@@ -710,7 +718,7 @@ async function abrirSelector(b, material, archivo) {
     const k = material + "|" + archivo; let bytes = cacheBytes.get(k);
     if (!bytes) { const r = await api({ accion: "descargar", token: sesion.token, material, archivo, dispositivo: DISPOSITIVO, ...(verComo ? { como: verComo } : {}) }); bytes = await bajar(r.url, (p) => st.set(Math.round(p * 100) + "%", p)); cacheBytes.set(k, bytes); while (cacheBytes.size > 2) cacheBytes.delete(cacheBytes.keys().next().value); }
     await libs;
-    if (!window.__pdfjsListo) { const w = await (await fetch(LIBS.pdfjsWorker)).text(); pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(new Blob([w], { type: "text/javascript" })); window.__pdfjsListo = true; }
+    if (!window.__pdfjsListo) { const w = await textoDe(LIBS.pdfjsWorker); pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(new Blob([w], { type: "text/javascript" })); window.__pdfjsListo = true; }
     const pdf = await pdfjsLib.getDocument({ data: bytes.slice() }).promise;
     if (selector && selector.pdf) selector.pdf.destroy();
     selector = { material, archivo, pdf, total: pdf.numPages, sel: new Set() };
@@ -762,22 +770,22 @@ $("#fOp").onsubmit = async (e) => {
 
 // ---------- Cargador (solo administrador) ----------
 async function tieneClave(f) { const u = new Uint8Array(await f.arrayBuffer()), k = [47, 69, 110, 99, 114, 121, 112, 116]; outer: for (let i = 0, n = u.length - 8; i < n; i++) { if (u[i] !== 47 || u[i + 1] !== 69) continue; for (let j = 2; j < 8; j++) if (u[i + j] !== k[j]) continue outer; return true; } return false; }
-function subirXHR(url, f, alAvanzar) { return new Promise((ok, mal) => { const x = new XMLHttpRequest(); x.open("PUT", url); x.setRequestHeader("x-upsert", "true"); x.setRequestHeader("Content-Type", f.type || (/\.pdf$/i.test(f.name) ? "application/pdf" : "application/octet-stream")); x.upload.onprogress = (e) => e.lengthComputable && alAvanzar(e.loaded / e.total); x.onload = () => (x.status >= 200 && x.status < 300 ? ok() : mal(new Error(x.status === 413 ? "El archivo supera el límite de 50 MB." : "No se pudo subir el archivo (" + x.status + ")."))); x.onerror = () => mal(new Error("Se cortó la conexión mientras subía el archivo.")); x.send(f); }); }
+function subirXHR(url, f, cabeceras, alAvanzar) { return new Promise((ok, mal) => { const x = new XMLHttpRequest(); x.open("PUT", url); Object.entries(cabeceras || {}).forEach(([k, v]) => x.setRequestHeader(k, v)); x.upload.onprogress = (e) => e.lengthComputable && alAvanzar(e.loaded / e.total); x.onload = () => (x.status >= 200 && x.status < 300 ? ok() : mal(new Error(x.status === 413 ? "El archivo supera el límite permitido." : x.status === 403 ? "El almacén rechazó la subida (403). Revisá la configuración de CORS de Cloudflare R2." : "No se pudo subir el archivo (" + x.status + ")."))); x.onerror = () => mal(new Error("Se cortó la conexión mientras subía el archivo.")); x.send(f); }); }
 async function subirArchivos(material, files, zona) {
   const t = zona.querySelector(".drop-t"), s = zona.querySelector(".drop-s"), t0 = t.textContent, s0 = s.textContent; let subidos = 0;
   zona.classList.add("busy");
   for (const f of files) {
-    if (f.size > 50 * 1048576) { toast(`"${f.name}" pesa ${(f.size / 1048576).toFixed(0)} MB. El máximo es 50 MB: optimizalo antes de subirlo.`); continue; }
+    if (f.size > 200 * 1048576) { toast(`"${f.name}" pesa ${(f.size / 1048576).toFixed(0)} MB. El máximo es 200 MB.`); continue; }
     if (/\.pdf$/i.test(f.name)) { t.textContent = `Revisando ${f.name}…`; if (await tieneClave(f)) { toast(`"${f.name}" tiene contraseña. Sacásela antes de subirlo para que se pueda personalizar.`); continue; } }
     try {
       const r = await api({ accion: "subir", token: sesion.token, material, archivo: f.name, tam: f.size });
       t.textContent = `Subiendo ${r.nombre}…`;
-      await subirXHR(r.url, f, (p) => { s.textContent = `${Math.round(p * 100)}%`; zona.style.setProperty("--p", Math.round(p * 100) + "%"); });
+      await subirXHR(r.url, f, r.headers || { "Content-Type": f.type || "application/pdf", "x-upsert": "true" }, (p) => { s.textContent = `${Math.round(p * 100)}%`; zona.style.setProperty("--p", Math.round(p * 100) + "%"); });
       subidos++; toast(`${r.reemplaza ? "Reemplazado" : "Subido"}: ${r.nombre} ✓`);
     } catch (err) { toast(err.message); }
   }
   zona.classList.remove("busy"); zona.style.removeProperty("--p"); t.textContent = t0; s.textContent = s0;
-  if (subidos) { resumen = null; cargar(); }
+  if (subidos) { resumen = null; cargar(true); }
 }
 $("#grid").addEventListener("change", (e) => { const inp = e.target.closest(".drop input[type=file]"); if (inp && inp.files.length) subirArchivos(inp.closest("[data-up]").dataset.up, [...inp.files], inp.closest(".drop")); });
 ["dragenter", "dragover"].forEach((ev) => $("#grid").addEventListener(ev, (e) => { const z = e.target.closest(".drop"); if (z) { e.preventDefault(); z.classList.add("over"); } }));
@@ -789,7 +797,7 @@ $("#grid").onclick = async (e) => {
   if (del) {
     if (!del.dataset.ok) { del.dataset.ok = 1; del.textContent = "¿Borrar?"; del.classList.add("wide"); setTimeout(() => { if (del.isConnected) { delete del.dataset.ok; del.textContent = "🗑"; del.classList.remove("wide"); } }, 4000); return; }
     del.disabled = true;
-    try { await api({ accion: "borrar", token: sesion.token, material: del.dataset.del, archivo: del.dataset.f }); toast("Archivo borrado"); resumen = null; cargar(); } catch (err) { toast(err.message); del.disabled = false; }
+    try { await api({ accion: "borrar", token: sesion.token, material: del.dataset.del, archivo: del.dataset.f }); toast("Archivo borrado"); resumen = null; cargar(true); } catch (err) { toast(err.message); del.disabled = false; }
     return;
   }
   const pick = e.target.closest("[data-pick]"); if (pick && !pick.disabled) return abrirSelector(pick, pick.dataset.pick, pick.dataset.f);
@@ -894,6 +902,15 @@ async function cargarResumen() {
   try { resumen = await api({ accion: "resumen", token: sesion.token }); if ($("#aRes")) $("#aRes").innerHTML = htmlResumen(); }
   catch (e) { if ($("#aRes")) $("#aRes").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>No se pudo cargar el resumen: ${esc(e.message)}</div></div>`; }
 }
+function htmlSinVincular(R) {
+  const L = R.sinVincular || []; if (!L.length) return "";
+  const opciones = R.materiales.map((m) => `<option value="${esc(m.id)}">${esc(m.nombre)}</option>`).join("");
+  return `<div class="notice warn" style="margin:0;display:grid;gap:10px"><div><b>🔗 ${L.length === 1 ? "Hay 1 producto de Empretienda" : `Hay ${L.length} productos de Empretienda`} sin vincular.</b> Quienes lo compren no van a poder abrirlo en la biblioteca hasta que elijas qué material entrega.</div>
+    <div class="tbl-wrap" style="border:0"><table class="tbl"><tbody>${L.map((x, i) => `<tr><td><b>${esc(x.nombre)}</b><div class="muted">${x.ordenes} ${x.ordenes === 1 ? "orden" : "órdenes"} · última ${fecha(x.ultima)}</div></td>
+      <td><select class="inp" id="vin${i}" style="padding:8px 10px;font-size:.88rem;min-width:220px"><option value="">Elegí el material…</option>${opciones}</select></td>
+      <td><button class="btn btn-soft btn-sm" type="button" data-vincular="${i}">Vincular</button></td></tr>`).join("")}</tbody></table></div>
+    <span class="muted">Si es un combo (por ejemplo, cuadernillo + plataforma), vinculalo dos veces, una con cada material.</span></div>`;
+}
 function htmlAlertas(R) {
   const A = R.alertas || [];
   const filas = A.length ? A.map((a) => `<tr><td><button class="mail" type="button" data-como="${esc(a.email)}">${esc(a.email)}</button></td><td>${a.material_id ? esc(nombreMat(a.material_id)) : '<span class="muted">varios</span>'}</td><td><span class="st warn">${esc(a.motivo)}</span></td>
@@ -922,13 +939,13 @@ function htmlResumen() {
       <td><button class="btn btn-ghost btn-sm" type="button" data-copy="${esc(m.enlace)}">Copiar enlace</button></td></tr>`).join("");
   const filasOrd = R.ultimasOrdenes.length ? R.ultimasOrdenes.map((o) => `<tr><td class="muted">${fecha(o.fecha)}</td><td>#${esc(o.orden)}</td><td><button class="mail" type="button" data-como="${esc(o.email)}">${esc(o.email)}</button></td><td>${esc((o.productos || []).join(" · "))}</td><td>${esc(o.estado || "")}</td></tr>`).join("") : '<tr><td colspan="5" class="muted">Todavía no llegaron órdenes desde el lector de Gmail.</td></tr>';
   const filasDes = R.ultimasDescargas.length ? R.ultimasDescargas.map((d) => `<tr><td class="muted">${fecha(d.fecha)}</td><td><button class="mail" type="button" data-como="${esc(d.email)}">${esc(d.email)}</button></td><td>${esc(nombreMat(d.material_id))}<div class="muted">${esc(d.archivo || "")}</div></td></tr>`).join("") : '<tr><td colspan="3" class="muted">Todavía nadie descargó. Tus propias descargas como administrador no se cuentan.</td></tr>';
-  return `<div class="kpis">${kpis.map(([v, t]) => `<div class="kpi"><b>${fmt(v)}</b><span>${t}</span></div>`).join("")}</div>
+  return `${htmlSinVincular(R)}<div class="kpis">${kpis.map(([v, t]) => `<div class="kpi"><b>${fmt(v)}</b><span>${t}</span></div>`).join("")}</div>
     <details${sinArchivos ? " open" : ""}><summary>Materiales y enlaces para Empretienda<small>${sinArchivos ? sinArchivos + " sin archivos" : "todos con archivos"}</small></summary>
       <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Material</th><th style="text-align:right">Compradores</th><th>Archivos</th><th>Opiniones</th><th>Enlace del botón Descargar</th></tr></thead><tbody>${filasMat}</tbody></table></div></details>
     ${htmlAlertas(R)}${htmlOpiniones(R)}
     <details><summary>Últimas órdenes<small>${R.ultimasOrdenes.length}</small></summary><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fecha</th><th>Orden</th><th>Correo</th><th>Productos</th><th>Pago</th></tr></thead><tbody>${filasOrd}</tbody></table></div></details>
     <details><summary>Últimas descargas<small>${R.ultimasDescargas.length}</small></summary><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fecha</th><th>Correo</th><th>Material</th></tr></thead><tbody>${filasDes}</tbody></table></div></details>
-    <div class="aux" style="margin-top:0"><span>Tocá un correo para ver su biblioteca.</span><button class="btn-link" type="button" id="aAct">↻ Actualizar resumen</button></div>`;
+    <div class="aux" style="margin-top:0"><span>Archivos guardados en <b>${esc(R.almacen || "Supabase Storage")}</b> · Tocá un correo para ver su biblioteca.</span><button class="btn-link" type="button" id="aCat">🔄 Traer productos nuevos de la web</button><button class="btn-link" type="button" id="aAct">↻ Actualizar resumen</button></div>`;
 }
 async function rastrear(codigo) {
   const box = $("#aTrack"); box.innerHTML = '<div class="track"><p class="muted">Buscando…</p></div>';
@@ -958,6 +975,11 @@ $("#adminBox").addEventListener("click", async (e) => {
   }
   const c = e.target.closest("[data-copy]");
   if (c) { try { await navigator.clipboard.writeText(c.dataset.copy); toast(c.dataset.copy.startsWith("{") ? "Testimonio copiado ✓ Pegalo en el producto" : "Enlace copiado ✓"); } catch { toast(c.dataset.copy); } return; }
+  const vin = e.target.closest("[data-vincular]");
+  if (vin) { const i = +vin.dataset.vincular, sel = $("#vin" + i); if (!sel.value) return toast("Elegí qué material entrega ese producto."); vin.disabled = true;
+    try { const r = await api({ accion: "mapear", token: sesion.token, nombre: resumen.sinVincular[i].nombre, materiales: [sel.value] }); toast(`Vinculado ✓${r.habilitados ? ` · ${r.habilitados} ${r.habilitados === 1 ? "compra habilitada" : "compras habilitadas"}` : ""}`); resumen = null; cargarResumen(); } catch (err) { toast(err.message); vin.disabled = false; } return; }
+  if (e.target.closest("#aCat")) { const bt = e.target.closest("#aCat"); bt.disabled = true; bt.textContent = "Revisando la web…";
+    try { const r = await api({ accion: "catalogo", token: sesion.token }); toast(r.nuevos.length ? `Agregados ${r.nuevos.length}: ${r.nuevos.map((m) => m.nombre).join(", ")}` : `Todo al día: los ${r.revisados} productos pagos ya están en la biblioteca ✓`); if (r.nuevos.length) { resumen = null; cargar(true); } } catch (err) { toast(err.message); } finally { bt.disabled = false; bt.textContent = "🔄 Traer productos nuevos de la web"; } return; }
   const rs = e.target.closest("[data-rast]"); if (rs) { $("#aCod").value = rs.dataset.rast; rastrear(rs.dataset.rast); $("#aTrack").scrollIntoView({ behavior: "smooth", block: "center" }); return; }
   const md = e.target.closest("[data-mod]");
   if (md) { md.disabled = true; try { await api({ accion: "moderar", token: sesion.token, email: md.dataset.email, material: md.dataset.mat, estado: md.dataset.mod }); toast(md.dataset.mod === "aprobada" ? "Opinión aprobada ✓" : "Opinión oculta"); const o = (resumen.opiniones || []).find((x) => x.email === md.dataset.email && x.material_id === md.dataset.mat); if (o) o.estado = md.dataset.mod; $("#aRes").innerHTML = htmlResumen(); } catch (err) { toast(err.message); md.disabled = false; } return; }
