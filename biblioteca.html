@@ -454,6 +454,103 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
   .icon-btn.sm{width:44px;height:44px}
   .cal-head .switch{width:100%;justify-content:center}
 }
+/* ---- cofres y llaves ---- */
+.cofre-slot{display:flex;flex-direction:column;align-items:center;gap:4px;position:relative;z-index:1}
+.cofre-hero{position:relative;width:170px;height:150px;display:grid;place-items:center;animation:pide 2.6s ease-in-out infinite}
+.cofre-hero.abierto{animation:none}
+.cofre-hero .cofre-svg{width:100%;height:100%}
+.cofre-hero .rayos,.cofre-hero .brillo{opacity:0}
+.cofre-hero.abierto .tapa{transform:rotate(-24deg) translate(-6px,-8px)}
+.cofre-et{position:absolute;bottom:2px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.8rem;font-weight:900;color:#fff;background:var(--accent);padding:5px 12px;border-radius:999px;box-shadow:0 6px 14px -6px var(--accent)}
+.cofre-cuando{font-size:.74rem;font-weight:800;color:var(--ink-2);text-align:center;max-width:170px}
+@keyframes pide{0%,70%,100%{transform:none}75%{transform:rotate(-5deg)}80%{transform:rotate(5deg)}85%{transform:rotate(-4deg)}90%{transform:rotate(3deg)}}
+.cofre-svg .tapa{transform-origin:28px 84px;transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
+.cofre-svg .rayos{transform-origin:100px 86px;opacity:0;transition:opacity .5s}
+.cofre-svg .brillo{opacity:0;transition:opacity .5s}
+.cofre-svg .chispas path{opacity:0}
+.dlg-cofre{width:min(520px,calc(100% - 32px))}
+.cofre-escena{display:grid;place-items:center;padding:18px 0 6px;overflow:hidden;background:radial-gradient(circle at 50% 60%,var(--primary-soft),transparent 70%);border-radius:18px}
+.cofre-escena.dorado{background:radial-gradient(circle at 50% 60%,var(--gold-soft),transparent 70%)}
+.cofre-dibujo{width:min(300px,78vw);aspect-ratio:200/180;cursor:pointer}
+.cofre-dibujo .cofre-svg{width:100%;height:100%;overflow:visible}
+.cofre-escena.sacude .cofre-svg{animation:sacudir .9s ease-in-out}
+@keyframes sacudir{10%,50%,90%{transform:rotate(-6deg) translateY(-2px)}30%,70%{transform:rotate(6deg) translateY(-2px)}}
+.cofre-escena.abierto .tapa{transform:rotate(-26deg) translate(-2px,-10px)}
+.cofre-escena.abierto .rayos{opacity:1;animation:girar 9s linear infinite}
+.cofre-escena.abierto .brillo{opacity:1}
+.cofre-escena.abierto .chispas path{animation:chispa 1.6s ease-in-out infinite}
+@keyframes girar{to{transform:rotate(360deg)}}
+@keyframes chispa{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:1;transform:scale(1.2)}}
+.cofre-ayuda{text-align:center;font-weight:800;color:var(--ink-2)}
+.cofre-regalo{display:grid;gap:10px;animation:aparecer .5s cubic-bezier(.2,.8,.2,1) both}
+.cofre-regalo h3{font-family:var(--f-display);font-size:1.3rem;text-align:center}
+.cofre-regalo p{text-align:center;color:var(--ink-2)}
+.cupon{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;border:2px dashed var(--accent);border-radius:14px;padding:10px 14px;background:var(--accent-soft)}
+.cupon span{font-size:.8rem;font-weight:800;color:var(--ink-3)}
+.cupon b{font-family:var(--f-display);font-size:1.3rem;letter-spacing:.08em;color:var(--accent)}
+.llaves{display:grid;gap:6px;margin-top:10px}
+.ll-top{display:flex;align-items:center;gap:8px}
+.ll-top .pt{font-size:.88rem;font-weight:700;color:var(--ink-2)}
+.ll-top .pt b{color:var(--ink);font-family:var(--f-display)}
+.ll-info{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);font-weight:900;font-size:.75rem;color:var(--ink-3)}
+.ll-fila{display:flex;gap:6px;flex-wrap:wrap}
+.ll-corto{display:none}
+.llave{position:relative;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--card);border:1.5px dashed var(--line);font-size:1rem;filter:grayscale(1);opacity:.45}
+.llave.on{filter:none;opacity:1;border:1.5px solid color-mix(in srgb,var(--gold) 60%,transparent);background:linear-gradient(160deg,var(--gold-soft),var(--card));animation:ganar .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:var(--d,0ms)}
+.llave b{position:absolute;right:-5px;bottom:-5px;font-size:.72rem;background:var(--card);border-radius:50%;width:18px;height:18px;display:grid;place-items:center;box-shadow:var(--s-1)}
+@media (max-width:720px){.llaves{grid-template-columns:auto 1fr;align-items:center;gap:4px 8px;margin-top:8px}.ll-top{gap:4px}.ll-top .pt{white-space:nowrap}.ll-largo{display:none}.ll-corto{display:inline}.ll-info{width:18px;height:18px;font-size:.65rem}.ll-fila{gap:3px;flex-wrap:nowrap;min-width:0}.llave{width:auto;flex:1 1 0;min-width:0;max-width:24px;aspect-ratio:1;height:auto;border-radius:7px;font-size:.68rem}.llave b{width:13px;height:13px;font-size:.5rem;right:-4px;bottom:-4px}.llaves>button{grid-column:1/-1;justify-self:start}}
+@keyframes ganar{from{transform:scale(.3) rotate(-30deg);opacity:0}}
+.gran-btn{justify-self:start;animation:latido 1.4s ease-in-out infinite}
+@keyframes latido{50%{transform:scale(1.05);box-shadow:0 0 0 8px color-mix(in srgb,var(--gold) 25%,transparent)}}
+.gran-ok{justify-self:start;font-size:.84rem;font-weight:800;color:var(--gold)}
+.anual-btn{justify-self:start;margin-top:10px;font-weight:800;font-size:.9rem;color:#fff;padding:10px 16px;border-radius:12px;background:linear-gradient(120deg,#7B61FF,#2196F3,#FF8A4C);background-size:200% 100%;animation:brillar 4s linear infinite;box-shadow:0 10px 22px -12px #7B61FF}
+@keyframes brillar{to{background-position:200% 0}}
+/* historias del resumen anual */
+.dlg-anual{margin:auto;border:0;padding:0;background:#000;width:min(420px,100%);height:min(760px,100%);max-height:100%;max-width:100%;border-radius:22px;overflow:hidden;color:#fff}
+.dlg-anual::backdrop{background:rgba(5,8,18,.85)}
+.h-barras{position:absolute;left:12px;right:52px;top:12px;display:flex;gap:4px;z-index:3}
+.h-barras span{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.3);overflow:hidden}
+.h-barras span i{display:block;height:100%;width:0;background:#fff}
+.h-barras span.hecha i{width:100%}
+.h-barras span.activa i{animation:llenar 5.2s linear forwards}
+@keyframes llenar{to{width:100%}}
+.h-x{position:absolute;right:10px;top:4px;z-index:3;width:36px;height:36px;color:#fff;font-size:1.2rem}
+.historia{position:absolute;inset:0;background:linear-gradient(160deg,var(--c1,#2196F3),var(--c2,#7B61FF));display:grid;place-items:center;padding:56px 26px 30px;text-align:center;cursor:pointer;transition:background .4s}
+.h-slide{display:grid;gap:12px;justify-items:center;animation:aparecer .6s cubic-bezier(.2,.8,.2,1) both}
+.h-slide small{font-size:1rem;font-weight:800;opacity:.9;text-transform:uppercase;letter-spacing:.08em}
+.h-slide h2{font-family:var(--f-display);font-size:clamp(2.2rem,9vw,3.2rem);line-height:1.05;text-wrap:balance}
+.h-slide h3{font-family:var(--f-display);font-size:1.4rem;line-height:1.2;text-wrap:balance}
+.h-slide p{font-size:1.05rem;font-weight:700;opacity:.92;max-width:28ch}
+.h-cofre{width:170px}
+.h-cofre .cofre-svg{width:100%}
+.h-mosaico{display:grid;grid-template-columns:repeat(3,72px);gap:8px}
+.h-mosaico img{width:72px;height:72px;object-fit:cover;border-radius:12px;box-shadow:0 8px 18px -8px rgba(0,0,0,.5);animation:aparecer .5s both}
+.h-fav img{width:200px;height:200px;object-fit:cover;border-radius:20px;box-shadow:0 18px 40px -14px rgba(0,0,0,.55);transform:rotate(-3deg)}
+.h-barras{pointer-events:none}
+.h-meses{display:flex;align-items:flex-end;gap:6px;height:150px;width:100%;max-width:320px}
+.h-meses span{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;height:100%}
+.h-meses span i{width:100%;height:var(--h);min-height:4px;border-radius:6px 6px 2px 2px;background:rgba(255,255,255,.45);animation:crecer .8s cubic-bezier(.2,.8,.2,1) both}
+.h-meses span.top i{background:#fff}
+.h-meses span b{font-size:.62rem;font-weight:800;opacity:.85;text-transform:uppercase}
+@keyframes crecer{from{height:0}}
+.h-acts{display:flex;flex-direction:column;gap:10px;width:100%;max-width:280px;margin-top:8px}
+.h-acts .btn-ghost{background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.4)}
+.h-cargando{font-size:1.1rem;font-weight:800}
+.bn-op{background:var(--bg-2);border-radius:12px;padding:10px 12px}
+/* administrador: regalos */
+.rg-lista{display:grid;gap:12px;padding:12px 14px 14px;border-top:1px solid var(--line)}
+.rg{border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:8px;background:var(--bg)}
+.rg-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.rg-h .chk{margin-left:auto}
+.rg-c{display:grid;grid-template-columns:1fr 180px;gap:8px}
+.rg-c textarea{grid-column:1/-1;min-height:56px}
+.rg-c .inp,.rg-c textarea{padding:8px 10px;font-size:.88rem;background:var(--card)}
+.rg-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rg-f .muted{flex:1 1 200px}
+.drop.mini{padding:6px 12px;display:inline-grid}
+.drop.mini .drop-s{display:none}
+@media (max-width:720px){.cofre-hero{width:96px;height:86px}.cofre-et{font-size:.62rem;padding:3px 8px}.cofre-cuando{display:none}.cofre-slot{position:absolute;right:-4px;top:26px}.rg-c{grid-template-columns:1fr}.dlg-anual{height:100%;border-radius:0}}
+@media (prefers-reduced-motion:reduce){.cofre-hero,.gran-btn,.anual-btn,.llave.on,.cofre-escena.abierto .rayos,.cofre-escena.abierto .chispas path{animation:none!important}}
 .hide{display:none!important}
 @media (max-width:820px){.login{grid-template-columns:1fr;gap:26px;padding:28px 0 48px}.perks{display:none}.search{max-width:none;margin-left:0}}
 @media (max-width:420px){.brand span{display:none}.panel{padding:22px 18px}.lnk{padding:8px}}
@@ -523,7 +620,10 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
         <p class="who" id="who"></p>
         <div class="stats" id="stats"></div>
         <div class="progreso hide" id="prog"></div>
+        <div class="llaves hide" id="llaves"></div>
+        <button class="anual-btn hide" type="button" id="anualBtn">🎁 Mirá tu año con Cofre Didáctico</button>
       </div>
+      <div class="cofre-slot hide" id="cofreHero"></div>
       <div class="hero-art" id="heroArt" aria-hidden="true"><span class="blob"></span><img src="logo.png" alt="" onerror="this.remove()" /><span class="fl f1"></span><span class="fl f2"></span><span class="fl f3"></span></div>
     </div>
     <div id="adminBox" class="admin hide"></div>
@@ -583,6 +683,18 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
   <div class="dlg-acts"><button class="btn btn-ghost" type="button" id="limNo">Cancelar</button><button class="btn btn-primary hide" type="submit" id="limOk">Confirmar y descargar</button></div>
 </form></dialog>
 
+<dialog class="dlg dlg-cofre" id="dlgCofre" aria-labelledby="cofreTit"><div class="dlg-in">
+  <div class="pg-head"><h2 id="cofreTit">Tu cofre</h2><button class="icon-btn" id="cofreX" type="button" aria-label="Cerrar">✕</button></div>
+  <div class="cofre-escena" id="cofreEscena"><button type="button" class="cofre-dibujo" id="cofreDibujo" aria-label="Abrir el cofre"></button></div>
+  <p class="cofre-ayuda" id="cofreAyuda">Tocá el cofre para abrirlo</p>
+  <div class="cofre-regalo hide" id="cofreRegalo"></div>
+</div></dialog>
+
+<dialog class="dlg-anual" id="dlgAnual" aria-label="Tu año con Cofre Didáctico">
+  <div class="h-barras" id="hBarras"></div><button class="h-x" id="anualX" type="button" aria-label="Cerrar">✕</button>
+  <div class="historia" id="historia"></div>
+</dialog>
+
 <dialog class="dlg dlg-ficha" id="dlgFicha" aria-label="Material"><div class="dlg-in"><div class="pg-head"><span></span><button class="icon-btn" id="fichaX" type="button" aria-label="Cerrar">✕</button></div><div id="fichaBody"></div></div></dialog>
 
 <dialog class="dlg" id="dlgTapa" aria-labelledby="tTit"><form method="dialog" class="dlg-in">
@@ -600,6 +712,7 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
   <div class="pg-tools"><div class="chips"><button class="chip" type="button" data-sel="todas">Todas</button><button class="chip" type="button" data-sel="impares">Impares</button><button class="chip" type="button" data-sel="pares">Pares</button><button class="chip" type="button" data-sel="ninguna">Ninguna</button></div>
     <input class="inp" id="pgRango" placeholder="Páginas: ej. 1-4, 8, 10-12" aria-label="Páginas a imprimir" /></div>
   <div class="pg-grid" id="pgGrid"></div>
+  <label class="chk bn-op"><input type="checkbox" id="pgBN" /> <span><b>🖨 Blanco y negro para fotocopia.</b> Ajusta los colores claros para que no se pierdan en la fotocopiadora. Además el archivo queda mucho más liviano.</span></label>
   <div class="dlg-acts"><span class="muted" id="pgCuenta"></span><button class="btn btn-primary" id="pgOk" type="button" disabled>Descargar selección</button></div>
 </div></dialog>
 
@@ -727,7 +840,7 @@ function mostrar(r) {
   $("#notice").innerHTML = html;
   const cuenta = materiales.reduce((a, m) => ((a[m.tipo] = (a[m.tipo] || 0) + 1), a), {});
   const tipos = Object.keys(TIPOS).filter((t) => cuenta[t]);
-  $("#tools").classList.toggle("hide", !n); pintarVistas(); pintarHero(r);
+  $("#tools").classList.toggle("hide", !n); pintarVistas(); pintarHero(r); pintarCofreHero(r); pintarLlaves(r); pintarBotonAnual(r);
   if (!previewsListas) cargarPreviews().then(() => { if (Object.keys(PREVIEWS).length) pintar(); });
   if (!tipos.includes(filtro)) filtro = "todos";
   $("#chips").innerHTML = [`<button class="chip" data-f="todos" aria-pressed="${filtro === "todos"}">Todos<span class="n">${n}</span></button>`]
@@ -877,7 +990,7 @@ function estadoBoton(b) {
     fin: () => setTimeout(() => { b.disabled = false; b.innerHTML = txt; b.classList.remove("prog"); b.style.removeProperty("--p"); }, 900),
   };
 }
-async function descargar(b, material, archivo, paginas) {
+async function descargar(b, material, archivo, paginas, opts = {}) {
   const mm = materiales.find((x) => x.id === material), fa = mm && (mm.archivos || []).find((x) => x.nombre === archivo);
   if (!(await confirmarDatos(fa && fa.tam))) return;
   const st = estadoBoton(b); b.disabled = true; st.set("Preparando…");
@@ -887,19 +1000,26 @@ async function descargar(b, material, archivo, paginas) {
     if (!r.bytes) { const a = document.createElement("a"); a.href = r.url; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); toast("Descarga iniciada ✓"); return; }
     st.set("Personalizando tu copia…", 1); armando(true, "Imprimiendo tu nombre y tu código"); await libs;
     let final, nombre = archivo;
-    try { final = await personalizar(r.bytes, r.licencia, { tapa: textoTapa(tapaGuardada()), paginas }); }
+    try {
+      if (opts.bn) {
+        armando(true, "Pasando a blanco y negro");
+        const bn = await convertirBN(r.bytes, paginas, (k, n) => { st.set(`Blanco y negro ${k}/${n}`, k / n); $("#armandoT").textContent = `Página ${Math.min(k + 1, n)} de ${n} en blanco y negro`; });
+        armando(true, "Imprimiendo tu nombre y tu código");
+        final = await personalizar(bn, r.licencia, { tapa: paginas && paginas[0] !== 0 ? "" : textoTapa(tapaGuardada()) });
+      } else final = await personalizar(r.bytes, r.licencia, { tapa: textoTapa(tapaGuardada()), paginas });
+    }
     catch (err) {
       console.warn("No se pudo personalizar", err);
       if (window.__esAdmin) toast(/encrypt/i.test(String(err && err.message)) ? "Este PDF tiene contraseña: sacásela para que se pueda personalizar." : "Este PDF no se pudo personalizar.");
-      if (paginas) throw new Error("No se pudo armar la selección de páginas de este archivo.");
+      if (paginas || opts.bn) throw new Error("No se pudo preparar esta versión del archivo.");
       final = r.bytes;
     }
-    if (paginas) nombre = archivo.replace(/\.pdf$/i, "") + ` (pags. ${rangoTexto(paginas)}).pdf`;
+    if (paginas || opts.bn) nombre = archivo.replace(/\.pdf$/i, "") + ` (${[paginas ? "pags. " + rangoTexto(paginas) : "", opts.bn ? "B-N para fotocopia" : ""].filter(Boolean).join(", ")}).pdf`;
     guardar(final, nombre); armando(false);
     toast(final === r.bytes ? "Descarga lista ✓" : `Tu copia personalizada está lista ✓ (${r.licencia.codigo})`);
     if (final !== r.bytes) { festejo(); vibrar(); }
     if (!window.__esAdmin) { sumarSemana(material); marcarDescargado(material, archivo); pintar(); }
-  } catch (err) { if (err.limite) abrirLimite(material, err.limite, () => descargar(b, material, archivo, paginas)); else toast(err.message); }
+  } catch (err) { if (err.limite) abrirLimite(material, err.limite, () => descargar(b, material, archivo, paginas, opts)); else toast(err.message); }
   finally { st.fin(); armando(false); }
 }
 function marcarDescargado(material, archivo) {
@@ -973,7 +1093,7 @@ $("#pgOk").onclick = async () => {
   const idx = [...selector.sel].sort((a, b) => a - b); if (!idx.length) return;
   $("#dlgPag").close();
   const b = document.querySelector(`[data-dl="${CSS.escape(selector.material)}"][data-f="${CSS.escape(selector.archivo)}"]`) || $("#pgOk");
-  await descargar(b, selector.material, selector.archivo, idx.length === selector.total ? null : idx);
+  await descargar(b, selector.material, selector.archivo, idx.length === selector.total ? null : idx, { bn: $("#pgBN").checked });
 };
 
 // ---------- Opiniones ----------
@@ -1145,7 +1265,7 @@ let previewsListas = null;
 function cargarPreviews() {
   return (previewsListas ||= fetch("productos.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).then((cat) => {
     const prods = cat ? (Array.isArray(cat) ? cat : cat.productos || []) : [];
-    prods.forEach((p) => { const l = (p.previews || []).filter(Boolean).map((x) => "https://cofredidactico.com.ar/" + normImg(x)); if (p.id && l.length) PREVIEWS[p.id] = l; });
+    prods.forEach((p) => { if (p.id && +p.paginas) PAGINAS[p.id] = +p.paginas; const l = (p.previews || []).filter(Boolean).map((x) => "https://cofredidactico.com.ar/" + normImg(x)); if (p.id && l.length) PREVIEWS[p.id] = l; });
   }).catch(() => {}));
 }
 let hj = { id: null, i: 0, imgs: [] };
@@ -1288,6 +1408,10 @@ async function verificar(codigo) {
 
 // ---------- Administrador ----------
 let verComo = null, resumen = null;
+// recuerda qué secciones del resumen estaban abiertas para que no se cierren al actualizar
+const resAbiertos = new Set(), clavesSum = (s) => (s.firstChild && s.firstChild.textContent || "").trim();
+document.addEventListener("toggle", (e) => { const d = e.target; if (!(d instanceof HTMLDetailsElement) || !d.closest("#aRes")) return; const k = clavesSum(d.querySelector("summary")); d.open ? resAbiertos.add(k) : resAbiertos.delete(k); }, true);
+function pintarRes() { const a = $("#aRes"); if (!a) return; a.innerHTML = htmlResumen(); a.querySelectorAll("details > summary").forEach((s) => { if (resAbiertos.has(clavesSum(s))) s.parentElement.open = true; }); }
 const fecha = (iso) => { try { return new Date(iso).toLocaleString("es-AR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }); } catch { return ""; } };
 const nombreMat = (id) => ((resumen && resumen.materiales.find((m) => m.id === id)) || {}).nombre || id;
 function pintarAdmin(r) {
@@ -1306,7 +1430,7 @@ function pintarAdmin(r) {
   if (!resumen) cargarResumen();
 }
 async function cargarResumen() {
-  try { resumen = await api({ accion: "resumen", token: sesion.token }); if ($("#aRes")) $("#aRes").innerHTML = htmlResumen(); }
+  try { resumen = await api({ accion: "resumen", token: sesion.token }); pintarRes(); }
   catch (e) { if ($("#aRes")) $("#aRes").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>No se pudo cargar el resumen: ${esc(e.message)}</div></div>`; }
 }
 function htmlSinVincular(R) {
@@ -1349,7 +1473,7 @@ function htmlResumen() {
   return `${htmlSinVincular(R)}<div class="kpis">${kpis.map(([v, t]) => `<div class="kpi"><b>${fmt(v)}</b><span>${t}</span></div>`).join("")}</div>
     <details${sinArchivos ? " open" : ""}><summary>Materiales y enlaces para Empretienda<small>${sinArchivos ? sinArchivos + " sin archivos" : "todos con archivos"}</small></summary>
       <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Material</th><th style="text-align:right">Compradores</th><th>Archivos</th><th>Opiniones</th><th>Enlace del botón Descargar</th></tr></thead><tbody>${filasMat}</tbody></table></div></details>
-    ${htmlAlertas(R)}${htmlOpiniones(R)}
+    ${htmlAlertas(R)}${htmlOpiniones(R)}${htmlRegalos(R)}
     <details><summary>Últimas órdenes<small>${R.ultimasOrdenes.length}</small></summary><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fecha</th><th>Orden</th><th>Correo</th><th>Productos</th><th>Pago</th></tr></thead><tbody>${filasOrd}</tbody></table></div></details>
     <details><summary>Últimas descargas<small>${R.ultimasDescargas.length}</small></summary><div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fecha</th><th>Correo</th><th>Material</th></tr></thead><tbody>${filasDes}</tbody></table></div></details>
     <div class="aux" style="margin-top:0"><span>Archivos guardados en <b>${esc(R.almacen || "Supabase Storage")}</b> · Tocá un correo para ver su biblioteca.</span><button class="btn-link" type="button" id="aCat">🔄 Traer productos nuevos de la web</button><button class="btn-link" type="button" id="aAct">↻ Actualizar resumen</button></div>`;
@@ -1390,7 +1514,7 @@ $("#adminBox").addEventListener("click", async (e) => {
     try { const r = await api({ accion: "catalogo", token: sesion.token }); toast(r.nuevos.length ? `Agregados ${r.nuevos.length}: ${r.nuevos.map((m) => m.nombre).join(", ")}` : `Todo al día: los ${r.revisados} productos pagos ya están en la biblioteca ✓`); if (r.nuevos.length) { resumen = null; cargar(true); } } catch (err) { toast(err.message); } finally { bt.disabled = false; bt.textContent = "🔄 Traer productos nuevos de la web"; } return; }
   const rs = e.target.closest("[data-rast]"); if (rs) { $("#aCod").value = rs.dataset.rast; rastrear(rs.dataset.rast); $("#aTrack").scrollIntoView({ behavior: "smooth", block: "center" }); return; }
   const md = e.target.closest("[data-mod]");
-  if (md) { md.disabled = true; try { await api({ accion: "moderar", token: sesion.token, email: md.dataset.email, material: md.dataset.mat, estado: md.dataset.mod }); toast(md.dataset.mod === "aprobada" ? "Opinión aprobada ✓" : "Opinión oculta"); const o = (resumen.opiniones || []).find((x) => x.email === md.dataset.email && x.material_id === md.dataset.mat); if (o) o.estado = md.dataset.mod; $("#aRes").innerHTML = htmlResumen(); } catch (err) { toast(err.message); md.disabled = false; } return; }
+  if (md) { md.disabled = true; try { await api({ accion: "moderar", token: sesion.token, email: md.dataset.email, material: md.dataset.mat, estado: md.dataset.mod }); toast(md.dataset.mod === "aprobada" ? "Opinión aprobada ✓" : "Opinión oculta"); const o = (resumen.opiniones || []).find((x) => x.email === md.dataset.email && x.material_id === md.dataset.mat); if (o) o.estado = md.dataset.mod; pintarRes(); } catch (err) { toast(err.message); md.disabled = false; } return; }
   const m = e.target.closest("[data-como]");
   if (m) { verComo = m.dataset.como; filtro = "todos"; $("#q").value = ""; window.scrollTo({ top: 0, behavior: "smooth" }); cargar(); return; }
   if (e.target.closest("#aAct")) { resumen = null; $("#aRes").innerHTML = '<p class="muted">Actualizando…</p>'; cargarResumen(); }
@@ -1417,6 +1541,220 @@ async function demoApi(b) {
   if (b.accion === "recordatorio") return { ok: true, activo: !!b.activo };
 }
 if (DEMO) { $("#demoBar").classList.remove("hide"); if (!pend().m && /[?&]demo=1/.test(location.search) && !sesion) store.set(PEND, { m: "17-de-junio-martin-miguel-de-guemes", k: "demo" }, sessionStorage); }
+
+// ---------- El cofre de Cofre Didáctico (dibujo animado) ----------
+function cofreSVG(dorado) {
+  const c1 = dorado ? "#F7C948" : "#3DB9B4", c2 = dorado ? "#C98A10" : "#1F8A86", t1 = dorado ? "#FFDD6E" : "#4FCBC4", t2 = dorado ? "#D9A21B" : "#2A9C97", oro = dorado ? "#FFF3C4" : "#F5C04A", oro2 = dorado ? "#E0A82B" : "#C98A00";
+  const u = Math.random().toString(36).slice(2, 7);
+  return `<svg class="cofre-svg" viewBox="0 0 200 180" role="img" aria-label="Cofre">
+  <defs><linearGradient id="cb${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient>
+  <linearGradient id="ct${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${t1}"/><stop offset="1" stop-color="${t2}"/></linearGradient>
+  <radialGradient id="cl${u}"><stop offset="0" stop-color="#FFF8D6" stop-opacity="1"/><stop offset="1" stop-color="#FFF8D6" stop-opacity="0"/></radialGradient></defs>
+  <g class="rayos">${Array.from({ length: 12 }, (_, i) => `<polygon points="100,86 94,-30 106,-30" fill="#FFE9A3" opacity=".55" transform="rotate(${i * 30} 100 86)"/>`).join("")}</g>
+  <circle class="brillo" cx="100" cy="86" r="70" fill="url(#cl${u})"/>
+  <g class="cuerpo"><rect x="30" y="80" width="140" height="80" rx="14" fill="url(#cb${u})"/>
+    <rect x="30" y="98" width="140" height="10" fill="${oro}"/><rect x="92" y="80" width="16" height="80" fill="${oro}"/>
+    <ellipse cx="72" cy="128" rx="6" ry="7" fill="#1A2744"/><ellipse cx="128" cy="128" rx="6" ry="7" fill="#1A2744"/><circle cx="74" cy="125" r="2" fill="#fff"/><circle cx="130" cy="125" r="2" fill="#fff"/>
+    <path d="M90 140 Q100 150 110 140" stroke="#1A2744" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <ellipse cx="60" cy="140" rx="8" ry="4" fill="#FF8A8A" opacity=".55"/><ellipse cx="140" cy="140" rx="8" ry="4" fill="#FF8A8A" opacity=".55"/>
+    <rect x="88" y="98" width="24" height="24" rx="6" fill="${oro}" stroke="${oro2}" stroke-width="3"/><circle cx="100" cy="108" r="3.5" fill="${oro2}"/><rect x="98.5" y="109" width="3" height="7" fill="${oro2}"/></g>
+  <g class="tapa"><path d="M28 84 V64 Q28 30 100 30 Q172 30 172 64 V84 Z" fill="url(#ct${u})"/>
+    <path d="M92 31 H108 V84 H92 Z" fill="${oro}"/><path d="M28 74 H172 V84 H28 Z" fill="${oro}" opacity=".9"/>
+    <ellipse cx="70" cy="48" rx="16" ry="6" fill="#fff" opacity=".25"/></g>
+  <g class="chispas">${[[40, 40], [160, 46], [26, 96], [176, 104], [100, 12]].map(([x, y], i) => `<path d="M${x} ${y - 7} L${x + 2} ${y - 2} L${x + 7} ${y} L${x + 2} ${y + 2} L${x} ${y + 7} L${x - 2} ${y + 2} L${x - 7} ${y} L${x - 2} ${y - 2} Z" fill="#FFD84D" style="animation-delay:${i * 0.18}s"/>`).join("")}</g>
+</svg>`;
+}
+
+// ---------- Cofre de la efeméride y Gran Cofre ----------
+const ICONO_FECHA = { "03-22": "💧", "03-24": "🕯️", "04-02": "🕊️", "04-07": "🩺", "04-14": "🌎", "04-22": "🌱", "04-23": "📚", "04-29": "🐾", "05-01": "🛠️", "05-18": "🎗️", "05-25": "🎩", "06-17": "⭐", "06-20": "🇦🇷", "07-09": "🏛️", "08-17": "🐴" };
+const iconoMaterial = (id) => { const m = CATALOGO.find((x) => x.id === id) || materiales.find((x) => x.id === id); return (m && m.fecha && ICONO_FECHA[m.fecha]) || (m && m.tipo === "plataforma" ? "🎮" : m && m.tipo === "juego" ? "🧩" : "📖"); };
+let cofreActual = null;
+function pintarCofreHero(r) {
+  const art = $("#heroArt"), slot = $("#cofreHero");
+  if (!r.cofre || modoGestor()) { slot.innerHTML = ""; slot.classList.add("hide"); art.classList.remove("hide"); return; }
+  art.classList.add("hide"); slot.classList.remove("hide");
+  const nombre = NOMBRE_FECHA[r.cofre.fecha] || fechaLarga(r.cofre.fecha);
+  const cuando = r.cofre.dias === 0 ? "¡Hoy es" : r.cofre.dias === -1 ? "¡Ayer fue" : r.cofre.dias === 1 ? "¡Mañana es" : `¡En ${r.cofre.dias} días es`;
+  slot.innerHTML = `<button type="button" class="cofre-hero${r.cofre.abierto ? " abierto" : ""}" id="cofreBtn" aria-label="${r.cofre.abierto ? "Ver tu regalo" : "Abrir el cofre de " + esc(nombre)}">${cofreSVG(false)}<span class="cofre-et">${r.cofre.abierto ? "🎁 Ver tu regalo" : "¡Abrime!"}</span></button><small class="cofre-cuando">${cuando} ${esc(nombre)}!</small>`;
+  $("#cofreBtn").onclick = () => abrirCofre("efemeride");
+}
+async function abrirCofre(tipo, fechaPrev) {
+  const d = $("#dlgCofre"), esc2 = $("#cofreEscena");
+  esc2.className = "cofre-escena" + (tipo === "gran" ? " dorado" : "");
+  $("#cofreDibujo").innerHTML = cofreSVG(tipo === "gran");
+  $("#cofreRegalo").innerHTML = ""; $("#cofreRegalo").classList.add("hide");
+  const titulo = tipo === "gran" ? "✨ El Gran Cofre" : (ultimaRespuesta && ultimaRespuesta.cofre ? `${NOMBRE_FECHA[ultimaRespuesta.cofre.fecha] || fechaLarga(ultimaRespuesta.cofre.fecha)}` : fechaPrev ? NOMBRE_FECHA[fechaPrev] || "Vista previa" : "Tu cofre");
+  $("#cofreTit").textContent = titulo; $("#cofreAyuda").textContent = "Tocá el cofre para abrirlo"; $("#cofreAyuda").classList.remove("hide");
+  d.showModal();
+  const yaAbierto = tipo === "efemeride" && !fechaPrev && ultimaRespuesta && ultimaRespuesta.cofre && ultimaRespuesta.cofre.abierto;
+  const abrir = async () => {
+    $("#cofreDibujo").onclick = null; $("#cofreAyuda").textContent = "Abriendo…";
+    let r; try { r = await api({ accion: "abrir_cofre", token: sesion.token, tipo, ...(fechaPrev ? { fecha: fechaPrev } : {}) }); }
+    catch (e) { $("#cofreAyuda").textContent = e.message; esc2.classList.remove("sacude"); return; }
+    cofreActual = r; esc2.classList.add("sacude");
+    setTimeout(() => { esc2.classList.remove("sacude"); esc2.classList.add("abierto"); $("#cofreAyuda").classList.add("hide"); festejo(); vibrar(); }, yaAbierto ? 0 : 900);
+    setTimeout(() => pintarRegalo(r), yaAbierto ? 150 : 1500);
+    if (!fechaPrev && ultimaRespuesta) { if (tipo === "gran") { if (ultimaRespuesta.llaves) ultimaRespuesta.llaves.gran.abierto = true; } else if (ultimaRespuesta.cofre) ultimaRespuesta.cofre.abierto = true; if (r.llaves) ultimaRespuesta.llaves = r.llaves; pintarCofreHero(ultimaRespuesta); pintarLlaves(ultimaRespuesta); }
+  };
+  if (yaAbierto) abrir(); else $("#cofreDibujo").onclick = abrir;
+}
+function pintarRegalo(r) {
+  const box = $("#cofreRegalo");
+  box.innerHTML = `<h3>${esc(r.titulo || "¡Sorpresa!")}</h3>${r.mensaje ? `<p>${esc(r.mensaje)}</p>` : ""}
+    ${r.cupon ? `<div class="cupon"><span>Tu cupón de descuento</span><b>${esc(r.cupon)}</b><button class="btn btn-soft btn-sm" type="button" data-cupon="${esc(r.cupon)}">Copiar</button></div>` : ""}
+    ${(r.archivos || []).map((f) => `<div class="file"><div class="nm">🎁 ${esc(nombreArchivo(f.nombre))}<span class="sz">${esc(f.nombre.split(".").pop().toUpperCase())}${f.tam ? " · " + tam(f.tam) : ""}</span></div><div class="f-acts"><button class="btn btn-primary btn-sm" type="button" data-regalo="${esc(r.fecha)}" data-f="${esc(f.nombre)}">⬇ Descargar</button></div></div>`).join("")}`;
+  box.classList.remove("hide");
+}
+$("#cofreX").onclick = () => $("#dlgCofre").close();
+$("#cofreRegalo").addEventListener("click", async (e) => {
+  const c = e.target.closest("[data-cupon]"); if (c) { try { await navigator.clipboard.writeText(c.dataset.cupon); toast("Cupón copiado ✓ Usalo al pagar en la tienda"); } catch { toast("Tu cupón: " + c.dataset.cupon); } return; }
+  const b = e.target.closest("[data-regalo]"); if (!b || b.disabled) return;
+  const st = estadoBoton(b); b.disabled = true; st.set("Preparando…");
+  try {
+    const r = await api({ accion: "regalo_descargar", token: sesion.token, fecha: b.dataset.regalo, archivo: b.dataset.f });
+    if (!/\.pdf$/i.test(b.dataset.f)) { const a = document.createElement("a"); a.href = r.url; document.body.appendChild(a); a.click(); a.remove(); return; }
+    const libs = Promise.all([cargarScript(LIBS.pdf), cargarScript(LIBS.qr)]);
+    const bytes = await bajar(r.url, (p) => st.set(`Descargando ${Math.round(p * 100)}%`, p)); await libs;
+    let final; try { final = await personalizar(bytes, r.licencia, { tapa: textoTapa(tapaGuardada()) }); } catch { final = bytes; }
+    guardar(final, b.dataset.f); toast("¡Tu regalo está listo! 🎁"); vibrar();
+  } catch (err) { toast(err.message); }
+  finally { st.fin(); }
+});
+
+// ---------- Llaves ----------
+function pintarLlaves(r) {
+  const box = $("#llaves");
+  if (!r.llaves || modoGestor()) { box.classList.add("hide"); return; }
+  const L = r.llaves, items = [...L.materiales.map((id) => ({ ico: iconoMaterial(id), t: (CATALOGO.find((x) => x.id === id) || materiales.find((x) => x.id === id) || {}).nombre || "Material" })), ...L.cofres.map((f) => ({ ico: "🎁", t: "Cofre de " + (NOMBRE_FECHA[f] || fechaLarga(f)) }))].slice(0, L.meta);
+  const slots = Array.from({ length: L.meta }, (_, i) => items[i] ? `<span class="llave on" title="${esc(items[i].t)}" style="--d:${i * 60}ms"><i>🔑</i><b>${items[i].ico}</b></span>` : `<span class="llave" title="Llave por ganar"><i>🔑</i></span>`).join("");
+  let accion = "";
+  if (L.gran.abierto) accion = `<button class="gran-ok" type="button" id="granVer">🏆 Abriste el Gran Cofre de este año</button>`;
+  else if (L.gran.listo && L.gran.activo) accion = `<button class="btn btn-primary btn-sm gran-btn" type="button" id="granAbrir">✨ ¡Abrí el Gran Cofre!</button>`;
+  box.innerHTML = `<div class="ll-top"><span class="pt">🔑 <span class="ll-largo">Tus llaves: </span><b>${Math.min(L.n, L.meta)}</b><span class="ll-largo"> de </span><span class="ll-corto">/</span><b>${L.meta}</b><span class="ll-largo">${L.gran.listo ? "" : ` · te faltan ${L.meta - L.n} para el Gran Cofre`}</span></span><button class="ll-info" type="button" aria-label="Cómo se ganan las llaves" title="Ganás una llave por cada material que usás en el año y por cada cofre de efeméride que abrís. Con ${L.meta} llaves abrís el Gran Cofre.">?</button></div><div class="ll-fila">${slots}</div>${accion}`;
+  box.classList.remove("hide");
+  const g = $("#granAbrir"); if (g) g.onclick = () => abrirCofre("gran");
+  const v = $("#granVer"); if (v) v.onclick = () => abrirCofre("gran");
+  const info = box.querySelector(".ll-info"); if (info) info.onclick = () => toast(info.title);
+}
+
+// ---------- "Tu año con Cofre Didáctico" (historias) ----------
+const PAGINAS = {};
+const MESES_L = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+let hist = { i: 0, slides: [], t: null, datos: null };
+function pintarBotonAnual(r) { $("#anualBtn").classList.toggle("hide", !(r.anual && !modoGestor()) && !(r.admin && r.como)); }
+async function abrirAnual() {
+  const d = $("#dlgAnual"); d.showModal(); $("#historia").innerHTML = '<div class="h-cargando">Armando tu año… 🎁</div>'; $("#hBarras").innerHTML = "";
+  try {
+    await cargarPreviews();
+    const A = await api({ accion: "anual", token: sesion.token, ...(verComo ? { como: verComo } : {}) }); hist.datos = A;
+    const nom = (id) => (CATALOGO.find((x) => x.id === id) || materiales.find((x) => x.id === id) || {}).nombre || "Material";
+    const tapa = (id) => (CATALOGO.find((x) => x.id === id) || materiales.find((x) => x.id === id) || {}).portada || "";
+    const pags = A.materiales.reduce((s, m) => s + (+PAGINAS[m.id] || 0), 0);
+    const fav = A.materiales[0];
+    const S = [];
+    S.push({ c: ["#2196F3", "#7B61FF"], html: `<div class="h-cofre">${cofreSVG(false)}</div><small>Tu ${A.anio} con</small><h2>Cofre Didáctico</h2><p>${A.nombre ? esc(A.nombre) + ", gracias" : "Gracias"} por enseñar con tanto amor 💛</p>` });
+    if (A.materiales.length) S.push({ c: ["#FF8A4C", "#F5A623"], html: `<small>Este año usaste</small><h2><span class="num" data-n="${A.materiales.length}">0</span> ${A.materiales.length === 1 ? "material" : "materiales"}</h2><div class="h-mosaico">${A.materiales.slice(0, 9).map((m) => `<img src="${esc(imgChica(tapa(m.id), 240))}" alt="" onerror="this.remove()">`).join("")}</div>` });
+    if (pags) S.push({ c: ["#4A8F5C", "#2196F3"], html: `<small>Tus alumnos trabajaron con</small><h2><span class="num" data-n="${pags}">0</span> páginas</h2><p>de actividades de Cofre Didáctico ✏️</p>` });
+    else if (A.total) S.push({ c: ["#4A8F5C", "#2196F3"], html: `<small>Descargaste tus materiales</small><h2><span class="num" data-n="${A.total}">0</span> ${A.total === 1 ? "vez" : "veces"}</h2><p>para tus clases ✏️</p>` });
+    if (fav) S.push({ c: ["#7B61FF", "#FF8A4C"], html: `<small>Tu material favorito</small><div class="h-fav"><img src="${esc(imgChica(tapa(fav.id), 480))}" alt="" onerror="this.remove()"></div><h3>${esc(nom(fav.id))}</h3><p>Lo descargaste ${fav.n} ${fav.n === 1 ? "vez" : "veces"}</p>` });
+    if (A.mesTop != null) { const mx = Math.max(...A.porMes, 1); S.push({ c: ["#2196F3", "#4A8F5C"], html: `<small>Tu mes con más clases Cofre</small><h2>${MESES_L[A.mesTop][0].toUpperCase() + MESES_L[A.mesTop].slice(1)}</h2><div class="h-meses">${A.porMes.slice(2).map((v, i) => `<span style="--h:${Math.round((v / mx) * 100)}%" class="${i + 2 === A.mesTop ? "top" : ""}"><i></i><b>${MESES_L[i + 2].slice(0, 3)}</b></span>`).join("")}</div>` }); }
+    S.push({ c: ["#F5A623", "#FF8A4C"], html: `<div class="h-cofre">${cofreSVG(true)}</div><small>Juntaste</small><h2><span class="num" data-n="${A.llaves}">0</span> 🔑</h2><p>${A.cofres ? `y abriste ${A.cofres} ${A.cofres === 1 ? "cofre" : "cofres"} de efemérides` : "llaves Cofre"}${A.gran ? " · ¡y el Gran Cofre! 🏆" : ""}</p>` });
+    if (A.top && A.top <= 50) S.push({ c: ["#7B61FF", "#2196F3"], html: `<small>Sos parte del</small><h2>top ${A.top}%</h2><p>de las docentes que más usaron Cofre Didáctico este año 🌟</p>` });
+    S.push({ c: ["#1A2744", "#2196F3"], final: true, html: `<small>${A.anio} · Mi año con Cofre Didáctico</small><h2>¡Gracias, ${esc(A.nombre || "profe")}!</h2><p>Compartilo en tus historias y etiquetanos 💛</p><div class="h-acts"><button class="btn btn-primary" type="button" id="hCompartir">📲 Compartir mi año</button><button class="btn btn-ghost h-cerrar" type="button" id="hCerrar">Cerrar</button></div>` });
+    hist.slides = S; hist.i = 0;
+    $("#hBarras").innerHTML = S.map(() => "<span><i></i></span>").join("");
+    mostrarHistoria(0);
+  } catch (e) { $("#historia").innerHTML = `<div class="h-cargando">${esc(e.message)}</div>`; }
+}
+function mostrarHistoria(i) {
+  clearTimeout(hist.t); hist.i = i; const s = hist.slides[i]; if (!s) return;
+  const h = $("#historia"); h.style.setProperty("--c1", s.c[0]); h.style.setProperty("--c2", s.c[1]);
+  h.innerHTML = `<div class="h-slide">${s.html}</div>`;
+  document.querySelectorAll("#hBarras span").forEach((b, k) => { b.className = k < i ? "hecha" : k === i ? "activa" : ""; });
+  h.querySelectorAll(".num").forEach((n) => { const fin = +n.dataset.n, t0 = performance.now(); (function paso(t) { const p = Math.min(1, (t - t0) / 1100); n.textContent = Math.round(fin * (1 - Math.pow(1 - p, 3))).toLocaleString("es-AR"); if (p < 1) requestAnimationFrame(paso); })(t0); });
+  if (s.final) { $("#hCompartir").onclick = compartirAnual; $("#hCerrar").onclick = () => $("#dlgAnual").close(); festejo(); return; }
+  hist.t = setTimeout(() => mostrarHistoria(i + 1), 5200);
+}
+$("#historia").addEventListener("click", (e) => { if (e.target.closest("button")) return; const r = $("#historia").getBoundingClientRect(); if (e.clientX - r.left < r.width * 0.3) mostrarHistoria(Math.max(0, hist.i - 1)); else if (hist.i < hist.slides.length - 1) mostrarHistoria(hist.i + 1); });
+$("#dlgAnual").addEventListener("close", () => clearTimeout(hist.t));
+$("#anualX").onclick = () => $("#dlgAnual").close();
+$("#anualBtn").onclick = abrirAnual;
+async function compartirAnual() {
+  const A = hist.datos; if (!A) return;
+  const c = document.createElement("canvas"); c.width = 1080; c.height = 1920; const x = c.getContext("2d");
+  const g = x.createLinearGradient(0, 0, 1080, 1920); g.addColorStop(0, "#2196F3"); g.addColorStop(0.55, "#7B61FF"); g.addColorStop(1, "#FF8A4C"); x.fillStyle = g; x.fillRect(0, 0, 1080, 1920);
+  for (let i = 0; i < 40; i++) { x.globalAlpha = 0.12; x.fillStyle = "#fff"; x.beginPath(); x.arc(Math.random() * 1080, Math.random() * 1920, 6 + Math.random() * 22, 0, 7); x.fill(); } x.globalAlpha = 1;
+  const logo = await new Promise((ok) => { const im = new Image(); im.onload = () => ok(im); im.onerror = () => ok(null); im.src = "logo.png"; });
+  if (logo) { x.fillStyle = "#fff"; x.beginPath(); x.arc(540, 330, 150, 0, 7); x.fill(); x.drawImage(logo, 430, 220, 220, 220); }
+  const T = (t, y, size, peso = 800, col = "#fff") => { x.fillStyle = col; x.font = `${peso} ${size}px Outfit, Nunito, sans-serif`; x.textAlign = "center"; x.fillText(t, 540, y); };
+  T(`Mi ${A.anio} con`, 590, 54, 700); T("Cofre Didáctico", 670, 84);
+  const filas = [[String(A.materiales.length), A.materiales.length === 1 ? "material usado" : "materiales usados"], [String(A.total), A.total === 1 ? "descarga" : "descargas"], [String(A.llaves), "llaves 🔑"]];
+  if (A.top && A.top <= 50) filas.push([`top ${A.top}%`, "de las docentes Cofre"]);
+  filas.forEach(([n, t], i) => { const y = 840 + i * 230; x.fillStyle = "rgba(255,255,255,.16)"; x.beginPath(); x.roundRect ? x.roundRect(160, y - 120, 760, 190, 36) : x.rect(160, y - 120, 760, 190); x.fill(); T(n, y + 4, 104); T(t, y + 52, 40, 700, "rgba(255,255,255,.9)"); });
+  const fav = A.materiales[0] && ((CATALOGO.find((m) => m.id === A.materiales[0].id) || {}).nombre || "");
+  if (fav) { T("Mi favorito:", 1780 - 120, 38, 700, "rgba(255,255,255,.85)"); T(fav.length > 38 ? fav.slice(0, 36) + "…" : fav, 1780 - 66, 44, 800); }
+  T("cofredidactico.com.ar", 1860, 36, 700, "rgba(255,255,255,.85)");
+  const blob = await new Promise((ok) => c.toBlob(ok, "image/png"));
+  const archivo = new File([blob], `Mi ${A.anio} con Cofre Didactico.png`, { type: "image/png" });
+  try { if (navigator.canShare && navigator.canShare({ files: [archivo] })) { await navigator.share({ files: [archivo], title: `Mi ${A.anio} con Cofre Didáctico`, text: "Mi año con Cofre Didáctico 💛 @cofredidactico" }); return; } } catch (e) { if (e && e.name === "AbortError") return; }
+  guardar(blob, archivo.name, "image/png"); toast("Imagen guardada ✓ Subila a tus historias y etiquetanos 💛");
+}
+
+// ---------- Blanco y negro para fotocopia ----------
+async function prepararPdfjs() {
+  await cargarScript(LIBS.pdfjs);
+  if (!window.__pdfjsListo) { const w = await textoDe(LIBS.pdfjsWorker); pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(new Blob([w], { type: "text/javascript" })); window.__pdfjsListo = true; }
+}
+async function convertirBN(bytes, paginas, avance) {
+  await prepararPdfjs(); const { PDFDocument } = window.PDFLib;
+  const pdf = await pdfjsLib.getDocument({ data: bytes.slice() }).promise, salida = await PDFDocument.create();
+  const lista = paginas && paginas.length ? paginas : [...Array(pdf.numPages).keys()];
+  const cv = document.createElement("canvas"), cx = cv.getContext("2d", { willReadFrequently: true });
+  // curva: lo casi blanco queda blanco (fondo limpio) y los colores claros se oscurecen para que no desaparezcan en la fotocopia
+  const curva = new Uint8ClampedArray(256); for (let v = 0; v < 256; v++) curva[v] = v >= 242 ? 255 : Math.round(255 * Math.pow(v / 255, 1.6));
+  for (let k = 0; k < lista.length; k++) {
+    avance(k, lista.length);
+    const pg = await pdf.getPage(lista[k] + 1), v1 = pg.getViewport({ scale: 1 }), esc3 = 160 / 72, v = pg.getViewport({ scale: esc3 });
+    cv.width = Math.round(v.width); cv.height = Math.round(v.height); cx.fillStyle = "#fff"; cx.fillRect(0, 0, cv.width, cv.height);
+    await pg.render({ canvasContext: cx, viewport: v }).promise;
+    const img = cx.getImageData(0, 0, cv.width, cv.height), d = img.data;
+    for (let i = 0; i < d.length; i += 4) { const y = curva[(d[i] * 77 + d[i + 1] * 150 + d[i + 2] * 29) >> 8]; d[i] = d[i + 1] = d[i + 2] = y; }
+    cx.putImageData(img, 0, 0);
+    const jpg = await new Promise((ok) => cv.toBlob((b) => b.arrayBuffer().then(ok), "image/jpeg", 0.82));
+    const im = await salida.embedJpg(jpg), p = salida.addPage([v1.width, v1.height]); p.drawImage(im, { x: 0, y: 0, width: v1.width, height: v1.height });
+    pg.cleanup();
+  }
+  pdf.destroy(); avance(lista.length, lista.length);
+  return await salida.save();
+}
+
+// ---------- Administrador: regalos de los cofres ----------
+function htmlRegalos(R) {
+  const L = R.regalos || []; if (!L.length) return "";
+  const activos = L.filter((g) => g.activo).length;
+  const filas = L.map((g, i) => {
+    const nombre = g.fecha === "gran-cofre" ? `✨ Gran Cofre (${R.metaLlaves || 10} llaves)` : `${ICONO_FECHA[g.fecha] || "📅"} ${NOMBRE_FECHA[g.fecha] || fechaLarga(g.fecha)} · ${fechaLarga(g.fecha)}`;
+    return `<div class="rg" data-rg="${esc(g.fecha)}"><div class="rg-h"><b>${esc(nombre)}</b><label class="chk"><input type="checkbox" data-rg-activo ${g.activo ? "checked" : ""}/> <span>Activo</span></label>${g.abiertos ? `<span class="st ok">${g.abiertos} ${g.abiertos === 1 ? "lo abrió" : "lo abrieron"}</span>` : ""}</div>
+      <div class="rg-c"><input class="inp" data-rg-titulo maxlength="120" placeholder="Título del regalo (ej.: Lámina para el acto)" value="${esc(g.titulo)}" /><input class="inp" data-rg-cupon maxlength="40" placeholder="Cupón (opcional)" value="${esc(g.cupon)}" />
+      <textarea class="inp" data-rg-mensaje rows="2" maxlength="600" placeholder="Mensaje para las docentes">${esc(g.mensaje)}</textarea></div>
+      <div class="rg-f"><span class="muted">${g.archivos.length ? "📎 " + g.archivos.map(esc).join(" · ") : "Sin archivos"}</span>
+      <label class="drop mini" data-up="${esc(g.carpeta)}"><input type="file" accept=".pdf,.zip,.png,.jpg,.jpeg" multiple hidden /><span class="drop-t">⬆ Subir archivo</span><span class="drop-s"></span></label>
+      <button class="btn btn-ghost btn-sm" type="button" data-rg-prev>👀 Ver cómo se abre</button><button class="btn btn-soft btn-sm" type="button" data-rg-guardar>Guardar</button></div></div>`;
+  }).join("");
+  return `<details><summary>🎁 Regalos de los cofres<small>${activos ? activos + " activos" : "ninguno activo"}</small></summary><div class="rg-lista"><p class="muted">Cada cofre aparece en la biblioteca de tus compradoras desde 3 días antes de su efeméride. Las llaves se ganan usando materiales y abriendo cofres; con ${R.metaLlaves || 10} se abre el Gran Cofre.</p>${filas}</div></details>`;
+}
+$("#adminBox").addEventListener("click", async (e) => {
+  const fila = e.target.closest("[data-rg]"); if (!fila) return;
+  const fecha = fila.dataset.rg;
+  if (e.target.closest("[data-rg-prev]")) return abrirCofre(fecha === "gran-cofre" ? "gran" : "efemeride", fecha);
+  const g = e.target.closest("[data-rg-guardar]"); if (!g) return;
+  g.disabled = true;
+  try {
+    await api({ accion: "regalo_guardar", token: sesion.token, fecha, titulo: fila.querySelector("[data-rg-titulo]").value, mensaje: fila.querySelector("[data-rg-mensaje]").value, cupon: fila.querySelector("[data-rg-cupon]").value, activo: fila.querySelector("[data-rg-activo]").checked });
+    toast("Regalo guardado ✓"); const x = (resumen.regalos || []).find((r) => r.fecha === fecha); if (x) { x.titulo = fila.querySelector("[data-rg-titulo]").value; x.activo = fila.querySelector("[data-rg-activo]").checked; }
+  } catch (err) { toast(err.message); } finally { g.disabled = false; }
+});
+$("#adminBox").addEventListener("change", (e) => { const inp = e.target.closest(".drop input[type=file]"); if (inp && inp.files.length) subirArchivos(inp.closest("[data-up]").dataset.up, [...inp.files], inp.closest(".drop")); });
 
 // ---------- Celular: barra inferior ----------
 const esCelular = () => matchMedia("(max-width: 720px)").matches;
