@@ -186,6 +186,9 @@ label.fld{display:block;font-weight:800;font-size:.85rem;color:var(--ink-2);marg
 .st.na{background:var(--bg-2);color:var(--ink-3)}
 .mail{color:var(--primary);font-weight:700;word-break:break-all;text-align:left;padding:0}
 .mail:hover{text-decoration:underline}
+.cupo{font-size:.78rem;color:var(--gold);background:var(--gold-soft);border-radius:10px;padding:7px 10px;display:flex;gap:6px;align-items:flex-start;font-weight:700}
+.cupo.lleno{color:var(--danger);background:var(--danger-soft)}
+.v-estante .cupo{display:none}
 .licnote{font-size:.78rem;color:var(--ink-3);display:flex;gap:6px;align-items:flex-start}
 .file .btn[disabled]{opacity:1}
 .prog{position:relative;overflow:hidden}
@@ -516,6 +519,16 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
   <p class="muted" style="text-align:center">Vista previa del material. Tu descarga trae el archivo completo en alta calidad.</p>
 </div></dialog>
 
+<dialog class="dlg" id="dlgLimite" aria-labelledby="limTit"><form class="dlg-in" id="fLim" novalidate>
+  <h2 id="limTit">🔐 Confirmá que sos vos</h2>
+  <p class="sub" id="limTxt"></p>
+  <p class="sub">Para cuidar tus materiales, cada uno se puede descargar <b>5 veces por semana</b>. Si necesitás más copias, confirmá con un código que te mandamos al correo y se habilitan 5 descargas más.</p>
+  <div class="row-btn"><button class="btn btn-soft" type="button" id="limPedir">Enviarme el código</button></div>
+  <div class="hide" id="limPaso2"><label class="fld" for="limCod">Código que te llegó</label><input class="inp code" id="limCod" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••" /></div>
+  <div class="msg" id="limMsg" role="alert"></div>
+  <div class="dlg-acts"><button class="btn btn-ghost" type="button" id="limNo">Cancelar</button><button class="btn btn-primary hide" type="submit" id="limOk">Confirmar y descargar</button></div>
+</form></dialog>
+
 <dialog class="dlg dlg-ficha" id="dlgFicha" aria-label="Material"><div class="dlg-in"><div class="pg-head"><span></span><button class="icon-btn" id="fichaX" type="button" aria-label="Cerrar">✕</button></div><div id="fichaBody"></div></div></dialog>
 
 <dialog class="dlg" id="dlgTapa" aria-labelledby="tTit"><form method="dialog" class="dlg-in">
@@ -582,6 +595,7 @@ async function api(body) {
   let j = {}; try { j = await r.json(); } catch {}
   if (r.status === 401 && j.error === "sesion") { salir(true); throw new Error("Tu sesión venció. Volvé a ingresar."); }
   if (r.status === 403 && j.error === "cerrada") { if (sesion && sesion.email !== "cofredidacticoo@gmail.com") salir(true); throw new Error(j.mensaje || "Mi biblioteca abre muy pronto."); }
+  if (r.status === 429 && j.error === "limite") { const e = new Error(j.mensaje || "Llegaste al máximo de descargas de esta semana."); e.limite = j; throw e; }
   if (!r.ok) throw new Error(j.error || "No pudimos conectarnos. Probá de nuevo.");
   return j;
 }
@@ -669,6 +683,12 @@ function mostrar(r) {
 }
 $("#chips").onclick = (e) => { const b = e.target.closest("[data-f]"); if (!b) return; filtro = b.dataset.f; document.querySelectorAll("#chips .chip").forEach((c) => c.setAttribute("aria-pressed", c === b)); pintar(); };
 $("#q").oninput = () => pintar();
+function cupoHtml(m) {
+  if (window.__esAdmin || !m.limite) return "";
+  const quedan = Math.max(0, m.limite - (m.semana || 0));
+  if (quedan > 2) return "";
+  return `<div class="cupo${quedan ? "" : " lleno"}"><span>${quedan ? "⏳" : "🔐"}</span><span>${quedan ? `Te ${quedan === 1 ? "queda 1 descarga" : `quedan ${quedan} descargas`} de este material esta semana.` : "Llegaste al máximo de esta semana: para descargar otra vez te vamos a pedir un código."}</span></div>`;
+}
 function pintar() {
   const sinTildes = (x) => String(x || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
   const q = sinTildes($("#q").value.trim());
@@ -694,7 +714,7 @@ function pintar() {
         <div class="f-acts">${pdf ? `<button class="icon-btn sm" type="button" data-pick="${esc(m.id)}" data-f="${esc(f.nombre)}" title="Elegir qué páginas imprimir" aria-label="Elegir páginas de ${esc(f.nombre)}">🖨</button>` : ""}
         ${gestor ? `<button class="icon-btn sm danger" type="button" data-del="${esc(m.id)}" data-f="${esc(f.nombre)}" title="Borrar archivo" aria-label="Borrar ${esc(f.nombre)}">🗑</button>` : ""}
         <button class="btn btn-soft btn-sm" type="button" data-dl="${esc(m.id)}" data-f="${esc(f.nombre)}">⬇ Descargar</button></div></div>`;
-    }).join("")}${archivos.some((f) => /\.pdf$/i.test(f.nombre)) ? '<div class="licnote"><span>🔏</span><span>Tu copia lleva tu nombre y un código de licencia en la tapa y la última página.</span></div>' : ""}</div>`;
+    }).join("")}${archivos.some((f) => /\.pdf$/i.test(f.nombre)) ? '<div class="licnote"><span>🔏</span><span>Tu copia lleva tu nombre y un código de licencia en la tapa y la última página.</span></div>' : ""}${cupoHtml(m)}</div>`;
     else if (!gestor) acciones = `<div class="pending">⏳ Estamos preparando los archivos de este material. Volvé a mirar en un rato.</div>`;
     if (gestor && m.tipo !== "plataforma") acciones += `<label class="drop" data-up="${esc(m.id)}"><input type="file" accept=".pdf,.zip,.png,.jpg,.jpeg" multiple hidden /><span class="drop-t">⬆ ${archivos.length ? "Subir otro archivo o reemplazar" : "Subí el PDF de este material"}</span><span class="drop-s">Arrastralo acá o tocá para elegir · sin contraseña</span></label>`;
     const fechaTag = m.fecha ? `<span class="date">📅 ${esc(fechaLarga(m.fecha))}</span>` : "";
@@ -822,8 +842,8 @@ async function descargar(b, material, archivo, paginas) {
     guardar(final, nombre); armando(false);
     toast(final === r.bytes ? "Descarga lista ✓" : `Tu copia personalizada está lista ✓ (${r.licencia.codigo})`);
     if (final !== r.bytes) festejo();
-    if (!window.__esAdmin) marcarDescargado(material, archivo);
-  } catch (err) { toast(err.message); }
+    if (!window.__esAdmin) { sumarSemana(material); marcarDescargado(material, archivo); pintar(); }
+  } catch (err) { if (err.limite) abrirLimite(material, err.limite, () => descargar(b, material, archivo, paginas)); else toast(err.message); }
   finally { st.fin(); armando(false); }
 }
 function marcarDescargado(material, archivo) {
@@ -878,7 +898,7 @@ async function abrirSelector(b, material, archivo) {
     contarSel(); $("#dlgPag").showModal();
     const io = new IntersectionObserver((ents) => ents.forEach((en) => { if (!en.isIntersecting) return; io.unobserve(en.target); miniatura(+en.target.dataset.c, en.target); }), { root: $("#pgGrid"), rootMargin: "200px" });
     document.querySelectorAll("#pgGrid canvas").forEach((c) => io.observe(c));
-  } catch (err) { console.warn(err); toast(err.message || "No se pudieron mostrar las páginas."); }
+  } catch (err) { if (err.limite) abrirLimite(material, err.limite, () => abrirSelector(b, material, archivo)); else { console.warn(err); toast(err.message || "No se pudieron mostrar las páginas."); } }
   finally { st.fin(); }
 }
 async function miniatura(i, canvas) {
@@ -1003,6 +1023,37 @@ function pintarResumenBiblio() {
   const mia = prox && prox.mats.some((m) => materiales.some((x) => x.id === m.id));
   el.innerHTML = [`<span class="stat"><b>${n}</b> ${n === 1 ? "material" : "materiales"}</span>`, nov ? `<span class="stat upd"><b>${nov}</b> con novedades</span>` : "", prox ? `<span class="stat"><b>${prox.dias}</b> ${prox.dias === 1 ? "día" : "días"} para ${esc(NOMBRE_FECHA[prox.fecha] || fechaLarga(prox.fecha))}${mia ? " · ya lo tenés" : ""}</span>` : ""].join("");
 }
+
+// ---------- Límite semanal: confirmar con un código para seguir descargando ----------
+let limite = null;
+function abrirLimite(material, info, reintentar) {
+  limite = { material, reintentar };
+  const m = materiales.find((x) => x.id === material);
+  $("#limTxt").innerHTML = `Ya descargaste <b>${esc(m ? m.nombre : "este material")}</b> ${info.usadas} veces en los últimos 7 días.`;
+  $("#limPaso2").classList.add("hide"); $("#limOk").classList.add("hide"); $("#limPedir").classList.remove("hide"); $("#limPedir").disabled = false; $("#limCod").value = ""; msg($("#limMsg"), "");
+  if ($("#dlgFicha").open) $("#dlgFicha").close();
+  $("#dlgLimite").showModal();
+}
+$("#limNo").onclick = () => $("#dlgLimite").close();
+$("#limPedir").onclick = async () => {
+  const b = $("#limPedir"); b.disabled = true; b.textContent = "Enviando…";
+  try { await api({ accion: "codigo", email: sesion.email }); msg($("#limMsg"), `Te mandamos un código a ${sesion.email}. Puede tardar un minuto.`, "ok"); b.classList.add("hide"); $("#limPaso2").classList.remove("hide"); $("#limOk").classList.remove("hide"); $("#limCod").focus(); }
+  catch (e) { msg($("#limMsg"), e.message); b.disabled = false; }
+  finally { b.textContent = "Enviarme el código"; }
+};
+$("#limCod").oninput = (e) => { e.target.value = e.target.value.replace(/\D/g, "").slice(0, 6); };
+$("#fLim").onsubmit = async (e) => {
+  e.preventDefault(); const codigo = $("#limCod").value; if (codigo.length !== 6) return msg($("#limMsg"), "El código tiene 6 números.");
+  $("#limOk").disabled = true;
+  try {
+    const r = await api({ accion: "desbloquear", token: sesion.token, material: limite.material, codigo });
+    const m = materiales.find((x) => x.id === limite.material); if (m) m.limite = r.limite;
+    $("#dlgLimite").close(); toast("Listo ✓ Tenés 5 descargas más de este material esta semana"); pintar();
+    if (limite.reintentar) limite.reintentar();
+  } catch (err) { msg($("#limMsg"), err.message); }
+  finally { $("#limOk").disabled = false; }
+};
+function sumarSemana(material) { const m = materiales.find((x) => x.id === material); if (m) m.semana = (m.semana || 0) + 1; }
 
 // ---------- Imágenes livianas (mismo servicio que usa tu tienda) ----------
 function imgChica(url, w) {
@@ -1260,6 +1311,7 @@ async function rastrear(codigo) {
       <dt>Material</dt><dd>${esc(t.material)}</dd>
       <dt>Orden</dt><dd>${t.orden ? "#" + esc(t.orden) : "—"}</dd>
       <dt>Descargas</dt><dd>${Number(t.descargas || 0)} · primera ${fecha(t.primera)} · última ${fecha(t.ultima)}</dd>
+      <dt>QR escaneado</dt><dd>${t.escaneos && t.escaneos.total ? `${t.escaneos.total} ${t.escaneos.total === 1 ? "vez" : "veces"} · ${t.escaneos.personas} ${t.escaneos.personas === 1 ? "persona" : "personas distintas"} · último ${fecha(t.escaneos.ultimo)}` : "Nunca"}</dd>
       <dt>Acceso</dt><dd>${rev ? '<span class="st no">Quitado</span>' : '<span class="st ok">Activo</span>'}</dd></dl>
       <div class="acts"><button class="btn btn-sm ${rev ? "btn-soft" : "btn-danger"}" type="button" id="aAcc" data-email="${esc(t.email)}" data-mat="${esc(t.material_id)}" data-hab="${rev ? 1 : 0}">${rev ? "Devolver el acceso" : "Quitar el acceso a este material"}</button><button class="btn btn-ghost btn-sm" type="button" id="aCerrar">Cerrar</button></div></div>`;
   } catch (e) { box.innerHTML = `<div class="track"><b>No se pudo rastrear.</b><span class="muted">${esc(e.message)}</span></div>`; }
