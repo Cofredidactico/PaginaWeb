@@ -414,6 +414,46 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
 @media (max-width:720px){.hero{grid-template-columns:1fr;padding:30px 18px 20px}.hero-art{position:absolute;right:-18px;top:30px;width:110px;height:110px;opacity:.95}.hero-art img{inset:18px;width:74px;height:74px}.hero-txt{padding-right:84px}.hero-art .fl{display:none}.vistas span{display:none}.tools .search{margin-left:0;flex:1 1 100%;order:3}}
 @media (max-width:520px){.grid.v-estante{grid-template-columns:repeat(2,minmax(0,1fr))}.v-lista .cover{width:72px}}
 @media (prefers-reduced-motion:reduce){.card,.bunting i,.hero-art img,.hero-art .blob,.fl,.armando .cofre img{animation:none!important}}
+/* ---- celular ---- */
+.navcel{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;grid-template-columns:repeat(4,1fr);background:var(--hdr-bg);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+.navcel button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 2px;border-radius:12px;font-size:.7rem;font-weight:800;color:var(--ink-3);min-height:52px;justify-content:center}
+.navcel button span{font-size:1.25rem;line-height:1;transition:transform .15s}
+.navcel button[aria-current="true"]{color:var(--primary-dark);background:var(--primary-soft)}
+.navcel button[aria-current="true"] span{transform:translateY(-1px) scale(1.08)}
+.tirar{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 70px);z-index:45;width:40px;height:40px;border-radius:50%;background:var(--card);box-shadow:var(--s-2);display:grid;place-items:center;font-size:1.3rem;color:var(--ink-3);transform:translate(-50%,-80px);opacity:0;pointer-events:none}
+.tirar.on{opacity:1}
+.tirar.listo{color:#fff;background:var(--primary)}
+.invitar{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:50;display:grid;grid-template-columns:auto 1fr;gap:10px 12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--s-2);transform:translateY(160%);transition:transform .35s cubic-bezier(.2,.8,.2,1);max-width:520px;margin:0 auto}
+.invitar.on{transform:none}
+.invitar img{width:46px;height:46px;border-radius:12px}
+.invitar b{display:block;font-size:.95rem}
+.invitar span{font-size:.84rem;color:var(--ink-3)}
+.inv-acts{grid-column:1/-1;display:flex;justify-content:flex-end;gap:8px}
+@media (min-width:721px){.invitar{bottom:24px}}
+@media (max-width:720px){
+  body.con-barra{padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+  body.con-barra .navcel{display:grid}
+  body.con-barra .foot{padding-bottom:12px}
+  body.con-barra .toast,body.con-barra .armando{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+  .hero{margin:14px 0 16px;padding:26px 16px 16px;border-radius:20px;gap:8px}
+  .hero h1{font-size:1.45rem;margin-top:2px}
+  .hero-f{font-size:.92rem}
+  .hero .who{display:none}
+  .hero-k{font-size:.68rem;padding:5px 10px}
+  .bunting{height:20px}.bunting i{width:15px;height:17px}
+  .hero-art{width:78px;height:78px;top:30px;right:-6px}
+  .hero-art img{inset:12px;width:54px;height:54px}
+  .hero-txt{padding-right:62px}
+  .stats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:-62px;padding-bottom:2px}
+  .stats::-webkit-scrollbar,.chips::-webkit-scrollbar{display:none}
+  .stat{flex:none;font-size:.8rem;padding:5px 10px}
+  .progreso{margin-top:6px}
+  .tools .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px;flex:1 1 100%}
+  .chip{flex:none}
+  .file .btn{min-height:44px}
+  .icon-btn.sm{width:44px;height:44px}
+  .cal-head .switch{width:100%;justify-content:center}
+}
 .hide{display:none!important}
 @media (max-width:820px){.login{grid-template-columns:1fr;gap:26px;padding:28px 0 48px}.perks{display:none}.search{max-width:none;margin-left:0}}
 @media (max-width:420px){.brand span{display:none}.panel{padding:22px 18px}.lnk{padding:8px}}
@@ -509,6 +549,20 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
 
 <footer class="foot"><div class="wrap"><span>© Cofre Didáctico · Material de uso personal del comprador. Cada descarga queda registrada a su nombre.</span><a id="wa2" target="_blank" rel="noopener">¿Necesitás ayuda?</a></div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<nav class="navcel hide" id="barra" aria-label="Secciones">
+  <button type="button" data-ir-a="top" aria-current="true"><span>🏠</span>Inicio</button>
+  <button type="button" data-ir-a="#cal"><span>📅</span>Fechas</button>
+  <button type="button" data-ir-a="#tools"><span>📚</span>Materiales</button>
+  <button type="button" data-ir-a="tapa"><span>🏫</span>Mi tapa</button>
+</nav>
+<div class="tirar" id="tirar" aria-hidden="true">↻</div>
+<div class="invitar" id="invitar" role="dialog" aria-label="Instalar Mi biblioteca"><img src="icon192.png" alt="" onerror="this.remove()" /><div><b>Tené tu biblioteca a un toque</b><span>Agregala a la pantalla de inicio de tu celular, como una app.</span></div><div class="inv-acts"><button class="btn btn-ghost btn-sm" type="button" id="invNo">Ahora no</button><button class="btn btn-primary btn-sm" type="button" id="invSi">Agregar</button></div></div>
+<dialog class="dlg" id="dlgDatos" aria-labelledby="datTit"><form method="dialog" class="dlg-in">
+  <h2 id="datTit">📶 Estás usando datos móviles</h2>
+  <p class="sub">Este archivo pesa <b id="datosTam"></b>. Si tu plan de datos es chico, quizás te conviene esperar a tener wifi.</p>
+  <label class="chk"><input type="checkbox" id="datosRec" /> <span>No volver a preguntar hoy</span></label>
+  <div class="dlg-acts"><button class="btn btn-ghost" value="no" type="submit">Esperar al wifi</button><button class="btn btn-primary" value="si" type="submit">Descargar igual</button></div>
+</form></dialog>
 <div class="armando" id="armando" role="status" aria-live="polite"><span class="cofre"><img src="logo.png" alt="" onerror="this.remove()" /></span><span><b>Armando tu copia…</b><small id="armandoT">Abriendo el cofre</small></span></div>
 <canvas id="confeti" aria-hidden="true"></canvas>
 
@@ -607,10 +661,10 @@ async function api(body) {
 })();
 const pend = () => store.get(PEND, sessionStorage) || {};
 
-function ver(id) { ["#vLogin", "#vLib", "#vLoad", "#vVerif"].forEach((v) => $(v).classList.toggle("hide", v !== id)); $("#salir").classList.toggle("hide", id === "#vLogin" || id === "#vVerif"); $("#miTapa").classList.toggle("hide", id === "#vLogin" || id === "#vVerif"); if (id === "#vLogin" || id === "#vVerif") $("#instalar").classList.add("hide"); }
+function ver(id) { ["#vLogin", "#vLib", "#vLoad", "#vVerif"].forEach((v) => $(v).classList.toggle("hide", v !== id)); $("#barra").classList.toggle("hide", id !== "#vLib"); document.body.classList.toggle("con-barra", id === "#vLib"); $("#salir").classList.toggle("hide", id === "#vLogin" || id === "#vVerif"); $("#miTapa").classList.toggle("hide", id === "#vLogin" || id === "#vVerif"); if (id === "#vLogin" || id === "#vVerif") $("#instalar").classList.add("hide"); }
 function msg(el, t, tipo = "err") { el.className = "msg " + (t ? tipo : ""); el.textContent = t || ""; }
 function toast(t) { const el = $("#toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 3200); }
-function salir(silencio) { store.del(SES); sesion = null; materiales = []; verComo = null; resumen = null; ver("#vLogin"); mostrarEmail(); if (!silencio) toast("Cerraste la sesión."); }
+function salir(silencio) { store.del(SES); store.del(CACHE_K); sesion = null; materiales = []; verComo = null; resumen = null; ver("#vLogin"); mostrarEmail(); if (!silencio) toast("Cerraste la sesión."); }
 $("#salir").onclick = () => salir();
 
 // ---------- Ingreso ----------
@@ -624,7 +678,7 @@ function cuentaReenvio() {
 async function pedirCodigo(email) {
   const b = $("#bEmail"); b.disabled = true; b.textContent = "Enviando…";
   try {
-    await api({ accion: "codigo", email });
+    await api({ accion: "codigo", email, ...pend() });
     $("#sentTo").textContent = email; $("#fEmail").classList.add("hide"); $("#fCode").classList.remove("hide");
     msg($("#mCode"), ""); $("#code").value = ""; $("#code").focus(); cuentaReenvio();
   } catch (e) { msg($("#mEmail"), e.message); }
@@ -648,14 +702,14 @@ $("#fCode").onsubmit = async (e) => {
 async function cargar(fresco) {
   if (!fresco) ver("#vLoad");
   try { mostrar(await api({ accion: "mis", token: sesion.token, ...pend(), ...(verComo ? { como: verComo } : {}), ...(fresco ? { fresco: true } : {}) })); }
-  catch (e) { if (sesion) { ver("#vLib"); $("#grid").innerHTML = ""; $("#notice").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)} <button class="btn-link" onclick="cargar()">Reintentar</button></div></div>`; } else toast(e.message); }
+  catch (e) { if ((e instanceof TypeError || !navigator.onLine) && mostrarSinConexion()) return; if (sesion) { ver("#vLib"); $("#grid").innerHTML = ""; $("#notice").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)} <button class="btn-link" onclick="cargar()">Reintentar</button></div></div>`; } else toast(e.message); }
 }
 const TIPOS = { cuadernillo: ["📘", "Cuadernillo", "Cuadernillos"], plataforma: ["🎮", "Plataforma", "Plataformas"], juego: ["🧩", "Juego", "Juegos"] };
 const tam = (b) => (b >= 1e6 ? (b / 1e6).toFixed(1).replace(".", ",") + " MB" : b ? Math.max(1, Math.round(b / 1e3)) + " KB" : "");
 const nombreArchivo = (n) => n.replace(/\.[a-z0-9]+$/i, "").replace(/[_-]+/g, " ");
 let ultimaRespuesta = null;
 function mostrar(r) {
-  ultimaRespuesta = r;
+  ultimaRespuesta = r; guardarCopiaLocal(r); setTimeout(marcarBarra, 50); if (!window.__invitado) { window.__invitado = true; invitarInstalar(); }
   materiales = r.materiales || []; const p = pend(); store.del(PEND, sessionStorage);
   destacado = r.reclamo === "ok" || r.reclamo === "ya" ? p.m : null;
   ver("#vLib");
@@ -824,6 +878,8 @@ function estadoBoton(b) {
   };
 }
 async function descargar(b, material, archivo, paginas) {
+  const mm = materiales.find((x) => x.id === material), fa = mm && (mm.archivos || []).find((x) => x.nombre === archivo);
+  if (!(await confirmarDatos(fa && fa.tam))) return;
   const st = estadoBoton(b); b.disabled = true; st.set("Preparando…");
   try {
     const libs = /\.pdf$/i.test(archivo) ? Promise.all([cargarScript(LIBS.pdf), cargarScript(LIBS.qr)]) : null;
@@ -841,7 +897,7 @@ async function descargar(b, material, archivo, paginas) {
     if (paginas) nombre = archivo.replace(/\.pdf$/i, "") + ` (pags. ${rangoTexto(paginas)}).pdf`;
     guardar(final, nombre); armando(false);
     toast(final === r.bytes ? "Descarga lista ✓" : `Tu copia personalizada está lista ✓ (${r.licencia.codigo})`);
-    if (final !== r.bytes) festejo();
+    if (final !== r.bytes) { festejo(); vibrar(); }
     if (!window.__esAdmin) { sumarSemana(material); marcarDescargado(material, archivo); pintar(); }
   } catch (err) { if (err.limite) abrirLimite(material, err.limite, () => descargar(b, material, archivo, paginas)); else toast(err.message); }
   finally { st.fin(); armando(false); }
@@ -1037,7 +1093,7 @@ function abrirLimite(material, info, reintentar) {
 $("#limNo").onclick = () => $("#dlgLimite").close();
 $("#limPedir").onclick = async () => {
   const b = $("#limPedir"); b.disabled = true; b.textContent = "Enviando…";
-  try { await api({ accion: "codigo", email: sesion.email }); msg($("#limMsg"), `Te mandamos un código a ${sesion.email}. Puede tardar un minuto.`, "ok"); b.classList.add("hide"); $("#limPaso2").classList.remove("hide"); $("#limOk").classList.remove("hide"); $("#limCod").focus(); }
+  try { await api({ accion: "codigo", email: sesion.email, para: "desbloqueo" }); msg($("#limMsg"), `Te mandamos un código a ${sesion.email}. Puede tardar un minuto.`, "ok"); b.classList.add("hide"); $("#limPaso2").classList.remove("hide"); $("#limOk").classList.remove("hide"); $("#limCod").focus(); }
   catch (e) { msg($("#limMsg"), e.message); b.disabled = false; }
   finally { b.textContent = "Enviarme el código"; }
 };
@@ -1209,7 +1265,6 @@ $("#instalar").onclick = async () => {
 };
 $("#appX").onclick = () => $("#dlgApp").close();
 function pintarInstalar() { $("#instalar").classList.toggle("hide", !sesion || instalada() || (!avisoInstalar && !esIOS)); }
-if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("serviceworker.js").catch(() => {});
 
 // ---------- Verificación pública de licencias (QR del PDF) ----------
 async function verificar(codigo) {
@@ -1363,10 +1418,94 @@ async function demoApi(b) {
 }
 if (DEMO) { $("#demoBar").classList.remove("hide"); if (!pend().m && /[?&]demo=1/.test(location.search) && !sesion) store.set(PEND, { m: "17-de-junio-martin-miguel-de-guemes", k: "demo" }, sessionStorage); }
 
+// ---------- Celular: barra inferior ----------
+const esCelular = () => matchMedia("(max-width: 720px)").matches;
+function irA(sel) { const el = sel === "top" ? document.body : $(sel); if (!el) return; const y = sel === "top" ? 0 : el.getBoundingClientRect().top + scrollY - 76; scrollTo({ top: y, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); }
+$("#barra").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-ir-a]"); if (!b) return;
+  if (b.dataset.irA === "tapa") return pedirTapa(false);
+  irA(b.dataset.irA);
+});
+function marcarBarra() {
+  if ($("#barra").classList.contains("hide")) return;
+  const y = scrollY + innerHeight * 0.35, cal = $("#cal"), tools = $("#tools");
+  let act = "top";
+  if (cal && !cal.classList.contains("hide") && y >= cal.offsetTop) act = "#cal";
+  if (tools && y >= tools.offsetTop) act = "#tools";
+  document.querySelectorAll("#barra [data-ir-a]").forEach((b) => b.setAttribute("aria-current", String(b.dataset.irA === act)));
+}
+addEventListener("scroll", () => requestAnimationFrame(marcarBarra), { passive: true });
+
+// ---------- Aviso de datos móviles antes de descargar archivos pesados ----------
+const conexion = () => navigator.connection || navigator.mozConnection || navigator.webkitConnection || null;
+function conDatosMoviles() { const c = conexion(); if (!c) return false; return c.type === "cellular" || !!c.saveData || /(^|-)2g|3g/.test(c.effectiveType || ""); }
+let datosOk = false;
+function confirmarDatos(tamBytes) {
+  if (datosOk || !tamBytes || tamBytes < 15 * 1048576 || !conDatosMoviles()) return Promise.resolve(true);
+  $("#datosTam").textContent = tam(tamBytes);
+  const d = $("#dlgDatos"); d.showModal();
+  return new Promise((ok) => { d.onclose = () => { const si = d.returnValue === "si"; if (si && $("#datosRec").checked) datosOk = true; ok(si); }; });
+}
+
+// ---------- Vibración suave al terminar (Android) ----------
+const vibrar = () => { try { if (!matchMedia("(prefers-reduced-motion: reduce)").matches) navigator.vibrate?.([25, 40, 60]); } catch {} };
+
+// ---------- Invitación a instalar la app (desde la segunda visita) ----------
+function invitarInstalar() {
+  try {
+    const n = (store.get("cofre-visitas") || 0) + 1; store.set("cofre-visitas", n);
+    const no = store.get("cofre-instalar-no") || 0;
+    if (n < 2 || instalada() || Date.now() - no < 30 * 864e5 || (!avisoInstalar && !esIOS)) return;
+    setTimeout(() => { if (sesion && !instalada()) $("#invitar").classList.add("on"); }, 2500);
+  } catch {}
+}
+$("#invSi").onclick = () => { $("#invitar").classList.remove("on"); $("#instalar").click(); };
+$("#invNo").onclick = () => { $("#invitar").classList.remove("on"); store.set("cofre-instalar-no", Date.now()); };
+
+// ---------- Sin conexión: muestra la última biblioteca guardada en este dispositivo ----------
+const CACHE_K = "cofre-biblioteca-copia";
+function guardarCopiaLocal(r) { try { if (!r || r.como) return; store.set(CACHE_K, { t: Date.now(), r: { ...r, reclamo: null } }); } catch {} }
+function mostrarSinConexion() {
+  const c = store.get(CACHE_K); if (!c || !c.r || !sesion || c.r.email !== sesion.email) return false;
+  mostrar(c.r);
+  $("#notice").innerHTML = `<div class="notice warn"><span class="ic">📡</span><div><b>Sin conexión.</b> Te mostramos tu biblioteca guardada (${esc(new Date(c.t).toLocaleDateString("es-AR", { day: "numeric", month: "long" }))}). Para descargar necesitás internet: cuando vuelva la señal, se actualiza sola.</div></div>`;
+  return true;
+}
+addEventListener("online", () => { if (sesion && !$("#vLib").classList.contains("hide")) { toast("Volvió la conexión ✓"); cargar(true); } });
+addEventListener("offline", () => { if (sesion) toast("Te quedaste sin conexión. Podés seguir viendo tu biblioteca."); });
+if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("biblioteca-sw.js", { scope: "./biblioteca" }).catch(() => {});
+
+// ---------- Deslizar hacia abajo para actualizar ----------
+(() => {
+  let y0 = null, tirando = false; const ind = $("#tirar");
+  addEventListener("touchstart", (e) => { if (scrollY <= 0 && !$("#vLib").classList.contains("hide") && !document.querySelector("dialog[open]")) { y0 = e.touches[0].clientY; tirando = false; } else y0 = null; }, { passive: true });
+  addEventListener("touchmove", (e) => {
+    if (y0 == null) return; const d = e.touches[0].clientY - y0; if (d <= 0) { ind.style.transform = ""; ind.classList.remove("on", "listo"); return; }
+    tirando = true; const t = Math.min(d, 110); ind.classList.add("on"); ind.classList.toggle("listo", t >= 80);
+    ind.style.transform = `translate(-50%, ${t - 60}px) rotate(${t * 3}deg)`;
+  }, { passive: true });
+  addEventListener("touchend", () => {
+    if (y0 == null) return; const listo = ind.classList.contains("listo"); y0 = null;
+    ind.style.transform = ""; ind.classList.remove("on", "listo");
+    if (tirando && listo) { toast("Actualizando…"); cargar(true); }
+  });
+})();
+
 // ---------- Inicio ----------
 (function () {
   const v = new URLSearchParams(location.search).get("v");
   if (v) { verificar(v.trim().toUpperCase()); return; }
+  // Entrar con un toque desde el correo: #acceso=<correo>.<código>[.<material>.<clave>]
+  const h = location.hash.match(/^#acceso=([A-Za-z0-9_-]+)\.(\d{6})(?:\.([a-z0-9-]+)\.([a-f0-9]+))?$/);
+  if (h) {
+    history.replaceState(null, "", location.pathname + location.search);
+    let email = ""; try { email = decodeURIComponent(escape(atob(h[1].replace(/-/g, "+").replace(/_/g, "/")))); } catch {}
+    if (h[3] && h[4]) store.set(PEND, { m: h[3], k: h[4] }, sessionStorage);
+    if (email && !(sesion && sesion.email === email)) {
+      ver("#vLogin"); $("#sentTo").textContent = email; $("#fEmail").classList.add("hide"); $("#fCode").classList.remove("hide");
+      $("#code").value = h[2]; $("#bCode").textContent = "Entrando…"; setTimeout(() => $("#fCode").requestSubmit(), 60); return;
+    }
+  }
   const p = pend();
   if (p.m) {
     const conocido = DEMO_MATS.find((m) => m.id === p.m) || CATALOGO.find((m) => m.id === p.m);
