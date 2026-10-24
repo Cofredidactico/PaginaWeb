@@ -18,6 +18,7 @@
 <script>(function(){try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
 <style>
 :root{
+  --sea1:#E9F4FF; --sea2:#FFF1E6;
   --primary:#2196F3; --primary-dark:#1976D2; --primary-soft:#E3F2FD;
   --accent:#FF8A4C; --accent-soft:#FFEBDD;
   --card:#FFFFFF; --hdr-bg:rgba(251,247,242,.86); --dot:rgba(26,39,68,.05);
@@ -29,6 +30,7 @@
   --f:'Nunito',system-ui,sans-serif; --f-display:'Outfit',system-ui,sans-serif;
 }
 :root[data-theme="dark"]{
+  --sea1:#16263A; --sea2:#2A1E18;
   --ink:#EEF1F6; --ink-2:#C3CAD6; --ink-3:#96A0B0; --ink-4:#6E7889;
   --bg:#121722; --bg-2:#1A2130; --line:#2C3648; --card:#1B2230; --hdr-bg:rgba(18,23,34,.86); --dot:rgba(255,255,255,.045);
   --primary:#54ABF5; --primary-dark:#8CC6F8; --primary-soft:#16283A; --accent:#FF9B63; --accent-soft:#33241B;
@@ -36,6 +38,7 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
+    --sea1:#16263A; --sea2:#2A1E18;
     --ink:#EEF1F6; --ink-2:#C3CAD6; --ink-3:#96A0B0; --ink-4:#6E7889;
     --bg:#121722; --bg-2:#1A2130; --line:#2C3648; --card:#1B2230; --hdr-bg:rgba(18,23,34,.86); --dot:rgba(255,255,255,.045);
     --primary:#54ABF5; --primary-dark:#8CC6F8; --primary-soft:#16283A; --accent:#FF9B63; --accent-soft:#33241B;
@@ -298,6 +301,116 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
 .mini{display:flex;gap:6px;flex-wrap:wrap}
 @media (max-width:980px){.cal-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.hide-xs{display:none}.cal-row{grid-template-columns:1fr}.row2{grid-template-columns:1fr}.dlg-in{padding:20px 16px}.pg-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.file{flex-wrap:wrap}.f-acts{width:100%;justify-content:flex-end}}
+/* ---- bienvenida ---- */
+.hero{position:relative;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;background:linear-gradient(135deg,var(--sea1),var(--sea2));border:1px solid var(--line);border-radius:26px;padding:34px 30px 26px;margin:28px 0 22px;overflow:hidden}
+.bunting{position:absolute;left:0;right:0;top:0;height:30px;display:flex;justify-content:space-around;pointer-events:none}
+.bunting i{width:22px;height:26px;clip-path:polygon(0 0,100% 0,50% 100%);opacity:.9;transform-origin:top center;animation:mecer 3.6s ease-in-out infinite alternate}
+.bunting i:nth-child(2n){animation-delay:-1.2s}
+@keyframes mecer{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+.hero-txt{position:relative;display:grid;gap:6px;min-width:0}
+.hero-k{justify-self:start;font-weight:800;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--card);padding:6px 12px;border-radius:999px;box-shadow:var(--s-1)}
+.hero h1{font-family:var(--f-display);font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.08;text-wrap:balance;margin-top:6px}
+.hero-f{color:var(--ink-2);font-weight:600;font-size:1.02rem}
+.who{color:var(--ink-3);font-size:.86rem;font-weight:700;word-break:break-word}
+.hero-art{position:relative;width:170px;height:170px;flex:none}
+.hero-art .blob{position:absolute;inset:6px;border-radius:46% 54% 58% 42%/48% 44% 56% 52%;background:var(--card);box-shadow:var(--s-2);animation:latir 7s ease-in-out infinite alternate}
+@keyframes latir{to{border-radius:56% 44% 46% 54%/52% 58% 42% 48%;transform:rotate(6deg)}}
+.hero-art img{position:absolute;inset:26px;width:118px;height:118px;object-fit:contain;animation:flotar 4s ease-in-out infinite}
+@keyframes flotar{50%{transform:translateY(-7px) rotate(-2deg)}}
+.fl{position:absolute;font-size:1.35rem;animation:flotar 5s ease-in-out infinite}
+.fl.f1{top:-4px;right:6px}.fl.f2{bottom:4px;left:-6px;animation-delay:-1.5s}.fl.f3{top:44%;right:-12px;animation-delay:-3s;font-size:1.05rem}
+.progreso{display:grid;gap:6px;margin-top:10px;max-width:460px}
+.progreso .pt{font-size:.88rem;font-weight:700;color:var(--ink-2)}
+.progreso .pt b{color:var(--ink);font-family:var(--f-display)}
+.barra{height:10px;border-radius:999px;background:var(--card);border:1px solid var(--line);overflow:hidden}
+.barra i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--green));transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+/* ---- vistas ---- */
+.vistas{display:inline-flex;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:3px;gap:2px}
+.vistas button{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border-radius:9px;font-weight:800;font-size:.84rem;color:var(--ink-3)}
+.vistas button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.tools .search{margin-left:auto}
+.card{--tint:var(--bg-2);animation:aparecer .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0) * 45ms)}
+@keyframes aparecer{from{opacity:0;transform:translateY(14px) scale(.98)}}
+.card .cover{background:color-mix(in srgb,var(--tint) 28%,var(--bg-2))}
+.card.tinted{border-color:color-mix(in srgb,var(--tint) 34%,var(--line))}
+.card.tinted:hover{box-shadow:0 18px 40px -16px color-mix(in srgb,var(--tint) 70%,transparent)}
+.hojear{position:absolute;right:10px;bottom:10px;z-index:3;font-size:.78rem;font-weight:800;padding:7px 11px;border-radius:999px;background:rgba(17,24,39,.78);color:#fff;opacity:0;transform:translateY(6px);transition:.18s}
+.card:hover .hojear,.hojear:focus-visible{opacity:1;transform:none}
+@media (hover:none){.hojear{opacity:1;transform:none}}
+.plank{display:none}
+.usado{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:800;color:var(--green);background:var(--green-soft);border-radius:999px;padding:3px 8px;align-self:flex-start}
+/* estantería */
+.grid.v-estante{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:30px 18px;padding:8px 4px 10px}
+.v-estante .card{background:none;border:0;box-shadow:none;overflow:visible;cursor:pointer}
+.v-estante .card:hover{transform:none;box-shadow:none}
+.v-estante .cover{border-radius:4px 10px 10px 4px;box-shadow:inset 9px 0 10px -6px rgba(0,0,0,.35),0 10px 18px -8px rgba(26,39,68,.45);transform-origin:left center;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;perspective:600px}
+.v-estante .cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;z-index:2;background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(255,255,255,.12) 60%,transparent)}
+.v-estante .card:hover .cover{transform:perspective(700px) rotateY(-16deg) translateY(-8px);box-shadow:inset 9px 0 10px -6px rgba(0,0,0,.35),18px 18px 26px -10px rgba(26,39,68,.45)}
+.v-estante .plank{display:block;height:13px;margin:0 -10px;border-radius:3px;background:linear-gradient(180deg,#d9a46a,#b97c42 55%,#8a5527);box-shadow:0 6px 10px -4px rgba(60,30,10,.45)}
+.v-estante .body{padding:10px 2px 0;gap:4px}
+.v-estante .body h3{font-size:.86rem;font-weight:700;font-family:var(--f);line-height:1.25}
+.v-estante .files,.v-estante .licnote,.v-estante .rate,.v-estante .pending,.v-estante .drop,.v-estante .badge,.v-estante .date{display:none}
+.v-estante .new{top:8px;right:6px;font-size:.62rem;padding:3px 7px}
+.v-estante .hojear{bottom:8px;right:8px;font-size:.7rem;padding:5px 9px}
+/* lista */
+.grid.v-lista{grid-template-columns:1fr;gap:10px}
+.v-lista .card{flex-direction:row;align-items:center;border-radius:16px}
+.v-lista .card:hover{transform:none}
+.v-lista .cover{width:92px;flex:none;aspect-ratio:1;border-radius:12px;margin:8px}
+.v-lista .badge,.v-lista .date,.v-lista .hojear,.v-lista .licnote{display:none}
+.v-lista .new{top:4px;right:4px;font-size:.58rem;padding:2px 6px}
+.v-lista .body{flex:1;flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:12px 14px 12px 4px;min-width:0}
+.v-lista .body h3{flex:1 1 220px;font-size:1rem}
+.v-lista .files{margin-top:0;flex:2 1 340px}
+.v-lista .drop{flex:1 1 100%}
+/* ficha (al tocar un libro del estante) */
+.dlg-ficha{width:min(560px,calc(100% - 32px))}
+.dlg-ficha .card{animation:none;box-shadow:none;border:0}
+.dlg-ficha .card:hover{transform:none}
+.dlg-ficha .cover{border-radius:14px}
+/* hojear */
+.libro{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;min-height:min(62vh,640px);background:radial-gradient(ellipse at center,var(--bg-2),var(--bg));border-radius:16px;padding:14px;perspective:1600px;overflow:hidden}
+.hoja-wrap{position:relative;height:min(58vh,600px);aspect-ratio:1/1.414;max-width:100%}
+.hoja{position:absolute;inset:0;background:#fff;border-radius:6px;box-shadow:0 18px 40px -14px rgba(0,0,0,.45);overflow:hidden;transform-origin:left center;backface-visibility:hidden}
+.hoja img{width:100%;height:100%;object-fit:contain;display:block}
+.hoja.sale{animation:pasar .55s cubic-bezier(.4,.1,.3,1) forwards}
+.hoja.vuelve{animation:volver .55s cubic-bezier(.4,.1,.3,1) forwards}
+@keyframes pasar{to{transform:rotateY(-100deg);opacity:.2}}
+@keyframes volver{from{transform:rotateY(-100deg);opacity:.2}to{transform:none;opacity:1}}
+.hj-nav{flex:none;width:46px;height:46px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);font-size:1.6rem;line-height:1;box-shadow:var(--s-1);z-index:2}
+.hj-nav:disabled{opacity:.35}
+.hj-pie{display:grid;gap:8px;justify-items:center}
+.hj-tira{display:flex;gap:6px;overflow-x:auto;max-width:100%;padding:2px}
+.hj-tira button{flex:none;width:44px;height:62px;border-radius:5px;overflow:hidden;border:2px solid transparent;background:#fff;opacity:.6}
+.hj-tira button[aria-current="true"]{border-color:var(--primary);opacity:1}
+.hj-tira img{width:100%;height:100%;object-fit:cover}
+/* línea de tiempo del ciclo lectivo */
+.tl-wrap{overflow-x:auto;padding:4px 2px 2px}
+.tl{position:relative;min-width:640px;height:104px;margin:0 8px}
+.tl-eje{position:absolute;left:0;right:0;top:40px;height:6px;border-radius:999px;background:var(--line)}
+.tl-hecho{position:absolute;left:0;top:40px;height:6px;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+.tl-mes{position:absolute;top:84px;font-size:.7rem;font-weight:800;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em;transform:translateX(-50%)}
+.tl-p{position:absolute;top:31px;width:20px;height:20px;margin-left:-10px;margin-top:2px;border-radius:50%;background:var(--card);border:3px solid var(--ink-4);display:grid;place-items:center;font-size:.62rem;font-weight:900;color:#fff;transition:transform .15s;z-index:1}
+.tl-p.mia{background:var(--green);border-color:var(--green)}
+.tl-p.pasada{opacity:.55}
+.tl-p:hover,.tl-p:focus-visible{transform:scale(1.25)}
+.tl-hoy{position:absolute;top:4px;height:78px;width:2px;background:var(--accent);margin-left:-1px}
+.tl-hoy span{position:absolute;top:-4px;left:50%;transform:translateX(-50%);font-size:.66rem;font-weight:900;color:#fff;background:var(--accent);padding:2px 7px;border-radius:999px;white-space:nowrap}
+.tl-ley{display:flex;gap:14px;flex-wrap:wrap;font-size:.78rem;color:var(--ink-3);font-weight:700}
+.tl-ley i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;vertical-align:-1px;border:2px solid var(--ink-4);background:var(--card)}
+.tl-ley i.mia{background:var(--green);border-color:var(--green)}
+/* armando la copia + confeti */
+.armando{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;pointer-events:none;display:flex;align-items:center;gap:12px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:10px 18px 10px 10px;box-shadow:var(--s-2);z-index:60;transition:.25s}
+.armando.on{opacity:1;transform:translate(-50%,0)}
+.armando .cofre{width:44px;height:44px;border-radius:12px;background:var(--primary-soft);display:grid;place-items:center}
+.armando .cofre img{width:34px;height:34px;object-fit:contain;animation:saltito .7s ease-in-out infinite}
+@keyframes saltito{50%{transform:translateY(-5px) rotate(-6deg) scale(1.06)}}
+.armando b{display:block;font-size:.92rem}
+.armando small{color:var(--ink-3);font-weight:700}
+#confeti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:70}
+@media (max-width:720px){.hero{grid-template-columns:1fr;padding:30px 18px 20px}.hero-art{position:absolute;right:-18px;top:30px;width:110px;height:110px;opacity:.95}.hero-art img{inset:18px;width:74px;height:74px}.hero-txt{padding-right:84px}.hero-art .fl{display:none}.vistas span{display:none}.tools .search{margin-left:0;flex:1 1 100%;order:3}}
+@media (max-width:520px){.grid.v-estante{grid-template-columns:repeat(2,minmax(0,1fr))}.v-lista .cover{width:72px}}
+@media (prefers-reduced-motion:reduce){.card,.bunting i,.hero-art img,.hero-art .blob,.fl,.armando .cofre img{animation:none!important}}
 .hide{display:none!important}
 @media (max-width:820px){.login{grid-template-columns:1fr;gap:26px;padding:28px 0 48px}.perks{display:none}.search{max-width:none;margin-left:0}}
 @media (max-width:420px){.brand span{display:none}.panel{padding:22px 18px}.lnk{padding:8px}}
@@ -358,15 +471,29 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
 
   <!-- Biblioteca -->
   <section class="wrap hide" id="vLib">
-    <div class="lib-head">
-      <div><h1>Mi biblioteca</h1><p id="who"></p><div class="stats" id="stats"></div></div>
+    <div class="hero" id="hero">
+      <div class="bunting" id="bunting" aria-hidden="true"></div>
+      <div class="hero-txt">
+        <span class="hero-k" id="heroK">Mi biblioteca</span>
+        <h1 id="heroT">Mi biblioteca</h1>
+        <p class="hero-f" id="heroF"></p>
+        <p class="who" id="who"></p>
+        <div class="stats" id="stats"></div>
+        <div class="progreso hide" id="prog"></div>
+      </div>
+      <div class="hero-art" id="heroArt" aria-hidden="true"><span class="blob"></span><img src="logo.png" alt="" onerror="this.remove()" /><span class="fl f1"></span><span class="fl f2"></span><span class="fl f3"></span></div>
     </div>
     <div id="adminBox" class="admin hide"></div>
     <div id="notice"></div>
     <section class="cal hide" id="cal" aria-label="Próximas efemérides"></section>
-    <div class="tools hide" id="tools">
+    <div class="tools" id="tools">
       <div class="chips" id="chips" role="group" aria-label="Filtrar por tipo"></div>
       <input class="inp search" id="q" type="search" placeholder="Buscar material…" aria-label="Buscar material" />
+      <div class="vistas" role="group" aria-label="Cómo ver tus materiales">
+        <button type="button" data-vista="estante" title="Estantería" aria-pressed="false">📚<span>Estante</span></button>
+        <button type="button" data-vista="grilla" title="Cuadrícula" aria-pressed="false">▦<span>Cuadrícula</span></button>
+        <button type="button" data-vista="lista" title="Lista" aria-pressed="false">☰<span>Lista</span></button>
+      </div>
     </div>
     <div class="grid" id="grid"></div>
   </section>
@@ -379,6 +506,17 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
 
 <footer class="foot"><div class="wrap"><span>© Cofre Didáctico · Material de uso personal del comprador. Cada descarga queda registrada a su nombre.</span><a id="wa2" target="_blank" rel="noopener">¿Necesitás ayuda?</a></div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="armando" id="armando" role="status" aria-live="polite"><span class="cofre"><img src="logo.png" alt="" onerror="this.remove()" /></span><span><b>Armando tu copia…</b><small id="armandoT">Abriendo el cofre</small></span></div>
+<canvas id="confeti" aria-hidden="true"></canvas>
+
+<dialog class="dlg dlg-wide" id="dlgHojear" aria-labelledby="hjTit"><div class="dlg-in">
+  <div class="pg-head"><div><h2 id="hjTit">👀 Hojear</h2><p class="sub" id="hjSub"></p></div><button class="icon-btn" id="hjX" type="button" aria-label="Cerrar">✕</button></div>
+  <div class="libro" id="hjLibro"><button class="hj-nav prev" id="hjPrev" type="button" aria-label="Página anterior">‹</button><div class="hoja-wrap" id="hjHoja"></div><button class="hj-nav next" id="hjNext" type="button" aria-label="Página siguiente">›</button></div>
+  <div class="hj-pie"><span class="muted" id="hjCont"></span><div class="hj-tira" id="hjTira"></div></div>
+  <p class="muted" style="text-align:center">Vista previa del material. Tu descarga trae el archivo completo en alta calidad.</p>
+</div></dialog>
+
+<dialog class="dlg dlg-ficha" id="dlgFicha" aria-label="Material"><div class="dlg-in"><div class="pg-head"><span></span><button class="icon-btn" id="fichaX" type="button" aria-label="Cerrar">✕</button></div><div id="fichaBody"></div></div></dialog>
 
 <dialog class="dlg" id="dlgTapa" aria-labelledby="tTit"><form method="dialog" class="dlg-in">
   <h2 id="tTit">🏫 Personalizá la tapa</h2>
@@ -443,6 +581,7 @@ async function api(body) {
   const r = await fetch(CONFIG.url + "/functions/v1/biblioteca", { method: "POST", headers: { "Content-Type": "application/json", apikey: CONFIG.key }, body: JSON.stringify(body) });
   let j = {}; try { j = await r.json(); } catch {}
   if (r.status === 401 && j.error === "sesion") { salir(true); throw new Error("Tu sesión venció. Volvé a ingresar."); }
+  if (r.status === 403 && j.error === "cerrada") { if (sesion && sesion.email !== "cofredidacticoo@gmail.com") salir(true); throw new Error(j.mensaje || "Mi biblioteca abre muy pronto."); }
   if (!r.ok) throw new Error(j.error || "No pudimos conectarnos. Probá de nuevo.");
   return j;
 }
@@ -500,7 +639,9 @@ async function cargar(fresco) {
 const TIPOS = { cuadernillo: ["📘", "Cuadernillo", "Cuadernillos"], plataforma: ["🎮", "Plataforma", "Plataformas"], juego: ["🧩", "Juego", "Juegos"] };
 const tam = (b) => (b >= 1e6 ? (b / 1e6).toFixed(1).replace(".", ",") + " MB" : b ? Math.max(1, Math.round(b / 1e3)) + " KB" : "");
 const nombreArchivo = (n) => n.replace(/\.[a-z0-9]+$/i, "").replace(/[_-]+/g, " ");
+let ultimaRespuesta = null;
 function mostrar(r) {
+  ultimaRespuesta = r;
   materiales = r.materiales || []; const p = pend(); store.del(PEND, sessionStorage);
   destacado = r.reclamo === "ok" || r.reclamo === "ya" ? p.m : null;
   ver("#vLib");
@@ -518,7 +659,8 @@ function mostrar(r) {
   $("#notice").innerHTML = html;
   const cuenta = materiales.reduce((a, m) => ((a[m.tipo] = (a[m.tipo] || 0) + 1), a), {});
   const tipos = Object.keys(TIPOS).filter((t) => cuenta[t]);
-  $("#tools").classList.toggle("hide", n < 4);
+  $("#tools").classList.toggle("hide", !n); pintarVistas(); pintarHero(r);
+  if (!previewsListas) cargarPreviews().then(() => { if (Object.keys(PREVIEWS).length) pintar(); });
   if (!tipos.includes(filtro)) filtro = "todos";
   $("#chips").innerHTML = [`<button class="chip" data-f="todos" aria-pressed="${filtro === "todos"}">Todos<span class="n">${n}</span></button>`]
     .concat(tipos.length > 1 ? tipos.map((t) => `<button class="chip" data-f="${t}" aria-pressed="${filtro === t}">${TIPOS[t][0]} ${TIPOS[t][2]}<span class="n">${cuenta[t]}</span></button>`) : []).join("");
@@ -537,7 +679,8 @@ function pintar() {
   }
   if (!lista.length) { $("#grid").innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="big">🔍</div><h2>No hay resultados</h2><p>Probá con otra palabra.</p></div>`; return; }
   const reciente = Date.now() - 7 * 864e5, gestor = modoGestor();
-  $("#grid").innerHTML = lista.map((m) => {
+  $("#grid").className = "grid v-" + vistaActual();
+  $("#grid").innerHTML = lista.map((m, idx) => {
     const t = TIPOS[m.tipo] || TIPOS.cuadernillo;
     const archivos = m.archivos || [];
     const novedades = archivos.some((f) => f.actualizado || f.nuevo);
@@ -557,10 +700,14 @@ function pintar() {
     const fechaTag = m.fecha ? `<span class="date">📅 ${esc(fechaLarga(m.fecha))}</span>` : "";
     const opinion = !window.__esAdmin && archivos.length + (m.url ? 1 : 0) > 0
       ? `<button class="rate" type="button" data-op="${esc(m.id)}" aria-label="${m.estrellas ? "Cambiar tu opinión" : "Calificar este material"}">${[1, 2, 3, 4, 5].map((i) => `<span class="${i <= (m.estrellas || 0) ? "on" : ""}">★</span>`).join("")}<em>${m.estrellas ? "Tu opinión" : "¿Qué te pareció?"}</em></button>` : "";
-    return `<article class="card${m.id === destacado ? " hl" : ""}" data-id="${esc(m.id)}">
-      <div class="cover"><div class="ph" aria-hidden="true">${t[0]}</div>${m.portada ? `<img src="${esc(m.portada)}" alt="" loading="lazy" onerror="this.remove()">` : ""}
-        <span class="badge ${esc(m.tipo)}">${t[0]} ${t[1]}</span>${novedades ? '<span class="new upd">Novedades</span>' : nuevo ? '<span class="new">Nuevo</span>' : ""}${fechaTag}</div>
-      <div class="body"><h3>${esc(m.nombre)}</h3>${opinion}${acciones}</div></article>`;
+    const prev = (PREVIEWS[m.id] || []).length ? `<button class="hojear" type="button" data-hojear="${esc(m.id)}">👀 Hojear</button>` : "";
+    const tinte = TINTES[m.id] ? ` tinted" style="--tint:${TINTES[m.id]};--i:${Math.min(idx, 14)}` : `" style="--i:${Math.min(idx, 14)}`;
+    const usado = !gestor && m.usado ? '<span class="usado">✓ Usado este año</span>' : "";
+    return `<article class="card${m.id === destacado ? " hl" : ""}${tinte}" data-id="${esc(m.id)}">
+      <div class="cover"><div class="ph" aria-hidden="true">${t[0]}</div>${m.portada ? `<img src="${esc(imgChica(m.portada, 520))}" data-orig="${esc(m.portada)}" alt="" loading="lazy" crossorigin="anonymous" onload="tomarTinte(this)" onerror="imgFalla(this)">` : ""}
+        <span class="badge ${esc(m.tipo)}">${t[0]} ${t[1]}</span>${novedades ? '<span class="new upd">Novedades</span>' : nuevo ? '<span class="new">Nuevo</span>' : ""}${fechaTag}${prev}</div>
+      <span class="plank" aria-hidden="true"></span>
+      <div class="body"><h3>${esc(m.nombre)}</h3>${usado}${opinion}${acciones}</div></article>`;
   }).join("");
 }
 
@@ -662,7 +809,7 @@ async function descargar(b, material, archivo, paginas) {
     const libs = /\.pdf$/i.test(archivo) ? Promise.all([cargarScript(LIBS.pdf), cargarScript(LIBS.qr)]) : null;
     const r = await obtener(material, archivo, st.set);
     if (!r.bytes) { const a = document.createElement("a"); a.href = r.url; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); toast("Descarga iniciada ✓"); return; }
-    st.set("Personalizando tu copia…", 1); await libs;
+    st.set("Personalizando tu copia…", 1); armando(true, "Imprimiendo tu nombre y tu código"); await libs;
     let final, nombre = archivo;
     try { final = await personalizar(r.bytes, r.licencia, { tapa: textoTapa(tapaGuardada()), paginas }); }
     catch (err) {
@@ -672,15 +819,19 @@ async function descargar(b, material, archivo, paginas) {
       final = r.bytes;
     }
     if (paginas) nombre = archivo.replace(/\.pdf$/i, "") + ` (pags. ${rangoTexto(paginas)}).pdf`;
-    guardar(final, nombre);
+    guardar(final, nombre); armando(false);
     toast(final === r.bytes ? "Descarga lista ✓" : `Tu copia personalizada está lista ✓ (${r.licencia.codigo})`);
+    if (final !== r.bytes) festejo();
     if (!window.__esAdmin) marcarDescargado(material, archivo);
   } catch (err) { toast(err.message); }
-  finally { st.fin(); }
+  finally { st.fin(); armando(false); }
 }
 function marcarDescargado(material, archivo) {
   const m = materiales.find((x) => x.id === material), f = m && (m.archivos || []).find((x) => x.nombre === archivo);
-  if (f && (f.actualizado || f.nuevo)) { f.actualizado = f.nuevo = false; pintar(); pintarResumenBiblio(); }
+  if (!m) return;
+  const cambia = !m.usado || (f && (f.actualizado || f.nuevo));
+  m.usado = true; if (f) f.actualizado = f.nuevo = false;
+  if (cambia) { pintar(); pintarResumenBiblio(); if (ultimaRespuesta) pintarHero(ultimaRespuesta); }
 }
 
 // ---------- Tapa personalizada (escuela, grado, docente) ----------
@@ -791,7 +942,8 @@ $("#grid").addEventListener("change", (e) => { const inp = e.target.closest(".dr
 ["dragenter", "dragover"].forEach((ev) => $("#grid").addEventListener(ev, (e) => { const z = e.target.closest(".drop"); if (z) { e.preventDefault(); z.classList.add("over"); } }));
 ["dragleave", "drop"].forEach((ev) => $("#grid").addEventListener(ev, (e) => { const z = e.target.closest(".drop"); if (!z) return; e.preventDefault(); z.classList.remove("over"); if (ev === "drop" && e.dataTransfer.files.length) subirArchivos(z.dataset.up, [...e.dataTransfer.files], z); }));
 
-$("#grid").onclick = async (e) => {
+async function accionesClick(e) {
+  const hjb = e.target.closest("[data-hojear]"); if (hjb) { e.stopPropagation(); return abrirHojear(hjb.dataset.hojear); }
   const op = e.target.closest("[data-op]"); if (op) return abrirOpinion(op.dataset.op);
   const del = e.target.closest("[data-del]");
   if (del) {
@@ -804,7 +956,13 @@ $("#grid").onclick = async (e) => {
   const b = e.target.closest("[data-dl]"); if (!b || b.disabled) return;
   if (/\.pdf$/i.test(b.dataset.f) && !tapaGuardada()) { const v = await pedirTapa(true); if (v !== "si" && v !== "no") return; }
   descargar(b, b.dataset.dl, b.dataset.f);
+}
+$("#grid").onclick = (e) => {
+  // En la estantería, tocar un libro abre su ficha con las descargas
+  if (vistaActual() === "estante" && !e.target.closest("button,a,label,input")) { const c = e.target.closest(".card"); if (c) return abrirFicha(c.dataset.id); }
+  return accionesClick(e);
 };
+$("#fichaBody").onclick = accionesClick;
 
 // ---------- Calendario de efemérides ----------
 const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
@@ -825,6 +983,7 @@ function pintarCalendario() {
   const faltan = (d) => (d === 0 ? "¡Es hoy!" : d === 1 ? "Mañana" : `Faltan ${d} días`);
   box.innerHTML = `<div class="cal-head"><div><h2>Próximas fechas</h2><p>Tus materiales para cada efeméride, listos cuando los necesites.</p></div>
     ${window.__esAdmin ? `<button class="btn btn-ghost btn-sm" type="button" id="calPrueba">✉ Enviarme el aviso de prueba</button>` : `<button class="switch" type="button" role="switch" id="calAviso" aria-checked="${recordatorioOn}"><span class="knob" aria-hidden="true"></span>🔔 Avisarme por correo 2 semanas antes</button>`}</div>
+    ${htmlLineaDeTiempo()}
     <div class="cal-row">${lista.map((g) => {
       const mios = g.mats.filter((m) => tengo.has(m.id)), otros = g.mats.filter((m) => !tengo.has(m.id));
       const [mm, dd] = g.fecha.split("-").map(Number);
@@ -843,6 +1002,148 @@ function pintarResumenBiblio() {
   const n = materiales.length, nov = materiales.filter((m) => (m.archivos || []).some((f) => f.actualizado || f.nuevo)).length, prox = proximas(1)[0];
   const mia = prox && prox.mats.some((m) => materiales.some((x) => x.id === m.id));
   el.innerHTML = [`<span class="stat"><b>${n}</b> ${n === 1 ? "material" : "materiales"}</span>`, nov ? `<span class="stat upd"><b>${nov}</b> con novedades</span>` : "", prox ? `<span class="stat"><b>${prox.dias}</b> ${prox.dias === 1 ? "día" : "días"} para ${esc(NOMBRE_FECHA[prox.fecha] || fechaLarga(prox.fecha))}${mia ? " · ya lo tenés" : ""}</span>` : ""].join("");
+}
+
+// ---------- Imágenes livianas (mismo servicio que usa tu tienda) ----------
+function imgChica(url, w) {
+  if (!/^https:\/\/cofredidactico\.com\.ar\//.test(url || "")) return url;
+  return "https://wsrv.nl/?url=" + encodeURIComponent(url.replace(/^https?:\/\//, "")) + "&w=" + (w || 600) + "&output=webp&q=82&we";
+}
+function imgFalla(img) { const o = img.dataset.orig; if (o && img.src !== o) { img.removeAttribute("crossorigin"); img.src = o; } else img.remove(); }
+const normImg = (r) => String(r || "").replace(/^\/PaginaWeb\//, "").replace(/^\//, "").split("/").map((p, i, a) => (i === a.length - 1 ? encodeURIComponent(p) : p)).join("/");
+
+// ---------- Vistas: estantería, cuadrícula o lista ----------
+const VISTA_K = "cofre-vista";
+const vistaActual = () => { const v = store.get(VISTA_K); return ["estante", "grilla", "lista"].includes(v) ? v : modoGestor() ? "grilla" : "estante"; };
+function pintarVistas() { const v = vistaActual(); document.querySelectorAll("[data-vista]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.vista === v))); }
+document.querySelectorAll("[data-vista]").forEach((b) => b.addEventListener("click", () => { store.set(VISTA_K, b.dataset.vista); pintarVistas(); pintar(); }));
+
+// ---------- Color propio de cada portada ----------
+const TINTES = {};
+function tomarTinte(img) {
+  try {
+    const card = img.closest(".card"); const id = card && card.dataset.id; if (!id || TINTES[id]) return;
+    const c = document.createElement("canvas"); c.width = c.height = 24; const x = c.getContext("2d", { willReadFrequently: true });
+    x.drawImage(img, 0, 0, 24, 24); const d = x.getImageData(0, 0, 24, 24).data;
+    let r = 0, g = 0, b = 0, w = 0;
+    for (let i = 0; i < d.length; i += 4) { const R = d[i], G = d[i + 1], B = d[i + 2], mx = Math.max(R, G, B), mn = Math.min(R, G, B), sat = mx ? (mx - mn) / mx : 0, lum = (mx + mn) / 510; const peso = sat * sat * (lum > 0.12 && lum < 0.92 ? 1 : 0.1) + 0.002; r += R * peso; g += G * peso; b += B * peso; w += peso; }
+    const col = `rgb(${Math.round(r / w)},${Math.round(g / w)},${Math.round(b / w)})`; TINTES[id] = col;
+    document.querySelectorAll(`.card[data-id="${CSS.escape(id)}"]`).forEach((k) => { k.style.setProperty("--tint", col); k.classList.add("tinted"); });
+  } catch { /* si la imagen no permite leer colores, queda el fondo neutro */ }
+}
+
+// ---------- Vistas previas para hojear (las mismas imágenes de tu tienda) ----------
+const PREVIEWS = {};
+let previewsListas = null;
+function cargarPreviews() {
+  return (previewsListas ||= fetch("productos.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).then((cat) => {
+    const prods = cat ? (Array.isArray(cat) ? cat : cat.productos || []) : [];
+    prods.forEach((p) => { const l = (p.previews || []).filter(Boolean).map((x) => "https://cofredidactico.com.ar/" + normImg(x)); if (p.id && l.length) PREVIEWS[p.id] = l; });
+  }).catch(() => {}));
+}
+let hj = { id: null, i: 0, imgs: [] };
+function abrirHojear(id) {
+  const m = materiales.find((x) => x.id === id) || CATALOGO.find((x) => x.id === id) || { nombre: "" };
+  hj = { id, i: 0, imgs: PREVIEWS[id] || [] }; if (!hj.imgs.length) return;
+  $("#hjTit").textContent = "👀 " + m.nombre; $("#hjSub").textContent = `${hj.imgs.length} páginas de muestra`;
+  $("#hjTira").innerHTML = hj.imgs.map((u, i) => `<button type="button" data-hj="${i}" aria-label="Página ${i + 1}"><img src="${esc(imgChica(u, 120))}" alt="" loading="lazy" onerror="this.src='${esc(u)}'"></button>`).join("");
+  $("#hjHoja").innerHTML = ""; mostrarHoja(0, 0); $("#dlgHojear").showModal();
+}
+function mostrarHoja(i, dir) {
+  const wrap = $("#hjHoja"), viejo = wrap.querySelector(".hoja:last-child");
+  const h = document.createElement("div"); h.className = "hoja"; h.innerHTML = `<img src="${esc(imgChica(hj.imgs[i], 1100))}" alt="Página de muestra ${i + 1}" onerror="this.src='${esc(hj.imgs[i])}'">`;
+  const anim = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (viejo && dir > 0 && anim) { wrap.insertBefore(h, viejo); viejo.classList.add("sale"); setTimeout(() => viejo.remove(), 560); }
+  else if (viejo && dir < 0 && anim) { h.classList.add("vuelve"); wrap.appendChild(h); setTimeout(() => { [...wrap.children].forEach((c) => c !== h && c.remove()); h.classList.remove("vuelve"); }, 560); }
+  else { wrap.innerHTML = ""; wrap.appendChild(h); }
+  hj.i = i; $("#hjCont").textContent = `Página ${i + 1} de ${hj.imgs.length}`;
+  $("#hjPrev").disabled = i === 0; $("#hjNext").disabled = i === hj.imgs.length - 1;
+  document.querySelectorAll("#hjTira button").forEach((b) => b.setAttribute("aria-current", String(+b.dataset.hj === i)));
+  const act = document.querySelector(`#hjTira [data-hj="${i}"]`); if (act) act.scrollIntoView({ block: "nearest", inline: "center" });
+}
+$("#hjPrev").onclick = () => hj.i > 0 && mostrarHoja(hj.i - 1, -1);
+$("#hjNext").onclick = () => hj.i < hj.imgs.length - 1 && mostrarHoja(hj.i + 1, 1);
+$("#hjX").onclick = () => $("#dlgHojear").close();
+$("#hjTira").addEventListener("click", (e) => { const b = e.target.closest("[data-hj]"); if (b) { const n = +b.dataset.hj; if (n !== hj.i) mostrarHoja(n, n > hj.i ? 1 : -1); } });
+$("#dlgHojear").addEventListener("keydown", (e) => { if (e.key === "ArrowRight") $("#hjNext").click(); if (e.key === "ArrowLeft") $("#hjPrev").click(); });
+(() => { let x0 = null; const el = $("#hjLibro"); el.addEventListener("pointerdown", (e) => (x0 = e.clientX)); el.addEventListener("pointerup", (e) => { if (x0 == null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) (dx < 0 ? $("#hjNext") : $("#hjPrev")).click(); }); })();
+
+// ---------- Ficha (al tocar un libro del estante) ----------
+function abrirFicha(id) {
+  const card = document.querySelector(`#grid .card[data-id="${CSS.escape(id)}"]`); if (!card) return;
+  const c = card.cloneNode(true); c.classList.remove("hl"); c.style.animation = "none";
+  $("#fichaBody").innerHTML = ""; $("#fichaBody").appendChild(c); $("#dlgFicha").showModal();
+}
+$("#fichaX").onclick = () => $("#dlgFicha").close();
+
+// ---------- Bienvenida de temporada y progreso del año ----------
+const TEMPORADA = [
+  ["Vacaciones de verano", "☀️", ["#FFC83D", "#FF8A4C", "#FFE08A"], ["☀️", "🏖️", "🍦"]],
+  ["Se viene el ciclo lectivo", "🎒", ["#2196F3", "#FF8A4C", "#4A8F5C"], ["🎒", "✏️", "📚"]],
+  ["Comienzo de clases", "🎒", ["#2196F3", "#FF8A4C", "#4A8F5C"], ["🎒", "✏️", "📏"]],
+  ["Otoño de actos patrios", "🍂", ["#74ACDF", "#FFFFFF", "#74ACDF"], ["🍂", "🇦🇷", "📖"]],
+  ["Mes de la Revolución de Mayo", "🇦🇷", ["#74ACDF", "#FFFFFF", "#F6B40E"], ["🇦🇷", "☀️", "🎩"]],
+  ["Mes de Güemes y de la Bandera", "🇦🇷", ["#74ACDF", "#FFFFFF", "#74ACDF"], ["🇦🇷", "🐎", "⭐"]],
+  ["Mes de la Independencia", "🇦🇷", ["#74ACDF", "#FFFFFF", "#F6B40E"], ["🇦🇷", "🏛️", "📜"]],
+  ["Mes de San Martín", "🇦🇷", ["#74ACDF", "#FFFFFF", "#74ACDF"], ["🇦🇷", "🐴", "⛰️"]],
+  ["Mes del Maestro y la Primavera", "🌸", ["#FF9EC4", "#7BD389", "#FFD166"], ["🌸", "🍎", "🌼"]],
+  ["Mes de la Diversidad Cultural", "🌎", ["#2196F3", "#4A8F5C", "#FF8A4C"], ["🌎", "🤝", "🎨"]],
+  ["Mes de la Tradición", "🧉", ["#74ACDF", "#C98500", "#4A8F5C"], ["🧉", "🎸", "🐴"]],
+  ["Cierre del año", "🎉", ["#FF8A4C", "#2196F3", "#7B61FF", "#4A8F5C"], ["🎉", "🎓", "⭐"]],
+];
+const FRASES = ["Que hoy sea un gran día de aula ✨", "Tus materiales te esperan, listos para imprimir 🖨️", "Gracias por enseñar con tanto amor 💛", "Cada actividad, una aventura para tus alumnos 🚀", "Hoy también se aprende jugando 🎲", "Un cofre lleno de ideas para tu clase 🧰", "Lo importante se enseña con el corazón 💛", "Tu aula, tu magia ✨"];
+function pintarHero(r) {
+  const ahora = new Date(), mes = ahora.getMonth(), h = ahora.getHours(), [nombreT, , colores, flotan] = TEMPORADA[mes];
+  const saludo = h < 13 ? "¡Buen día" : h < 20 ? "¡Buenas tardes" : "¡Buenas noches";
+  const nombre = String(r.nombre || "").trim();
+  $("#heroK").textContent = TEMPORADA[mes][1] + " " + nombreT;
+  $("#heroT").textContent = r.como ? `Biblioteca de ${nombre || r.email}` : `${saludo}${nombre ? ", " + nombre : ""}! 👋`;
+  let f = FRASES[0]; try { const k = (store.get("cofre-frase") ?? -1) + 1; f = FRASES[k % FRASES.length]; store.set("cofre-frase", k % FRASES.length); } catch {}
+  $("#heroF").textContent = r.admin && !r.como ? "Así ven las docentes su biblioteca. Desde acá gestionás todo." : f;
+  $("#bunting").innerHTML = Array.from({ length: 22 }, (_, i) => `<i style="background:${colores[i % colores.length]};${colores[i % colores.length] === "#FFFFFF" ? "box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)" : ""}"></i>`).join("");
+  document.querySelectorAll("#heroArt .fl").forEach((el, i) => (el.textContent = flotan[i]));
+  // progreso del año: materiales con archivos que ya descargó este año
+  const prog = $("#prog"), conArch = materiales.filter((m) => (m.archivos || []).length), usados = conArch.filter((m) => m.usado).length;
+  if (modoGestor() || !conArch.length) { prog.classList.add("hide"); return; }
+  prog.classList.remove("hide");
+  const pct = Math.round((usados / conArch.length) * 100);
+  prog.innerHTML = `<span class="pt">${usados ? `Este año usaste <b>${usados}</b> de tus <b>${conArch.length}</b> materiales${usados === conArch.length ? " 🏆" : ""}` : `Este año todavía no descargaste materiales: ¡arrancá por la próxima efeméride! 🚀`}</span><div class="barra" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-label="Materiales usados este año"><i></i></div>`;
+  requestAnimationFrame(() => requestAnimationFrame(() => { const b = prog.querySelector(".barra i"); if (b) b.style.width = Math.max(pct, usados ? 4 : 0) + "%"; }));
+}
+
+// ---------- Línea de tiempo del ciclo lectivo (marzo a diciembre) ----------
+function htmlLineaDeTiempo() {
+  const tengo = new Set(materiales.map((m) => m.id)), hoy = new Date(), y = hoy.getFullYear();
+  const ini = new Date(y, 2, 1), fin = new Date(y, 11, 31), total = fin - ini, pos = (d) => Math.min(100, Math.max(0, ((d - ini) / total) * 100));
+  const grupos = new Map(); CATALOGO.filter((m) => m.fecha).forEach((m) => { if (!grupos.has(m.fecha)) grupos.set(m.fecha, []); grupos.get(m.fecha).push(m); });
+  const meses = ["Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"].map((n, i) => `<span class="tl-mes" style="left:${pos(new Date(y, 2 + i, 15))}%">${n}</span>`).join("");
+  let ultimo = -99, nivel = 0;
+  const puntos = [...grupos.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1)).map(([f, mats]) => {
+    const [mm, dd] = f.split("-").map(Number), d = new Date(y, mm - 1, dd), mios = mats.filter((m) => tengo.has(m.id)), nombre = NOMBRE_FECHA[f] || fechaLarga(f);
+    const titulo = `${dd} de ${MESES[mm - 1]} · ${nombre}${mios.length ? " · ya lo tenés" : " · conseguí el material"}`;
+    const attrs = mios.length ? `data-ir="${esc(mios[0].id)}"` : `data-tienda="${esc(mats[0].id)}"`;
+    const p = pos(d); nivel = p - ultimo < 2.6 ? (nivel + 1) % 3 : 0; ultimo = p;
+    return `<button type="button" class="tl-p${mios.length ? " mia" : ""}${d < hoy ? " pasada" : ""}" style="left:${p}%;top:${[31, 9, 53][nivel]}px" ${attrs} title="${esc(titulo)}" aria-label="${esc(titulo)}">${mios.length ? "✓" : ""}</button>`;
+  }).join("");
+  const enCiclo = hoy >= ini && hoy <= fin;
+  return `<div class="tl-wrap"><div class="tl"><div class="tl-eje"></div>${enCiclo ? `<div class="tl-hecho" style="width:${pos(hoy)}%"></div><div class="tl-hoy" style="left:${pos(hoy)}%"><span>Hoy</span></div>` : ""}${meses}${puntos}</div></div>
+    <div class="tl-ley"><span><i class="mia"></i>Ya lo tenés</span><span><i></i>Disponible en la tienda</span><span>Tocá un punto para ir al material</span></div>`;
+}
+document.addEventListener("click", (e) => { const t = e.target.closest("[data-tienda]"); if (t) location.href = "p/" + encodeURIComponent(t.dataset.tienda) + ".html"; });
+
+// ---------- Festejo al terminar una descarga ----------
+function armando(on, texto) { const a = $("#armando"); if (texto) $("#armandoT").textContent = texto; a.classList.toggle("on", !!on); }
+function festejo() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const c = $("#confeti"), x = c.getContext("2d"), W = (c.width = innerWidth), H = (c.height = innerHeight);
+  const cols = ["#2196F3", "#FF8A4C", "#4A8F5C", "#F5A623", "#7B61FF", "#74ACDF"];
+  const ps = Array.from({ length: 130 }, () => ({ x: W / 2 + (Math.random() - 0.5) * 120, y: H - 90, vx: (Math.random() - 0.5) * 11, vy: -8 - Math.random() * 10, r: 4 + Math.random() * 5, c: cols[(Math.random() * cols.length) | 0], a: Math.random() * 6, va: (Math.random() - 0.5) * 0.3 }));
+  const t0 = performance.now();
+  (function cuadro(t) {
+    const dt = t - t0; x.clearRect(0, 0, W, H);
+    ps.forEach((p) => { p.vy += 0.32; p.x += p.vx; p.y += p.vy; p.a += p.va; x.save(); x.translate(p.x, p.y); x.rotate(p.a); x.globalAlpha = Math.max(0, 1 - dt / 1900); x.fillStyle = p.c; x.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); x.restore(); });
+    if (dt < 1900) requestAnimationFrame(cuadro); else x.clearRect(0, 0, W, H);
+  })(t0);
 }
 
 // ---------- Instalar como app ----------
