@@ -2206,7 +2206,7 @@ function initTilt(){
 
 // ── Cargar JSON ──
 npStart();
-fetch('productos.json?v=' + new Date().toISOString().slice(0,10))
+fetch('productos.json?v=' + Math.floor(Date.now() / 60000))
   .then(r => r.json())
   .then(data => { _data = data; aplicarConfig(); leerFiltrosDeURL(); renderSemana(); render(); routear(); generarSchemaProductos(); renderHeroCollage(); initTilt(); if(typeof setVista==='function')setVista(_vista); renderRecientes(); initPromo(); initEfemHoy(); actualizarFavChip(); npDone(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); setTimeout(function(){ try{ if(!location.hash || location.hash==='#') iniciarTour(); }catch(e){} }, 1600); })
   .catch(err => {
@@ -4141,7 +4141,7 @@ window.addEventListener('pageshow', function(){
       try{ const l = document.createElement('link'); l.rel = 'prefetch'; l.href = u; document.head.appendChild(l); }catch(e){}
       try{ fetch(u).catch(function(){}); }catch(e){}
     });
-    try{ fetch('productos.json?v=' + new Date().toISOString().slice(0,10)).catch(function(){}); }catch(e){}
+    try{ fetch('productos.json?v=' + Math.floor(Date.now() / 60000)).catch(function(){}); }catch(e){}
   }
   if ('requestIdleCallback' in window) requestIdleCallback(_warm, { timeout: 3000 }); else setTimeout(_warm, 1800);
 })();

@@ -2,7 +2,7 @@
    Solo controla biblioteca.html (no toca el resto de la web).
    - La página: primero internet; si no hay señal, la última copia guardada.
    - Herramientas (vendor/), logo e íconos: guardados en el dispositivo.
-   - Catálogo (productos.json): respuesta guardada al instante y se actualiza por detrás.
+   - Catálogo (productos.json): primero la red (lo último publicado); sin red, la copia guardada.
    - Los datos de la docente y las descargas siempre van por internet (no se guardan acá). */
 const CACHE = 'cofre-biblioteca-v1';
 const BASE = ['./biblioteca.html', './logo.png', './icon192.png', './biblioteca.webmanifest',
@@ -25,9 +25,9 @@ self.addEventListener('fetch', (e) => {
   }
   if (p.endsWith('/productos.json')) {
     e.respondWith(caches.open(CACHE).then(async (c) => {
-      const viejo = await c.match(req, { ignoreSearch: true });
-      const nuevo = fetch(req).then((r) => { if (r.ok) c.put(req, r.clone()); return r; }).catch(() => null);
-      return viejo || (await nuevo) || new Response('{"productos":[]}', { headers: { 'Content-Type': 'application/json' } });
+      const nuevo = await Promise.race([fetch(req, { cache: 'no-cache' }).then((r) => { if (r.ok) c.put(req, r.clone()); return r; }).catch(() => null), new Promise((ok) => setTimeout(ok, 4000, null))]);
+      if (nuevo && nuevo.ok) return nuevo;
+      return (await c.match(req, { ignoreSearch: true })) || nuevo || new Response('{"productos":[]}', { headers: { 'Content-Type': 'application/json' } });
     }));
     return;
   }

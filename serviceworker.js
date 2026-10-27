@@ -1,11 +1,11 @@
 /* Cofre Didáctico — Service Worker
    Estrategia:
    - App shell (HTML, logo, íconos): cache-first, con actualización en segundo plano.
-   - productos.json: stale-while-revalidate (responde al instante desde caché y
-     refresca en segundo plano; usa caché si no hay red).
+   - productos.json: primero la red (así los materiales nuevos aparecen en la
+     primera visita); si no hay red o tarda más de 4 s, usa la copia guardada.
    - Navegaciones offline: cae al index cacheado.
 */
-const CACHE = 'cofre-v3';
+const CACHE = 'cofre-v4';
 const SHELL = [
   './',
   './index.html',
@@ -40,18 +40,25 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return; // no interceptar terceros (fuentes, analytics, CDN de imágenes)
 
-  // Catálogo: stale-while-revalidate (ignora el ?v= para reusar la caché)
+  // Catálogo: primero la red (siempre lo último publicado). Si no hay red o tarda, la copia guardada.
   if (url.pathname.endsWith('productos.json')) {
     e.respondWith(
       caches.open(CACHE).then(async (cache) => {
-        const cached = await cache.match(req, { ignoreSearch: true });
-        const fetching = fetch(req).then((res) => {
-          if (res && res.ok) cache.put(req, res.clone());
+        const key = new Request(url.origin + url.pathname);
+        const red = fetch(req, { cache: 'no-cache' }).then((res) => {
+          if (res && res.ok) cache.put(key, res.clone());
           return res;
-        }).catch(() => null);
-        if (cached) return cached;                 // instantáneo; el fetch refresca en segundo plano
-        const net = await fetching;
-        return net || new Response('{}', { headers: { 'Content-Type': 'application/json' } });
+        });
+        red.catch(() => {});
+        const espera = new Promise((ok) => setTimeout(ok, 4000, null));
+        try {
+          const res = await Promise.race([red, espera]);
+          if (res && res.ok) return res;
+        } catch (err) {}
+        const cached = await cache.match(key);
+        if (cached) return cached;
+        try { const res = await red; if (res) return res; } catch (err) {}
+        return new Response('{}', { headers: { 'Content-Type': 'application/json' } });
       })
     );
     return;
