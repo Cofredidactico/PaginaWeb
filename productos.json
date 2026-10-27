@@ -1070,7 +1070,8 @@
         "images/preview-producto-1793132343087.png",
         "images/preview-producto-1793132347524.png",
         "images/preview-producto-1793132351495.png"
-      ]
+      ],
+      "etiqueta": "nuevo"
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
