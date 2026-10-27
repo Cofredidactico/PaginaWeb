@@ -1038,6 +1038,39 @@
         "images/preview-producto-1785983520474.png",
         "images/preview-producto-1785983523494.png"
       ]
+    },
+    {
+      "id": "10-de-noviembre-dia-de-la-tradicion",
+      "nombre": "10 de Noviembre - Día de la Tradición",
+      "descripcion": "🧉🇦🇷 Cuadernillo didáctico para trabajar el Día de la Tradición en Primer Ciclo de Nivel Primario, con propuestas lúdicas para conocer y valorar nuestras costumbres: el gaucho, el mate, la chacarera, las empanadas y el Martín Fierro.",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 8000,
+      "imagen": "images/producto-1793132318920.png",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/10-de-noviembre-dia-de-la-tradicion",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "📦 ¿Qué vas a encontrar?\n📖 Infografía ilustrada y de fácil comprensión.\n🧠 Comprensión de la infografía.\n✅ Verdadero o falso.\n✍️ Completar oraciones (escribir o recortar y pegar).\n🔤 Completar palabras con vocales.\n🎨 Dibujar y pintar una tradición argentina.\n🥟 Secuencia recortable: ¡Armamos empanadas!\n🔗 Unir cada elemento con su silueta.\n🔐 Código secreto: descubrí quién escribió el Martín Fierro.\n🔎 Sopa de letras tradicional.\n🔢 Unir los puntos del 1 al 30.\n➕ Problemas ilustrados.\n🧩 Crucigrama ilustrado.\n👀 Buscá y encontrá objetos tradicionales.\n🌀 Laberinto: ¡Ayudá al gauchito a llegar al rancho!\n🔢 Contá los dibujos tradicionales.\n📝 Acróstico con la palabra TRADICIÓN.\n💌 Tarjeta para llevar a casa.\n\n📂 Recibirás:\n📄 Cuadernillo en PDF de 34 hojas A4, listo para descargar e imprimir.\n🖼️ Todas las actividades en formato imagen (PNG) para adaptarlas al tamaño que necesites.\n\n📩 Es un material digital: al completar la compra te llega automáticamente al mail.\n\n¡Muchas gracias por elegir Cofre Didáctico! ❤️📚",
+      "tematica": "efemerides",
+      "nivel": "Nivel Primario",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 10000,
+      "paginas": 34,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        11
+      ],
+      "previews": [
+        "images/preview-producto-1793132322644.png",
+        "images/preview-producto-1793132325597.png",
+        "images/preview-producto-1793132328962.png",
+        "images/preview-producto-1793132332094.png",
+        "images/preview-producto-1793132335453.png",
+        "images/preview-producto-1793132339066.png",
+        "images/preview-producto-1793132343087.png",
+        "images/preview-producto-1793132347524.png",
+        "images/preview-producto-1793132351495.png"
+      ]
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
@@ -1060,6 +1093,9 @@
       "productos": [
         {
           "id": "plataforma-interactiva-jose-de-san-martin"
+        },
+        {
+          "id": "10-de-noviembre-dia-de-la-tradicion"
         }
       ]
     },
