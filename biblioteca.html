@@ -155,6 +155,51 @@ label.fld{display:block;font-weight:800;font-size:.85rem;color:var(--ink-2);marg
 /* administrador */
 .admin{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;margin-bottom:22px;display:grid;gap:16px}
 .admin>*,#aRes>*{min-width:0}
+.extras{display:grid;gap:12px;margin-bottom:18px}
+.cup{position:relative;overflow:hidden;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:16px 18px;border-radius:var(--r-lg);background:linear-gradient(120deg,var(--accent-soft),var(--gold-soft));border:1.5px dashed var(--accent)}
+.cup.cumple{background:linear-gradient(120deg,var(--purple-soft),var(--accent-soft));border-color:var(--purple)}
+.cup-ic{font-size:2.4rem;line-height:1;animation:cupSalto 2.4s ease-in-out infinite}@keyframes cupSalto{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-6px) rotate(4deg)}}
+.cup h3{font-family:var(--f-display);font-size:1.15rem;margin:0}.cup p{margin:3px 0 8px;color:var(--ink-2);font-size:.92rem}
+.cup-cod{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.cup-cod code{font:800 1.05rem/1 var(--f-display);letter-spacing:.08em;padding:9px 14px;border-radius:10px;background:var(--card);border:1.5px solid var(--line)}
+.cup small{display:block;margin-top:8px;color:var(--ink-3);font-size:.8rem}
+.cup-pct{position:absolute;right:-8px;top:-10px;font:900 3.6rem/1 var(--f-display);opacity:.09;pointer-events:none}
+.cumple-in{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 14px;border-radius:var(--r);background:var(--card);border:1px solid var(--line);font-size:.92rem}
+.cumple-in b{font-weight:800}.cumple-in select{border:1.5px solid var(--line);border-radius:10px;padding:7px 9px;background:var(--bg);color:var(--ink);font:inherit;font-weight:700}
+.cumple-in .muted{font-size:.85rem}
+.ideas-card{display:grid;gap:10px;padding:14px 16px;border-radius:var(--r);background:var(--card);border:1px solid var(--line)}
+.ideas-card .ih{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.ideas-card h3{font-family:var(--f-display);font-size:1.05rem;margin:0}
+.it-mini{display:grid;gap:6px}.it-mini div{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;font-size:.9rem;font-weight:700}
+.it-bar{grid-column:1/-1;height:6px;border-radius:3px;background:var(--bg-2);overflow:hidden}.it-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--purple));border-radius:3px}
+.dlg-ideas{width:min(620px,calc(100% - 24px))}.id-h{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.id-lista{display:grid;gap:8px;max-height:46vh;overflow:auto}
+.idea{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;padding:11px 13px;border:1.5px solid var(--line);border-radius:14px}
+.idea.mio{border-color:var(--primary);background:var(--primary-soft)}.idea b{font-size:.96rem}.idea p{grid-column:1/-1;margin:0;color:var(--ink-3);font-size:.85rem}
+.idea .est{font-size:.74rem;font-weight:800;padding:3px 8px;border-radius:999px;background:var(--bg-2);color:var(--ink-3);margin-left:6px;white-space:nowrap}
+.idea .est.camino{background:var(--gold-soft);color:var(--gold)}.idea .est.hecha{background:var(--green-soft);color:var(--green)}.idea .est.rev{background:var(--purple-soft);color:var(--purple)}
+.voto{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font-weight:800;font-size:.86rem;color:var(--ink-2);white-space:nowrap}
+.voto.on{background:var(--primary);border-color:var(--primary);color:#fff}.voto:disabled{opacity:.55}
+.id-prop{display:grid;gap:8px;padding-top:10px;border-top:1px solid var(--line)}.id-prop .inp{padding:10px 12px;font-size:.95rem}
+.adm-in{padding:4px 14px 16px;display:grid;gap:12px}
+.ad-tip{font-size:.86rem;color:var(--ink-3);background:var(--bg-2);border-radius:12px;padding:10px 12px}
+.cupa{display:grid;gap:10px;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card)}.cupa.on{border-color:var(--accent)}
+.cupa-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.cupa-h .inp{flex:1;min-width:160px}.cupa-st{font-size:.8rem;color:var(--ink-3);font-weight:700}
+.sw{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:.86rem;cursor:pointer}.sw input{appearance:none;width:42px;height:24px;border-radius:12px;background:var(--line);position:relative;cursor:pointer;transition:background .15s}
+.sw input::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .15s}.sw input:checked{background:var(--green)}.sw input:checked::after{left:21px}
+.cupa .trg select{border:1.5px solid var(--line);border-radius:12px;padding:10px;background:var(--card);color:var(--ink);font:inherit}
+.cupa-prev:empty{display:none}.cupa-acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ida{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:start;padding:11px 13px;border:1.5px solid var(--line);border-radius:14px;background:var(--card)}
+.ida.pend{border-color:var(--purple);background:var(--purple-soft)}.ida .meta{font-size:.8rem;color:var(--ink-3)}.ida .ctl{display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
+.ida select,.ida .inp{padding:7px 9px;font-size:.85rem;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-family:inherit}
+.ida .votos{font:800 1.3rem/1 var(--f-display);color:var(--primary)}
+.fi-busca{display:flex;gap:8px;flex-wrap:wrap}.fi-busca .inp{flex:1;min-width:200px;padding:10px 12px;font-size:.95rem;background:var(--card)}
+.fi-res{display:grid;gap:6px}.fi-r{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);text-align:left;width:100%;font:inherit;color:inherit;cursor:pointer}
+.fi-r:hover{border-color:var(--primary)}.fi-r small{color:var(--ink-3)}
+.ficha{display:grid;gap:12px;padding:14px;border-radius:16px;border:1.5px solid var(--primary);background:var(--card)}
+.fi-top{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.fi-av{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:800 1.3rem var(--f-display);color:#fff;background:linear-gradient(135deg,var(--primary),var(--purple))}
+.fi-top h3{font-family:var(--f-display);font-size:1.2rem;margin:0}.fi-top .muted{font-size:.86rem}
+.fi-kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}.fi-kp div{background:var(--bg-2);border-radius:12px;padding:9px 11px}.fi-kp b{display:block;font:800 1.15rem var(--f-display)}.fi-kp span{font-size:.78rem;color:var(--ink-3);font-weight:700}
+.ficha h4{font-size:.92rem;margin:4px 0 0}.fi-tags{display:flex;flex-wrap:wrap;gap:6px}.fi-tags span{font-size:.78rem;font-weight:800;padding:4px 9px;border-radius:999px;background:var(--bg-2);color:var(--ink-2)}
+.fi-nota{min-height:60px;font-size:.92rem}
 .trv summary{background:linear-gradient(90deg,var(--primary-soft),transparent)}
 #aTrBox{padding:4px 14px 16px;display:grid;gap:14px}
 .trf{display:grid;gap:12px}.trg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
@@ -643,6 +688,7 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
     </div>
     <div id="adminBox" class="admin hide"></div>
     <div id="notice"></div>
+    <div class="extras hide" id="extras"></div>
     <section class="cal hide" id="cal" aria-label="Próximas efemérides"></section>
     <div class="tools" id="tools">
       <div class="chips" id="chips" role="group" aria-label="Filtrar por tipo"></div>
@@ -678,6 +724,15 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
   <label class="chk"><input type="checkbox" id="datosRec" /> <span>No volver a preguntar hoy</span></label>
   <div class="dlg-acts"><button class="btn btn-ghost" value="no" type="submit">Esperar al wifi</button><button class="btn btn-primary" value="si" type="submit">Descargar igual</button></div>
 </form></dialog>
+<dialog class="dlg dlg-ideas" id="dlgIdeas" aria-labelledby="idTit"><div class="dlg-in">
+  <div class="id-h"><h2 id="idTit">🗳️ Elegí el próximo material</h2><button class="btn btn-ghost btn-sm" type="button" id="idX" aria-label="Cerrar">✕</button></div>
+  <p class="sub" id="idSub">Votá hasta 3 ideas. Las más votadas son las próximas que se hacen.</p>
+  <div class="id-lista" id="idLista"><div class="skel" style="height:160px"></div></div>
+  <form class="id-prop" id="idProp" novalidate><b>💡 ¿Se te ocurre otro material?</b>
+    <input class="inp" id="idTitulo" maxlength="90" placeholder="Ej.: Cuadernillo del Día de la Música" aria-label="Tu idea" />
+    <textarea class="inp" id="idDet" maxlength="400" rows="2" placeholder="Para qué grado, qué actividades te servirían… (opcional)" aria-label="Detalle de tu idea"></textarea>
+    <div class="dlg-acts"><span class="muted" id="idMsg"></span><button class="btn btn-primary btn-sm" type="submit" id="idGo">Enviar idea</button></div></form>
+</div></dialog>
 <div class="armando" id="armando" role="status" aria-live="polite"><span class="cofre"><img src="logo.png" alt="" onerror="this.remove()" /></span><span><b>Armando tu copia…</b><small id="armandoT">Abriendo el cofre</small></span></div>
 <canvas id="confeti" aria-hidden="true"></canvas>
 
@@ -855,7 +910,7 @@ function mostrar(r) {
   $("#notice").innerHTML = html;
   const cuenta = materiales.reduce((a, m) => ((a[m.tipo] = (a[m.tipo] || 0) + 1), a), {});
   const tipos = Object.keys(TIPOS).filter((t) => cuenta[t]);
-  $("#tools").classList.toggle("hide", !n); pintarVistas(); pintarHero(r); pintarCofreHero(r); pintarLlaves(r); pintarBotonAnual(r);
+  $("#tools").classList.toggle("hide", !n); pintarVistas(); pintarHero(r); pintarCofreHero(r); pintarLlaves(r); pintarBotonAnual(r); pintarExtras(r);
   if (!previewsListas) cargarPreviews().then(() => { if (Object.keys(PREVIEWS).length) pintar(); });
   if (!tipos.includes(filtro)) filtro = "todos";
   $("#chips").innerHTML = [`<button class="chip" data-f="todos" aria-pressed="${filtro === "todos"}">Todos<span class="n">${n}</span></button>`]
@@ -1438,17 +1493,163 @@ function pintarAdmin(r) {
       <form class="como" id="aComo" novalidate><input class="inp" id="aEmail" type="email" placeholder="correo de un comprador" aria-label="Correo del comprador" value="${esc(r.como ? r.email : "")}" /><button class="btn btn-soft btn-sm" type="submit">Ver su biblioteca</button></form>
       <form class="como" id="aRast" novalidate><input class="inp" id="aCod" placeholder="código de copia (CD-…)" aria-label="Código de copia" autocapitalize="characters" /><button class="btn btn-soft btn-sm" type="submit">Rastrear copia</button></form></div>
     <div id="aTrack"></div>
-    ${r.como ? "" : '<details class="trv" id="aTr"><summary>💸 Ventas por transferencia<small id="trSum">registrá a las docentes que te compraron por Instagram</small></summary><div id="aTrBox"></div></details>'}
+    ${r.como ? "" : '<details class="trv" id="aTr"><summary>💸 Ventas por transferencia<small id="trSum">registrá a las docentes que te compraron por Instagram</small></summary><div id="aTrBox"></div></details><details class="trv" id="aFicha"><summary>📇 Ficha de cada docente<small>todo lo de una clienta en un solo lugar</small></summary><div id="aFichaBox" class="adm-in"></div></details><details class="trv" id="aCup"><summary>🎟️ Cupones automáticos<small id="cupSum">cumpleaños, Día del Maestro y fechas especiales</small></summary><div id="aCupBox" class="adm-in"></div></details><details class="trv" id="aIdeas"><summary>🗳️ Pedidos de materiales<small id="ideSum">las ideas y votos de las docentes</small></summary><div id="aIdeasBox" class="adm-in"></div></details>'}
     ${vista}<div id="aRes"${r.como ? ' class="hide"' : ""}>${resumen ? htmlResumen() : '<div class="kpis"><div class="kpi skel" style="height:66px"></div><div class="kpi skel" style="height:66px"></div><div class="kpi skel" style="height:66px"></div><div class="kpi skel" style="height:66px"></div></div>'}</div>`;
   $("#aComo").onsubmit = (e) => { e.preventDefault(); const v = $("#aEmail").value.trim().toLowerCase(); if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return toast("Escribí un correo válido."); verComo = v; filtro = "todos"; $("#q").value = ""; cargar(); };
   $("#aRast").onsubmit = (e) => { e.preventDefault(); const v = $("#aCod").value.trim(); if (v.length < 6) return toast("Escribí el código que figura al pie del PDF."); rastrear(v); };
   if ($("#aVolver")) $("#aVolver").onclick = () => { verComo = null; $("#q").value = ""; cargar(); };
   if (!resumen) cargarResumen();
   if ($("#aTr")) { const d = $("#aTr"); if (trAbierto) d.open = true; d.ontoggle = () => { trAbierto = d.open; if (d.open) pintarTr(); }; if (d.open) pintarTr(); }
+  [["#aFicha", pintarFichaBox], ["#aCup", pintarCupAdm], ["#aIdeas", pintarIdeasAdm]].forEach(([id, fn]) => { const d = $(id); if (!d) return; if (admAbiertos.has(id)) d.open = true; d.ontoggle = () => { if (d.open) { admAbiertos.add(id); fn(); } else admAbiertos.delete(id); }; if (d.open) fn(); });
 }
 
+
+// ---------- Cupones de cumpleaños / fechas especiales, y "Elegí el próximo material" ----------
+const TIENDA = "https://cofredidactico.empretienda.com.ar/";
+const fechaDM = (mmdd) => { const [m, d] = String(mmdd).split("-").map(Number); return `${d} de ${MESES[m - 1]}`; };
+let ideasData = null;
+function pintarExtras(r) {
+  const box = $("#extras"); if (!box) return;
+  if (r.admin && !r.como) { box.classList.add("hide"); box.innerHTML = ""; return; }
+  const partes = [];
+  const c = r.cupon;
+  if (c) {
+    const cumple = c.tipo === "cumple", hoy = c.dias === 0, ic = cumple ? "🎂" : /maestr/i.test(c.titulo) ? "🍎" : "🎉";
+    const cuando = cumple ? (hoy ? "¡Hoy es tu cumple!" : c.dias > 0 ? `Falta${c.dias === 1 ? "" : "n"} ${c.dias} día${c.dias === 1 ? "" : "s"} para tu cumple` : "Tu regalo de cumpleaños") : hoy ? `¡Hoy es ${esc(c.titulo)}!` : esc(c.titulo);
+    const hasta = new Date(c.hasta + "T12:00:00").toLocaleDateString("es-AR", { day: "numeric", month: "long" });
+    partes.push(`<div class="cup${cumple ? " cumple" : ""}" role="region" aria-label="Cupón de descuento"><span class="cup-pct" aria-hidden="true">${c.porcentaje ? c.porcentaje + "%" : "🎁"}</span><div class="cup-ic" aria-hidden="true">${ic}</div>
+      <div><h3>${cuando}${c.porcentaje ? ` · ${c.porcentaje}% OFF` : ""}</h3><p>${esc(c.mensaje || "Te regalamos un descuento para tu próximo material.")}</p>
+      <div class="cup-cod"><code id="cupCod">${esc(c.codigo)}</code><button class="btn btn-primary btn-sm" type="button" id="cupCopiar">📋 Copiar cupón</button><a class="btn btn-ghost btn-sm" href="${TIENDA}" target="_blank" rel="noopener" id="cupTienda">🛒 Ir a la tienda</a></div>
+      <small>Pegalo al pagar en la tienda. Vale hasta el ${esc(hasta)}.${c.transferencia ? " Si preferís pagar por transferencia, pasanos el código por mensaje." : ""}</small></div></div>`);
+  }
+  let tapado = false; try { tapado = !!localStorage.getItem("cofre-cumple-no"); } catch {}
+  if (!r.cumple && !tapado && !r.como) partes.push(`<form class="cumple-in" id="cumF"><span>🎂 <b>¿Cuándo es tu cumple?</b> <span class="muted">Ese día te espera un regalo en tu biblioteca.</span></span>
+      <select id="cumD" aria-label="Día">${Array.from({ length: 31 }, (_, i) => `<option value="${String(i + 1).padStart(2, "0")}">${i + 1}</option>`).join("")}</select>
+      <select id="cumM" aria-label="Mes">${MESES.map((m, i) => `<option value="${String(i + 1).padStart(2, "0")}">${m}</option>`).join("")}</select>
+      <button class="btn btn-soft btn-sm" type="submit">Guardar</button><button class="btn-link" type="button" id="cumNo">Ahora no</button></form>`);
+  const I = r.ideas;
+  if (I) {
+    const max = Math.max(1, ...I.top.map((x) => x.votos));
+    partes.push(`<div class="ideas-card"><div class="ih"><h3>🗳️ ¿Qué material hago después?</h3><button class="btn btn-soft btn-sm" type="button" id="ideasAbrir">${I.total ? (I.misVotos ? `Ver ideas · usaste ${I.misVotos} de ${I.max} votos` : "Votar ideas") : "Proponer una idea"}</button></div>
+      ${I.top.length ? `<div class="it-mini">${I.top.map((x) => `<div><span>${x.estado === "en_camino" ? "🚧 " : ""}${esc(x.titulo)}${x.mio ? " ✓" : ""}</span><span class="muted">${x.votos} voto${x.votos === 1 ? "" : "s"}</span><span class="it-bar"><i style="width:${Math.round((x.votos / max) * 100)}%"></i></span></div>`).join("")}</div>` : '<span class="muted">Contanos qué efeméride o tema te gustaría tener: las ideas más votadas son las próximas que se hacen.</span>'}</div>`);
+  }
+  if (r.cumple && !c) partes.push(`<div class="muted" style="font-size:.85rem">🎂 Tu cumple: ${esc(fechaDM(r.cumple))} · <button class="btn-link" type="button" id="cumCambiar">cambiar</button></div>`);
+  box.innerHTML = partes.join(""); box.classList.toggle("hide", !partes.length);
+  if (c && c.tipo === "cumple" && c.dias === 0) { let k = "cofre-cumple-fiesta-" + c.anio; try { if (!localStorage.getItem(k)) { localStorage.setItem(k, "1"); setTimeout(() => { try { festejo(); } catch {} }, 600); } } catch {} }
+  const cp = $("#cupCopiar"); if (cp) cp.onclick = async () => { try { await navigator.clipboard.writeText(c.codigo); } catch { const t = document.createElement("textarea"); t.value = c.codigo; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); } catch {} t.remove(); } cp.textContent = "✓ Copiado"; toast("Cupón copiado: pegalo al pagar"); if (!r.como) api({ accion: "cupon_copiado", token: sesion.token, cupon: c.id, anio: c.anio }).catch(() => {}); };
+  const f = $("#cumF"); if (f) { f.onsubmit = async (e) => { e.preventDefault(); const v = $("#cumM").value + "-" + $("#cumD").value; try { const j = await api({ accion: "perfil", token: sesion.token, cumple: v }); toast("¡Anotado! 🎂"); ultimaRespuesta.cumple = j.cumple; ultimaRespuesta.cupon = j.cupon || ultimaRespuesta.cupon; pintarExtras(ultimaRespuesta); } catch (err) { toast(err.message); } }; $("#cumNo").onclick = () => { try { localStorage.setItem("cofre-cumple-no", "1"); } catch {} f.remove(); }; }
+  const cc = $("#cumCambiar"); if (cc) cc.onclick = () => { try { localStorage.removeItem("cofre-cumple-no"); } catch {} const rr = { ...ultimaRespuesta, cumple: null }; pintarExtras(rr); const [m, d] = r.cumple.split("-"); $("#cumD").value = d; $("#cumM").value = m; };
+  const ia = $("#ideasAbrir"); if (ia) ia.onclick = abrirIdeas;
+}
+async function abrirIdeas() {
+  const d = $("#dlgIdeas"); if (!d.open) d.showModal(); $("#idMsg").textContent = "";
+  if (ultimaRespuesta && ultimaRespuesta.como) { $("#idProp").classList.add("hide"); } else $("#idProp").classList.remove("hide");
+  try { ideasData = await api({ accion: "ideas", token: sesion.token }); pintarIdeas(); } catch (e) { $("#idLista").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)}</div></div>`; }
+}
+function pintarIdeas() {
+  const D = ideasData; if (!D) return; const quedan = D.max - D.misVotos, solo = !!(ultimaRespuesta && ultimaRespuesta.admin);
+  $("#idSub").textContent = D.ideas.some((i) => i.estado === "abierta") ? (quedan ? `Te ${quedan === 1 ? "queda 1 voto" : `quedan ${quedan} votos`}. Las ideas más votadas son las próximas que se hacen.` : "Usaste tus 3 votos. Si querés votar otra idea, sacale el voto a una.") : "Todavía no hay ideas para votar: ¡proponé la primera!";
+  const est = { en_camino: '<span class="est camino">🚧 En camino</span>', hecha: '<span class="est hecha">✅ ¡Ya está!</span>', pendiente: '<span class="est rev">⏳ En revisión</span>' };
+  $("#idLista").innerHTML = D.ideas.length ? D.ideas.map((i) => `<div class="idea${i.mio ? " mio" : ""}"><div><b>${esc(i.titulo)}</b>${est[i.estado] || ""}</div>
+    ${i.estado === "abierta" ? `<button class="voto${i.mio ? " on" : ""}" type="button" data-voto="${i.id}" aria-pressed="${i.mio}" ${solo || (!i.mio && !quedan) ? "disabled" : ""}>${i.mio ? "✓ Votaste" : "♡ Votar"} · ${i.votos}</button>` : i.estado === "hecha" && i.producto ? `<a class="btn btn-soft btn-sm" href="index.html#/producto/${encodeURIComponent(i.producto)}" target="_blank" rel="noopener">Ver material</a>` : `<span class="muted">${i.estado === "pendiente" ? "Tu idea" : i.votos + " votos"}</span>`}
+    ${i.detalle ? `<p>${esc(i.detalle)}</p>` : ""}</div>`).join("") : '<div class="muted">Todavía no hay ideas.</div>';
+}
+$("#idX").onclick = () => $("#dlgIdeas").close();
+$("#dlgIdeas").addEventListener("close", () => { if (ideasData && ultimaRespuesta && !ultimaRespuesta.admin) { const ab = ideasData.ideas.filter((i) => i.estado === "abierta" || i.estado === "en_camino"); ultimaRespuesta.ideas = { total: ab.length, top: ab.slice(0, 3), misVotos: ideasData.misVotos, max: ideasData.max }; pintarExtras(ultimaRespuesta); } });
+$("#idLista").onclick = async (e) => { const b = e.target.closest("[data-voto]"); if (!b) return; b.disabled = true; try { ideasData = await api({ accion: "votar", token: sesion.token, idea: +b.dataset.voto, si: b.getAttribute("aria-pressed") !== "true" }); pintarIdeas(); } catch (err) { toast(err.message); b.disabled = false; } };
+$("#idProp").onsubmit = async (e) => { e.preventDefault(); const t = $("#idTitulo").value.trim(); if (t.length < 4) { $("#idMsg").textContent = "Contanos un poco más sobre tu idea."; return; } $("#idGo").disabled = true;
+  try { ideasData = await api({ accion: "proponer", token: sesion.token, titulo: t, detalle: $("#idDet").value }); $("#idTitulo").value = ""; $("#idDet").value = ""; $("#idMsg").textContent = "¡Gracias! La vamos a revisar y la vas a ver acá."; pintarIdeas(); } catch (err) { $("#idMsg").textContent = err.message; } $("#idGo").disabled = false; };
+
+// ---------- Modo administrador: ficha de cada docente, cupones automáticos y pedidos de materiales ----------
+const admAbiertos = new Set(); let fichaTop = null, fichaAct = null, cupAdm = null, ideasAdm = null;
+const iniciales = (n, e) => (String(n || e || "?").trim().split(/\s+/).slice(0, 2).map((x) => x[0]).join("") || "?").toUpperCase();
+const ORIGEN = { tienda: "🛒 Empretienda", transferencia: "💸 Transferencia", manual: "✋ A mano", historial: "📦 Antes de la biblioteca" };
+async function pintarFichaBox() {
+  const box = $("#aFichaBox"); if (!box) return;
+  if (!box.dataset.ok) { box.dataset.ok = 1; box.innerHTML = `<form class="fi-busca" id="fiF" novalidate><input class="inp" id="fiQ" type="search" placeholder="Buscá por correo, nombre o @instagram…" aria-label="Buscar docente" /><button class="btn btn-soft btn-sm" type="submit">Buscar</button></form><div id="fiRes" class="fi-res"></div><div id="fiVer"></div>`;
+    let tm = null; $("#fiQ").oninput = () => { clearTimeout(tm); tm = setTimeout(fichaBuscar, 350); }; $("#fiF").onsubmit = (e) => { e.preventDefault(); const v = $("#fiQ").value.trim().toLowerCase(); if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) abrirFichaDocente(v); else fichaBuscar(); }; }
+  if (!fichaAct && !$("#fiQ").value) fichaTopPintar();
+}
+const filaDocente = (x) => `<button class="fi-r" type="button" data-fdoc="${esc(x.email)}"><span><b>${esc(x.nombre || x.email)}</b>${x.instagram ? ` <small>@${esc(x.instagram)}</small>` : ""}<br><small>${esc(x.email)}</small></span><small>${x.materiales} mat. · ${plata(x.gastado)}</small></button>`;
+async function fichaTopPintar() { const r = $("#fiRes"); r.innerHTML = '<div class="muted">Cargando tus mejores clientas…</div>'; try { fichaTop = fichaTop || (await api({ accion: "ficha_top", token: sesion.token })); r.innerHTML = fichaTop.top.length ? `<div class="muted" style="font-size:.85rem">⭐ Tus mejores clientas (de ${fichaTop.total}):</div>${fichaTop.top.map(filaDocente).join("")}` : '<div class="muted">Todavía no hay docentes registradas.</div>'; } catch (e) { r.innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)}</div></div>`; } }
+async function fichaBuscar() { const q = $("#fiQ").value.trim(), r = $("#fiRes"); if (q.length < 2) { fichaTopPintar(); return; } try { const j = await api({ accion: "buscar_docente", token: sesion.token, q }); if ($("#fiQ").value.trim() !== q) return; r.innerHTML = j.resultados.length ? j.resultados.map(filaDocente).join("") : '<div class="muted">No encontré docentes con eso. Probá con el correo completo.</div>'; } catch (e) { r.innerHTML = `<div class="muted">${esc(e.message)}</div>`; } }
+async function abrirFichaDocente(email) {
+  const d = $("#aFicha"); if (d && !d.open) { d.open = true; admAbiertos.add("#aFicha"); await pintarFichaBox(); }
+  const v = $("#fiVer"); v.innerHTML = '<div class="skel" style="height:220px"></div>'; v.scrollIntoView({ behavior: "smooth", block: "start" });
+  try { fichaAct = await api({ accion: "ficha", token: sesion.token, email }); } catch (e) { v.innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)}</div></div>`; return; }
+  const F = fichaAct, fd = (x) => (x ? new Date(x).toLocaleDateString("es-AR", { day: "numeric", month: "short", year: "numeric" }) : "—");
+  const dias = F.ultimaActividad ? Math.round((Date.now() - new Date(F.ultimaActividad)) / 864e5) : null;
+  const tags = [F.ciudad && "📍 " + F.ciudad, F.cumple && "🎂 " + fechaDM(F.cumple), F.recordatorio && "🔔 Recibe recordatorios", F.cofres && `🎁 Abrió ${F.cofres} cofre${F.cofres > 1 ? "s" : ""}`, F.llaves && F.llaves.n && `🗝️ ${F.llaves.n}/${F.llaves.meta} llaves`, F.cupones.some((c) => c.copiado) && "🎟️ Usó un cupón", dias != null && dias > 90 && "😴 Hace más de 3 meses que no descarga"].filter(Boolean);
+  const filasM = F.materiales.map((m) => `<tr${m.revocado ? ' style="opacity:.5"' : ""}><td><b>${esc(m.nombre)}</b>${m.revocado ? ' <span class="st no">sin acceso</span>' : ""}</td><td>${esc(ORIGEN[m.origen] || m.origen)}</td><td class="muted">${fd(m.fecha)}</td><td class="num">${m.descargas}</td><td class="muted">${m.ultima ? fd(m.ultima) : "—"}</td></tr>`).join("");
+  const filasO = F.ordenes.map((o) => `<tr><td class="muted">${fd(o.fecha)}</td><td>${esc(o.metodo || "")}<div class="muted">#${esc(o.orden)}</div></td><td>${esc((o.productos || []).join(" · "))}${o.nota ? `<div class="muted">📝 ${esc(o.nota)}</div>` : ""}</td><td class="num">${o.total != null ? plata(o.total) : "—"}</td></tr>`).join("");
+  v.innerHTML = `<div class="ficha"><div class="fi-top"><div class="fi-av">${esc(iniciales(F.nombre, F.email))}</div><div style="flex:1;min-width:180px"><h3>${esc(F.nombre || F.email)}</h3><div class="muted">${esc(F.email)}${F.instagram ? ` · <a href="https://instagram.com/${encodeURIComponent(F.instagram)}" target="_blank" rel="noopener">@${esc(F.instagram)}</a>` : ""}</div></div>
+      <div class="mini"><button class="btn btn-soft btn-sm" type="button" data-como="${esc(F.email)}">👁 Ver su biblioteca</button><button class="btn btn-ghost btn-sm" type="button" id="fiTr">💸 Registrar venta</button><button class="btn btn-ghost btn-sm" type="button" data-copy="${esc(F.email)}">Copiar correo</button></div></div>
+    <div class="fi-kp"><div><b>${plata(F.gastado)}</b><span>gastó en total</span></div><div><b>${F.materiales.filter((m) => !m.revocado).length}</b><span>materiales</span></div><div><b>${F.compras}</b><span>compras</span></div><div><b>${F.descargas.total}</b><span>descargas</span></div><div><b>${fd(F.desde)}</b><span>clienta desde</span></div><div><b>${dias == null ? "—" : dias === 0 ? "hoy" : `hace ${dias} d`}</b><span>última descarga</span></div></div>
+    ${tags.length ? `<div class="fi-tags">${tags.map((t) => `<span>${esc(t)}</span>`).join("")}</div>` : ""}
+    <label style="display:grid;gap:5px;font-weight:800;font-size:.86rem">📝 Nota interna (solo la ves vos) <textarea class="inp fi-nota" id="fiNota" maxlength="1000" placeholder="Ej.: trabaja en 2.º grado, prefiere pagar por transferencia, le gustan las plataformas…">${esc(F.nota || "")}</textarea><small class="muted" id="fiNotaSt"></small></label>
+    <h4>📚 Materiales</h4>${F.materiales.length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Material</th><th>Cómo lo obtuvo</th><th>Desde</th><th style="text-align:right">Descargas</th><th>Última</th></tr></thead><tbody>${filasM}</tbody></table></div>` : '<div class="muted">Sin materiales.</div>'}
+    <h4>🧾 Compras</h4>${F.ordenes.length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fecha</th><th>Medio</th><th>Productos</th><th style="text-align:right">Monto</th></tr></thead><tbody>${filasO}</tbody></table></div>` : '<div class="muted">Sin compras registradas (puede ser de antes de la biblioteca).</div>'}
+    ${F.opiniones.length ? `<h4>💬 Opiniones</h4>${F.opiniones.map((o) => `<div><span class="stars-s">${"★".repeat(o.estrellas)}${"☆".repeat(5 - o.estrellas)}</span> <b>${esc(o.nombre)}</b>${o.texto ? ` — <span class="muted">${esc(o.texto)}</span>` : ""}</div>`).join("")}` : ""}
+    ${F.votos.length || F.ideas.length ? `<h4>🗳️ Pedidos de materiales</h4><div class="fi-tags">${F.votos.map((i) => `<span>♡ ${esc(i.titulo)}</span>`).join("")}${F.ideas.map((i) => `<span>💡 ${esc(i.titulo)} (${esc(i.estado)})</span>`).join("")}</div>` : ""}
+    ${F.copias.length ? `<h4>🔏 Copias personalizadas</h4><div class="fi-tags">${F.copias.map((c) => `<span>${esc(c.codigo)} · ${esc(c.nombre)} · ${c.descargas} desc.</span>`).join("")}</div>` : ""}
+    ${F.descargas.recientes.length ? `<h4>⬇ Últimas descargas</h4><div class="fi-tags">${F.descargas.recientes.map((x) => `<span>${fd(x.fecha)} · ${esc(x.nombre)}</span>`).join("")}</div>` : ""}</div>`;
+  const nota = $("#fiNota"); let orig = nota.value; nota.onblur = async () => { if (nota.value === orig) return; $("#fiNotaSt").textContent = "Guardando…"; try { await api({ accion: "ficha_nota", token: sesion.token, email: F.email, nota: nota.value }); orig = nota.value; $("#fiNotaSt").textContent = "✓ Guardada"; } catch (e) { $("#fiNotaSt").textContent = e.message; } };
+  $("#fiTr").onclick = () => { const t = $("#aTr"); trPre = { email: F.email, nombre: F.nombre, instagram: F.instagram }; trAbierto = true; if (t.open) pintarTr(); else t.open = true; t.scrollIntoView({ behavior: "smooth", block: "start" }); };
+}
+// ---- cupones ----
+async function pintarCupAdm() { const box = $("#aCupBox"); if (!box) return; box.innerHTML = '<div class="muted">Cargando cupones…</div>'; try { cupAdm = await api({ accion: "cupones_admin", token: sesion.token }); } catch (e) { box.innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${/desconocida/i.test(e.message) ? "Falta actualizar la función <b>biblioteca</b> y correr <b>biblioteca-comunidad.sql</b> en Supabase." : esc(e.message)}</div></div>`; return; } cupDibujar(); }
+function cupDibujar() {
+  const box = $("#aCupBox"), C = cupAdm, act = C.cupones.filter((c) => c.activo).length; const sm = $("#cupSum"); if (sm) sm.textContent = `${act} activo${act === 1 ? "" : "s"} · ${C.cumples} cumpleaños cargados`;
+  const dSel = (v) => Array.from({ length: 31 }, (_, i) => { const x = String(i + 1).padStart(2, "0"); return `<option value="${x}" ${v === x ? "selected" : ""}>${i + 1}</option>`; }).join(""), mSel = (v) => MESES.map((m, i) => { const x = String(i + 1).padStart(2, "0"); return `<option value="${x}" ${v === x ? "selected" : ""}>${m}</option>`; }).join("");
+  const tarjeta = (c, i) => { const [mm, dd] = (c.mmdd || "-").split("-"), fijo = ["cumple", "maestro"].includes(c.id), ic = c.id === "cumple" ? "🎂" : c.id === "maestro" ? "🍎" : "🎉";
+    return `<form class="cupa${c.activo ? " on" : ""}" data-cupi="${i}" novalidate><div class="cupa-h"><span style="font-size:1.4rem">${ic}</span><input class="inp" name="titulo" maxlength="60" value="${esc(c.titulo || "")}" placeholder="Nombre del cupón" ${c.id === "cumple" ? "readonly" : ""} aria-label="Nombre del cupón" />
+      <label class="sw"><input type="checkbox" name="activo" ${c.activo ? "checked" : ""} /> ${c.activo ? "Activo" : "Apagado"}</label></div>
+      ${c.id ? `<span class="cupa-st">Este año: 👀 ${c.vistos || 0} lo vieron · 📋 ${c.copiados || 0} copiaron el código</span>` : ""}
+      <div class="trg">${c.id === "cumple" ? '<label>Cuándo<span class="muted" style="font-weight:700">El día del cumple de cada docente</span></label>' : `<label>Día y mes<span style="display:flex;gap:6px"><select name="dd">${dSel(dd)}</select><select name="mm">${mSel(mm)}</select></span></label>`}
+        <label>Código del cupón<input class="inp" name="codigo" maxlength="30" value="${esc(c.codigo || "")}" placeholder="Ej.: CUMPLECOFRE" style="text-transform:uppercase" /></label>
+        <label>Descuento (%)<input class="inp" name="porcentaje" inputmode="numeric" value="${c.porcentaje ?? ""}" placeholder="Ej.: 20" /></label>
+        <label>Se ve desde… días antes<input class="inp" name="dias_antes" inputmode="numeric" value="${c.dias_antes ?? 3}" /></label>
+        <label>…hasta días después<input class="inp" name="dias_despues" inputmode="numeric" value="${c.dias_despues ?? 7}" /></label>
+        <label class="full">Mensaje para la docente<input class="inp" name="mensaje" maxlength="240" value="${esc(c.mensaje || "")}" placeholder="¡Feliz cumple! Te regalamos un descuento…" /></label></div>
+      <label class="sw" style="font-weight:700"><input type="checkbox" name="transferencia" ${c.transferencia !== false ? "checked" : ""} /> También vale si te pagan por transferencia</label>
+      <div class="cupa-prev"></div>
+      <div class="cupa-acts"><button class="btn btn-primary btn-sm" type="submit">Guardar</button><button class="btn btn-ghost btn-sm" type="button" data-cupprev>👁 Vista previa</button>${c.id && !fijo ? '<button class="btn-link" type="button" data-cupdel style="color:var(--danger)">Borrar</button>' : ""}<span class="muted" data-cupmsg></span></div></form>`; };
+  box.innerHTML = `<div class="ad-tip">🛒 <b>Paso 1:</b> creá el cupón en Empretienda (Mi tienda → Cupones de descuento) con el <b>mismo código y porcentaje</b>. <b>Paso 2:</b> activalo acá: cada docente lo ve solo en su biblioteca, en su fecha.</div>
+    ${C.cupones.map(tarjeta).join("")}<div><button class="btn btn-soft btn-sm" type="button" id="cupNuevo">➕ Agregar fecha especial</button></div>
+    <h4 style="margin:6px 0 0">🎂 Cumpleaños de los próximos 30 días</h4>${C.proximos.length ? `<div class="fi-tags">${C.proximos.map((p) => `<span>${p.dias === 0 ? "🎉 Hoy" : `en ${p.dias} d`} · ${esc(fechaDM(p.cumple))} · <button class="mail" type="button" data-fdoc="${esc(p.email)}">${esc(p.nombre || p.email)}</button></span>`).join("")}</div>` : '<div class="muted">Ninguna docente cumple años en los próximos 30 días (o todavía no lo cargaron).</div>'}`;
+  const datos = (f) => { const g = (n) => f.elements[n]; const i = +f.dataset.cupi, c = C.cupones[i]; return { id: c.id || "", titulo: g("titulo").value, mmdd: g("mm") ? g("mm").value + "-" + g("dd").value : null, codigo: g("codigo").value, porcentaje: g("porcentaje").value, dias_antes: g("dias_antes").value, dias_despues: g("dias_despues").value, mensaje: g("mensaje").value, transferencia: g("transferencia").checked, activo: g("activo").checked }; };
+  box.querySelectorAll("form.cupa").forEach((f) => {
+    f.elements.activo.onchange = () => { f.classList.toggle("on", f.elements.activo.checked); f.elements.activo.parentElement.lastChild.textContent = f.elements.activo.checked ? " Activo" : " Apagado"; };
+    f.onsubmit = async (e) => { e.preventDefault(); const m = f.querySelector("[data-cupmsg]"); m.textContent = "Guardando…"; try { await api({ accion: "cupon_guardar", token: sesion.token, cupon: datos(f) }); toast("Cupón guardado ✓"); await pintarCupAdm(); } catch (err) { m.textContent = err.message; } };
+    f.querySelector("[data-cupprev]").onclick = () => { const c = datos(f), mm = c.mmdd || "01-01"; const prev = { tipo: c.id === "cumple" ? "cumple" : "fecha", titulo: c.titulo, codigo: (c.codigo || "CODIGO").toUpperCase(), porcentaje: c.porcentaje, mensaje: c.mensaje, transferencia: c.transferencia, dias: 0, anio: 2000, hasta: new Date(Date.now() + (+c.dias_despues || 7) * 864e5).toISOString().slice(0, 10), id: "prev" };
+      const tmp = document.createElement("div"); tmp.id = "extrasPrev"; const real = $("#extras"); const html = (() => { const save = real.innerHTML, cls = real.className; pintarExtras({ cupon: prev, cumple: "01-01", como: true }); const h = real.innerHTML; real.innerHTML = save; real.className = cls; return h; })();
+      f.querySelector(".cupa-prev").innerHTML = html.replace(/id="cup(Copiar|Tienda|Cod)"/g, ""); };
+    const del = f.querySelector("[data-cupdel]"); if (del) del.onclick = async () => { if (del.dataset.ok !== "1") { del.dataset.ok = "1"; del.textContent = "¿Seguro? Tocá de nuevo"; return; } try { await api({ accion: "cupon_borrar", token: sesion.token, id: C.cupones[+f.dataset.cupi].id }); pintarCupAdm(); } catch (err) { toast(err.message); } };
+  });
+  $("#cupNuevo").onclick = () => { C.cupones.push({ id: "", titulo: "", mmdd: "09-21", codigo: "", porcentaje: 15, dias_antes: 2, dias_despues: 3, mensaje: "", transferencia: true, activo: false }); cupDibujar(); const fs = box.querySelectorAll("form.cupa"); const f = fs[fs.length - 1]; f.scrollIntoView({ behavior: "smooth", block: "center" }); f.elements.titulo.focus(); };
+}
+// ---- pedidos de materiales ----
+async function pintarIdeasAdm() { const box = $("#aIdeasBox"); if (!box) return; if (!ideasAdm) box.innerHTML = '<div class="muted">Cargando ideas…</div>'; try { ideasAdm = await api({ accion: "ideas_admin", token: sesion.token }); } catch (e) { box.innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${/desconocida/i.test(e.message) ? "Falta actualizar la función <b>biblioteca</b> y correr <b>biblioteca-comunidad.sql</b> en Supabase." : esc(e.message)}</div></div>`; return; } ideasDibujar(); }
+function ideasDibujar() {
+  const box = $("#aIdeasBox"), L = ideasAdm.ideas, pend = L.filter((i) => i.estado === "pendiente").length, sm = $("#ideSum"); if (sm) sm.textContent = pend ? `${pend} idea${pend > 1 ? "s" : ""} nueva${pend > 1 ? "s" : ""} para revisar` : `${L.filter((i) => i.estado === "abierta").length} en votación`;
+  const opts = (v) => [["pendiente", "⏳ Para revisar"], ["abierta", "🗳️ En votación"], ["en_camino", "🚧 En camino"], ["hecha", "✅ Hecha"], ["oculta", "🙈 Oculta"]].map(([k, n]) => `<option value="${k}" ${v === k ? "selected" : ""}>${n}</option>`).join("");
+  const prods = (resumen && resumen.materiales) || [];
+  box.innerHTML = `<div class="ad-tip">Las docentes votan hasta 3 ideas. Las que proponen ellas quedan <b>para revisar</b> hasta que las aprobás. Cuando la hagas, marcala como <b>Hecha</b> y elegí el material: les aparece el botón para verlo.</div>
+    ${L.length ? L.map((i) => `<form class="ida${i.estado === "pendiente" ? " pend" : ""}" data-idea="${i.id}" novalidate><div><b>${esc(i.titulo)}</b>${i.detalle ? `<div class="muted" style="font-size:.86rem">${esc(i.detalle)}</div>` : ""}<div class="meta">${new Date(i.fecha).toLocaleDateString("es-AR")} · ${i.autor && i.autor !== "cofredidacticoo@gmail.com" ? `propuesta por <button class="mail" type="button" data-fdoc="${esc(i.autor)}">${esc(i.autor)}</button>` : "agregada por vos"}</div></div>
+      <div class="votos" title="votos">${i.votos}<small style="display:block;font:700 .7rem var(--f)">votos</small></div>
+      <div class="ctl" style="grid-column:1/-1">${i.estado === "pendiente" ? '<button class="btn btn-primary btn-sm" type="button" data-iest="abierta">Aprobar para votar</button><button class="btn btn-ghost btn-sm" type="button" data-iest="oculta">Ocultar</button>' : ""}
+        <select name="estado" aria-label="Estado">${opts(i.estado)}</select><select name="producto" aria-label="Material" ${i.estado === "hecha" ? "" : 'style="display:none"'}><option value="">Material…</option>${prods.map((m) => `<option value="${esc(m.id)}" ${i.producto === m.id ? "selected" : ""}>${esc(m.nombre)}</option>`).join("")}</select>
+        <button class="btn btn-soft btn-sm" type="submit">Guardar</button><button class="btn-link" type="button" data-idel style="color:var(--danger)">Borrar</button></div></form>`).join("") : '<div class="muted">Todavía no hay ideas. Sumá algunas para que las docentes empiecen a votar.</div>'}
+    <form class="trf" id="idaNueva" novalidate><b>➕ Agregar una idea para votar</b><div class="trg"><label>Título<input class="inp" name="titulo" maxlength="90" placeholder="Ej.: Día de la Música (22/11)" /></label><label>Detalle (opcional)<input class="inp" name="detalle" maxlength="400" placeholder="Ej.: Primer ciclo, con canciones para colorear" /></label></div><div><button class="btn btn-primary btn-sm" type="submit">Agregar</button></div></form>`;
+  const guardar = async (f, extra = {}) => { const id = +f.dataset.idea, i = L.find((x) => x.id === id); try { ideasAdm = await api({ accion: "idea_guardar", token: sesion.token, idea: { id, titulo: i.titulo, detalle: i.detalle, estado: f.elements.estado.value, producto: f.elements.producto.value, ...extra } }); toast("Guardado ✓"); ideasDibujar(); } catch (e) { toast(e.message); } };
+  box.querySelectorAll("form.ida").forEach((f) => { f.onsubmit = (e) => { e.preventDefault(); guardar(f); }; f.elements.estado.onchange = () => { f.elements.producto.style.display = f.elements.estado.value === "hecha" ? "" : "none"; };
+    f.querySelectorAll("[data-iest]").forEach((b) => (b.onclick = () => guardar(f, { estado: b.dataset.iest })));
+    const d = f.querySelector("[data-idel]"); d.onclick = async () => { if (d.dataset.ok !== "1") { d.dataset.ok = "1"; d.textContent = "¿Seguro? Tocá de nuevo"; return; } try { ideasAdm = await api({ accion: "idea_borrar", token: sesion.token, id: +f.dataset.idea }); ideasDibujar(); } catch (e) { toast(e.message); } }; });
+  $("#idaNueva").onsubmit = async (e) => { e.preventDefault(); const f = e.target; if (f.elements.titulo.value.trim().length < 3) { toast("Escribí un título."); return; } try { ideasAdm = await api({ accion: "idea_guardar", token: sesion.token, idea: { titulo: f.elements.titulo.value, detalle: f.elements.detalle.value, estado: "abierta" } }); toast("Idea agregada ✓"); ideasDibujar(); } catch (err) { toast(err.message); } };
+}
+$("#adminBox").addEventListener("click", (e) => { const b = e.target.closest("[data-fdoc]"); if (!b) return; e.preventDefault(); e.stopPropagation(); abrirFichaDocente(b.dataset.fdoc); }, true);
 // ---------- Ventas por transferencia: registrar a mano a las docentes que compraron por Instagram ----------
-let trAbierto = false, trLista = null, trPrecios = null, trSel = new Set(), trCli = null, trBorrar = null;
+let trPre = null, trAbierto = false, trLista = null, trPrecios = null, trSel = new Set(), trCli = null, trBorrar = null;
 async function trCargarPrecios() { if (trPrecios) return trPrecios; try { const j = await fetch("productos.json?v=" + Math.floor(Date.now() / 60000)).then((r) => r.json()); trPrecios = {}; (j.productos || []).forEach((p) => { if (p.id) trPrecios[p.id] = Number(p.precio) || 0; }); } catch { trPrecios = {}; } return trPrecios; }
 const plata = (n) => "$ " + Number(n || 0).toLocaleString("es-AR", { maximumFractionDigits: 2 });
 async function pintarTr() {
@@ -1478,6 +1679,7 @@ async function pintarTr() {
   $("#trMats").onchange = (e) => { const c = e.target.closest("input[data-mat]"); if (!c) return; if (c.checked) trSel.add(c.dataset.mat); else trSel.delete(c.dataset.mat); c.closest(".trc").classList.toggle("on", c.checked); trSug(); };
   $("#trEmail").onchange = $("#trEmail").onblur = () => trBuscarCliente();
   F.onsubmit = trRegistrar;
+  if (trPre) { const x = trPre; trPre = null; $("#trEmail").value = x.email; if (x.nombre) $("#trNom").value = x.nombre; if (x.instagram) $("#trIg").value = "@" + x.instagram; trBuscarCliente(); setTimeout(() => $("#trBus").focus(), 400); }
 }
 function trMats() { if (!resumen) return;
   const box = $("#trMats"); if (!box) return; const q = ($("#trBus").value || "").trim().toLowerCase(), ya = new Set(((trCli && trCli.accesos) || []).filter((a) => !a.revocado).map((a) => a.material_id));
@@ -1520,7 +1722,7 @@ function trPintarLista() {
   const box = $("#trListaBox"); if (!box) return; if (!trLista) { box.innerHTML = '<div class="muted">Cargando ventas registradas…</div>'; return; }
   const L = trLista.registros, s = $("#trSum"); if (s) s.textContent = L.length ? `${L.length} registrada${L.length > 1 ? "s" : ""} · ${plata(trLista.total)}` : "registrá a las docentes que te compraron por Instagram";
   if (trLista.error) { box.innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${/desconocida/i.test(trLista.error) ? "Falta actualizar la función <b>biblioteca</b> en Supabase y correr <b>biblioteca-transferencias.sql</b> para usar esta sección." : "No se pudo cargar la lista: " + esc(trLista.error)}</div></div>`; return; }
-  const filas = L.map((o) => `<tr><td class="muted">${esc(new Date(o.fecha_orden || o.fecha).toLocaleDateString("es-AR"))}</td><td><b>${esc(o.nombre || "—")}</b>${o.instagram ? ` <span class="muted">@${esc(o.instagram)}</span>` : ""}<div><button class="mail" type="button" data-como="${esc(o.email)}">${esc(o.email)}</button></div>${o.nota ? `<div class="muted">📝 ${esc(o.nota)}</div>` : ""}</td><td>${esc((o.productos || []).join(" · "))}</td><td class="num">${o.total != null ? plata(o.total) : '<span class="muted">—</span>'}</td>
+  const filas = L.map((o) => `<tr><td class="muted">${esc(new Date(o.fecha_orden || o.fecha).toLocaleDateString("es-AR"))}</td><td><b>${esc(o.nombre || "—")}</b>${o.instagram ? ` <span class="muted">@${esc(o.instagram)}</span>` : ""}<div><button class="mail" type="button" data-fdoc="${esc(o.email)}" title="Ver su ficha">${esc(o.email)}</button></div>${o.nota ? `<div class="muted">📝 ${esc(o.nota)}</div>` : ""}</td><td>${esc((o.productos || []).join(" · "))}</td><td class="num">${o.total != null ? plata(o.total) : '<span class="muted">—</span>'}</td>
     <td><button class="btn btn-ghost btn-sm" type="button" data-trdes="${esc(o.orden)}">${trBorrar === o.orden ? "¿Seguro? Tocá de nuevo" : "Deshacer"}</button></td></tr>`).join("");
   box.innerHTML = `<div class="tr-lh"><b>Registradas a mano (${L.length})</b>${L.length ? '<button class="btn-link" type="button" id="trCsv">⬇ Descargar planilla (CSV)</button>' : ""}</div>
     ${L.length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fecha</th><th>Docente</th><th>Materiales</th><th style="text-align:right">Monto</th><th></th></tr></thead><tbody>${filas}</tbody></table></div>` : '<div class="muted">Todavía no registraste ventas por transferencia.</div>'}`;
