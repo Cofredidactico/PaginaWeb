@@ -155,6 +155,21 @@ label.fld{display:block;font-weight:800;font-size:.85rem;color:var(--ink-2);marg
 /* administrador */
 .admin{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:18px;margin-bottom:22px;display:grid;gap:16px}
 .admin>*,#aRes>*{min-width:0}
+.trv summary{background:linear-gradient(90deg,var(--primary-soft),transparent)}
+#aTrBox{padding:4px 14px 16px;display:grid;gap:14px}
+.trf{display:grid;gap:12px}.trg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.trg label{display:grid;gap:5px;font-size:.84rem;font-weight:800;color:var(--ink-2)}.trg label small{font-weight:600;color:var(--ink-4)}.trg .full{grid-column:1/-1}
+.trg .inp,.trm-h .inp{padding:10px 12px;font-size:.95rem;background:var(--card)}
+.trm-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.trm-h .inp{flex:1;min-width:180px}
+.trm{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;max-height:330px;overflow:auto;padding:2px}
+.trc{display:flex;align-items:center;gap:9px;padding:9px 11px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);cursor:pointer;font-size:.88rem;font-weight:700;line-height:1.25}
+.trc input{width:18px;height:18px;flex:none;accent-color:var(--primary)}.trc.on{border-color:var(--primary);background:var(--primary-soft)}
+.trc em{display:block;font-style:normal;font-weight:700;font-size:.74rem;color:var(--ink-4)}.trc.ya em{color:var(--green)}
+.tr-cli{border:1px dashed var(--line);border-radius:12px;padding:10px 12px;font-size:.88rem;background:var(--card)}
+.tr-acts{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.tr-acts label{display:flex;align-items:center;gap:7px;font-size:.86rem;font-weight:700;color:var(--ink-3)}
+.tr-ok{border:1px solid var(--green);background:var(--green-soft);border-radius:12px;padding:10px 12px;font-size:.9rem}
+.tr-lh{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
 #aRes{display:grid;gap:12px;min-width:0}
 .admin-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .pill-admin{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--purple);background:var(--purple-soft);padding:6px 12px;border-radius:999px}
@@ -1423,11 +1438,100 @@ function pintarAdmin(r) {
       <form class="como" id="aComo" novalidate><input class="inp" id="aEmail" type="email" placeholder="correo de un comprador" aria-label="Correo del comprador" value="${esc(r.como ? r.email : "")}" /><button class="btn btn-soft btn-sm" type="submit">Ver su biblioteca</button></form>
       <form class="como" id="aRast" novalidate><input class="inp" id="aCod" placeholder="código de copia (CD-…)" aria-label="Código de copia" autocapitalize="characters" /><button class="btn btn-soft btn-sm" type="submit">Rastrear copia</button></form></div>
     <div id="aTrack"></div>
+    ${r.como ? "" : '<details class="trv" id="aTr"><summary>💸 Ventas por transferencia<small id="trSum">registrá a las docentes que te compraron por Instagram</small></summary><div id="aTrBox"></div></details>'}
     ${vista}<div id="aRes"${r.como ? ' class="hide"' : ""}>${resumen ? htmlResumen() : '<div class="kpis"><div class="kpi skel" style="height:66px"></div><div class="kpi skel" style="height:66px"></div><div class="kpi skel" style="height:66px"></div><div class="kpi skel" style="height:66px"></div></div>'}</div>`;
   $("#aComo").onsubmit = (e) => { e.preventDefault(); const v = $("#aEmail").value.trim().toLowerCase(); if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return toast("Escribí un correo válido."); verComo = v; filtro = "todos"; $("#q").value = ""; cargar(); };
   $("#aRast").onsubmit = (e) => { e.preventDefault(); const v = $("#aCod").value.trim(); if (v.length < 6) return toast("Escribí el código que figura al pie del PDF."); rastrear(v); };
   if ($("#aVolver")) $("#aVolver").onclick = () => { verComo = null; $("#q").value = ""; cargar(); };
   if (!resumen) cargarResumen();
+  if ($("#aTr")) { const d = $("#aTr"); if (trAbierto) d.open = true; d.ontoggle = () => { trAbierto = d.open; if (d.open) pintarTr(); }; if (d.open) pintarTr(); }
+}
+
+// ---------- Ventas por transferencia: registrar a mano a las docentes que compraron por Instagram ----------
+let trAbierto = false, trLista = null, trPrecios = null, trSel = new Set(), trCli = null, trBorrar = null;
+async function trCargarPrecios() { if (trPrecios) return trPrecios; try { const j = await fetch("productos.json?v=" + Math.floor(Date.now() / 60000)).then((r) => r.json()); trPrecios = {}; (j.productos || []).forEach((p) => { if (p.id) trPrecios[p.id] = Number(p.precio) || 0; }); } catch { trPrecios = {}; } return trPrecios; }
+const plata = (n) => "$ " + Number(n || 0).toLocaleString("es-AR", { maximumFractionDigits: 2 });
+async function pintarTr() {
+  const box = $("#aTrBox"); if (!box) return;
+  if (!resumen) { box.innerHTML = '<div class="muted">Cargando materiales…</div>'; await cargarResumen(); if (!resumen) return; }
+  await trCargarPrecios();
+  const hoy = new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
+  box.innerHTML = `<form class="trf" id="trF" novalidate autocomplete="off">
+      <div class="trg">
+        <label>Correo de la docente *<input class="inp" id="trEmail" type="email" inputmode="email" placeholder="docente@gmail.com" required /></label>
+        <label>Nombre y apellido <small>(se imprime en su copia del PDF)</small><input class="inp" id="trNom" maxlength="80" placeholder="Ej.: María López" /></label>
+        <label>Usuario de Instagram<input class="inp" id="trIg" maxlength="40" placeholder="@usuario" /></label>
+        <label>Fecha de la compra<input class="inp" id="trFecha" type="date" value="${hoy}" max="${hoy}" /></label>
+        <label>Monto total <small id="trSug"></small><input class="inp" id="trMonto" inputmode="decimal" placeholder="Ej.: 7500" /></label>
+        <label class="full">Nota <small>(solo la ves vos)</small><input class="inp" id="trNota" maxlength="300" placeholder="Ej.: pagó por alias el 3/10, pidió también la versión en blanco y negro" /></label>
+      </div>
+      <div id="trCli" class="tr-cli hide"></div>
+      <div class="trm-h"><b>Materiales que compró *</b><input class="inp" id="trBus" placeholder="Buscar material…" aria-label="Buscar material" /><span class="muted" id="trCnt"></span></div>
+      <div class="trm" id="trMats"></div>
+      <div class="tr-acts"><button class="btn btn-primary" type="submit" id="trGo">Registrar y darle acceso</button><label><input type="checkbox" id="trMant" /> Dejar elegidos los mismos materiales para la próxima</label></div>
+      <div id="trRes"></div>
+    </form>
+    <div id="trListaBox"></div>`;
+  trMats(); trSug(); trPintarLista(); if (!trLista) trCargarLista();
+  const F = $("#trF");
+  $("#trBus").oninput = trMats;
+  $("#trMats").onchange = (e) => { const c = e.target.closest("input[data-mat]"); if (!c) return; if (c.checked) trSel.add(c.dataset.mat); else trSel.delete(c.dataset.mat); c.closest(".trc").classList.toggle("on", c.checked); trSug(); };
+  $("#trEmail").onchange = $("#trEmail").onblur = () => trBuscarCliente();
+  F.onsubmit = trRegistrar;
+}
+function trMats() { if (!resumen) return;
+  const box = $("#trMats"); if (!box) return; const q = ($("#trBus").value || "").trim().toLowerCase(), ya = new Set(((trCli && trCli.accesos) || []).filter((a) => !a.revocado).map((a) => a.material_id));
+  const L = resumen.materiales.filter((m) => m.tipo !== "regalo").filter((m) => !q || (m.nombre + " " + m.id).toLowerCase().includes(q));
+  box.innerHTML = L.length ? L.map((m) => `<label class="trc ${trSel.has(m.id) ? "on" : ""} ${ya.has(m.id) ? "ya" : ""}"><input type="checkbox" data-mat="${esc(m.id)}" ${trSel.has(m.id) ? "checked" : ""} /><span>${esc(m.nombre)}<em>${ya.has(m.id) ? "✓ ya lo tiene" : trPrecios && trPrecios[m.id] ? plata(trPrecios[m.id]) : m.tipo === "plataforma" ? "Plataforma" : ""}</em></span></label>`).join("") : '<div class="muted">No hay materiales con ese nombre.</div>';
+  $("#trCnt").textContent = trSel.size ? `${trSel.size} elegido${trSel.size > 1 ? "s" : ""}` : "";
+}
+function trSug() { const s = [...trSel].reduce((a, id) => a + ((trPrecios && trPrecios[id]) || 0), 0); const el = $("#trSug"); if (el) el.textContent = s ? `(precio de lista: ${plata(s)})` : ""; const c = $("#trCnt"); if (c) c.textContent = trSel.size ? `${trSel.size} elegido${trSel.size > 1 ? "s" : ""}` : ""; }
+async function trBuscarCliente() {
+  const v = $("#trEmail").value.trim().toLowerCase(), box = $("#trCli"); if (!box) return;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { trCli = null; box.classList.add("hide"); trMats(); return; }
+  if (trCli && trCli.email === v) return;
+  try { trCli = await api({ accion: "cliente", token: sesion.token, email: v }); } catch (e) { trCli = null; box.classList.add("hide"); return; }
+  if ($("#trEmail").value.trim().toLowerCase() !== v) return;
+  const act = trCli.accesos.filter((a) => !a.revocado);
+  if (!$("#trNom").value && trCli.nombre) $("#trNom").value = trCli.nombre;
+  if (!$("#trIg").value && trCli.instagram) $("#trIg").value = "@" + trCli.instagram;
+  const origen = { tienda: "Empretienda", transferencia: "transferencia", manual: "a mano", historial: "historial" };
+  box.innerHTML = act.length ? `👤 <b>${esc(trCli.nombre || v)}</b> ya tiene ${act.length} ${act.length === 1 ? "material" : "materiales"} en su biblioteca: ${act.map((a) => `${esc(a.nombre)} <span class="muted">(${esc(origen[a.origen] || a.origen)})</span>`).join(" · ")}. Están marcados abajo con “✓ ya lo tiene”.` : `🆕 <b>${esc(v)}</b> todavía no tiene materiales en la biblioteca. Revisá que el correo esté bien escrito: es con el que va a entrar.`;
+  box.classList.remove("hide"); trMats();
+}
+async function trRegistrar(e) {
+  e.preventDefault(); const email = $("#trEmail").value.trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast("Escribí un correo válido."); $("#trEmail").focus(); return; }
+  if (!trSel.size) { toast("Elegí al menos un material."); return; }
+  const monto = $("#trMonto").value.replace(/[^\d,.]/g, "").replace(/\.(?=\d{3}(\D|$))/g, "").replace(",", ".");
+  const b = $("#trGo"); b.disabled = true; b.textContent = "Registrando…";
+  try {
+    const r = await api({ accion: "registrar", token: sesion.token, email, nombre: $("#trNom").value, instagram: $("#trIg").value, fecha: $("#trFecha").value, total: monto === "" ? null : Number(monto), nota: $("#trNota").value, materiales: [...trSel] });
+    $("#trRes").innerHTML = `<div class="tr-ok">✅ Listo: <b>${esc(r.email)}</b> ya tiene ${esc(r.materiales.join(", "))} en su biblioteca.${r.yaTenia && r.yaTenia.length ? ` <span class="muted">(${esc(r.yaTenia.join(", "))} ya lo tenía)</span>` : ""} Cuando entre con ese correo lo va a ver.</div>`;
+    toast("Venta registrada ✓");
+    ["#trEmail", "#trNom", "#trIg", "#trMonto", "#trNota"].forEach((id) => ($(id).value = "")); trCli = null; $("#trCli").classList.add("hide");
+    if (!$("#trMant").checked) trSel.clear(); trMats(); trSug(); $("#trEmail").focus();
+    trLista = null; await trCargarLista(); cargarResumen();
+  } catch (err) { toast(err.message); $("#trRes").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(err.message)}</div></div>`; }
+  b.disabled = false; b.textContent = "Registrar y darle acceso";
+}
+async function trCargarLista() { try { trLista = await api({ accion: "manuales", token: sesion.token }); } catch (e) { trLista = { registros: [], total: 0, error: e.message }; } trPintarLista(); }
+function trPintarLista() {
+  const box = $("#trListaBox"); if (!box) return; if (!trLista) { box.innerHTML = '<div class="muted">Cargando ventas registradas…</div>'; return; }
+  const L = trLista.registros, s = $("#trSum"); if (s) s.textContent = L.length ? `${L.length} registrada${L.length > 1 ? "s" : ""} · ${plata(trLista.total)}` : "registrá a las docentes que te compraron por Instagram";
+  if (trLista.error) { box.innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${/desconocida/i.test(trLista.error) ? "Falta actualizar la función <b>biblioteca</b> en Supabase y correr <b>biblioteca-transferencias.sql</b> para usar esta sección." : "No se pudo cargar la lista: " + esc(trLista.error)}</div></div>`; return; }
+  const filas = L.map((o) => `<tr><td class="muted">${esc(new Date(o.fecha_orden || o.fecha).toLocaleDateString("es-AR"))}</td><td><b>${esc(o.nombre || "—")}</b>${o.instagram ? ` <span class="muted">@${esc(o.instagram)}</span>` : ""}<div><button class="mail" type="button" data-como="${esc(o.email)}">${esc(o.email)}</button></div>${o.nota ? `<div class="muted">📝 ${esc(o.nota)}</div>` : ""}</td><td>${esc((o.productos || []).join(" · "))}</td><td class="num">${o.total != null ? plata(o.total) : '<span class="muted">—</span>'}</td>
+    <td><button class="btn btn-ghost btn-sm" type="button" data-trdes="${esc(o.orden)}">${trBorrar === o.orden ? "¿Seguro? Tocá de nuevo" : "Deshacer"}</button></td></tr>`).join("");
+  box.innerHTML = `<div class="tr-lh"><b>Registradas a mano (${L.length})</b>${L.length ? '<button class="btn-link" type="button" id="trCsv">⬇ Descargar planilla (CSV)</button>' : ""}</div>
+    ${L.length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fecha</th><th>Docente</th><th>Materiales</th><th style="text-align:right">Monto</th><th></th></tr></thead><tbody>${filas}</tbody></table></div>` : '<div class="muted">Todavía no registraste ventas por transferencia.</div>'}`;
+  const csv = $("#trCsv"); if (csv) csv.onclick = trCsvDl;
+  box.querySelectorAll("[data-trdes]").forEach((b) => (b.onclick = async () => { const o = b.dataset.trdes; if (trBorrar !== o) { trBorrar = o; trPintarLista(); setTimeout(() => { if (trBorrar === o) { trBorrar = null; trPintarLista(); } }, 4000); return; } trBorrar = null; b.disabled = true;
+    try { await api({ accion: "deshacer_registro", token: sesion.token, orden: o }); toast("Registro deshecho: se quitaron esos accesos"); await trCargarLista(); cargarResumen(); } catch (e) { toast(e.message); b.disabled = false; } }));
+}
+function trCsvDl() {
+  const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`, L = (trLista && trLista.registros) || [];
+  const txt = "﻿" + [["Fecha", "Nombre", "Correo", "Instagram", "Materiales", "Monto", "Nota", "Registro"].map(q).join(";"), ...L.map((o) => [new Date(o.fecha_orden || o.fecha).toLocaleDateString("es-AR"), o.nombre, o.email, o.instagram ? "@" + o.instagram : "", (o.productos || []).join(" + "), o.total ?? "", o.nota, o.orden].map(q).join(";"))].join("\r\n");
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([txt], { type: "text/csv;charset=utf-8" })); a.download = "ventas-por-transferencia.csv"; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
 }
 async function cargarResumen() {
   try { resumen = await api({ accion: "resumen", token: sesion.token }); pintarRes(); }
