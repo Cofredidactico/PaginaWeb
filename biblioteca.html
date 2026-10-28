@@ -721,6 +721,22 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
 :root[data-tema="patria"] .hero{background:linear-gradient(180deg,#BFE1F8 0 33%,#FFFFFF 33% 67%,#BFE1F8 67%)}
 :root[data-tema="jardin"]{--bg:#F5FBF0;--bg-2:#EAF5E2;--card:#FFFFFF;--line:#D9EBCF;--primary:#3F8F4B;--primary-dark:#2F7339;--primary-soft:#E1F2DD;--accent:#F08A3C;--accent-soft:#FDEBDC;--sea1:#E1F3D7;--sea2:#FFF2D2;--hdr-bg:rgba(245,251,240,.9);--dot:rgba(63,143,75,.10)}
 :root[data-tema="jardin"] body{background-image:radial-gradient(var(--dot) 2px,transparent 2px),radial-gradient(rgba(240,138,60,.08) 2px,transparent 2px);background-size:30px 30px,30px 30px;background-position:0 0,15px 15px}
+
+/* avatar de la seño */
+.seno-av{position:absolute;inset:14px;display:grid;place-items:center;animation:flotar 4s ease-in-out infinite;cursor:pointer}.seno-av svg{width:100%;height:100%;filter:drop-shadow(0 8px 12px rgba(26,39,68,.25))}
+.hero-art.con-seno img{display:none}
+.seno-crear{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);white-space:nowrap;padding:6px 12px;border-radius:999px;border:0;background:var(--accent);color:#fff;font:800 .78rem var(--f);box-shadow:0 6px 14px -6px rgba(255,138,76,.8);cursor:pointer;animation:latido 2.4s ease-in-out infinite}
+@keyframes latido{0%,100%{box-shadow:0 6px 14px -6px rgba(255,138,76,.8),0 0 0 0 rgba(255,138,76,.45)}50%{box-shadow:0 6px 14px -6px rgba(255,138,76,.8),0 0 0 8px rgba(255,138,76,0)}}
+@media (max-width:720px){.seno-crear{font-size:.66rem;padding:4px 8px;bottom:-10px}.seno-av{inset:6px}}
+.dlg-seno{width:min(820px,calc(100% - 20px))}.seno-ed{display:grid;grid-template-columns:240px minmax(0,1fr);gap:16px;align-items:start}
+.seno-prev{display:grid;gap:10px;justify-items:center;position:sticky;top:0}.seno-prev #senoPrev{width:220px;height:220px}.seno-prev svg{width:100%;height:100%;filter:drop-shadow(0 10px 16px rgba(26,39,68,.25))}
+.seno-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.seno-tabs button{padding:7px 11px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font:800 .82rem var(--f);color:var(--ink-2);cursor:pointer}.seno-tabs button[aria-selected="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.seno-gr{display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:8px;max-height:46vh;overflow:auto;padding:2px}
+.seno-o{display:grid;justify-items:center;gap:3px;padding:6px 4px;border-radius:14px;border:2px solid var(--line);background:var(--card);cursor:pointer;font:700 .72rem var(--f);color:var(--ink-2)}.seno-o svg{width:58px;height:58px}
+.seno-o[aria-pressed="true"]{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}.seno-o .sw{width:40px;height:40px;border-radius:50%;border:2px solid rgba(0,0,0,.08)}
+.seno-grp{grid-column:1/-1;font:800 .78rem var(--f);color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
+@media (max-width:640px){.seno-ed{grid-template-columns:1fr}.seno-prev{position:static}.seno-prev #senoPrev{width:150px;height:150px}.seno-gr{max-height:34vh}}
+.fi-av svg{width:100%;height:100%}
 </style>
 </head>
 <body>
@@ -793,7 +809,7 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
         <button class="anual-btn hide" type="button" id="anualBtn">🎁 Mirá tu año con Cofre Didáctico</button>
       </div>
       <div class="cofre-slot hide" id="cofreHero"></div>
-      <div class="hero-art" id="heroArt" aria-hidden="true"><span class="blob"></span><img src="logo.png" alt="" onerror="this.remove()" /><span class="fl f1"></span><span class="fl f2"></span><span class="fl f3"></span></div>
+      <div class="hero-art" id="heroArt"><span class="blob" aria-hidden="true"></span><img src="logo.png" alt="" onerror="this.remove()" /><span class="seno-av hide" id="senoAv"></span><button class="seno-crear hide" type="button" id="senoBtn">✨ Creá tu seño</button><span class="fl f1" aria-hidden="true"></span><span class="fl f2" aria-hidden="true"></span><span class="fl f3" aria-hidden="true"></span></div>
     </div>
     <div id="adminBox" class="admin hide"></div>
     <div id="notice"></div>
@@ -845,6 +861,7 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
 <dialog class="dlg dlg-deco" id="dlgDeco" aria-labelledby="decoTit"><div class="dlg-in">
   <div class="id-h"><h2 id="decoTit">🎨 Decorá tu biblioteca</h2><button class="btn btn-ghost btn-sm" type="button" id="decoX" aria-label="Cerrar">✕</button></div>
   <p class="sub">Elegí el estilo que más te guste. Se aplica al instante y queda guardado en este dispositivo.</p>
+  <button class="btn btn-soft" type="button" id="decoSeno">👩‍🏫 Crear o cambiar mi seño</button>
   <div class="temas" id="temas" role="radiogroup" aria-label="Estilos"></div>
   <label class="chk"><input type="checkbox" id="decoEscena" /> <span>Escena viva: el cielo cambia con la hora y la estación (sol, luna, hojas, flores…)</span></label>
   <div class="dlg-acts"><button class="btn btn-primary" type="button" id="decoOk">¡Listo!</button></div>
@@ -854,6 +871,12 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
   <div class="alb-prog"><span id="albTxt"></span><span class="fig-bar"><i id="albBar"></i></span></div>
   <div class="album" id="album"></div>
   <div class="dlg-acts"><span class="muted" id="albMsg"></span><button class="btn btn-soft" type="button" id="albShare">📸 Compartir mi biblioteca</button></div>
+</div></dialog>
+<dialog class="dlg dlg-seno" id="dlgSeno" aria-labelledby="senoTit"><div class="dlg-in">
+  <div class="id-h"><h2 id="senoTit">👩‍🏫 Creá tu seño</h2><button class="btn btn-ghost btn-sm" type="button" id="senoX" aria-label="Cerrar">✕</button></div>
+  <div class="seno-ed"><div class="seno-prev"><div id="senoPrev"></div><button class="btn btn-ghost btn-sm" type="button" id="senoAzar">🎲 Sorpresa</button></div>
+    <div class="seno-op"><div class="seno-tabs" id="senoTabs" role="tablist"></div><div class="seno-gr" id="senoGr"></div></div></div>
+  <div class="dlg-acts"><span class="muted" id="senoMsg"></span><button class="btn btn-ghost" type="button" id="senoQuitar">Usar el logo</button><button class="btn btn-primary" type="button" id="senoOk">¡Esta soy yo!</button></div>
 </div></dialog>
 <div class="fig-nueva" id="figNueva" role="status" aria-live="polite"></div>
 <div class="armando" id="armando" role="status" aria-live="polite"><span class="cofre"><img src="logo.png" alt="" onerror="this.remove()" /></span><span><b>Armando tu copia…</b><small id="armandoT">Abriendo el cofre</small></span></div>
@@ -1033,7 +1056,7 @@ function mostrar(r) {
   $("#notice").innerHTML = html;
   const cuenta = materiales.reduce((a, m) => ((a[m.tipo] = (a[m.tipo] || 0) + 1), a), {});
   const tipos = Object.keys(TIPOS).filter((t) => cuenta[t]);
-  $("#tools").classList.toggle("hide", !n); pintarVistas(); pintarHero(r); pintarCofreHero(r); pintarLlaves(r); pintarBotonAnual(r); pintarExtras(r); pintarCielo(); pintarFiguritas(r);
+  $("#tools").classList.toggle("hide", !n); pintarVistas(); pintarHero(r); pintarCofreHero(r); pintarLlaves(r); pintarBotonAnual(r); pintarExtras(r); pintarCielo(); pintarSeno(r); pintarFiguritas(r);
   if (!previewsListas) cargarPreviews().then(() => { if (Object.keys(PREVIEWS).length) pintar(); });
   if (!tipos.includes(filtro)) filtro = "todos";
   $("#chips").innerHTML = [`<button class="chip" data-f="todos" aria-pressed="${filtro === "todos"}">Todos<span class="n">${n}</span></button>`]
@@ -1684,6 +1707,116 @@ document.addEventListener("click", (e) => { const s = $("#cmSug"); if (s && !e.t
 
 
 
+
+// ---------- Avatar de la seño ----------
+const AV_PIEL = ["#FBE3D3", "#F6D2B8", "#EBB894", "#D8A27A", "#BE8560", "#9C6A49", "#7A4F34", "#5A3824"];
+const AV_PELO_C = ["#2B1E16", "#5A3825", "#8A5A35", "#C58A4B", "#E6C27A", "#B4462E", "#9AA0A6", "#F2EFEA", "#7E57C2", "#E86A92", "#3A7BD5"];
+const AV_TELA = ["#FFFFFF", "#2196F3", "#FF8A4C", "#4C9A52", "#E86A92", "#7E57C2", "#F2B705", "#1A2744", "#E5533D", "#74ACDF", "#8D6E63"];
+const AV_FONDO = ["#E3F2FD", "#FFE3D3", "#E7F6DF", "#F6E3FF", "#FFF4CC", "#FDE4EE", "#DDEFFC", "#1A2744", "#FFFFFF", "#FFD9C2", "#D7F0EC"];
+const AV_PELOS = [["corto", "Corto"], ["largo", "Largo"], ["rulos", "Rulos"], ["rodete", "Rodete"], ["colitas", "Colitas"], ["carre", "Carré"], ["trenza", "Trenza"], ["ondas", "Ondas"], ["rapado", "Rapado"], ["pelado", "Sin pelo"]];
+const AV_OJOS = [["normal", "Normales"], ["felices", "Felices"], ["guino", "Guiño"], ["grandes", "Grandes"], ["pestanas", "Pestañas"]];
+const AV_BOCA = [["sonrisa", "Sonrisa"], ["risa", "Risa"], ["suave", "Suave"], ["oh", "¡Oh!"], ["lengua", "Pícara"]];
+const AV_LENTES = [["no", "Sin lentes"], ["redondos", "Redondos"], ["cuadrados", "Cuadrados"], ["gatito", "Gatito"], ["sol", "De sol"]];
+const AV_ROPA = [["guardapolvo", "Guardapolvo"], ["sweater", "Sweater"], ["remera", "Remera"], ["camisa", "Camisa"], ["cardigan", "Cárdigan"], ["delantal", "Delantal"]];
+const AV_EXTRA = [["no", "Nada"], ["aros", "Aros"], ["flor", "Flor"], ["vincha", "Vincha"], ["lapiz", "Lápiz"], ["mono", "Moño"], ["mate", "Mate"], ["manzana", "Manzana"], ["libro", "Libro"], ["barba", "Barba"]];
+const AV_DEF = { piel: "p1", pelo: "largo", color: "c1", ojos: "felices", boca: "sonrisa", lentes: "no", ropa: "guardapolvo", tela: "c0", extra: "aros", fondo: "c0", cachetes: "si" };
+const avIdx = (v, L) => Math.min(L.length - 1, Math.max(0, parseInt(String(v || "").slice(1)) || 0));
+const oscurecer = (hex, f) => { const n = parseInt(hex.slice(1), 16), r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255, m = (x) => Math.max(0, Math.min(255, Math.round(x * f))); return `rgb(${m(r)},${m(g)},${m(b)})`; };
+function avatarSvg(cfg, opt = {}) {
+  const a = { ...AV_DEF, ...(cfg || {}) }, piel = AV_PIEL[avIdx(a.piel, AV_PIEL)], pelo = AV_PELO_C[avIdx(a.color, AV_PELO_C)], tela = AV_TELA[avIdx(a.tela, AV_TELA)], fondo = AV_FONDO[avIdx(a.fondo, AV_FONDO)];
+  const pS = oscurecer(piel.length === 7 ? piel : "#F6D2B8", 0.86), peloO = oscurecer(pelo, 0.78), tinta = "#2A2230";
+  let atras = "", frente = "", cuerpo = "", cara = "", lentes = "", extra = "", extraAtras = "";
+  // pelo (atrás)
+  const P = a.pelo;
+  if (P === "largo" || P === "trenza" || P === "ondas") atras = `<path d="M54 92 C50 48 78 36 100 36 C124 36 152 48 146 94 L152 ${P === "largo" ? 168 : 150} C132 ${P === "largo" ? 176 : 158} 68 ${P === "largo" ? 176 : 158} 48 ${P === "largo" ? 168 : 150} Z" fill="${pelo}"/>` + (P === "ondas" ? `<path d="M48 150 q10 12 20 0 q10 12 20 0 q10 12 24 0 q10 12 20 0 q10 12 20 0" fill="none" stroke="${peloO}" stroke-width="4" stroke-linecap="round"/>` : "");
+  if (P === "carre") atras = `<path d="M54 96 C52 50 78 40 100 40 C122 40 148 50 146 96 L148 132 C130 140 70 140 52 132 Z" fill="${pelo}"/>`;
+  if (P === "rulos") atras = [[62, 70], [56, 95], [60, 120], [74, 136], [138, 70], [144, 95], [140, 120], [126, 136], [100, 46], [78, 50], [122, 50]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="18" fill="${pelo}"/>`).join("");
+  if (P === "rodete") atras = `<circle cx="100" cy="40" r="19" fill="${pelo}"/><path d="M86 42 q14 -10 28 0" stroke="${peloO}" stroke-width="3" fill="none"/>`;
+  if (P === "colitas") atras = `<ellipse cx="50" cy="104" rx="14" ry="24" fill="${pelo}" transform="rotate(18 50 104)"/><ellipse cx="150" cy="104" rx="14" ry="24" fill="${pelo}" transform="rotate(-18 150 104)"/>`;
+  // cuerpo
+  const R = a.ropa, hombros = `M28 200 C28 160 58 142 100 142 C142 142 172 160 172 200 Z`;
+  cuerpo = `<rect x="88" y="124" width="24" height="26" rx="8" fill="${pS}"/>`;
+  if (R === "guardapolvo") cuerpo += `<path d="${hombros}" fill="#FFFFFF" stroke="#DCE3EC" stroke-width="2"/><path d="M84 144 L100 172 L116 144" fill="${pS}"/><path d="M80 142 L100 176 L120 142" fill="none" stroke="#C9D3E0" stroke-width="3"/><circle cx="100" cy="184" r="3" fill="#C9D3E0"/><circle cx="100" cy="196" r="3" fill="#C9D3E0"/><path d="M70 170 l-6 26 M130 170 l6 26" stroke="#E3E8F0" stroke-width="2"/>` + (a.tela !== "c0" ? `<path d="M92 150 L100 162 L108 150" fill="${tela}"/>` : "");
+  else if (R === "sweater") cuerpo += `<path d="${hombros}" fill="${tela}"/><path d="M84 144 Q100 160 116 144" fill="${pS}" stroke="${oscurecer(tela, 0.8)}" stroke-width="5"/><path d="M40 190 h120" stroke="${oscurecer(tela, 0.85)}" stroke-width="4" stroke-dasharray="6 6"/>`;
+  else if (R === "camisa") cuerpo += `<path d="${hombros}" fill="${tela}"/><path d="M86 142 L100 160 L114 142 L108 140 L100 150 L92 140 Z" fill="#FFFFFF"/><path d="M100 160 V200" stroke="${oscurecer(tela, 0.75)}" stroke-width="2"/><circle cx="100" cy="174" r="2.5" fill="#fff"/><circle cx="100" cy="188" r="2.5" fill="#fff"/>`;
+  else if (R === "cardigan") cuerpo += `<path d="${hombros}" fill="#FFFFFF"/><path d="M28 200 C28 160 58 142 92 142 L96 200 Z M172 200 C172 160 142 142 108 142 L104 200 Z" fill="${tela}"/><path d="M88 146 Q100 156 112 146" fill="none" stroke="#E3E8F0" stroke-width="3"/>`;
+  else if (R === "delantal") cuerpo += `<path d="${hombros}" fill="${oscurecer(tela, 0.9)}"/><path d="M70 152 L130 152 L136 200 L64 200 Z" fill="#FFFFFF"/><rect x="88" y="172" width="24" height="16" rx="4" fill="${tela}" opacity=".5"/><path d="M84 144 Q100 158 116 144" fill="${pS}"/>`;
+  else cuerpo += `<path d="${hombros}" fill="${tela}"/><path d="M84 144 Q100 158 116 144" fill="${pS}"/><path d="M84 144 Q100 158 116 144" fill="none" stroke="${oscurecer(tela, 0.8)}" stroke-width="3"/>`;
+  // cabeza
+  cara = `<ellipse cx="60" cy="100" rx="7" ry="9" fill="${piel}"/><ellipse cx="140" cy="100" rx="7" ry="9" fill="${piel}"/><ellipse cx="100" cy="96" rx="40" ry="44" fill="${piel}"/>`;
+  // pelo (frente)
+  const tapa = `<path d="M60 96 C56 54 80 44 100 44 C122 44 146 54 140 96 C134 72 116 62 100 62 C84 62 66 72 60 96 Z" fill="${pelo}"/>`;
+  if (P === "corto") frente = `<path d="M59 96 C54 50 82 42 102 42 C126 42 148 56 141 98 C138 76 126 66 112 62 C108 72 90 70 80 64 C70 70 62 80 59 96 Z" fill="${pelo}"/>`;
+  else if (P === "largo" || P === "ondas") frente = `<path d="M60 100 C56 54 80 44 100 44 C122 44 146 54 140 100 C134 74 118 60 104 58 C96 66 76 70 60 100 Z" fill="${pelo}"/>`;
+  else if (P === "rulos") frente = [[70, 62], [86, 54], [102, 52], [118, 56], [132, 66]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="13" fill="${pelo}"/>`).join("");
+  else if (P === "carre") frente = `<path d="M62 84 C62 56 80 48 100 48 C120 48 138 56 138 84 Z" fill="${pelo}"/><path d="M62 84 L62 120 L70 120 L70 84 Z M138 84 L138 120 L130 120 L130 84 Z" fill="${pelo}"/>`;
+  else if (P === "trenza") frente = tapa + [0, 1, 2, 3, 4].map((i) => `<ellipse cx="${146 - i * 2}" cy="${112 + i * 14}" rx="9" ry="8" fill="${i % 2 ? peloO : pelo}"/>`).join("");
+  else if (P === "rapado") frente = `<path d="M60 92 C58 56 80 48 100 48 C120 48 142 56 140 92 C130 66 112 60 100 60 C88 60 70 66 60 92 Z" fill="${pelo}" opacity=".55"/>`;
+  else if (P === "pelado") frente = "";
+  else frente = tapa;
+  // cara
+  const ojo = (x) => a.ojos === "felices" ? `<path d="M${x - 6} 100 Q${x} 92 ${x + 6} 100" stroke="${tinta}" stroke-width="3.2" fill="none" stroke-linecap="round"/>` : a.ojos === "grandes" ? `<circle cx="${x}" cy="99" r="6.5" fill="${tinta}"/><circle cx="${x + 2}" cy="97" r="2.2" fill="#fff"/>` : `<circle cx="${x}" cy="99" r="4.5" fill="${tinta}"/><circle cx="${x + 1.5}" cy="97.5" r="1.4" fill="#fff"/>` + (a.ojos === "pestanas" ? `<path d="M${x - 6} 94 l-3 -4 M${x} 92 v-5 M${x + 6} 94 l3 -4" stroke="${tinta}" stroke-width="2" stroke-linecap="round"/>` : "");
+  let ojos = a.ojos === "guino" ? `<circle cx="84" cy="99" r="4.5" fill="${tinta}"/><circle cx="85.5" cy="97.5" r="1.4" fill="#fff"/><path d="M110 100 Q116 96 122 100" stroke="${tinta}" stroke-width="3.2" fill="none" stroke-linecap="round"/>` : ojo(84) + ojo(116);
+  const cejas = `<path d="M76 88 Q84 84 92 87 M108 87 Q116 84 124 88" stroke="${peloO}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  const boca = { sonrisa: `<path d="M88 116 Q100 128 112 116" stroke="${tinta}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`, risa: `<path d="M86 114 Q100 134 114 114 Z" fill="#8E2B3A"/><path d="M92 124 Q100 128 108 124" stroke="#F28BA0" stroke-width="4" fill="none" stroke-linecap="round"/>`, suave: `<path d="M92 118 Q100 122 108 118" stroke="${tinta}" stroke-width="3" fill="none" stroke-linecap="round"/>`, oh: `<ellipse cx="100" cy="120" rx="6" ry="7" fill="#8E2B3A"/>`, lengua: `<path d="M88 116 Q100 128 112 116" stroke="${tinta}" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M102 121 q4 8 9 1" fill="#F28BA0"/>` }[a.boca] || "";
+  const cach = a.cachetes === "no" ? "" : `<circle cx="74" cy="112" r="7" fill="#FF8FA3" opacity=".35"/><circle cx="126" cy="112" r="7" fill="#FF8FA3" opacity=".35"/>`;
+  const L = a.lentes;
+  if (L === "redondos") lentes = `<circle cx="84" cy="99" r="11" fill="none" stroke="${tinta}" stroke-width="3"/><circle cx="116" cy="99" r="11" fill="none" stroke="${tinta}" stroke-width="3"/><path d="M95 99 h10" stroke="${tinta}" stroke-width="3"/>`;
+  else if (L === "cuadrados") lentes = `<rect x="72" y="90" width="24" height="18" rx="4" fill="none" stroke="${tinta}" stroke-width="3"/><rect x="104" y="90" width="24" height="18" rx="4" fill="none" stroke="${tinta}" stroke-width="3"/><path d="M96 98 h8" stroke="${tinta}" stroke-width="3"/>`;
+  else if (L === "gatito") lentes = `<path d="M70 92 L98 94 L96 106 Q84 112 74 104 Z M130 92 L102 94 L104 106 Q116 112 126 104 Z" fill="rgba(255,255,255,.15)" stroke="#C2185B" stroke-width="3" stroke-linejoin="round"/>`;
+  else if (L === "sol") lentes = `<rect x="70" y="90" width="27" height="17" rx="8" fill="#1A2744"/><rect x="103" y="90" width="27" height="17" rx="8" fill="#1A2744"/><path d="M97 96 h6" stroke="#1A2744" stroke-width="3"/><path d="M75 94 l6 0" stroke="#fff" stroke-width="2" opacity=".6"/>`;
+  const X = a.extra;
+  if (X === "aros") extra = `<circle cx="58" cy="112" r="4" fill="#F2B705"/><circle cx="142" cy="112" r="4" fill="#F2B705"/>`;
+  else if (X === "flor") extra = `<g transform="translate(70 58)">${[0, 72, 144, 216, 288].map((d) => `<ellipse cx="0" cy="-8" rx="5.5" ry="8" fill="#FF7FA8" transform="rotate(${d})"/>`).join("")}<circle r="5" fill="#FFD54F"/></g>`;
+  else if (X === "vincha") extra = `<path d="M62 74 Q100 40 138 74" stroke="#E5533D" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+  else if (X === "lapiz") extra = `<g transform="translate(138 70) rotate(35)"><rect x="-4" y="-22" width="8" height="34" fill="#F2B705"/><path d="M-4 12 L0 20 L4 12 Z" fill="#F6D2B8"/><rect x="-4" y="-26" width="8" height="5" fill="#E86A92"/></g>`;
+  else if (X === "mono") extra = `<g transform="translate(100 46)"><path d="M0 0 L-16 -9 L-16 9 Z M0 0 L16 -9 L16 9 Z" fill="#E5533D"/><circle r="4" fill="#C62828"/></g>`;
+  else if (X === "mate") extra = `<g transform="translate(150 172)"><path d="M-12 -14 Q-16 10 0 14 Q16 10 12 -14 Z" fill="#8D5524"/><ellipse cx="0" cy="-14" rx="12" ry="4" fill="#5B8C3A"/><rect x="4" y="-34" width="3" height="22" fill="#C9C9C9" transform="rotate(15)"/></g>`;
+  else if (X === "manzana") extra = `<g transform="translate(150 176)"><circle cx="-5" cy="0" r="11" fill="#E53935"/><circle cx="5" cy="0" r="11" fill="#E53935"/><path d="M0 -10 q2 -8 6 -9" stroke="#5D4037" stroke-width="2.5" fill="none"/><ellipse cx="7" cy="-15" rx="6" ry="3" fill="#43A047" transform="rotate(-20 7 -15)"/></g>`;
+  else if (X === "libro") extra = `<g transform="translate(148 176) rotate(-12)"><rect x="-16" y="-12" width="32" height="22" rx="3" fill="#2196F3"/><rect x="-13" y="-9" width="26" height="16" fill="#fff"/><path d="M0 -9 V7" stroke="#2196F3" stroke-width="2"/></g>`;
+  else if (X === "barba") extra = `<path d="M66 104 Q70 140 100 142 Q130 140 134 104 Q126 126 100 126 Q74 126 66 104 Z" fill="${pelo}"/>`;
+  const fondoC = opt.sinFondo ? "" : `<circle cx="100" cy="100" r="100" fill="${fondo}"/>`;
+  return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avatar de la seño"><defs><clipPath id="avc${opt.id || ""}"><circle cx="100" cy="100" r="100"/></clipPath></defs><g clip-path="url(#avc${opt.id || ""})">${fondoC}${extraAtras}${atras}${cuerpo}${cara}${frente}${cejas}${ojos}${cach}${boca}${X === "barba" ? extra : ""}${lentes}${X !== "barba" ? extra : ""}</g></svg>`;
+}
+let senoCfg = null, senoTab = "pelo";
+const senoGuardado = (r) => { if (r && r.avatar) return r.avatar; try { return JSON.parse(localStorage.getItem("cofre-seno-" + ((r && r.email) || "")) || "null"); } catch { return null; } };
+function pintarSeno(r) {
+  const art = $("#heroArt"), av = $("#senoAv"), bt = $("#senoBtn"); if (!art) return;
+  if (r.admin && !r.como) { av.classList.add("hide"); bt.classList.add("hide"); art.classList.remove("con-seno"); return; }
+  const cfg = senoGuardado(r);
+  if (cfg) { av.innerHTML = avatarSvg(cfg, { id: "h" }); av.classList.remove("hide"); art.classList.add("con-seno"); bt.classList.add("hide"); av.title = "Tocá para cambiar tu seño"; }
+  else { av.classList.add("hide"); art.classList.remove("con-seno"); bt.classList.toggle("hide", !!r.como); }
+}
+const SENO_TABS = [["pelo", "💇 Pelo"], ["cara", "😊 Cara"], ["piel", "🎨 Piel"], ["lentes", "👓 Lentes"], ["ropa", "👚 Ropa"], ["extra", "✨ Extras"], ["fondo", "🟣 Fondo"]];
+function abrirSeno() { senoCfg = { ...AV_DEF, ...(senoGuardado(ultimaRespuesta) || {}) }; $("#senoQuitar").classList.toggle("hide", !senoGuardado(ultimaRespuesta)); $("#senoMsg").textContent = ""; senoPintar(); $("#dlgSeno").showModal(); }
+function senoPintar() {
+  $("#senoPrev").innerHTML = avatarSvg(senoCfg, { id: "p" });
+  $("#senoTabs").innerHTML = SENO_TABS.map(([k, n]) => `<button type="button" role="tab" data-stab="${k}" aria-selected="${k === senoTab}">${n}</button>`).join("");
+  const op = (campo, v, etiqueta, cambio) => { const c = { ...senoCfg, ...cambio }; return `<button type="button" class="seno-o" data-sk="${campo}" data-sv="${v}" ${Object.entries(cambio).map(([k, x]) => `data-x-${k}="${x}"`).join(" ")} aria-pressed="${senoCfg[campo] === v}">${avatarSvg(c, { id: campo + v, sinFondo: campo !== "fondo" })}<span>${etiqueta}</span></button>`; };
+  const sw = (campo, L, et) => L.map((col, i) => `<button type="button" class="seno-o" data-sk="${campo}" data-sv="${campo === "piel" ? "p" : "c"}${i}" aria-pressed="${senoCfg[campo] === (campo === "piel" ? "p" : "c") + i}" aria-label="${et} ${i + 1}"><span class="sw" style="background:${col}"></span></button>`).join("");
+  let h = "";
+  if (senoTab === "pelo") h = AV_PELOS.map(([k, n]) => op("pelo", k, n, { pelo: k })).join("") + `<div class="seno-grp">Color de pelo</div>` + sw("color", AV_PELO_C, "Color");
+  if (senoTab === "cara") h = `<div class="seno-grp">Ojos</div>` + AV_OJOS.map(([k, n]) => op("ojos", k, n, { ojos: k })).join("") + `<div class="seno-grp">Boca</div>` + AV_BOCA.map(([k, n]) => op("boca", k, n, { boca: k })).join("") + `<div class="seno-grp">Cachetes</div>` + [["si", "Rosados"], ["no", "Sin color"]].map(([k, n]) => op("cachetes", k, n, { cachetes: k })).join("");
+  if (senoTab === "piel") h = sw("piel", AV_PIEL, "Tono de piel");
+  if (senoTab === "lentes") h = AV_LENTES.map(([k, n]) => op("lentes", k, n, { lentes: k })).join("");
+  if (senoTab === "ropa") h = AV_ROPA.map(([k, n]) => op("ropa", k, n, { ropa: k })).join("") + `<div class="seno-grp">Color</div>` + sw("tela", AV_TELA, "Color de ropa");
+  if (senoTab === "extra") h = AV_EXTRA.map(([k, n]) => op("extra", k, n, { extra: k })).join("");
+  if (senoTab === "fondo") h = sw("fondo", AV_FONDO, "Fondo");
+  $("#senoGr").innerHTML = h;
+}
+$("#senoTabs").onclick = (e) => { const b = e.target.closest("[data-stab]"); if (!b) return; senoTab = b.dataset.stab; senoPintar(); };
+$("#senoGr").onclick = (e) => { const b = e.target.closest("[data-sk]"); if (!b) return; senoCfg[b.dataset.sk] = b.dataset.sv; senoPintar(); };
+$("#senoAzar").onclick = () => { const al = (L) => L[Math.floor(Math.random() * L.length)]; senoCfg = { piel: "p" + Math.floor(Math.random() * AV_PIEL.length), pelo: al(AV_PELOS)[0], color: "c" + Math.floor(Math.random() * 8), ojos: al(AV_OJOS)[0], boca: al(AV_BOCA)[0], lentes: Math.random() < 0.5 ? "no" : al(AV_LENTES)[0], ropa: al(AV_ROPA)[0], tela: "c" + Math.floor(Math.random() * AV_TELA.length), extra: al(AV_EXTRA.filter((x) => x[0] !== "barba"))[0], fondo: "c" + Math.floor(Math.random() * 7), cachetes: "si" }; senoPintar(); };
+$("#senoX").onclick = () => $("#dlgSeno").close();
+async function senoGuardar(cfg) {
+  const r = ultimaRespuesta; if (!r) return; const key = "cofre-seno-" + (r.email || "");
+  try { if (cfg) localStorage.setItem(key, JSON.stringify(cfg)); else localStorage.removeItem(key); } catch {}
+  r.avatar = cfg; pintarSeno(r); pintarFiguritas(r);
+  try { if (!r.como && !r.admin) await api({ accion: "perfil", token: sesion.token, avatar: cfg }); } catch (e) { /* queda guardado en este dispositivo */ }
+}
+$("#senoOk").onclick = async () => { $("#senoOk").disabled = true; await senoGuardar({ ...senoCfg }); $("#senoOk").disabled = false; $("#dlgSeno").close(); toast("¡Qué linda tu seño! 👩‍🏫"); };
+$("#senoQuitar").onclick = async () => { await senoGuardar(null); $("#dlgSeno").close(); };
+$("#senoBtn").onclick = abrirSeno; $("#senoAv").onclick = abrirSeno; $("#decoSeno").onclick = () => { $("#dlgDeco").close(); abrirSeno(); };
 // ---------- Decorar: estilos de biblioteca, cielo vivo, álbum de figuritas y tarjeta para compartir ----------
 const TEMAS = [
   ["cofre", "Cofre clásico", "El de siempre, con claro y oscuro", ["#FBF7F2", "#2196F3", "#FF8A4C", "#E9F4FF"], "🧰"],
@@ -1732,6 +1865,7 @@ function figuritas(r) {
     ["aviso", "🔔", "Siempre a tiempo", "Activá los avisos de efemérides", "#E3F7EE", "comun", !!r.recordatorio],
     ["app", "📲", "En mi pantalla", "Instalá la biblioteca en tu celular", "#E8EAFF", "comun", ls("cofre-app")],
     ["deco", "🎨", "Decoradora", "Elegí un estilo para tu biblioteca", "#FFE0EC", "comun", temaActualDeco() !== "cofre"],
+    ["seno", "👩‍🏫", "Esta soy yo", "Creá tu seño", "#FFE3D3", "comun", !!senoGuardado(r)],
     ["cofre", "🎁", "Abrí un cofre", "Abrí un cofre de regalo en una efeméride", "#FFE9B8", "rara", (L.cofres || []).length > 0],
     ["patria", "🇦🇷", "Corazón patrio", "Tené 3 materiales de fechas patrias", "#DDEFFC", "rara", M.filter((m) => PATRIAS.includes(m.fecha)).length >= 3],
     ["llaves", "🗝️", "Media colección", "Juntá 5 llaves", "#FDEBD3", "rara", (L.n || 0) >= 5],
@@ -1771,7 +1905,8 @@ $("#albShare").onclick = async () => {
     for (let i = 0; i < 26; i++) { x.fillStyle = [v("--primary"), v("--accent"), v("--gold")][i % 3]; x.globalAlpha = 0.12; x.beginPath(); x.arc((i * 211) % W, (i * 397) % H, 30 + (i % 5) * 18, 0, 7); x.fill(); } x.globalAlpha = 1;
     try { await document.fonts.load("800 80px Outfit"); await document.fonts.load("700 60px Caveat"); } catch {}
     const ink = v("--ink"), carga = (u) => new Promise((ok) => { const im = new Image(); im.crossOrigin = "anonymous"; im.onload = () => ok(im); im.onerror = () => ok(null); im.src = u; });
-    const logo = await carga("logo.png"); if (logo) x.drawImage(logo, W / 2 - 110, 120, 220, 220 * logo.height / logo.width);
+    const cfgSeno = senoGuardado(r), seno = cfgSeno ? await carga("data:image/svg+xml;charset=utf-8," + encodeURIComponent(avatarSvg(cfgSeno, { id: "t" }))) : null, logo = await carga("logo.png");
+    if (seno) { x.save(); x.shadowColor = "rgba(0,0,0,.25)"; x.shadowBlur = 30; x.shadowOffsetY = 12; x.drawImage(seno, W / 2 - 150, 70, 300, 300); x.restore(); if (logo) x.drawImage(logo, W - 230, 60, 170, 170 * logo.height / logo.width); } else if (logo) x.drawImage(logo, W / 2 - 110, 120, 220, 220 * logo.height / logo.width);
     x.textAlign = "center"; x.fillStyle = v("--accent"); x.font = "700 64px Caveat, cursive"; x.fillText("mi biblioteca", W / 2, 440);
     const nom = String(r.nombre || "").trim(); x.fillStyle = ink; x.font = "800 92px Outfit, sans-serif"; x.fillText(nom ? `Seño ${nom}` : "Mi rincón docente", W / 2, 550);
     const M = (r.materiales || []).filter((m) => m.portada).slice(0, 6), ims = await Promise.all(M.map((m) => carga(m.portada)));
@@ -1943,7 +2078,7 @@ async function abrirFichaDocente(email) {
   const tags = [F.ciudad && "📍 " + F.ciudad, F.cumple && "🎂 " + fechaDM(F.cumple), F.recordatorio && "🔔 Recibe recordatorios", F.cofres && `🎁 Abrió ${F.cofres} cofre${F.cofres > 1 ? "s" : ""}`, F.llaves && F.llaves.n && `🗝️ ${F.llaves.n}/${F.llaves.meta} llaves`, F.cupones.some((c) => c.copiado) && "🎟️ Usó un cupón", dias != null && dias > 90 && "😴 Hace más de 3 meses que no descarga"].filter(Boolean);
   const filasM = F.materiales.map((m) => `<tr${m.revocado ? ' style="opacity:.5"' : ""}><td><b>${esc(m.nombre)}</b>${m.revocado ? ' <span class="st no">sin acceso</span>' : ""}</td><td>${esc(ORIGEN[m.origen] || m.origen)}</td><td class="muted">${fd(m.fecha)}</td><td class="num">${m.descargas}</td><td class="muted">${m.ultima ? fd(m.ultima) : "—"}</td></tr>`).join("");
   const filasO = F.ordenes.map((o) => `<tr><td class="muted">${fd(o.fecha)}</td><td>${esc(o.metodo || "")}<div class="muted">#${esc(o.orden)}</div></td><td>${esc((o.productos || []).join(" · "))}${o.nota ? `<div class="muted">📝 ${esc(o.nota)}</div>` : ""}</td><td class="num">${o.total != null ? plata(o.total) : "—"}</td></tr>`).join("");
-  v.innerHTML = `<div class="ficha"><div class="fi-top"><div class="fi-av">${esc(iniciales(F.nombre, F.email))}</div><div style="flex:1;min-width:180px"><h3>${esc(F.nombre || F.email)}</h3><div class="muted">${esc(F.email)}${F.instagram ? ` · <a href="https://instagram.com/${encodeURIComponent(F.instagram)}" target="_blank" rel="noopener">@${esc(F.instagram)}</a>` : ""}</div></div>
+  v.innerHTML = `<div class="ficha"><div class="fi-top"><div class="fi-av"${F.avatar ? ' style="background:none"' : ""}>${F.avatar ? avatarSvg(F.avatar, { id: "f" }) : esc(iniciales(F.nombre, F.email))}</div><div style="flex:1;min-width:180px"><h3>${esc(F.nombre || F.email)}</h3><div class="muted">${esc(F.email)}${F.instagram ? ` · <a href="https://instagram.com/${encodeURIComponent(F.instagram)}" target="_blank" rel="noopener">@${esc(F.instagram)}</a>` : ""}</div></div>
       <div class="mini"><button class="btn btn-soft btn-sm" type="button" data-como="${esc(F.email)}">👁 Ver su biblioteca</button><button class="btn btn-ghost btn-sm" type="button" id="fiTr">💸 Registrar venta</button><button class="btn btn-ghost btn-sm" type="button" data-copy="${esc(F.email)}">Copiar correo</button></div></div>
     <div class="fi-kp"><div><b>${plata(F.gastado)}</b><span>gastó en total</span></div><div><b>${F.materiales.filter((m) => !m.revocado).length}</b><span>materiales</span></div><div><b>${F.compras}</b><span>compras</span></div><div><b>${F.descargas.total}</b><span>descargas</span></div><div><b>${fd(F.desde)}</b><span>clienta desde</span></div><div><b>${dias == null ? "—" : dias === 0 ? "hoy" : `hace ${dias} d`}</b><span>última descarga</span></div></div>
     ${tags.length ? `<div class="fi-tags">${tags.map((t) => `<span>${esc(t)}</span>`).join("")}</div>` : ""}
