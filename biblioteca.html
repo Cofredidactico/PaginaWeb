@@ -180,6 +180,50 @@ label.fld{display:block;font-weight:800;font-size:.85rem;color:var(--ink-2);marg
 .voto.on{background:var(--primary);border-color:var(--primary);color:#fff}.voto:disabled{opacity:.55}
 .id-prop{display:grid;gap:8px;padding-top:10px;border-top:1px solid var(--line)}.id-prop .inp{padding:10px 12px;font-size:.95rem}
 .adm-in{padding:4px 14px 16px;display:grid;gap:12px}
+.admin{gap:14px}
+.cm-head{position:relative;overflow:hidden;display:grid;grid-template-columns:auto minmax(220px,1fr) auto;gap:14px 18px;align-items:center;padding:18px 20px;border-radius:18px;color:#fff;background:radial-gradient(120% 140% at 0% 0%,#2C5BD8 0%,#1A2744 55%,#121A30 100%);box-shadow:0 18px 40px -22px rgba(26,39,68,.8)}
+.cm-head::after{content:"";position:absolute;inset:auto -60px -80px auto;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,138,76,.35),transparent 65%);pointer-events:none}
+.cm-head .pill-admin{background:rgba(255,255,255,.14);color:#fff}.cm-t h2{font-family:var(--f-display);font-size:1.45rem;margin:6px 0 0;line-height:1.1}.cm-t small{color:rgba(255,255,255,.7);font-weight:700}
+#pInicioR{display:grid;gap:14px}
+.cm-busca{position:relative;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:4px 10px;z-index:2}
+.cm-busca:focus-within{background:#fff;color:var(--ink);box-shadow:0 0 0 4px rgba(33,150,243,.35)}
+.cm-busca input{flex:1;min-width:0;border:0;background:transparent;color:inherit;font:inherit;font-weight:700;padding:9px 2px;outline:none}.cm-busca input::placeholder{color:currentColor;opacity:.65}
+.cm-busca kbd{font:800 .72rem var(--f);padding:2px 7px;border-radius:6px;border:1px solid currentColor;opacity:.55}
+.cm-sug{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:var(--s-2);padding:6px;display:grid;gap:2px;max-height:340px;overflow:auto}
+.cm-op{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;text-align:left;padding:8px 10px;border-radius:10px;font:inherit;color:inherit;background:none;border:0;cursor:pointer;width:100%}.cm-op:hover,.cm-op:focus{background:var(--primary-soft);outline:none}
+.cm-op b{display:block;font-size:.92rem}.cm-op small{color:var(--ink-3);font-size:.78rem}.fi-av.s{width:34px;height:34px;font-size:.85rem}
+.cm-rap{display:flex;gap:8px;z-index:1}.cm-rap .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.3)}
+.cm-tabs{position:sticky;top:72px;z-index:15;display:flex;gap:4px;padding:5px;border-radius:16px;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(10px);border:1px solid var(--line);box-shadow:var(--s-1);overflow-x:auto;scrollbar-width:none}
+.cm-tabs::-webkit-scrollbar{display:none}
+.cm-tabs button{flex:1 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 14px;border-radius:12px;border:0;background:none;color:var(--ink-3);font:800 .9rem var(--f);cursor:pointer;white-space:nowrap;position:relative;transition:background .15s,color .15s}
+.cm-tabs button:hover{color:var(--ink);background:var(--bg-2)}.cm-tabs button[aria-selected="true"]{background:var(--ink);color:var(--card);box-shadow:0 6px 14px -8px rgba(26,39,68,.7)}
+.cm-badge{min-width:19px;height:19px;padding:0 5px;border-radius:10px;background:var(--accent);color:#fff;font:900 .7rem/19px var(--f);font-style:normal;text-align:center}
+.cm-p{display:grid;gap:14px;animation:cmIn .25s ease}@keyframes cmIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.cm-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:grid;gap:10px;min-width:0;box-shadow:var(--s-1)}
+.cm-ch{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.cm-ch h3{font-family:var(--f-display);font-size:1.05rem;margin:0}.cm-ch small{color:var(--ink-3);font-weight:700;font-size:.82rem}
+.cm-card .adm-in,.cm-card #aTrBox{padding:0}
+.cm-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,42%),1fr));gap:12px}
+@media (max-width:640px){.cm-kpi b{font-size:1.35rem}.cm-kpi .k-t{font-size:.7rem}.cm-tabs button{padding:9px 11px;font-size:.84rem}}
+.cm-kpi{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px 12px;display:grid;gap:2px;box-shadow:var(--s-1)}
+.cm-kpi .k-t{font-size:.8rem;font-weight:800;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em}.cm-kpi b{font:800 1.75rem/1.15 var(--f-display);color:var(--ink)}
+.k-f{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.8rem;color:var(--ink-3);font-weight:700}
+.tn{font-size:.76rem;font-weight:900;padding:2px 7px;border-radius:999px;background:var(--bg-2);color:var(--ink-3)}.tn.up{background:var(--green-soft);color:var(--green)}.tn.dn{background:var(--danger-soft);color:var(--danger)}
+.spark{position:absolute;right:0;bottom:0;width:55%;height:44px;opacity:.9}
+.cm-g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.cm-g2.a{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}.cm-g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:980px){.cm-g2,.cm-g2.a,.cm-g3{grid-template-columns:minmax(0,1fr)}.cm-head{grid-template-columns:1fr}.cm-tabs{top:64px}}
+.seg{display:inline-flex;background:var(--bg-2);border-radius:10px;padding:3px}.seg button{border:0;background:none;padding:5px 10px;border-radius:8px;font:800 .8rem var(--f);color:var(--ink-3);cursor:pointer}.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:var(--s-1)}
+.cm-chart{width:100%;height:auto;display:block}.cm-chart .gd{stroke:var(--line);stroke-dasharray:3 4}.cm-chart .gt{fill:var(--ink-4);font:700 10px var(--f)}.cm-chart .bar:hover rect:first-child{filter:brightness(1.15)}
+.cm-tot{font-size:.85rem}
+.todo{display:grid;gap:8px}.td{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;text-align:left;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);font:inherit;color:inherit;cursor:pointer;transition:transform .12s,border-color .12s}
+.td:hover{transform:translateX(3px);border-color:var(--primary)}.td b{display:block;font-size:.92rem}.td small{color:var(--ink-3);font-size:.8rem}.td-ic{font-size:1.25rem}.td.alta{border-left:4px solid var(--danger)}.td.media{border-left:4px solid var(--gold)}.td.baja{border-left:4px solid var(--green)}
+.vacio-ok{display:grid;place-items:center;min-height:120px;font-weight:800;color:var(--green);background:var(--green-soft);border-radius:12px}
+.top{display:grid;gap:8px}.top div{position:relative;display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:center;font-size:.88rem;padding:4px 0 8px}.top .pos{font:900 .8rem var(--f-display);color:var(--ink-4)}.top .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700}
+.top i{position:absolute;left:30px;bottom:0;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--gold))}
+.orig-bar{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--bg-2)}.orig-bar i{display:block;height:100%}
+.orig-l{display:grid;gap:6px;font-size:.86rem}.orig-l span{display:flex;align-items:center;gap:8px}.orig-l i{width:10px;height:10px;border-radius:3px;display:inline-block}.orig-l b{margin-left:auto}
+.feed{display:grid;gap:2px;max-height:300px;overflow:auto}.feed>div{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:start;padding:7px 4px;border-bottom:1px dashed var(--line);font-size:.84rem}.feed>div:last-child{border:0}.feed small{color:var(--ink-4);white-space:nowrap}.fd-t{min-width:0;overflow-wrap:anywhere}
+.cm-p .como{display:flex;gap:8px}
+
 .ad-tip{font-size:.86rem;color:var(--ink-3);background:var(--bg-2);border-radius:12px;padding:10px 12px}
 .cupa{display:grid;gap:10px;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card)}.cupa.on{border-color:var(--accent)}
 .cupa-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.cupa-h .inp{flex:1;min-width:160px}.cupa-st{font-size:.8rem;color:var(--ink-3);font-weight:700}
@@ -1480,28 +1524,84 @@ async function verificar(codigo) {
 let verComo = null, resumen = null;
 // recuerda qué secciones del resumen estaban abiertas para que no se cierren al actualizar
 const resAbiertos = new Set(), clavesSum = (s) => (s.firstChild && s.firstChild.textContent || "").trim();
-document.addEventListener("toggle", (e) => { const d = e.target; if (!(d instanceof HTMLDetailsElement) || !d.closest("#aRes")) return; const k = clavesSum(d.querySelector("summary")); d.open ? resAbiertos.add(k) : resAbiertos.delete(k); }, true);
-function pintarRes() { const a = $("#aRes"); if (!a) return; a.innerHTML = htmlResumen(); a.querySelectorAll("details > summary").forEach((s) => { if (resAbiertos.has(clavesSum(s))) s.parentElement.open = true; }); }
+document.addEventListener("toggle", (e) => { const d = e.target; if (!(d instanceof HTMLDetailsElement) || !d.closest("#aRes,#pMatR")) return; const k = clavesSum(d.querySelector("summary")); d.open ? resAbiertos.add(k) : resAbiertos.delete(k); }, true);
+function pintarRes() {
+  if (!resumen) return; admBadges();
+  if ($("#pInicioR")) $("#pInicioR").innerHTML = htmlInicio(resumen);
+  if ($("#pMatR")) { const el = $("#pMatR"), ab = new Set([...el.querySelectorAll("details[open] > summary")].map(clavesSum)); el.innerHTML = htmlMaterialesAdm(resumen); el.querySelectorAll("details > summary").forEach((x) => { if (ab.has(clavesSum(x)) || resAbiertos.has(clavesSum(x))) x.parentElement.open = true; }); }
+  if ($("#pVentasOrd")) $("#pVentasOrd").innerHTML = htmlOrdenesAdm(resumen);
+  if ($("#pComOp")) { $("#pComOp").innerHTML = htmlOpiniones(resumen).replace(/^<details[^>]*>\s*<summary>[\s\S]*?<\/summary>/, "").replace(/<\/details>$/, ""); const pend = (resumen.opiniones || []).filter((o) => o.estado === "pendiente").length; $("#opSum").textContent = pend ? pend + " por revisar" : (resumen.opiniones || []).length + " en total"; }
+  if ($("#pSegR")) $("#pSegR").innerHTML = `<div class="cm-card"><div class="cm-ch"><h3>⚠️ Avisos de uso raro</h3><small>${(resumen.alertas || []).length ? resumen.alertas.length + " para revisar" : "todo en orden"}</small></div>${htmlAlertas(resumen).replace(/^<details[^>]*>\s*<summary>[\s\S]*?<\/summary>/, "").replace(/<\/details>$/, "")}</div>
+    <div class="cm-card"><div class="cm-ch"><h3>⬇ Últimas descargas</h3><small>${resumen.ultimasDescargas.length}</small></div>${tablaDescargas(resumen)}</div>`;
+}
 const fecha = (iso) => { try { return new Date(iso).toLocaleString("es-AR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }); } catch { return ""; } };
 const nombreMat = (id) => ((resumen && resumen.materiales.find((m) => m.id === id)) || {}).nombre || id;
+// ---------- Centro de mando del administrador ----------
+let admTab = (() => { try { return localStorage.getItem("cofre-adm-tab") || "inicio"; } catch { return "inicio"; } })(), admSerie = "desc";
+const ADM_TABS = [["inicio", "🏠", "Inicio"], ["docentes", "👩‍🏫", "Docentes"], ["ventas", "💸", "Ventas"], ["materiales", "📚", "Materiales"], ["comunidad", "💬", "Comunidad"], ["seguridad", "🛡️", "Seguridad"]];
 function pintarAdmin(r) {
   const box = $("#adminBox"); box.classList.remove("hide");
-  const vista = r.como
-    ? `<div class="viewing"><span>👁 Estás viendo exactamente lo que ve <b>${esc(r.email)}</b></span><button class="btn btn-ghost btn-sm" id="aVolver" type="button">Volver al catálogo completo</button></div>`
-    : "";
-  box.innerHTML = `<div class="admin-top"><span class="pill-admin">🛠 Modo administrador</span>
-      <form class="como" id="aComo" novalidate><input class="inp" id="aEmail" type="email" placeholder="correo de un comprador" aria-label="Correo del comprador" value="${esc(r.como ? r.email : "")}" /><button class="btn btn-soft btn-sm" type="submit">Ver su biblioteca</button></form>
-      <form class="como" id="aRast" novalidate><input class="inp" id="aCod" placeholder="código de copia (CD-…)" aria-label="Código de copia" autocapitalize="characters" /><button class="btn btn-soft btn-sm" type="submit">Rastrear copia</button></form></div>
-    <div id="aTrack"></div>
-    ${r.como ? "" : '<details class="trv" id="aTr"><summary>💸 Ventas por transferencia<small id="trSum">registrá a las docentes que te compraron por Instagram</small></summary><div id="aTrBox"></div></details><details class="trv" id="aFicha"><summary>📇 Ficha de cada docente<small>todo lo de una clienta en un solo lugar</small></summary><div id="aFichaBox" class="adm-in"></div></details><details class="trv" id="aCup"><summary>🎟️ Cupones automáticos<small id="cupSum">cumpleaños, Día del Maestro y fechas especiales</small></summary><div id="aCupBox" class="adm-in"></div></details><details class="trv" id="aIdeas"><summary>🗳️ Pedidos de materiales<small id="ideSum">las ideas y votos de las docentes</small></summary><div id="aIdeasBox" class="adm-in"></div></details>'}
-    ${vista}<div id="aRes"${r.como ? ' class="hide"' : ""}>${resumen ? htmlResumen() : '<div class="kpis"><div class="kpi skel" style="height:66px"></div><div class="kpi skel" style="height:66px"></div><div class="kpi skel" style="height:66px"></div><div class="kpi skel" style="height:66px"></div></div>'}</div>`;
-  $("#aComo").onsubmit = (e) => { e.preventDefault(); const v = $("#aEmail").value.trim().toLowerCase(); if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return toast("Escribí un correo válido."); verComo = v; filtro = "todos"; $("#q").value = ""; cargar(); };
-  $("#aRast").onsubmit = (e) => { e.preventDefault(); const v = $("#aCod").value.trim(); if (v.length < 6) return toast("Escribí el código que figura al pie del PDF."); rastrear(v); };
-  if ($("#aVolver")) $("#aVolver").onclick = () => { verComo = null; $("#q").value = ""; cargar(); };
-  if (!resumen) cargarResumen();
-  if ($("#aTr")) { const d = $("#aTr"); if (trAbierto) d.open = true; d.ontoggle = () => { trAbierto = d.open; if (d.open) pintarTr(); }; if (d.open) pintarTr(); }
-  [["#aFicha", pintarFichaBox], ["#aCup", pintarCupAdm], ["#aIdeas", pintarIdeasAdm]].forEach(([id, fn]) => { const d = $(id); if (!d) return; if (admAbiertos.has(id)) d.open = true; d.ontoggle = () => { if (d.open) { admAbiertos.add(id); fn(); } else admAbiertos.delete(id); }; if (d.open) fn(); });
+  const hoy = new Date();
+  if (r.como) {
+    box.innerHTML = `<div class="viewing"><span>👁 Estás viendo exactamente lo que ve <b>${esc(r.email)}</b></span><span class="mini"><button class="btn btn-soft btn-sm" type="button" data-fdoc="${esc(r.email)}" id="aFichaComo">📇 Su ficha</button><button class="btn btn-ghost btn-sm" id="aVolver" type="button">Volver al centro de mando</button></span></div><input type="hidden" id="aCod" />`;
+    $("#aVolver").onclick = () => { verComo = null; $("#q").value = ""; cargar(); };
+    $("#aFichaComo").onclick = (e) => { e.stopPropagation(); const em = r.email; verComo = null; admTab = "docentes"; cargar().then(() => abrirFichaDocente(em)); };
+    return;
+  }
+  box.innerHTML = `<div class="cm-head"><div class="cm-t"><span class="pill-admin">🛠 Centro de mando</span><h2>Tu Cofre, de un vistazo</h2><small id="cmFecha">${esc((() => { const t = hoy.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" }); return t.charAt(0).toUpperCase() + t.slice(1); })())}</small></div>
+      <form class="cm-busca" id="cmBusca" novalidate role="search"><span aria-hidden="true">🔎</span><input id="cmQ" type="search" autocomplete="off" placeholder="Buscá una docente, correo, @instagram o código CD-…" aria-label="Buscar en el centro de mando" /><kbd title="Atajo">/</kbd><div class="cm-sug hide" id="cmSug" role="listbox"></div></form>
+      <div class="cm-rap"><button class="btn btn-primary btn-sm" type="button" data-tabir="ventas">💸 Registrar venta</button><button class="btn btn-ghost btn-sm" type="button" id="cmAct" title="Actualizar datos">↻</button></div></div>
+    <nav class="cm-tabs" role="tablist" aria-label="Secciones del centro de mando">${ADM_TABS.map(([k, ic, n]) => `<button type="button" role="tab" data-tab="${k}" aria-selected="${k === admTab}"><span aria-hidden="true">${ic}</span>${n}<i class="cm-badge hide" data-badge="${k}"></i></button>`).join("")}</nav>
+    <input type="hidden" id="aCod" /><div id="aTrack"></div>
+    ${ADM_TABS.map(([k]) => `<section class="cm-p${k === admTab ? "" : " hide"}" data-p="${k}" role="tabpanel"></section>`).join("")}`;
+  const q = $("#cmQ"); let tm = null;
+  q.oninput = () => { clearTimeout(tm); tm = setTimeout(cmSugerir, 300); };
+  q.onkeydown = (e) => { if (e.key === "Escape") { q.value = ""; $("#cmSug").classList.add("hide"); q.blur(); } };
+  $("#cmBusca").onsubmit = (e) => { e.preventDefault(); cmBuscar(q.value.trim()); };
+  $("#cmAct").onclick = () => { resumen = null; fichaTop = null; trLista = null; ideasAdm = null; cupAdm = null; document.querySelectorAll(".cm-p").forEach((x) => (x.dataset.ok = "")); admIr(admTab); cargarResumen(); toast("Actualizando…"); };
+  box.querySelector(".cm-tabs").onclick = (e) => { const t = e.target.closest("[data-tab]"); if (t) admIr(t.dataset.tab); };
+  box.querySelector(".cm-tabs").onkeydown = (e) => { if (!/Arrow(Left|Right)/.test(e.key)) return; const i = ADM_TABS.findIndex((x) => x[0] === admTab), n = ADM_TABS[(i + (e.key === "ArrowRight" ? 1 : ADM_TABS.length - 1)) % ADM_TABS.length][0]; admIr(n); box.querySelector(`[data-tab="${n}"]`).focus(); };
+  admIr(admTab);
+  if (!resumen) cargarResumen(); else pintarRes();
 }
+document.addEventListener("keydown", (e) => { if (e.key === "/" && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) && $("#cmQ") && window.__esAdmin) { e.preventDefault(); $("#cmQ").focus(); } });
+function admIr(tab) {
+  admTab = tab; try { localStorage.setItem("cofre-adm-tab", tab); } catch {}
+  document.querySelectorAll(".cm-tabs [data-tab]").forEach((b) => b.setAttribute("aria-selected", b.dataset.tab === tab));
+  document.querySelectorAll(".cm-p").forEach((p) => p.classList.toggle("hide", p.dataset.p !== tab));
+  const P = document.querySelector(`.cm-p[data-p="${tab}"]`); if (!P) return;
+  if (!P.dataset.ok) { P.dataset.ok = "1";
+    if (tab === "inicio") P.innerHTML = '<div id="pInicioR"></div>';
+    if (tab === "docentes") P.innerHTML = `<div class="cm-card"><div class="cm-ch"><h3>📇 Ficha de cada docente</h3><small>Todo lo de una clienta en un solo lugar</small></div><div id="aFichaBox" class="adm-in"></div></div>`;
+    if (tab === "ventas") P.innerHTML = `<div class="cm-card"><div class="cm-ch"><h3>💸 Ventas por transferencia</h3><small id="trSum">registrá a las docentes que te compraron por Instagram</small></div><div id="aTrBox"></div></div><div class="cm-card"><div class="cm-ch"><h3>🧾 Últimas órdenes</h3><small>Empretienda y transferencias</small></div><div id="pVentasOrd"></div></div>`;
+    if (tab === "materiales") P.innerHTML = '<div id="pMatR"></div>';
+    if (tab === "comunidad") P.innerHTML = `<div class="cm-card"><div class="cm-ch"><h3>💬 Opiniones</h3><small id="opSum"></small></div><div id="pComOp"></div></div><div class="cm-card"><div class="cm-ch"><h3>🗳️ Pedidos de materiales</h3><small id="ideSum">las ideas y votos de las docentes</small></div><div id="aIdeasBox" class="adm-in"></div></div><div class="cm-card"><div class="cm-ch"><h3>🎟️ Cupones automáticos</h3><small id="cupSum">cumpleaños, Día del Maestro y fechas especiales</small></div><div id="aCupBox" class="adm-in"></div></div>`;
+    if (tab === "seguridad") P.innerHTML = `<div class="cm-g2"><div class="cm-card"><div class="cm-ch"><h3>👁 Ver como una docente</h3><small>Mirá su biblioteca tal cual la ve ella</small></div><form class="como" id="aComo" novalidate><input class="inp" id="aEmail" type="email" placeholder="correo de la docente" aria-label="Correo de la docente" /><button class="btn btn-soft btn-sm" type="submit">Ver su biblioteca</button></form></div>
+      <div class="cm-card"><div class="cm-ch"><h3>🔍 Rastrear una copia</h3><small>El código está al pie de cada PDF</small></div><form class="como" id="aRast" novalidate><input class="inp" id="aCodV" placeholder="CD-…" aria-label="Código de copia" autocapitalize="characters" /><button class="btn btn-soft btn-sm" type="submit">Rastrear</button></form></div></div><div id="pSegR"></div>`;
+  }
+  if (tab === "docentes") pintarFichaBox();
+  if (tab === "ventas") pintarTr();
+  if (tab === "comunidad") { if (!ideasAdm || !$("#aIdeasBox").innerHTML) pintarIdeasAdm(); if (!cupAdm || !$("#aCupBox").innerHTML) pintarCupAdm(); }
+  if (tab === "seguridad") {
+    $("#aComo").onsubmit = (e) => { e.preventDefault(); const v = $("#aEmail").value.trim().toLowerCase(); if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return toast("Escribí un correo válido."); verComo = v; filtro = "todos"; $("#q").value = ""; cargar(); };
+    $("#aRast").onsubmit = (e) => { e.preventDefault(); const v = $("#aCodV").value.trim(); if (v.length < 6) return toast("Escribí el código que figura al pie del PDF."); $("#aCod").value = v; rastrear(v); };
+  }
+  if (resumen) pintarRes();
+}
+async function cmSugerir() {
+  const q = $("#cmQ").value.trim(), box = $("#cmSug"); if (!box) return;
+  if (q.length < 2 || /^cd-?/i.test(q)) { box.classList.add("hide"); return; }
+  try { const j = await api({ accion: "buscar_docente", token: sesion.token, q }); if ($("#cmQ").value.trim() !== q) return;
+    box.innerHTML = j.resultados.length ? j.resultados.slice(0, 6).map((x) => `<button type="button" role="option" class="cm-op" data-fdoc="${esc(x.email)}"><span class="fi-av s">${esc(iniciales(x.nombre, x.email))}</span><span><b>${esc(x.nombre || x.email)}</b><small>${esc(x.email)}${x.instagram ? " · @" + esc(x.instagram) : ""}</small></span><small>${x.materiales} mat.</small></button>`).join("") : `<div class="cm-op muted">Sin resultados para “${esc(q)}”</div>`;
+    box.classList.remove("hide"); } catch { box.classList.add("hide"); }
+}
+function cmBuscar(v) {
+  $("#cmSug").classList.add("hide"); if (!v) return;
+  if (/^cd-?[a-z0-9]{4,}/i.test(v)) { $("#aCod").value = v; rastrear(v); $("#aTrack").scrollIntoView({ behavior: "smooth", block: "center" }); return; }
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { abrirFichaDocente(v.toLowerCase()); return; }
+  admIr("docentes"); setTimeout(() => { const f = $("#fiQ"); if (f) { f.value = v; fichaBuscar(); } }, 50);
+}
+document.addEventListener("click", (e) => { const s = $("#cmSug"); if (s && !e.target.closest("#cmBusca")) s.classList.add("hide"); });
 
 
 // ---------- Cupones de cumpleaños / fechas especiales, y "Elegí el próximo material" ----------
@@ -1560,6 +1660,82 @@ $("#idLista").onclick = async (e) => { const b = e.target.closest("[data-voto]")
 $("#idProp").onsubmit = async (e) => { e.preventDefault(); const t = $("#idTitulo").value.trim(); if (t.length < 4) { $("#idMsg").textContent = "Contanos un poco más sobre tu idea."; return; } $("#idGo").disabled = true;
   try { ideasData = await api({ accion: "proponer", token: sesion.token, titulo: t, detalle: $("#idDet").value }); $("#idTitulo").value = ""; $("#idDet").value = ""; $("#idMsg").textContent = "¡Gracias! La vamos a revisar y la vas a ver acá."; pintarIdeas(); } catch (err) { $("#idMsg").textContent = err.message; } $("#idGo").disabled = false; };
 
+
+// ---- piezas del centro de mando ----
+const hace = (iso) => { const m = Math.round((Date.now() - new Date(iso)) / 6e4); if (m < 1) return "recién"; if (m < 60) return `hace ${m} min`; const h = Math.round(m / 60); if (h < 24) return `hace ${h} h`; const d = Math.round(h / 24); return d < 30 ? `hace ${d} d` : new Date(iso).toLocaleDateString("es-AR", { day: "numeric", month: "short" }); };
+const tend = (a, b) => { if (!b && !a) return ""; if (!b) return '<span class="tn up">nuevo</span>'; const p = Math.round(((a - b) / b) * 100); return p === 0 ? '<span class="tn">= igual</span>' : `<span class="tn ${p > 0 ? "up" : "dn"}">${p > 0 ? "▲" : "▼"} ${Math.abs(p)}%</span>`; };
+function sparkSvg(vals, color) { const n = vals.length, mx = Math.max(1, ...vals), w = 120, h = 30; const pts = vals.map((v, i) => `${((i / (n - 1)) * w).toFixed(1)},${(h - 2 - (v / mx) * (h - 6)).toFixed(1)}`).join(" "); return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,${h} ${pts} ${w},${h}" fill="${color}" fill-opacity=".14" stroke="none"/><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>`; }
+function barrasSvg(S, campo) {
+  const vals = S.map((x) => x[campo]), mx = Math.max(1, ...vals), W = innerWidth < 640 ? 340 : 600, H = innerWidth < 640 ? 150 : 170, bw = W / S.length, col = campo === "desc" ? "var(--primary)" : "var(--accent)";
+  const fmt = (v) => (campo === "monto" ? plata(v) : v), lab = (d) => new Date(d + "T12:00:00").toLocaleDateString("es-AR", { day: "numeric", month: "short" });
+  const guias = (mx >= 4 ? [0.5, 1] : [1]).map((f) => `<line x1="0" x2="${W}" y1="${(H - 18 - f * (H - 34)).toFixed(1)}" y2="${(H - 18 - f * (H - 34)).toFixed(1)}" class="gd"/><text x="${W}" y="${(H - 22 - f * (H - 34)).toFixed(1)}" text-anchor="end" class="gt">${fmt(Math.round(mx * f))}</text>`).join("");
+  const barras = S.map((x, i) => { const v = x[campo], hh = v ? Math.max(3, (v / mx) * (H - 34)) : 0; return `<g class="bar"><rect x="${(i * bw + bw * 0.18).toFixed(1)}" y="${(H - 18 - hh).toFixed(1)}" width="${(bw * 0.64).toFixed(1)}" height="${hh.toFixed(1)}" rx="3" fill="${col}"/><rect x="${(i * bw).toFixed(1)}" y="0" width="${bw.toFixed(1)}" height="${H}" fill="transparent"><title>${lab(x.d)}: ${fmt(v)} ${campo === "desc" ? "descargas" : campo === "ventas" ? "ventas" : ""}</title></rect></g>`; }).join("");
+  const ejes = (W < 400 ? [0, 14, 29] : [0, 7, 14, 21, 29]).map((i, j, A) => `<text x="${j === 0 ? 0 : j === A.length - 1 ? W : (i * bw + bw / 2).toFixed(1)}" y="${H - 3}" text-anchor="${j === 0 ? "start" : j === A.length - 1 ? "end" : "middle"}" class="gt">${lab(S[i].d)}</text>`).join("");
+  return `<svg class="cm-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Gráfico de los últimos 30 días">${guias}${barras}${ejes}</svg>`;
+}
+function admPendientes(R) {
+  const T = R.tablero || {}, L = [];
+  if ((R.sinVincular || []).length) L.push(["🔗", `${R.sinVincular.length} producto${R.sinVincular.length > 1 ? "s" : ""} de Empretienda sin vincular`, "Quienes lo compran no lo ven en su biblioteca", "materiales", "alta"]);
+  const sinArch = R.materiales.filter((m) => m.tipo !== "plataforma" && !m.archivos).length; if (sinArch) L.push(["📤", `${sinArch} material${sinArch > 1 ? "es" : ""} sin archivos`, "Subilos para que las docentes puedan descargarlos", "materiales", sinArch > 3 ? "alta" : "media"]);
+  const op = (R.opiniones || []).filter((o) => o.estado === "pendiente").length; if (op) L.push(["⭐", `${op} opinión${op > 1 ? "es" : ""} para revisar`, "Aprobalas y usalas como testimonio en tu web", "comunidad", "media"]);
+  if (T.ideasPendientes) L.push(["💡", `${T.ideasPendientes} idea${T.ideasPendientes > 1 ? "s" : ""} nueva${T.ideasPendientes > 1 ? "s" : ""} de docentes`, "Aprobalas para que el resto pueda votarlas", "comunidad", "media"]);
+  if ((R.alertas || []).length) L.push(["⚠️", `${R.alertas.length} aviso${R.alertas.length > 1 ? "s" : ""} de uso raro`, "Copias que se descargan o se comparten demasiado", "seguridad", "alta"]);
+  if ((T.cumplesHoy || []).length) L.push(["🎂", `${T.cumplesHoy.length} docente${T.cumplesHoy.length > 1 ? "s cumplen" : " cumple"} años hoy`, "Ya ven su cupón de regalo en la biblioteca", "comunidad", "baja"]);
+  return L;
+}
+function admBadges() {
+  const L = resumen ? admPendientes(resumen) : [], c = {}; L.forEach((x) => { if (x[3] && x[4] !== "baja") c[x[3]] = (c[x[3]] || 0) + 1; });
+  document.querySelectorAll("[data-badge]").forEach((b) => { const n = c[b.dataset.badge] || 0; b.textContent = n; b.classList.toggle("hide", !n); });
+}
+function htmlInicio(R) {
+  const T = R.tablero; if (!T) return `<div class="notice warn"><span class="ic">ℹ️</span><div>Para ver el tablero completo, actualizá la función <b>biblioteca</b> en Supabase.</div></div>${htmlResumen()}`;
+  const S = T.serie, fmt = (n) => Number(n || 0).toLocaleString("es-AR");
+  const kp = [["Ventas (30 días)", plata(T.monto30), tend(T.monto30, T.montoPrev), sparkSvg(S.map((x) => x.monto), "var(--accent)"), `${T.ventas30} compra${T.ventas30 === 1 ? "" : "s"}`],
+    ["Docentes nuevas", fmt(T.nuevas30), tend(T.nuevas30, T.nuevasPrev), "", `${fmt(R.compradores)} en total`],
+    ["Descargas (30 días)", fmt(T.desc30), tend(T.desc30, T.descPrev), sparkSvg(S.map((x) => x.desc), "var(--primary)"), `${fmt(R.copias)} copias personalizadas`],
+    ["Accesos activos", fmt(R.accesos), "", "", `${fmt(R.materiales.length)} materiales en la biblioteca`]];
+  const P = admPendientes(R);
+  const feed = [...R.ultimasOrdenes.map((o) => ({ f: o.fecha, ic: o.metodo === "Transferencia" ? "💸" : "🛒", t: `<button class="mail" type="button" data-fdoc="${esc(o.email)}">${esc(o.email)}</button> compró ${esc((o.productos || []).slice(0, 2).join(" + "))}${(o.productos || []).length > 2 ? "…" : ""}` })),
+    ...R.ultimasDescargas.map((d) => ({ f: d.fecha, ic: "⬇", t: `<button class="mail" type="button" data-fdoc="${esc(d.email)}">${esc(d.email)}</button> descargó ${esc(nombreMat(d.material_id))}` })),
+    ...(R.opiniones || []).slice(0, 10).map((o) => ({ f: o.fecha, ic: "⭐", t: `<button class="mail" type="button" data-fdoc="${esc(o.email)}">${esc(o.email)}</button> calificó ${esc(nombreMat(o.material_id))} con ${o.estrellas} ★` }))]
+    .sort((a, b) => String(b.f).localeCompare(String(a.f))).slice(0, 12);
+  const po = R.porOrigen || {}, totO = Object.values(po).reduce((a, b) => a + b, 0) || 1, colO = { tienda: "var(--primary)", transferencia: "var(--accent)", historial: "var(--purple)", manual: "var(--green)" }, nomO = { tienda: "Empretienda", transferencia: "Transferencia", historial: "Antes de la biblioteca", manual: "A mano" };
+  const maxTop = Math.max(1, ...(T.top30 || []).map((x) => x.n));
+  return `<div class="cm-kpis">${kp.map(([t, v, tr, sp, sub]) => `<div class="cm-kpi"><span class="k-t">${t}</span><b>${v}</b><div class="k-f">${tr}<small>${sub}</small></div>${sp}</div>`).join("")}</div>
+  <div class="cm-g2 a">
+    <div class="cm-card"><div class="cm-ch"><h3>📈 Últimos 30 días</h3><div class="seg" role="group" aria-label="Qué mostrar">${[["desc", "Descargas"], ["ventas", "Ventas"], ["monto", "$"]].map(([k, n]) => `<button type="button" data-serie="${k}" aria-pressed="${admSerie === k}">${n}</button>`).join("")}</div></div><div id="cmChart">${barrasSvg(S, admSerie)}</div>
+      <div class="cm-tot muted">Total histórico vendido: <b>${plata(T.montoTotal)}</b></div></div>
+    <div class="cm-card"><div class="cm-ch"><h3>✅ Para hacer</h3><small>${P.length ? P.length + " pendiente" + (P.length > 1 ? "s" : "") : "todo al día"}</small></div>
+      ${P.length ? `<div class="todo">${P.map(([ic, t, d, tab, nv]) => `<button type="button" class="td ${nv}" data-tabir="${tab}"><span class="td-ic">${ic}</span><span><b>${t}</b><small>${d}</small></span><span aria-hidden="true">›</span></button>`).join("")}</div>` : '<div class="vacio-ok">✨ ¡Todo al día! No hay nada pendiente.</div>'}</div>
+  </div>
+  <div class="cm-g3">
+    <div class="cm-card"><div class="cm-ch"><h3>🔥 Más descargados</h3><small>30 días</small></div>${(T.top30 || []).length ? `<div class="top">${T.top30.map((x, i) => `<div><span class="pos">${i + 1}</span><span class="nm">${esc(x.nombre)}</span><b>${x.n}</b><i style="width:${Math.round((x.n / maxTop) * 100)}%"></i></div>`).join("")}</div>` : '<div class="muted">Todavía no hay descargas este mes.</div>'}</div>
+    <div class="cm-card"><div class="cm-ch"><h3>🧭 Cómo llegaron</h3><small>${fmt(R.accesos)} accesos</small></div><div class="orig-bar">${Object.entries(po).map(([k, n]) => `<i style="width:${((n / totO) * 100).toFixed(1)}%;background:${colO[k] || "var(--ink-4)"}" title="${esc(nomO[k] || k)}: ${n}"></i>`).join("")}</div>
+      <div class="orig-l">${Object.entries(po).sort((a, b) => b[1] - a[1]).map(([k, n]) => `<span><i style="background:${colO[k] || "var(--ink-4)"}"></i>${esc(nomO[k] || k)} <b>${Math.round((n / totO) * 100)}%</b></span>`).join("")}</div></div>
+    <div class="cm-card"><div class="cm-ch"><h3>⚡ Actividad</h3><small>en vivo</small></div>${feed.length ? `<div class="feed">${feed.map((x) => `<div><span class="fd-ic">${x.ic}</span><span class="fd-t">${x.t}</span><small>${hace(x.f)}</small></div>`).join("")}</div>` : '<div class="muted">Sin actividad todavía.</div>'}</div>
+  </div>`;
+}
+function htmlMaterialesAdm(R) {
+  const fmt = (n) => Number(n || 0).toLocaleString("es-AR"), sinArchivos = R.materiales.filter((m) => m.tipo !== "plataforma" && !m.archivos).length;
+  const filas = R.materiales.map((m) => `<tr><td><b>${esc(m.nombre)}</b><div class="muted">${esc(m.id)}</div></td><td class="num">${fmt(m.compradores)}</td>
+      <td>${m.tipo === "plataforma" ? '<span class="st na">Plataforma</span>' : m.archivos ? `<button class="st ok" type="button" data-ir="${esc(m.id)}">✓ ${m.archivos} ${m.archivos === 1 ? "archivo" : "archivos"}</button>` : `<button class="st no" type="button" data-ir="${esc(m.id)}" title="Ir a la tarjeta para subirlo">Falta subir ↓</button>`}</td>
+      <td>${m.estrellas ? `<span class="stars-s">★ ${String(m.estrellas).replace(".", ",")}</span> <span class="muted">(${m.opiniones})</span>` : '<span class="muted">—</span>'}</td>
+      <td><button class="btn btn-ghost btn-sm" type="button" data-copy="${esc(m.enlace)}">Copiar enlace</button></td></tr>`).join("");
+  return `${htmlSinVincular(R)}<div class="cm-card"><div class="cm-ch"><h3>📚 Materiales y enlaces para Empretienda</h3><small>${sinArchivos ? sinArchivos + " sin archivos" : "todos con archivos"}</small></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Material</th><th style="text-align:right">Docentes</th><th>Archivos</th><th>Opiniones</th><th>Enlace del botón Descargar</th></tr></thead><tbody>${filas}</tbody></table></div>
+      <div class="aux" style="margin-top:6px"><span>Archivos en <b>${esc(R.almacen || "Supabase Storage")}</b>. Los archivos se suben en cada tarjeta, más abajo.</span><button class="btn-link" type="button" id="aCat">🔄 Traer productos nuevos de la web</button></div></div>
+    ${htmlRegalos(R)}`;
+}
+function htmlOrdenesAdm(R) {
+  return R.ultimasOrdenes.length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fecha</th><th>Orden</th><th>Docente</th><th>Productos</th><th>Pago</th></tr></thead><tbody>${R.ultimasOrdenes.map((o) => `<tr><td class="muted">${fecha(o.fecha)}</td><td>#${esc(o.orden)}</td><td><button class="mail" type="button" data-fdoc="${esc(o.email)}">${esc(o.email)}</button></td><td>${esc((o.productos || []).join(" · "))}</td><td>${esc(o.estado || "")}</td></tr>`).join("")}</tbody></table></div>` : '<div class="muted">Todavía no llegaron órdenes.</div>';
+}
+function tablaDescargas(R) {
+  return R.ultimasDescargas.length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Cuándo</th><th>Docente</th><th>Material</th></tr></thead><tbody>${R.ultimasDescargas.map((d) => `<tr><td class="muted">${hace(d.fecha)}</td><td><button class="mail" type="button" data-fdoc="${esc(d.email)}">${esc(d.email)}</button></td><td>${esc(nombreMat(d.material_id))}<div class="muted">${esc(d.archivo || "")}</div></td></tr>`).join("")}</tbody></table></div>` : '<div class="muted">Todavía nadie descargó. Tus propias descargas no se cuentan.</div>';
+}
+$("#adminBox").addEventListener("click", (e) => {
+  const t = e.target.closest("[data-tabir]"); if (t) { admIr(t.dataset.tabir); $("#adminBox").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+  const sb = e.target.closest("[data-serie]"); if (sb && resumen && resumen.tablero) { admSerie = sb.dataset.serie; document.querySelectorAll("[data-serie]").forEach((b) => b.setAttribute("aria-pressed", b === sb)); $("#cmChart").innerHTML = barrasSvg(resumen.tablero.serie, admSerie); }
+});
 // ---------- Modo administrador: ficha de cada docente, cupones automáticos y pedidos de materiales ----------
 const admAbiertos = new Set(); let fichaTop = null, fichaAct = null, cupAdm = null, ideasAdm = null;
 const iniciales = (n, e) => (String(n || e || "?").trim().split(/\s+/).slice(0, 2).map((x) => x[0]).join("") || "?").toUpperCase();
@@ -1574,7 +1750,7 @@ const filaDocente = (x) => `<button class="fi-r" type="button" data-fdoc="${esc(
 async function fichaTopPintar() { const r = $("#fiRes"); r.innerHTML = '<div class="muted">Cargando tus mejores clientas…</div>'; try { fichaTop = fichaTop || (await api({ accion: "ficha_top", token: sesion.token })); r.innerHTML = fichaTop.top.length ? `<div class="muted" style="font-size:.85rem">⭐ Tus mejores clientas (de ${fichaTop.total}):</div>${fichaTop.top.map(filaDocente).join("")}` : '<div class="muted">Todavía no hay docentes registradas.</div>'; } catch (e) { r.innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)}</div></div>`; } }
 async function fichaBuscar() { const q = $("#fiQ").value.trim(), r = $("#fiRes"); if (q.length < 2) { fichaTopPintar(); return; } try { const j = await api({ accion: "buscar_docente", token: sesion.token, q }); if ($("#fiQ").value.trim() !== q) return; r.innerHTML = j.resultados.length ? j.resultados.map(filaDocente).join("") : '<div class="muted">No encontré docentes con eso. Probá con el correo completo.</div>'; } catch (e) { r.innerHTML = `<div class="muted">${esc(e.message)}</div>`; } }
 async function abrirFichaDocente(email) {
-  const d = $("#aFicha"); if (d && !d.open) { d.open = true; admAbiertos.add("#aFicha"); await pintarFichaBox(); }
+  $("#cmSug") && $("#cmSug").classList.add("hide"); if (admTab !== "docentes" || !$("#fiVer")) admIr("docentes"); await pintarFichaBox();
   const v = $("#fiVer"); v.innerHTML = '<div class="skel" style="height:220px"></div>'; v.scrollIntoView({ behavior: "smooth", block: "start" });
   try { fichaAct = await api({ accion: "ficha", token: sesion.token, email }); } catch (e) { v.innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)}</div></div>`; return; }
   const F = fichaAct, fd = (x) => (x ? new Date(x).toLocaleDateString("es-AR", { day: "numeric", month: "short", year: "numeric" }) : "—");
@@ -1594,7 +1770,7 @@ async function abrirFichaDocente(email) {
     ${F.copias.length ? `<h4>🔏 Copias personalizadas</h4><div class="fi-tags">${F.copias.map((c) => `<span>${esc(c.codigo)} · ${esc(c.nombre)} · ${c.descargas} desc.</span>`).join("")}</div>` : ""}
     ${F.descargas.recientes.length ? `<h4>⬇ Últimas descargas</h4><div class="fi-tags">${F.descargas.recientes.map((x) => `<span>${fd(x.fecha)} · ${esc(x.nombre)}</span>`).join("")}</div>` : ""}</div>`;
   const nota = $("#fiNota"); let orig = nota.value; nota.onblur = async () => { if (nota.value === orig) return; $("#fiNotaSt").textContent = "Guardando…"; try { await api({ accion: "ficha_nota", token: sesion.token, email: F.email, nota: nota.value }); orig = nota.value; $("#fiNotaSt").textContent = "✓ Guardada"; } catch (e) { $("#fiNotaSt").textContent = e.message; } };
-  $("#fiTr").onclick = () => { const t = $("#aTr"); trPre = { email: F.email, nombre: F.nombre, instagram: F.instagram }; trAbierto = true; if (t.open) pintarTr(); else t.open = true; t.scrollIntoView({ behavior: "smooth", block: "start" }); };
+  $("#fiTr").onclick = () => { trPre = { email: F.email, nombre: F.nombre, instagram: F.instagram }; admIr("ventas"); $("#adminBox").scrollIntoView({ behavior: "smooth", block: "start" }); };
 }
 // ---- cupones ----
 async function pintarCupAdm() { const box = $("#aCupBox"); if (!box) return; box.innerHTML = '<div class="muted">Cargando cupones…</div>'; try { cupAdm = await api({ accion: "cupones_admin", token: sesion.token }); } catch (e) { box.innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${/desconocida/i.test(e.message) ? "Falta actualizar la función <b>biblioteca</b> y correr <b>biblioteca-comunidad.sql</b> en Supabase." : esc(e.message)}</div></div>`; return; } cupDibujar(); }
@@ -1737,7 +1913,7 @@ function trCsvDl() {
 }
 async function cargarResumen() {
   try { resumen = await api({ accion: "resumen", token: sesion.token }); pintarRes(); }
-  catch (e) { if ($("#aRes")) $("#aRes").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>No se pudo cargar el resumen: ${esc(e.message)}</div></div>`; }
+  catch (e) { const t = $("#pInicioR") || $("#pMatR"); if (t) t.innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>No se pudo cargar el resumen: ${esc(e.message)} <button class="btn-link" type="button" id="aAct">Reintentar</button></div></div>`; }
 }
 function htmlSinVincular(R) {
   const L = R.sinVincular || []; if (!L.length) return "";
@@ -1823,7 +1999,7 @@ $("#adminBox").addEventListener("click", async (e) => {
   if (md) { md.disabled = true; try { await api({ accion: "moderar", token: sesion.token, email: md.dataset.email, material: md.dataset.mat, estado: md.dataset.mod }); toast(md.dataset.mod === "aprobada" ? "Opinión aprobada ✓" : "Opinión oculta"); const o = (resumen.opiniones || []).find((x) => x.email === md.dataset.email && x.material_id === md.dataset.mat); if (o) o.estado = md.dataset.mod; pintarRes(); } catch (err) { toast(err.message); md.disabled = false; } return; }
   const m = e.target.closest("[data-como]");
   if (m) { verComo = m.dataset.como; filtro = "todos"; $("#q").value = ""; window.scrollTo({ top: 0, behavior: "smooth" }); cargar(); return; }
-  if (e.target.closest("#aAct")) { resumen = null; $("#aRes").innerHTML = '<p class="muted">Actualizando…</p>'; cargarResumen(); }
+  if (e.target.closest("#aAct")) { resumen = null; cargarResumen(); }
 });
 
 // ---------- Modo demostración (sin servidor, datos de ejemplo) ----------
