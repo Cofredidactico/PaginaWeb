@@ -1045,7 +1045,7 @@
       "descripcion": "🧉🇦🇷 Cuadernillo didáctico para trabajar el Día de la Tradición en Primer Ciclo de Nivel Primario, con propuestas lúdicas para conocer y valorar nuestras costumbres: el gaucho, el mate, la chacarera, las empanadas y el Martín Fierro.",
       "tipo": "cuadernillo",
       "acceso": "pago",
-      "precio": 8000,
+      "precio": 6500,
       "imagen": "images/producto-1793132318920.png",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/10-de-noviembre-dia-de-la-tradicion",
       "activo": true,
@@ -1055,7 +1055,7 @@
       "nivel": "Nivel Primario",
       "nivelGrupo": "1ciclo",
       "precioTachado": 10000,
-      "paginas": 34,
+      "paginas": 38,
       "formato": "PDF-A4-Color",
       "meses": [
         11
