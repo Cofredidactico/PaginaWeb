@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Suscripción · Cofre Didáctico</title>
+<link rel="icon" href="icon192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#FDFCF8;--bg-2:#F5F0E8;--card:#FFFFFF;--ink:#1A2744;--muted:#5B6476;--accent:#FF8A4C;--accent-soft:#FFE9D9;--ok:#2E9E6A;--err:#C2452D;--line:#ECE5D8}
+@media (prefers-color-scheme:dark){:root{--bg:#121722;--bg-2:#1A2130;--card:#1B2230;--ink:#F2EFE8;--muted:#A8B0C0;--accent:#FF9B63;--accent-soft:#33221A;--line:#2A3446}}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;background:radial-gradient(circle at 20% 10%,var(--accent-soft),transparent 45%),var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif}
+.card{width:100%;max-width:460px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 18px 40px -24px rgba(26,39,68,.35)}
+.logo{width:74px;height:74px;object-fit:contain;margin-bottom:6px}
+.ico{font-size:44px;line-height:1;margin:6px 0 10px}
+h1{font-family:Outfit,system-ui,sans-serif;font-weight:800;font-size:26px;margin:0 0 10px}
+p{color:var(--muted);font-size:16px;line-height:1.55;margin:0 0 14px}
+.btn{display:inline-block;margin-top:8px;padding:12px 22px;border-radius:999px;background:var(--accent);color:#fff;font-family:Outfit,sans-serif;font-weight:700;text-decoration:none}
+.btn.sec{background:transparent;color:var(--ink);border:1.5px solid var(--line);margin-left:6px}
+small{display:block;margin-top:20px;color:var(--muted);font-size:13px}
+a{color:inherit}
+</style>
+</head>
+<body>
+<main class="card" id="c">
+  <img class="logo" src="logo.png" alt="Cofre Didáctico">
+  <div class="ico" id="ico">✅</div>
+  <h1 id="t">Listo, ya no vas a recibir más correos</h1>
+  <p id="d">Te dimos de baja de los envíos de Cofre Didáctico. Gracias por el tiempo que estuviste con nosotros.</p>
+  <p id="d2">Si fue un error, escribinos a <a href="mailto:hola@cofredidactico.com.ar">hola@cofredidactico.com.ar</a> y te volvemos a sumar.</p>
+  <a class="btn" href="/">Ir a la tienda</a><a class="btn sec" href="gratis.html">Material gratis</a>
+  <small>Cofre Didáctico · Material para docentes</small>
+</main>
+<script>
+(function(){
+  var e=(new URLSearchParams(location.search).get('estado')||'ok');
+  var M={
+    invalido:['🔗','El enlace no es válido','Puede que el enlace esté incompleto o vencido. Abrí de nuevo el botón “Darme de baja” desde el correo.'],
+    error:['⚠️','No pudimos procesar la baja','Probá de nuevo en unos minutos. Si sigue fallando, escribinos y te damos de baja a mano.']
+  };
+  if(M[e]){document.getElementById('ico').textContent=M[e][0];document.getElementById('t').textContent=M[e][1];document.getElementById('d').textContent=M[e][2];
+    document.getElementById('d2').innerHTML='Escribinos a <a href="mailto:hola@cofredidactico.com.ar">hola@cofredidactico.com.ar</a>.';}
+})();
+</script>
+</body>
+</html>
