@@ -5,7 +5,7 @@
      primera visita); si no hay red o tarda más de 4 s, usa la copia guardada.
    - Navegaciones offline: cae al index cacheado.
 */
-const CACHE = 'cofre-v4';
+const CACHE = 'cofre-v5';
 const SHELL = [
   './',
   './index.html',

@@ -1676,10 +1676,166 @@ body.has-iab-bar .hdr{top:48px;}
 (function(){
   try{
     var t = localStorage.getItem('tema');
-    if(t === 'dark' || t === 'light'){ document.documentElement.setAttribute('data-theme', t); }
+    if(t === 'dark' || t === 'light'){ document.documentElement.setAttribute('data-theme', t); }else{document.documentElement.setAttribute('data-theme','dark');}
   }catch(e){}
 })();
 </script>
+<!--PRO-HEAD--><script>
+/* primera visita: el regalo se muestra en el mejor momento (lo maneja Cofre Pro) */
+(function(){try{var c=localStorage.getItem('cofre_regalo')==='claimed',v=localStorage.getItem('cofre_visto');if(!c&&!v){window.__proPrimera=true;localStorage.setItem('cofre_visto','1');}}catch(e){}})();
+</script>
+<style id="cofre-pro-css">
+/* ═══════ Cofre Pro · experiencia celular (hero 3D, estantes, tarjetas, animaciones) ═══════ */
+:root{--pro-ease:cubic-bezier(.22,1,.36,1)}
+
+/* ---------- 1 · Portada 3D ---------- */
+.pro-cf{display:none}
+@media (max-width:1059px){
+  .pro-cf{display:block;position:relative;margin:6px -24px 6px;height:var(--pro-cf-h,300px);perspective:1100px;touch-action:pan-y;user-select:none;-webkit-user-select:none;overflow:hidden}
+  .pro-cf-stage{position:absolute;inset:0;transform-style:preserve-3d}
+  .pro-cf-it{position:absolute;left:50%;top:10px;width:var(--pro-cf-w,178px);aspect-ratio:4/5;margin-left:calc(var(--pro-cf-w,178px) / -2);border-radius:16px;overflow:hidden;background:var(--card);
+    box-shadow:0 22px 40px -18px rgba(26,39,68,.55),0 4px 12px rgba(26,39,68,.12);border:4px solid var(--card);transform-origin:50% 60%;will-change:transform,opacity;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .pro-cf-it img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+  .pro-cf-it .pro-cf-off{position:absolute;top:8px;left:8px;background:#E5484D;color:#fff;font:800 .7rem/1 var(--f-display);padding:5px 8px;border-radius:99px;box-shadow:0 4px 10px rgba(229,72,77,.35)}
+  .pro-cf-it .pro-cf-new{position:absolute;top:8px;right:8px;background:var(--accent);color:#fff;font:800 .62rem/1 var(--f-display);padding:5px 8px;border-radius:99px;letter-spacing:.05em}
+  .pro-cf-shine{position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.38) 50%,transparent 65%);transform:translateX(-120%);pointer-events:none}
+  .pro-cf-it.on .pro-cf-shine{animation:proShine 1.1s .25s var(--pro-ease) both}
+  @keyframes proShine{to{transform:translateX(120%)}}
+  .pro-cf-floor{position:absolute;left:50%;bottom:44px;width:220px;height:26px;margin-left:-110px;background:radial-gradient(closest-side,rgba(26,39,68,.22),transparent);filter:blur(2px);pointer-events:none}
+  .pro-cf-cap{position:absolute;left:0;right:0;bottom:0;text-align:center;padding:0 24px;transition:opacity .25s}
+  .pro-cf-cap b{display:block;font:800 1rem/1.25 var(--f-display);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pro-cf-cap span{font-size:.82rem;color:var(--ink-3);font-weight:700}
+  .pro-cf-cap span s{color:var(--ink-4);font-weight:600;margin-right:4px}
+  .pro-cf-cap span em{font-style:normal;color:var(--accent);font-weight:800}
+  .pro-cf-dots{position:absolute;left:0;right:0;bottom:-2px;display:none}
+  .pro-cf.swap .pro-cf-cap{opacity:0}
+  /* entrada */
+  .pro-cf.pre .pro-cf-it{opacity:0!important;transform:translate3d(0,120px,0) rotateX(25deg) scale(.7)!important}
+  .pro-cf .pro-cf-it{transition:transform .55s var(--pro-ease),opacity .45s}
+  .pro-cf.drag .pro-cf-it{transition:none}
+
+  /* hero compacto para que la portada entre en la primera pantalla */
+  .hero{padding:18px 0 28px!important}
+  .hero .hero-badge{display:none}
+  .hero h1{margin:4px 0 8px!important;font-size:clamp(1.85rem,8.4vw,2.5rem)!important}
+  .hero p.lead{font-size:.93rem!important;margin-bottom:4px!important;line-height:1.5}
+  .hero .hero-cta .btn-ghost{display:none!important}
+  .hero .hero-cta{margin-top:4px}
+  .hero-float{opacity:.55}
+  .hero-stats .stat-em{display:none!important}
+  .hero-stats .stat-item{justify-content:center;text-align:center;padding:12px 4px!important}
+  .hero-stats .stat-n{font-size:1.35rem!important;white-space:nowrap}
+  .hero-stats .stat-l{white-space:nowrap;font-size:.66rem!important}
+}
+.pro-tour-chip{display:inline-flex;align-items:center;gap:6px;margin-top:12px;background:none;border:0;color:var(--ink-3);font:700 .84rem var(--f-body);cursor:pointer;padding:6px 2px;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+.pro-tour-chip:hover{color:var(--primary)}
+
+/* entrada del título */
+.pro-in-up{animation:proUp .8s var(--pro-ease) both}
+@keyframes proUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ---------- 4 · Estantes ---------- */
+.pro-shelves{display:none}
+@media (max-width:899px){
+  .pro-shelves{display:block;padding:8px 0 4px}
+  #semana{display:none!important}
+}
+.pro-shelf{margin:0 0 26px}
+.pro-shelf-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:0 20px;margin-bottom:12px}
+.pro-shelf-hd h3{font:800 1.18rem/1.2 var(--f-display);color:var(--ink);margin:0}
+.pro-shelf-hd p{margin:3px 0 0;font-size:.8rem;color:var(--ink-3);font-weight:600}
+.pro-shelf-hd a,.pro-shelf-hd button{flex:none;font:800 .8rem var(--f-display);color:var(--primary);background:var(--primary-soft);border:0;padding:7px 12px;border-radius:99px;text-decoration:none;cursor:pointer;white-space:nowrap}
+.pro-row{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;padding:4px 20px 14px;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+.pro-row::-webkit-scrollbar{display:none}
+.pro-mini{flex:none;width:clamp(138px,40vw,170px);scroll-snap-align:start;text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent;transition:transform .2s}
+.pro-mini:active{transform:scale(.97)}
+.pro-mini-img{position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:var(--bg-2);box-shadow:0 10px 22px -14px rgba(26,39,68,.5);border:1px solid var(--line)}
+.pro-mini-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .4s}
+.pro-mini-img img.ok{opacity:1}
+.pro-mini-off{position:absolute;top:7px;left:7px;background:#E5484D;color:#fff;font:800 .66rem/1 var(--f-display);padding:4px 7px;border-radius:99px}
+.pro-mini-tag{position:absolute;bottom:7px;left:7px;background:rgba(26,39,68,.82);color:#fff;font:800 .6rem/1 var(--f-display);padding:4px 7px;border-radius:99px;letter-spacing:.03em}
+.pro-mini b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:8px 2px 3px;font:800 .84rem/1.25 var(--f-display);color:var(--ink);min-height:2.5em}
+.pro-mini span{display:block;margin:0 2px;font:800 .9rem var(--f-display);color:var(--ink)}
+.pro-mini span s{font:600 .72rem var(--f-body);color:var(--ink-4);margin-left:5px}
+.pro-mini span.free{color:var(--green)}
+.pro-shelf.hot .pro-shelf-hd h3::after{content:'';display:inline-block;width:8px;height:8px;margin-left:8px;border-radius:50%;background:#E5484D;box-shadow:0 0 0 0 rgba(229,72,77,.6);animation:proPulse 1.8s infinite;vertical-align:middle}
+@keyframes proPulse{70%{box-shadow:0 0 0 9px rgba(229,72,77,0)}100%{box-shadow:0 0 0 0 rgba(229,72,77,0)}}
+.pro-shelf .pro-row .pro-mini{opacity:0;transform:translateX(26px)}
+.pro-shelf.pro-seen .pro-row .pro-mini{opacity:1;transform:none;transition:opacity .5s var(--pro-ease),transform .6s var(--pro-ease);transition-delay:calc(var(--k,0) * 60ms)}
+
+/* catálogo acortado en celular */
+.pro-more{display:none}
+@media (max-width:899px){
+  #grid.pro-cut > .card:nth-child(n+7){display:none!important}
+  .pro-more.on{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin:18px 0 0;padding:14px;border-radius:14px;border:1.5px dashed var(--line);background:var(--card);color:var(--ink);font:800 .95rem var(--f-display);cursor:pointer}
+}
+
+/* ---------- 5 · Tarjetas ---------- */
+@media (max-width:600px){
+  .grid{gap:12px!important}
+  .card{border-radius:16px!important}
+  .card .tag-tipo,.card .card-peek,.card .card-share{display:none!important}
+  .card .card-body{padding:10px 11px 11px!important;gap:3px}
+  .card .card-ttl{font-size:.88rem!important;line-height:1.25!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.5em}
+  .card .card-nivel{font-size:.6rem!important}
+  .card .card-tema{font-size:.64rem!important;padding:3px 8px!important}
+  .card .card-intl{display:none!important}
+  .card .card-foot{padding-top:8px!important;gap:6px}
+  .card .card-foot .price{display:flex;flex-direction:column-reverse;line-height:1.05;font-size:1.02rem!important}
+  .card .card-foot .price-tachado{font-size:.7rem!important;margin:0!important}
+  .card .btn-card{font-size:0!important;width:36px;height:36px;padding:0!important;border-radius:50%!important;display:inline-flex!important;align-items:center;justify-content:center;flex:none}
+  .card .btn-card::after{content:'→';font-size:1.05rem;font-weight:800}
+  .card .card-dots{bottom:8px!important;padding:4px 7px!important}
+  .card .card-dots i{width:5px!important;height:5px!important}
+  .card .card-off{font-size:.68rem!important}
+  .card .card-fav{width:32px!important;height:32px!important}
+}
+
+/* ---------- 8 · Animaciones al bajar ---------- */
+.pro-rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--pro-ease),transform .9s var(--pro-ease)}
+.pro-rv.pro-in{opacity:1;transform:none}
+.pro-rv-d1{transition-delay:.08s}.pro-rv-d2{transition-delay:.16s}.pro-rv-d3{transition-delay:.24s}
+
+/* ---------- 10 · Barra de compra ---------- */
+.float-buy .pro-fb-off{display:inline-block;margin-left:6px;background:#E5484D;color:#fff;font:800 .64rem/1 var(--f-display);padding:3px 6px;border-radius:99px;vertical-align:2px}
+.float-buy .pro-fb-old{margin-left:6px;font-size:.74rem;color:var(--ink-4);text-decoration:line-through;font-weight:600}
+.float-buy .pro-fb-sub{display:block;font-size:.66rem;color:var(--ink-3);font-weight:700;margin-top:1px}
+.float-buy-btn{position:relative;overflow:hidden}
+.float-buy-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);animation:proBtnShine 3.6s 1.2s infinite}
+@keyframes proBtnShine{0%,60%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+
+/* regalo flotante más discreto en celular */
+@media (max-width:760px){
+  .cofre-fab{padding:0!important;width:50px;height:50px;justify-content:center;border-radius:50%!important;bottom:calc(84px + env(safe-area-inset-bottom,0px))!important;left:14px!important}
+  .cofre-fab > span:not(.cf-ico){display:none!important}
+  body.pro-arriba .cofre-fab{opacity:0!important;transform:scale(.6)!important;pointer-events:none}
+  .cofre-fab{transition:opacity .35s,transform .35s var(--pro-ease)!important}
+  .cofre-fab .cf-ico{font-size:1.4rem!important}
+}
+
+/* ---------- 11 · Tema oscuro y transiciones ---------- */
+html.pro-theme-fade, html.pro-theme-fade *{transition:background-color .45s ease,border-color .45s ease,color .3s ease,box-shadow .45s ease!important}
+[data-theme="dark"] .pro-cf-it,[data-theme="dark"] .pro-mini-img{box-shadow:0 18px 36px -16px rgba(0,0,0,.8)}
+[data-theme="dark"] .pro-cf-floor{background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent)}
+[data-theme="dark"] .pro-mini-tag{background:rgba(0,0,0,.6)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .pro-cf-it,:root:not([data-theme="light"]) .pro-mini-img{box-shadow:0 18px 36px -16px rgba(0,0,0,.8)}
+  :root:not([data-theme="light"]) .pro-cf-floor{background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent)}
+}
+::view-transition-old(root){animation:proVtOut .22s ease both}
+::view-transition-new(root){animation:proVtIn .32s var(--pro-ease) both}
+@keyframes proVtOut{to{opacity:0;transform:scale(.985)}}
+@keyframes proVtIn{from{opacity:0;transform:translateY(10px)}}
+
+/* ---------- 12 · Velocidad ---------- */
+#faq,#instagram,#newsletter,footer{content-visibility:auto;contain-intrinsic-size:auto 900px}
+
+@media (prefers-reduced-motion:reduce){
+  .pro-rv,.pro-shelf .pro-row .pro-mini{opacity:1!important;transform:none!important;transition:none!important}
+  .pro-cf .pro-cf-it{transition:none}
+  .pro-cf-it.on .pro-cf-shine,.float-buy-btn::after,.pro-in-up{animation:none!important}
+}
+</style><!--/PRO-HEAD-->
 </head>
 <body>
 
@@ -4527,5 +4683,255 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
   document.addEventListener('DOMContentLoaded', function(){ setTimeout(actualizarBotonPush, 900); });
 </script>
 
+<!--PRO-BODY--><script id="cofre-pro-js">
+/* ═══════ Cofre Pro · experiencia celular ═══════ */
+(function(){
+  'use strict';
+  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var q = function(s,r){ return (r||document).querySelector(s); };
+  var qa = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+  var fmt = function(n){ return '$' + (n||0).toLocaleString('es-AR'); };
+  var escH = function(t){ return String(t==null?'':t).replace(/[&<>"]/g,function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var off = function(p){ return (p.precioTachado && p.precioTachado > p.precio) ? Math.round((1 - p.precio / p.precioTachado) * 100) : 0; };
+  var img = function(p, w){ try{ return imgOpt(p.imagen, w); }catch(e){ return p.imagen; } };
+  var orig = function(p){ try{ return _imgAbs(p.imagen); }catch(e){ return p.imagen; } };
+  var D = function(){ try{ return (typeof _data !== 'undefined' && _data) || null; }catch(e){ return null; } };
+  var activos = function(){ return ((D() && D().productos) || []).filter(function(p){ return p.activo && p.imagen; }); };
+  var track = function(ev, d){ try{ if (window.umami) umami.track(ev, d); }catch(e){} };
+
+  /* ───────── 2 · Bienvenida única ───────── */
+  var _tourOrig = window.iniciarTour;
+  window.iniciarTour = function(force){ if (force && _tourOrig) return _tourOrig(true); };
+  function algoAbierto(){
+    return document.body.classList.contains('in-detail') || q('.tour-ov') || q('.cmdk.on') || q('.exit-overlay.on') ||
+      (q('#bottom-sheet') && q('#bottom-sheet').classList.contains('open')) || (q('#cofre-overlay') && q('#cofre-overlay').classList.contains('on'));
+  }
+  if (window.__proPrimera){
+    var t0 = Date.now(), listo = false;
+    var intentar = function(){
+      if (listo) return;
+      var bajo = window.scrollY > innerHeight * 1.1, pasado = Date.now() - t0;
+      if ((bajo && pasado > 9000) || pasado > 26000){
+        if (algoAbierto()){ return; }
+        listo = true; window.removeEventListener('scroll', onSc); clearInterval(iv);
+        try{ abrirCofre(); track('cofre-auto'); }catch(e){}
+      }
+    };
+    var onSc = function(){ intentar(); };
+    window.addEventListener('scroll', onSc, {passive:true});
+    var iv = setInterval(intentar, 2000);
+  }
+
+  /* ───────── 1 · Portada 3D ───────── */
+  function elegirPortada(){
+    var P = activos();
+    var pts = function(p){ return (p.etiqueta === 'nuevo' ? 6 : 0) + (p.destacado ? 4 : 0) + (mesEnCurso(p) ? 8 : 0) + (p.acceso === 'gratis' ? -3 : 0); };
+    return P.slice().sort(function(a,b){ return pts(b) - pts(a); }).slice(0, 9);
+  }
+  function mesesAhora(){ var m = new Date().getMonth() + 1; return [m, m % 12 + 1]; }
+  function mesEnCurso(p){ var M = mesesAhora(); return (p.meses || []).some(function(x){ return M.indexOf(+x) >= 0; }); }
+
+  function armarPortada(){
+    var hi = q('.hero .hero-i'); if (!hi || q('.pro-cf')) return;
+    var L = elegirPortada(); if (L.length < 3) return;
+    var cf = document.createElement('div'); cf.className = 'pro-cf pre'; cf.setAttribute('aria-label', 'Materiales destacados');
+    var W = Math.min(196, Math.round(innerWidth * 0.46)); cf.style.setProperty('--pro-cf-w', W + 'px'); cf.style.setProperty('--pro-cf-h', Math.round(W * 1.25 + 74) + 'px');
+    cf.innerHTML = '<div class="pro-cf-stage">' + L.map(function(p, i){
+      var o = off(p);
+      return '<a class="pro-cf-it" href="#/producto/' + escH(p.id) + '" data-i="' + i + '" aria-label="' + escH(p.nombre) + '">' +
+        '<img src="' + img(p, 420) + '" alt="" ' + (i < 3 ? 'fetchpriority="high"' : 'loading="lazy"') + ' decoding="async" onerror="this.onerror=null;this.src=\'' + orig(p) + '\'">' +
+        (o >= 5 ? '<i class="pro-cf-off">−' + o + '%</i>' : '') + (p.etiqueta === 'nuevo' ? '<i class="pro-cf-new">NUEVO</i>' : '') +
+        '<span class="pro-cf-shine"></span></a>';
+    }).join('') + '</div><div class="pro-cf-floor"></div><div class="pro-cf-cap" aria-live="polite"><b></b><span></span></div>';
+    var lead = q('p.lead', hi), cta = q('.hero-cta', hi);
+    hi.insertBefore(cf, cta || (lead && lead.nextSibling) || null);
+    // enlace al recorrido (solo a pedido)
+    if (cta && !q('.pro-tour-chip')){
+      var ch = document.createElement('button'); ch.type = 'button'; ch.className = 'pro-tour-chip'; ch.innerHTML = '👋 ¿Primera vez? Te muestro cómo funciona';
+      ch.addEventListener('click', function(){ track('tour-pedido'); window.iniciarTour(true); });
+      cta.insertAdjacentElement('afterend', ch);
+    }
+    var its = qa('.pro-cf-it', cf), n = its.length, pos = 0, cap = q('.pro-cf-cap', cf);
+    function pintar(){
+      its.forEach(function(el, i){
+        var d = i - pos; if (d > n / 2) d -= n; if (d < -n / 2) d += n;
+        var a = Math.abs(d), s = d < 0 ? -1 : 1;
+        var x = d * 56 - s * Math.max(0, a - 1) * 14, z = -a * 150, ry = -Math.max(-1.6, Math.min(1.6, d)) * 34;
+        el.style.transform = 'translate3d(' + x + '%,0,' + z + 'px) rotateY(' + ry + 'deg)';
+        el.style.opacity = a > 2.6 ? 0 : (1 - a * .18);
+        el.style.zIndex = 100 - Math.round(a * 10);
+        el.style.pointerEvents = a > 2.2 ? 'none' : '';
+        el.classList.toggle('on', Math.round(pos) % n === i || (Math.round(pos) % n + n) % n === i);
+      });
+    }
+    function rotulo(){
+      var i = ((Math.round(pos) % n) + n) % n, p = L[i];
+      cap.querySelector('b').textContent = p.nombre;
+      cap.querySelector('span').innerHTML = p.acceso === 'gratis' ? '<em>¡Gratis!</em>' :
+        (p.precioTachado > p.precio ? '<s>' + fmt(p.precioTachado) + '</s>' : '') + fmt(p.precio) + (off(p) >= 5 ? ' · <em>' + off(p) + '% OFF</em>' : '');
+    }
+    function ir(k){ pos = Math.round(k); pintar(); cf.classList.add('swap'); clearTimeout(ir.t); ir.t = setTimeout(function(){ rotulo(); cf.classList.remove('swap'); }, 160); }
+    pintar(); rotulo();
+    // entrada
+    requestAnimationFrame(function(){ setTimeout(function(){ cf.classList.remove('pre'); }, RM ? 0 : 120); });
+    its.forEach(function(el, i){ el.style.transitionDelay = RM ? '0s' : (Math.abs(i - (i > n/2 ? n : 0)) * 0.07 + 0.1) + 's'; });
+    setTimeout(function(){ its.forEach(function(el){ el.style.transitionDelay = ''; }); }, 1400);
+    // auto-avance
+    var auto = null, vis = true;
+    function play(){ stop(); if (RM) return; auto = setInterval(function(){ if (vis && !document.hidden && !document.body.classList.contains('in-detail')) ir(pos + 1); }, 3400); }
+    function stop(){ if (auto){ clearInterval(auto); auto = null; } }
+    if ('IntersectionObserver' in window) new IntersectionObserver(function(e){ vis = e[0].isIntersecting; }).observe(cf);
+    setTimeout(play, 1600);
+    // arrastre con el dedo
+    var x0 = 0, y0 = 0, p0 = 0, dragging = false, moved = false, pid = null;
+    cf.addEventListener('pointerdown', function(e){ x0 = e.clientX; y0 = e.clientY; p0 = pos; dragging = true; moved = false; pid = e.pointerId; stop(); });
+    cf.addEventListener('pointermove', function(e){
+      if (!dragging) return; var dx = e.clientX - x0, dy = e.clientY - y0;
+      if (!moved && Math.abs(dx) < 8) return;
+      if (!moved && Math.abs(dy) > Math.abs(dx)){ dragging = false; return; }
+      if (!moved){ moved = true; cf.classList.add('drag'); try{ cf.setPointerCapture(pid); }catch(_){} }
+      pos = p0 - dx / (W * 0.62); pintar();
+    });
+    function soltar(){
+      if (!dragging) return; dragging = false; cf.classList.remove('drag');
+      if (moved){ var dpos = pos - p0; ir(Math.abs(dpos) < .18 ? p0 : (dpos > 0 ? Math.ceil(pos - .15) : Math.floor(pos + .15))); track('portada-desliza'); }
+      play();
+    }
+    cf.addEventListener('pointerup', soltar); cf.addEventListener('pointercancel', soltar);
+    cf.addEventListener('click', function(e){
+      var a = e.target.closest('.pro-cf-it'); if (!a) return;
+      if (moved){ e.preventDefault(); moved = false; return; }
+      var i = +a.dataset.i, cur = ((Math.round(pos) % n) + n) % n;
+      if (i !== cur){ e.preventDefault(); var d = i - cur; if (d > n/2) d -= n; if (d < -n/2) d += n; ir(pos + d); play(); }
+      else track('portada-abre', {id: L[i].id});
+    });
+    // título con entrada
+    if (!RM) qa('.hero h1, .hero p.lead, .hero .hero-cta, .hero-stats').forEach(function(el, i){ el.classList.add('pro-in-up'); el.style.animationDelay = (0.05 + i * 0.09) + 's'; });
+  }
+
+  /* ───────── 4 · Estantes ───────── */
+  function mini(p, k, tag){
+    var o = off(p);
+    var precio = p.acceso === 'gratis' ? '<span class="free">¡Gratis!</span>' : '<span>' + fmt(p.precio) + (p.precioTachado > p.precio ? '<s>' + fmt(p.precioTachado) + '</s>' : '') + '</span>';
+    return '<a class="pro-mini" style="--k:' + k + '" href="#/producto/' + escH(p.id) + '" data-umami-event="click-estante" data-umami-event-id="' + escH(p.id) + '">' +
+      '<div class="pro-mini-img"><img src="' + img(p, 340) + '" alt="' + escH(p.nombre) + '" loading="lazy" decoding="async" width="340" height="425" onload="this.classList.add(\'ok\')" onerror="this.onerror=null;this.src=\'' + orig(p) + '\';this.classList.add(\'ok\')">' +
+      (o >= 5 ? '<i class="pro-mini-off">−' + o + '%</i>' : '') + (tag ? '<i class="pro-mini-tag">' + tag + '</i>' : '') + '</div>' +
+      '<b>' + escH(p.nombre) + '</b>' + precio + '</a>';
+  }
+  var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  function armarEstantes(){
+    var cat = q('#catalogo'); if (!cat || q('#pro-shelves')) return;
+    var P = activos(), usados = {};
+    var cfg = (D().config && D().config.semana) || {};
+    var byId = {}; P.forEach(function(p){ byId[p.id] = p; });
+    var semana = (cfg.activo && Array.isArray(cfg.productos) ? cfg.productos : []).map(function(it){ return byId[typeof it === 'string' ? it : (it && it.id)]; }).filter(Boolean);
+    var M = mesesAhora();
+    var temporada = semana.concat(P.filter(function(p){ return mesEnCurso(p) && semana.indexOf(p) < 0; }));
+    var noJuego = function(p){ return p.tipo !== 'juego'; };
+    var S = [
+      { id:'temporada', hot:true, t:'🗓️ ' + (cfg.titulo || 'Se viene en ' + MESES[M[1]-1]), s:'Lo que vas a necesitar estas semanas', L:temporada },
+      { id:'nuevos', t:'🆕 Recién salidos', s:'Lo último que sumamos al cofre', L:P.filter(function(p){ return p.etiqueta === 'nuevo' && noJuego(p); }) },
+      { id:'top', t:'⭐ Los más elegidos', s:'Los favoritos de las seños', L:P.filter(function(p){ return p.destacado; }) },
+      { id:'interactivos', t:'🎮 Para jugar en el aula', s:'Plataformas interactivas para proyectar', L:P.filter(function(p){ return p.tipo === 'juego' || p.demoUrl; }), href:'interactivos.html', tag:'INTERACTIVO' },
+      { id:'lengua', t:'📖 Lengua y lectura', s:'Cuentos, vocales, abecedario y más', L:P.filter(function(p){ return (p.tematica === 'lengua' || p.tematica === 'literatura') && noJuego(p); }) },
+      { id:'gratis', t:'🎁 Gratis para vos', s:'Descargalos sin costo', L:P.filter(function(p){ return p.acceso === 'gratis'; }), href:'gratis.html' }
+    ];
+    var html = S.filter(function(sh){ return sh.L.length >= 2; }).map(function(sh){
+      return '<div class="pro-shelf' + (sh.hot ? ' hot' : '') + '" data-shelf="' + sh.id + '"><div class="pro-shelf-hd"><div><h3>' + escH(sh.t) + '</h3><p>' + escH(sh.s) + '</p></div>' +
+        (sh.href ? '<a href="' + sh.href + '">Ver todo</a>' : '<button type="button" data-pro-todo>Ver todo</button>') + '</div>' +
+        '<div class="pro-row">' + sh.L.slice(0, 12).map(function(p, k){ return mini(p, Math.min(k, 6), sh.tag || (sh.id !== 'nuevos' && p.etiqueta === 'nuevo' ? 'NUEVO' : '')); }).join('') + '</div></div>';
+    }).join('');
+    if (!html) return;
+    var sec = document.createElement('section'); sec.id = 'pro-shelves'; sec.className = 'pro-shelves'; sec.innerHTML = html;
+    cat.parentNode.insertBefore(sec, cat);
+    qa('[data-pro-todo]', sec).forEach(function(b){ b.addEventListener('click', function(){ expandir(); var g = q('#catalogo'); if (g) g.scrollIntoView({behavior: RM ? 'auto' : 'smooth'}); }); });
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('pro-seen'); io.unobserve(e.target); } }); }, {threshold:.25});
+      qa('.pro-shelf', sec).forEach(function(s){ io.observe(s); });
+    } else qa('.pro-shelf', sec).forEach(function(s){ s.classList.add('pro-seen'); });
+    setTimeout(function(){ qa('.pro-shelf', sec).forEach(function(s){ s.classList.add('pro-seen'); }); }, 4000);
+  }
+
+  // catálogo acortado: 6 materiales + botón "Ver todos"
+  var expandido = false;
+  function expandir(){ expandido = true; var g = q('#grid'); if (g) g.classList.remove('pro-cut'); var b = q('#pro-more'); if (b) b.classList.remove('on'); }
+  function recortar(){
+    var g = q('#grid'); if (!g || !D()) return;
+    var total = ((D().productos) || []).filter(function(p){ return p.activo && p.tipo !== 'juego' && p.acceso !== 'gratis'; }).length;
+    var cards = qa(':scope > .card', g).length;
+    var b = q('#pro-more');
+    if (!b){ b = document.createElement('button'); b.type = 'button'; b.id = 'pro-more'; b.className = 'pro-more'; b.addEventListener('click', function(){ expandir(); track('catalogo-ver-todo'); }); g.insertAdjacentElement('afterend', b); }
+    var cortar = !expandido && cards >= total && cards > 8;
+    g.classList.toggle('pro-cut', cortar);
+    b.classList.toggle('on', cortar);
+    b.innerHTML = '📚 Ver los ' + cards + ' materiales <span aria-hidden="true">↓</span>';
+  }
+  if (typeof window.render === 'function'){
+    var _render = window.render;
+    window.render = function(){ var r = _render.apply(this, arguments); try{ recortar(); revelar(); }catch(e){} return r; };
+  }
+
+  /* ───────── 8 · Animaciones al bajar ───────── */
+  var ioRv = null;
+  function revelar(){
+    var sel = ['#catalogo .sec-hd', '.filter-sheet-btn', '#por-que .feat-grid', '#faq .sec-hd', '#faq details, #faq .faq-item', '#instagram .sec-hd', '#newsletter .wrap > *', '.pro-more'];
+    var els = []; sel.forEach(function(s){ qa(s).forEach(function(el){ if (!el.classList.contains('pro-rv') && !el.classList.contains('reveal')) els.push(el); }); });
+    if (!els.length) return;
+    if (RM || !('IntersectionObserver' in window)) return;
+    if (!ioRv) ioRv = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('pro-in'); ioRv.unobserve(e.target); } }); }, {rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el, i){
+      var r = el.getBoundingClientRect(); if (r.top < innerHeight) return; // lo que ya se ve, no se esconde
+      el.classList.add('pro-rv'); if (el.matches('#faq details, #faq .faq-item')) el.classList.add('pro-rv-d' + (i % 3 + 1)); ioRv.observe(el);
+    });
+    setTimeout(function(){ qa('.pro-rv:not(.pro-in)').forEach(function(el){ if (el.getBoundingClientRect().top < innerHeight) el.classList.add('pro-in'); }); }, 3000);
+  }
+
+  /* ───────── 10 · Barra de compra ───────── */
+  if (typeof window.mostrarFloatBuy === 'function'){
+    var _mfb = window.mostrarFloatBuy;
+    window.mostrarFloatBuy = function(p){
+      var r = _mfb.apply(this, arguments);
+      try{
+        var pe = q('#float-buy-price'), ne = q('#float-buy-name');
+        if (pe && p.acceso !== 'gratis'){ var o = off(p); if (o >= 5) pe.innerHTML = fmt(p.precio) + '<span class="pro-fb-old">' + fmt(p.precioTachado) + '</span><span class="pro-fb-off">−' + o + '%</span>'; }
+        if (ne && !q('.pro-fb-sub', ne.parentNode)){ var s = document.createElement('span'); s.className = 'pro-fb-sub'; ne.parentNode.appendChild(s); }
+        var sb = q('.pro-fb-sub'); if (sb) sb.textContent = p.acceso === 'gratis' ? '🎁 Descarga sin costo' : '⚡ Descarga inmediata · 🔒 Pago seguro';
+      }catch(e){}
+      return r;
+    };
+  }
+
+  /* ───────── 11 · Cambio de tema suave ───────── */
+  if (typeof window.cambiarTema === 'function'){
+    var _ct = window.cambiarTema;
+    window.cambiarTema = function(){
+      var h = document.documentElement; h.classList.add('pro-theme-fade');
+      var r = _ct.apply(this, arguments); temaMeta();
+      setTimeout(function(){ h.classList.remove('pro-theme-fade'); }, 520); return r;
+    };
+  }
+  function temaMeta(){
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark' || (!document.documentElement.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    var m = q('meta[name="theme-color"]'); if (m) m.setAttribute('content', dark ? '#121722' : '#FDFCF8');
+  }
+  temaMeta();
+
+  /* regalo flotante: aparece al pasar la portada */
+  var arriba = function(){ document.body.classList.toggle('pro-arriba', window.scrollY < innerHeight * 0.75 && !document.body.classList.contains('in-detail')); };
+  window.addEventListener('scroll', arriba, {passive:true}); arriba();
+
+  /* ───────── arranque (cuando llega el catálogo) ───────── */
+  var hecho = false;
+  function arrancar(){
+    if (hecho || !D() || !D().productos) return false; hecho = true;
+    try{ armarPortada(); }catch(e){ console.warn('pro portada', e); }
+    try{ armarEstantes(); }catch(e){ console.warn('pro estantes', e); }
+    try{ recortar(); }catch(e){}
+    try{ revelar(); }catch(e){}
+    return true;
+  }
+  if (!arrancar()){ var tries = 0; var iv2 = setInterval(function(){ if (arrancar() || ++tries > 120) clearInterval(iv2); }, 100); }
+})();
+</script><!--/PRO-BODY-->
 </body>
 </html>

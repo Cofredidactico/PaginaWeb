@@ -518,7 +518,7 @@ body.has-iab-bar .hdr{top:48px;}
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="52b78f4b-a423-415e-bea9-beb9a2424bcc"></script>
 <script>
-(function(){try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
+(function(){try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}else{document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();
 // Fix navegador interno de Instagram/Facebook (IAB): zoom, viewport y ancho
 (function(){
   var ua = navigator.userAgent || '';
