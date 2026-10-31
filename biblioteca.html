@@ -737,6 +737,112 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
 .seno-grp{grid-column:1/-1;font:800 .78rem var(--f);color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
 @media (max-width:640px){.seno-ed{grid-template-columns:1fr}.seno-prev{position:static}.seno-prev #senoPrev{width:150px;height:150px}.seno-gr{max-height:34vh}}
 .fi-av svg{width:100%;height:100%}
+/* ═══════ Estudio de carga (administrador) ═══════ */
+.es{display:grid;gap:16px;min-width:0}
+.es>*,#pEstudio,#pMatR{min-width:0;max-width:100%}
+.es-hero{position:relative;overflow:hidden;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;padding:22px;border-radius:var(--r-lg);border:1px solid var(--line);
+  background:radial-gradient(120% 140% at 0% 0%,var(--primary-soft),transparent 55%),radial-gradient(120% 140% at 100% 100%,var(--accent-soft),transparent 55%),var(--card)}
+.es-ring{position:relative;width:118px;height:118px;flex:none}
+.es-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.es-ring .bg{stroke:var(--line)}.es-ring .fg{stroke:url(#esGrad);transition:stroke-dashoffset 1s cubic-bezier(.22,1,.36,1)}
+.es-ring div{position:absolute;inset:0;display:grid;place-content:center;text-align:center;line-height:1}
+.es-ring b{font:800 1.7rem var(--f-display);color:var(--ink)}.es-ring small{font-size:.72rem;color:var(--ink-3);font-weight:800;margin-top:4px}
+.es-h h3{font:800 1.35rem/1.15 var(--f-display);margin:0 0 4px;color:var(--ink)}
+.es-h p{margin:0 0 12px;color:var(--ink-3);font-weight:600;font-size:.92rem}
+.es-kp{display:flex;flex-wrap:wrap;gap:8px}
+.es-kp span{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-weight:800;font-size:.8rem;color:var(--ink-2)}
+.es-kp span.warn{background:var(--gold-soft);border-color:transparent;color:var(--gold)}
+.es-kp span.ok{background:var(--green-soft);border-color:transparent;color:var(--green)}
+.es-kp button{all:unset;cursor:pointer}
+
+.es-drop{position:relative;display:grid;place-items:center;text-align:center;gap:6px;padding:30px 18px;border-radius:var(--r-lg);cursor:pointer;
+  border:2px dashed color-mix(in srgb,var(--primary) 45%,var(--line));background:color-mix(in srgb,var(--primary-soft) 55%,var(--card));transition:transform .2s,border-color .2s,background .2s}
+.es-drop:hover{border-color:var(--primary)}
+.es-drop.over{transform:scale(1.01);border-style:solid;border-color:var(--primary);background:var(--primary-soft)}
+.es-drop .ic{font-size:2.4rem;line-height:1;transition:transform .3s}
+.es-drop.over .ic{transform:translateY(-6px) scale(1.12)}
+.es-drop b{font:800 1.12rem var(--f-display);color:var(--ink)}
+.es-drop small{color:var(--ink-3);font-weight:700;font-size:.84rem;max-width:520px}
+.es-drop input{display:none}
+
+.es-cola{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--card);overflow:hidden}
+.es-cola-h{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:14px 16px;border-bottom:1px solid var(--line)}
+.es-cola-h h4{margin:0;font:800 1.02rem var(--f-display);color:var(--ink)}
+.es-cola-h .acts{display:flex;gap:8px;flex-wrap:wrap}
+.es-prog{height:6px;background:var(--bg-2)}.es-prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width .3s}
+.es-it{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);position:relative;animation:esIn .35s cubic-bezier(.22,1,.36,1) both}
+.es-it:last-child{border-bottom:0}
+@keyframes esIn{from{opacity:0;transform:translateY(8px)}}
+.es-th{width:62px;height:80px;border-radius:8px;background:var(--bg-2);border:1px solid var(--line);overflow:hidden;display:grid;place-items:center;font-size:1.4rem;position:relative}
+.es-th canvas,.es-th img{width:100%;height:100%;object-fit:cover;display:block}
+.es-th .pg{position:absolute;right:3px;bottom:3px;background:rgba(26,39,68,.82);color:#fff;font:800 .6rem/1 var(--f-display);padding:3px 5px;border-radius:6px}
+.es-inf{min-width:0;display:grid;gap:5px}
+.es-fn{font-weight:800;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.92rem}
+.es-fn small{color:var(--ink-4);font-weight:700;margin-left:6px}
+.es-dest{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.es-dest select{max-width:100%;min-width:0;flex:1 1 220px;padding:7px 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 .86rem var(--f)}
+.es-dest select.need{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft)}
+.es-tag{display:inline-flex;align-items:center;gap:4px;font-weight:800;font-size:.72rem;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.es-tag.ok{background:var(--green-soft);color:var(--green)}.es-tag.q{background:var(--gold-soft);color:var(--gold)}
+.es-tag.bad{background:var(--danger-soft);color:var(--danger)}.es-tag.info{background:var(--primary-soft);color:var(--primary-dark)}
+.es-st{display:flex;align-items:center;gap:8px}
+.es-x{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink-3);cursor:pointer;font-size:.95rem}
+.es-x:hover{color:var(--danger);border-color:var(--danger)}
+.es-bar{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--primary);transition:width .2s}
+.es-it.subiendo{background:color-mix(in srgb,var(--primary-soft) 50%,transparent)}
+.es-it.listo{background:color-mix(in srgb,var(--green-soft) 60%,transparent)}
+.es-it.listo .es-bar{width:100%!important;background:var(--green)}
+.es-it.error{background:color-mix(in srgb,var(--danger-soft) 60%,transparent)}
+.es-ok-ic{font-size:1.3rem;animation:esPop .45s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes esPop{from{transform:scale(0)}}
+
+.es-tb{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.es-tb h4{margin:0 auto 0 0;font:800 1.1rem var(--f-display);color:var(--ink)}
+.es-seg{display:inline-flex;background:var(--bg-2);border-radius:12px;padding:3px;gap:2px}
+.es-seg button{border:0;background:none;color:var(--ink-3);font:800 .82rem var(--f);padding:7px 11px;border-radius:9px;cursor:pointer;white-space:nowrap}
+.es-seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:var(--s-1)}
+.es-seg button i{font-style:normal;opacity:.6;margin-left:4px}
+.es-q{flex:1 1 180px;max-width:280px;padding:8px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 .88rem var(--f)}
+.es-ord{padding:8px 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:700 .84rem var(--f)}
+
+.es-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px}
+.es-m .mt .st{font-size:.72rem}
+.es-m{position:relative;display:grid;grid-template-columns:78px minmax(0,1fr);min-width:0;gap:12px;padding:12px;border-radius:16px;border:1px solid var(--line);background:var(--card);transition:transform .2s,box-shadow .2s,border-color .2s}
+.es-m:hover{transform:translateY(-2px);box-shadow:var(--s-2)}
+.es-m.falta{border-color:color-mix(in srgb,var(--gold) 55%,var(--line))}
+.es-m.over{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-soft)}
+.es-m .cv{width:78px;aspect-ratio:4/5;border-radius:10px;overflow:hidden;background:var(--bg-2);display:grid;place-items:center;font-size:1.6rem;align-self:start}
+.es-m .cv img{width:100%;height:100%;object-fit:cover}
+.es-m .bd{min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:6px;align-content:start}
+.es-m h5{margin:0;font:800 .95rem/1.2 var(--f-display);color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.es-m .mt{display:flex;flex-wrap:wrap;gap:6px 10px;font-size:.74rem;color:var(--ink-3);font-weight:700}
+.es-fl{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.es-inf{grid-template-columns:minmax(0,1fr)}
+.es-f{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:6px;font-size:.78rem;background:var(--bg-2);border-radius:8px;padding:6px 6px 6px 9px}
+.es-f span{grid-column:1}.es-f em{grid-column:1;font-size:.7rem}.es-f button{grid-column:2;grid-row:1/3}
+.es-f span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;color:var(--ink-2)}
+.es-f em{font-style:normal;color:var(--ink-4);font-weight:700;white-space:nowrap}
+.es-f button{border:0;background:none;cursor:pointer;color:var(--ink-4);font-size:.85rem;padding:2px 4px;border-radius:6px}
+.es-f button:hover{color:var(--danger);background:var(--danger-soft)}
+.es-f button.conf{color:#fff;background:var(--danger);font-weight:800;font-size:.7rem}
+.es-ma{display:flex;gap:6px;flex-wrap:wrap}
+.es-ma .btn{padding:6px 10px;font-size:.76rem}
+.es-up{display:inline-flex;align-items:center;gap:5px;cursor:pointer}
+.es-up input{display:none}
+.es-vacio{text-align:center;padding:30px;color:var(--ink-3);font-weight:700}
+
+@media (max-width:640px){
+  .es-hero{grid-template-columns:1fr;justify-items:center;text-align:center;padding:18px}
+  .es-kp{justify-content:center}
+  .es-it{grid-template-columns:50px minmax(0,1fr);gap:10px;padding:12px}
+  .es-tb h4{flex:1 0 100%}
+  .es-ord{flex:1 1 auto}
+  .es-th{width:50px;height:64px}
+  .es-st{grid-column:1/-1;justify-content:flex-end}
+  .es-q{max-width:none}
+  .es-seg{overflow-x:auto;max-width:100%}
+}
+@media (prefers-reduced-motion:reduce){.es-it,.es-ok-ic{animation:none}.es-m,.es-drop{transition:none}}
 </style>
 </head>
 <body>
@@ -1630,6 +1736,7 @@ document.addEventListener("toggle", (e) => { const d = e.target; if (!(d instanc
 function pintarRes() {
   if (!resumen) return; admBadges();
   if ($("#pInicioR")) $("#pInicioR").innerHTML = htmlInicio(resumen);
+  if ($("#pEstudio")) pintarEstudio();
   if ($("#pMatR")) { const el = $("#pMatR"), ab = new Set([...el.querySelectorAll("details[open] > summary")].map(clavesSum)); el.innerHTML = htmlMaterialesAdm(resumen); el.querySelectorAll("details > summary").forEach((x) => { if (ab.has(clavesSum(x)) || resAbiertos.has(clavesSum(x))) x.parentElement.open = true; }); }
   if ($("#pVentasOrd")) $("#pVentasOrd").innerHTML = htmlOrdenesAdm(resumen);
   if ($("#pComOp")) { $("#pComOp").innerHTML = htmlOpiniones(resumen).replace(/^<details[^>]*>\s*<summary>[\s\S]*?<\/summary>/, "").replace(/<\/details>$/, ""); const pend = (resumen.opiniones || []).filter((o) => o.estado === "pendiente").length; $("#opSum").textContent = pend ? pend + " por revisar" : (resumen.opiniones || []).length + " en total"; }
@@ -1676,11 +1783,12 @@ function admIr(tab) {
     if (tab === "inicio") P.innerHTML = '<div id="pInicioR"></div>';
     if (tab === "docentes") P.innerHTML = `<div class="cm-card"><div class="cm-ch"><h3>📇 Ficha de cada docente</h3><small>Todo lo de una clienta en un solo lugar</small></div><div id="aFichaBox" class="adm-in"></div></div>`;
     if (tab === "ventas") P.innerHTML = `<div class="cm-card"><div class="cm-ch"><h3>💸 Ventas por transferencia</h3><small id="trSum">registrá a las docentes que te compraron por Instagram</small></div><div id="aTrBox"></div></div><div class="cm-card"><div class="cm-ch"><h3>🧾 Últimas órdenes</h3><small>Empretienda y transferencias</small></div><div id="pVentasOrd"></div></div>`;
-    if (tab === "materiales") P.innerHTML = '<div id="pMatR"></div>';
+    if (tab === "materiales") P.innerHTML = '<div id="pEstudio"></div><div id="pMatR" style="margin-top:16px;display:grid;gap:16px"></div>';
     if (tab === "comunidad") P.innerHTML = `<div class="cm-card"><div class="cm-ch"><h3>💬 Opiniones</h3><small id="opSum"></small></div><div id="pComOp"></div></div><div class="cm-card"><div class="cm-ch"><h3>🗳️ Pedidos de materiales</h3><small id="ideSum">las ideas y votos de las docentes</small></div><div id="aIdeasBox" class="adm-in"></div></div><div class="cm-card"><div class="cm-ch"><h3>🎟️ Cupones automáticos</h3><small id="cupSum">cumpleaños, Día del Maestro y fechas especiales</small></div><div id="aCupBox" class="adm-in"></div></div>`;
     if (tab === "seguridad") P.innerHTML = `<div class="cm-g2"><div class="cm-card"><div class="cm-ch"><h3>👁 Ver como una docente</h3><small>Mirá su biblioteca tal cual la ve ella</small></div><form class="como" id="aComo" novalidate><input class="inp" id="aEmail" type="email" placeholder="correo de la docente" aria-label="Correo de la docente" /><button class="btn btn-soft btn-sm" type="submit">Ver su biblioteca</button></form></div>
       <div class="cm-card"><div class="cm-ch"><h3>🔍 Rastrear una copia</h3><small>El código está al pie de cada PDF</small></div><form class="como" id="aRast" novalidate><input class="inp" id="aCodV" placeholder="CD-…" aria-label="Código de copia" autocapitalize="characters" /><button class="btn btn-soft btn-sm" type="submit">Rastrear</button></form></div></div><div id="pSegR"></div>`;
   }
+  if (tab === "materiales") pintarEstudio();
   if (tab === "docentes") pintarFichaBox();
   if (tab === "ventas") pintarTr();
   if (tab === "comunidad") { if (!ideasAdm || !$("#aIdeasBox").innerHTML) pintarIdeasAdm(); if (!cupAdm || !$("#aCupBox").innerHTML) pintarCupAdm(); }
@@ -2036,14 +2144,7 @@ function htmlInicio(R) {
   </div>`;
 }
 function htmlMaterialesAdm(R) {
-  const fmt = (n) => Number(n || 0).toLocaleString("es-AR"), sinArchivos = R.materiales.filter((m) => m.tipo !== "plataforma" && !m.archivos).length;
-  const filas = R.materiales.map((m) => `<tr><td><b>${esc(m.nombre)}</b><div class="muted">${esc(m.id)}</div></td><td class="num">${fmt(m.compradores)}</td>
-      <td>${m.tipo === "plataforma" ? '<span class="st na">Plataforma</span>' : m.archivos ? `<button class="st ok" type="button" data-ir="${esc(m.id)}">✓ ${m.archivos} ${m.archivos === 1 ? "archivo" : "archivos"}</button>` : `<button class="st no" type="button" data-ir="${esc(m.id)}" title="Ir a la tarjeta para subirlo">Falta subir ↓</button>`}</td>
-      <td>${m.estrellas ? `<span class="stars-s">★ ${String(m.estrellas).replace(".", ",")}</span> <span class="muted">(${m.opiniones})</span>` : '<span class="muted">—</span>'}</td>
-      <td><button class="btn btn-ghost btn-sm" type="button" data-copy="${esc(m.enlace)}">Copiar enlace</button></td></tr>`).join("");
-  return `${htmlSinVincular(R)}<div class="cm-card"><div class="cm-ch"><h3>📚 Materiales y enlaces para Empretienda</h3><small>${sinArchivos ? sinArchivos + " sin archivos" : "todos con archivos"}</small></div>
-      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Material</th><th style="text-align:right">Docentes</th><th>Archivos</th><th>Opiniones</th><th>Enlace del botón Descargar</th></tr></thead><tbody>${filas}</tbody></table></div>
-      <div class="aux" style="margin-top:6px"><span>Archivos en <b>${esc(R.almacen || "Supabase Storage")}</b>. Los archivos se suben en cada tarjeta, más abajo.</span><button class="btn-link" type="button" id="aCat">🔄 Traer productos nuevos de la web</button></div></div>
+  return `${htmlSinVincular(R)}<div class="aux" style="margin:0"><span>Archivos guardados en <b>${esc(R.almacen || "Supabase Storage")}</b>. El enlace de cada material para el botón Descargar de Empretienda está en su tarjeta (🔗).</span><button class="btn-link" type="button" id="aCat">🔄 Traer productos nuevos de la web</button></div>
     ${htmlRegalos(R)}`;
 }
 function htmlOrdenesAdm(R) {
@@ -2321,6 +2422,165 @@ $("#adminBox").addEventListener("click", async (e) => {
   if (m) { verComo = m.dataset.como; filtro = "todos"; $("#q").value = ""; window.scrollTo({ top: 0, behavior: "smooth" }); cargar(); return; }
   if (e.target.closest("#aAct")) { resumen = null; cargarResumen(); }
 });
+
+// ---------- Estudio de carga (administrador): subir muchos archivos juntos, reconocerlos solos y ver el estado de cada material ----------
+const ES = { cola: [], filtro: "todos", q: "", orden: "falta", subiendo: false, sec: 0 };
+const esNorm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\.[a-z0-9]{2,4}$/i, "").replace(/[^a-z0-9]+/g, " ").trim();
+const ES_VACIAS = new Set("de del la las el los y a en para con por un una al cuadernillo cuadernillos actividades actividad material pdf final version v1 v2 v3 copia completo editable imprimir a4 color cofre didactico".split(" "));
+const esTokens = (s) => esNorm(s).split(" ").filter((t) => t && !ES_VACIAS.has(t));
+const esMats = () => (materiales || []).filter((m) => m.tipo !== "plataforma");
+const esInfo = (id) => { const r = ((resumen && resumen.materiales) || []).find((x) => x.id === id) || {}; const c = (typeof CATALOGO !== "undefined" ? CATALOGO : []).find((x) => x.id === id) || {}; const m = (materiales || []).find((x) => x.id === id) || {}; return { ...c, ...r, ...m, archivos: m.archivos || [], compradores: r.compradores || 0 }; };
+function esReconocer(nombre) {
+  const f = esTokens(nombre), fn = esNorm(nombre); if (!f.length) return { id: "", score: 0 };
+  let mejor = { id: "", score: 0 };
+  for (const m of esMats()) {
+    const idn = esNorm(m.id);
+    if (idn && (fn === idn || fn.includes(idn))) return { id: m.id, score: 1 };
+    const t = new Set([...esTokens(m.id), ...esTokens(m.nombre)]); if (!t.size) continue;
+    let comun = 0; f.forEach((x) => { if (t.has(x)) comun += /^\d+$/.test(x) ? 1.5 : 1; });
+    const score = comun / Math.max(f.length, Math.min(t.size, f.length + 2));
+    if (score > mejor.score) mejor = { id: m.id, score };
+  }
+  return mejor;
+}
+const esTam = (b) => (b >= 1048576 ? (b / 1048576).toFixed(1).replace(".", ",") + " MB" : Math.max(1, Math.round(b / 1024)) + " KB");
+async function esMiniatura(it) {
+  if (!/\.pdf$/i.test(it.file.name)) { if (/^image\//.test(it.file.type)) it.img = URL.createObjectURL(it.file); return; }
+  try {
+    await cargarScript(LIBS.pdfjs);
+    if (!window.__pdfjsListo) { const w = await textoDe(LIBS.pdfjsWorker); pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(new Blob([w], { type: "text/javascript" })); window.__pdfjsListo = true; }
+    const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(await it.file.arrayBuffer()) }).promise; it.paginas = pdf.numPages;
+    const pg = await pdf.getPage(1), v = pg.getViewport({ scale: 1 }), sc = 160 / v.width, vp = pg.getViewport({ scale: sc });
+    const c = document.createElement("canvas"); c.width = vp.width; c.height = vp.height; await pg.render({ canvasContext: c.getContext("2d"), viewport: vp }).promise;
+    it.img = c.toDataURL("image/jpeg", 0.82); pdf.destroy();
+  } catch (e) { if (/password/i.test(String(e && (e.name || e.message)))) it.clave = true; }
+}
+async function esAgregar(files, forzar) {
+  const nuevos = [];
+  for (const f of files) {
+    if (!/\.(pdf|zip|png|jpe?g)$/i.test(f.name)) { toast(`"${f.name}": solo PDF, ZIP o imágenes.`); continue; }
+    const r = forzar ? { id: forzar, score: 1 } : esReconocer(f.name);
+    const it = { k: ++ES.sec, file: f, material: r.score >= 0.5 ? r.id : "", sugerido: r.id, seguro: r.score >= 0.5, estado: "espera", p: 0 };
+    if (f.size > 200 * 1048576) it.problema = `Pesa ${esTam(f.size)}: el máximo es 200 MB.`;
+    ES.cola.push(it); nuevos.push(it);
+  }
+  pintarEstudio(); if (nuevos.length) $("#esCola") && $("#esCola").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  for (const it of nuevos) {
+    if (/\.pdf$/i.test(it.file.name) && !it.problema && (await tieneClave(it.file))) it.clave = true;
+    await esMiniatura(it); if (it.clave) it.problema = "Tiene contraseña: sacásela antes de subirlo para que se pueda personalizar.";
+    pintarEstudio();
+  }
+}
+function esDestino(it) {
+  const m = esInfo(it.material);
+  if (!it.material) return "";
+  const ya = (m.archivos || []).find((a) => esNorm(a.nombre) === esNorm(it.file.name) || a.nombre === it.file.name);
+  return ya ? `<span class="es-tag info">↻ Reemplaza el archivo actual</span>` : (m.archivos || []).length ? `<span class="es-tag info">＋ Se suma a ${m.archivos.length === 1 ? "su archivo" : `sus ${m.archivos.length} archivos`}</span>` : `<span class="es-tag ok">★ Primer archivo de este material</span>`;
+}
+function htmlCola() {
+  if (!ES.cola.length) return "";
+  const listos = ES.cola.filter((x) => x.estado === "listo").length, pend = ES.cola.filter((x) => x.estado !== "listo" && !x.problema), faltaElegir = pend.filter((x) => !x.material).length;
+  const total = ES.cola.reduce((a, x) => a + x.file.size, 0), hecho = ES.cola.reduce((a, x) => a + (x.estado === "listo" ? x.file.size : x.file.size * (x.p || 0)), 0);
+  const ops = esMats().slice().sort((a, b) => a.nombre.localeCompare(b.nombre, "es")).map((m) => `<option value="${esc(m.id)}">${esc(m.nombre)}${(m.archivos || []).length ? "" : " · sin archivos"}</option>`).join("");
+  return `<div class="es-cola" id="esCola"><div class="es-cola-h"><h4>📦 Para subir · ${ES.cola.length} ${ES.cola.length === 1 ? "archivo" : "archivos"} · ${esTam(total)}</h4>
+    <div class="acts">${ES.subiendo ? `<span class="es-tag info">Subiendo ${listos + 1} de ${ES.cola.filter((x) => !x.problema).length}…</span>` : `<button class="btn btn-ghost btn-sm" type="button" id="esLimpiar">${listos ? "Quitar los subidos" : "Vaciar"}</button>${pend.length ? `<button class="btn btn-primary btn-sm" type="button" id="esSubir" ${faltaElegir ? "disabled" : ""}>⬆ Subir ${pend.length} ${pend.length === 1 ? "archivo" : "archivos"}</button>` : ""}`}</div></div>
+    <div class="es-prog"><i style="width:${total ? Math.round((hecho / total) * 100) : 0}%"></i></div>
+    ${faltaElegir && !ES.subiendo ? `<div class="notice warn" style="margin:12px 16px 0"><span class="ic">✋</span><div>${faltaElegir === 1 ? "Hay 1 archivo" : `Hay ${faltaElegir} archivos`} que no reconocí por el nombre: elegí a qué material ${faltaElegir === 1 ? "pertenece" : "pertenecen"}.</div></div>` : ""}
+    ${ES.cola.map((it) => {
+      const est = it.estado === "listo" ? `<span class="es-ok-ic" title="Subido">✅</span>` : it.estado === "subiendo" ? `<span class="es-tag info">${Math.round(it.p * 100)}%</span>` : it.estado === "error" ? `<button class="btn btn-soft btn-sm" type="button" data-esre="${it.k}">↻ Reintentar</button>` : "";
+      const tag = it.problema ? `<span class="es-tag bad">⚠ ${esc(it.problema)}</span>` : it.estado === "error" ? `<span class="es-tag bad">⚠ ${esc(it.error || "No se pudo subir")}</span>` : !it.material ? `<span class="es-tag q">¿Cuál es?</span>` : it.seguro ? `<span class="es-tag ok">✓ Reconocido</span>` : `<span class="es-tag ok">✓ Elegido</span>`;
+      const sel = it.estado === "espera" || it.estado === "error" ? `<select data-esmat="${it.k}" class="${it.material ? "" : "need"}" aria-label="Material de ${esc(it.file.name)}"><option value="">${it.sugerido && !it.material ? "Elegí el material…" : "Elegí el material…"}</option>${ops.replace(`value="${esc(it.material || "")}"`, `value="${esc(it.material || "")}" selected`)}</select>` : `<b style="font-size:.86rem">→ ${esc(esInfo(it.material).nombre || it.material)}</b>`;
+      return `<div class="es-it ${it.estado}" data-k="${it.k}"><div class="es-th">${it.img ? `<img src="${it.img}" alt="">` : /\.zip$/i.test(it.file.name) ? "🗜️" : "📄"}${it.paginas ? `<span class="pg">${it.paginas} pág.</span>` : ""}</div>
+        <div class="es-inf"><div class="es-fn" title="${esc(it.file.name)}">${esc(it.file.name)}<small>${esTam(it.file.size)}</small></div><div class="es-dest">${sel}${tag}${it.estado === "espera" ? esDestino(it) : ""}</div></div>
+        <div class="es-st">${est}${it.estado === "espera" || it.estado === "error" ? `<button class="es-x" type="button" data-esx="${it.k}" title="Quitar de la lista" aria-label="Quitar ${esc(it.file.name)}">✕</button>` : ""}</div>
+        <span class="es-bar" style="width:${Math.round((it.p || 0) * 100)}%"></span></div>`;
+    }).join("")}</div>`;
+}
+function esLista() {
+  const q = esNorm(ES.q);
+  let L = (materiales || []).map((m) => esInfo(m.id)).filter((m) => (ES.filtro === "todos" || (ES.filtro === "falta" && m.tipo !== "plataforma" && !m.archivos.length) || (ES.filtro === "listos" && m.archivos.length) || (ES.filtro === "plataformas" && m.tipo === "plataforma")) && (!q || esNorm(m.nombre + " " + m.id).includes(q)));
+  const o = ES.orden;
+  L.sort((a, b) => o === "az" ? a.nombre.localeCompare(b.nombre, "es") : o === "docentes" ? b.compradores - a.compradores : o === "fecha" ? String(a.fecha || "99").localeCompare(String(b.fecha || "99")) : o === "reciente" ? String(Math.max(0, ...b.archivos.map((x) => +new Date(x.mod || 0)))).localeCompare(String(Math.max(0, ...a.archivos.map((x) => +new Date(x.mod || 0)))), undefined, { numeric: true }) : ((a.tipo === "plataforma" ? 2 : a.archivos.length ? 1 : 0) - (b.tipo === "plataforma" ? 2 : b.archivos.length ? 1 : 0)) || a.nombre.localeCompare(b.nombre, "es"));
+  return L;
+}
+function htmlTablero() {
+  const L = esLista(), todos = (materiales || []).map((m) => esInfo(m.id));
+  const n = (f) => todos.filter(f).length;
+  const cuenta = { todos: todos.length, falta: n((m) => m.tipo !== "plataforma" && !m.archivos.length), listos: n((m) => m.archivos.length), plataformas: n((m) => m.tipo === "plataforma") };
+  return `<div class="es-tb"><h4>📚 Tus materiales</h4>
+    <div class="es-seg" role="group" aria-label="Filtrar materiales">${[["todos", "Todos"], ["falta", "Faltan archivos"], ["listos", "Listos"], ["plataformas", "Plataformas"]].map(([k, t]) => `<button type="button" data-esf="${k}" aria-pressed="${ES.filtro === k}">${t}<i>${cuenta[k]}</i></button>`).join("")}</div>
+    <input class="es-q" id="esQ" type="search" placeholder="Buscar material…" value="${esc(ES.q)}" aria-label="Buscar material" />
+    <select class="es-ord" id="esOrd" aria-label="Ordenar">${[["falta", "Primero los que faltan"], ["az", "Nombre A–Z"], ["docentes", "Más docentes"], ["fecha", "Por fecha de efeméride"], ["reciente", "Subidos recientemente"]].map(([k, t]) => `<option value="${k}" ${ES.orden === k ? "selected" : ""}>${t}</option>`).join("")}</select></div>
+  <div class="es-grid" id="esGrid">${L.length ? L.map((m) => {
+    const pl = m.tipo === "plataforma", falta = !pl && !m.archivos.length, t = TIPOS[m.tipo] || TIPOS.cuadernillo;
+    return `<div class="es-m${falta ? " falta" : ""}" data-esm="${esc(m.id)}"><div class="cv">${m.portada ? `<img src="${esc(imgChica(m.portada, 200))}" data-orig="${esc(m.portada)}" alt="" loading="lazy" onerror="imgFalla(this)">` : t[0]}</div>
+      <div class="bd"><h5 title="${esc(m.nombre)}">${esc(m.nombre)}</h5>
+        <div class="mt">${pl ? '<span class="st na">🎮 Plataforma</span>' : falta ? '<span class="st no">Falta subir</span>' : `<span class="st ok">✓ ${m.archivos.length} ${m.archivos.length === 1 ? "archivo" : "archivos"}</span>`}<span>👩‍🏫 ${Number(m.compradores || 0).toLocaleString("es-AR")}</span>${m.estrellas ? `<span>★ ${String(m.estrellas).replace(".", ",")}</span>` : ""}${m.fecha ? `<span>📅 ${esc(fechaLarga(m.fecha))}</span>` : ""}</div>
+        ${m.archivos.length ? `<div class="es-fl">${m.archivos.map((f) => `<div class="es-f"><span title="${esc(f.nombre)}">📄 ${esc(f.nombre)}</span><em>${f.tam ? tam(f.tam) : ""}${f.mod ? " · " + esc(fechaCorta(f.mod)) : ""}</em><button type="button" data-esdel="${esc(m.id)}" data-f="${esc(f.nombre)}" title="Borrar este archivo" aria-label="Borrar ${esc(f.nombre)}">🗑</button></div>`).join("")}</div>` : ""}
+        <div class="es-ma">${pl ? "" : `<label class="btn ${falta ? "btn-primary" : "btn-soft"} btn-sm es-up" title="Subir un archivo nuevo o reemplazar el actual">⬆ ${falta ? "Subir PDF" : "Reemplazar"}<input type="file" accept=".pdf,.zip,.png,.jpg,.jpeg" multiple data-esup="${esc(m.id)}" /></label>`}${m.enlace ? `<button class="btn btn-ghost btn-sm" type="button" data-copy="${esc(m.enlace)}" title="Enlace para el botón Descargar de Empretienda">🔗 Enlace</button>` : ""}<button class="btn btn-ghost btn-sm" type="button" data-ir="${esc(m.id)}" title="Ver la tarjeta como la ven las docentes">👁</button></div>
+      </div></div>`;
+  }).join("") : `<div class="es-vacio" style="grid-column:1/-1">${ES.filtro === "falta" ? "🎉 ¡Todos tus materiales tienen archivos!" : "No hay materiales con ese filtro."}</div>`}</div>`;
+}
+function pintarEstudio() {
+  const box = $("#pEstudio"); if (!box) return;
+  const mats = esMats(), listos = mats.filter((m) => (m.archivos || []).length).length, total = mats.length || 1, pct = listos / total;
+  const peso = mats.reduce((a, m) => a + (m.archivos || []).reduce((b, f) => b + (f.tam || 0), 0), 0);
+  const ult = Math.max(0, ...mats.flatMap((m) => (m.archivos || []).map((f) => +new Date(f.mod || 0))));
+  const faltan = mats.length - listos, C = 2 * Math.PI * 50;
+  const foco = document.activeElement && document.activeElement.id === "esQ";
+  box.innerHTML = `<div class="es">
+    <div class="es-hero"><div class="es-ring"><svg viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="esGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--primary)"/><stop offset="1" stop-color="var(--accent)"/></linearGradient></defs><circle class="bg" cx="60" cy="60" r="50" fill="none" stroke-width="11"/><circle class="fg" cx="60" cy="60" r="50" fill="none" stroke-width="11" stroke-linecap="round" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C * (1 - pct)).toFixed(1)}"/></svg><div><b>${listos}/${mats.length}</b><small>listos</small></div></div>
+      <div class="es-h"><h3>📤 Estudio de carga</h3><p>${faltan ? `Te ${faltan === 1 ? "falta subir 1 material" : `faltan subir ${faltan} materiales`}. Soltá todos los PDFs juntos: los reconozco por el nombre.` : "¡Todos tus materiales tienen sus archivos! Para actualizar uno, soltalo acá y lo reemplazo."}</p>
+        <div class="es-kp">${faltan ? `<span class="warn"><button type="button" data-esf="falta">⏳ ${faltan} sin archivos</button></span>` : `<span class="ok">✓ Todo cargado</span>`}<span>💾 ${esTam(peso)} en ${esc((resumen && resumen.almacen) || "tu almacén")}</span>${ult ? `<span>🕒 Último: ${esc(hace(new Date(ult).toISOString()))}</span>` : ""}</div></div></div>
+    <label class="es-drop" id="esDrop"><input type="file" id="esFile" accept=".pdf,.zip,.png,.jpg,.jpeg" multiple /><span class="ic">📥</span><b>Soltá acá los archivos, o tocá para elegirlos</b><small>Podés soltar muchos juntos. Te muestro la tapa, las páginas y a qué material va cada uno antes de subir. PDF sin contraseña · hasta 200 MB cada uno.</small></label>
+    ${htmlCola()}
+    ${htmlTablero()}</div>`;
+  if (foco) { const q = $("#esQ"); q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
+}
+async function esSubirTodo() {
+  if (ES.subiendo) return; ES.subiendo = true; let ok = 0, mal = 0; pintarEstudio();
+  for (const it of ES.cola) {
+    if (it.estado === "listo" || it.problema || !it.material) continue;
+    it.estado = "subiendo"; it.p = 0; it.error = ""; pintarEstudio();
+    try {
+      const r = await api({ accion: "subir", token: sesion.token, material: it.material, archivo: it.file.name, tam: it.file.size });
+      let ult = 0;
+      await subirXHR(r.url, it.file, r.headers || { "Content-Type": it.file.type || "application/pdf", "x-upsert": "true" }, (p) => { it.p = p; if (Date.now() - ult > 120) { ult = Date.now(); const el = document.querySelector(`.es-it[data-k="${it.k}"]`); if (el) { el.querySelector(".es-bar").style.width = Math.round(p * 100) + "%"; const tg = el.querySelector(".es-st .es-tag"); if (tg) tg.textContent = Math.round(p * 100) + "%"; } } });
+      it.estado = "listo"; it.p = 1; ok++;
+      const m = (materiales || []).find((x) => x.id === it.material); if (m) { m.archivos = (m.archivos || []).filter((a) => a.nombre !== (r.nombre || it.file.name)); m.archivos.push({ nombre: r.nombre || it.file.name, tam: it.file.size, mod: new Date().toISOString() }); }
+    } catch (e) { it.estado = "error"; it.error = e.message; mal++; }
+    pintarEstudio();
+  }
+  ES.subiendo = false;
+  toast(mal ? `Subidos ${ok} ✓ · ${mal} con error (tocá Reintentar)` : `¡Listo! ${ok === 1 ? "Se subió 1 archivo" : `Se subieron ${ok} archivos`} ✓`);
+  if (ok) { resumen = null; cargar(true); } else pintarEstudio();
+}
+$("#adminBox").addEventListener("click", async (e) => {
+  const f = e.target.closest("[data-esf]"); if (f) { e.preventDefault(); ES.filtro = f.dataset.esf; pintarEstudio(); if (f.closest(".es-kp")) $("#esGrid") && $("#esGrid").scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+  const x = e.target.closest("[data-esx]"); if (x) { ES.cola = ES.cola.filter((it) => it.k !== +x.dataset.esx); return pintarEstudio(); }
+  const re = e.target.closest("[data-esre]"); if (re) { const it = ES.cola.find((i) => i.k === +re.dataset.esre); if (it) it.estado = "espera"; return esSubirTodo(); }
+  if (e.target.closest("#esSubir")) return esSubirTodo();
+  if (e.target.closest("#esLimpiar")) { ES.cola = ES.cola.some((i) => i.estado === "listo") ? ES.cola.filter((i) => i.estado !== "listo") : []; return pintarEstudio(); }
+  const d = e.target.closest("[data-esdel]");
+  if (d) {
+    if (!d.classList.contains("conf")) { d.classList.add("conf"); d.textContent = "¿Borrar?"; setTimeout(() => { if (d.isConnected) { d.classList.remove("conf"); d.textContent = "🗑"; } }, 4000); return; }
+    d.disabled = true;
+    try { await api({ accion: "borrar", token: sesion.token, material: d.dataset.esdel, archivo: d.dataset.f }); const m = (materiales || []).find((x) => x.id === d.dataset.esdel); if (m) m.archivos = (m.archivos || []).filter((a) => a.nombre !== d.dataset.f); toast("Archivo borrado"); pintarEstudio(); resumen = null; cargar(true); } catch (err) { toast(err.message); d.disabled = false; }
+  }
+});
+$("#adminBox").addEventListener("change", (e) => {
+  const s = e.target.closest("[data-esmat]"); if (s) { const it = ES.cola.find((i) => i.k === +s.dataset.esmat); if (it) { it.material = s.value; it.seguro = false; } return pintarEstudio(); }
+  if (e.target.id === "esFile" && e.target.files.length) { esAgregar([...e.target.files]); e.target.value = ""; return; }
+  const up = e.target.closest("[data-esup]"); if (up && up.files.length) { esAgregar([...up.files], up.dataset.esup); up.value = ""; return; }
+  if (e.target.id === "esOrd") { ES.orden = e.target.value; pintarEstudio(); }
+});
+$("#adminBox").addEventListener("input", (e) => { if (e.target.id === "esQ") { ES.q = e.target.value; clearTimeout(ES.tq); ES.tq = setTimeout(pintarEstudio, 180); } });
+["dragenter", "dragover"].forEach((ev) => $("#adminBox").addEventListener(ev, (e) => { const z = e.target.closest("#esDrop, .es-m[data-esm]"); if (!z || !e.dataTransfer || ![...e.dataTransfer.types].includes("Files")) return; e.preventDefault(); z.classList.add("over"); }));
+["dragleave", "drop"].forEach((ev) => $("#adminBox").addEventListener(ev, (e) => {
+  const z = e.target.closest("#esDrop, .es-m[data-esm]"); if (!z) return; e.preventDefault(); if (ev === "dragleave" && z.contains(e.relatedTarget)) return; z.classList.remove("over");
+  if (ev === "drop" && e.dataTransfer.files.length) { const m = z.dataset.esm; if (m && (esInfo(m).tipo === "plataforma")) return toast("Las plataformas no llevan archivos."); esAgregar([...e.dataTransfer.files], m || null); }
+}));
+window.addEventListener("beforeunload", (e) => { if (ES.subiendo) { e.preventDefault(); e.returnValue = ""; } });
 
 // ---------- Modo demostración (sin servidor, datos de ejemplo) ----------
 const CATALOGO = [{"id":"revolucion-mayo","nombre":"Revolución de Mayo","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/revolucion-de-mayo-1778563135675.jpg","fecha":"05-25"},{"id":"plataforma-interactiva-revolucion-de-mayo","nombre":"Plataforma Interactiva - Revolución de Mayo","tipo":"plataforma","portada":"https://cofredidactico.com.ar/images/plataforma-interactiva-revolucion-de-mayo-1779300992311.jpeg","fecha":"05-25"},{"id":"dia-de-la-escarapela","nombre":"Día de la Escarapela","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1778559946157.jpg","fecha":"05-18"},{"id":"plataforma-interactiva-dia-de-la-escarapela","nombre":"Plataforma Interactiva - Día de la Escarapela","tipo":"plataforma","portada":"https://cofredidactico.com.ar/images/producto-1779302494886.jpeg","fecha":"05-18"},{"id":"caperucita-roja","nombre":"Caperucita Roja","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/caperucita-roja-1779305432918.jpg","fecha":null},{"id":"el-hombrecito-de-jengibre","nombre":"El Hombrecito de Jengibre","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/el-hombrecito-de-jengibre-1779305565597.jpg","fecha":null},{"id":"canciones-y-poemas","nombre":"Cucú Cantaba la Rana - Canciones y Poemas","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/canciones-y-poemas-1779308396661.jpg","fecha":null},{"id":"cuadernillo-de-vocales","nombre":"Cuadernillo de Vocales","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1779308666567.jpg","fecha":null},{"id":"mis-primeros-numeros-1-al-10","nombre":"Mis Primeros Números (1 al 10)","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/mis-primeros-numeros-1-al-10-1779309059071.jpg","fecha":null},{"id":"pack-abecedario-argentino","nombre":"Pack Abecedario Argentino","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1779309378120.jpg","fecha":null},{"id":"dia-nacional-de-la-memoria-por-la-verdad-y-la-justicia","nombre":"24 de Marzo: Día de la Memoria por la Verdad y la Justicia","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1779309900388.jpg","fecha":"03-24"},{"id":"dia-mundial-del-agua","nombre":"22 de Marzo: Día Mundial del Agua","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/dia-mundial-del-agua-1779310305144.jpg","fecha":"03-22"},{"id":"dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas","nombre":"2 de Abril: Día del Veterano y de los Caídos en la Guerra de Malvinas","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/dia-del-veterano-y-de-los-caidos-en-la-guerra-de-malvinas-1779311184296.jpg","fecha":"04-02"},{"id":"pasapalabra-malvinas","nombre":"Pasapalabra Malvinas","tipo":"juego","portada":"https://cofredidactico.com.ar/images/pasapalabra-malvinas-1779312386462.jpg","fecha":"04-02"},{"id":"dia-mundial-de-la-salud","nombre":"Día Mundial de la Salud","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/dia-mundial-de-la-salud-1779314025858.jpg","fecha":"04-07"},{"id":"pasapalabra-dia-mundial-de-la-salud","nombre":"Pasapalabra Día Mundial de la Salud","tipo":"juego","portada":"https://cofredidactico.com.ar/images/producto-1779314453356.jpg","fecha":"04-07"},{"id":"los-tres-cerditos","nombre":"Los Tres Cerditos","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/los-tres-cerditos-1779314989479.jpg","fecha":null},{"id":"dia-de-las-americas","nombre":"3 Pistas, 1 País - Día de las Américas","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1779315425276.jpg","fecha":"04-14"},{"id":"dia-mundial-de-la-tierra","nombre":"Día Mundial de la Tierra","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1779316324553.jpg","fecha":"04-22"},{"id":"dia-del-libro","nombre":"Día Mundial del Libro","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1779318224468.jpg","fecha":"04-23"},{"id":"dia-del-animal","nombre":"Día del Animal","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/dia-del-animal-1779319264897.jpg","fecha":"04-29"},{"id":"plataforma-interactiva-dia-del-trabajador","nombre":"Plataforma Interactiva - Día del Trabajador","tipo":"plataforma","portada":"https://cofredidactico.com.ar/images/plataforma-interactiva-dia-del-trabajador-1779321227687.jpg","fecha":"05-01"},{"id":"17-de-junio-martin-miguel-de-guemes","nombre":"17 de Junio - Martín Miguel de Güemes (Primer Ciclo)","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1780100502391.jpg","fecha":"06-17"},{"id":"17-de-junio-martin-miguel-de-guemes-segundo-ciclo","nombre":"17 de Junio - Martín Miguel de Güemes (Segundo Ciclo)","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1780292508864.jpg","fecha":"06-17"},{"id":"20-de-junio-dia-de-la-bandera","nombre":"20 de Junio - Día de la Bandera","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/20-de-junio-dia-de-la-bandera-1780608065235.jpg","fecha":"06-20"},{"id":"martin-miguel-de-guemes","nombre":"Plataforma Interactiva - Martín Miguel de Güemes","tipo":"plataforma","portada":"https://cofredidactico.com.ar/images/martin-miguel-de-guemes-1781739081130.jpeg","fecha":"06-17"},{"id":"9-de-julio-dia-de-la-independencia","nombre":"9 de Julio - Día de la Independencia","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1782660995327.png","fecha":"07-09"},{"id":"17-de-agosto-san-martin","nombre":"17 de Agosto - José de San Martín","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1785103958065.png","fecha":"08-17"},{"id":"plataforma-interactiva-jose-de-san-martin","nombre":"Plataforma Interactiva - José de San Martín","tipo":"plataforma","portada":"https://cofredidactico.com.ar/images/producto-1785605976557.png","fecha":"08-17"},{"id":"los-suenos-del-sapo","nombre":"Los Sueños del Sapo","tipo":"cuadernillo","portada":"https://cofredidactico.com.ar/images/producto-1785983496230.png","fecha":null}];
