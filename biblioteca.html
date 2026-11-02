@@ -1195,7 +1195,7 @@ function pintar() {
     const novedades = archivos.some((f) => f.actualizado || f.nuevo);
     const nuevo = !gestor && m.desde && new Date(m.desde).getTime() > reciente;
     let acciones = "";
-    if (m.tipo === "plataforma" && m.url) acciones = `<div class="files"><a class="btn btn-primary btn-sm" href="${esc(m.url)}" target="_blank" rel="noopener">▶ Abrir plataforma</a></div>`;
+    if (m.tipo === "plataforma" && m.url) acciones = `<div class="files"><a class="btn btn-primary btn-sm" href="${esc(m.url)}" target="_blank" rel="noopener" data-plat="${esc(m.id)}">▶ Abrir plataforma</a></div>`;
     else if (archivos.length) acciones = `<div class="files">${archivos.map((f) => {
       const pdf = /\.pdf$/i.test(f.nombre);
       const tag = f.actualizado ? '<span class="tag upd">Actualizado</span>' : f.nuevo ? '<span class="tag nue">Nuevo</span>' : "";
@@ -1460,7 +1460,14 @@ $("#grid").addEventListener("change", (e) => { const inp = e.target.closest(".dr
 ["dragenter", "dragover"].forEach((ev) => $("#grid").addEventListener(ev, (e) => { const z = e.target.closest(".drop"); if (z) { e.preventDefault(); z.classList.add("over"); } }));
 ["dragleave", "drop"].forEach((ev) => $("#grid").addEventListener(ev, (e) => { const z = e.target.closest(".drop"); if (!z) return; e.preventDefault(); z.classList.remove("over"); if (ev === "drop" && e.dataTransfer.files.length) subirArchivos(z.dataset.up, [...e.dataTransfer.files], z); }));
 
+// Plataformas protegidas: se abren con un pase firmado de la biblioteca (si la función todavía no lo tiene, se abre igual)
+async function abrirPlataforma(a) {
+  const url = a.getAttribute("href"), w = window.open("about:blank", "_blank"); if (w) try { w.opener = null; } catch (er) {}
+  try { const r = await api({ accion: "pase", token: sesion.token, material: a.dataset.plat }); if (r && r.pase) { const u = url + (url.includes("?") ? "&" : "?") + "pase=" + encodeURIComponent(r.pase); if (w) w.location.href = u; else location.href = u; return; } } catch (err) {}
+  if (w) w.location.href = url; else location.href = url;
+}
 async function accionesClick(e) {
+  const pl = e.target.closest("[data-plat]"); if (pl) { e.preventDefault(); return abrirPlataforma(pl); }
   const hjb = e.target.closest("[data-hojear]"); if (hjb) { e.stopPropagation(); return abrirHojear(hjb.dataset.hojear); }
   const op = e.target.closest("[data-op]"); if (op) return abrirOpinion(op.dataset.op);
   const del = e.target.closest("[data-del]");
