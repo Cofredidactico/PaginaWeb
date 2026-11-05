@@ -1094,7 +1094,7 @@
       ],
       "demoUrl": "https://cofredidactico.com.ar/plataformas/dia-de-la-tradicion/",
       "mostrarEnInteractivos": true,
-      "previewSegundos": 120,
+      "previewSegundos": 240,
       "previews": [
         "images/preview-producto-1793846051184.jpg",
         "images/preview-producto-1793846059023.jpg",
@@ -1125,9 +1125,6 @@
       "productos": [
         {
           "id": "plataforma-interactiva-jose-de-san-martin"
-        },
-        {
-          "id": "plataforma-dia-de-la-tradicion"
         },
         {
           "id": "10-de-noviembre-dia-de-la-tradicion"
