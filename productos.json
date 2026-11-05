@@ -1072,6 +1072,37 @@
         "images/preview-producto-1793132351495.png"
       ],
       "etiqueta": "nuevo"
+    },
+    {
+      "id": "plataforma-dia-de-la-tradicion",
+      "nombre": "Plataforma Día de la Tradición",
+      "descripcion": "Te presento la plataforma interactiva “¡Al compás de la Tradición!”: 30 juegos para trabajar el Día de la Tradición jugando. La proyectás, juegan y aprenden. Así de simple.",
+      "tipo": "juego",
+      "acceso": "pago",
+      "precio": 3500,
+      "imagen": "images/producto-1793846027427.png",
+      "link": "https://cofredidactico.empretienda.com.ar/general/plataforma-interactiva-dia-de-la-tradicion",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "Te presento la plataforma interactiva “¡Al compás de la Tradición!”: 30 juegos para trabajar el Día de la Tradición jugando. La proyectás, tocan y aprenden. Así de simple.\n\n📦 QUÉ INCLUYE\n✅ 30 juegos interactivos para 1.º a 6.º grado\n✅ Modo Historia con 6 misiones guiadas por Martín Fierro y José Hernández\n✅ Álbum de figuritas, medallas y diploma para imprimir\n✅ Sección “Aula para todos”, lectura en voz alta y texto grande\n✅ Funciona en celular, compu y pizarra digital (¡también sin internet!)\n✅ Herramientas para la docente: temporizador, marcador y ruleta por equipos\n\n💡 POR QUÉ TE VA A ENCANTAR\n🌟 Cero preparación: abrís el link y empezás\n🌟 Todo el grupo participa, también quienes necesitan más apoyo\n🌟 Sirve para el aula y para mandar a casa\n🌟 La compras una vez y la usás todos los años\n\n🎯 ALGUNOS DE LOS JUEGOS\n🎮 ¿Verdadero o Falso?\n🎮 Ordená las letras\n🎮 Unir con su palabra\n🎮 Memotest\n🎮 Ordená la historia\n🎮 Sopa de letras\n\n🔐 CÓMO LA RECIBÍS\nApenas comprás, la abrís con el link. Es de uso personal de la docente que la compra.\n\n🎁 Probala GRATIS desde la sección \"Interactivos\" \n\n¿Dudas? Escribime y te ayudo 😊",
+      "tematica": "efemerides",
+      "nivel": "Nivel Primario",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 5000,
+      "meses": [
+        11
+      ],
+      "demoUrl": "https://cofredidactico.com.ar/plataformas/dia-de-la-tradicion/",
+      "mostrarEnInteractivos": true,
+      "previewSegundos": 120,
+      "previews": [
+        "images/preview-producto-1793846051184.jpg",
+        "images/preview-producto-1793846059023.jpg",
+        "images/preview-producto-1793846062936.jpg",
+        "images/preview-producto-1793846069153.jpg",
+        "images/preview-producto-1793846074515.jpg",
+        "images/preview-producto-1793846093224.png"
+      ]
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
@@ -1097,6 +1128,9 @@
         },
         {
           "id": "10-de-noviembre-dia-de-la-tradicion"
+        },
+        {
+          "id": "plataforma-dia-de-la-tradicion"
         }
       ]
     },
