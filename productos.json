@@ -1075,7 +1075,7 @@
     },
     {
       "id": "plataforma-dia-de-la-tradicion",
-      "nombre": "Plataforma Día de la Tradición",
+      "nombre": "Plataforma Interactiva - Día de la Tradición",
       "descripcion": "Te presento la plataforma interactiva “¡Al compás de la Tradición!”: 30 juegos para trabajar el Día de la Tradición jugando. La proyectás, juegan y aprenden. Así de simple.",
       "tipo": "juego",
       "acceso": "pago",
@@ -1128,9 +1128,6 @@
         },
         {
           "id": "10-de-noviembre-dia-de-la-tradicion"
-        },
-        {
-          "id": "plataforma-dia-de-la-tradicion"
         }
       ]
     },
