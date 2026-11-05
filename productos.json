@@ -1050,7 +1050,7 @@
       "link": "https://cofredidactico.empretienda.com.ar/novedades/10-de-noviembre-dia-de-la-tradicion",
       "activo": true,
       "destacado": true,
-      "descripcionLarga": "📦 ¿Qué vas a encontrar?\n📖 Infografía ilustrada y de fácil comprensión.\n🧠 Comprensión de la infografía.\n✅ Verdadero o falso.\n✍️ Completar oraciones (escribir o recortar y pegar).\n🔤 Completar palabras con vocales.\n🎨 Dibujar y pintar una tradición argentina.\n🥟 Secuencia recortable: ¡Armamos empanadas!\n🔗 Unir cada elemento con su silueta.\n🔐 Código secreto: descubrí quién escribió el Martín Fierro.\n🔎 Sopa de letras tradicional.\n🔢 Unir los puntos del 1 al 30.\n➕ Problemas ilustrados.\n🧩 Crucigrama ilustrado.\n👀 Buscá y encontrá objetos tradicionales.\n🌀 Laberinto: ¡Ayudá al gauchito a llegar al rancho!\n🔢 Contá los dibujos tradicionales.\n📝 Acróstico con la palabra TRADICIÓN.\n💌 Tarjeta para llevar a casa.\n\n📂 Recibirás:\n📄 Cuadernillo en PDF de 34 hojas A4, listo para descargar e imprimir.\n🖼️ Todas las actividades en formato imagen (PNG) para adaptarlas al tamaño que necesites.\n\n📩 Es un material digital: al completar la compra te llega automáticamente al mail.\n\n¡Muchas gracias por elegir Cofre Didáctico! ❤️📚",
+      "descripcionLarga": "📦 ¿Qué vas a encontrar?\n📖 Infografía ilustrada y de fácil comprensión.\n🧠 Comprensión de la infografía.\n✅ Verdadero o falso.\n✍️ Completar oraciones (escribir o recortar y pegar).\n🔤 Completar palabras con vocales.\n🎨 Dibujar y pintar una tradición argentina.\n🥟 Secuencia recortable: ¡Armamos empanadas!\n🔗 Unir cada elemento con su silueta.\n🔐 Código secreto: descubrí quién escribió el Martín Fierro.\n🔎 Sopa de letras tradicional.\n🔢 Unir los puntos del 1 al 30.\n➕ Problemas ilustrados.\n🧩 Crucigrama ilustrado.\n👀 Buscá y encontrá objetos tradicionales.\n🌀 Laberinto: ¡Ayudá al gauchito a llegar al rancho!\n🔢 Contá los dibujos tradicionales.\n📝 Acróstico con la palabra TRADICIÓN.\n💌 Tarjeta para llevar a casa.\n🎮 Plataforma Interactiva\n\n📂 Recibirás:\n📄 Cuadernillo en PDF de 34 hojas A4, listo para descargar e imprimir.\n🖼️ Todas las actividades en formato imagen (PNG) para adaptarlas al tamaño que necesites.\n🎮 PLATAFORMA INTERACTIVA\n\n📩 Es un material digital: al completar la compra te llega automáticamente al mail.\n\n¡Muchas gracias por elegir Cofre Didáctico! ❤️📚",
       "tematica": "efemerides",
       "nivel": "Nivel Primario",
       "nivelGrupo": "1ciclo",
@@ -1128,6 +1128,9 @@
         },
         {
           "id": "plataforma-dia-de-la-tradicion"
+        },
+        {
+          "id": "10-de-noviembre-dia-de-la-tradicion"
         }
       ]
     },
