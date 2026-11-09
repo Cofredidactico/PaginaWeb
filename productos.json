@@ -1103,6 +1103,48 @@
         "images/preview-producto-1793846074515.jpg",
         "images/preview-producto-1793846093224.png"
       ]
+    },
+    {
+      "id": "hansel-y-gretel",
+      "nombre": "Hansel y Gretel",
+      "descripcion": "🏠🍬 ¡HANSEL Y GRETEL! 📚✨\n\nTe presentamos nuestro CUADERNILLO DE ACTIVIDADES DE HANSEL Y GRETEL, una propuesta didáctica para trabajar la literatura en el aula a través de actividades variadas, atractivas y pensadas para acompañar los aprendizajes de los estudiantes.",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 7000,
+      "imagen": "images/hansel-y-gretel-1794234625883.png",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/hansel-y-gretel",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "📖 ¿QUÉ VAS A ENCONTRAR?\n\n✨ Relato en IMPRENTA MAYÚSCULA.\n🖼️ Pictogramas de los Personajes para acompañar la lectura.\n🔤 Reconocimiento de vocales y formación de palabras.\n🧠 Actividades de comprensión lectora.\n☑️ Preguntas de opción múltiple y verdadero o falso.\n✏️ Escritura y completamiento de frases.\n🔎 Búsqueda de información y comprensión de imágenes.\n🧩 Sopas de letras, laberintos y rompecabezas.\n🍭 Actividades sobre las golosinas de la casa de la bruja.\n📝 Reflexión sobre el lenguaje: separación de palabras y uso de R y RR.\n❤️ Todas las actividad con configuraciones de apoyo ✨️\n\n🎯 ¡Y ADEMÁS, UN COMPLEMENTO ESPECIAL!\n\nComo propuesta para seguir fortaleciendo los aprendizajes, incorporamos actividades de repaso con formato de simulacro, orientadas a las PRUEBAS APRENDER 2026 – PRÁCTICAS DEL LENGUAJE (PDL).\n\nUna oportunidad para trabajar habilidades fundamentales:\n📌 Localizar información en un texto.\n📌 Interpretar y comprender lo leído.\n📌 Reflexionar sobre el lenguaje.\n📌 Resolver diferentes formatos de consignas y preguntas.\n\n📚 Una propuesta que toma como referencia las orientaciones y materiales de la Dirección General de Cultura y Educación (DGCyE) de la Provincia de Buenos Aires. IMPORTANTE: Es un material didáctico de elaboración propia, diseñado con fines pedagógicos. No es material oficial de las Pruebas Aprender, ni pertenece o está avalado por los organismos responsables de su elaboración.\n\n💻 Material de 26 hojas A4 en formato PDF, listo para descargar e imprimir.",
+      "tematica": "literatura",
+      "nivel": "Nivel Primario",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 10000,
+      "etiqueta": "nuevo",
+      "paginas": 26,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "previews": [
+        "images/preview-hansel-y-gretel-1794234777562.png",
+        "images/preview-hansel-y-gretel-1794234780355.png",
+        "images/preview-hansel-y-gretel-1794234783273.png",
+        "images/preview-hansel-y-gretel-1794234785503.png",
+        "images/preview-hansel-y-gretel-1794234787756.png",
+        "images/preview-hansel-y-gretel-1794234790191.png",
+        "images/preview-hansel-y-gretel-1794234792601.png",
+        "images/preview-hansel-y-gretel-1794234795508.png"
+      ]
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
@@ -1131,6 +1173,9 @@
         },
         {
           "id": "plataforma-dia-de-la-tradicion"
+        },
+        {
+          "id": "hansel-y-gretel"
         }
       ]
     },
