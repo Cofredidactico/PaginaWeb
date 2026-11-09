@@ -916,6 +916,89 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
   .v-lista .f-acts .btn{padding-inline:10px}
 }
 </style>
+<style id="bx-css">
+/* ===== Mi biblioteca 3.0 ===== */
+.dlg-ficha.bx-dlg{width:min(980px,calc(100% - 28px));max-height:calc(100dvh - 28px)}
+.dlg-ficha.bx-dlg .dlg-in{position:relative;padding:0;overflow:auto;max-height:calc(100dvh - 28px)}
+.dlg-ficha.bx-dlg .pg-head{position:absolute;top:12px;right:12px;z-index:5;margin:0}
+.dlg-ficha.bx-dlg #fichaBody{padding:0}
+.bx-f{display:grid;grid-template-columns:minmax(260px,380px) minmax(0,1fr);gap:0;min-height:420px}
+.bx-fl{display:grid;align-content:start;gap:14px;padding:30px 26px;background:radial-gradient(120% 90% at 30% 20%,color-mix(in srgb,var(--tint) 40%,transparent),transparent 70%),color-mix(in srgb,var(--tint) 14%,var(--bg-2));border-right:1px solid var(--line)}
+.bx-cov3d{perspective:900px;--rx:0deg;--ry:0deg;--gx:50%;--gy:50%}
+.bx-cov{position:relative;border-radius:6px 14px 14px 6px;overflow:hidden;aspect-ratio:3/4;background:var(--card);box-shadow:inset 10px 0 12px -8px rgba(0,0,0,.35),0 26px 40px -18px rgba(0,0,0,.55),0 6px 14px -8px rgba(0,0,0,.35);transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .45s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.on>.bx-cov,.bx-cov3d.on .bx-cov{transition:transform .08s linear}
+.bx-cov img{width:100%;height:100%;object-fit:cover;display:block}
+.bx-cov::before{content:"";position:absolute;left:0;top:0;bottom:0;width:9px;z-index:2;background:linear-gradient(90deg,rgba(0,0,0,.3),rgba(255,255,255,.14) 60%,transparent)}
+.bx-ph{display:grid;place-items:center;height:100%;font-size:64px}
+.bx-shine{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.38),rgba(255,255,255,0) 55%)}
+.on .bx-shine,[data-tilt].on .bx-shine{opacity:1}
+.bx-tira{display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;padding:2px 2px 6px}
+.bx-tira button{flex:none;width:58px;aspect-ratio:3/4;padding:0;border:2px solid transparent;border-radius:8px;overflow:hidden;cursor:pointer;background:var(--card);box-shadow:0 4px 10px -6px rgba(0,0,0,.5);transition:transform .15s,border-color .15s}
+.bx-tira button:hover{transform:translateY(-3px);border-color:var(--primary)}.bx-tira img{width:100%;height:100%;object-fit:cover;display:block}
+.bx-tira .bx-mas{display:grid;place-items:center;font-weight:800;color:var(--ink-2);font-size:.95rem}
+.bx-fr{display:grid;align-content:start;gap:14px;padding:34px 30px 28px;min-width:0}
+.bx-k{font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}.bx-new{font-style:normal;color:var(--accent)}
+.bx-fr h2{font-family:var(--f-display);font-size:clamp(1.35rem,2.6vw,1.9rem);line-height:1.15;margin:-6px 40px 0 0}
+.bx-chips{display:flex;flex-wrap:wrap;gap:6px}
+.bx-chip{display:inline-flex;align-items:center;gap:4px;font-size:.82rem;font-weight:700;padding:5px 11px;border-radius:999px;background:var(--bg-2);border:1px solid var(--line);color:var(--ink-2)}
+.bx-chip.c1{background:var(--primary-soft);border-color:transparent;color:var(--primary-dark)}.bx-chip.c2{background:var(--green-soft);border-color:transparent;color:var(--green)}.bx-chip.c3{background:var(--gold-soft);border-color:transparent;color:var(--gold)}
+.bx-ctaw{display:grid}
+.bx-cta{display:flex!important;align-items:center;gap:14px;justify-content:flex-start;text-align:left;padding:14px 18px!important;border-radius:16px!important;font-size:1rem;box-shadow:0 14px 28px -14px color-mix(in srgb,var(--primary) 80%,transparent);transition:transform .15s,box-shadow .15s}
+.bx-cta:hover{transform:translateY(-2px)}
+.bx-cta .bx-ci{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.22);font-size:1.25rem}
+.bx-cta b{display:block;font-size:1.05rem;line-height:1.2}.bx-cta small{display:block;font-weight:600;opacity:.88;font-size:.8rem;margin-top:2px}
+.bx-acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.bx-act{display:flex;align-items:center;justify-content:center;gap:7px;font:inherit;font-weight:800;font-size:.9rem;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:13px;padding:10px 12px;cursor:pointer;transition:background .15s,transform .15s}
+.bx-act:hover{background:var(--bg-2);transform:translateY(-1px)}.bx-act span{font-size:1.1rem}
+.bx-files{display:grid;gap:8px}.bx-files h4{margin:4px 0 0;font-size:.85rem;color:var(--ink-3);font-weight:800}
+.bx-file{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:9px 10px;border-radius:13px;background:var(--bg-2);border:1px solid var(--line)}
+.bx-fi{font-size:1.3rem}.bx-fn{display:grid;min-width:0}.bx-fn b{font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bx-fn small{font-size:.76rem;color:var(--ink-3)}
+.bx-lic{display:flex;gap:9px;align-items:flex-start;font-size:.82rem;color:var(--ink-3);line-height:1.45;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--green) 8%,transparent)}.bx-lic b{color:var(--ink-2)}
+.bx-rate{display:flex;align-items:center;gap:10px;font:inherit;font-size:.86rem;color:var(--ink-3);background:none;border:1px dashed var(--line);border-radius:13px;padding:9px 12px;cursor:pointer;text-align:left}
+.bx-rate:hover{border-color:var(--gold)}.bx-st i{font-style:normal;font-size:1.25rem;color:var(--line);letter-spacing:1px}.bx-st i.on{color:#F5B301}
+/* Para tu próxima fecha */
+.bx-spot{position:relative;display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;align-items:center;margin:22px 0 4px;padding:22px 26px;border-radius:24px;border:1px solid color-mix(in srgb,var(--tint) 40%,var(--line));background:radial-gradient(90% 140% at 0% 0%,color-mix(in srgb,var(--tint) 32%,transparent),transparent 60%),radial-gradient(70% 120% at 100% 100%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 60%),var(--card);overflow:hidden;animation:aparecer .5s cubic-bezier(.2,.8,.2,1) both}
+.bx-spot.hide{display:none}
+.bx-sp-art{perspective:800px;--rx:0deg;--ry:0deg;transform:rotate(-4deg);transition:transform .3s}.bx-sp-art:hover{transform:rotate(0)}
+.bx-sp-art .bx-cov{border-radius:4px 10px 10px 4px}
+.bx-sp-b{display:grid;gap:6px;min-width:0}
+.bx-sp-k{font-size:.76rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.bx-sp-b h2{font-family:var(--f-display);font-size:clamp(1.3rem,2.6vw,1.8rem);line-height:1.12;margin:0}
+.bx-sp-d{margin:0;color:var(--ink-2);font-size:.95rem}
+.bx-sp-bar{height:8px;border-radius:999px;background:color-mix(in srgb,var(--ink) 9%,transparent);overflow:hidden;max-width:420px;margin:4px 0}.bx-sp-bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--primary),var(--accent))}
+.bx-sp-m{margin:0;font-size:.88rem;color:var(--ink-3)}.bx-sp-m b{color:var(--ink)}
+.bx-sp-a{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.bx-sp-n{margin:4px 0 0;font-size:.8rem;color:var(--ink-3)}
+/* orden */
+.bx-ord{width:auto;min-width:0;max-width:220px;font-weight:700;font-size:.9rem;padding:10px 12px;cursor:pointer;color:var(--ink);background-color:var(--card)}.bx-ord option{color:var(--ink);background:var(--card)}
+/* tarjetas */
+#grid [data-tilt]{transform:perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+#grid [data-tilt].on{transition:transform .08s linear}
+.v-estante .card:hover .cover[data-tilt].on{transform:perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-6px)}
+.cover .date.bx-pronto{background:var(--accent)!important;color:#fff!important;font-weight:800;animation:bxLat 2.4s ease-in-out infinite}
+@keyframes bxLat{50%{transform:scale(1.06)}}
+@media (max-width:760px){
+  .dlg-ficha.bx-dlg{width:100%;max-width:100%;max-height:100dvh;height:100dvh;margin:0;border-radius:0}
+  .dlg-ficha.bx-dlg .dlg-in{max-height:100dvh;height:100dvh}
+  .bx-f{grid-template-columns:1fr;min-height:0}
+  .bx-fl{grid-template-columns:118px minmax(0,1fr);align-items:end;padding:20px 18px 16px;border-right:0;border-bottom:1px solid var(--line)}
+  .bx-fl .bx-tira{align-self:end}
+  .bx-fl .bx-tira button{width:44px}
+  .bx-fr{padding:18px 18px 28px}
+  .bx-fr h2{margin-right:0}
+  .bx-spot{grid-template-columns:84px minmax(0,1fr);gap:4px 14px;padding:16px;align-items:start}
+  .bx-sp-art{grid-row:1/3}
+  .bx-sp-b{display:contents}
+  .bx-sp-k,.bx-sp-b h2,.bx-sp-d{grid-column:2}
+  .bx-sp-b h2{font-size:1.25rem}.bx-sp-d{font-size:.85rem}
+  .bx-sp-bar,.bx-sp-m,.bx-sp-a,.bx-sp-n{grid-column:1/-1}
+  .bx-sp-bar{max-width:none;margin-top:8px}
+  .bx-sp-a{display:grid;grid-template-columns:1fr 1fr;gap:8px}.bx-sp-a>:first-child{grid-column:1/-1}.bx-sp-a .btn{width:100%;justify-content:center}
+  .bx-ord{max-width:none;grid-column:1/-1;order:10}
+}
+@media (max-width:420px){.bx-fl{grid-template-columns:100px minmax(0,1fr)}.bx-file{grid-template-columns:auto minmax(0,1fr) auto}.bx-file .icon-btn{display:none}}
+@media (prefers-reduced-motion: reduce){.bx-cov,#grid [data-tilt],.bx-sp-art{transition:none;transform:none!important}.cover .date.bx-pronto{animation:none}}
+</style>
 </head>
 <body>
 <div class="demo hide" id="demoBar">Modo demostración: datos de ejemplo. El código de prueba es <b>123456</b>.</div>
@@ -2996,5 +3079,144 @@ if ("serviceWorker" in navigator && location.protocol === "https:") navigator.se
   if (sesion && sesion.token) cargar(); else { ver("#vLogin"); }
 })();
 </script>
+<script id="bx-js">
+// ===== Mi biblioteca 3.0: ficha nueva, "para tu próxima fecha", orden y portadas 3D =====
+(() => {
+  const DIA = 864e5, ORD_K = "cofre-orden";
+  const h0 = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
+  const proxFecha = (mmdd) => { if (!mmdd) return null; const [mm, dd] = String(mmdd).split("-").map(Number); const h = h0(); let d = new Date(h.getFullYear(), mm - 1, dd); if (d < h) d = new Date(h.getFullYear() + 1, mm - 1, dd); return { d, dias: Math.round((d - h) / DIA) }; };
+  const fechaDe = (m) => m.fecha || ((typeof CATALOGO !== "undefined" && CATALOGO.find((x) => x.id === m.id)) || {}).fecha || "";
+  const principal = (m) => { const A = m.archivos || []; return A.find((f) => /\.pdf$/i.test(f.nombre)) || A[0] || null; };
+  const nomFecha = (m) => NOMBRE_FECHA[fechaDe(m)] || fechaLarga(fechaDe(m));
+  const cuando = (d) => (d === 0 ? "¡es hoy!" : d === 1 ? "es mañana" : `faltan ${d} días`);
+  const sinT = (x) => String(x || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  const ext = (n) => String(n).split(".").pop().toUpperCase();
+  const reduce = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---------- Ficha del material ----------
+  function fichaHtml(m) {
+    const t = TIPOS[m.tipo] || TIPOS.cuadernillo, gestor = modoGestor(), A = m.archivos || [], main = principal(m), prevs = PREVIEWS[m.id] || [], pf = proxFecha(fechaDe(m)), pags = PAGINAS[m.id];
+    const nov = A.some((f) => f.actualizado || f.nuevo), nuevo = !gestor && m.desde && new Date(m.desde).getTime() > Date.now() - 7 * DIA;
+    const chips = [
+      pf ? `<span class="bx-chip c1">📅 ${esc(fechaLarga(fechaDe(m)))}${pf.dias <= 120 ? ` · ${esc(cuando(pf.dias))}` : ""}</span>` : "",
+      pags ? `<span class="bx-chip">📄 ${pags} páginas</span>` : "",
+      m.desde && !gestor ? `<span class="bx-chip">🗓️ Lo tenés desde ${esc(new Date(m.desde).toLocaleDateString("es-AR", { day: "numeric", month: "short", year: "numeric" }))}</span>` : "",
+      m.usado && !gestor ? `<span class="bx-chip c2">✓ Lo usaste este año</span>` : "",
+      nov ? `<span class="bx-chip c3">✨ Tiene archivos nuevos</span>` : "",
+    ].join("");
+    let cta = "";
+    if (m.tipo === "plataforma" && m.url) cta = `<a class="btn btn-primary bx-cta" href="${esc(m.url)}" target="_blank" rel="noopener" data-plat="${esc(m.id)}"><span class="bx-ci">▶</span><span><b>Abrir la plataforma</b><small>Se abre en una pestaña nueva</small></span></a>`;
+    else if (main) cta = `<button class="btn btn-primary bx-cta" type="button" data-dl="${esc(m.id)}" data-f="${esc(main.nombre)}"><span class="bx-ci">⬇</span><span><b>Descargar${A.length > 1 ? " " + esc(nombreArchivo(main.nombre)) : ""}</b><small>${esc(ext(main.nombre))}${main.tam ? " · " + esc(tam(main.tam)) : ""} · con tu nombre en la tapa</small></span></button>`;
+    const sec = [
+      main && /\.pdf$/i.test(main.nombre) ? `<button class="bx-act" type="button" data-pick="${esc(m.id)}" data-f="${esc(main.nombre)}"><span>🖨</span>Elegir páginas</button>` : "",
+      prevs.length ? `<button class="bx-act" type="button" data-hojear="${esc(m.id)}"><span>👀</span>Hojear</button>` : "",
+      main && /\.pdf$/i.test(main.nombre) && !gestor ? `<button class="bx-act" type="button" data-bxtapa><span>🏫</span>${textoTapa(tapaGuardada()) ? "Cambiar tapa" : "Mi tapa"}</button>` : "",
+    ].join("");
+    const otros = A.filter((f) => f !== main);
+    const lista = otros.length ? `<div class="bx-files"><h4>Más archivos de este material</h4>${otros.map((f) => {
+      const tag = f.actualizado ? '<span class="tag upd">Actualizado</span>' : f.nuevo ? '<span class="tag nue">Nuevo</span>' : "";
+      return `<div class="bx-file"><span class="bx-fi">${/\.pdf$/i.test(f.nombre) ? "📄" : /\.zip$/i.test(f.nombre) ? "🗜️" : "🖼️"}</span><span class="bx-fn"><b title="${esc(f.nombre)}">${esc(nombreArchivo(f.nombre))} ${tag}</b><small>${esc(ext(f.nombre))}${f.tam ? " · " + esc(tam(f.tam)) : ""}</small></span>${/\.pdf$/i.test(f.nombre) ? `<button class="icon-btn sm" type="button" data-pick="${esc(m.id)}" data-f="${esc(f.nombre)}" title="Elegir páginas" aria-label="Elegir páginas de ${esc(f.nombre)}">🖨</button>` : ""}<button class="btn btn-soft btn-sm" type="button" data-dl="${esc(m.id)}" data-f="${esc(f.nombre)}">⬇ Descargar</button></div>`; }).join("")}</div>` : "";
+    const tapa = textoTapa(tapaGuardada());
+    const opinion = !window.__esAdmin && (A.length || m.url) ? `<button class="bx-rate" type="button" data-op="${esc(m.id)}"><span class="bx-st">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= (m.estrellas || 0) ? "on" : ""}">★</i>`).join("")}</span><span>${m.estrellas ? "Tu opinión · tocá para cambiarla" : "¿Qué te pareció? Tu opinión ayuda a otras seños"}</span></button>` : "";
+    const tira = prevs.length ? `<div class="bx-tira" aria-label="Páginas de muestra">${prevs.slice(0, 8).map((u, i) => `<button type="button" data-bxpag="${i}" data-bxid="${esc(m.id)}" aria-label="Ver página ${i + 1}"><img src="${esc(imgChica(u, 160))}" alt="" loading="lazy" onerror="this.src='${esc(u)}'"></button>`).join("")}${prevs.length > 8 ? `<button type="button" class="bx-mas" data-hojear="${esc(m.id)}">+${prevs.length - 8}</button>` : ""}</div>` : "";
+    const tinte = TINTES[m.id] || "var(--primary)";
+    return `<div class="bx-f" style="--tint:${esc(tinte)}">
+      <div class="bx-fl"><div class="bx-cov3d" data-tilt><div class="bx-cov">${m.portada ? `<img src="${esc(imgChica(m.portada, 720))}" data-orig="${esc(m.portada)}" alt="" onerror="imgFalla(this)">` : `<span class="bx-ph">${t[0]}</span>`}<span class="bx-shine" aria-hidden="true"></span></div></div>${tira}</div>
+      <div class="bx-fr"><span class="bx-k">${t[0]} ${esc(t[1])}${nuevo ? ' · <em class="bx-new">Nuevo</em>' : ""}</span><h2>${esc(m.nombre)}</h2>
+        <div class="bx-chips">${chips}</div>
+        ${cta ? `<div class="bx-ctaw">${cta}</div>` : ""}${sec ? `<div class="bx-acts">${sec}</div>` : ""}
+        ${!A.length && m.tipo !== "plataforma" && !gestor ? `<div class="pending">⏳ Estamos preparando los archivos de este material. Volvé a mirar en un rato.</div>` : ""}
+        ${lista}${cupoHtml(m)}
+        ${A.some((f) => /\.pdf$/i.test(f.nombre)) ? `<div class="bx-lic"><span>🔏</span><span>Tu copia lleva ${tapa ? `<b>${esc(tapa)}</b> en la tapa,` : "tu nombre en la tapa,"} y un código de licencia a tu nombre en la última página.</span></div>` : ""}
+        ${opinion}</div></div>`;
+  }
+  window.abrirFicha = function (id) {
+    const m = materiales.find((x) => x.id === id); if (!m) return;
+    if (modoGestor()) { const card = document.querySelector(`#grid .card[data-id="${CSS.escape(id)}"]`); if (!card) return; const c = card.cloneNode(true); c.classList.remove("hl"); c.style.animation = "none"; $("#fichaBody").innerHTML = ""; $("#fichaBody").appendChild(c); $("#dlgFicha").showModal(); return; }
+    $("#dlgFicha").classList.add("bx-dlg"); $("#fichaBody").innerHTML = fichaHtml(m); $("#fichaBody").dataset.bxid = id;
+    if (!$("#dlgFicha").open) $("#dlgFicha").showModal(); tiltInit($("#fichaBody"));
+  };
+  $("#fichaBody").addEventListener("click", (e) => {
+    const p = e.target.closest("[data-bxpag]"); if (p) { e.stopPropagation(); abrirHojear(p.dataset.bxid); const n = +p.dataset.bxpag; if (n) mostrarHoja(n, 0); return; }
+    if (e.target.closest("[data-bxtapa]")) { e.stopPropagation(); Promise.resolve(pedirTapa(false)).then(() => { const id = $("#fichaBody").dataset.bxid; if (id && $("#dlgFicha").open) abrirFicha(id); }); }
+  }, true);
+  // al terminar una descarga se repinta la grilla: refresco la ficha abierta
+  const pintarOrig = pintar;
+
+  // ---------- Orden ----------
+  const ORDENES = [["rec", "✨ Recomendado"], ["fecha", "📅 Próximas fechas"], ["nuevo", "🆕 Últimos que compré"], ["az", "🔤 A-Z"]];
+  const ordActual = () => { const v = store.get(ORD_K); return ORDENES.some((o) => o[0] === v) ? v : "rec"; };
+  let ordenBase = null;
+  function ordenar() {
+    if (!ordenBase || ordenBase.length !== materiales.length || materiales.some((m) => !ordenBase.includes(m.id))) ordenBase = materiales.map((m) => m.id);
+    const o = ordActual(), pos = (m) => ordenBase.indexOf(m.id);
+    const S = { rec: (a, b) => pos(a) - pos(b), fecha: (a, b) => (proxFecha(fechaDe(a))?.dias ?? 999) - (proxFecha(fechaDe(b))?.dias ?? 999) || pos(a) - pos(b), nuevo: (a, b) => (new Date(b.desde || 0) - new Date(a.desde || 0)) || pos(a) - pos(b), az: (a, b) => String(a.nombre).localeCompare(String(b.nombre), "es") };
+    materiales.sort(S[o]);
+  }
+  function selOrden() {
+    const tools = $("#tools"); if (!tools || $("#bxOrd")) return;
+    const s = document.createElement("select"); s.id = "bxOrd"; s.className = "inp bx-ord"; s.setAttribute("aria-label", "Ordenar materiales");
+    s.innerHTML = ORDENES.map(([k, t]) => `<option value="${k}">${t}</option>`).join(""); s.value = ordActual();
+    s.onchange = () => { store.set(ORD_K, s.value); pintar(); };
+    const q = $("#q"); q.parentNode.insertBefore(s, q.nextSibling);
+  }
+
+  // ---------- Para tu próxima fecha ----------
+  function spot() {
+    let box = $("#bxSpot"); const mis = $("#misH");
+    if (!mis) return;
+    if (!box) { box = document.createElement("section"); box.id = "bxSpot"; box.className = "bx-spot hide"; mis.parentNode.insertBefore(box, mis); }
+    if (modoGestor() || !materiales.length) { box.classList.add("hide"); return; }
+    const L = materiales.filter((m) => fechaDe(m) && ((m.archivos || []).length || m.url)).map((m) => ({ m, pf: proxFecha(fechaDe(m)) })).sort((a, b) => a.pf.dias - b.pf.dias);
+    if (!L.length) { box.classList.add("hide"); return; }
+    const { m, pf } = L[0], hermanos = L.filter((x) => fechaDe(x.m) === fechaDe(m) && x.m !== m).map((x) => x.m), main = principal(m), t = TIPOS[m.tipo] || TIPOS.cuadernillo, prevs = PREVIEWS[m.id] || [];
+    const sig = L.find((x) => fechaDe(x.m) !== fechaDe(m));
+    const pct = Math.max(4, Math.min(100, Math.round((1 - pf.dias / (pf.dias <= 75 ? 75 : 365)) * 100)));
+    box.classList.remove("hide"); box.style.setProperty("--tint", TINTES[m.id] || "var(--primary)");
+    box.innerHTML = `<div class="bx-sp-art" data-tilt><div class="bx-cov">${m.portada ? `<img src="${esc(imgChica(m.portada, 520))}" data-orig="${esc(m.portada)}" alt="" onerror="imgFalla(this)">` : `<span class="bx-ph">${t[0]}</span>`}<span class="bx-shine" aria-hidden="true"></span></div></div>
+      <div class="bx-sp-b"><span class="bx-sp-k">${pf.dias <= 75 ? "⏰ Para tu próxima fecha" : "🎒 Lo primero que vas a usar"}</span>
+        <h2>${esc(nomFecha(m))}</h2>
+        <p class="bx-sp-d"><b>${esc(fechaLarga(fechaDe(m)))}</b> · ${esc(cuando(pf.dias))}${pf.dias > 75 ? " · ya lo tenés listo para cuando llegue" : m.usado ? " · ✓ ya lo descargaste este año" : " · ¡tenelo impreso a tiempo!"}</p>
+        <div class="bx-sp-bar" aria-hidden="true"><i style="width:${pct}%"></i></div>
+        <p class="bx-sp-m">Tu material: <b>${esc(m.nombre)}</b>${hermanos.length ? ` y ${hermanos.length === 1 ? "1 más" : hermanos.length + " más"} para esta fecha` : ""}</p>
+        <div class="bx-sp-a">${m.tipo === "plataforma" && m.url ? `<a class="btn btn-primary" href="${esc(m.url)}" target="_blank" rel="noopener" data-plat="${esc(m.id)}">▶ Abrir plataforma</a>` : main ? `<button class="btn btn-primary" type="button" data-dl="${esc(m.id)}" data-f="${esc(main.nombre)}">⬇ Descargar</button>` : ""}${prevs.length ? `<button class="btn btn-soft" type="button" data-hojear="${esc(m.id)}">👀 Hojear</button>` : ""}<button class="btn btn-ghost" type="button" data-bxficha="${esc(m.id)}">Ver todo</button></div>
+        ${sig ? `<p class="bx-sp-n">Después: <b>${esc(nomFecha(sig.m))}</b> · ${esc(cuando(sig.pf.dias))}</p>` : ""}</div>`;
+    tiltInit(box);
+  }
+  document.addEventListener("click", (e) => {
+    const f = e.target.closest("[data-bxficha]"); if (f) { abrirFicha(f.dataset.bxficha); return; }
+    const sp = e.target.closest("#bxSpot"); if (sp && e.target.closest("[data-dl],[data-hojear],[data-plat]")) accionesClick(e);
+  });
+
+  // ---------- Portadas 3D con brillo (solo con mouse) ----------
+  function tiltInit(root) {
+    if (reduce() || !matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    root.querySelectorAll("[data-tilt]").forEach((el) => {
+      if (el.dataset.tiltOk) return; el.dataset.tiltOk = 1;
+      el.addEventListener("pointermove", (e) => { const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5; el.style.setProperty("--rx", (-y * 14).toFixed(2) + "deg"); el.style.setProperty("--ry", (x * 16).toFixed(2) + "deg"); el.style.setProperty("--gx", ((x + 0.5) * 100).toFixed(1) + "%"); el.style.setProperty("--gy", ((y + 0.5) * 100).toFixed(1) + "%"); el.classList.add("on"); });
+      el.addEventListener("pointerleave", () => { el.classList.remove("on"); el.style.setProperty("--rx", "0deg"); el.style.setProperty("--ry", "0deg"); });
+    });
+  }
+  function tiltGrid() {
+    if (reduce() || !matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    document.querySelectorAll("#grid.v-grilla .card .cover, #grid.v-estante .card .cover").forEach((c) => { if (!c.querySelector(".bx-shine")) { const s = document.createElement("span"); s.className = "bx-shine"; s.setAttribute("aria-hidden", "true"); c.appendChild(s); } c.setAttribute("data-tilt", ""); });
+    tiltInit($("#grid"));
+  }
+  // contador de días en las tarjetas con fecha cercana
+  function chipsDias() {
+    document.querySelectorAll("#grid .card").forEach((c) => { const m = materiales.find((x) => x.id === c.dataset.id); if (!m || !fechaDe(m)) return; const pf = proxFecha(fechaDe(m)); const d = c.querySelector(".cover .date"); if (d && pf.dias <= 30) { d.classList.add("bx-pronto"); d.textContent = pf.dias === 0 ? "📅 ¡Hoy!" : pf.dias === 1 ? "📅 Mañana" : `📅 En ${pf.dias} días`; } });
+  }
+
+  window.pintar = function () {
+    if (materiales && materiales.length) ordenar();
+    pintarOrig.apply(this, arguments);
+    try { selOrden(); spot(); tiltGrid(); chipsDias(); if ($("#dlgFicha").open && $("#fichaBody").dataset.bxid && !modoGestor()) { const id = $("#fichaBody").dataset.bxid, sc = $("#fichaBody").scrollTop; abrirFicha(id); $("#fichaBody").scrollTop = sc; } } catch (err) { console.warn(err); }
+  };
+  $("#dlgFicha").addEventListener("close", () => { delete $("#fichaBody").dataset.bxid; });
+  // si ya estaba pintado antes de cargar este bloque
+  if ($("#vLib") && !$("#vLib").classList.contains("hide")) pintar();
+})();
+</script>
+
 </body>
 </html>
