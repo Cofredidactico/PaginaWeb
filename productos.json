@@ -1110,7 +1110,7 @@
       "descripcion": "🏠🍬 ¡HANSEL Y GRETEL! 📚✨\n\nTe presentamos nuestro CUADERNILLO DE ACTIVIDADES DE HANSEL Y GRETEL, una propuesta didáctica para trabajar la literatura en el aula a través de actividades variadas, atractivas y pensadas para acompañar los aprendizajes de los estudiantes.",
       "tipo": "cuadernillo",
       "acceso": "pago",
-      "precio": 7500,
+      "precio": 7000,
       "imagen": "images/hansel-y-gretel-1794234625883.png",
       "link": "https://cofredidactico.empretienda.com.ar/novedades/hansel-y-gretel",
       "activo": true,
@@ -1173,9 +1173,6 @@
         },
         {
           "id": "plataforma-dia-de-la-tradicion"
-        },
-        {
-          "id": "hansel-y-gretel"
         }
       ]
     },
