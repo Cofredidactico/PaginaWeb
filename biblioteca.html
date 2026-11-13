@@ -257,6 +257,11 @@ label.fld{display:block;font-weight:800;font-size:.85rem;color:var(--ink-2);marg
 .tr-cli{border:1px dashed var(--line);border-radius:12px;padding:10px 12px;font-size:.88rem;background:var(--card)}
 .tr-acts{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.tr-acts label{display:flex;align-items:center;gap:7px;font-size:.86rem;font-weight:700;color:var(--ink-3)}
 .tr-ok{border:1px solid var(--green);background:var(--green-soft);border-radius:12px;padding:10px 12px;font-size:.9rem}
+.trx{border:1px dashed var(--line,#d9dee8);border-radius:14px;padding:12px 14px;margin-top:14px}.trx>summary{cursor:pointer;font-weight:800}.trx>summary small{font-weight:600;opacity:.7;margin-left:6px}.trx[open]>summary{margin-bottom:10px}
+.trx textarea{width:100%;box-sizing:border-box;color:inherit;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86rem;line-height:1.5;margin:8px 0 10px;resize:vertical}
+.trx-t{display:grid;gap:6px;margin-top:10px}.trx-r{display:grid;gap:2px;padding:9px 11px;border-radius:11px;border:1px solid var(--line,#d9dee8);font-size:.88rem;overflow-wrap:anywhere}.trx-r em{font-style:normal;font-weight:700;font-size:.84rem}
+.trx-r.mal{border-color:#e0a23a;background:rgba(224,162,58,.1)}.trx-r.ok{border-color:var(--green);background:var(--green-soft)}
+.trx-bv{padding:6px 10px;font-size:.82rem;margin-top:6px}
 .tr-lh{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 
 #aRes{display:grid;gap:12px;min-width:0}
@@ -2432,6 +2437,12 @@ async function pintarTr() {
       <div class="tr-acts"><button class="btn btn-primary" type="submit" id="trGo">Registrar y darle acceso</button><label><input type="checkbox" id="trMant" /> Dejar elegidos los mismos materiales para la próxima</label></div>
       <div id="trRes"></div>
     </form>
+    <details class="trx" id="trX"><summary>📋 Carga masiva <small>pegá varias docentes de una vez</small></summary>
+      <p class="muted">Una docente por renglón: <b>correo ; nombre ; @instagram ; monto ; fecha</b>. Solo el correo es obligatorio. A todas se les dan los <b>materiales marcados arriba</b>; si alguna compró otros, sumá al final una columna con sus nombres separados por «|».</p>
+      <textarea class="inp" id="trxTxt" rows="6" spellcheck="false" placeholder="maria@gmail.com; María López; @seno.maria; 7500; 03/10/2026&#10;laura@hotmail.com; Laura Gómez&#10;ana@gmail.com; Ana Ruiz; ; 12000; ; Malvinas | Día de la Bandera"></textarea>
+      <div class="tr-acts"><button type="button" class="btn" id="trxVer">Revisar la lista</button><button type="button" class="btn btn-primary hide" id="trxGo"></button></div>
+      <div id="trxRes"></div>
+    </details>
     <div id="trListaBox"></div>`;
   trMats(); trSug(); trPintarLista(); if (!trLista) trCargarLista();
   const F = $("#trF");
@@ -2439,6 +2450,7 @@ async function pintarTr() {
   $("#trMats").onchange = (e) => { const c = e.target.closest("input[data-mat]"); if (!c) return; if (c.checked) trSel.add(c.dataset.mat); else trSel.delete(c.dataset.mat); c.closest(".trc").classList.toggle("on", c.checked); trSug(); };
   $("#trEmail").onchange = $("#trEmail").onblur = () => trBuscarCliente();
   F.onsubmit = trRegistrar;
+  $("#trxVer").onclick = trxRevisar; $("#trxGo").onclick = trxRegistrar; $("#trxTxt").oninput = () => { trxFilas = null; $("#trxGo").classList.add("hide"); };
   if (trPre) { const x = trPre; trPre = null; $("#trEmail").value = x.email; if (x.nombre) $("#trNom").value = x.nombre; if (x.instagram) $("#trIg").value = "@" + x.instagram; trBuscarCliente(); setTimeout(() => $("#trBus").focus(), 400); }
 }
 function trMats() { if (!resumen) return;
@@ -2469,7 +2481,7 @@ async function trRegistrar(e) {
   const b = $("#trGo"); b.disabled = true; b.textContent = "Registrando…";
   try {
     const r = await api({ accion: "registrar", token: sesion.token, email, nombre: $("#trNom").value, instagram: $("#trIg").value, fecha: $("#trFecha").value, total: monto === "" ? null : Number(monto), nota: $("#trNota").value, materiales: [...trSel] });
-    $("#trRes").innerHTML = `<div class="tr-ok">✅ Listo: <b>${esc(r.email)}</b> ya tiene ${esc(r.materiales.join(", "))} en su biblioteca.${r.yaTenia && r.yaTenia.length ? ` <span class="muted">(${esc(r.yaTenia.join(", "))} ya lo tenía)</span>` : ""} Cuando entre con ese correo lo va a ver.</div>`;
+    $("#trRes").innerHTML = `<div class="tr-ok">✅ Listo: <b>${esc(r.email)}</b> ya tiene ${esc(r.materiales.join(", "))} en su biblioteca.${r.yaTenia && r.yaTenia.length ? ` <span class="muted">(${esc(r.yaTenia.join(", "))} ya lo tenía)</span>` : ""} Cuando entre con ese correo lo va a ver.<br><button type="button" class="btn trx-bv" data-bv="${esc(JSON.stringify({ e: r.email, n: $("#trNom").value.trim(), m: [...(r.materiales || []), ...(r.yaTenia || [])] }))}">📋 Copiar mensaje de bienvenida</button></div>`;
     toast("Venta registrada ✓");
     ["#trEmail", "#trNom", "#trIg", "#trMonto", "#trNota"].forEach((id) => ($(id).value = "")); trCli = null; $("#trCli").classList.add("hide");
     if (!$("#trMant").checked) trSel.clear(); trMats(); trSug(); $("#trEmail").focus();
@@ -2477,6 +2489,29 @@ async function trRegistrar(e) {
   } catch (err) { toast(err.message); $("#trRes").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(err.message)}</div></div>`; }
   b.disabled = false; b.textContent = "Registrar y darle acceso";
 }
+// ---------- Carga masiva y mensaje de bienvenida ----------
+let trxFilas = null, trxBusy = false;
+const trxFold = (t) => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+function trBienvenida(email, nombre, mats) { const n = String(nombre || "").trim().split(" ")[0];
+  return `¡Hola${n ? " " + n : ""}! 💛 Ya tenés tus materiales de Cofre Didáctico en *Mi biblioteca*, para descargarlos cuando quieras:\n\n${(mats || []).map((m) => "📚 " + m).join("\n")}\n\n1️⃣ Entrá a https://cofredidactico.com.ar/biblioteca.html\n2️⃣ Escribí tu correo: ${email}\n3️⃣ Te llega un código de 6 números (mirá también en Spam o Promociones). Lo ponés y listo: no hace falta contraseña.\n\nCualquier duda me escribís 😊`; }
+document.addEventListener("click", async (e) => { const b = e.target.closest("[data-bv]"); if (!b) return; e.preventDefault(); try { const d = JSON.parse(b.dataset.bv); await navigator.clipboard.writeText(trBienvenida(d.e, d.n, d.m)); toast("Mensaje de bienvenida copiado ✓"); } catch { toast("No se pudo copiar el mensaje."); } });
+function trxParse(txt) { const hoy = new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10), mats = resumen.materiales.filter((m) => m.tipo !== "regalo"), vistos = new Set();
+  return String(txt || "").split(/\n+/).map((l) => l.trim()).filter(Boolean).map((l) => { const c = (/[;\t]/.test(l) ? l.split(/[;\t]/) : l.split(",")).map((x) => x.trim());
+    const f = { email: (c[0] || "").toLowerCase(), nombre: c[1] || "", instagram: (c[2] || "").replace(/^@/, ""), total: null, fecha: hoy, materiales: [...trSel], nombres: [], err: "" };
+    if (c[3]) { const n = Number(c[3].replace(/[^\d,.]/g, "").replace(/\.(?=\d{3}(\D|$))/g, "").replace(",", ".")); if (c[3].replace(/\D/g, "") && !isNaN(n)) f.total = n; }
+    if (c[4]) { const m = /^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/.exec(c[4]), i = /^(\d{4})-(\d{2})-(\d{2})$/.exec(c[4]); if (m) f.fecha = `${m[3].length === 2 ? "20" + m[3] : m[3]}-${m[2].padStart(2, "0")}-${m[1].padStart(2, "0")}`; else if (i) f.fecha = c[4]; else f.err = "fecha no reconocida (usá día/mes/año)"; if (!f.err && f.fecha > hoy) f.err = "la fecha es futura"; }
+    if (c[5]) { const ids = [], sin = []; c[5].split("|").map((x) => x.trim()).filter(Boolean).forEach((q) => { const k = trxFold(q), L = mats.filter((m) => trxFold(m.nombre).includes(k) || trxFold(m.id) === k); if (L.length === 1) ids.push(L[0].id); else sin.push(q + (L.length > 1 ? " (coincide con " + L.length + ")" : "")); }); f.materiales = [...new Set(ids)]; if (sin.length) f.err = "no encontré el material: " + sin.join(", "); }
+    f.nombres = f.materiales.map((id) => (mats.find((m) => m.id === id) || {}).nombre || id);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) f.err = "correo no válido"; else if (vistos.has(f.email)) f.err = "correo repetido en la lista"; else if (!f.materiales.length && !f.err) f.err = "sin materiales: marcalos arriba o sumá la columna"; vistos.add(f.email); return f; }); }
+function trxPintar() { const box = $("#trxRes"), L = trxFilas || [], ok = L.filter((f) => !f.err && !f.hecho), go = $("#trxGo");
+  box.innerHTML = L.length ? `<div class="trx-t">${L.map((f) => `<div class="trx-r ${f.err ? "mal" : f.hecho ? "ok" : ""}"><b>${esc(f.email || "(sin correo)")}</b><span>${esc([f.nombre, f.instagram ? "@" + f.instagram : "", f.total != null ? plata(f.total) : "", f.fecha.split("-").reverse().join("/")].filter(Boolean).join(" · "))}</span><span class="muted">${esc(f.nombres.join(", "))}</span><em>${f.err ? "⚠️ " + esc(f.err) : f.hecho ? "✅ " + esc(f.hecho) + ` <button type="button" class="btn trx-bv" data-bv="${esc(JSON.stringify({ e: f.email, n: f.nombre, m: f.nombres }))}">📋 Bienvenida</button>` : f.estado || "Lista para registrar"}</em></div>`).join("")}</div>` : '<div class="muted">Pegá la lista y tocá “Revisar la lista”.</div>';
+  go.classList.toggle("hide", !ok.length); go.disabled = trxBusy; go.textContent = trxBusy ? "Registrando…" : `Registrar ${ok.length} docente${ok.length === 1 ? "" : "s"} y darles acceso`; }
+function trxRevisar() { if (!resumen) return; trxFilas = trxParse($("#trxTxt").value); if (!trxFilas.length) toast("Pegá al menos un renglón."); trxPintar(); }
+async function trxRegistrar() { if (trxBusy || !trxFilas) return; const L = trxFilas.filter((f) => !f.err && !f.hecho); if (!L.length) return; trxBusy = true; trxPintar(); let n = 0;
+  for (const f of L) { f.estado = "Registrando…"; trxPintar();
+    try { const r = await api({ accion: "registrar", token: sesion.token, email: f.email, nombre: f.nombre, instagram: f.instagram, fecha: f.fecha, total: f.total, nota: "Carga masiva", materiales: f.materiales }); f.hecho = r.yaTenia && r.yaTenia.length && !(r.materiales || []).length ? "ya los tenía" : "registrada"; n++; }
+    catch (err) { f.err = err.message || "no se pudo registrar"; } f.estado = ""; trxPintar(); }
+  trxBusy = false; trxPintar(); toast(`${n} docente${n === 1 ? "" : "s"} registrada${n === 1 ? "" : "s"} ✓`); trLista = null; await trCargarLista(); cargarResumen(); }
 async function trCargarLista() { try { trLista = await api({ accion: "manuales", token: sesion.token }); } catch (e) { trLista = { registros: [], total: 0, error: e.message }; } trPintarLista(); }
 function trPintarLista() {
   const box = $("#trListaBox"); if (!box) return; if (!trLista) { box.innerHTML = '<div class="muted">Cargando ventas registradas…</div>'; return; }
