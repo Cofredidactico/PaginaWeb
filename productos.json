@@ -1145,6 +1145,39 @@
         "images/preview-hansel-y-gretel-1794234792601.png",
         "images/preview-hansel-y-gretel-1794234795508.png"
       ]
+    },
+    {
+      "id": "20-de-noviembre-dia-de-la-soberania-nacional",
+      "nombre": "20 de Noviembre - Día de la Soberanía Nacional",
+      "descripcion": "Un material pensado para abordar la efeméride del 20 de noviembre integrando Ciencias Sociales, Prácticas del Lenguaje y Matemática con propuestas lúdicas. 💙",
+      "tipo": "cuadernillo",
+      "acceso": "pago",
+      "precio": 5500,
+      "imagen": "images/producto-1794678330255.png",
+      "link": "https://cofredidactico.empretienda.com.ar/novedades/20-de-noviembre-dia-de-la-soberania-nacional",
+      "activo": true,
+      "destacado": true,
+      "descripcionLarga": "📦 ¿Qué vas a encontrar?\n\n📖 Infografía ilustrada sobre la Vuelta de Obligado.\n🧠 Comprensión lectora de la infografía.\n✂️ Completar oraciones: escribir o recortar y pegar.\n✅ Verdadero o falso.\n🔤 Inicial, vocales y ordenar letras.\n✍️ Traza y copia.\n🔢 Sumas ilustradas, mayor, menor o igual y conteo.\n🔐 Código secreto: ¡descubrí el mensaje!\n🧩 Crucigrama ilustrado y sopa de letras.\n🎵 Uní las palabras que riman.\n🃏 Memotest, dominó ilustrado y ta-te-ti de preguntas.\n🔍 Encontrá las 12 diferencias.\n🌀 Laberinto: ¡Ayudá a los soldados a llegar a la posición de defensa!\n🎨 Dibujar y pintar.\n💌 Tarjeta acróstico SOBERANÍA para llevar a casa.\n🎁 ¡Y muchas actividades más!\n\n🎉 ¡BONUS!\n🖼️ Además del cuadernillo en PDF, recibís todas las actividades en formato imagen (PNG) para adaptarlas al tamaño que necesites.\n\n💙 Un recurso para trabajar la efeméride del 20 de noviembre de manera significativa, creativa y entretenida.\n🎯 Ideal para Primer Ciclo de Nivel Primario.\n💻 Material de 40 hojas A4 en formato PDF, listo para descargar e imprimir.",
+      "tematica": "efemerides",
+      "nivel": "Nivel Primario",
+      "nivelGrupo": "1ciclo",
+      "precioTachado": 10000,
+      "paginas": 40,
+      "formato": "PDF-A4-Color",
+      "meses": [
+        11
+      ],
+      "previews": [
+        "images/preview-producto-1794678334207.png",
+        "images/preview-producto-1794678336547.png",
+        "images/preview-producto-1794678341361.png",
+        "images/preview-producto-1794678346916.png",
+        "images/preview-producto-1794678351132.png",
+        "images/preview-producto-1794678353822.png",
+        "images/preview-producto-1794678356065.png",
+        "images/preview-producto-1794678359346.png",
+        "images/preview-producto-1794678362071.png"
+      ]
     }
   ],
   "$schema": "Editá este archivo desde /admin o a mano. Cada producto se renderiza como una card en la home.",
@@ -1176,6 +1209,9 @@
         },
         {
           "id": "hansel-y-gretel"
+        },
+        {
+          "id": "20-de-noviembre-dia-de-la-soberania-nacional"
         }
       ]
     },
