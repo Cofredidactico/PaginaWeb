@@ -257,6 +257,12 @@ label.fld{display:block;font-weight:800;font-size:.85rem;color:var(--ink-2);marg
 .tr-cli{border:1px dashed var(--line);border-radius:12px;padding:10px 12px;font-size:.88rem;background:var(--card)}
 .tr-acts{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.tr-acts label{display:flex;align-items:center;gap:7px;font-size:.86rem;font-weight:700;color:var(--ink-3)}
 .tr-ok{border:1px solid var(--green);background:var(--green-soft);border-radius:12px;padding:10px 12px;font-size:.9rem}
+.tr-edban{border:1.5px solid var(--accent,#F28C28);background:rgba(242,140,40,.1);border-radius:12px;padding:10px 12px;font-size:.9rem;line-height:1.5}.tr-warn{color:#B5651D;font-weight:700}
+.tr-desg{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:6px;font-size:.88rem;background:var(--card)}
+.tr-dl{display:grid;gap:3px}.tr-dl span{display:flex;justify-content:space-between;gap:10px}.tr-dl b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tr-dt{display:flex;justify-content:space-between;border-top:1px dashed var(--line);padding-top:6px;font-weight:800}.tr-dt b{font-variant-numeric:tabular-nums}
+.tr-dd{font-size:.84rem;font-weight:700;color:var(--ink-3)}.tr-dd.desc{color:var(--green)}
+.tr-acc{white-space:nowrap}.tr-acc .btn{margin-left:4px}
 .trx{border:1px dashed var(--line,#d9dee8);border-radius:14px;padding:12px 14px;margin-top:14px}.trx>summary{cursor:pointer;font-weight:800}.trx>summary small{font-weight:600;opacity:.7;margin-left:6px}.trx[open]>summary{margin-bottom:10px}
 .trx textarea{width:100%;box-sizing:border-box;color:inherit;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86rem;line-height:1.5;margin:8px 0 10px;resize:vertical}
 .trx-t{display:grid;gap:6px;margin-top:10px}.trx-r{display:grid;gap:2px;padding:9px 11px;border-radius:11px;border:1px solid var(--line,#d9dee8);font-size:.88rem;overflow-wrap:anywhere}.trx-r em{font-style:normal;font-weight:700;font-size:.84rem}
@@ -2414,7 +2420,7 @@ function ideasDibujar() {
 }
 $("#adminBox").addEventListener("click", (e) => { const b = e.target.closest("[data-fdoc]"); if (!b) return; e.preventDefault(); e.stopPropagation(); abrirFichaDocente(b.dataset.fdoc); }, true);
 // ---------- Ventas por transferencia: registrar a mano a las docentes que compraron por Instagram ----------
-let trPre = null, trAbierto = false, trLista = null, trPrecios = null, trSel = new Set(), trCli = null, trBorrar = null;
+let trPre = null, trAbierto = false, trLista = null, trPrecios = null, trSel = new Set(), trCli = null, trBorrar = null, trMontoTocado = false, trEdit = null;
 async function trCargarPrecios() { if (trPrecios) return trPrecios; try { const j = await fetch("productos.json?v=" + Math.floor(Date.now() / 60000)).then((r) => r.json()); trPrecios = {}; (j.productos || []).forEach((p) => { if (p.id) trPrecios[p.id] = Number(p.precio) || 0; }); } catch { trPrecios = {}; } return trPrecios; }
 const plata = (n) => "$ " + Number(n || 0).toLocaleString("es-AR", { maximumFractionDigits: 2 });
 async function pintarTr() {
@@ -2423,6 +2429,7 @@ async function pintarTr() {
   await trCargarPrecios();
   const hoy = new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
   box.innerHTML = `<form class="trf" id="trF" novalidate autocomplete="off">
+      <div id="trEdBan" class="tr-edban hide"></div>
       <div class="trg">
         <label>Correo de la docente *<input class="inp" id="trEmail" type="email" inputmode="email" placeholder="docente@gmail.com" required /></label>
         <label>Nombre y apellido <small>(se imprime en su copia del PDF)</small><input class="inp" id="trNom" maxlength="80" placeholder="Ej.: María López" /></label>
@@ -2434,11 +2441,12 @@ async function pintarTr() {
       <div id="trCli" class="tr-cli hide"></div>
       <div class="trm-h"><b>Materiales que compró *</b><input class="inp" id="trBus" placeholder="Buscar material…" aria-label="Buscar material" /><span class="muted" id="trCnt"></span></div>
       <div class="trm" id="trMats"></div>
-      <div class="tr-acts"><button class="btn btn-primary" type="submit" id="trGo">Registrar y darle acceso</button><label><input type="checkbox" id="trMant" /> Dejar elegidos los mismos materiales para la próxima</label></div>
+      <div id="trDesg" class="tr-desg hide"></div>
+      <div class="tr-acts"><button class="btn btn-primary" type="submit" id="trGo">Registrar y darle acceso</button><button class="btn btn-ghost hide" type="button" id="trCancel">Cancelar la edición</button><label id="trMantL"><input type="checkbox" id="trMant" /> Dejar elegidos los mismos materiales para la próxima</label></div>
       <div id="trRes"></div>
     </form>
     <details class="trx" id="trX"><summary>📋 Carga masiva <small>pegá varias docentes de una vez</small></summary>
-      <p class="muted">Una docente por renglón: <b>correo ; nombre ; @instagram ; monto ; fecha</b>. Solo el correo es obligatorio. A todas se les dan los <b>materiales marcados arriba</b>; si alguna compró otros, sumá al final una columna con sus nombres separados por «|».</p>
+      <p class="muted">Una docente por renglón: <b>correo ; nombre ; @instagram ; monto ; fecha</b>. Solo el correo es obligatorio; si no ponés el monto, se usa la suma de los precios de sus materiales. A todas se les dan los <b>materiales marcados arriba</b>; si alguna compró otros, sumá al final una columna con sus nombres separados por «|».</p>
       <textarea class="inp" id="trxTxt" rows="6" spellcheck="false" placeholder="maria@gmail.com; María López; @seno.maria; 7500; 03/10/2026&#10;laura@hotmail.com; Laura Gómez&#10;ana@gmail.com; Ana Ruiz; ; 12000; ; Malvinas | Día de la Bandera"></textarea>
       <div class="tr-acts"><button type="button" class="btn" id="trxVer">Revisar la lista</button><button type="button" class="btn btn-primary hide" id="trxGo"></button></div>
       <div id="trxRes"></div>
@@ -2450,6 +2458,9 @@ async function pintarTr() {
   $("#trMats").onchange = (e) => { const c = e.target.closest("input[data-mat]"); if (!c) return; if (c.checked) trSel.add(c.dataset.mat); else trSel.delete(c.dataset.mat); c.closest(".trc").classList.toggle("on", c.checked); trSug(); };
   $("#trEmail").onchange = $("#trEmail").onblur = () => trBuscarCliente();
   F.onsubmit = trRegistrar;
+  $("#trMonto").oninput = () => { const v = trNumero($("#trMonto").value); trMontoTocado = $("#trMonto").value.trim() !== "" && v !== trSuma(); trSug(); };
+  $("#trCancel").onclick = () => trSalirEdicion(true);
+  if (trEdit) trPintarEdicion();
   $("#trxVer").onclick = trxRevisar; $("#trxGo").onclick = trxRegistrar; $("#trxTxt").oninput = () => { trxFilas = null; $("#trxGo").classList.add("hide"); };
   if (trPre) { const x = trPre; trPre = null; $("#trEmail").value = x.email; if (x.nombre) $("#trNom").value = x.nombre; if (x.instagram) $("#trIg").value = "@" + x.instagram; trBuscarCliente(); setTimeout(() => $("#trBus").focus(), 400); }
 }
@@ -2459,7 +2470,15 @@ function trMats() { if (!resumen) return;
   box.innerHTML = L.length ? L.map((m) => `<label class="trc ${trSel.has(m.id) ? "on" : ""} ${ya.has(m.id) ? "ya" : ""}"><input type="checkbox" data-mat="${esc(m.id)}" ${trSel.has(m.id) ? "checked" : ""} /><span>${esc(m.nombre)}<em>${ya.has(m.id) ? "✓ ya lo tiene" : trPrecios && trPrecios[m.id] ? plata(trPrecios[m.id]) : m.tipo === "plataforma" ? "Plataforma" : ""}</em></span></label>`).join("") : '<div class="muted">No hay materiales con ese nombre.</div>';
   $("#trCnt").textContent = trSel.size ? `${trSel.size} elegido${trSel.size > 1 ? "s" : ""}` : "";
 }
-function trSug() { const s = [...trSel].reduce((a, id) => a + ((trPrecios && trPrecios[id]) || 0), 0); const el = $("#trSug"); if (el) el.textContent = s ? `(precio de lista: ${plata(s)})` : ""; const c = $("#trCnt"); if (c) c.textContent = trSel.size ? `${trSel.size} elegido${trSel.size > 1 ? "s" : ""}` : ""; }
+const trNumero = (v) => { const t = String(v || "").replace(/[^\d,.]/g, "").replace(/\.(?=\d{3}(\D|$))/g, "").replace(",", "."); return t === "" ? null : Number(t); };
+const trSuma = () => [...trSel].reduce((a, id) => a + ((trPrecios && trPrecios[id]) || 0), 0);
+function trSug() { const s = trSuma(), el = $("#trSug"), m = $("#trMonto"), dg = $("#trDesg"); if (m && !trMontoTocado) m.value = s ? String(s) : "";
+  if (el) el.textContent = s ? (trMontoTocado ? `(lista: ${plata(s)})` : "(suma de los materiales)") : "";
+  if (dg) { const L = [...trSel].map((id) => { const mt = (resumen && resumen.materiales || []).find((x) => x.id === id); return { n: mt ? mt.nombre : id, p: (trPrecios && trPrecios[id]) || 0 }; }), sin = L.filter((x) => !x.p), cob = trNumero(m && m.value), dif = cob != null ? cob - s : 0;
+    dg.classList.toggle("hide", !L.length);
+    dg.innerHTML = L.length ? `<div class="tr-dl">${L.map((x) => `<span>${esc(x.n)}<b>${x.p ? plata(x.p) : "sin precio"}</b></span>`).join("")}</div><div class="tr-dt"><span>Suma de los materiales</span><b>${plata(s)}</b></div>${trMontoTocado && cob != null && dif ? `<div class="tr-dd ${dif < 0 ? "desc" : ""}">${dif < 0 ? `Descuento de ${plata(-dif)}${s ? ` (${Math.round(-dif / s * 100)}%)` : ""}` : `${plata(dif)} más que la lista`} · <button type="button" class="btn-link" id="trUsarSuma">Usar la suma</button></div>` : ""}${sin.length ? `<div class="tr-dd">⚠️ ${sin.length === 1 ? "Un material no tiene" : sin.length + " materiales no tienen"} precio en la web: sumalo a mano en el monto.</div>` : ""}` : "";
+    const us = $("#trUsarSuma"); if (us) us.onclick = () => { trMontoTocado = false; trSug(); }; }
+  const c = $("#trCnt"); if (c) c.textContent = trSel.size ? `${trSel.size} elegido${trSel.size > 1 ? "s" : ""}` : ""; }
 async function trBuscarCliente() {
   const v = $("#trEmail").value.trim().toLowerCase(), box = $("#trCli"); if (!box) return;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { trCli = null; box.classList.add("hide"); trMats(); return; }
@@ -2474,7 +2493,7 @@ async function trBuscarCliente() {
   box.classList.remove("hide"); trMats();
 }
 async function trRegistrar(e) {
-  e.preventDefault(); const email = $("#trEmail").value.trim().toLowerCase();
+  e.preventDefault(); if (trEdit) return trGuardarEdicion(); const email = $("#trEmail").value.trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast("Escribí un correo válido."); $("#trEmail").focus(); return; }
   if (!trSel.size) { toast("Elegí al menos un material."); return; }
   const monto = $("#trMonto").value.replace(/[^\d,.]/g, "").replace(/\.(?=\d{3}(\D|$))/g, "").replace(",", ".");
@@ -2484,7 +2503,7 @@ async function trRegistrar(e) {
     $("#trRes").innerHTML = `<div class="tr-ok">✅ Listo: <b>${esc(r.email)}</b> ya tiene ${esc(r.materiales.join(", "))} en su biblioteca.${r.yaTenia && r.yaTenia.length ? ` <span class="muted">(${esc(r.yaTenia.join(", "))} ya lo tenía)</span>` : ""} Cuando entre con ese correo lo va a ver.<br><button type="button" class="btn trx-bv" data-bv="${esc(JSON.stringify({ e: r.email, n: $("#trNom").value.trim(), m: [...(r.materiales || []), ...(r.yaTenia || [])] }))}">📋 Copiar mensaje de bienvenida</button></div>`;
     toast("Venta registrada ✓");
     ["#trEmail", "#trNom", "#trIg", "#trMonto", "#trNota"].forEach((id) => ($(id).value = "")); trCli = null; $("#trCli").classList.add("hide");
-    if (!$("#trMant").checked) trSel.clear(); trMats(); trSug(); $("#trEmail").focus();
+    if (!$("#trMant").checked) trSel.clear(); trMontoTocado = false; trMats(); trSug(); $("#trEmail").focus();
     trLista = null; await trCargarLista(); cargarResumen();
   } catch (err) { toast(err.message); $("#trRes").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(err.message)}</div></div>`; }
   b.disabled = false; b.textContent = "Registrar y darle acceso";
@@ -2502,9 +2521,10 @@ function trxParse(txt) { const hoy = new Date(Date.now() - 3 * 3600e3).toISOStri
     if (c[4]) { const m = /^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/.exec(c[4]), i = /^(\d{4})-(\d{2})-(\d{2})$/.exec(c[4]); if (m) f.fecha = `${m[3].length === 2 ? "20" + m[3] : m[3]}-${m[2].padStart(2, "0")}-${m[1].padStart(2, "0")}`; else if (i) f.fecha = c[4]; else f.err = "fecha no reconocida (usá día/mes/año)"; if (!f.err && f.fecha > hoy) f.err = "la fecha es futura"; }
     if (c[5]) { const ids = [], sin = []; c[5].split("|").map((x) => x.trim()).filter(Boolean).forEach((q) => { const k = trxFold(q), L = mats.filter((m) => trxFold(m.nombre).includes(k) || trxFold(m.id) === k); if (L.length === 1) ids.push(L[0].id); else sin.push(q + (L.length > 1 ? " (coincide con " + L.length + ")" : "")); }); f.materiales = [...new Set(ids)]; if (sin.length) f.err = "no encontré el material: " + sin.join(", "); }
     f.nombres = f.materiales.map((id) => (mats.find((m) => m.id === id) || {}).nombre || id);
+    if (f.total == null) { const sm = f.materiales.reduce((a, id) => a + ((trPrecios && trPrecios[id]) || 0), 0); if (sm) { f.total = sm; f.auto = true; } }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) f.err = "correo no válido"; else if (vistos.has(f.email)) f.err = "correo repetido en la lista"; else if (!f.materiales.length && !f.err) f.err = "sin materiales: marcalos arriba o sumá la columna"; vistos.add(f.email); return f; }); }
 function trxPintar() { const box = $("#trxRes"), L = trxFilas || [], ok = L.filter((f) => !f.err && !f.hecho), go = $("#trxGo");
-  box.innerHTML = L.length ? `<div class="trx-t">${L.map((f) => `<div class="trx-r ${f.err ? "mal" : f.hecho ? "ok" : ""}"><b>${esc(f.email || "(sin correo)")}</b><span>${esc([f.nombre, f.instagram ? "@" + f.instagram : "", f.total != null ? plata(f.total) : "", f.fecha.split("-").reverse().join("/")].filter(Boolean).join(" · "))}</span><span class="muted">${esc(f.nombres.join(", "))}</span><em>${f.err ? "⚠️ " + esc(f.err) : f.hecho ? "✅ " + esc(f.hecho) + ` <button type="button" class="btn trx-bv" data-bv="${esc(JSON.stringify({ e: f.email, n: f.nombre, m: f.nombres }))}">📋 Bienvenida</button>` : f.estado || "Lista para registrar"}</em></div>`).join("")}</div>` : '<div class="muted">Pegá la lista y tocá “Revisar la lista”.</div>';
+  box.innerHTML = L.length ? `<div class="trx-t">${L.map((f) => `<div class="trx-r ${f.err ? "mal" : f.hecho ? "ok" : ""}"><b>${esc(f.email || "(sin correo)")}</b><span>${esc([f.nombre, f.instagram ? "@" + f.instagram : "", f.total != null ? plata(f.total) + (f.auto ? " (suma de lista)" : "") : "", f.fecha.split("-").reverse().join("/")].filter(Boolean).join(" · "))}</span><span class="muted">${esc(f.nombres.join(", "))}</span><em>${f.err ? "⚠️ " + esc(f.err) : f.hecho ? "✅ " + esc(f.hecho) + ` <button type="button" class="btn trx-bv" data-bv="${esc(JSON.stringify({ e: f.email, n: f.nombre, m: f.nombres }))}">📋 Bienvenida</button>` : f.estado || "Lista para registrar"}</em></div>`).join("")}</div>` : '<div class="muted">Pegá la lista y tocá “Revisar la lista”.</div>';
   go.classList.toggle("hide", !ok.length); go.disabled = trxBusy; go.textContent = trxBusy ? "Registrando…" : `Registrar ${ok.length} docente${ok.length === 1 ? "" : "s"} y darles acceso`; }
 function trxRevisar() { if (!resumen) return; trxFilas = trxParse($("#trxTxt").value); if (!trxFilas.length) toast("Pegá al menos un renglón."); trxPintar(); }
 async function trxRegistrar() { if (trxBusy || !trxFilas) return; const L = trxFilas.filter((f) => !f.err && !f.hecho); if (!L.length) return; trxBusy = true; trxPintar(); let n = 0;
@@ -2512,16 +2532,41 @@ async function trxRegistrar() { if (trxBusy || !trxFilas) return; const L = trxF
     try { const r = await api({ accion: "registrar", token: sesion.token, email: f.email, nombre: f.nombre, instagram: f.instagram, fecha: f.fecha, total: f.total, nota: "Carga masiva", materiales: f.materiales }); f.hecho = r.yaTenia && r.yaTenia.length && !(r.materiales || []).length ? "ya los tenía" : "registrada"; n++; }
     catch (err) { f.err = err.message || "no se pudo registrar"; } f.estado = ""; trxPintar(); }
   trxBusy = false; trxPintar(); toast(`${n} docente${n === 1 ? "" : "s"} registrada${n === 1 ? "" : "s"} ✓`); trLista = null; await trCargarLista(); cargarResumen(); }
+// ---------- Editar una venta manual: se deshace y se vuelve a registrar con los datos nuevos (si falla, se restaura la original) ----------
+function trIdsDe(o) { if (Array.isArray(o.materiales) && o.materiales.length) return { ids: o.materiales.slice(), sin: [] }; const M = (resumen && resumen.materiales) || [], ids = [], sin = [];
+  (o.productos || []).forEach((n) => { const k = trxFold(n), m = M.find((x) => trxFold(x.nombre) === k) || M.find((x) => trxFold(x.id) === k); if (m) ids.push(m.id); else sin.push(n); }); return { ids: [...new Set(ids)], sin }; }
+const trFechaISO = (o) => { const d = new Date(o.fecha_orden || o.fecha); return isNaN(d) ? new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10) : new Date(+d - 3 * 3600e3).toISOString().slice(0, 10); };
+function trEditar(o) { const { ids, sin } = trIdsDe(o); trEdit = { o, ids, sin }; $("#trRes").innerHTML = ""; trSel = new Set(ids); trCli = null;
+  $("#trEmail").value = o.email || ""; $("#trNom").value = o.nombre || ""; $("#trIg").value = o.instagram ? "@" + o.instagram : ""; $("#trFecha").value = trFechaISO(o); $("#trNota").value = o.nota || "";
+  $("#trMonto").value = o.total != null ? String(o.total) : ""; trMontoTocado = o.total != null && Number(o.total) !== trSuma(); trMats(); trSug(); trPintarEdicion(); $("#trF").scrollIntoView({ behavior: "smooth", block: "start" }); setTimeout(() => $("#trNom").focus(), 350); }
+function trPintarEdicion() { const b = $("#trEdBan"); if (!b || !trEdit) return; const { o, sin } = trEdit; b.classList.remove("hide");
+  b.innerHTML = `✏️ <b>Editando la venta de ${esc(o.nombre || o.email)}</b> del ${esc(new Date(o.fecha_orden || o.fecha).toLocaleDateString("es-AR"))}. Cambiá lo que necesites y tocá «Guardar cambios».${sin.length ? `<br><span class="tr-warn">⚠️ No encontré en la biblioteca: ${esc(sin.join(", "))}. Si los querés mantener, marcalos de nuevo abajo.</span>` : ""}`;
+  $("#trGo").textContent = "Guardar cambios"; $("#trCancel").classList.remove("hide"); const ml = $("#trMantL"); if (ml) ml.classList.add("hide"); }
+function trSalirEdicion(limpiar) { trEdit = null; const b = $("#trEdBan"); if (b) { b.classList.add("hide"); b.innerHTML = ""; } $("#trGo").textContent = "Registrar y darle acceso"; $("#trCancel").classList.add("hide"); const ml = $("#trMantL"); if (ml) ml.classList.remove("hide");
+  if (limpiar) { ["#trEmail", "#trNom", "#trIg", "#trMonto", "#trNota"].forEach((id) => ($(id).value = "")); $("#trFecha").value = new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10); trSel.clear(); trCli = null; $("#trCli").classList.add("hide"); trMontoTocado = false; trMats(); trSug(); } }
+async function trGuardarEdicion() { const { o, ids } = trEdit, email = $("#trEmail").value.trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast("Escribí un correo válido."); $("#trEmail").focus(); return; }
+  if (!trSel.size) { toast("Elegí al menos un material."); return; }
+  const monto = trNumero($("#trMonto").value), nuevo = { email, nombre: $("#trNom").value, instagram: $("#trIg").value, fecha: $("#trFecha").value, total: monto, nota: $("#trNota").value, materiales: [...trSel] };
+  const b = $("#trGo"); b.disabled = true; b.textContent = "Guardando…";
+  try { await api({ accion: "deshacer_registro", token: sesion.token, orden: o.orden }); }
+  catch (err) { toast(err.message); b.disabled = false; b.textContent = "Guardar cambios"; return; }
+  try { const r = await api({ accion: "registrar", token: sesion.token, ...nuevo });
+    $("#trRes").innerHTML = `<div class="tr-ok">✅ Venta actualizada: <b>${esc(r.email)}</b> tiene ${esc(r.materiales.join(", "))}${nuevo.total != null ? ` · ${plata(nuevo.total)}` : ""}.<br><button type="button" class="btn trx-bv" data-bv="${esc(JSON.stringify({ e: r.email, n: nuevo.nombre.trim(), m: [...(r.materiales || []), ...(r.yaTenia || [])] }))}">📋 Copiar mensaje de bienvenida</button></div>`; toast("Venta actualizada ✓"); }
+  catch (err) { let rest = false; if (ids.length) { try { await api({ accion: "registrar", token: sesion.token, email: o.email, nombre: o.nombre || "", instagram: o.instagram || "", fecha: trFechaISO(o), total: o.total, nota: o.nota || "", materiales: ids }); rest = true; } catch {} }
+    $("#trRes").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>No se pudieron guardar los cambios: ${esc(err.message)}. ${rest ? "Dejé la venta como estaba." : "<b>La venta original quedó deshecha</b>: registrala de nuevo con los datos del formulario."}</div></div>`; b.disabled = false; b.textContent = rest ? "Guardar cambios" : "Registrar y darle acceso"; if (!rest) trEdit = null; trLista = null; await trCargarLista(); cargarResumen(); return; }
+  b.disabled = false; trSalirEdicion(true); trLista = null; await trCargarLista(); cargarResumen(); }
 async function trCargarLista() { try { trLista = await api({ accion: "manuales", token: sesion.token }); } catch (e) { trLista = { registros: [], total: 0, error: e.message }; } trPintarLista(); }
 function trPintarLista() {
   const box = $("#trListaBox"); if (!box) return; if (!trLista) { box.innerHTML = '<div class="muted">Cargando ventas registradas…</div>'; return; }
   const L = trLista.registros, s = $("#trSum"); if (s) s.textContent = L.length ? `${L.length} registrada${L.length > 1 ? "s" : ""} · ${plata(trLista.total)}` : "registrá a las docentes que te compraron por Instagram";
   if (trLista.error) { box.innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${/desconocida/i.test(trLista.error) ? "Falta actualizar la función <b>biblioteca</b> en Supabase y correr <b>biblioteca-transferencias.sql</b> para usar esta sección." : "No se pudo cargar la lista: " + esc(trLista.error)}</div></div>`; return; }
   const filas = L.map((o) => `<tr><td class="muted">${esc(new Date(o.fecha_orden || o.fecha).toLocaleDateString("es-AR"))}</td><td><b>${esc(o.nombre || "—")}</b>${o.instagram ? ` <span class="muted">@${esc(o.instagram)}</span>` : ""}<div><button class="mail" type="button" data-fdoc="${esc(o.email)}" title="Ver su ficha">${esc(o.email)}</button></div>${o.nota ? `<div class="muted">📝 ${esc(o.nota)}</div>` : ""}</td><td>${esc((o.productos || []).join(" · "))}</td><td class="num">${o.total != null ? plata(o.total) : '<span class="muted">—</span>'}</td>
-    <td><button class="btn btn-ghost btn-sm" type="button" data-trdes="${esc(o.orden)}">${trBorrar === o.orden ? "¿Seguro? Tocá de nuevo" : "Deshacer"}</button></td></tr>`).join("");
+    <td class="tr-acc"><button class="btn btn-ghost btn-sm" type="button" data-tred="${esc(o.orden)}">✏️ Editar</button><button class="btn btn-ghost btn-sm" type="button" data-trdes="${esc(o.orden)}">${trBorrar === o.orden ? "¿Seguro? Tocá de nuevo" : "Deshacer"}</button></td></tr>`).join("");
   box.innerHTML = `<div class="tr-lh"><b>Registradas a mano (${L.length})</b>${L.length ? '<button class="btn-link" type="button" id="trCsv">⬇ Descargar planilla (CSV)</button>' : ""}</div>
     ${L.length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fecha</th><th>Docente</th><th>Materiales</th><th style="text-align:right">Monto</th><th></th></tr></thead><tbody>${filas}</tbody></table></div>` : '<div class="muted">Todavía no registraste ventas por transferencia.</div>'}`;
   const csv = $("#trCsv"); if (csv) csv.onclick = trCsvDl;
+  box.querySelectorAll("[data-tred]").forEach((b) => (b.onclick = () => { const o = L.find((x) => String(x.orden) === b.dataset.tred); if (o) trEditar(o); }));
   box.querySelectorAll("[data-trdes]").forEach((b) => (b.onclick = async () => { const o = b.dataset.trdes; if (trBorrar !== o) { trBorrar = o; trPintarLista(); setTimeout(() => { if (trBorrar === o) { trBorrar = null; trPintarLista(); } }, 4000); return; } trBorrar = null; b.disabled = true;
     try { await api({ accion: "deshacer_registro", token: sesion.token, orden: o }); toast("Registro deshecho: se quitaron esos accesos"); await trCargarLista(); cargarResumen(); } catch (e) { toast(e.message); b.disabled = false; } }));
 }
