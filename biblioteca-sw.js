@@ -4,9 +4,9 @@
    - Herramientas (vendor/), logo e íconos: guardados en el dispositivo.
    - Catálogo (productos.json): primero la red (lo último publicado); sin red, la copia guardada.
    - Los datos de la docente y las descargas siempre van por internet (no se guardan acá). */
-const CACHE = 'cofre-biblioteca-v1';
+const CACHE = 'cofre-biblioteca-v2';
 const BASE = ['./biblioteca.html', './logo.png', './icon192.png', './biblioteca.webmanifest',
-  './vendor/pdf-lib.min.js', './vendor/qrcode.js', './vendor/pdf.min.js', './vendor/pdf.worker.min.js'];
+  './vendor/pdf-lib.min.js', './vendor/pdf-lib-cifrado.min.js', './vendor/qrcode.js', './vendor/pdf.min.js', './vendor/pdf.worker.min.js'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => Promise.all(BASE.map((u) => c.add(u).catch(() => {})))).then(() => self.skipWaiting()));

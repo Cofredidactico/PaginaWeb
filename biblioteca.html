@@ -438,6 +438,12 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
 .fl{position:absolute;font-size:1.35rem;animation:flotar 5s ease-in-out infinite}
 .fl.f1{top:-4px;right:6px}.fl.f2{bottom:4px;left:-6px;animation-delay:-1.5s}.fl.f3{top:44%;right:-12px;animation-delay:-3s;font-size:1.05rem}
 .progreso{display:grid;gap:6px;margin-top:10px;max-width:460px}
+.clave-pdf{display:flex;align-items:center;gap:10px;margin-top:10px;max-width:460px;width:100%;box-sizing:border-box;padding:8px 10px 8px 12px;border-radius:14px;background:var(--gold-soft,#FFF3CC);color:var(--ink,#1F2937);border:1.5px dashed #E7B416}
+.clave-pdf .cp-ic{font-size:1.35rem}.clave-pdf .cp-tx{display:grid;flex:1;min-width:0;line-height:1.15}.clave-pdf small{font-size:.74rem;font-weight:700;opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.clave-pdf b{font-size:1.08rem;letter-spacing:.06em;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
+.clave-pdf .cp-q{flex:none;width:26px;height:26px;border-radius:50%;border:1px solid currentColor;background:transparent;font-weight:800;cursor:pointer;color:inherit;opacity:.7}.clave-pdf .btn{flex:none}
+.clave-dlg{display:grid;gap:10px;text-align:center;max-width:420px}.clave-dlg .cd-ic{font-size:2.4rem}.clave-dlg h3{margin:0}.clave-dlg p{margin:0}
+.clave-dlg .cd-code{font:800 1.6rem/1.2 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.08em;padding:12px;border-radius:14px;background:#FFF6DA;border:2px dashed #E7B416;color:#5A4300}
+.clave-dlg ul{text-align:left;margin:0;padding-left:4px;list-style:none;display:grid;gap:6px;font-size:.92rem}
 .progreso .pt{font-size:.88rem;font-weight:700;color:var(--ink-2)}
 .progreso .pt b{color:var(--ink);font-family:var(--f-display)}
 .barra{height:10px;border-radius:999px;background:var(--card);border:1px solid var(--line);overflow:hidden}
@@ -1076,6 +1082,7 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
         <p class="who" id="who"></p>
         <div class="stats" id="stats"></div>
         <div class="progreso hide" id="prog"></div>
+        <div class="clave-pdf hide" id="clavePdf"></div>
         <div class="llaves hide" id="llaves"></div>
         <button class="fig-btn hide" type="button" id="figBtn" aria-label="Mi álbum de figuritas">📒<span class="fig-t"> Mis figuritas</span> <b id="figN"></b><span class="fig-bar"><i id="figBar"></i></span></button>
         <button class="anual-btn hide" type="button" id="anualBtn">🎁 Mirá tu año con Cofre Didáctico</button>
@@ -1395,6 +1402,21 @@ const LIBS = {
   pdfjs: ["vendor/pdf.min.js", "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"],
   pdfjsWorker: ["vendor/pdf.worker.min.js", "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js"],
 };
+// ---------- Contraseña propia de cada docente (PRUEBA: con activa: false se apaga y todo queda como antes) ----------
+// modo "abrir": el PDF pide su contraseña para abrirse · modo "editar": abre sin contraseña pero no se puede editar
+const CLAVE_PDF = { activa: true, modo: "abrir" };
+LIBS.pdfCifrado = ["vendor/pdf-lib-cifrado.min.js", "https://cdn.jsdelivr.net/npm/@cantoo/pdf-lib@2.11.1/dist/pdf-lib.min.js"];
+const libPdf = () => (CLAVE_PDF.activa ? LIBS.pdfCifrado : LIBS.pdf);
+// LAURA-4821: primer nombre + 4 números que salen siempre iguales de su correo
+async function clavePDF(email, nombre) {
+  const mail = String(email || "").trim().toLowerCase(); if (!mail) return "";
+  const base = String(nombre || "").trim().split(/\s+/)[0] || (mail.split("@")[0].match(/[a-zñáéíóúü]+/i) || [""])[0];
+  const pre = base.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 8) || "COFRE";
+  const h = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(mail + "|cofre-pdf-1")));
+  return pre + "-" + String((((h[0] << 24) | (h[1] << 16) | (h[2] << 8) | h[3]) >>> 0) % 10000).padStart(4, "0");
+}
+async function miClave() { const r = ultimaRespuesta || {}; return clavePDF(r.email || (sesion && sesion.email), r.nombre); }
+function claveAzar() { const a = new Uint8Array(18); crypto.getRandomValues(a); return Array.from(a, (x) => x.toString(16).padStart(2, "0")).join(""); }
 const cargados = {};
 function unScript(src) { return new Promise((ok, mal) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => { s.remove(); mal(); }; document.head.appendChild(s); }); }
 function cargarScript(srcs) {
@@ -1465,6 +1487,8 @@ async function personalizar(bytes, lic, opts = {}) {
   });
   doc.setSubject(seguro(`Licencia ${lic.codigo}${titular ? " · " + titular : ""}`));
   doc.setKeywords([lic.codigo, "Cofre Didáctico", "licencia de uso personal"]);
+  if (CLAVE_PDF.activa && opts.clave && typeof doc.encrypt === "function") doc.encrypt({ userPassword: CLAVE_PDF.modo === "abrir" ? opts.clave : "", ownerPassword: claveAzar(), algorithm: "AES-128",
+    permissions: { printing: "highResolution", modifying: false, copying: true, annotating: true, fillingForms: true, contentAccessibility: true, documentAssembly: false } });
   return await doc.save({ useObjectStreams: false });
 }
 function guardar(datos, nombre, tipo = "application/pdf") {
@@ -1484,18 +1508,19 @@ async function descargar(b, material, archivo, paginas, opts = {}) {
   if (!(await confirmarDatos(fa && fa.tam))) return;
   const st = estadoBoton(b); b.disabled = true; st.set("Preparando…");
   try {
-    const libs = /\.pdf$/i.test(archivo) ? Promise.all([cargarScript(LIBS.pdf), cargarScript(LIBS.qr)]) : null;
+    const libs = /\.pdf$/i.test(archivo) ? Promise.all([cargarScript(libPdf()), cargarScript(LIBS.qr)]) : null;
     const r = await obtener(material, archivo, st.set);
     if (!r.bytes) { const a = document.createElement("a"); a.href = r.url; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); toast("Descarga iniciada ✓"); return; }
     st.set("Personalizando tu copia…", 1); armando(true, "Imprimiendo tu nombre y tu código"); await libs;
+    const clave = CLAVE_PDF.activa ? await miClave() : "";
     let final, nombre = archivo;
     try {
       if (opts.bn) {
         armando(true, "Pasando a blanco y negro");
         const bn = await convertirBN(r.bytes, paginas, (k, n) => { st.set(`Blanco y negro ${k}/${n}`, k / n); $("#armandoT").textContent = `Página ${Math.min(k + 1, n)} de ${n} en blanco y negro`; });
         armando(true, "Imprimiendo tu nombre y tu código");
-        final = await personalizar(bn, r.licencia, { tapa: paginas && paginas[0] !== 0 ? "" : textoTapa(tapaGuardada()) });
-      } else final = await personalizar(r.bytes, r.licencia, { tapa: textoTapa(tapaGuardada()), paginas });
+        final = await personalizar(bn, r.licencia, { clave, tapa: paginas && paginas[0] !== 0 ? "" : textoTapa(tapaGuardada()) });
+      } else final = await personalizar(r.bytes, r.licencia, { clave, tapa: textoTapa(tapaGuardada()), paginas });
     }
     catch (err) {
       console.warn("No se pudo personalizar", err);
@@ -1505,7 +1530,8 @@ async function descargar(b, material, archivo, paginas, opts = {}) {
     }
     if (paginas || opts.bn) nombre = archivo.replace(/\.pdf$/i, "") + ` (${[paginas ? "pags. " + rangoTexto(paginas) : "", opts.bn ? "B-N para fotocopia" : ""].filter(Boolean).join(", ")}).pdf`;
     guardar(final, nombre); armando(false);
-    toast(final === r.bytes ? "Descarga lista ✓" : `Tu copia personalizada está lista ✓ (${r.licencia.codigo})`);
+    toast(final === r.bytes ? "Descarga lista ✓" : clave && CLAVE_PDF.modo === "abrir" ? `Lista ✓ Para abrirla, tu contraseña es ${clave}` : `Tu copia personalizada está lista ✓ (${r.licencia.codigo})`);
+    if (final !== r.bytes && clave && CLAVE_PDF.modo === "abrir") avisoClave(clave);
     if (final !== r.bytes) { festejo(); vibrar(); }
     if (!window.__esAdmin) { sumarSemana(material); marcarDescargado(material, archivo); pintar(); }
   } catch (err) { if (err.limite) abrirLimite(material, err.limite, () => descargar(b, material, archivo, paginas, opts)); else toast(err.message); }
@@ -1550,7 +1576,7 @@ let selector = null;
 async function abrirSelector(b, material, archivo) {
   const st = estadoBoton(b); b.disabled = true; st.set("…");
   try {
-    const libs = Promise.all([cargarScript(LIBS.pdfjs), cargarScript(LIBS.pdf), cargarScript(LIBS.qr)]);
+    const libs = Promise.all([cargarScript(LIBS.pdfjs), cargarScript(libPdf()), cargarScript(LIBS.qr)]);
     const k = material + "|" + archivo; let bytes = cacheBytes.get(k);
     if (!bytes) { const r = await api({ accion: "descargar", token: sesion.token, material, archivo, dispositivo: DISPOSITIVO, ...(verComo ? { como: verComo } : {}) }); bytes = await bajar(r.url, (p) => st.set(Math.round(p * 100) + "%", p)); cacheBytes.set(k, bytes); while (cacheBytes.size > 2) cacheBytes.delete(cacheBytes.keys().next().value); }
     await libs;
@@ -1825,6 +1851,7 @@ function pintarHero(r) {
   $("#heroF").textContent = r.admin && !r.como ? "Así ven las docentes su biblioteca. Desde acá gestionás todo." : f;
   $("#bunting").innerHTML = Array.from({ length: 22 }, (_, i) => `<i style="background:${colores[i % colores.length]};${colores[i % colores.length] === "#FFFFFF" ? "box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)" : ""}"></i>`).join("");
   document.querySelectorAll("#heroArt .fl").forEach((el, i) => (el.textContent = flotan[i]));
+  pintarClave();
   // progreso del año: materiales con archivos que ya descargó este año
   const prog = $("#prog"), conArch = materiales.filter((m) => (m.archivos || []).length), usados = conArch.filter((m) => m.usado).length;
   if (modoGestor() || !conArch.length) { prog.classList.add("hide"); return; }
@@ -1855,6 +1882,20 @@ function htmlLineaDeTiempo() {
 document.addEventListener("click", (e) => { const t = e.target.closest("[data-tienda]"); if (t) location.href = "p/" + encodeURIComponent(t.dataset.tienda) + ".html"; });
 
 // ---------- Festejo al terminar una descarga ----------
+async function pintarClave() { const box = $("#clavePdf"); if (!box) return; const r = ultimaRespuesta || {};
+  if (!CLAVE_PDF.activa || CLAVE_PDF.modo !== "abrir" || (modoGestor() && !r.como)) { box.classList.add("hide"); return; }
+  const c = await miClave(); if (!c) { box.classList.add("hide"); return; }
+  box.innerHTML = `<span class="cp-ic" aria-hidden="true">🔑</span><span class="cp-tx"><small>${r.como ? "Contraseña de sus PDF" : "Contraseña de tus PDF"}</small><b translate="no">${esc(c)}</b></span><button class="btn btn-ghost btn-sm" type="button" id="claveCopiar">Copiar</button><button class="cp-q" type="button" id="claveAyuda" aria-label="¿Para qué es?">?</button>`;
+  box.classList.remove("hide");
+  $("#claveCopiar").onclick = async () => { try { await navigator.clipboard.writeText(c); toast("Contraseña copiada ✓"); } catch { toast("Tu contraseña: " + c); } };
+  $("#claveAyuda").onclick = () => avisoClave(c, true); }
+function avisoClave(c, ayuda) { let d = $("#dlgClave"); if (!d) { d = document.createElement("dialog"); d.id = "dlgClave"; d.className = "dlg"; document.body.appendChild(d); d.addEventListener("click", (e) => { if (e.target === d || e.target.closest("[data-cx]")) d.close(); if (e.target.closest("[data-cc]")) { navigator.clipboard.writeText(d.dataset.c).then(() => toast("Contraseña copiada ✓"), () => toast("Tu contraseña: " + d.dataset.c)); } }); }
+  if (!ayuda && store.get("cofre-clave-vista") === c) return; store.set("cofre-clave-vista", c); d.dataset.c = c;
+  d.innerHTML = `<div class="clave-dlg"><div class="cd-ic" aria-hidden="true">🔐</div><h3>${ayuda ? "Tu contraseña de los PDF" : "Tu PDF está protegido con tu contraseña"}</h3>
+    <p>Cada material que descargás de tu biblioteca queda a tu nombre y se abre con tu contraseña personal:</p><div class="cd-code" translate="no">${esc(c)}</div>
+    <ul><li>📱 Al abrir el PDF (en el celu, la compu o la tablet) te la va a pedir. Escribila tal cual, con mayúsculas y el guion.</li><li>🖨️ Si lo mandás a imprimir a una fotocopiadora, pasales también tu contraseña.</li><li>🔑 Es siempre la misma para todos tus materiales y la ves arriba de tu biblioteca cuando la necesites.</li></ul>
+    <div class="dlg-acts"><button class="btn btn-ghost" type="button" data-cc>Copiar contraseña</button><button class="btn btn-primary" type="button" data-cx>¡Entendido!</button></div></div>`;
+  d.showModal(); }
 function armando(on, texto) { const a = $("#armando"); if (texto) $("#armandoT").textContent = texto; a.classList.toggle("on", !!on); }
 function festejo() {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -2918,9 +2959,9 @@ $("#cofreRegalo").addEventListener("click", async (e) => {
   try {
     const r = await api({ accion: "regalo_descargar", token: sesion.token, fecha: b.dataset.regalo, archivo: b.dataset.f });
     if (!/\.pdf$/i.test(b.dataset.f)) { const a = document.createElement("a"); a.href = r.url; document.body.appendChild(a); a.click(); a.remove(); return; }
-    const libs = Promise.all([cargarScript(LIBS.pdf), cargarScript(LIBS.qr)]);
+    const libs = Promise.all([cargarScript(libPdf()), cargarScript(LIBS.qr)]);
     const bytes = await bajar(r.url, (p) => st.set(`Descargando ${Math.round(p * 100)}%`, p)); await libs;
-    let final; try { final = await personalizar(bytes, r.licencia, { tapa: textoTapa(tapaGuardada()) }); } catch { final = bytes; }
+    let final; try { final = await personalizar(bytes, r.licencia, { clave: CLAVE_PDF.activa ? await miClave() : "", tapa: textoTapa(tapaGuardada()) }); } catch { final = bytes; }
     guardar(final, b.dataset.f); toast("¡Tu regalo está listo! 🎁"); vibrar();
   } catch (err) { toast(err.message); }
   finally { st.fin(); }
