@@ -1378,8 +1378,9 @@ $("#fCode").onsubmit = async (e) => {
 // ---------- Biblioteca ----------
 async function cargar(fresco) {
   if (!fresco) ver("#vLoad");
-  try { mostrar(await api({ accion: "mis", token: sesion.token, ...pend(), ...(verComo ? { como: verComo } : {}), ...(fresco ? { fresco: true } : {}) })); }
-  catch (e) { if ((e instanceof TypeError || !navigator.onLine) && mostrarSinConexion()) return; if (sesion) { ver("#vLib"); $("#grid").innerHTML = ""; $("#notice").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)} <button class="btn-link" onclick="cargar()">Reintentar</button></div></div>`; } else toast(e.message); }
+  const comoP = !verComo ? store.get(COMO_K, sessionStorage) : null;
+  try { mostrar(await api({ accion: "mis", token: sesion.token, ...pend(), ...(verComo ? { como: verComo } : comoP ? { como: comoP } : {}), ...(fresco ? { fresco: true } : {}) })); }
+  catch (e) { if (comoP) { store.del(COMO_K, sessionStorage); return cargar(fresco); } if ((e instanceof TypeError || !navigator.onLine) && mostrarSinConexion()) return; if (sesion) { ver("#vLib"); $("#grid").innerHTML = ""; $("#notice").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)} <button class="btn-link" onclick="cargar()">Reintentar</button></div></div>`; } else toast(e.message); }
 }
 const TIPOS = { cuadernillo: ["📘", "Cuadernillo", "Cuadernillos"], plataforma: ["🎮", "Plataforma", "Plataformas"], juego: ["🧩", "Juego", "Juegos"] };
 const tam = (b) => (b >= 1e6 ? (b / 1e6).toFixed(1).replace(".", ",") + " MB" : b ? Math.max(1, Math.round(b / 1e3)) + " KB" : "");
@@ -1394,7 +1395,7 @@ function mostrar(r) {
   const cant = `${n} ${n === 1 ? "material" : "materiales"}`;
   $("#who").textContent = r.admin && !r.como ? `Administrador · catálogo completo · ${cant}` : r.admin ? `${r.email} · ${cant}` : r.email;
   window.__esAdmin = !!r.admin; recordatorioOn = !!r.recordatorio;
-  { const cm = store.get(COMO_K, sessionStorage); if (cm) { store.del(COMO_K, sessionStorage); if (r.admin && !r.como && cm !== r.email) { verComo = cm; filtro = "todos"; setTimeout(() => cargar(), 0); } else if (!r.admin) toast("Para ver la biblioteca de una docente, entrá con tu cuenta de administradora."); } }
+  { const cm = store.get(COMO_K, sessionStorage); if (cm) { store.del(COMO_K, sessionStorage); if (r.admin && r.como) { verComo = r.como; filtro = "todos"; } else if (r.admin && !r.como && cm !== r.email) { verComo = cm; filtro = "todos"; setTimeout(() => cargar(), 0); } else if (!r.admin) toast("Para ver la biblioteca de una docente, entrá con tu cuenta de administradora."); } }
   if (r.admin) pintarAdmin(r); else $("#adminBox").classList.add("hide");
   const nombreDe = (id) => (materiales.find((m) => m.id === id) || {}).nombre || "tu material";
   let html = "";
