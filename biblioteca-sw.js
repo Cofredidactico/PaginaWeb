@@ -4,9 +4,9 @@
    - Herramientas (vendor/), logo e íconos: guardados en el dispositivo.
    - Catálogo (productos.json): primero la red (lo último publicado); sin red, la copia guardada.
    - Los datos de la docente y las descargas siempre van por internet (no se guardan acá). */
-const CACHE = 'cofre-biblioteca-v1';
+const CACHE = 'cofre-biblioteca-v4';
 const BASE = ['./biblioteca.html', './logo.png', './icon192.png', './biblioteca.webmanifest',
-  './vendor/pdf-lib.min.js', './vendor/qrcode.js', './vendor/pdf.min.js', './vendor/pdf.worker.min.js'];
+  './vendor/pdf-lib.min.js', './vendor/pdf-lib-cifrado.min.js', './vendor/qrcode.js', './vendor/pdf.min.js', './vendor/pdf.worker.min.js'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => Promise.all(BASE.map((u) => c.add(u).catch(() => {})))).then(() => self.skipWaiting()));
@@ -19,7 +19,8 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(req.url); if (url.origin !== location.origin) return;
   const p = url.pathname;
   if (req.mode === 'navigate' || p.endsWith('/biblioteca.html')) {
-    e.respondWith(fetch(req).then((r) => { if (r.ok) caches.open(CACHE).then((c) => c.put('./biblioteca.html', r.clone())); return r; })
+    // siempre pregunta al servidor si hay una versión nueva (así las actualizaciones se ven enseguida)
+    e.respondWith(fetch(req.url, { cache: 'no-cache', credentials: 'same-origin' }).then((r) => { if (r.ok) caches.open(CACHE).then((c) => c.put('./biblioteca.html', r.clone())); return r; })
       .catch(() => caches.match('./biblioteca.html')));
     return;
   }

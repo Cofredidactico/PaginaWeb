@@ -257,6 +257,17 @@ label.fld{display:block;font-weight:800;font-size:.85rem;color:var(--ink-2);marg
 .tr-cli{border:1px dashed var(--line);border-radius:12px;padding:10px 12px;font-size:.88rem;background:var(--card)}
 .tr-acts{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.tr-acts label{display:flex;align-items:center;gap:7px;font-size:.86rem;font-weight:700;color:var(--ink-3)}
 .tr-ok{border:1px solid var(--green);background:var(--green-soft);border-radius:12px;padding:10px 12px;font-size:.9rem}
+.tr-edban{border:1.5px solid var(--accent,#F28C28);background:rgba(242,140,40,.1);border-radius:12px;padding:10px 12px;font-size:.9rem;line-height:1.5}.tr-warn{color:#B5651D;font-weight:700}
+.tr-desg{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:6px;font-size:.88rem;background:var(--card)}
+.tr-dl{display:grid;gap:3px}.tr-dl span{display:flex;justify-content:space-between;gap:10px}.tr-dl b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tr-dt{display:flex;justify-content:space-between;border-top:1px dashed var(--line);padding-top:6px;font-weight:800}.tr-dt b{font-variant-numeric:tabular-nums}
+.tr-dd{font-size:.84rem;font-weight:700;color:var(--ink-3)}.tr-dd.desc{color:var(--green)}
+.tr-acc{white-space:nowrap}.tr-acc .btn{margin-left:4px}
+.trx{border:1px dashed var(--line,#d9dee8);border-radius:14px;padding:12px 14px;margin-top:14px}.trx>summary{cursor:pointer;font-weight:800}.trx>summary small{font-weight:600;opacity:.7;margin-left:6px}.trx[open]>summary{margin-bottom:10px}
+.trx textarea{width:100%;box-sizing:border-box;color:inherit;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86rem;line-height:1.5;margin:8px 0 10px;resize:vertical}
+.trx-t{display:grid;gap:6px;margin-top:10px}.trx-r{display:grid;gap:2px;padding:9px 11px;border-radius:11px;border:1px solid var(--line,#d9dee8);font-size:.88rem;overflow-wrap:anywhere}.trx-r em{font-style:normal;font-weight:700;font-size:.84rem}
+.trx-r.mal{border-color:#e0a23a;background:rgba(224,162,58,.1)}.trx-r.ok{border-color:var(--green);background:var(--green-soft)}
+.trx-bv{padding:6px 10px;font-size:.82rem;margin-top:6px}
 .tr-lh{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 
 #aRes{display:grid;gap:12px;min-width:0}
@@ -427,6 +438,60 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
 .fl{position:absolute;font-size:1.35rem;animation:flotar 5s ease-in-out infinite}
 .fl.f1{top:-4px;right:6px}.fl.f2{bottom:4px;left:-6px;animation-delay:-1.5s}.fl.f3{top:44%;right:-12px;animation-delay:-3s;font-size:1.05rem}
 .progreso{display:grid;gap:6px;margin-top:10px;max-width:460px}
+.lib-tabs{display:flex;gap:6px;width:max-content;max-width:100%;margin:-4px auto 18px;padding:5px;border-radius:999px;background:var(--card);border:1px solid var(--line);box-shadow:var(--s-1)}
+.lib-tabs button{position:relative;display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--ink-2);font:800 .95rem var(--f);padding:10px 20px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.lib-tabs button[aria-selected="true"]{background:var(--primary);color:#fff;box-shadow:0 6px 16px -8px var(--primary)}
+.lt-dot{position:absolute;top:7px;right:10px;width:9px;height:9px;border-radius:50%;background:#FF5A5F;box-shadow:0 0 0 2px var(--card)}
+#vLib.en-logros > #notice,#vLib.en-logros > #cupInicio,#vLib.en-logros > #bxSpot,#vLib.en-logros > #misH,#vLib.en-logros > #tools,#vLib.en-logros > #grid,#vLib.en-logros > #cal{display:none!important}
+.logros{display:grid;gap:16px;margin-bottom:24px;animation:lgIn .3s ease}@keyframes lgIn{from{opacity:0;transform:translateY(8px)}}
+.lg-h h2{margin:0;font-family:var(--f-display)}.lg-h p{margin:4px 0 0;color:var(--ink-2)}
+.lg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;align-items:start}
+.lg-card{display:grid;gap:10px;padding:18px;border-radius:var(--r,18px);background:var(--card);border:1px solid var(--line);box-shadow:var(--s-1);min-width:0}
+.lg-card h3{margin:0;font-size:1.05rem}.lg-p{margin:0;color:var(--ink-2);font-size:.9rem}
+.lg-slot:empty{display:none}@media (min-width:900px){.lg-part{grid-column:span 2}}.lg-center{display:grid;justify-items:center}
+#logros .progreso,#logros .llaves{margin-top:0;max-width:none}#logros .anual-btn{margin-top:0}
+#logros .fig-btn{position:static;margin:0;padding:10px 16px;font-size:.95rem}#logros .fig-btn .fig-bar,#logros .fig-btn .fig-t{display:inline-block}
+#logros .cofre-slot{position:static}#logros .llaves{padding-right:0}
+#logros .seno-crear{position:static!important;transform:none!important;display:inline-flex;max-width:none!important;font-size:.9rem;padding:9px 16px}
+#logros .extras{margin:0;display:grid;gap:12px}
+.lg-vacio{display:grid;justify-items:center;gap:6px;text-align:center;padding:34px 18px;border-radius:var(--r,18px);border:2px dashed var(--line);color:var(--ink-2)}.lg-vacio span{font-size:2.4rem}.lg-vacio b{color:var(--ink);font-size:1.1rem}.lg-vacio p{margin:0}
+@media (max-width:720px){.lib-tabs{width:100%;margin:-2px 0 14px}.lib-tabs button{flex:1;justify-content:center;padding:10px 12px}.lg-grid{grid-template-columns:1fr}}
+.clave-pdf{display:flex;align-items:center;gap:10px;margin-top:10px;max-width:460px;width:100%;box-sizing:border-box;padding:8px 10px 8px 12px;border-radius:14px;background:var(--gold-soft,#FFF3CC);color:var(--ink,#1F2937);border:1.5px dashed #E7B416}
+.clave-pdf.pulso{animation:cpPulso 2.2s ease-in-out 3}@keyframes cpPulso{50%{box-shadow:0 0 0 6px rgba(231,180,22,.25)}}
+.clave-pdf .cp-ic{font-size:1.35rem}.clave-pdf .cp-tx{display:grid;flex:1;min-width:0;line-height:1.15}.clave-pdf small{font-size:.74rem;font-weight:700;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.clave-pdf b{font-size:1.12rem;letter-spacing:.04em;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
+.clave-pdf{position:relative}.clave-pdf .cp-new{position:absolute;top:-9px;left:14px;font-style:normal;font-size:.62rem;font-weight:900;background:#E7B416;color:#3A2A00;border-radius:99px;padding:2px 7px;letter-spacing:.04em;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.clave-pdf .cp-q{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid currentColor;background:transparent;font-weight:800;cursor:pointer;color:inherit;opacity:.75}.clave-pdf .btn{flex:none}
+.notice.nov-clave{background:var(--gold-soft);color:var(--ink);border:1.5px solid rgba(231,180,22,.45)}.nov-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tuto-dlg{width:min(480px,calc(100% - 24px))}
+.tu-in{position:relative;display:grid;grid-template-rows:1fr auto;max-height:calc(100dvh - 40px)}
+.tu-x{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(127,127,127,.14);color:inherit;font-size:.95rem;cursor:pointer;z-index:2}
+.tu-body{padding:26px 22px 8px;display:grid;gap:12px;text-align:center;overflow:auto;animation:tuIn .25s ease}@keyframes tuIn{from{opacity:0;transform:translateX(14px)}}
+.tu-body h3{margin:0;font-size:1.3rem}.tu-body p{margin:0;line-height:1.45}
+.tu-hero{display:grid;place-items:center}.tu-big{font-size:2.8rem;display:grid;place-items:center;width:78px;height:78px;border-radius:24px;background:var(--gold-soft);animation:tuBote 1.4s ease-in-out infinite}@keyframes tuBote{50%{transform:translateY(-4px) rotate(-4deg)}}
+.tu-code{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font:800 1.9rem/1.2 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;padding:14px;border-radius:16px;background:#FFF6DA;border:2px dashed #E7B416;color:#4A3700}
+.tu-code .btn{font-family:inherit;letter-spacing:0;font-size:.85rem;background:#fff;color:#4A3700;border:1.5px solid rgba(74,55,0,.35)}
+.ck-chips{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.ck-g{display:grid;gap:4px;justify-items:center}.ck-row{display:flex;gap:3px}.ck-g small{font-size:.72rem;font-weight:800;opacity:.75}
+.ck-ch{display:grid;place-items:center;min-width:28px;height:36px;padding:0 4px;border-radius:9px;font:800 1.2rem ui-monospace,Menlo,Consolas,monospace;color:#fff}
+.ck-ch.may{background:#E2483D;min-width:34px;font-size:1.35rem}.ck-ch.min{background:#3B82C4}.ck-ch.num{background:#2E9E6A}
+.tu-nota{font-size:.88rem;opacity:.9;background:rgba(127,127,127,.08);border-radius:12px;padding:10px 12px}
+.tu-tabs{display:flex;gap:6px;justify-content:center}.tu-tabs button{border:1.5px solid var(--line);background:transparent;color:inherit;border-radius:99px;padding:7px 14px;font:inherit;font-weight:700;font-size:.88rem;cursor:pointer}.tu-tabs button[aria-selected="true"]{border-color:#E7B416;background:var(--gold-soft)}
+.tu-phone{justify-self:center;width:230px;height:250px;border-radius:30px;border:8px solid #11151F;background:linear-gradient(160deg,#5B7FB8,#8E6BB8);position:relative;display:grid;place-items:center;box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
+.tu-notch{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:70px;height:14px;border-radius:99px;background:#11151F}
+.tu-pdlg{width:185px;background:#fff;color:#1F2937;border-radius:16px;padding:14px 12px 10px;display:grid;gap:6px;text-align:center;box-shadow:0 10px 24px rgba(0,0,0,.3)}.tu-pdlg b{font-size:.92rem}.tu-pdlg small{font-size:.7rem;opacity:.75;line-height:1.25}
+.tu-lock{font-size:1.4rem}.tu-fake{display:flex;align-items:center;gap:1px;height:30px;border:1.5px solid #3B82C4;border-radius:8px;padding:0 8px;font:700 1rem ui-monospace,Menlo,monospace;letter-spacing:.06em;text-align:left;color:#1F2937}.tu-fake.wide{width:230px;justify-self:center}
+.tu-cur{display:inline-block;width:1.5px;height:16px;background:#3B82C4;animation:tuCur 1s steps(1) infinite}@keyframes tuCur{50%{opacity:0}}
+.tu-fbtns{display:flex;justify-content:flex-end;gap:14px;font-size:.78rem;font-weight:800;color:#6B7280;padding-top:2px}.tu-fbtns .pri{color:#2563EB}
+.tu-pc{justify-self:center;width:min(340px,100%);border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#F3F4F6;color:#1F2937;box-shadow:0 14px 30px -14px rgba(0,0,0,.45)}
+.tu-bar{display:flex;align-items:center;gap:5px;padding:7px 10px;background:#E5E7EB}.tu-bar i{width:9px;height:9px;border-radius:50%;background:#F87171}.tu-bar i:nth-child(2){background:#FBBF24}.tu-bar i:nth-child(3){background:#34D399}.tu-bar span{font-size:.72rem;font-weight:700;margin-left:6px;opacity:.7}
+.tu-pcin{display:grid;gap:6px;justify-items:center;padding:18px 14px}.tu-pcin b{font-size:.9rem}.tu-pcin small{font-size:.74rem;opacity:.7}.tu-pbtn{background:#2563EB;color:#fff;border-radius:6px;padding:5px 16px;font-size:.78rem;font-weight:800}
+.tu-prac{display:flex;gap:8px;align-items:center}.tu-prac .inp{flex:1;font:700 1.25rem ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;text-align:center}
+.tu-msg{font-size:.92rem;font-weight:700;padding:10px 12px;border-radius:12px;background:rgba(127,127,127,.1)}.tu-msg.ok{background:var(--green-soft,#DCFCE7);color:var(--green,#15803D)}.tu-msg.warn{background:var(--gold-soft);color:var(--ink)}
+.tu-check{display:grid;gap:6px;text-align:left}.tu-check span{display:flex;align-items:center;gap:8px;font-size:.88rem;opacity:.75}.tu-check i{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid currentColor;opacity:.5;display:grid;place-items:center}
+.tu-check span.ok{opacity:1;color:var(--green,#15803D);font-weight:700}.tu-check span.ok i{opacity:1;background:currentColor;border-color:currentColor}.tu-check span.ok i::after{content:"✓";color:#fff;font-style:normal;font-size:.7rem;font-weight:900}
+.tu-opts{display:grid;gap:10px;text-align:left}.tu-opt{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:14px;border:1px solid var(--line)}.tu-opt>span{font-size:1.5rem}.tu-opt b{display:block}.tu-opt small{display:block;opacity:.8;line-height:1.35;margin-top:2px}.tu-oacts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tu-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px 18px;border-top:1px solid var(--line)}.tu-foot [hidden]{visibility:hidden;display:inline-flex}
+.tu-dots{display:flex;gap:6px}.tu-dots button{width:9px;height:9px;padding:0;border-radius:99px;border:0;background:rgba(127,127,127,.35);cursor:pointer;transition:width .2s}.tu-dots button.ok{background:#E7B416}.tu-dots button.on{width:24px;background:#E7B416}
+@media (max-width:420px){.ck-chips{gap:8px}.ck-ch{min-width:24px;height:32px;font-size:1.05rem}.ck-ch.may{min-width:28px;font-size:1.15rem}.tu-code{font-size:1.55rem}.tu-body{padding:24px 16px 8px}.tu-foot{padding:12px 14px 16px}}
 .progreso .pt{font-size:.88rem;font-weight:700;color:var(--ink-2)}
 .progreso .pt b{color:var(--ink);font-family:var(--f-display)}
 .barra{height:10px;border-radius:999px;background:var(--card);border:1px solid var(--line);overflow:hidden}
@@ -1065,6 +1130,7 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
         <p class="who" id="who"></p>
         <div class="stats" id="stats"></div>
         <div class="progreso hide" id="prog"></div>
+        <div class="clave-pdf hide" id="clavePdf"></div>
         <div class="llaves hide" id="llaves"></div>
         <button class="fig-btn hide" type="button" id="figBtn" aria-label="Mi álbum de figuritas">📒<span class="fig-t"> Mis figuritas</span> <b id="figN"></b><span class="fig-bar"><i id="figBar"></i></span></button>
         <button class="anual-btn hide" type="button" id="anualBtn">🎁 Mirá tu año con Cofre Didáctico</button>
@@ -1072,8 +1138,25 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
       <div class="cofre-slot hide" id="cofreHero"></div>
       <div class="hero-art" id="heroArt"><span class="blob" aria-hidden="true"></span><img src="logo.png" alt="" onerror="this.remove()" /><span class="seno-av hide" id="senoAv"></span><button class="seno-crear hide" type="button" id="senoBtn">✨ Creá tu seño</button><span class="fl f1" aria-hidden="true"></span><span class="fl f2" aria-hidden="true"></span><span class="fl f3" aria-hidden="true"></span></div>
     </div>
+    <nav class="lib-tabs hide" id="libTabs" role="tablist" aria-label="Secciones de tu biblioteca">
+      <button type="button" role="tab" data-libtab="inicio" aria-selected="true"><span aria-hidden="true">🏠</span>Inicio</button>
+      <button type="button" role="tab" data-libtab="logros" aria-selected="false"><span aria-hidden="true">🏆</span>Mis logros<i class="lt-dot hide" id="logrosDot" aria-hidden="true"></i></button>
+    </nav>
+    <section class="logros hide" id="logros" aria-labelledby="lgTit">
+      <div class="lg-h"><h2 id="lgTit">🏆 Mis logros</h2><p>Tu recorrido del año: figuritas, llaves, cofres y regalos. ¡Cada material que usás suma!</p></div>
+      <div class="lg-grid">
+        <article class="lg-card lg-anio" data-lg="prog,anualBtn"><h3>📈 Tu año en el aula</h3><div class="lg-slot" data-slot="prog"></div><div class="lg-slot" data-slot="anualBtn"></div></article>
+        <article class="lg-card lg-cofre" data-lg="cofreHero"><h3>🎁 Cofre de la efeméride</h3><div class="lg-slot lg-center" data-slot="cofreHero"></div></article>
+        <article class="lg-card lg-llaves" data-lg="llaves"><h3>🔑 Tus llaves</h3><div class="lg-slot" data-slot="llaves"></div></article>
+        <article class="lg-card lg-album" data-lg="figBtn"><h3>📒 Álbum de figuritas</h3><p class="lg-p">Juntá figuritas usando tus materiales y completá el álbum del año.</p><div class="lg-slot" data-slot="figBtn"></div></article>
+        <article class="lg-card lg-seno" data-lg="senoBtn"><h3>👩‍🏫 Tu seño</h3><p class="lg-p">Creá tu personaje para que te salude en tu biblioteca.</p><div class="lg-slot" data-slot="senoBtn"></div></article>
+        <article class="lg-card lg-part" data-lg="extras"><h3>💬 Participá</h3><div class="lg-slot" data-slot="extras"></div></article>
+      </div>
+      <div class="lg-vacio hide" id="lgVacio"><span aria-hidden="true">🌱</span><b>Tus logros aparecen acá</b><p>Descargá y usá tus materiales para empezar a juntar figuritas, llaves y regalos.</p></div>
+    </section>
     <div id="adminBox" class="admin hide"></div>
     <div id="notice"></div>
+    <div id="cupInicio" class="hide"></div>
     <div class="sec-h" id="misH"><div><h2>📚 Mis materiales</h2><p id="misSub">Tocá un material para descargarlo o abrirlo.</p></div><span class="sec-n" id="misN"></span></div>
     <div class="tools" id="tools">
       <div class="chips" id="chips" role="group" aria-label="Filtrar por tipo"></div>
@@ -1101,7 +1184,7 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
   <button type="button" data-ir-a="top" aria-current="true"><span>🏠</span>Inicio</button>
   <button type="button" data-ir-a="#cal"><span>📅</span>Fechas</button>
   <button type="button" data-ir-a="#tools"><span>📚</span>Materiales</button>
-  <button type="button" data-ir-a="tapa"><span>🏫</span>Mi tapa</button>
+  <button type="button" data-ir-a="logros"><span>🏆</span>Logros</button>
 </nav>
 <div class="tirar" id="tirar" aria-hidden="true">↻</div>
 <div class="invitar" id="invitar" role="dialog" aria-label="Instalar Mi biblioteca"><img src="icon192.png" alt="" onerror="this.remove()" /><div><b>Tené tu biblioteca a un toque</b><span>Agregala a la pantalla de inicio de tu celular, como una app.</span></div><div class="inv-acts"><button class="btn btn-ghost btn-sm" type="button" id="invNo">Ahora no</button><button class="btn btn-primary btn-sm" type="button" id="invSi">Agregar</button></div></div>
@@ -1251,6 +1334,9 @@ async function api(body) {
   if (m && k) { store.set(PEND, { m, k }, sessionStorage); p.delete("m"); p.delete("k"); history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p : "") + location.hash); }
 })();
 const pend = () => store.get(PEND, sessionStorage) || {};
+// "Ver como" desde el Panel de Gestión: biblioteca.html#como=correo (solo funciona si entraste como administradora)
+const COMO_K = "cofre-biblioteca-como";
+(function () { const m = /(?:^#|&)como=([^&]+)/.exec(location.hash || ""); if (!m) return; let v = ""; try { v = decodeURIComponent(m[1]).trim().toLowerCase(); } catch {} if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) store.set(COMO_K, v, sessionStorage); history.replaceState(null, "", location.pathname + location.search); })();
 
 function ver(id) { ["#vLogin", "#vLib", "#vLoad", "#vVerif"].forEach((v) => $(v).classList.toggle("hide", v !== id)); $("#barra").classList.toggle("hide", id !== "#vLib"); document.body.classList.toggle("con-barra", id === "#vLib"); $("#salir").classList.toggle("hide", id === "#vLogin" || id === "#vVerif"); $("#miTapa").classList.toggle("hide", id === "#vLogin" || id === "#vVerif"); $("#decorar").classList.toggle("hide", id === "#vLogin" || id === "#vVerif"); if (id === "#vLogin" || id === "#vVerif") $("#instalar").classList.add("hide"); }
 function msg(el, t, tipo = "err") { el.className = "msg " + (t ? tipo : ""); el.textContent = t || ""; }
@@ -1292,8 +1378,9 @@ $("#fCode").onsubmit = async (e) => {
 // ---------- Biblioteca ----------
 async function cargar(fresco) {
   if (!fresco) ver("#vLoad");
-  try { mostrar(await api({ accion: "mis", token: sesion.token, ...pend(), ...(verComo ? { como: verComo } : {}), ...(fresco ? { fresco: true } : {}) })); }
-  catch (e) { if ((e instanceof TypeError || !navigator.onLine) && mostrarSinConexion()) return; if (sesion) { ver("#vLib"); $("#grid").innerHTML = ""; $("#notice").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)} <button class="btn-link" onclick="cargar()">Reintentar</button></div></div>`; } else toast(e.message); }
+  const comoP = !verComo ? store.get(COMO_K, sessionStorage) : null;
+  try { mostrar(await api({ accion: "mis", token: sesion.token, ...pend(), ...(verComo ? { como: verComo } : comoP ? { como: comoP } : {}), ...(fresco ? { fresco: true } : {}) })); }
+  catch (e) { if (comoP) { store.del(COMO_K, sessionStorage); return cargar(fresco); } if ((e instanceof TypeError || !navigator.onLine) && mostrarSinConexion()) return; if (sesion) { ver("#vLib"); $("#grid").innerHTML = ""; $("#notice").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(e.message)} <button class="btn-link" onclick="cargar()">Reintentar</button></div></div>`; } else toast(e.message); }
 }
 const TIPOS = { cuadernillo: ["📘", "Cuadernillo", "Cuadernillos"], plataforma: ["🎮", "Plataforma", "Plataformas"], juego: ["🧩", "Juego", "Juegos"] };
 const tam = (b) => (b >= 1e6 ? (b / 1e6).toFixed(1).replace(".", ",") + " MB" : b ? Math.max(1, Math.round(b / 1e3)) + " KB" : "");
@@ -1308,6 +1395,7 @@ function mostrar(r) {
   const cant = `${n} ${n === 1 ? "material" : "materiales"}`;
   $("#who").textContent = r.admin && !r.como ? `Administrador · catálogo completo · ${cant}` : r.admin ? `${r.email} · ${cant}` : r.email;
   window.__esAdmin = !!r.admin; recordatorioOn = !!r.recordatorio;
+  { const cm = store.get(COMO_K, sessionStorage); if (cm) { store.del(COMO_K, sessionStorage); if (r.admin && r.como) { verComo = r.como; filtro = "todos"; } else if (r.admin && !r.como && cm !== r.email) { verComo = cm; filtro = "todos"; setTimeout(() => cargar(), 0); } else if (!r.admin) toast("Para ver la biblioteca de una docente, entrá con tu cuenta de administradora."); } }
   if (r.admin) pintarAdmin(r); else $("#adminBox").classList.add("hide");
   const nombreDe = (id) => (materiales.find((m) => m.id === id) || {}).nombre || "tu material";
   let html = "";
@@ -1315,7 +1403,7 @@ function mostrar(r) {
   else if (r.reclamo === "sin-orden") html = `<div class="notice warn"><span class="ic">🔎</span><div><b>No encontramos esa compra con ${esc(r.email)}.</b> Si compraste con otro correo, tocá "Salir" y entrá con ese. Si pagaste hace unos minutos, esperá un ratito y volvé a tocar "Descargar" en tu compra. ¿Sigue sin aparecer? <a href="${esc(CONFIG.whatsapp)}" target="_blank" rel="noopener">Escribinos</a>.</div></div>`;
   else if (r.reclamo === "enlace-invalido") html = `<div class="notice warn"><span class="ic">🔗</span><div><b>Ese enlace no es válido.</b> Usá el botón "Descargar" del correo de tu compra, o <a href="${esc(CONFIG.whatsapp)}" target="_blank" rel="noopener">escribinos</a>.</div></div>`;
   else if (r.reclamo === "revocado") html = `<div class="notice warn"><span class="ic">ℹ️</span><div>Ese material no está habilitado para este correo. <a href="${esc(CONFIG.whatsapp)}" target="_blank" rel="noopener">Escribinos</a> si creés que es un error.</div></div>`;
-  $("#notice").innerHTML = html;
+  $("#notice").innerHTML = html + novedadClave();
   const cuenta = materiales.reduce((a, m) => ((a[m.tipo] = (a[m.tipo] || 0) + 1), a), {});
   const tipos = Object.keys(TIPOS).filter((t) => cuenta[t]);
   $("#tools").classList.toggle("hide", !n); $("#misN").textContent = n ? `${n} ${n === 1 ? "material" : "materiales"}` : ""; pintarVistas(); pintarHero(r); pintarCofreHero(r); pintarLlaves(r); pintarBotonAnual(r); pintarExtras(r); pintarCielo(); pintarSeno(r); pintarFiguritas(r);
@@ -1384,6 +1472,21 @@ const LIBS = {
   pdfjs: ["vendor/pdf.min.js", "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"],
   pdfjsWorker: ["vendor/pdf.worker.min.js", "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js"],
 };
+// ---------- Contraseña propia de cada docente (PRUEBA: con activa: false se apaga y todo queda como antes) ----------
+// modo "abrir": el PDF pide su contraseña para abrirse · modo "editar": abre sin contraseña pero no se puede editar
+const CLAVE_PDF = { activa: true, modo: "abrir" };
+LIBS.pdfCifrado = ["vendor/pdf-lib-cifrado.min.js", "https://cdn.jsdelivr.net/npm/@cantoo/pdf-lib@2.11.1/dist/pdf-lib.min.js"];
+const libPdf = () => (CLAVE_PDF.activa ? LIBS.pdfCifrado : LIBS.pdf);
+// Laura4821: primer nombre (primera letra en mayúscula) + 4 números que salen siempre iguales de su correo, todo junto
+async function clavePDF(email, nombre) {
+  const mail = String(email || "").trim().toLowerCase(); if (!mail) return "";
+  const base = String(nombre || "").trim().split(/\s+/)[0] || (mail.split("@")[0].match(/[a-zñáéíóúü]+/i) || [""])[0];
+  const limpio = base.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z]/g, "").slice(0, 10) || "cofre", pre = limpio[0].toUpperCase() + limpio.slice(1);
+  const h = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(mail + "|cofre-pdf-1")));
+  return pre + String((((h[0] << 24) | (h[1] << 16) | (h[2] << 8) | h[3]) >>> 0) % 10000).padStart(4, "0");
+}
+async function miClave() { const r = ultimaRespuesta || {}; return clavePDF(r.email || (sesion && sesion.email), r.nombre); }
+function claveAzar() { const a = new Uint8Array(18); crypto.getRandomValues(a); return Array.from(a, (x) => x.toString(16).padStart(2, "0")).join(""); }
 const cargados = {};
 function unScript(src) { return new Promise((ok, mal) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => { s.remove(); mal(); }; document.head.appendChild(s); }); }
 function cargarScript(srcs) {
@@ -1454,6 +1557,8 @@ async function personalizar(bytes, lic, opts = {}) {
   });
   doc.setSubject(seguro(`Licencia ${lic.codigo}${titular ? " · " + titular : ""}`));
   doc.setKeywords([lic.codigo, "Cofre Didáctico", "licencia de uso personal"]);
+  if (CLAVE_PDF.activa && opts.clave && typeof doc.encrypt === "function") doc.encrypt({ userPassword: CLAVE_PDF.modo === "abrir" ? opts.clave : "", ownerPassword: claveAzar(), algorithm: "AES-128",
+    permissions: { printing: "highResolution", modifying: false, copying: true, annotating: true, fillingForms: true, contentAccessibility: true, documentAssembly: false } });
   return await doc.save({ useObjectStreams: false });
 }
 function guardar(datos, nombre, tipo = "application/pdf") {
@@ -1473,18 +1578,19 @@ async function descargar(b, material, archivo, paginas, opts = {}) {
   if (!(await confirmarDatos(fa && fa.tam))) return;
   const st = estadoBoton(b); b.disabled = true; st.set("Preparando…");
   try {
-    const libs = /\.pdf$/i.test(archivo) ? Promise.all([cargarScript(LIBS.pdf), cargarScript(LIBS.qr)]) : null;
+    const libs = /\.pdf$/i.test(archivo) ? Promise.all([cargarScript(libPdf()), cargarScript(LIBS.qr)]) : null;
     const r = await obtener(material, archivo, st.set);
     if (!r.bytes) { const a = document.createElement("a"); a.href = r.url; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); toast("Descarga iniciada ✓"); return; }
     st.set("Personalizando tu copia…", 1); armando(true, "Imprimiendo tu nombre y tu código"); await libs;
+    const clave = CLAVE_PDF.activa ? await miClave() : "";
     let final, nombre = archivo;
     try {
       if (opts.bn) {
         armando(true, "Pasando a blanco y negro");
         const bn = await convertirBN(r.bytes, paginas, (k, n) => { st.set(`Blanco y negro ${k}/${n}`, k / n); $("#armandoT").textContent = `Página ${Math.min(k + 1, n)} de ${n} en blanco y negro`; });
         armando(true, "Imprimiendo tu nombre y tu código");
-        final = await personalizar(bn, r.licencia, { tapa: paginas && paginas[0] !== 0 ? "" : textoTapa(tapaGuardada()) });
-      } else final = await personalizar(r.bytes, r.licencia, { tapa: textoTapa(tapaGuardada()), paginas });
+        final = await personalizar(bn, r.licencia, { clave, tapa: paginas && paginas[0] !== 0 ? "" : textoTapa(tapaGuardada()) });
+      } else final = await personalizar(r.bytes, r.licencia, { clave, tapa: textoTapa(tapaGuardada()), paginas });
     }
     catch (err) {
       console.warn("No se pudo personalizar", err);
@@ -1494,7 +1600,8 @@ async function descargar(b, material, archivo, paginas, opts = {}) {
     }
     if (paginas || opts.bn) nombre = archivo.replace(/\.pdf$/i, "") + ` (${[paginas ? "pags. " + rangoTexto(paginas) : "", opts.bn ? "B-N para fotocopia" : ""].filter(Boolean).join(", ")}).pdf`;
     guardar(final, nombre); armando(false);
-    toast(final === r.bytes ? "Descarga lista ✓" : `Tu copia personalizada está lista ✓ (${r.licencia.codigo})`);
+    toast(final === r.bytes ? "Descarga lista ✓" : clave && CLAVE_PDF.modo === "abrir" ? `Lista ✓ Para abrirla, tu contraseña es ${clave}` : `Tu copia personalizada está lista ✓ (${r.licencia.codigo})`);
+    if (final !== r.bytes && clave && CLAVE_PDF.modo === "abrir" && store.get(CLAVE_VISTO) !== clave) setTimeout(() => tutorialClave(clave, true), 900);
     if (final !== r.bytes) { festejo(); vibrar(); }
     if (!window.__esAdmin) { sumarSemana(material); marcarDescargado(material, archivo); pintar(); }
   } catch (err) { if (err.limite) abrirLimite(material, err.limite, () => descargar(b, material, archivo, paginas, opts)); else toast(err.message); }
@@ -1539,7 +1646,7 @@ let selector = null;
 async function abrirSelector(b, material, archivo) {
   const st = estadoBoton(b); b.disabled = true; st.set("…");
   try {
-    const libs = Promise.all([cargarScript(LIBS.pdfjs), cargarScript(LIBS.pdf), cargarScript(LIBS.qr)]);
+    const libs = Promise.all([cargarScript(LIBS.pdfjs), cargarScript(libPdf()), cargarScript(LIBS.qr)]);
     const k = material + "|" + archivo; let bytes = cacheBytes.get(k);
     if (!bytes) { const r = await api({ accion: "descargar", token: sesion.token, material, archivo, dispositivo: DISPOSITIVO, ...(verComo ? { como: verComo } : {}) }); bytes = await bajar(r.url, (p) => st.set(Math.round(p * 100) + "%", p)); cacheBytes.set(k, bytes); while (cacheBytes.size > 2) cacheBytes.delete(cacheBytes.keys().next().value); }
     await libs;
@@ -1814,6 +1921,7 @@ function pintarHero(r) {
   $("#heroF").textContent = r.admin && !r.como ? "Así ven las docentes su biblioteca. Desde acá gestionás todo." : f;
   $("#bunting").innerHTML = Array.from({ length: 22 }, (_, i) => `<i style="background:${colores[i % colores.length]};${colores[i % colores.length] === "#FFFFFF" ? "box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)" : ""}"></i>`).join("");
   document.querySelectorAll("#heroArt .fl").forEach((el, i) => (el.textContent = flotan[i]));
+  pintarClave();
   // progreso del año: materiales con archivos que ya descargó este año
   const prog = $("#prog"), conArch = materiales.filter((m) => (m.archivos || []).length), usados = conArch.filter((m) => m.usado).length;
   if (modoGestor() || !conArch.length) { prog.classList.add("hide"); return; }
@@ -1844,6 +1952,77 @@ function htmlLineaDeTiempo() {
 document.addEventListener("click", (e) => { const t = e.target.closest("[data-tienda]"); if (t) location.href = "p/" + encodeURIComponent(t.dataset.tienda) + ".html"; });
 
 // ---------- Festejo al terminar una descarga ----------
+async function pintarClave() { const box = $("#clavePdf"); if (!box) return; const r = ultimaRespuesta || {};
+  if (!CLAVE_PDF.activa || CLAVE_PDF.modo !== "abrir" || (modoGestor() && !r.como)) { box.classList.add("hide"); return; }
+  const c = await miClave(); if (!c) { box.classList.add("hide"); return; }
+  const visto = store.get(CLAVE_VISTO) === c;
+  box.innerHTML = `<span class="cp-ic" aria-hidden="true">🔑</span><span class="cp-tx"><small>${r.como ? "Su contraseña" : "Tu contraseña"}${visto ? "" : ' <em class="cp-new">NUEVO</em>'}</small><b translate="no">${esc(c)}</b></span><button class="btn btn-ghost btn-sm" type="button" id="claveCopiar">Copiar</button><button class="cp-q" type="button" id="claveAyuda" aria-label="Cómo se usa la contraseña">?</button>`;
+  box.classList.remove("hide"); box.classList.toggle("pulso", !visto);
+  $("#claveCopiar").onclick = () => copiarClave(c);
+  $("#claveAyuda").onclick = () => tutorialClave(c); }
+const CLAVE_VISTO = "cofre-clave-tuto";
+async function copiarClave(c, txt) { try { await navigator.clipboard.writeText(txt || c); toast(txt ? "Mensaje copiado ✓" : `Contraseña copiada ✓ ${c}`); } catch { toast(txt ? "No se pudo copiar" : "Tu contraseña: " + c); } }
+// partes de la contraseña: primera letra (mayúscula), resto del nombre (minúsculas) y números
+function partesClave(c) { const m = String(c).match(/^([A-Z])([a-z]*)(\d+)$/); return m ? { may: m[1], min: m[2], num: m[3] } : { may: c[0] || "", min: c.slice(1).replace(/\d/g, ""), num: c.replace(/\D/g, "") }; }
+function chipsClave(c) { const P = partesClave(c), ch = (t, k) => `<span class="ck-ch ${k}">${esc(t)}</span>`;
+  return `<div class="ck-chips" translate="no"><span class="ck-g"><span class="ck-row">${ch(P.may, "may")}</span><small>Mayúscula</small></span>${P.min ? `<span class="ck-g"><span class="ck-row">${[...P.min].map((x) => ch(x, "min")).join("")}</span><small>minúsculas</small></span>` : ""}<span class="ck-g"><span class="ck-row">${[...P.num].map((x) => ch(x, "num")).join("")}</span><small>números</small></span></div>`; }
+function novedadClave() { const r = ultimaRespuesta || {}; if (!CLAVE_PDF.activa || CLAVE_PDF.modo !== "abrir" || modoGestor() || store.get("cofre-clave-novedad") === "x") return "";
+  return `<div class="notice nov-clave" id="novClave"><span class="ic">🔐</span><div><b>Novedad en tu biblioteca:</b> ahora cada PDF que descargás queda protegido con <b>tu contraseña personal</b>, para que tus materiales sean solo tuyos. <span class="nov-acts"><button class="btn btn-primary btn-sm" type="button" data-tutoclave>Ver cómo funciona · 1 minuto</button><button class="btn btn-ghost btn-sm" type="button" data-novx>Ahora no</button></span></div></div>`; }
+document.addEventListener("click", async (e) => { const t = e.target; if (t.closest && t.closest("[data-tutoclave]")) { e.preventDefault(); tutorialClave(await miClave()); } if (t.closest && t.closest("[data-novx]")) { store.set("cofre-clave-novedad", "x"); const n = $("#novClave"); if (n) n.remove(); } });
+// ---------- Tutorial interactivo de la contraseña (4 pasos) ----------
+const TUTO = { paso: 0, c: "", tipeo: 0, dev: "cel" };
+function tutorialClave(c, recienDescargado) { if (!c) return; let d = $("#dlgClave");
+  if (!d) { d = document.createElement("dialog"); d.id = "dlgClave"; d.className = "dlg tuto-dlg"; d.setAttribute("aria-labelledby", "tutoTit"); document.body.appendChild(d);
+    d.addEventListener("click", (e) => { const b = e.target.closest("button,a"); if (e.target === d) return cerrarTuto(); if (!b) return; const k = b.dataset;
+      if (k.tx != null) return cerrarTuto(); if (k.tsig != null) return TUTO.paso >= 3 ? cerrarTuto(true) : irTuto(TUTO.paso + 1); if (k.tatras != null) return irTuto(TUTO.paso - 1); if (k.tdot != null) return irTuto(+k.tdot);
+      if (k.tcopy != null) return copiarClave(TUTO.c); if (k.tdev) { TUTO.dev = k.tdev; return irTuto(1); } if (k.tmsg != null) return copiarClave(TUTO.c, msgFoto(TUTO.c)); if (k.tver != null) { const i = $("#tutoIn"); if (i) { i.type = i.type === "password" ? "text" : "password"; b.textContent = i.type === "password" ? "👁 Ver" : "🙈 Ocultar"; i.focus(); } } });
+    d.addEventListener("input", (e) => { if (e.target.id === "tutoIn") chequearPractica(e.target.value); });
+    d.addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.id === "tutoIn") { e.preventDefault(); chequearPractica(e.target.value, true); } });
+    d.addEventListener("cancel", (e) => { e.preventDefault(); cerrarTuto(); }); }
+  Object.assign(TUTO, { c, paso: 0, recien: !!recienDescargado, ok: false }); irTuto(0); if (!d.open) d.showModal(); }
+const msgFoto = (c) => `¡Hola! Te paso un PDF para imprimir. Está protegido: cuando lo abras te va a pedir una contraseña. La contraseña es: ${c}\n(con la primera letra en mayúscula y todo junto, sin espacios). ¡Gracias!`;
+function irTuto(n) { const d = $("#dlgClave"); if (!d) return; clearInterval(TUTO.tipeo); TUTO.paso = Math.max(0, Math.min(3, n)); const c = TUTO.c, P = partesClave(c);
+  const pasos = [
+    () => `<div class="tu-hero"><span class="tu-big" aria-hidden="true">${TUTO.recien ? "🎉" : "🔐"}</span></div>
+      <h3 id="tutoTit">${TUTO.recien ? "¡Tu PDF ya se descargó!" : "Tu contraseña personal"}</h3>
+      <p>${TUTO.recien ? "Quedó a tu nombre y protegido con tu contraseña personal. Esta es:" : "Cada material que descargás de tu biblioteca queda a tu nombre y se abre con esta contraseña:"}</p>
+      <div class="tu-code" translate="no">${esc(c)}<button class="btn btn-ghost btn-sm" type="button" data-tcopy>📋 Copiar</button></div>
+      ${chipsClave(c)}
+      <p class="tu-nota">Es <b>tu nombre con la primera letra en mayúscula</b> y tus números, <b>todo junto</b>: sin espacios, sin guiones ni puntos. Es siempre la misma para todos tus materiales.</p>`,
+    () => `<h3 id="tutoTit">Así te la va a pedir</h3>
+      <p>Cuando abras el PDF aparece un cartelito como este. Escribí tu contraseña y tocá <b>Abrir</b>.</p>
+      <div class="tu-tabs" role="tablist"><button type="button" role="tab" data-tdev="cel" aria-selected="${TUTO.dev === "cel"}">📱 En el celular</button><button type="button" role="tab" data-tdev="pc" aria-selected="${TUTO.dev === "pc"}">💻 En la compu</button></div>
+      ${TUTO.dev === "cel" ? `<div class="tu-phone"><div class="tu-notch"></div><div class="tu-pdlg"><div class="tu-lock">🔒</div><b>Documento protegido</b><small>Ingresá la contraseña para abrir el archivo</small><div class="tu-fake"><span id="tutoTipeo"></span><i class="tu-cur"></i></div><div class="tu-fbtns"><span>Cancelar</span><span class="pri">Abrir</span></div></div></div>`
+        : `<div class="tu-pc"><div class="tu-bar"><i></i><i></i><i></i><span>Material.pdf</span></div><div class="tu-pcin"><div class="tu-lock">🔒</div><b>Este archivo está protegido con contraseña</b><small>Ingresá la contraseña del documento</small><div class="tu-fake wide"><span id="tutoTipeo"></span><i class="tu-cur"></i></div><span class="tu-pbtn">Enviar</span></div></div>`}
+      <p class="tu-nota">${TUTO.dev === "cel" ? "💡 En el celular, si el teclado pone sola la primera letra en mayúscula, ¡mejor! Las demás van en minúscula." : "💡 Funciona igual en Chrome, Edge, Adobe Reader o cualquier programa de PDF."}</p>`,
+    () => `<h3 id="tutoTit">¡Practicá acá! ✍️</h3>
+      <p>Escribí tu contraseña como la vas a poner en el PDF. Te avisamos si quedó bien.</p>
+      <div class="tu-prac"><input class="inp" id="tutoIn" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="text" placeholder="Escribí tu contraseña" aria-describedby="tutoMsg" /><button class="btn btn-ghost btn-sm" type="button" data-tver>🙈 Ocultar</button></div>
+      <div class="tu-msg" id="tutoMsg" role="status" aria-live="polite">Pista: empieza con <b translate="no">${esc(P.may)}</b> mayúscula y termina con <b>${P.num.length} números</b>.</div>
+      <div class="tu-check" id="tutoChk">${[["may", `Empieza con “${P.may}” mayúscula`], ["min", "Las letras que siguen, en minúscula"], ["num", `Termina con los ${P.num.length} números`], ["esp", "Todo junto, sin espacios ni símbolos"]].map(([k, t]) => `<span data-ck="${k}"><i></i>${esc(t)}</span>`).join("")}</div>`,
+    () => `<h3 id="tutoTit">¿Y para imprimir? 🖨️</h3>
+      <div class="tu-opts"><div class="tu-opt"><span>🏠</span><div><b>Si imprimís vos</b><small>Abrís el PDF, ponés tu contraseña e imprimís como siempre. La calidad es la de siempre: alta.</small></div></div>
+        <div class="tu-opt"><span>🏪</span><div><b>Si lo llevás a la fotocopiadora</b><small>Mandales el PDF y también tu contraseña. Te dejamos el mensaje listo:</small><div class="tu-oacts"><a class="btn btn-primary btn-sm" href="https://wa.me/?text=${encodeURIComponent(msgFoto(c))}" target="_blank" rel="noopener">💬 Mandar por WhatsApp</a><button class="btn btn-ghost btn-sm" type="button" data-tmsg>📋 Copiar mensaje</button></div></div></div>
+        <div class="tu-opt"><span>🔑</span><div><b>¿Te la olvidaste?</b><small>No pasa nada: siempre la ves arriba de tu biblioteca, con el botón para copiarla.</small></div></div></div>
+      <p class="tu-nota">🛡️ Tus materiales quedan a tu nombre: así cuidamos el trabajo de todas y podemos seguir creando recursos nuevos para tu aula. ¡Gracias! 💛</p>`];
+  d.innerHTML = `<div class="tu-in"><button class="tu-x" type="button" data-tx aria-label="Cerrar">✕</button><div class="tu-body tu-p${TUTO.paso}">${pasos[TUTO.paso]()}</div>
+    <div class="tu-foot"><button class="btn btn-ghost" type="button" data-tatras ${TUTO.paso ? "" : "hidden"}>← Atrás</button><span class="tu-dots">${[0, 1, 2, 3].map((i) => `<button type="button" data-tdot="${i}" class="${i === TUTO.paso ? "on" : i < TUTO.paso ? "ok" : ""}" aria-label="Paso ${i + 1} de 4"></button>`).join("")}</span><button class="btn btn-primary" type="button" data-tsig>${TUTO.paso === 3 ? "¡Listo! 🎉" : TUTO.paso === 2 && !TUTO.ok ? "Saltar →" : "Siguiente →"}</button></div></div>`;
+  if (TUTO.paso === 1) { const el = $("#tutoTipeo"); let i = 0; const go = () => { if (!el.isConnected) return clearInterval(TUTO.tipeo); i = i > c.length + 6 ? 0 : i + 1; el.textContent = c.slice(0, Math.min(i, c.length)); el.dataset.n = Math.min(i, c.length); }; TUTO.tipeo = setInterval(go, 260); }
+  if (TUTO.paso === 2) setTimeout(() => { const i = $("#tutoIn"); if (i) i.focus(); }, 60); }
+function chequearPractica(v, enter) { const c = TUTO.c, P = partesClave(c), msg = $("#tutoMsg"), chk = $("#tutoChk"); if (!msg) return;
+  const t = String(v), sinEsp = t.trim(), letras = sinEsp.replace(/\d+$/, ""), nums = (sinEsp.match(/\d+$/) || [""])[0];
+  const est = { may: sinEsp[0] === P.may, min: letras.slice(1) === P.min, num: nums === P.num, esp: !!t && !/[\s\-_.·,]/.test(t) };
+  chk.querySelectorAll("[data-ck]").forEach((el) => el.classList.toggle("ok", !!t && est[el.dataset.ck]));
+  let txt, cls = "";
+  if (!t) txt = `Pista: empieza con <b>${esc(P.may)}</b> mayúscula y termina con <b>${P.num.length} números</b>.`;
+  else if (t === c) { txt = "¡Perfecto! 🎉 Así es como la vas a escribir en tus PDF."; cls = "ok"; if (!TUTO.ok) { TUTO.ok = true; try { festejo(); vibrar(); } catch {} const s = $("#dlgClave [data-tsig]"); if (s) s.textContent = "Siguiente →"; } }
+  else if (sinEsp === c) { txt = "Casi: sacale el espacio del principio o del final."; cls = "warn"; }
+  else if (/[\s\-_.·,]/.test(t)) { txt = "Va todo junto: sin espacios, guiones ni puntos."; cls = "warn"; }
+  else if (sinEsp.toLowerCase() === c.toLowerCase()) { txt = sinEsp[0] !== P.may ? `Casi: la primera letra va en mayúscula (<b>${esc(P.may)}</b>).` : "Casi: después de la primera, las letras van en minúscula."; cls = "warn"; }
+  else if (c.startsWith(sinEsp)) txt = enter ? "Te falta un poquito, seguí escribiendo…" : "Vas bien… seguí escribiendo.";
+  else { txt = "Revisá: no coincide. Mirala arriba en el paso 1 o tocá ← Atrás."; cls = "warn"; }
+  msg.innerHTML = txt; msg.className = "tu-msg " + cls; }
+function cerrarTuto(terminado) { const d = $("#dlgClave"); clearInterval(TUTO.tipeo); if (d && d.open) d.close(); store.set(CLAVE_VISTO, TUTO.c); store.set("cofre-clave-novedad", "x"); const n = $("#novClave"); if (n) n.remove(); pintarClave(); if (terminado) toast("¡Listo! Ya sabés usar tu contraseña 🔑"); }
 function armando(on, texto) { const a = $("#armando"); if (texto) $("#armandoT").textContent = texto; a.classList.toggle("on", !!on); }
 function festejo() {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -2382,7 +2561,7 @@ function cupDibujar() {
     f.elements.activo.onchange = () => { f.classList.toggle("on", f.elements.activo.checked); f.elements.activo.parentElement.lastChild.textContent = f.elements.activo.checked ? " Activo" : " Apagado"; };
     f.onsubmit = async (e) => { e.preventDefault(); const m = f.querySelector("[data-cupmsg]"); m.textContent = "Guardando…"; try { await api({ accion: "cupon_guardar", token: sesion.token, cupon: datos(f) }); toast("Cupón guardado ✓"); await pintarCupAdm(); } catch (err) { m.textContent = err.message; } };
     f.querySelector("[data-cupprev]").onclick = () => { const c = datos(f), mm = c.mmdd || "01-01"; const prev = { tipo: c.id === "cumple" ? "cumple" : "fecha", titulo: c.titulo, codigo: (c.codigo || "CODIGO").toUpperCase(), porcentaje: c.porcentaje, mensaje: c.mensaje, transferencia: c.transferencia, dias: 0, anio: 2000, hasta: new Date(Date.now() + (+c.dias_despues || 7) * 864e5).toISOString().slice(0, 10), id: "prev" };
-      const tmp = document.createElement("div"); tmp.id = "extrasPrev"; const real = $("#extras"); const html = (() => { const save = real.innerHTML, cls = real.className; pintarExtras({ cupon: prev, cumple: "01-01", como: true }); const h = real.innerHTML; real.innerHTML = save; real.className = cls; return h; })();
+      const tmp = document.createElement("div"); tmp.id = "extrasPrev"; const real = $("#extras"); const html = (() => { const save = real.innerHTML, cls = real.className; window.__extrasPrev = true; try { pintarExtras({ cupon: prev, cumple: "01-01", como: true }); } finally { window.__extrasPrev = false; } const h = real.innerHTML; real.innerHTML = save; real.className = cls; return h; })();
       f.querySelector(".cupa-prev").innerHTML = html.replace(/id="cup(Copiar|Tienda|Cod)"/g, ""); };
     const del = f.querySelector("[data-cupdel]"); if (del) del.onclick = async () => { if (del.dataset.ok !== "1") { del.dataset.ok = "1"; del.textContent = "¿Seguro? Tocá de nuevo"; return; } try { await api({ accion: "cupon_borrar", token: sesion.token, id: C.cupones[+f.dataset.cupi].id }); pintarCupAdm(); } catch (err) { toast(err.message); } };
   });
@@ -2409,7 +2588,7 @@ function ideasDibujar() {
 }
 $("#adminBox").addEventListener("click", (e) => { const b = e.target.closest("[data-fdoc]"); if (!b) return; e.preventDefault(); e.stopPropagation(); abrirFichaDocente(b.dataset.fdoc); }, true);
 // ---------- Ventas por transferencia: registrar a mano a las docentes que compraron por Instagram ----------
-let trPre = null, trAbierto = false, trLista = null, trPrecios = null, trSel = new Set(), trCli = null, trBorrar = null;
+let trPre = null, trAbierto = false, trLista = null, trPrecios = null, trSel = new Set(), trCli = null, trBorrar = null, trMontoTocado = false, trEdit = null;
 async function trCargarPrecios() { if (trPrecios) return trPrecios; try { const j = await fetch("productos.json?v=" + Math.floor(Date.now() / 60000)).then((r) => r.json()); trPrecios = {}; (j.productos || []).forEach((p) => { if (p.id) trPrecios[p.id] = Number(p.precio) || 0; }); } catch { trPrecios = {}; } return trPrecios; }
 const plata = (n) => "$ " + Number(n || 0).toLocaleString("es-AR", { maximumFractionDigits: 2 });
 async function pintarTr() {
@@ -2418,6 +2597,7 @@ async function pintarTr() {
   await trCargarPrecios();
   const hoy = new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
   box.innerHTML = `<form class="trf" id="trF" novalidate autocomplete="off">
+      <div id="trEdBan" class="tr-edban hide"></div>
       <div class="trg">
         <label>Correo de la docente *<input class="inp" id="trEmail" type="email" inputmode="email" placeholder="docente@gmail.com" required /></label>
         <label>Nombre y apellido <small>(se imprime en su copia del PDF)</small><input class="inp" id="trNom" maxlength="80" placeholder="Ej.: María López" /></label>
@@ -2429,9 +2609,16 @@ async function pintarTr() {
       <div id="trCli" class="tr-cli hide"></div>
       <div class="trm-h"><b>Materiales que compró *</b><input class="inp" id="trBus" placeholder="Buscar material…" aria-label="Buscar material" /><span class="muted" id="trCnt"></span></div>
       <div class="trm" id="trMats"></div>
-      <div class="tr-acts"><button class="btn btn-primary" type="submit" id="trGo">Registrar y darle acceso</button><label><input type="checkbox" id="trMant" /> Dejar elegidos los mismos materiales para la próxima</label></div>
+      <div id="trDesg" class="tr-desg hide"></div>
+      <div class="tr-acts"><button class="btn btn-primary" type="submit" id="trGo">Registrar y darle acceso</button><button class="btn btn-ghost hide" type="button" id="trCancel">Cancelar la edición</button><label id="trMantL"><input type="checkbox" id="trMant" /> Dejar elegidos los mismos materiales para la próxima</label></div>
       <div id="trRes"></div>
     </form>
+    <details class="trx" id="trX"><summary>📋 Carga masiva <small>pegá varias docentes de una vez</small></summary>
+      <p class="muted">Una docente por renglón: <b>correo ; nombre ; @instagram ; monto ; fecha</b>. Solo el correo es obligatorio; si no ponés el monto, se usa la suma de los precios de sus materiales. A todas se les dan los <b>materiales marcados arriba</b>; si alguna compró otros, sumá al final una columna con sus nombres separados por «|».</p>
+      <textarea class="inp" id="trxTxt" rows="6" spellcheck="false" placeholder="maria@gmail.com; María López; @seno.maria; 7500; 03/10/2026&#10;laura@hotmail.com; Laura Gómez&#10;ana@gmail.com; Ana Ruiz; ; 12000; ; Malvinas | Día de la Bandera"></textarea>
+      <div class="tr-acts"><button type="button" class="btn" id="trxVer">Revisar la lista</button><button type="button" class="btn btn-primary hide" id="trxGo"></button></div>
+      <div id="trxRes"></div>
+    </details>
     <div id="trListaBox"></div>`;
   trMats(); trSug(); trPintarLista(); if (!trLista) trCargarLista();
   const F = $("#trF");
@@ -2439,6 +2626,10 @@ async function pintarTr() {
   $("#trMats").onchange = (e) => { const c = e.target.closest("input[data-mat]"); if (!c) return; if (c.checked) trSel.add(c.dataset.mat); else trSel.delete(c.dataset.mat); c.closest(".trc").classList.toggle("on", c.checked); trSug(); };
   $("#trEmail").onchange = $("#trEmail").onblur = () => trBuscarCliente();
   F.onsubmit = trRegistrar;
+  $("#trMonto").oninput = () => { const v = trNumero($("#trMonto").value); trMontoTocado = $("#trMonto").value.trim() !== "" && v !== trSuma(); trSug(); };
+  $("#trCancel").onclick = () => trSalirEdicion(true);
+  if (trEdit) trPintarEdicion();
+  $("#trxVer").onclick = trxRevisar; $("#trxGo").onclick = trxRegistrar; $("#trxTxt").oninput = () => { trxFilas = null; $("#trxGo").classList.add("hide"); };
   if (trPre) { const x = trPre; trPre = null; $("#trEmail").value = x.email; if (x.nombre) $("#trNom").value = x.nombre; if (x.instagram) $("#trIg").value = "@" + x.instagram; trBuscarCliente(); setTimeout(() => $("#trBus").focus(), 400); }
 }
 function trMats() { if (!resumen) return;
@@ -2447,7 +2638,15 @@ function trMats() { if (!resumen) return;
   box.innerHTML = L.length ? L.map((m) => `<label class="trc ${trSel.has(m.id) ? "on" : ""} ${ya.has(m.id) ? "ya" : ""}"><input type="checkbox" data-mat="${esc(m.id)}" ${trSel.has(m.id) ? "checked" : ""} /><span>${esc(m.nombre)}<em>${ya.has(m.id) ? "✓ ya lo tiene" : trPrecios && trPrecios[m.id] ? plata(trPrecios[m.id]) : m.tipo === "plataforma" ? "Plataforma" : ""}</em></span></label>`).join("") : '<div class="muted">No hay materiales con ese nombre.</div>';
   $("#trCnt").textContent = trSel.size ? `${trSel.size} elegido${trSel.size > 1 ? "s" : ""}` : "";
 }
-function trSug() { const s = [...trSel].reduce((a, id) => a + ((trPrecios && trPrecios[id]) || 0), 0); const el = $("#trSug"); if (el) el.textContent = s ? `(precio de lista: ${plata(s)})` : ""; const c = $("#trCnt"); if (c) c.textContent = trSel.size ? `${trSel.size} elegido${trSel.size > 1 ? "s" : ""}` : ""; }
+const trNumero = (v) => { const t = String(v || "").replace(/[^\d,.]/g, "").replace(/\.(?=\d{3}(\D|$))/g, "").replace(",", "."); return t === "" ? null : Number(t); };
+const trSuma = () => [...trSel].reduce((a, id) => a + ((trPrecios && trPrecios[id]) || 0), 0);
+function trSug() { const s = trSuma(), el = $("#trSug"), m = $("#trMonto"), dg = $("#trDesg"); if (m && !trMontoTocado) m.value = s ? String(s) : "";
+  if (el) el.textContent = s ? (trMontoTocado ? `(lista: ${plata(s)})` : "(suma de los materiales)") : "";
+  if (dg) { const L = [...trSel].map((id) => { const mt = (resumen && resumen.materiales || []).find((x) => x.id === id); return { n: mt ? mt.nombre : id, p: (trPrecios && trPrecios[id]) || 0 }; }), sin = L.filter((x) => !x.p), cob = trNumero(m && m.value), dif = cob != null ? cob - s : 0;
+    dg.classList.toggle("hide", !L.length);
+    dg.innerHTML = L.length ? `<div class="tr-dl">${L.map((x) => `<span>${esc(x.n)}<b>${x.p ? plata(x.p) : "sin precio"}</b></span>`).join("")}</div><div class="tr-dt"><span>Suma de los materiales</span><b>${plata(s)}</b></div>${trMontoTocado && cob != null && dif ? `<div class="tr-dd ${dif < 0 ? "desc" : ""}">${dif < 0 ? `Descuento de ${plata(-dif)}${s ? ` (${Math.round(-dif / s * 100)}%)` : ""}` : `${plata(dif)} más que la lista`} · <button type="button" class="btn-link" id="trUsarSuma">Usar la suma</button></div>` : ""}${sin.length ? `<div class="tr-dd">⚠️ ${sin.length === 1 ? "Un material no tiene" : sin.length + " materiales no tienen"} precio en la web: sumalo a mano en el monto.</div>` : ""}` : "";
+    const us = $("#trUsarSuma"); if (us) us.onclick = () => { trMontoTocado = false; trSug(); }; }
+  const c = $("#trCnt"); if (c) c.textContent = trSel.size ? `${trSel.size} elegido${trSel.size > 1 ? "s" : ""}` : ""; }
 async function trBuscarCliente() {
   const v = $("#trEmail").value.trim().toLowerCase(), box = $("#trCli"); if (!box) return;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { trCli = null; box.classList.add("hide"); trMats(); return; }
@@ -2462,31 +2661,80 @@ async function trBuscarCliente() {
   box.classList.remove("hide"); trMats();
 }
 async function trRegistrar(e) {
-  e.preventDefault(); const email = $("#trEmail").value.trim().toLowerCase();
+  e.preventDefault(); if (trEdit) return trGuardarEdicion(); const email = $("#trEmail").value.trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast("Escribí un correo válido."); $("#trEmail").focus(); return; }
   if (!trSel.size) { toast("Elegí al menos un material."); return; }
   const monto = $("#trMonto").value.replace(/[^\d,.]/g, "").replace(/\.(?=\d{3}(\D|$))/g, "").replace(",", ".");
   const b = $("#trGo"); b.disabled = true; b.textContent = "Registrando…";
   try {
     const r = await api({ accion: "registrar", token: sesion.token, email, nombre: $("#trNom").value, instagram: $("#trIg").value, fecha: $("#trFecha").value, total: monto === "" ? null : Number(monto), nota: $("#trNota").value, materiales: [...trSel] });
-    $("#trRes").innerHTML = `<div class="tr-ok">✅ Listo: <b>${esc(r.email)}</b> ya tiene ${esc(r.materiales.join(", "))} en su biblioteca.${r.yaTenia && r.yaTenia.length ? ` <span class="muted">(${esc(r.yaTenia.join(", "))} ya lo tenía)</span>` : ""} Cuando entre con ese correo lo va a ver.</div>`;
+    $("#trRes").innerHTML = `<div class="tr-ok">✅ Listo: <b>${esc(r.email)}</b> ya tiene ${esc(r.materiales.join(", "))} en su biblioteca.${r.yaTenia && r.yaTenia.length ? ` <span class="muted">(${esc(r.yaTenia.join(", "))} ya lo tenía)</span>` : ""} Cuando entre con ese correo lo va a ver.<br><button type="button" class="btn trx-bv" data-bv="${esc(JSON.stringify({ e: r.email, n: $("#trNom").value.trim(), m: [...(r.materiales || []), ...(r.yaTenia || [])] }))}">📋 Copiar mensaje de bienvenida</button></div>`;
     toast("Venta registrada ✓");
     ["#trEmail", "#trNom", "#trIg", "#trMonto", "#trNota"].forEach((id) => ($(id).value = "")); trCli = null; $("#trCli").classList.add("hide");
-    if (!$("#trMant").checked) trSel.clear(); trMats(); trSug(); $("#trEmail").focus();
+    if (!$("#trMant").checked) trSel.clear(); trMontoTocado = false; trMats(); trSug(); $("#trEmail").focus();
     trLista = null; await trCargarLista(); cargarResumen();
   } catch (err) { toast(err.message); $("#trRes").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${esc(err.message)}</div></div>`; }
   b.disabled = false; b.textContent = "Registrar y darle acceso";
 }
+// ---------- Carga masiva y mensaje de bienvenida ----------
+let trxFilas = null, trxBusy = false;
+const trxFold = (t) => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+function trBienvenida(email, nombre, mats) { const n = String(nombre || "").trim().split(" ")[0];
+  return `¡Hola${n ? " " + n : ""}! 💛 Ya tenés tus materiales de Cofre Didáctico en *Mi biblioteca*, para descargarlos cuando quieras:\n\n${(mats || []).map((m) => "📚 " + m).join("\n")}\n\n1️⃣ Entrá a https://cofredidactico.com.ar/biblioteca.html\n2️⃣ Escribí tu correo: ${email}\n3️⃣ Te llega un código de 6 números (mirá también en Spam o Promociones). Lo ponés y listo: no hace falta contraseña.\n\nCualquier duda me escribís 😊`; }
+document.addEventListener("click", async (e) => { const b = e.target.closest("[data-bv]"); if (!b) return; e.preventDefault(); try { const d = JSON.parse(b.dataset.bv); await navigator.clipboard.writeText(trBienvenida(d.e, d.n, d.m)); toast("Mensaje de bienvenida copiado ✓"); } catch { toast("No se pudo copiar el mensaje."); } });
+function trxParse(txt) { const hoy = new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10), mats = resumen.materiales.filter((m) => m.tipo !== "regalo"), vistos = new Set();
+  return String(txt || "").split(/\n+/).map((l) => l.trim()).filter(Boolean).map((l) => { const c = (/[;\t]/.test(l) ? l.split(/[;\t]/) : l.split(",")).map((x) => x.trim());
+    const f = { email: (c[0] || "").toLowerCase(), nombre: c[1] || "", instagram: (c[2] || "").replace(/^@/, ""), total: null, fecha: hoy, materiales: [...trSel], nombres: [], err: "" };
+    if (c[3]) { const n = Number(c[3].replace(/[^\d,.]/g, "").replace(/\.(?=\d{3}(\D|$))/g, "").replace(",", ".")); if (c[3].replace(/\D/g, "") && !isNaN(n)) f.total = n; }
+    if (c[4]) { const m = /^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/.exec(c[4]), i = /^(\d{4})-(\d{2})-(\d{2})$/.exec(c[4]); if (m) f.fecha = `${m[3].length === 2 ? "20" + m[3] : m[3]}-${m[2].padStart(2, "0")}-${m[1].padStart(2, "0")}`; else if (i) f.fecha = c[4]; else f.err = "fecha no reconocida (usá día/mes/año)"; if (!f.err && f.fecha > hoy) f.err = "la fecha es futura"; }
+    if (c[5]) { const ids = [], sin = []; c[5].split("|").map((x) => x.trim()).filter(Boolean).forEach((q) => { const k = trxFold(q), L = mats.filter((m) => trxFold(m.nombre).includes(k) || trxFold(m.id) === k); if (L.length === 1) ids.push(L[0].id); else sin.push(q + (L.length > 1 ? " (coincide con " + L.length + ")" : "")); }); f.materiales = [...new Set(ids)]; if (sin.length) f.err = "no encontré el material: " + sin.join(", "); }
+    f.nombres = f.materiales.map((id) => (mats.find((m) => m.id === id) || {}).nombre || id);
+    if (f.total == null) { const sm = f.materiales.reduce((a, id) => a + ((trPrecios && trPrecios[id]) || 0), 0); if (sm) { f.total = sm; f.auto = true; } }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) f.err = "correo no válido"; else if (vistos.has(f.email)) f.err = "correo repetido en la lista"; else if (!f.materiales.length && !f.err) f.err = "sin materiales: marcalos arriba o sumá la columna"; vistos.add(f.email); return f; }); }
+function trxPintar() { const box = $("#trxRes"), L = trxFilas || [], ok = L.filter((f) => !f.err && !f.hecho), go = $("#trxGo");
+  box.innerHTML = L.length ? `<div class="trx-t">${L.map((f) => `<div class="trx-r ${f.err ? "mal" : f.hecho ? "ok" : ""}"><b>${esc(f.email || "(sin correo)")}</b><span>${esc([f.nombre, f.instagram ? "@" + f.instagram : "", f.total != null ? plata(f.total) + (f.auto ? " (suma de lista)" : "") : "", f.fecha.split("-").reverse().join("/")].filter(Boolean).join(" · "))}</span><span class="muted">${esc(f.nombres.join(", "))}</span><em>${f.err ? "⚠️ " + esc(f.err) : f.hecho ? "✅ " + esc(f.hecho) + ` <button type="button" class="btn trx-bv" data-bv="${esc(JSON.stringify({ e: f.email, n: f.nombre, m: f.nombres }))}">📋 Bienvenida</button>` : f.estado || "Lista para registrar"}</em></div>`).join("")}</div>` : '<div class="muted">Pegá la lista y tocá “Revisar la lista”.</div>';
+  go.classList.toggle("hide", !ok.length); go.disabled = trxBusy; go.textContent = trxBusy ? "Registrando…" : `Registrar ${ok.length} docente${ok.length === 1 ? "" : "s"} y darles acceso`; }
+function trxRevisar() { if (!resumen) return; trxFilas = trxParse($("#trxTxt").value); if (!trxFilas.length) toast("Pegá al menos un renglón."); trxPintar(); }
+async function trxRegistrar() { if (trxBusy || !trxFilas) return; const L = trxFilas.filter((f) => !f.err && !f.hecho); if (!L.length) return; trxBusy = true; trxPintar(); let n = 0;
+  for (const f of L) { f.estado = "Registrando…"; trxPintar();
+    try { const r = await api({ accion: "registrar", token: sesion.token, email: f.email, nombre: f.nombre, instagram: f.instagram, fecha: f.fecha, total: f.total, nota: "Carga masiva", materiales: f.materiales }); f.hecho = r.yaTenia && r.yaTenia.length && !(r.materiales || []).length ? "ya los tenía" : "registrada"; n++; }
+    catch (err) { f.err = err.message || "no se pudo registrar"; } f.estado = ""; trxPintar(); }
+  trxBusy = false; trxPintar(); toast(`${n} docente${n === 1 ? "" : "s"} registrada${n === 1 ? "" : "s"} ✓`); trLista = null; await trCargarLista(); cargarResumen(); }
+// ---------- Editar una venta manual: se deshace y se vuelve a registrar con los datos nuevos (si falla, se restaura la original) ----------
+function trIdsDe(o) { if (Array.isArray(o.materiales) && o.materiales.length) return { ids: o.materiales.slice(), sin: [] }; const M = (resumen && resumen.materiales) || [], ids = [], sin = [];
+  (o.productos || []).forEach((n) => { const k = trxFold(n), m = M.find((x) => trxFold(x.nombre) === k) || M.find((x) => trxFold(x.id) === k); if (m) ids.push(m.id); else sin.push(n); }); return { ids: [...new Set(ids)], sin }; }
+const trFechaISO = (o) => { const d = new Date(o.fecha_orden || o.fecha); return isNaN(d) ? new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10) : new Date(+d - 3 * 3600e3).toISOString().slice(0, 10); };
+function trEditar(o) { const { ids, sin } = trIdsDe(o); trEdit = { o, ids, sin }; $("#trRes").innerHTML = ""; trSel = new Set(ids); trCli = null;
+  $("#trEmail").value = o.email || ""; $("#trNom").value = o.nombre || ""; $("#trIg").value = o.instagram ? "@" + o.instagram : ""; $("#trFecha").value = trFechaISO(o); $("#trNota").value = o.nota || "";
+  $("#trMonto").value = o.total != null ? String(o.total) : ""; trMontoTocado = o.total != null && Number(o.total) !== trSuma(); trMats(); trSug(); trPintarEdicion(); $("#trF").scrollIntoView({ behavior: "smooth", block: "start" }); setTimeout(() => $("#trNom").focus(), 350); }
+function trPintarEdicion() { const b = $("#trEdBan"); if (!b || !trEdit) return; const { o, sin } = trEdit; b.classList.remove("hide");
+  b.innerHTML = `✏️ <b>Editando la venta de ${esc(o.nombre || o.email)}</b> del ${esc(new Date(o.fecha_orden || o.fecha).toLocaleDateString("es-AR"))}. Cambiá lo que necesites y tocá «Guardar cambios».${sin.length ? `<br><span class="tr-warn">⚠️ No encontré en la biblioteca: ${esc(sin.join(", "))}. Si los querés mantener, marcalos de nuevo abajo.</span>` : ""}`;
+  $("#trGo").textContent = "Guardar cambios"; $("#trCancel").classList.remove("hide"); const ml = $("#trMantL"); if (ml) ml.classList.add("hide"); }
+function trSalirEdicion(limpiar) { trEdit = null; const b = $("#trEdBan"); if (b) { b.classList.add("hide"); b.innerHTML = ""; } $("#trGo").textContent = "Registrar y darle acceso"; $("#trCancel").classList.add("hide"); const ml = $("#trMantL"); if (ml) ml.classList.remove("hide");
+  if (limpiar) { ["#trEmail", "#trNom", "#trIg", "#trMonto", "#trNota"].forEach((id) => ($(id).value = "")); $("#trFecha").value = new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10); trSel.clear(); trCli = null; $("#trCli").classList.add("hide"); trMontoTocado = false; trMats(); trSug(); } }
+async function trGuardarEdicion() { const { o, ids } = trEdit, email = $("#trEmail").value.trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { toast("Escribí un correo válido."); $("#trEmail").focus(); return; }
+  if (!trSel.size) { toast("Elegí al menos un material."); return; }
+  const monto = trNumero($("#trMonto").value), nuevo = { email, nombre: $("#trNom").value, instagram: $("#trIg").value, fecha: $("#trFecha").value, total: monto, nota: $("#trNota").value, materiales: [...trSel] };
+  const b = $("#trGo"); b.disabled = true; b.textContent = "Guardando…";
+  try { await api({ accion: "deshacer_registro", token: sesion.token, orden: o.orden }); }
+  catch (err) { toast(err.message); b.disabled = false; b.textContent = "Guardar cambios"; return; }
+  try { const r = await api({ accion: "registrar", token: sesion.token, ...nuevo });
+    $("#trRes").innerHTML = `<div class="tr-ok">✅ Venta actualizada: <b>${esc(r.email)}</b> tiene ${esc(r.materiales.join(", "))}${nuevo.total != null ? ` · ${plata(nuevo.total)}` : ""}.<br><button type="button" class="btn trx-bv" data-bv="${esc(JSON.stringify({ e: r.email, n: nuevo.nombre.trim(), m: [...(r.materiales || []), ...(r.yaTenia || [])] }))}">📋 Copiar mensaje de bienvenida</button></div>`; toast("Venta actualizada ✓"); }
+  catch (err) { let rest = false; if (ids.length) { try { await api({ accion: "registrar", token: sesion.token, email: o.email, nombre: o.nombre || "", instagram: o.instagram || "", fecha: trFechaISO(o), total: o.total, nota: o.nota || "", materiales: ids }); rest = true; } catch {} }
+    $("#trRes").innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>No se pudieron guardar los cambios: ${esc(err.message)}. ${rest ? "Dejé la venta como estaba." : "<b>La venta original quedó deshecha</b>: registrala de nuevo con los datos del formulario."}</div></div>`; b.disabled = false; b.textContent = rest ? "Guardar cambios" : "Registrar y darle acceso"; if (!rest) trEdit = null; trLista = null; await trCargarLista(); cargarResumen(); return; }
+  b.disabled = false; trSalirEdicion(true); trLista = null; await trCargarLista(); cargarResumen(); }
 async function trCargarLista() { try { trLista = await api({ accion: "manuales", token: sesion.token }); } catch (e) { trLista = { registros: [], total: 0, error: e.message }; } trPintarLista(); }
 function trPintarLista() {
   const box = $("#trListaBox"); if (!box) return; if (!trLista) { box.innerHTML = '<div class="muted">Cargando ventas registradas…</div>'; return; }
   const L = trLista.registros, s = $("#trSum"); if (s) s.textContent = L.length ? `${L.length} registrada${L.length > 1 ? "s" : ""} · ${plata(trLista.total)}` : "registrá a las docentes que te compraron por Instagram";
   if (trLista.error) { box.innerHTML = `<div class="notice warn"><span class="ic">⚠️</span><div>${/desconocida/i.test(trLista.error) ? "Falta actualizar la función <b>biblioteca</b> en Supabase y correr <b>biblioteca-transferencias.sql</b> para usar esta sección." : "No se pudo cargar la lista: " + esc(trLista.error)}</div></div>`; return; }
   const filas = L.map((o) => `<tr><td class="muted">${esc(new Date(o.fecha_orden || o.fecha).toLocaleDateString("es-AR"))}</td><td><b>${esc(o.nombre || "—")}</b>${o.instagram ? ` <span class="muted">@${esc(o.instagram)}</span>` : ""}<div><button class="mail" type="button" data-fdoc="${esc(o.email)}" title="Ver su ficha">${esc(o.email)}</button></div>${o.nota ? `<div class="muted">📝 ${esc(o.nota)}</div>` : ""}</td><td>${esc((o.productos || []).join(" · "))}</td><td class="num">${o.total != null ? plata(o.total) : '<span class="muted">—</span>'}</td>
-    <td><button class="btn btn-ghost btn-sm" type="button" data-trdes="${esc(o.orden)}">${trBorrar === o.orden ? "¿Seguro? Tocá de nuevo" : "Deshacer"}</button></td></tr>`).join("");
+    <td class="tr-acc"><button class="btn btn-ghost btn-sm" type="button" data-tred="${esc(o.orden)}">✏️ Editar</button><button class="btn btn-ghost btn-sm" type="button" data-trdes="${esc(o.orden)}">${trBorrar === o.orden ? "¿Seguro? Tocá de nuevo" : "Deshacer"}</button></td></tr>`).join("");
   box.innerHTML = `<div class="tr-lh"><b>Registradas a mano (${L.length})</b>${L.length ? '<button class="btn-link" type="button" id="trCsv">⬇ Descargar planilla (CSV)</button>' : ""}</div>
     ${L.length ? `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>Fecha</th><th>Docente</th><th>Materiales</th><th style="text-align:right">Monto</th><th></th></tr></thead><tbody>${filas}</tbody></table></div>` : '<div class="muted">Todavía no registraste ventas por transferencia.</div>'}`;
   const csv = $("#trCsv"); if (csv) csv.onclick = trCsvDl;
+  box.querySelectorAll("[data-tred]").forEach((b) => (b.onclick = () => { const o = L.find((x) => String(x.orden) === b.dataset.tred); if (o) trEditar(o); }));
   box.querySelectorAll("[data-trdes]").forEach((b) => (b.onclick = async () => { const o = b.dataset.trdes; if (trBorrar !== o) { trBorrar = o; trPintarLista(); setTimeout(() => { if (trBorrar === o) { trBorrar = null; trPintarLista(); } }, 4000); return; } trBorrar = null; b.disabled = true;
     try { await api({ accion: "deshacer_registro", token: sesion.token, orden: o }); toast("Registro deshecho: se quitaron esos accesos"); await trCargarLista(); cargarResumen(); } catch (e) { toast(e.message); b.disabled = false; } }));
 }
@@ -2838,9 +3086,9 @@ $("#cofreRegalo").addEventListener("click", async (e) => {
   try {
     const r = await api({ accion: "regalo_descargar", token: sesion.token, fecha: b.dataset.regalo, archivo: b.dataset.f });
     if (!/\.pdf$/i.test(b.dataset.f)) { const a = document.createElement("a"); a.href = r.url; document.body.appendChild(a); a.click(); a.remove(); return; }
-    const libs = Promise.all([cargarScript(LIBS.pdf), cargarScript(LIBS.qr)]);
+    const libs = Promise.all([cargarScript(libPdf()), cargarScript(LIBS.qr)]);
     const bytes = await bajar(r.url, (p) => st.set(`Descargando ${Math.round(p * 100)}%`, p)); await libs;
-    let final; try { final = await personalizar(bytes, r.licencia, { tapa: textoTapa(tapaGuardada()) }); } catch { final = bytes; }
+    let final; try { final = await personalizar(bytes, r.licencia, { clave: CLAVE_PDF.activa ? await miClave() : "", tapa: textoTapa(tapaGuardada()) }); } catch { final = bytes; }
     guardar(final, b.dataset.f); toast("¡Tu regalo está listo! 🎁"); vibrar();
   } catch (err) { toast(err.message); }
   finally { st.fin(); }
@@ -2981,12 +3229,35 @@ $("#adminBox").addEventListener("click", async (e) => {
 });
 $("#adminBox").addEventListener("change", (e) => { const inp = e.target.closest(".drop input[type=file]"); if (inp && inp.files.length) subirArchivos(inp.closest("[data-up]").dataset.up, [...inp.files], inp.closest(".drop")); });
 
+// ---------- Inicio simple y "Mis logros" ----------
+// Inicio: saludo, contraseña, lo próximo que vas a usar y tus materiales. Lo lúdico (figuritas, llaves, cofres, la seño, ideas y cumple) vive en "Mis logros".
+const LIB = { tab: "inicio", listo: false };
+function libArmar() { if (LIB.listo) return; LIB.listo = true;
+  document.querySelectorAll("#logros [data-slot]").forEach((slot) => { const el = document.getElementById(slot.dataset.slot); if (el) slot.appendChild(el); }); }
+function libActualizar() { libArmar(); const gestor = modoGestor(); $("#libTabs").classList.toggle("hide", gestor);
+  const sp = $("#bxSpot"), cu = $("#cupInicio"); if (sp && cu && sp.nextElementSibling !== cu) sp.insertAdjacentElement("afterend", cu);
+  let hay = 0; document.querySelectorAll("#logros .lg-card").forEach((c) => { const vis = c.dataset.lg.split(",").some((id) => { const el = document.getElementById(id); return el && !el.classList.contains("hide") && (id !== "extras" || el.innerHTML.trim()); }); c.classList.toggle("hide", !vis); if (vis) hay++; });
+  $("#lgVacio").classList.toggle("hide", !!hay);
+  const nuevo = !!(ultimaRespuesta && (ultimaRespuesta.anual || (ultimaRespuesta.cupon && ultimaRespuesta.cupon.tipo === "cumple"))) && store.get("cofre-logros-visto") !== new Date().toISOString().slice(0, 10);
+  $("#logrosDot").classList.toggle("hide", !nuevo || LIB.tab === "logros");
+  if (gestor && LIB.tab !== "inicio") libTab("inicio"); }
+function libTab(t) { LIB.tab = t; const v = $("#vLib"); v.classList.toggle("en-logros", t === "logros"); $("#logros").classList.toggle("hide", t !== "logros");
+  document.querySelectorAll("[data-libtab]").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.libtab === t)));
+  if (t === "logros") { store.set("cofre-logros-visto", new Date().toISOString().slice(0, 10)); $("#logrosDot").classList.add("hide"); libActualizar(); }
+  marcarBarra(); }
+$("#libTabs").addEventListener("click", (e) => { const b = e.target.closest("[data-libtab]"); if (!b) return; libTab(b.dataset.libtab); if (b.dataset.libtab === "logros" && $("#libTabs").getBoundingClientRect().top < 0) irA("#libTabs"); });
+{ const _mostrar = mostrar; mostrar = function (r) { const out = _mostrar.apply(this, arguments); try { libActualizar(); } catch (e) { console.warn(e); } return out; }; }
+// el cupón de descuento se queda en Inicio (lo demás de "extras" va a Mis logros)
+{ const _pe = pintarExtras; pintarExtras = function (r) { const out = _pe.apply(this, arguments); if (window.__extrasPrev) return out; try { const box = $("#cupInicio"), cup = document.querySelector("#extras > .cup"); box.innerHTML = ""; if (cup) box.appendChild(cup); box.classList.toggle("hide", !cup); const ex = $("#extras"); if (ex && !ex.innerHTML.trim()) ex.classList.add("hide"); if (LIB.listo) libActualizar(); } catch (e) { console.warn(e); } return out; }; }
+
 // ---------- Celular: barra inferior ----------
 const esCelular = () => matchMedia("(max-width: 720px)").matches;
 function irA(sel) { const el = sel === "top" ? document.body : $(sel); if (!el) return; const y = sel === "top" ? 0 : el.getBoundingClientRect().top + scrollY - 76; scrollTo({ top: y, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); }
 $("#barra").addEventListener("click", (e) => {
   const b = e.target.closest("[data-ir-a]"); if (!b) return;
   if (b.dataset.irA === "tapa") return pedirTapa(false);
+  if (b.dataset.irA === "logros") { libTab("logros"); return irA("#libTabs"); }
+  if (LIB.tab !== "inicio") libTab("inicio");
   irA(b.dataset.irA);
 });
 function marcarBarra() {
@@ -2995,6 +3266,7 @@ function marcarBarra() {
   let act = "top";
   if (cal && !cal.classList.contains("hide") && y >= cal.offsetTop) act = "#cal";
   if (tools && y >= tools.offsetTop) act = "#tools";
+  if (LIB.tab === "logros") act = "logros";
   document.querySelectorAll("#barra [data-ir-a]").forEach((b) => b.setAttribute("aria-current", String(b.dataset.irA === act)));
 }
 addEventListener("scroll", () => requestAnimationFrame(marcarBarra), { passive: true });
