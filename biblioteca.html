@@ -1334,6 +1334,9 @@ async function api(body) {
   if (m && k) { store.set(PEND, { m, k }, sessionStorage); p.delete("m"); p.delete("k"); history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p : "") + location.hash); }
 })();
 const pend = () => store.get(PEND, sessionStorage) || {};
+// "Ver como" desde el Panel de Gestión: biblioteca.html#como=correo (solo funciona si entraste como administradora)
+const COMO_K = "cofre-biblioteca-como";
+(function () { const m = /(?:^#|&)como=([^&]+)/.exec(location.hash || ""); if (!m) return; let v = ""; try { v = decodeURIComponent(m[1]).trim().toLowerCase(); } catch {} if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) store.set(COMO_K, v, sessionStorage); history.replaceState(null, "", location.pathname + location.search); })();
 
 function ver(id) { ["#vLogin", "#vLib", "#vLoad", "#vVerif"].forEach((v) => $(v).classList.toggle("hide", v !== id)); $("#barra").classList.toggle("hide", id !== "#vLib"); document.body.classList.toggle("con-barra", id === "#vLib"); $("#salir").classList.toggle("hide", id === "#vLogin" || id === "#vVerif"); $("#miTapa").classList.toggle("hide", id === "#vLogin" || id === "#vVerif"); $("#decorar").classList.toggle("hide", id === "#vLogin" || id === "#vVerif"); if (id === "#vLogin" || id === "#vVerif") $("#instalar").classList.add("hide"); }
 function msg(el, t, tipo = "err") { el.className = "msg " + (t ? tipo : ""); el.textContent = t || ""; }
@@ -1391,6 +1394,7 @@ function mostrar(r) {
   const cant = `${n} ${n === 1 ? "material" : "materiales"}`;
   $("#who").textContent = r.admin && !r.como ? `Administrador · catálogo completo · ${cant}` : r.admin ? `${r.email} · ${cant}` : r.email;
   window.__esAdmin = !!r.admin; recordatorioOn = !!r.recordatorio;
+  { const cm = store.get(COMO_K, sessionStorage); if (cm) { store.del(COMO_K, sessionStorage); if (r.admin && !r.como && cm !== r.email) { verComo = cm; filtro = "todos"; setTimeout(() => cargar(), 0); } else if (!r.admin) toast("Para ver la biblioteca de una docente, entrá con tu cuenta de administradora."); } }
   if (r.admin) pintarAdmin(r); else $("#adminBox").classList.add("hide");
   const nombreDe = (id) => (materiales.find((m) => m.id === id) || {}).nombre || "tu material";
   let html = "";
