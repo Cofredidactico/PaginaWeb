@@ -438,6 +438,24 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
 .fl{position:absolute;font-size:1.35rem;animation:flotar 5s ease-in-out infinite}
 .fl.f1{top:-4px;right:6px}.fl.f2{bottom:4px;left:-6px;animation-delay:-1.5s}.fl.f3{top:44%;right:-12px;animation-delay:-3s;font-size:1.05rem}
 .progreso{display:grid;gap:6px;margin-top:10px;max-width:460px}
+.lib-tabs{display:flex;gap:6px;width:max-content;max-width:100%;margin:-4px auto 18px;padding:5px;border-radius:999px;background:var(--card);border:1px solid var(--line);box-shadow:var(--s-1)}
+.lib-tabs button{position:relative;display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--ink-2);font:800 .95rem var(--f);padding:10px 20px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.lib-tabs button[aria-selected="true"]{background:var(--primary);color:#fff;box-shadow:0 6px 16px -8px var(--primary)}
+.lt-dot{position:absolute;top:7px;right:10px;width:9px;height:9px;border-radius:50%;background:#FF5A5F;box-shadow:0 0 0 2px var(--card)}
+#vLib.en-logros > #notice,#vLib.en-logros > #cupInicio,#vLib.en-logros > #bxSpot,#vLib.en-logros > #misH,#vLib.en-logros > #tools,#vLib.en-logros > #grid,#vLib.en-logros > #cal{display:none!important}
+.logros{display:grid;gap:16px;margin-bottom:24px;animation:lgIn .3s ease}@keyframes lgIn{from{opacity:0;transform:translateY(8px)}}
+.lg-h h2{margin:0;font-family:var(--f-display)}.lg-h p{margin:4px 0 0;color:var(--ink-2)}
+.lg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;align-items:start}
+.lg-card{display:grid;gap:10px;padding:18px;border-radius:var(--r,18px);background:var(--card);border:1px solid var(--line);box-shadow:var(--s-1);min-width:0}
+.lg-card h3{margin:0;font-size:1.05rem}.lg-p{margin:0;color:var(--ink-2);font-size:.9rem}
+.lg-slot:empty{display:none}@media (min-width:900px){.lg-part{grid-column:span 2}}.lg-center{display:grid;justify-items:center}
+#logros .progreso,#logros .llaves{margin-top:0;max-width:none}#logros .anual-btn{margin-top:0}
+#logros .fig-btn{position:static;margin:0;padding:10px 16px;font-size:.95rem}#logros .fig-btn .fig-bar,#logros .fig-btn .fig-t{display:inline-block}
+#logros .cofre-slot{position:static}#logros .llaves{padding-right:0}
+#logros .seno-crear{position:static!important;transform:none!important;display:inline-flex;max-width:none!important;font-size:.9rem;padding:9px 16px}
+#logros .extras{margin:0;display:grid;gap:12px}
+.lg-vacio{display:grid;justify-items:center;gap:6px;text-align:center;padding:34px 18px;border-radius:var(--r,18px);border:2px dashed var(--line);color:var(--ink-2)}.lg-vacio span{font-size:2.4rem}.lg-vacio b{color:var(--ink);font-size:1.1rem}.lg-vacio p{margin:0}
+@media (max-width:720px){.lib-tabs{width:100%;margin:-2px 0 14px}.lib-tabs button{flex:1;justify-content:center;padding:10px 12px}.lg-grid{grid-template-columns:1fr}}
 .clave-pdf{display:flex;align-items:center;gap:10px;margin-top:10px;max-width:460px;width:100%;box-sizing:border-box;padding:8px 10px 8px 12px;border-radius:14px;background:var(--gold-soft,#FFF3CC);color:var(--ink,#1F2937);border:1.5px dashed #E7B416}
 .clave-pdf.pulso{animation:cpPulso 2.2s ease-in-out 3}@keyframes cpPulso{50%{box-shadow:0 0 0 6px rgba(231,180,22,.25)}}
 .clave-pdf .cp-ic{font-size:1.35rem}.clave-pdf .cp-tx{display:grid;flex:1;min-width:0;line-height:1.15}.clave-pdf small{font-size:.74rem;font-weight:700;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.clave-pdf b{font-size:1.12rem;letter-spacing:.04em;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
@@ -1120,8 +1138,25 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
       <div class="cofre-slot hide" id="cofreHero"></div>
       <div class="hero-art" id="heroArt"><span class="blob" aria-hidden="true"></span><img src="logo.png" alt="" onerror="this.remove()" /><span class="seno-av hide" id="senoAv"></span><button class="seno-crear hide" type="button" id="senoBtn">✨ Creá tu seño</button><span class="fl f1" aria-hidden="true"></span><span class="fl f2" aria-hidden="true"></span><span class="fl f3" aria-hidden="true"></span></div>
     </div>
+    <nav class="lib-tabs hide" id="libTabs" role="tablist" aria-label="Secciones de tu biblioteca">
+      <button type="button" role="tab" data-libtab="inicio" aria-selected="true"><span aria-hidden="true">🏠</span>Inicio</button>
+      <button type="button" role="tab" data-libtab="logros" aria-selected="false"><span aria-hidden="true">🏆</span>Mis logros<i class="lt-dot hide" id="logrosDot" aria-hidden="true"></i></button>
+    </nav>
+    <section class="logros hide" id="logros" aria-labelledby="lgTit">
+      <div class="lg-h"><h2 id="lgTit">🏆 Mis logros</h2><p>Tu recorrido del año: figuritas, llaves, cofres y regalos. ¡Cada material que usás suma!</p></div>
+      <div class="lg-grid">
+        <article class="lg-card lg-anio" data-lg="prog,anualBtn"><h3>📈 Tu año en el aula</h3><div class="lg-slot" data-slot="prog"></div><div class="lg-slot" data-slot="anualBtn"></div></article>
+        <article class="lg-card lg-cofre" data-lg="cofreHero"><h3>🎁 Cofre de la efeméride</h3><div class="lg-slot lg-center" data-slot="cofreHero"></div></article>
+        <article class="lg-card lg-llaves" data-lg="llaves"><h3>🔑 Tus llaves</h3><div class="lg-slot" data-slot="llaves"></div></article>
+        <article class="lg-card lg-album" data-lg="figBtn"><h3>📒 Álbum de figuritas</h3><p class="lg-p">Juntá figuritas usando tus materiales y completá el álbum del año.</p><div class="lg-slot" data-slot="figBtn"></div></article>
+        <article class="lg-card lg-seno" data-lg="senoBtn"><h3>👩‍🏫 Tu seño</h3><p class="lg-p">Creá tu personaje para que te salude en tu biblioteca.</p><div class="lg-slot" data-slot="senoBtn"></div></article>
+        <article class="lg-card lg-part" data-lg="extras"><h3>💬 Participá</h3><div class="lg-slot" data-slot="extras"></div></article>
+      </div>
+      <div class="lg-vacio hide" id="lgVacio"><span aria-hidden="true">🌱</span><b>Tus logros aparecen acá</b><p>Descargá y usá tus materiales para empezar a juntar figuritas, llaves y regalos.</p></div>
+    </section>
     <div id="adminBox" class="admin hide"></div>
     <div id="notice"></div>
+    <div id="cupInicio" class="hide"></div>
     <div class="sec-h" id="misH"><div><h2>📚 Mis materiales</h2><p id="misSub">Tocá un material para descargarlo o abrirlo.</p></div><span class="sec-n" id="misN"></span></div>
     <div class="tools" id="tools">
       <div class="chips" id="chips" role="group" aria-label="Filtrar por tipo"></div>
@@ -1149,7 +1184,7 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
   <button type="button" data-ir-a="top" aria-current="true"><span>🏠</span>Inicio</button>
   <button type="button" data-ir-a="#cal"><span>📅</span>Fechas</button>
   <button type="button" data-ir-a="#tools"><span>📚</span>Materiales</button>
-  <button type="button" data-ir-a="tapa"><span>🏫</span>Mi tapa</button>
+  <button type="button" data-ir-a="logros"><span>🏆</span>Logros</button>
 </nav>
 <div class="tirar" id="tirar" aria-hidden="true">↻</div>
 <div class="invitar" id="invitar" role="dialog" aria-label="Instalar Mi biblioteca"><img src="icon192.png" alt="" onerror="this.remove()" /><div><b>Tené tu biblioteca a un toque</b><span>Agregala a la pantalla de inicio de tu celular, como una app.</span></div><div class="inv-acts"><button class="btn btn-ghost btn-sm" type="button" id="invNo">Ahora no</button><button class="btn btn-primary btn-sm" type="button" id="invSi">Agregar</button></div></div>
@@ -2521,7 +2556,7 @@ function cupDibujar() {
     f.elements.activo.onchange = () => { f.classList.toggle("on", f.elements.activo.checked); f.elements.activo.parentElement.lastChild.textContent = f.elements.activo.checked ? " Activo" : " Apagado"; };
     f.onsubmit = async (e) => { e.preventDefault(); const m = f.querySelector("[data-cupmsg]"); m.textContent = "Guardando…"; try { await api({ accion: "cupon_guardar", token: sesion.token, cupon: datos(f) }); toast("Cupón guardado ✓"); await pintarCupAdm(); } catch (err) { m.textContent = err.message; } };
     f.querySelector("[data-cupprev]").onclick = () => { const c = datos(f), mm = c.mmdd || "01-01"; const prev = { tipo: c.id === "cumple" ? "cumple" : "fecha", titulo: c.titulo, codigo: (c.codigo || "CODIGO").toUpperCase(), porcentaje: c.porcentaje, mensaje: c.mensaje, transferencia: c.transferencia, dias: 0, anio: 2000, hasta: new Date(Date.now() + (+c.dias_despues || 7) * 864e5).toISOString().slice(0, 10), id: "prev" };
-      const tmp = document.createElement("div"); tmp.id = "extrasPrev"; const real = $("#extras"); const html = (() => { const save = real.innerHTML, cls = real.className; pintarExtras({ cupon: prev, cumple: "01-01", como: true }); const h = real.innerHTML; real.innerHTML = save; real.className = cls; return h; })();
+      const tmp = document.createElement("div"); tmp.id = "extrasPrev"; const real = $("#extras"); const html = (() => { const save = real.innerHTML, cls = real.className; window.__extrasPrev = true; try { pintarExtras({ cupon: prev, cumple: "01-01", como: true }); } finally { window.__extrasPrev = false; } const h = real.innerHTML; real.innerHTML = save; real.className = cls; return h; })();
       f.querySelector(".cupa-prev").innerHTML = html.replace(/id="cup(Copiar|Tienda|Cod)"/g, ""); };
     const del = f.querySelector("[data-cupdel]"); if (del) del.onclick = async () => { if (del.dataset.ok !== "1") { del.dataset.ok = "1"; del.textContent = "¿Seguro? Tocá de nuevo"; return; } try { await api({ accion: "cupon_borrar", token: sesion.token, id: C.cupones[+f.dataset.cupi].id }); pintarCupAdm(); } catch (err) { toast(err.message); } };
   });
@@ -3189,12 +3224,35 @@ $("#adminBox").addEventListener("click", async (e) => {
 });
 $("#adminBox").addEventListener("change", (e) => { const inp = e.target.closest(".drop input[type=file]"); if (inp && inp.files.length) subirArchivos(inp.closest("[data-up]").dataset.up, [...inp.files], inp.closest(".drop")); });
 
+// ---------- Inicio simple y "Mis logros" ----------
+// Inicio: saludo, contraseña, lo próximo que vas a usar y tus materiales. Lo lúdico (figuritas, llaves, cofres, la seño, ideas y cumple) vive en "Mis logros".
+const LIB = { tab: "inicio", listo: false };
+function libArmar() { if (LIB.listo) return; LIB.listo = true;
+  document.querySelectorAll("#logros [data-slot]").forEach((slot) => { const el = document.getElementById(slot.dataset.slot); if (el) slot.appendChild(el); }); }
+function libActualizar() { libArmar(); const gestor = modoGestor(); $("#libTabs").classList.toggle("hide", gestor);
+  const sp = $("#bxSpot"), cu = $("#cupInicio"); if (sp && cu && sp.nextElementSibling !== cu) sp.insertAdjacentElement("afterend", cu);
+  let hay = 0; document.querySelectorAll("#logros .lg-card").forEach((c) => { const vis = c.dataset.lg.split(",").some((id) => { const el = document.getElementById(id); return el && !el.classList.contains("hide") && (id !== "extras" || el.innerHTML.trim()); }); c.classList.toggle("hide", !vis); if (vis) hay++; });
+  $("#lgVacio").classList.toggle("hide", !!hay);
+  const nuevo = !!(ultimaRespuesta && (ultimaRespuesta.anual || (ultimaRespuesta.cupon && ultimaRespuesta.cupon.tipo === "cumple"))) && store.get("cofre-logros-visto") !== new Date().toISOString().slice(0, 10);
+  $("#logrosDot").classList.toggle("hide", !nuevo || LIB.tab === "logros");
+  if (gestor && LIB.tab !== "inicio") libTab("inicio"); }
+function libTab(t) { LIB.tab = t; const v = $("#vLib"); v.classList.toggle("en-logros", t === "logros"); $("#logros").classList.toggle("hide", t !== "logros");
+  document.querySelectorAll("[data-libtab]").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.libtab === t)));
+  if (t === "logros") { store.set("cofre-logros-visto", new Date().toISOString().slice(0, 10)); $("#logrosDot").classList.add("hide"); libActualizar(); }
+  marcarBarra(); }
+$("#libTabs").addEventListener("click", (e) => { const b = e.target.closest("[data-libtab]"); if (!b) return; libTab(b.dataset.libtab); if (b.dataset.libtab === "logros" && $("#libTabs").getBoundingClientRect().top < 0) irA("#libTabs"); });
+{ const _mostrar = mostrar; mostrar = function (r) { const out = _mostrar.apply(this, arguments); try { libActualizar(); } catch (e) { console.warn(e); } return out; }; }
+// el cupón de descuento se queda en Inicio (lo demás de "extras" va a Mis logros)
+{ const _pe = pintarExtras; pintarExtras = function (r) { const out = _pe.apply(this, arguments); if (window.__extrasPrev) return out; try { const box = $("#cupInicio"), cup = document.querySelector("#extras > .cup"); box.innerHTML = ""; if (cup) box.appendChild(cup); box.classList.toggle("hide", !cup); const ex = $("#extras"); if (ex && !ex.innerHTML.trim()) ex.classList.add("hide"); if (LIB.listo) libActualizar(); } catch (e) { console.warn(e); } return out; }; }
+
 // ---------- Celular: barra inferior ----------
 const esCelular = () => matchMedia("(max-width: 720px)").matches;
 function irA(sel) { const el = sel === "top" ? document.body : $(sel); if (!el) return; const y = sel === "top" ? 0 : el.getBoundingClientRect().top + scrollY - 76; scrollTo({ top: y, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); }
 $("#barra").addEventListener("click", (e) => {
   const b = e.target.closest("[data-ir-a]"); if (!b) return;
   if (b.dataset.irA === "tapa") return pedirTapa(false);
+  if (b.dataset.irA === "logros") { libTab("logros"); return irA("#libTabs"); }
+  if (LIB.tab !== "inicio") libTab("inicio");
   irA(b.dataset.irA);
 });
 function marcarBarra() {
@@ -3203,6 +3261,7 @@ function marcarBarra() {
   let act = "top";
   if (cal && !cal.classList.contains("hide") && y >= cal.offsetTop) act = "#cal";
   if (tools && y >= tools.offsetTop) act = "#tools";
+  if (LIB.tab === "logros") act = "logros";
   document.querySelectorAll("#barra [data-ir-a]").forEach((b) => b.setAttribute("aria-current", String(b.dataset.irA === act)));
 }
 addEventListener("scroll", () => requestAnimationFrame(marcarBarra), { passive: true });
