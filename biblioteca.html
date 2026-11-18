@@ -439,11 +439,41 @@ textarea.inp{resize:vertical;min-height:96px;font:inherit}
 .fl.f1{top:-4px;right:6px}.fl.f2{bottom:4px;left:-6px;animation-delay:-1.5s}.fl.f3{top:44%;right:-12px;animation-delay:-3s;font-size:1.05rem}
 .progreso{display:grid;gap:6px;margin-top:10px;max-width:460px}
 .clave-pdf{display:flex;align-items:center;gap:10px;margin-top:10px;max-width:460px;width:100%;box-sizing:border-box;padding:8px 10px 8px 12px;border-radius:14px;background:var(--gold-soft,#FFF3CC);color:var(--ink,#1F2937);border:1.5px dashed #E7B416}
-.clave-pdf .cp-ic{font-size:1.35rem}.clave-pdf .cp-tx{display:grid;flex:1;min-width:0;line-height:1.15}.clave-pdf small{font-size:.74rem;font-weight:700;opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.clave-pdf b{font-size:1.08rem;letter-spacing:.06em;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
-.clave-pdf .cp-q{flex:none;width:26px;height:26px;border-radius:50%;border:1px solid currentColor;background:transparent;font-weight:800;cursor:pointer;color:inherit;opacity:.7}.clave-pdf .btn{flex:none}
-.clave-dlg{display:grid;gap:10px;text-align:center;max-width:420px}.clave-dlg .cd-ic{font-size:2.4rem}.clave-dlg h3{margin:0}.clave-dlg p{margin:0}
-.clave-dlg .cd-code{font:800 1.6rem/1.2 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.08em;padding:12px;border-radius:14px;background:#FFF6DA;border:2px dashed #E7B416;color:#5A4300}
-.clave-dlg ul{text-align:left;margin:0;padding-left:4px;list-style:none;display:grid;gap:6px;font-size:.92rem}
+.clave-pdf.pulso{animation:cpPulso 2.2s ease-in-out 3}@keyframes cpPulso{50%{box-shadow:0 0 0 6px rgba(231,180,22,.25)}}
+.clave-pdf .cp-ic{font-size:1.35rem}.clave-pdf .cp-tx{display:grid;flex:1;min-width:0;line-height:1.15}.clave-pdf small{font-size:.74rem;font-weight:700;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.clave-pdf b{font-size:1.12rem;letter-spacing:.04em;font-family:ui-monospace,Menlo,Consolas,monospace;white-space:nowrap}
+.clave-pdf{position:relative}.clave-pdf .cp-new{position:absolute;top:-9px;left:14px;font-style:normal;font-size:.62rem;font-weight:900;background:#E7B416;color:#3A2A00;border-radius:99px;padding:2px 7px;letter-spacing:.04em;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.clave-pdf .cp-q{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid currentColor;background:transparent;font-weight:800;cursor:pointer;color:inherit;opacity:.75}.clave-pdf .btn{flex:none}
+.notice.nov-clave{background:var(--gold-soft);color:var(--ink);border:1.5px solid rgba(231,180,22,.45)}.nov-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tuto-dlg{width:min(480px,calc(100% - 24px))}
+.tu-in{position:relative;display:grid;grid-template-rows:1fr auto;max-height:calc(100dvh - 40px)}
+.tu-x{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(127,127,127,.14);color:inherit;font-size:.95rem;cursor:pointer;z-index:2}
+.tu-body{padding:26px 22px 8px;display:grid;gap:12px;text-align:center;overflow:auto;animation:tuIn .25s ease}@keyframes tuIn{from{opacity:0;transform:translateX(14px)}}
+.tu-body h3{margin:0;font-size:1.3rem}.tu-body p{margin:0;line-height:1.45}
+.tu-hero{display:grid;place-items:center}.tu-big{font-size:2.8rem;display:grid;place-items:center;width:78px;height:78px;border-radius:24px;background:var(--gold-soft);animation:tuBote 1.4s ease-in-out infinite}@keyframes tuBote{50%{transform:translateY(-4px) rotate(-4deg)}}
+.tu-code{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font:800 1.9rem/1.2 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;padding:14px;border-radius:16px;background:#FFF6DA;border:2px dashed #E7B416;color:#4A3700}
+.tu-code .btn{font-family:inherit;letter-spacing:0;font-size:.85rem;background:#fff;color:#4A3700;border:1.5px solid rgba(74,55,0,.35)}
+.ck-chips{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.ck-g{display:grid;gap:4px;justify-items:center}.ck-row{display:flex;gap:3px}.ck-g small{font-size:.72rem;font-weight:800;opacity:.75}
+.ck-ch{display:grid;place-items:center;min-width:28px;height:36px;padding:0 4px;border-radius:9px;font:800 1.2rem ui-monospace,Menlo,Consolas,monospace;color:#fff}
+.ck-ch.may{background:#E2483D;min-width:34px;font-size:1.35rem}.ck-ch.min{background:#3B82C4}.ck-ch.num{background:#2E9E6A}
+.tu-nota{font-size:.88rem;opacity:.9;background:rgba(127,127,127,.08);border-radius:12px;padding:10px 12px}
+.tu-tabs{display:flex;gap:6px;justify-content:center}.tu-tabs button{border:1.5px solid var(--line);background:transparent;color:inherit;border-radius:99px;padding:7px 14px;font:inherit;font-weight:700;font-size:.88rem;cursor:pointer}.tu-tabs button[aria-selected="true"]{border-color:#E7B416;background:var(--gold-soft)}
+.tu-phone{justify-self:center;width:230px;height:250px;border-radius:30px;border:8px solid #11151F;background:linear-gradient(160deg,#5B7FB8,#8E6BB8);position:relative;display:grid;place-items:center;box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
+.tu-notch{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:70px;height:14px;border-radius:99px;background:#11151F}
+.tu-pdlg{width:185px;background:#fff;color:#1F2937;border-radius:16px;padding:14px 12px 10px;display:grid;gap:6px;text-align:center;box-shadow:0 10px 24px rgba(0,0,0,.3)}.tu-pdlg b{font-size:.92rem}.tu-pdlg small{font-size:.7rem;opacity:.75;line-height:1.25}
+.tu-lock{font-size:1.4rem}.tu-fake{display:flex;align-items:center;gap:1px;height:30px;border:1.5px solid #3B82C4;border-radius:8px;padding:0 8px;font:700 1rem ui-monospace,Menlo,monospace;letter-spacing:.06em;text-align:left;color:#1F2937}.tu-fake.wide{width:230px;justify-self:center}
+.tu-cur{display:inline-block;width:1.5px;height:16px;background:#3B82C4;animation:tuCur 1s steps(1) infinite}@keyframes tuCur{50%{opacity:0}}
+.tu-fbtns{display:flex;justify-content:flex-end;gap:14px;font-size:.78rem;font-weight:800;color:#6B7280;padding-top:2px}.tu-fbtns .pri{color:#2563EB}
+.tu-pc{justify-self:center;width:min(340px,100%);border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#F3F4F6;color:#1F2937;box-shadow:0 14px 30px -14px rgba(0,0,0,.45)}
+.tu-bar{display:flex;align-items:center;gap:5px;padding:7px 10px;background:#E5E7EB}.tu-bar i{width:9px;height:9px;border-radius:50%;background:#F87171}.tu-bar i:nth-child(2){background:#FBBF24}.tu-bar i:nth-child(3){background:#34D399}.tu-bar span{font-size:.72rem;font-weight:700;margin-left:6px;opacity:.7}
+.tu-pcin{display:grid;gap:6px;justify-items:center;padding:18px 14px}.tu-pcin b{font-size:.9rem}.tu-pcin small{font-size:.74rem;opacity:.7}.tu-pbtn{background:#2563EB;color:#fff;border-radius:6px;padding:5px 16px;font-size:.78rem;font-weight:800}
+.tu-prac{display:flex;gap:8px;align-items:center}.tu-prac .inp{flex:1;font:700 1.25rem ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;text-align:center}
+.tu-msg{font-size:.92rem;font-weight:700;padding:10px 12px;border-radius:12px;background:rgba(127,127,127,.1)}.tu-msg.ok{background:var(--green-soft,#DCFCE7);color:var(--green,#15803D)}.tu-msg.warn{background:var(--gold-soft);color:var(--ink)}
+.tu-check{display:grid;gap:6px;text-align:left}.tu-check span{display:flex;align-items:center;gap:8px;font-size:.88rem;opacity:.75}.tu-check i{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid currentColor;opacity:.5;display:grid;place-items:center}
+.tu-check span.ok{opacity:1;color:var(--green,#15803D);font-weight:700}.tu-check span.ok i{opacity:1;background:currentColor;border-color:currentColor}.tu-check span.ok i::after{content:"✓";color:#fff;font-style:normal;font-size:.7rem;font-weight:900}
+.tu-opts{display:grid;gap:10px;text-align:left}.tu-opt{display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:14px;border:1px solid var(--line)}.tu-opt>span{font-size:1.5rem}.tu-opt b{display:block}.tu-opt small{display:block;opacity:.8;line-height:1.35;margin-top:2px}.tu-oacts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tu-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px 18px;border-top:1px solid var(--line)}.tu-foot [hidden]{visibility:hidden;display:inline-flex}
+.tu-dots{display:flex;gap:6px}.tu-dots button{width:9px;height:9px;padding:0;border-radius:99px;border:0;background:rgba(127,127,127,.35);cursor:pointer;transition:width .2s}.tu-dots button.ok{background:#E7B416}.tu-dots button.on{width:24px;background:#E7B416}
+@media (max-width:420px){.ck-chips{gap:8px}.ck-ch{min-width:24px;height:32px;font-size:1.05rem}.ck-ch.may{min-width:28px;font-size:1.15rem}.tu-code{font-size:1.55rem}.tu-body{padding:24px 16px 8px}.tu-foot{padding:12px 14px 16px}}
 .progreso .pt{font-size:.88rem;font-weight:700;color:var(--ink-2)}
 .progreso .pt b{color:var(--ink);font-family:var(--f-display)}
 .barra{height:10px;border-radius:999px;background:var(--card);border:1px solid var(--line);overflow:hidden}
@@ -1333,7 +1363,7 @@ function mostrar(r) {
   else if (r.reclamo === "sin-orden") html = `<div class="notice warn"><span class="ic">🔎</span><div><b>No encontramos esa compra con ${esc(r.email)}.</b> Si compraste con otro correo, tocá "Salir" y entrá con ese. Si pagaste hace unos minutos, esperá un ratito y volvé a tocar "Descargar" en tu compra. ¿Sigue sin aparecer? <a href="${esc(CONFIG.whatsapp)}" target="_blank" rel="noopener">Escribinos</a>.</div></div>`;
   else if (r.reclamo === "enlace-invalido") html = `<div class="notice warn"><span class="ic">🔗</span><div><b>Ese enlace no es válido.</b> Usá el botón "Descargar" del correo de tu compra, o <a href="${esc(CONFIG.whatsapp)}" target="_blank" rel="noopener">escribinos</a>.</div></div>`;
   else if (r.reclamo === "revocado") html = `<div class="notice warn"><span class="ic">ℹ️</span><div>Ese material no está habilitado para este correo. <a href="${esc(CONFIG.whatsapp)}" target="_blank" rel="noopener">Escribinos</a> si creés que es un error.</div></div>`;
-  $("#notice").innerHTML = html;
+  $("#notice").innerHTML = html + novedadClave();
   const cuenta = materiales.reduce((a, m) => ((a[m.tipo] = (a[m.tipo] || 0) + 1), a), {});
   const tipos = Object.keys(TIPOS).filter((t) => cuenta[t]);
   $("#tools").classList.toggle("hide", !n); $("#misN").textContent = n ? `${n} ${n === 1 ? "material" : "materiales"}` : ""; pintarVistas(); pintarHero(r); pintarCofreHero(r); pintarLlaves(r); pintarBotonAnual(r); pintarExtras(r); pintarCielo(); pintarSeno(r); pintarFiguritas(r);
@@ -1407,13 +1437,13 @@ const LIBS = {
 const CLAVE_PDF = { activa: true, modo: "abrir" };
 LIBS.pdfCifrado = ["vendor/pdf-lib-cifrado.min.js", "https://cdn.jsdelivr.net/npm/@cantoo/pdf-lib@2.11.1/dist/pdf-lib.min.js"];
 const libPdf = () => (CLAVE_PDF.activa ? LIBS.pdfCifrado : LIBS.pdf);
-// LAURA-4821: primer nombre + 4 números que salen siempre iguales de su correo
+// Laura4821: primer nombre (primera letra en mayúscula) + 4 números que salen siempre iguales de su correo, todo junto
 async function clavePDF(email, nombre) {
   const mail = String(email || "").trim().toLowerCase(); if (!mail) return "";
   const base = String(nombre || "").trim().split(/\s+/)[0] || (mail.split("@")[0].match(/[a-zñáéíóúü]+/i) || [""])[0];
-  const pre = base.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 8) || "COFRE";
+  const limpio = base.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z]/g, "").slice(0, 10) || "cofre", pre = limpio[0].toUpperCase() + limpio.slice(1);
   const h = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(mail + "|cofre-pdf-1")));
-  return pre + "-" + String((((h[0] << 24) | (h[1] << 16) | (h[2] << 8) | h[3]) >>> 0) % 10000).padStart(4, "0");
+  return pre + String((((h[0] << 24) | (h[1] << 16) | (h[2] << 8) | h[3]) >>> 0) % 10000).padStart(4, "0");
 }
 async function miClave() { const r = ultimaRespuesta || {}; return clavePDF(r.email || (sesion && sesion.email), r.nombre); }
 function claveAzar() { const a = new Uint8Array(18); crypto.getRandomValues(a); return Array.from(a, (x) => x.toString(16).padStart(2, "0")).join(""); }
@@ -1531,7 +1561,7 @@ async function descargar(b, material, archivo, paginas, opts = {}) {
     if (paginas || opts.bn) nombre = archivo.replace(/\.pdf$/i, "") + ` (${[paginas ? "pags. " + rangoTexto(paginas) : "", opts.bn ? "B-N para fotocopia" : ""].filter(Boolean).join(", ")}).pdf`;
     guardar(final, nombre); armando(false);
     toast(final === r.bytes ? "Descarga lista ✓" : clave && CLAVE_PDF.modo === "abrir" ? `Lista ✓ Para abrirla, tu contraseña es ${clave}` : `Tu copia personalizada está lista ✓ (${r.licencia.codigo})`);
-    if (final !== r.bytes && clave && CLAVE_PDF.modo === "abrir") avisoClave(clave);
+    if (final !== r.bytes && clave && CLAVE_PDF.modo === "abrir" && store.get(CLAVE_VISTO) !== clave) setTimeout(() => tutorialClave(clave, true), 900);
     if (final !== r.bytes) { festejo(); vibrar(); }
     if (!window.__esAdmin) { sumarSemana(material); marcarDescargado(material, archivo); pintar(); }
   } catch (err) { if (err.limite) abrirLimite(material, err.limite, () => descargar(b, material, archivo, paginas, opts)); else toast(err.message); }
@@ -1885,17 +1915,74 @@ document.addEventListener("click", (e) => { const t = e.target.closest("[data-ti
 async function pintarClave() { const box = $("#clavePdf"); if (!box) return; const r = ultimaRespuesta || {};
   if (!CLAVE_PDF.activa || CLAVE_PDF.modo !== "abrir" || (modoGestor() && !r.como)) { box.classList.add("hide"); return; }
   const c = await miClave(); if (!c) { box.classList.add("hide"); return; }
-  box.innerHTML = `<span class="cp-ic" aria-hidden="true">🔑</span><span class="cp-tx"><small>${r.como ? "Contraseña de sus PDF" : "Contraseña de tus PDF"}</small><b translate="no">${esc(c)}</b></span><button class="btn btn-ghost btn-sm" type="button" id="claveCopiar">Copiar</button><button class="cp-q" type="button" id="claveAyuda" aria-label="¿Para qué es?">?</button>`;
-  box.classList.remove("hide");
-  $("#claveCopiar").onclick = async () => { try { await navigator.clipboard.writeText(c); toast("Contraseña copiada ✓"); } catch { toast("Tu contraseña: " + c); } };
-  $("#claveAyuda").onclick = () => avisoClave(c, true); }
-function avisoClave(c, ayuda) { let d = $("#dlgClave"); if (!d) { d = document.createElement("dialog"); d.id = "dlgClave"; d.className = "dlg"; document.body.appendChild(d); d.addEventListener("click", (e) => { if (e.target === d || e.target.closest("[data-cx]")) d.close(); if (e.target.closest("[data-cc]")) { navigator.clipboard.writeText(d.dataset.c).then(() => toast("Contraseña copiada ✓"), () => toast("Tu contraseña: " + d.dataset.c)); } }); }
-  if (!ayuda && store.get("cofre-clave-vista") === c) return; store.set("cofre-clave-vista", c); d.dataset.c = c;
-  d.innerHTML = `<div class="clave-dlg"><div class="cd-ic" aria-hidden="true">🔐</div><h3>${ayuda ? "Tu contraseña de los PDF" : "Tu PDF está protegido con tu contraseña"}</h3>
-    <p>Cada material que descargás de tu biblioteca queda a tu nombre y se abre con tu contraseña personal:</p><div class="cd-code" translate="no">${esc(c)}</div>
-    <ul><li>📱 Al abrir el PDF (en el celu, la compu o la tablet) te la va a pedir. Escribila tal cual, con mayúsculas y el guion.</li><li>🖨️ Si lo mandás a imprimir a una fotocopiadora, pasales también tu contraseña.</li><li>🔑 Es siempre la misma para todos tus materiales y la ves arriba de tu biblioteca cuando la necesites.</li></ul>
-    <div class="dlg-acts"><button class="btn btn-ghost" type="button" data-cc>Copiar contraseña</button><button class="btn btn-primary" type="button" data-cx>¡Entendido!</button></div></div>`;
-  d.showModal(); }
+  const visto = store.get(CLAVE_VISTO) === c;
+  box.innerHTML = `<span class="cp-ic" aria-hidden="true">🔑</span><span class="cp-tx"><small>${r.como ? "Su contraseña" : "Tu contraseña"}${visto ? "" : ' <em class="cp-new">NUEVO</em>'}</small><b translate="no">${esc(c)}</b></span><button class="btn btn-ghost btn-sm" type="button" id="claveCopiar">Copiar</button><button class="cp-q" type="button" id="claveAyuda" aria-label="Cómo se usa la contraseña">?</button>`;
+  box.classList.remove("hide"); box.classList.toggle("pulso", !visto);
+  $("#claveCopiar").onclick = () => copiarClave(c);
+  $("#claveAyuda").onclick = () => tutorialClave(c); }
+const CLAVE_VISTO = "cofre-clave-tuto";
+async function copiarClave(c, txt) { try { await navigator.clipboard.writeText(txt || c); toast(txt ? "Mensaje copiado ✓" : `Contraseña copiada ✓ ${c}`); } catch { toast(txt ? "No se pudo copiar" : "Tu contraseña: " + c); } }
+// partes de la contraseña: primera letra (mayúscula), resto del nombre (minúsculas) y números
+function partesClave(c) { const m = String(c).match(/^([A-Z])([a-z]*)(\d+)$/); return m ? { may: m[1], min: m[2], num: m[3] } : { may: c[0] || "", min: c.slice(1).replace(/\d/g, ""), num: c.replace(/\D/g, "") }; }
+function chipsClave(c) { const P = partesClave(c), ch = (t, k) => `<span class="ck-ch ${k}">${esc(t)}</span>`;
+  return `<div class="ck-chips" translate="no"><span class="ck-g"><span class="ck-row">${ch(P.may, "may")}</span><small>Mayúscula</small></span>${P.min ? `<span class="ck-g"><span class="ck-row">${[...P.min].map((x) => ch(x, "min")).join("")}</span><small>minúsculas</small></span>` : ""}<span class="ck-g"><span class="ck-row">${[...P.num].map((x) => ch(x, "num")).join("")}</span><small>números</small></span></div>`; }
+function novedadClave() { const r = ultimaRespuesta || {}; if (!CLAVE_PDF.activa || CLAVE_PDF.modo !== "abrir" || modoGestor() || store.get("cofre-clave-novedad") === "x") return "";
+  return `<div class="notice nov-clave" id="novClave"><span class="ic">🔐</span><div><b>Novedad en tu biblioteca:</b> ahora cada PDF que descargás queda protegido con <b>tu contraseña personal</b>, para que tus materiales sean solo tuyos. <span class="nov-acts"><button class="btn btn-primary btn-sm" type="button" data-tutoclave>Ver cómo funciona · 1 minuto</button><button class="btn btn-ghost btn-sm" type="button" data-novx>Ahora no</button></span></div></div>`; }
+document.addEventListener("click", async (e) => { const t = e.target; if (t.closest && t.closest("[data-tutoclave]")) { e.preventDefault(); tutorialClave(await miClave()); } if (t.closest && t.closest("[data-novx]")) { store.set("cofre-clave-novedad", "x"); const n = $("#novClave"); if (n) n.remove(); } });
+// ---------- Tutorial interactivo de la contraseña (4 pasos) ----------
+const TUTO = { paso: 0, c: "", tipeo: 0, dev: "cel" };
+function tutorialClave(c, recienDescargado) { if (!c) return; let d = $("#dlgClave");
+  if (!d) { d = document.createElement("dialog"); d.id = "dlgClave"; d.className = "dlg tuto-dlg"; d.setAttribute("aria-labelledby", "tutoTit"); document.body.appendChild(d);
+    d.addEventListener("click", (e) => { const b = e.target.closest("button,a"); if (e.target === d) return cerrarTuto(); if (!b) return; const k = b.dataset;
+      if (k.tx != null) return cerrarTuto(); if (k.tsig != null) return TUTO.paso >= 3 ? cerrarTuto(true) : irTuto(TUTO.paso + 1); if (k.tatras != null) return irTuto(TUTO.paso - 1); if (k.tdot != null) return irTuto(+k.tdot);
+      if (k.tcopy != null) return copiarClave(TUTO.c); if (k.tdev) { TUTO.dev = k.tdev; return irTuto(1); } if (k.tmsg != null) return copiarClave(TUTO.c, msgFoto(TUTO.c)); if (k.tver != null) { const i = $("#tutoIn"); if (i) { i.type = i.type === "password" ? "text" : "password"; b.textContent = i.type === "password" ? "👁 Ver" : "🙈 Ocultar"; i.focus(); } } });
+    d.addEventListener("input", (e) => { if (e.target.id === "tutoIn") chequearPractica(e.target.value); });
+    d.addEventListener("keydown", (e) => { if (e.key === "Enter" && e.target.id === "tutoIn") { e.preventDefault(); chequearPractica(e.target.value, true); } });
+    d.addEventListener("cancel", (e) => { e.preventDefault(); cerrarTuto(); }); }
+  Object.assign(TUTO, { c, paso: 0, recien: !!recienDescargado, ok: false }); irTuto(0); if (!d.open) d.showModal(); }
+const msgFoto = (c) => `¡Hola! Te paso un PDF para imprimir. Está protegido: cuando lo abras te va a pedir una contraseña. La contraseña es: ${c}\n(con la primera letra en mayúscula y todo junto, sin espacios). ¡Gracias!`;
+function irTuto(n) { const d = $("#dlgClave"); if (!d) return; clearInterval(TUTO.tipeo); TUTO.paso = Math.max(0, Math.min(3, n)); const c = TUTO.c, P = partesClave(c);
+  const pasos = [
+    () => `<div class="tu-hero"><span class="tu-big" aria-hidden="true">${TUTO.recien ? "🎉" : "🔐"}</span></div>
+      <h3 id="tutoTit">${TUTO.recien ? "¡Tu PDF ya se descargó!" : "Tu contraseña personal"}</h3>
+      <p>${TUTO.recien ? "Quedó a tu nombre y protegido con tu contraseña personal. Esta es:" : "Cada material que descargás de tu biblioteca queda a tu nombre y se abre con esta contraseña:"}</p>
+      <div class="tu-code" translate="no">${esc(c)}<button class="btn btn-ghost btn-sm" type="button" data-tcopy>📋 Copiar</button></div>
+      ${chipsClave(c)}
+      <p class="tu-nota">Es <b>tu nombre con la primera letra en mayúscula</b> y tus números, <b>todo junto</b>: sin espacios, sin guiones ni puntos. Es siempre la misma para todos tus materiales.</p>`,
+    () => `<h3 id="tutoTit">Así te la va a pedir</h3>
+      <p>Cuando abras el PDF aparece un cartelito como este. Escribí tu contraseña y tocá <b>Abrir</b>.</p>
+      <div class="tu-tabs" role="tablist"><button type="button" role="tab" data-tdev="cel" aria-selected="${TUTO.dev === "cel"}">📱 En el celular</button><button type="button" role="tab" data-tdev="pc" aria-selected="${TUTO.dev === "pc"}">💻 En la compu</button></div>
+      ${TUTO.dev === "cel" ? `<div class="tu-phone"><div class="tu-notch"></div><div class="tu-pdlg"><div class="tu-lock">🔒</div><b>Documento protegido</b><small>Ingresá la contraseña para abrir el archivo</small><div class="tu-fake"><span id="tutoTipeo"></span><i class="tu-cur"></i></div><div class="tu-fbtns"><span>Cancelar</span><span class="pri">Abrir</span></div></div></div>`
+        : `<div class="tu-pc"><div class="tu-bar"><i></i><i></i><i></i><span>Material.pdf</span></div><div class="tu-pcin"><div class="tu-lock">🔒</div><b>Este archivo está protegido con contraseña</b><small>Ingresá la contraseña del documento</small><div class="tu-fake wide"><span id="tutoTipeo"></span><i class="tu-cur"></i></div><span class="tu-pbtn">Enviar</span></div></div>`}
+      <p class="tu-nota">${TUTO.dev === "cel" ? "💡 En el celular, si el teclado pone sola la primera letra en mayúscula, ¡mejor! Las demás van en minúscula." : "💡 Funciona igual en Chrome, Edge, Adobe Reader o cualquier programa de PDF."}</p>`,
+    () => `<h3 id="tutoTit">¡Practicá acá! ✍️</h3>
+      <p>Escribí tu contraseña como la vas a poner en el PDF. Te avisamos si quedó bien.</p>
+      <div class="tu-prac"><input class="inp" id="tutoIn" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="text" placeholder="Escribí tu contraseña" aria-describedby="tutoMsg" /><button class="btn btn-ghost btn-sm" type="button" data-tver>🙈 Ocultar</button></div>
+      <div class="tu-msg" id="tutoMsg" role="status" aria-live="polite">Pista: empieza con <b translate="no">${esc(P.may)}</b> mayúscula y termina con <b>${P.num.length} números</b>.</div>
+      <div class="tu-check" id="tutoChk">${[["may", `Empieza con “${P.may}” mayúscula`], ["min", "Las letras que siguen, en minúscula"], ["num", `Termina con los ${P.num.length} números`], ["esp", "Todo junto, sin espacios ni símbolos"]].map(([k, t]) => `<span data-ck="${k}"><i></i>${esc(t)}</span>`).join("")}</div>`,
+    () => `<h3 id="tutoTit">¿Y para imprimir? 🖨️</h3>
+      <div class="tu-opts"><div class="tu-opt"><span>🏠</span><div><b>Si imprimís vos</b><small>Abrís el PDF, ponés tu contraseña e imprimís como siempre. La calidad es la de siempre: alta.</small></div></div>
+        <div class="tu-opt"><span>🏪</span><div><b>Si lo llevás a la fotocopiadora</b><small>Mandales el PDF y también tu contraseña. Te dejamos el mensaje listo:</small><div class="tu-oacts"><a class="btn btn-primary btn-sm" href="https://wa.me/?text=${encodeURIComponent(msgFoto(c))}" target="_blank" rel="noopener">💬 Mandar por WhatsApp</a><button class="btn btn-ghost btn-sm" type="button" data-tmsg>📋 Copiar mensaje</button></div></div></div>
+        <div class="tu-opt"><span>🔑</span><div><b>¿Te la olvidaste?</b><small>No pasa nada: siempre la ves arriba de tu biblioteca, con el botón para copiarla.</small></div></div></div>
+      <p class="tu-nota">🛡️ Tus materiales quedan a tu nombre: así cuidamos el trabajo de todas y podemos seguir creando recursos nuevos para tu aula. ¡Gracias! 💛</p>`];
+  d.innerHTML = `<div class="tu-in"><button class="tu-x" type="button" data-tx aria-label="Cerrar">✕</button><div class="tu-body tu-p${TUTO.paso}">${pasos[TUTO.paso]()}</div>
+    <div class="tu-foot"><button class="btn btn-ghost" type="button" data-tatras ${TUTO.paso ? "" : "hidden"}>← Atrás</button><span class="tu-dots">${[0, 1, 2, 3].map((i) => `<button type="button" data-tdot="${i}" class="${i === TUTO.paso ? "on" : i < TUTO.paso ? "ok" : ""}" aria-label="Paso ${i + 1} de 4"></button>`).join("")}</span><button class="btn btn-primary" type="button" data-tsig>${TUTO.paso === 3 ? "¡Listo! 🎉" : TUTO.paso === 2 && !TUTO.ok ? "Saltar →" : "Siguiente →"}</button></div></div>`;
+  if (TUTO.paso === 1) { const el = $("#tutoTipeo"); let i = 0; const go = () => { if (!el.isConnected) return clearInterval(TUTO.tipeo); i = i > c.length + 6 ? 0 : i + 1; el.textContent = c.slice(0, Math.min(i, c.length)); el.dataset.n = Math.min(i, c.length); }; TUTO.tipeo = setInterval(go, 260); }
+  if (TUTO.paso === 2) setTimeout(() => { const i = $("#tutoIn"); if (i) i.focus(); }, 60); }
+function chequearPractica(v, enter) { const c = TUTO.c, P = partesClave(c), msg = $("#tutoMsg"), chk = $("#tutoChk"); if (!msg) return;
+  const t = String(v), sinEsp = t.trim(), letras = sinEsp.replace(/\d+$/, ""), nums = (sinEsp.match(/\d+$/) || [""])[0];
+  const est = { may: sinEsp[0] === P.may, min: letras.slice(1) === P.min, num: nums === P.num, esp: !!t && !/[\s\-_.·,]/.test(t) };
+  chk.querySelectorAll("[data-ck]").forEach((el) => el.classList.toggle("ok", !!t && est[el.dataset.ck]));
+  let txt, cls = "";
+  if (!t) txt = `Pista: empieza con <b>${esc(P.may)}</b> mayúscula y termina con <b>${P.num.length} números</b>.`;
+  else if (t === c) { txt = "¡Perfecto! 🎉 Así es como la vas a escribir en tus PDF."; cls = "ok"; if (!TUTO.ok) { TUTO.ok = true; try { festejo(); vibrar(); } catch {} const s = $("#dlgClave [data-tsig]"); if (s) s.textContent = "Siguiente →"; } }
+  else if (sinEsp === c) { txt = "Casi: sacale el espacio del principio o del final."; cls = "warn"; }
+  else if (/[\s\-_.·,]/.test(t)) { txt = "Va todo junto: sin espacios, guiones ni puntos."; cls = "warn"; }
+  else if (sinEsp.toLowerCase() === c.toLowerCase()) { txt = sinEsp[0] !== P.may ? `Casi: la primera letra va en mayúscula (<b>${esc(P.may)}</b>).` : "Casi: después de la primera, las letras van en minúscula."; cls = "warn"; }
+  else if (c.startsWith(sinEsp)) txt = enter ? "Te falta un poquito, seguí escribiendo…" : "Vas bien… seguí escribiendo.";
+  else { txt = "Revisá: no coincide. Mirala arriba en el paso 1 o tocá ← Atrás."; cls = "warn"; }
+  msg.innerHTML = txt; msg.className = "tu-msg " + cls; }
+function cerrarTuto(terminado) { const d = $("#dlgClave"); clearInterval(TUTO.tipeo); if (d && d.open) d.close(); store.set(CLAVE_VISTO, TUTO.c); store.set("cofre-clave-novedad", "x"); const n = $("#novClave"); if (n) n.remove(); pintarClave(); if (terminado) toast("¡Listo! Ya sabés usar tu contraseña 🔑"); }
 function armando(on, texto) { const a = $("#armando"); if (texto) $("#armandoT").textContent = texto; a.classList.toggle("on", !!on); }
 function festejo() {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
