@@ -5,7 +5,7 @@
      primera visita); si no hay red o tarda más de 4 s, usa la copia guardada.
    - Navegaciones offline: cae al index cacheado.
 */
-const CACHE = 'cofre-v5';
+const CACHE = 'cofre-v6';
 const SHELL = [
   './',
   './index.html',
@@ -66,7 +66,8 @@ self.addEventListener('fetch', (e) => {
 
   // Navegaciones: intentar red, caer a index cacheado offline
   if (req.mode === 'navigate') {
-    e.respondWith(fetch(req).catch(() => caches.match(req, { ignoreSearch: true }).then(r => r || caches.match('./index.html'))));
+    // siempre pregunta al servidor si hay una versión nueva (así los cambios se ven al recargar, sin esperar)
+    e.respondWith(fetch(req.url, { cache: 'no-cache', credentials: 'same-origin' }).catch(() => caches.match(req, { ignoreSearch: true }).then(r => r || caches.match('./index.html'))));
     return;
   }
 
