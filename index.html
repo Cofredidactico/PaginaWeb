@@ -1838,6 +1838,8 @@ html.pro-theme-fade, html.pro-theme-fade *{transition:background-color .45s ease
 /* ===== Tienda en el celular (m5) ===== */
 /* precio e "incluye" repetidos sin estilo en la ficha: se muestra una sola vez */
 .detail-price-block,.detail-incluye-chips{display:none!important}
+.detail-efe{display:inline-flex;align-items:center;gap:6px;margin:4px 0 14px;padding:8px 14px;border-radius:999px;font-size:.88rem;font-weight:700;background:var(--primary-soft);color:var(--ink);border:1px solid color-mix(in srgb,var(--primary) 30%,transparent)}
+.detail-efe.urge{background:color-mix(in srgb,var(--accent) 16%,transparent);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
 .m5-chips{display:none}
 @media (max-width:640px){
   .m5-pegado{position:sticky;top:calc(var(--m5-hdr,60px) - 1px);z-index:30;margin:0 -16px;padding:10px 16px 8px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px) saturate(150%);-webkit-backdrop-filter:blur(12px) saturate(150%);transition:box-shadow .2s}
@@ -2503,6 +2505,7 @@ function generarSchemaProductos(){
 function marcarPublicacion(d){
   const L = (d && d.productos) || [];
   L.forEach((p, i) => { p._pub = i; });
+  (d.tematicas || []).forEach(t => { if (t && t.id === 'lengua') t.nombre = 'Prácticas del Lenguaje'; });
   L.filter(p => p.activo && p.acceso !== 'gratis' && p.tipo !== 'juego').sort((a,b) => b._pub - a._pub).slice(0, 3)
     .forEach(p => { if (!p.etiqueta) { p.etiqueta = 'nuevo'; p._autoNuevo = true; } });
 }
@@ -2542,7 +2545,7 @@ function setImgOpt(el, ruta, w){
 
 // Estilo por temática: color + emoji (para el chip y el degradado de la portada)
 const TEMATICA_STYLE = {
-  lengua:     { e:'📖', n:'Lengua',      c:'#7C4DFF' },
+  lengua:     { e:'📖', n:'Prácticas del Lenguaje', c:'#7C4DFF' },
   literatura: { e:'📚', n:'Literatura',  c:'#7C4DFF' },
   matematica: { e:'🔢', n:'Matemática',  c:'#2196F3' },
   ciencias:   { e:'🔬', n:'Ciencias',    c:'#22A06B' },
@@ -2670,7 +2673,8 @@ function renderSemana(){
   const prods = (_data.productos||[]).filter(p => p.activo && p.tipo !== 'juego');
   const byId = Object.fromEntries(prods.map(p => [p.id, p]));
   // Soporta items como string "id" o como objeto {id:"..."} (lo que genera Decap)
-  const list = cfg.productos.map(it => byId[typeof it === 'string' ? it : (it && it.id)]).filter(Boolean);
+  let list = cfg.productos.map(it => byId[typeof it === 'string' ? it : (it && it.id)]).filter(Boolean);
+  if (typeof window.cofreOrdenarTemporada === 'function') list = window.cofreOrdenarTemporada(list);
   if (!list.length){ wrap.hidden = true; return; }
   wrap.hidden = false;
   if (cfg.etiqueta) $('#semana-badge').textContent = cfg.etiqueta;
@@ -2712,7 +2716,7 @@ function render(){
 
   // Select temática
   const TEMATICA_LABELS = {
-    literatura:'📖 Literatura', matematica:'🔢 Matemática',
+    lengua:'📚 Prácticas del Lenguaje', literatura:'📖 Literatura', matematica:'🔢 Matemática',
     ciencias:'🔬 Ciencias', efemerides:'🗓️ Efemérides',
     juegos:'🎮 Juegos', laminas:'🖼️ Láminas'
   };
@@ -3398,6 +3402,7 @@ function renderDetalle(p){
       <div class="detail-meta">${tags.join('')}</div>
       <h1>${p.nombre}</h1>
       ${intlBadge}
+      ${(() => { const dE = typeof window.cofreDiasEfe === 'function' ? window.cofreDiasEfe(p) : null; if (dE === null || dE < 0 || dE > 30) return ''; const txt = dE === 0 ? '¡Es hoy!' : dE === 1 ? '¡Es mañana! Descargalo ya y lo imprimís hoy' : `Faltan ${dE} días: tenelo listo con tiempo`; return `<div class="detail-efe${dE <= 3 ? ' urge' : ''}">📅 <b>Efeméride</b> · ${txt}</div>`; })()}
 
       <!-- Descripción primero -->
       <p class="detail-desc" id="detail-desc-p">${(p.descripcionLarga || p.descripcion || '').replace(/\n/g,'<br>')}</p>
@@ -4851,6 +4856,31 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
     if (!RM) qa('.hero h1, .hero p.lead, .hero .hero-cta, .hero-stats').forEach(function(el, i){ el.classList.add('pro-in-up'); el.style.animationDelay = (0.05 + i * 0.09) + 's'; });
   }
 
+  /* ───────── 3b · Efemérides: fecha de cada material y cuenta regresiva ───────── */
+  var MES_N = {enero:1,febrero:2,marzo:3,abril:4,mayo:5,junio:6,julio:7,agosto:8,septiembre:9,setiembre:9,octubre:10,noviembre:11,diciembre:12};
+  var CLAVES = [[/tradici/, '11-10'], [/soberan/, '11-20'], [/escarapela/, '05-18'], [/revoluci[oó]n de mayo|25 de mayo/, '05-25'], [/malvinas|veterano/, '04-02'], [/memoria/, '03-24'], [/mundial del agua|d[ií]a del agua/, '03-22'], [/mundial de la salud/, '04-07'], [/am[eé]ricas/, '04-14'], [/de la tierra/, '04-22'], [/d[ií]a del libro/, '04-23'], [/d[ií]a del animal/, '04-29'], [/trabajador/, '05-01'], [/g[uü]emes/, '06-17'], [/bandera/, '06-20'], [/independencia|9 de julio/, '07-09'], [/san mart[ií]n/, '08-17'], [/folklore|folclore/, '08-22'], [/maestro/, '09-11'], [/estudiante|primavera/, '09-21'], [/diversidad cultural/, '10-12']];
+  function fechaEfe(p){
+    var t = ((p.nombre || '') + ' ' + String(p.id || '').replace(/-/g, ' ')).toLowerCase();
+    var m = /(\d{1,2})\s+de\s+(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)/.exec(t);
+    if (m) return [MES_N[m[2]], +m[1]];
+    for (var i = 0; i < CLAVES.length; i++) if (CLAVES[i][0].test(t)) { var x = CLAVES[i][1].split('-'); return [+x[0], +x[1]]; }
+    return null;
+  }
+  // días hasta la efeméride (negativo = ya pasó este año)
+  function diasEfe(p){ var f = fechaEfe(p); if (!f) return null; var h = new Date(); h.setHours(0,0,0,0);
+    var d = Math.round((new Date(h.getFullYear(), f[0]-1, f[1]) - h) / 864e5);
+    if (d < -200) d += 365; else if (d > 200) d -= 365; return d; }
+  window.cofreDiasEfe = diasEfe;
+  window.cofreOrdenarTemporada = function(L){ return ordenarTemporada(L); };
+  // primero la que está por llegar (hoy, mañana…), después las que pasaron hace pocos días; afuera las que pasaron hace más de 10 días
+  function ordenarTemporada(L){
+    var con = [], sin = [];
+    L.forEach(function(p){ var d = diasEfe(p); if (d === null) sin.push(p); else if (d >= -10) con.push([p, d]); });
+    con.sort(function(a, b){ var fa = a[1] < 0, fb = b[1] < 0; if (fa !== fb) return fa ? 1 : -1; return fa ? b[1] - a[1] : a[1] - b[1]; });
+    return con.map(function(x){ return x[0]; }).concat(sin);
+  }
+  function cuentaEfe(p){ var d = diasEfe(p); if (d === null || d < -10) return ''; if (d === 0) return '📍 ¡ES HOY!'; if (d === 1) return '⏰ MAÑANA'; if (d > 1 && d <= 30) return '⏳ FALTAN ' + d + ' DÍAS'; return ''; }
+
   /* ───────── 4 · Estantes ───────── */
   function mini(p, k, tag){
     var o = off(p);
@@ -4868,7 +4898,10 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
     var byId = {}; P.forEach(function(p){ byId[p.id] = p; });
     var semana = (cfg.activo && Array.isArray(cfg.productos) ? cfg.productos : []).map(function(it){ return byId[typeof it === 'string' ? it : (it && it.id)]; }).filter(Boolean);
     var M = mesesAhora();
-    var temporada = semana.concat(P.filter(function(p){ return mesEnCurso(p) && semana.indexOf(p) < 0; }));
+    var temporada = ordenarTemporada(semana.concat(P.filter(function(p){ return mesEnCurso(p) && semana.indexOf(p) < 0; })));
+    // si quedan pocas, se suman las próximas efemérides (hasta 60 días) para que nunca quede vacío
+    if (temporada.length < 4) P.filter(function(p){ var d = diasEfe(p); return d !== null && d >= 0 && d <= 60 && temporada.indexOf(p) < 0 && p.acceso !== 'gratis'; })
+      .sort(function(a, b){ return diasEfe(a) - diasEfe(b); }).forEach(function(p){ temporada.push(p); });
     var noJuego = function(p){ return p.tipo !== 'juego'; };
     var recientes = P.filter(function(p){ return p.acceso !== 'gratis'; }).sort(function(a,b){ return (b._pub || 0) - (a._pub || 0); }).slice(0, 10);
     var S = [
@@ -4876,13 +4909,13 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
       { id:'temporada', t:'🗓️ ' + (cfg.titulo || 'Se viene en ' + MESES[M[1]-1]), s:'Lo que vas a necesitar estas semanas', L:temporada },
       { id:'top', t:'⭐ Los más elegidos', s:'Los favoritos de las seños', L:P.filter(function(p){ return p.destacado; }) },
       { id:'interactivos', t:'🎮 Para jugar en el aula', s:'Plataformas interactivas para proyectar', L:P.filter(function(p){ return p.tipo === 'juego' || p.demoUrl; }), href:'interactivos.html', tag:'INTERACTIVO' },
-      { id:'lengua', t:'📖 Lengua y lectura', s:'Cuentos, vocales, abecedario y más', L:P.filter(function(p){ return (p.tematica === 'lengua' || p.tematica === 'literatura') && noJuego(p); }) },
+      { id:'lengua', t:'📚 Prácticas del Lenguaje', s:'Cuentos, vocales, abecedario, lectura y escritura', L:P.filter(function(p){ return (p.tematica === 'lengua' || p.tematica === 'literatura') && noJuego(p); }) },
       { id:'gratis', t:'🎁 Gratis para vos', s:'Descargalos sin costo', L:P.filter(function(p){ return p.acceso === 'gratis'; }), href:'gratis.html' }
     ];
     var html = S.filter(function(sh){ return sh.L.length >= 2; }).map(function(sh){
       return '<div class="pro-shelf' + (sh.hot ? ' hot' : '') + '" data-shelf="' + sh.id + '"><div class="pro-shelf-hd"><div><h3>' + escH(sh.t) + '</h3><p>' + escH(sh.s) + '</p></div>' +
         (sh.href ? '<a href="' + sh.href + '">Ver todo</a>' : '<button type="button" data-pro-todo>Ver todo</button>') + '</div>' +
-        '<div class="pro-row">' + sh.L.slice(0, 12).map(function(p, k){ return mini(p, Math.min(k, 6), sh.tag || (sh.id === 'nuevos' ? (k === 0 ? '✨ RECIÉN SUBIDO' : '') : (p.etiqueta === 'nuevo' ? 'NUEVO' : ''))); }).join('') + '</div></div>';
+        '<div class="pro-row">' + sh.L.slice(0, 12).map(function(p, k){ return mini(p, Math.min(k, 6), sh.tag || (sh.id === 'nuevos' ? (k === 0 ? '✨ RECIÉN SUBIDO' : '') : sh.id === 'temporada' ? (cuentaEfe(p) || (p.etiqueta === 'nuevo' ? 'NUEVO' : '')) : (p.etiqueta === 'nuevo' ? 'NUEVO' : ''))); }).join('') + '</div></div>';
     }).join('');
     if (!html) return;
     var sec = document.createElement('section'); sec.id = 'pro-shelves'; sec.className = 'pro-shelves'; sec.innerHTML = html;
@@ -4986,7 +5019,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
   // barra pegada con "Filtrar y buscar" + filtros rápidos
   const btn = $1("#filter-sheet-btn"); let wrap = null, chips = null;
   if (btn) { wrap = document.createElement("div"); wrap.className = "m5-pegado"; btn.parentNode.insertBefore(wrap, btn); wrap.appendChild(btn); chips = document.createElement("div"); chips.className = "m5-chips"; chips.setAttribute("role", "group"); chips.setAttribute("aria-label", "Filtros rápidos"); wrap.appendChild(chips); }
-  const TEM = { efemerides: "🗓️ Efemérides", lengua: "📚 Lengua", matematica: "🔢 Matemática", literatura: "📖 Literatura", ciencias: "🔬 Ciencias", laminas: "🖼️ Láminas" };
+  const TEM = { efemerides: "🗓️ Efemérides", lengua: "📚 Prácticas del Lenguaje", matematica: "🔢 Matemática", literatura: "📖 Literatura", ciencias: "🔬 Ciencias", laminas: "🖼️ Láminas" };
   const NIV = { "1ciclo": "🧒 Primer ciclo", "2ciclo": "🧑 Segundo ciclo" };
   function pintarChips() { if (!chips || typeof _data === "undefined" || !_data || !_data.productos) return;
     const P = _data.productos.filter((p) => p.activo && p.tipo !== "juego" && p.acceso !== "gratis"), cuenta = (f) => P.filter(f).length;
