@@ -1835,6 +1835,34 @@ html.pro-theme-fade, html.pro-theme-fade *{transition:background-color .45s ease
   .pro-cf .pro-cf-it{transition:none}
   .pro-cf-it.on .pro-cf-shine,.float-buy-btn::after,.pro-in-up{animation:none!important}
 }
+/* ===== Tienda en el celular (m5) ===== */
+/* precio e "incluye" repetidos sin estilo en la ficha: se muestra una sola vez */
+.detail-price-block,.detail-incluye-chips{display:none!important}
+.m5-chips{display:none}
+@media (max-width:640px){
+  .m5-pegado{position:sticky;top:calc(var(--m5-hdr,60px) - 1px);z-index:30;margin:0 -16px;padding:10px 16px 8px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px) saturate(150%);-webkit-backdrop-filter:blur(12px) saturate(150%);transition:box-shadow .2s}
+  .m5-pegado.on{box-shadow:0 10px 22px -16px rgba(0,0,0,.55);border-bottom:1px solid var(--line)}
+  .m5-pegado .filter-sheet-btn{padding:10px 14px;min-height:44px}
+  .m5-chips{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;margin:8px -16px 0;padding:2px 16px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 20px),transparent);mask-image:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 20px),transparent)}
+  .m5-chips::-webkit-scrollbar{display:none}
+  .m5-chip{flex:none;display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:0 13px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink-2);font:inherit;font-weight:800;font-size:.84rem;cursor:pointer;white-space:nowrap}
+  .m5-chip i{font-style:normal;font-size:.72rem;opacity:.65}
+  .m5-chip[aria-pressed="true"]{background:var(--primary);border-color:var(--primary);color:#fff}
+  .m5-chip[aria-pressed="true"] i{opacity:.85}
+  /* botón del regalo: a la derecha, chico, y se esconde al bajar */
+  .cofre-fab{left:auto!important;right:14px!important;width:48px!important;height:48px!important;transition:transform .3s,opacity .3s}
+  .cofre-fab.m5-oculto{transform:translateY(130%) scale(.8);opacity:0;pointer-events:none}
+  /* ficha del material */
+  #detail-content>*,.detail-gallery,.detail-info{min-width:0}
+  .detail-thumbs{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;margin:12px -16px 0;padding:2px 16px 4px;gap:8px!important}
+  .detail-thumbs::-webkit-scrollbar{display:none}
+  .detail-thumb{flex:none;width:60px!important;height:60px!important;border-radius:10px!important}
+  .detail-cta .cta-sec{grid-template-columns:1fr 1fr!important}
+  .detail-cta .cta-sec .btn{min-height:46px;font-size:.88rem;padding:10px 12px}
+  .detail-cta .btn-pin{background:var(--card)!important;color:var(--ink)!important;border:1.5px solid var(--line)!important;box-shadow:none!important}
+  .detail-cta .btn-placa{background:none!important;border:0!important;box-shadow:none!important;color:var(--primary)!important;font-size:.88rem!important;min-height:0!important;padding:6px!important;text-decoration:underline;text-underline-offset:3px}
+  .detail-cta .btn-primary.btn-lg{min-height:54px;font-size:1.05rem;border-radius:16px}
+}
 </style><!--/PRO-HEAD-->
 </head>
 <body>
@@ -4933,5 +4961,40 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
   if (!arrancar()){ var tries = 0; var iv2 = setInterval(function(){ if (arrancar() || ++tries > 120) clearInterval(iv2); }, 100); }
 })();
 </script><!--/PRO-BODY-->
+<script id="m5-js">
+// ===== Tienda en el celular: filtros rápidos, barra pegada y botón del regalo =====
+(function () {
+  const cel = () => matchMedia("(max-width:640px)").matches, $1 = (x) => document.querySelector(x);
+  const hq = $1("#hdr-q"); const ph = hq && hq.getAttribute("placeholder");
+  const ajustarPh = () => { if (hq) hq.setAttribute("placeholder", cel() ? "Buscar…" : ph); }; ajustarPh(); addEventListener("resize", ajustarPh);
+  const hdr = $1("#main-hdr"), altoHdr = () => { if (hdr) document.documentElement.style.setProperty("--m5-hdr", hdr.getBoundingClientRect().height + "px"); }; altoHdr(); addEventListener("resize", altoHdr);
+  // barra pegada con "Filtrar y buscar" + filtros rápidos
+  const btn = $1("#filter-sheet-btn"); let wrap = null, chips = null;
+  if (btn) { wrap = document.createElement("div"); wrap.className = "m5-pegado"; btn.parentNode.insertBefore(wrap, btn); wrap.appendChild(btn); chips = document.createElement("div"); chips.className = "m5-chips"; chips.setAttribute("role", "group"); chips.setAttribute("aria-label", "Filtros rápidos"); wrap.appendChild(chips); }
+  const TEM = { efemerides: "🗓️ Efemérides", lengua: "📚 Lengua", matematica: "🔢 Matemática", literatura: "📖 Literatura", ciencias: "🔬 Ciencias", laminas: "🖼️ Láminas" };
+  const NIV = { "1ciclo": "🧒 Primer ciclo", "2ciclo": "🧑 Segundo ciclo" };
+  function pintarChips() { if (!chips || typeof _data === "undefined" || !_data || !_data.productos) return;
+    const P = _data.productos.filter((p) => p.activo && p.tipo !== "juego" && p.acceso !== "gratis"), cuenta = (f) => P.filter(f).length;
+    const L = [["todos", "", "✨ Todos", P.length]];
+    Object.keys(TEM).forEach((k) => { const n = cuenta((p) => p.tematica === k); if (n) L.push(["tematica", k, TEM[k], n]); });
+    Object.keys(NIV).forEach((k) => { const n = cuenta((p) => p.nivelGrupo === k); if (n && n < P.length) L.push(["nivel", k, NIV[k], n]); });
+    const activo = (d, v) => d === "todos" ? (_filtroTematica === "todos" && _filtroNivel === "todos" && _filtroTipo === "todos" && _filtroMes === "todos" && !_q) : d === "tematica" ? _filtroTematica === v : _filtroNivel === v;
+    const html = L.map(([d, v, t, n]) => `<button type="button" class="m5-chip" data-m5d="${d}" data-m5v="${v}" aria-pressed="${activo(d, v)}">${t} <i>${n}</i></button>`).join("");
+    if (chips.innerHTML !== html) chips.innerHTML = html; }
+  if (chips) chips.addEventListener("click", (e) => { const b = e.target.closest("[data-m5d]"); if (!b) return; const d = b.dataset.m5d, v = b.dataset.m5v;
+    if (typeof haptic === "function") haptic(8);
+    if (d === "todos") { if (typeof limpiarFiltros === "function") limpiarFiltros(); }
+    else { const ya = b.getAttribute("aria-pressed") === "true"; if (typeof setFiltro === "function") setFiltro(d, ya ? "todos" : v); const sel = $1(d === "tematica" ? "#sel-tematica" : "#sel-nivel"); if (sel) sel.value = ya ? "todos" : v; }
+    pintarChips(); const g = $1("#grid"); if (g && wrap && g.getBoundingClientRect().top < (parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--m5-hdr")) || 60)) scrollTo({ top: wrap.getBoundingClientRect().top + scrollY - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--m5-hdr")) || 60) + 1, behavior: "smooth" }); });
+  if (typeof render === "function") { const _r = render; render = function () { const x = _r.apply(this, arguments); try { pintarChips(); } catch (e) {} return x; }; }
+  setTimeout(pintarChips, 1200);
+  // sombra cuando la barra queda pegada; el regalo se esconde al bajar y vuelve al subir
+  let yAnt = scrollY; const fab = $1("#cofre-fab");
+  addEventListener("scroll", () => { const y = scrollY;
+    if (wrap && cel()) { const top = wrap.getBoundingClientRect().top, lim = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--m5-hdr")) || 60); wrap.classList.toggle("on", top <= lim + 1 && wrap.parentElement.getBoundingClientRect().bottom > lim + 80); }
+    if (fab && cel()) { if (y > yAnt + 6 && y > 300) fab.classList.add("m5-oculto"); else if (y < yAnt - 6) fab.classList.remove("m5-oculto"); }
+    yAnt = y; }, { passive: true });
+})();
+</script>
 </body>
 </html>
