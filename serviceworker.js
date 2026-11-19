@@ -67,7 +67,7 @@ self.addEventListener('fetch', (e) => {
   // Navegaciones: intentar red, caer a index cacheado offline
   if (req.mode === 'navigate') {
     // siempre pregunta al servidor si hay una versión nueva (así los cambios se ven al recargar, sin esperar)
-    e.respondWith(fetch(req.url, { cache: 'no-cache', credentials: 'same-origin' }).catch(() => caches.match(req, { ignoreSearch: true }).then(r => r || caches.match('./index.html'))));
+    e.respondWith(fetch(req.url, { cache: 'no-cache', credentials: 'same-origin' }).then(r => r.redirected ? fetch(req) : r).catch(() => fetch(req)).catch(() => caches.match(req, { ignoreSearch: true }).then(r => r || caches.match('./index.html'))));
     return;
   }
 
