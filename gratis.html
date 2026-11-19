@@ -778,7 +778,7 @@ function imgOpt(ruta, w){
 
 fetch('productos.json?v=' + Math.floor(Date.now() / 60000))
   .then(r => r.json())
-  .then(data => { _data = data; aplicarConfig(); render(); })
+  .then(data => { /* lo último que subiste aparece primero */ if (data && Array.isArray(data.productos)) data.productos = data.productos.slice().reverse(); _data = data; aplicarConfig(); render(); })
   .catch(err => {
     console.error('Error cargando productos.json', err);
     $('#grid').innerHTML = '<div class="empty"><div class="empty-em">⚠️</div><h3>No pudimos cargar los recursos</h3><p>Probá refrescando en unos segundos.</p></div>';

@@ -2134,8 +2134,8 @@ html.pro-theme-fade, html.pro-theme-fade *{transition:background-color .45s ease
         </div>
         <label for="sel-orden">Ordenar:</label>
         <select id="sel-orden" onchange="setOrden(this.value)" aria-label="Ordenar catálogo">
-          <option value="destacados">Destacados</option>
-          <option value="nuevo">Novedades</option>
+          <option value="nuevo">🆕 Lo más nuevo</option>
+          <option value="destacados">⭐ Destacados</option>
           <option value="precio-asc">Precio: menor a mayor</option>
           <option value="precio-desc">Precio: mayor a menor</option>
           <option value="nombre">Nombre A–Z</option>
@@ -2324,7 +2324,7 @@ let _filtroNivel = 'todos';
 let _filtroMes = 'todos';
 let _filtroTematica = 'todos';
 let _q = '';
-let _orden = 'destacados';
+let _orden = 'nuevo';
 let _galeria = [];      // imágenes de la ficha abierta (para el lightbox)
 let _detailIdx = 0;     // índice de la imagen mostrada
 function setOrden(v){ _orden = v; render(); escribirFiltrosEnURL(true); }
@@ -2392,7 +2392,7 @@ function initTilt(){
 npStart();
 fetch('productos.json?v=' + Math.floor(Date.now() / 60000))
   .then(r => r.json())
-  .then(data => { _data = data; aplicarConfig(); leerFiltrosDeURL(); renderSemana(); render(); routear(); generarSchemaProductos(); renderHeroCollage(); initTilt(); if(typeof setVista==='function')setVista(_vista); renderRecientes(); initPromo(); initEfemHoy(); actualizarFavChip(); npDone(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); setTimeout(function(){ try{ if(!location.hash || location.hash==='#') iniciarTour(); }catch(e){} }, 1600); })
+  .then(data => { _data = data; marcarPublicacion(_data); aplicarConfig(); leerFiltrosDeURL(); renderSemana(); render(); routear(); generarSchemaProductos(); renderHeroCollage(); initTilt(); if(typeof setVista==='function')setVista(_vista); renderRecientes(); initPromo(); initEfemHoy(); actualizarFavChip(); npDone(); const ldr=document.getElementById('page-loader');if(ldr)setTimeout(()=>ldr.classList.add('hidden'),300); setTimeout(function(){ try{ if(!location.hash || location.hash==='#') iniciarTour(); }catch(e){} }, 1600); })
   .catch(err => {
     npDone();
     const ldr=document.getElementById('page-loader');if(ldr)ldr.classList.add('hidden');
@@ -2453,8 +2453,8 @@ function renderHeroCollage(){
   const cont = document.getElementById('hero-collage');
   if (!cont) return;
   const prods = (_data.productos||[]).filter(p => p.activo && p.tipo !== 'juego' && p.imagen);
-  const dest = prods.filter(p => p.destacado);
-  const pick = [...dest, ...prods.filter(p => !p.destacado)].slice(0, 3);
+  const nuevos = prods.filter(p => p.acceso !== 'gratis').sort(masNuevoPrimero);
+  const pick = [...nuevos.slice(0, 1), ...prods.filter(p => p.destacado && p !== nuevos[0]), ...nuevos.slice(1)].filter((p, i, a) => a.indexOf(p) === i).slice(0, 3);
   if (pick.length < 3){ cont.style.display = 'none'; return; }
   cont.innerHTML = pick.map((p,i) =>
     `<div class="hero-cover c${i+1}"><img src="${imgOpt(p.imagen,520)}" alt="" onerror="this.onerror=null;this.src='${_imgAbs(p.imagen)}'" /></div>`
@@ -2497,6 +2497,16 @@ function generarSchemaProductos(){
 }
 
 // ── Helpers ──
+
+// Orden de publicación: el último material subido (el último de productos.json) es el más nuevo.
+// Los 3 últimos materiales pagos llevan la cinta "Nuevo" sola, aunque no se la hayas puesto.
+function marcarPublicacion(d){
+  const L = (d && d.productos) || [];
+  L.forEach((p, i) => { p._pub = i; });
+  L.filter(p => p.activo && p.acceso !== 'gratis' && p.tipo !== 'juego').sort((a,b) => b._pub - a._pub).slice(0, 3)
+    .forEach(p => { if (!p.etiqueta) { p.etiqueta = 'nuevo'; p._autoNuevo = true; } });
+}
+const masNuevoPrimero = (a, b) => (b._pub || 0) - (a._pub || 0);
 
 // Normaliza rutas de imagen: convierte rutas absolutas /PaginaWeb/... a relativas
 function normImg(ruta){
@@ -2737,12 +2747,12 @@ function render(){
   });
 
   // Ordenar
-  const orden = _orden || 'destacados';
+  const orden = _orden || 'nuevo';
   if (orden === 'precio-asc')       filtrados.sort((a,b)=>(a.precio||0)-(b.precio||0));
   else if (orden === 'precio-desc') filtrados.sort((a,b)=>(b.precio||0)-(a.precio||0));
   else if (orden === 'nombre')      filtrados.sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'','es'));
-  else if (orden === 'nuevo')       filtrados.sort((a,b)=>((b.etiqueta==='nuevo')-(a.etiqueta==='nuevo')));
-  else /* destacados */             filtrados.sort((a,b)=>((b.destacado?1:0)-(a.destacado?1:0)));
+  else if (orden === 'nuevo')       filtrados.sort(masNuevoPrimero);
+  else /* destacados */             filtrados.sort((a,b)=>((b.destacado?1:0)-(a.destacado?1:0)) || masNuevoPrimero(a,b));
   const so = $('#sel-orden'); if (so && so.value !== orden) so.value = orden;
 
   // Contador de resultados + chips activos
@@ -2797,7 +2807,7 @@ function escribirFiltrosEnURL(push){
   if (_filtroMes      !== 'todos') p.set('mes', _filtroMes);
   if (_filtroTematica !== 'todos') p.set('tematica', _filtroTematica);
   if (_q) p.set('q', _q);
-  if (_orden && _orden !== 'destacados') p.set('orden', _orden);
+  if (_orden && _orden !== 'nuevo') p.set('orden', _orden);
   const qs = p.toString();
   // Preservar solo el hash de ficha de producto (#/producto/...), no anclas de sección
   const keepHash = (location.hash && location.hash.indexOf('#/') === 0) ? location.hash : '';
@@ -2811,7 +2821,7 @@ function leerFiltrosDeURL(){
   _filtroMes      = p.get('mes')      || 'todos';
   _filtroTematica = p.get('tematica') || 'todos';
   _q = p.get('q') || '';
-  _orden = p.get('orden') || 'destacados';
+  _orden = p.get('orden') || 'nuevo';
   ['q','hdr-q'].forEach(id => { const el = document.getElementById(id); if (el) el.value = _q; });
   const so = document.getElementById('sel-orden'); if (so) so.value = _orden;
 }
@@ -4753,8 +4763,12 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
   /* ───────── 1 · Portada 3D ───────── */
   function elegirPortada(){
     var P = activos();
-    var pts = function(p){ return (p.etiqueta === 'nuevo' ? 6 : 0) + (p.destacado ? 4 : 0) + (mesEnCurso(p) ? 8 : 0) + (p.acceso === 'gratis' ? -3 : 0); };
-    return P.slice().sort(function(a,b){ return pts(b) - pts(a); }).slice(0, 9);
+    var orden = P.filter(function(p){ return p.acceso !== 'gratis'; }).sort(function(a,b){ return (b._pub || 0) - (a._pub || 0); });
+    var rec = {}; orden.slice(0, 6).forEach(function(p, i){ rec[p.id] = 6 - i; });
+    var pts = function(p){ return (rec[p.id] || 0) * 2 + (p.etiqueta === 'nuevo' ? 4 : 0) + (p.destacado ? 3 : 0) + (mesEnCurso(p) ? 5 : 0) + (p.acceso === 'gratis' ? -3 : 0); };
+    var primero = orden[0];
+    var resto = P.filter(function(p){ return p !== primero; }).sort(function(a,b){ return pts(b) - pts(a); });
+    return (primero ? [primero] : []).concat(resto).slice(0, 9);
   }
   function mesesAhora(){ var m = new Date().getMonth() + 1; return [m, m % 12 + 1]; }
   function mesEnCurso(p){ var M = mesesAhora(); return (p.meses || []).some(function(x){ return M.indexOf(+x) >= 0; }); }
@@ -4856,9 +4870,10 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
     var M = mesesAhora();
     var temporada = semana.concat(P.filter(function(p){ return mesEnCurso(p) && semana.indexOf(p) < 0; }));
     var noJuego = function(p){ return p.tipo !== 'juego'; };
+    var recientes = P.filter(function(p){ return p.acceso !== 'gratis'; }).sort(function(a,b){ return (b._pub || 0) - (a._pub || 0); }).slice(0, 10);
     var S = [
-      { id:'temporada', hot:true, t:'🗓️ ' + (cfg.titulo || 'Se viene en ' + MESES[M[1]-1]), s:'Lo que vas a necesitar estas semanas', L:temporada },
-      { id:'nuevos', t:'🆕 Recién salidos', s:'Lo último que sumamos al cofre', L:P.filter(function(p){ return p.etiqueta === 'nuevo' && noJuego(p); }) },
+      { id:'nuevos', hot:true, t:'🆕 Recién salidos', s:'Lo último que sumamos al cofre', L:recientes },
+      { id:'temporada', t:'🗓️ ' + (cfg.titulo || 'Se viene en ' + MESES[M[1]-1]), s:'Lo que vas a necesitar estas semanas', L:temporada },
       { id:'top', t:'⭐ Los más elegidos', s:'Los favoritos de las seños', L:P.filter(function(p){ return p.destacado; }) },
       { id:'interactivos', t:'🎮 Para jugar en el aula', s:'Plataformas interactivas para proyectar', L:P.filter(function(p){ return p.tipo === 'juego' || p.demoUrl; }), href:'interactivos.html', tag:'INTERACTIVO' },
       { id:'lengua', t:'📖 Lengua y lectura', s:'Cuentos, vocales, abecedario y más', L:P.filter(function(p){ return (p.tematica === 'lengua' || p.tematica === 'literatura') && noJuego(p); }) },
@@ -4867,7 +4882,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
     var html = S.filter(function(sh){ return sh.L.length >= 2; }).map(function(sh){
       return '<div class="pro-shelf' + (sh.hot ? ' hot' : '') + '" data-shelf="' + sh.id + '"><div class="pro-shelf-hd"><div><h3>' + escH(sh.t) + '</h3><p>' + escH(sh.s) + '</p></div>' +
         (sh.href ? '<a href="' + sh.href + '">Ver todo</a>' : '<button type="button" data-pro-todo>Ver todo</button>') + '</div>' +
-        '<div class="pro-row">' + sh.L.slice(0, 12).map(function(p, k){ return mini(p, Math.min(k, 6), sh.tag || (sh.id !== 'nuevos' && p.etiqueta === 'nuevo' ? 'NUEVO' : '')); }).join('') + '</div></div>';
+        '<div class="pro-row">' + sh.L.slice(0, 12).map(function(p, k){ return mini(p, Math.min(k, 6), sh.tag || (sh.id === 'nuevos' ? (k === 0 ? '✨ RECIÉN SUBIDO' : '') : (p.etiqueta === 'nuevo' ? 'NUEVO' : ''))); }).join('') + '</div></div>';
     }).join('');
     if (!html) return;
     var sec = document.createElement('section'); sec.id = 'pro-shelves'; sec.className = 'pro-shelves'; sec.innerHTML = html;
