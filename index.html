@@ -1937,6 +1937,10 @@ html.pro-theme-fade, html.pro-theme-fade *{transition:background-color .45s ease
 body.in-detail .m8-regalo{display:none}
 /* velocidad: las secciones de abajo se dibujan recién cuando hace falta */
 #por-que,#faq,#instagram,#newsletter,footer{content-visibility:auto;contain-intrinsic-size:auto 800px}
+/* lugar reservado para el carrusel de la portada (así la página no salta cuando carga) */
+.pro-cf-ph,.pro-tour-ph,.pro-shelves-ph{display:none}
+@media (max-width:899px){.pro-shelves-ph{display:block;min-height:1200px;padding:24px 16px}.pro-shelves-ph i{display:block;width:200px;height:22px;border-radius:8px;background:var(--bg-2);margin:10px 0 14px}.pro-shelves-ph div{display:flex;gap:12px;overflow:hidden;margin-bottom:26px}.pro-shelves-ph b{flex:0 0 42%;aspect-ratio:4/5;border-radius:16px;background:var(--bg-2)}}
+@media (max-width:1059px){.pro-cf-ph{display:block;margin:6px 0;height:calc(min(196px,46vw) * 1.25 + 74px)}.pro-tour-ph{display:block;height:43px}}
 /* "Esta semana" ya está en la fila "Para esta semana": se evita el salto de la página y la repetición */
 #semana{display:none!important}
 </style><!--/PRO-HEAD-->
@@ -2122,10 +2126,12 @@ body.in-detail .m8-regalo{display:none}
       <div class="hero-badge">✨ Recursos didácticos digitales</div>
       <h1>Propuestas que<br><em class="hero-em-highlight">enamoran</em> el aula</h1>
       <p class="lead">Cuadernillos, juegos interactivos y láminas de calidad editorial. Listos para imprimir, diseñados con amor para docentes.</p>
+      <div class="pro-cf-ph" aria-hidden="true"></div>
       <div class="hero-cta">
         <a href="#catalogo" class="btn btn-primary btn-lg">Ver catálogo →</a>
         <a href="#newsletter" class="btn btn-ghost btn-lg">📧 Suscribirme</a>
       </div>
+      <div class="pro-tour-ph" aria-hidden="true"></div>
       <div class="hero-stats">
         <div class="stat-item">
           <div class="stat-em orange">👩‍🏫</div>
@@ -2171,6 +2177,7 @@ body.in-detail .m8-regalo{display:none}
 </section>
 
 <!-- Catálogo -->
+<div id="pro-shelves-ph" class="pro-shelves-ph" aria-hidden="true"><i></i><div><b></b><b></b><b></b></div><i></i><div><b></b><b></b><b></b></div></div>
 <section class="sec" id="catalogo">
   <div class="wrap">
     <div class="sec-hd">
@@ -4878,7 +4885,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
 
   function armarPortada(){
     var hi = q('.hero .hero-i'); if (!hi || q('.pro-cf')) return;
-    var L = elegirPortada(); if (L.length < 3) return;
+    var L = elegirPortada(); if (L.length < 3){ qa('.pro-cf-ph,.pro-tour-ph').forEach(function(x){ x.remove(); }); return; }
     var cf = document.createElement('div'); cf.className = 'pro-cf pre'; cf.setAttribute('aria-label', 'Materiales destacados');
     var W = Math.min(196, Math.round(innerWidth * 0.46)); cf.style.setProperty('--pro-cf-w', W + 'px'); cf.style.setProperty('--pro-cf-h', Math.round(W * 1.25 + 74) + 'px');
     cf.innerHTML = '<div class="pro-cf-stage">' + L.map(function(p, i){
@@ -4889,12 +4896,12 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
         '<span class="pro-cf-shine"></span></a>';
     }).join('') + '</div><div class="pro-cf-floor"></div><div class="pro-cf-cap" aria-live="polite"><b></b><span></span></div>';
     var lead = q('p.lead', hi), cta = q('.hero-cta', hi);
-    hi.insertBefore(cf, cta || (lead && lead.nextSibling) || null);
+    var phc = q('.pro-cf-ph', hi); if (phc) phc.replaceWith(cf); else hi.insertBefore(cf, cta || (lead && lead.nextSibling) || null);
     // enlace al recorrido (solo a pedido)
     if (cta && !q('.pro-tour-chip')){
       var ch = document.createElement('button'); ch.type = 'button'; ch.className = 'pro-tour-chip'; ch.innerHTML = '👋 ¿Primera vez? Te muestro cómo funciona';
       ch.addEventListener('click', function(){ track('tour-pedido'); window.iniciarTour(true); });
-      cta.insertAdjacentElement('afterend', ch);
+      var pht = q('.pro-tour-ph', hi); if (pht) pht.replaceWith(ch); else cta.insertAdjacentElement('afterend', ch);
     }
     var its = qa('.pro-cf-it', cf), n = its.length, pos = 0, cap = q('.pro-cf-cap', cf);
     function pintar(){
@@ -5015,9 +5022,9 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
         (sh.href ? '<a href="' + sh.href + '">Ver todo</a>' : '<button type="button" data-pro-todo>Ver todo</button>') + '</div>' +
         '<div class="pro-row">' + sh.L.slice(0, 12).map(function(p, k){ return mini(p, Math.min(k, 6), sh.tag || (sh.id === 'nuevos' ? (k === 0 ? '✨ RECIÉN SUBIDO' : '') : sh.id === 'temporada' ? (cuentaEfe(p) || (p.etiqueta === 'nuevo' ? 'NUEVO' : '')) : (p.etiqueta === 'nuevo' ? 'NUEVO' : ''))); }).join('') + '</div></div>';
     }).join('');
-    if (!html) return;
+    var ph0 = q('#pro-shelves-ph'); if (!html){ if (ph0) ph0.remove(); return; }
     var sec = document.createElement('section'); sec.id = 'pro-shelves'; sec.className = 'pro-shelves'; sec.innerHTML = html;
-    cat.parentNode.insertBefore(sec, cat);
+    var ph = q('#pro-shelves-ph'); if (ph) ph.replaceWith(sec); else cat.parentNode.insertBefore(sec, cat);
     qa('[data-pro-todo]', sec).forEach(function(b){ b.addEventListener('click', function(){ expandir(); var g = q('#catalogo'); if (g) g.scrollIntoView({behavior: RM ? 'auto' : 'smooth'}); }); });
     if ('IntersectionObserver' in window){
       var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('pro-seen'); io.unobserve(e.target); } }); }, {threshold:.25});
