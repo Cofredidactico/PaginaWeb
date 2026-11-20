@@ -1872,6 +1872,73 @@ html.pro-theme-fade, html.pro-theme-fade *{transition:background-color .45s ease
   .detail-cta .btn-placa{background:none!important;border:0!important;box-shadow:none!important;color:var(--primary)!important;font-size:.88rem!important;min-height:0!important;padding:6px!important;text-decoration:underline;text-underline-offset:3px}
   .detail-cta .btn-primary.btn-lg{min-height:54px;font-size:1.05rem;border-radius:16px}
 }
+/* ===== m8 · vista rápida, sugerencias, plataformas en movimiento, regalo sin interrumpir ===== */
+.m8-qv{position:absolute;right:10px;bottom:10px;z-index:4;display:inline-flex;align-items:center;gap:5px;border:0;cursor:pointer;padding:7px 11px;border-radius:999px;background:rgba(15,20,30,.78);color:#fff;font:800 .74rem var(--f-body);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 6px 16px -6px rgba(0,0,0,.5);opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s}
+.card:hover .m8-qv,.card:focus-within .m8-qv{opacity:1;transform:none}
+@media (hover:none){.m8-qv{opacity:1;transform:none;padding:6px 9px}.m8-qv span{display:none}}
+.m8-live{position:absolute;left:10px;bottom:10px;z-index:4;display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:linear-gradient(135deg,#7C4DFF,#2196F3);color:#fff;font:800 .68rem var(--f-body);letter-spacing:.03em;box-shadow:0 6px 16px -6px rgba(33,150,243,.7)}
+.m8-live i{width:7px;height:7px;border-radius:50%;background:#fff;animation:m8pulso 1.2s ease-in-out infinite}
+@keyframes m8pulso{50%{opacity:.25;transform:scale(.7)}}
+.card.m8-mueve .card-slide{transition:opacity .6s ease}
+.m8-ov{position:fixed;inset:0;z-index:170;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(8,12,20,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.m8-ov.on{display:flex}
+.m8-box{position:relative;width:min(880px,100%);max-height:calc(100dvh - 40px);overflow:auto;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:24px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);animation:m8in .28s cubic-bezier(.2,.9,.25,1)}
+@keyframes m8in{from{transform:translateY(18px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+.m8-x{position:absolute;top:12px;right:12px;z-index:3;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1rem;cursor:pointer}
+.m8-gal{position:relative;background:var(--bg-2);min-height:320px}
+.m8-tira{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;height:100%}
+.m8-tira::-webkit-scrollbar{display:none}
+.m8-tira img{flex:0 0 100%;width:100%;height:100%;max-height:72vh;object-fit:contain;scroll-snap-align:center;background:var(--bg-2)}
+.m8-tira iframe{flex:0 0 100%;width:100%;min-height:60vh;border:0;background:#fff}
+.m8-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:6px}
+.m8-dots i{width:7px;height:7px;border-radius:99px;background:rgba(255,255,255,.55);box-shadow:0 0 0 1px rgba(0,0,0,.15);transition:width .2s}
+.m8-dots i.on{width:18px;background:#fff}
+.m8-info{padding:26px 24px 22px;display:flex;flex-direction:column;gap:10px}
+.m8-k{font:800 .72rem var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.m8-info h3{font-family:var(--f-display);font-size:1.5rem;line-height:1.15;margin:0;padding-right:40px}
+.m8-meta{display:flex;flex-wrap:wrap;gap:6px}
+.m8-meta span{font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--bg-2);color:var(--ink-2)}
+.m8-desc{color:var(--ink-2);font-size:.92rem;line-height:1.55;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.m8-precio{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-top:4px}
+.m8-precio b{font-family:var(--f-display);font-size:1.9rem}
+.m8-precio s{color:var(--ink-4);font-weight:700}
+.m8-precio em{font-style:normal;background:#E5484D;color:#fff;font-weight:800;font-size:.75rem;padding:3px 9px;border-radius:8px}
+.m8-acts{display:grid;gap:8px;margin-top:auto;padding-top:8px}
+.m8-acts .btn{justify-content:center;width:100%}
+.m8-play{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border-radius:14px;border:1.5px solid color-mix(in srgb,#7C4DFF 55%,transparent);background:color-mix(in srgb,#7C4DFF 12%,transparent);color:var(--ink);font:800 .95rem var(--f-body);cursor:pointer}
+@media (max-width:720px){
+  .m8-ov{align-items:flex-end;padding:0}
+  .m8-box{grid-template-columns:1fr;border-radius:24px 24px 0 0;max-height:92dvh;animation:m8sube .3s cubic-bezier(.2,.9,.25,1)}
+  @keyframes m8sube{from{transform:translateY(60px)}to{transform:none}}
+  .m8-gal{min-height:0}.m8-tira img{height:52vh;max-height:none}
+  .m8-info{padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px))}
+  .m8-info h3{font-size:1.3rem}
+  .m8-acts{position:sticky;bottom:0;background:linear-gradient(transparent,var(--card) 30%);padding-top:14px}
+}
+/* sugerencias del buscador */
+.m8-sug{position:fixed;z-index:175;display:none;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:16px;box-shadow:0 22px 50px -18px rgba(0,0,0,.55);padding:6px;max-height:min(420px,60vh);overflow:auto}
+.m8-sug.on{display:block}
+.m8-sug a{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 8px;border-radius:12px;color:inherit;text-decoration:none}
+.m8-sug a:hover,.m8-sug a.on{background:var(--bg-2)}
+.m8-sug img{width:44px;height:55px;object-fit:cover;border-radius:6px;background:var(--bg-2)}
+.m8-sug b{display:block;font-size:.9rem;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.m8-sug small{color:var(--ink-3);font-size:.76rem}
+.m8-sug em{font-style:normal;font-weight:800;font-size:.85rem;white-space:nowrap}
+.m8-sug .m8-h{font:800 .7rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding:6px 8px 4px}
+.m8-sug .m8-todo{display:block;text-align:center;font-weight:800;font-size:.85rem;color:var(--primary);padding:9px}
+/* regalo sin interrumpir */
+.m8-regalo{position:fixed;left:16px;bottom:18px;z-index:89;display:flex;align-items:center;gap:10px;max-width:min(420px,calc(100% - 32px));padding:10px 10px 10px 14px;border-radius:18px;background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:0 18px 40px -16px rgba(0,0,0,.55);transform:translateY(140%);opacity:0;transition:transform .4s cubic-bezier(.2,.9,.25,1),opacity .3s}
+.m8-regalo.on{transform:none;opacity:1}
+.m8-regalo .ic{font-size:1.6rem}
+.m8-regalo p{margin:0;font-size:.86rem;line-height:1.3}.m8-regalo p b{display:block;font-size:.95rem}
+.m8-regalo .btn{padding:9px 14px;font-size:.85rem;white-space:nowrap}
+.m8-regalo .m8-cx{border:0;background:none;color:var(--ink-3);font-size:1rem;cursor:pointer;padding:6px}
+@media (max-width:700px){.m8-regalo{left:12px;right:12px;max-width:none;bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
+body.in-detail .m8-regalo{display:none}
+/* velocidad: las secciones de abajo se dibujan recién cuando hace falta */
+#por-que,#faq,#instagram,#newsletter,footer{content-visibility:auto;contain-intrinsic-size:auto 800px}
+/* "Esta semana" ya está en la fila "Para esta semana": se evita el salto de la página y la repetición */
+#semana{display:none!important}
 </style><!--/PRO-HEAD-->
 </head>
 <body>
@@ -2467,7 +2534,7 @@ function renderHeroCollage(){
   const pick = [...nuevos.slice(0, 1), ...prods.filter(p => p.destacado && p !== nuevos[0]), ...nuevos.slice(1)].filter((p, i, a) => a.indexOf(p) === i).slice(0, 3);
   if (pick.length < 3){ cont.style.display = 'none'; return; }
   cont.innerHTML = pick.map((p,i) =>
-    `<div class="hero-cover c${i+1}"><img src="${imgOpt(p.imagen,520)}" alt="" onerror="this.onerror=null;this.src='${_imgAbs(p.imagen)}'" /></div>`
+    `<div class="hero-cover c${i+1}"><img src="${imgOpt(p.imagen,520)}" alt="${String(p.nombre||'').replace(/"/g,'&quot;')}" onerror="this.onerror=null;this.src='${_imgAbs(p.imagen)}'" /></div>`
   ).join('');
 }
 
@@ -2520,6 +2587,18 @@ function marcarPublicacion(d){
     .forEach(p => { if (!p.etiqueta) { p.etiqueta = 'nuevo'; p._autoNuevo = true; } });
 }
 const masNuevoPrimero = (a, b) => (b._pub || 0) - (a._pub || 0);
+// Buscador: sin importar tildes ni mayúsculas, y perdona errores de tipeo ("guemes", "tradicion", "bandeara")
+const _fold = (t) => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const _MESN = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+function _lev(a, b, max){ if (Math.abs(a.length - b.length) > max) return max + 1; let prev = Array.from({length: b.length + 1}, (_, i) => i);
+  for (let i = 1; i <= a.length; i++){ const cur = [i]; let min = i; for (let j = 1; j <= b.length; j++){ cur[j] = Math.min(prev[j] + 1, cur[j-1] + 1, prev[j-1] + (a[i-1] === b[j-1] ? 0 : 1)); if (cur[j] < min) min = cur[j]; } if (min > max) return max + 1; prev = cur; } return prev[b.length]; }
+function textoBusqueda(p){ if (!p._bq){ const ts = (typeof TEMATICA_STYLE !== 'undefined' && TEMATICA_STYLE[p.tematica]) || {}; p._bq = _fold([p.nombre, p.descripcion, p.tematica, ts.n, p.tipo, p.nivel, (p.meses || []).map(m => _MESN[m - 1]).join(' ')].join(' ')); p._bqw = p._bq.split(/[^a-z0-9ñ]+/).filter(Boolean); } return p._bq; }
+function buscarCoincide(p, q){
+  const toks = _fold(q).split(/\s+/).filter(t => t.length >= 2 || /\d/.test(t)); if (!toks.length) return true;
+  const hay = textoBusqueda(p), W = p._bqw;
+  return toks.every(t => { if (hay.includes(t)) return true; if (t.length < 4) return false; const max = t.length >= 7 ? 2 : 1;
+    return W.some(w => (w.length >= 4 && _lev(w, t, max) <= max) || (w.length > t.length && _lev(w.slice(0, t.length), t, 1) <= 1 && t.length >= 5)); });
+}
 // Opiniones reales con estrellas (las que publicás desde Mi biblioteca): promedio y cantidad
 function ratingDe(p){ const L = (p.testimonios || []).map(t => Number(t && t.estrellas)).filter(n => n >= 1 && n <= 5); if (!L.length) return null; return { prom: L.reduce((a, b) => a + b, 0) / L.length, n: L.length }; }
 const estrellasTxt = (n) => '★★★★★'.slice(0, Math.round(n)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(n));
@@ -2763,7 +2842,7 @@ function render(){
     if (_filtroNivel !== 'todos' && p.nivelGrupo !== _filtroNivel) return false;
     if (_filtroMes !== 'todos' && !(p.meses||[]).includes(Number(_filtroMes))) return false;
     if (_filtroTematica !== 'todos' && p.tematica !== _filtroTematica) return false;
-    if (_q && !((p.nombre||'').toLowerCase() + ' ' + (p.descripcion||'').toLowerCase()).includes(_q.toLowerCase())) return false;
+    if (_q && !buscarCoincide(p, _q)) return false;
     return true;
   });
 
@@ -3408,7 +3487,7 @@ function renderDetalle(p){
       </div>
       ${imagenes.length > 1 ? `
         <div class="detail-thumbs">
-          ${imagenes.map((img,i) => `<div class="detail-thumb ${i===0?'active':''}" onclick="cambiarImgDot('${img}',this,${i})"><img src="${imgOpt(img,160)}" alt="Muestra ${i+1}" loading="lazy" onerror="this.onerror=null;this.src='${_imgAbs(img)}'" /></div>`).join('')}
+          ${imagenes.map((img,i) => `<div class="detail-thumb ${i===0?'active':''}" onclick="cambiarImgDot('${img}',this,${i})"><img src="${imgOpt(img,160)}" alt="${String(p.nombre||'').replace(/"/g,'&quot;')} – ${i===0?'tapa':'página de muestra '+i}" loading="lazy" onerror="this.onerror=null;this.src='${_imgAbs(img)}'" /></div>`).join('')}
         </div>
         <div class="detail-dots">
           ${imagenes.map((_,i) => `<div class="detail-dot ${i===0?'active':''}" onclick="irAFoto(${i})"></div>`).join('')}
@@ -4451,7 +4530,7 @@ function cmdkRender(q){
   q = (q||'').trim().toLowerCase();
   const res = document.getElementById('cmdk-results'); if(!res) return;
   const prods = (_data && _data.productos ? _data.productos : []).filter(p => p.activo);
-  let matched = q ? prods.filter(p => ((p.nombre||'')+' '+(p.descripcion||'')+' '+(p.nivel||'')+' '+(p.tematica||'')).toLowerCase().includes(q)) : prods;
+  let matched = q ? prods.filter(p => buscarCoincide(p, q)) : prods;
   matched = matched.slice(0, 6);
   const acc = CMDK_ACCIONES.filter(a => !q || a.tt.toLowerCase().includes(q));
   _cmdkItems = []; let html = '';
@@ -5077,6 +5156,104 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
   const K = "cofre-tasa-" + mon;
   try { const c = JSON.parse(localStorage.getItem(K) || "null"); if (c && Date.now() - c.t < 12 * 3600e3 && c.v > 0) return usar(c.v); } catch (e) {}
   fetch("https://open.er-api.com/v6/latest/ARS").then((r) => r.json()).then((j) => { const v = j && j.rates && j.rates[mon]; if (v > 0) { try { localStorage.setItem(K, JSON.stringify({ t: Date.now(), v })); } catch (e) {} usar(v); } }).catch(() => {});
+})();
+</script>
+<script id="m8-js">
+// ===== Vista rápida, sugerencias del buscador, plataformas en movimiento, regalo sin interrumpir y textos de imágenes =====
+(function () {
+  const $1 = (x) => document.querySelector(x), D = () => (typeof _data !== "undefined" && _data) || null;
+  const byId = (id) => ((D() && D().productos) || []).find((p) => p.id === id);
+  const e = (t) => String(t == null ? "" : t).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const plata = (n) => "$" + Number(n || 0).toLocaleString("es-AR");
+  const esPlat = (p) => !!(p && (p.tipo === "juego" || (p.demoUrl && String(p.demoUrl).trim())));
+  const fotos = (p) => { const L = [p.imagen].concat((p.previews || []).map((x) => (typeof x === "string" ? x : x && (x.imagen || x.img)))).filter(Boolean).map((x) => (typeof normImg === "function" ? normImg(x) : x)); return L.filter((x, i) => L.indexOf(x) === i); };
+  const track = (ev, d) => { try { if (window.umami) umami.track(ev, d); } catch (_) {} };
+
+  // ---------- 3 · Vista rápida ----------
+  const ov = document.createElement("div"); ov.className = "m8-ov"; ov.setAttribute("role", "dialog"); ov.setAttribute("aria-modal", "true"); ov.setAttribute("aria-label", "Vista rápida");
+  document.body.appendChild(ov);
+  let qvId = null;
+  function abrirQV(id) { const p = byId(id); if (!p) return; qvId = id; track("vista-rapida", { id });
+    const F = fotos(p).slice(0, 8), gratis = p.acceso === "gratis", off = !gratis && p.precioTachado > p.precio ? Math.round((1 - p.precio / p.precioTachado) * 100) : 0;
+    const ts = (typeof TEMATICA_STYLE !== "undefined" && (TEMATICA_STYLE[p.tematica] || TEMATICA_STYLE._def)) || {};
+    const link = gratis ? (p.linkGratis || p.link || "#/producto/" + p.id) : (p.link || "#/producto/" + p.id);
+    const meta = [ts.n ? (ts.e || "") + " " + ts.n : "", p.nivel, p.paginas ? p.paginas + " páginas" : "", p.formato].filter(Boolean);
+    ov.innerHTML = `<div class="m8-box"><button class="m8-x" type="button" aria-label="Cerrar">✕</button>
+      <div class="m8-gal"><div class="m8-tira">${F.map((u, i) => `<img src="${e(imgOpt(u, 820))}" alt="${e(p.nombre)} – ${i === 0 ? "tapa" : "página de muestra " + i}" ${i ? 'loading="lazy"' : ""} decoding="async" onerror="this.onerror=null;this.src='${e(_imgAbs(u))}'">`).join("")}</div>${F.length > 1 ? `<div class="m8-dots">${F.map((_, i) => `<i class="${i ? "" : "on"}"></i>`).join("")}</div>` : ""}</div>
+      <div class="m8-info"><span class="m8-k">${e((typeof TIPO_LABELS !== "undefined" && TIPO_LABELS[p.tipo]) || p.tipo || "")}${esPlat(p) ? " · 🎮 con plataforma interactiva" : ""}</span>
+        <h3>${e(p.nombre)}</h3>${typeof ratingHTML === "function" ? ratingHTML(p, "detail-rate") : ""}
+        ${meta.length ? `<div class="m8-meta">${meta.map((m) => `<span>${e(m)}</span>`).join("")}</div>` : ""}
+        <p class="m8-desc">${e(p.descripcion || "")}</p>
+        <div class="m8-precio">${gratis ? '<b style="color:var(--green)">¡Gratis!</b>' : `<b>${plata(p.precio)}</b>${p.precioTachado > p.precio ? `<s>${plata(p.precioTachado)}</s>` : ""}${off >= 5 ? `<em>−${off}%</em>` : ""}`}</div>
+        ${!gratis && typeof precioLocalHTML === "function" ? precioLocalHTML(p.precio) : ""}
+        <div class="m8-acts">${esPlat(p) && p.demoUrl ? '<button class="m8-play" type="button" data-m8play>▶ Probar la plataforma acá</button>' : ""}
+          <a class="btn btn-primary btn-lg" href="${e(link)}" ${/^https?:/.test(link) ? 'target="_blank" rel="noopener"' : ""} data-umami-event="click-comprar-rapida" data-umami-event-id="${e(p.id)}">${gratis ? "🎁 Descargar gratis" : "🛍️ Comprar ahora"}</a>
+          <a class="btn btn-ghost btn-lg" href="#/producto/${e(p.id)}" data-m8ficha>Ver la ficha completa →</a></div></div></div>`;
+    ov.classList.add("on"); document.body.style.overflow = "hidden";
+    const tira = ov.querySelector(".m8-tira"), dots = [...ov.querySelectorAll(".m8-dots i")];
+    if (tira) tira.addEventListener("scroll", () => { const k = Math.round(tira.scrollLeft / tira.clientWidth); dots.forEach((d, i) => d.classList.toggle("on", i === k)); }, { passive: true });
+    setTimeout(() => { const x = ov.querySelector(".m8-x"); if (x) x.focus({ preventScroll: true }); }, 50); }
+  function cerrarQV() { if (!ov.classList.contains("on")) return; ov.classList.remove("on"); ov.innerHTML = ""; document.body.style.overflow = ""; qvId = null; }
+  window.abrirVistaRapida = abrirQV;
+  ov.addEventListener("click", (ev) => { if (ev.target === ov || ev.target.closest(".m8-x")) return cerrarQV(); if (ev.target.closest("[data-m8ficha]")) { cerrarQV(); return; }
+    const pl = ev.target.closest("[data-m8play]"); if (pl) { const p = byId(qvId); const t = ov.querySelector(".m8-tira"); if (p && t) { t.insertAdjacentHTML("afterbegin", `<iframe src="${e(p.demoUrl)}" title="Plataforma ${e(p.nombre)}" allow="autoplay; fullscreen" loading="eager"></iframe>`); t.scrollLeft = 0; pl.textContent = "🎮 Jugando la demo · deslizá para ver las páginas"; pl.disabled = true; track("vista-rapida-demo", { id: p.id }); } } });
+  addEventListener("keydown", (ev) => { if (ev.key === "Escape") cerrarQV(); });
+  // botón en cada tarjeta + mantener apretado en el celular
+  function ponerBotones(raiz) { (raiz || document).querySelectorAll("#grid .card[data-id] .card-img").forEach((ci) => { if (ci.querySelector(".m8-qv")) return; const id = ci.closest(".card").dataset.id, p = byId(id);
+      ci.insertAdjacentHTML("beforeend", `<button class="m8-qv" type="button" data-qv="${e(id)}" aria-label="Vista rápida de ${e(p ? p.nombre : "")}">👁<span> Vista rápida</span></button>`);
+      if (esPlat(p) && !ci.querySelector(".m8-live")) ci.insertAdjacentHTML("beforeend", '<span class="m8-live"><i></i>INTERACTIVO</span>'); }); moverPlataformas(); }
+  document.addEventListener("click", (ev) => { const b = ev.target.closest && ev.target.closest("[data-qv]"); if (!b) return; ev.preventDefault(); ev.stopPropagation(); abrirQV(b.dataset.qv); }, true);
+  let lp = null, lpMov = false;
+  document.addEventListener("touchstart", (ev) => { const c = ev.target.closest && ev.target.closest("#grid .card[data-id]"); if (!c || ev.target.closest("button")) return; lpMov = false; clearTimeout(lp); lp = setTimeout(() => { if (!lpMov) { c.dataset.m8lp = "1"; if (navigator.vibrate) navigator.vibrate(10); abrirQV(c.dataset.id); } }, 480); }, { passive: true });
+  document.addEventListener("touchmove", () => { lpMov = true; clearTimeout(lp); }, { passive: true });
+  document.addEventListener("touchend", () => clearTimeout(lp), { passive: true });
+  document.addEventListener("click", (ev) => { const c = ev.target.closest && ev.target.closest("#grid .card[data-m8lp]"); if (c) { ev.preventDefault(); ev.stopPropagation(); delete c.dataset.m8lp; } }, true);
+  document.addEventListener("contextmenu", (ev) => { if (ev.target.closest && ev.target.closest("#grid .card[data-id]") && matchMedia("(hover:none)").matches) ev.preventDefault(); });
+
+  // ---------- 5 · Plataformas en movimiento: sus páginas pasan solas mientras se ven ----------
+  const io = "IntersectionObserver" in window ? new IntersectionObserver((es) => es.forEach((en) => { const c = en.target; if (en.isIntersecting) { if (c._m8t) return; const S = [...c.querySelectorAll(".card-slide")], Dt = [...c.querySelectorAll(".card-dots i")]; if (S.length < 2) return; let k = Math.max(0, S.findIndex((x) => x.classList.contains("on")));
+      c._m8t = setInterval(() => { if (document.hidden || c.matches(":hover")) return; k = (k + 1) % S.length; S.forEach((x, i) => x.classList.toggle("on", i === k)); Dt.forEach((x, i) => x.classList.toggle("on", i === k)); }, 1800); }
+    else if (c._m8t) { clearInterval(c._m8t); c._m8t = null; } }), { threshold: 0.6 }) : null;
+  function moverPlataformas() { if (!io || matchMedia("(prefers-reduced-motion: reduce)").matches) return; document.querySelectorAll("#grid .card[data-id]").forEach((c) => { if (c.dataset.m8io) return; const p = byId(c.dataset.id); if (!esPlat(p)) return; c.dataset.m8io = 1; c.classList.add("m8-mueve"); io.observe(c); }); }
+
+  // ---------- 1 · Sugerencias mientras escribís ----------
+  const sug = document.createElement("div"); sug.className = "m8-sug"; sug.setAttribute("role", "listbox"); document.body.appendChild(sug);
+  let sugInp = null, sugSel = -1, sugL = [];
+  function pintarSug(inp) { const q = inp.value.trim(); if (q.length < 2 || !D() || typeof buscarCoincide !== "function") { sug.classList.remove("on"); return; }
+    sugL = (D().productos || []).filter((p) => p.activo && buscarCoincide(p, q)).sort((a, b) => (typeof masNuevoPrimero === "function" ? masNuevoPrimero(a, b) : 0)).slice(0, 6); sugSel = -1; sugInp = inp;
+    if (!sugL.length) { sug.innerHTML = `<div class="m8-h">Sin coincidencias para “${e(q)}”</div><div style="padding:4px 8px 10px;font-size:.85rem;color:var(--ink-3)">Probá con otra palabra, por ejemplo “bandera”, “vocales” o “marzo”.</div>`; }
+    else sug.innerHTML = `<div class="m8-h">Materiales</div>` + sugL.map((p, i) => `<a href="#/producto/${e(p.id)}" data-i="${i}" role="option"><img src="${e(imgOpt(p.imagen, 120))}" alt="" loading="lazy" onerror="this.onerror=null;this.src='${e(_imgAbs(p.imagen))}'"><span><b>${e(p.nombre)}</b><small>${e([p.nivel, (TEMATICA_STYLE[p.tematica] || {}).n].filter(Boolean).join(" · "))}</small></span><em>${p.acceso === "gratis" ? "Gratis" : plata(p.precio)}</em></a>`).join("") + `<a class="m8-todo" href="#catalogo" data-m8todo>Ver todos los resultados →</a>`;
+    const r = inp.getBoundingClientRect(), w = Math.max(r.width, Math.min(420, innerWidth - 24)); sug.style.width = w + "px"; sug.style.left = Math.max(12, Math.min(r.left, innerWidth - w - 12)) + "px"; sug.style.top = r.bottom + 6 + "px"; sug.classList.add("on"); }
+  ["#q", "#hdr-q"].forEach((sel) => { const inp = $1(sel); if (!inp) return; inp.setAttribute("autocomplete", "off");
+    inp.addEventListener("input", () => pintarSug(inp)); inp.addEventListener("focus", () => pintarSug(inp));
+    inp.addEventListener("blur", () => setTimeout(() => sug.classList.remove("on"), 180));
+    inp.addEventListener("keydown", (ev) => { if (!sug.classList.contains("on")) return; const A = [...sug.querySelectorAll("a[data-i]")]; if (ev.key === "ArrowDown" || ev.key === "ArrowUp") { ev.preventDefault(); sugSel = (sugSel + (ev.key === "ArrowDown" ? 1 : -1) + A.length) % A.length; A.forEach((a, i) => a.classList.toggle("on", i === sugSel)); } else if (ev.key === "Enter" && sugSel >= 0 && A[sugSel]) { ev.preventDefault(); location.hash = A[sugSel].getAttribute("href"); sug.classList.remove("on"); inp.blur(); } else if (ev.key === "Escape") sug.classList.remove("on"); }); });
+  sug.addEventListener("mousedown", (ev) => ev.preventDefault());
+  sug.addEventListener("click", (ev) => { const t = ev.target.closest("[data-m8todo]"); sug.classList.remove("on"); if (t) { ev.preventDefault(); const g = $1("#catalogo"); if (g) g.scrollIntoView({ behavior: "smooth" }); } if (sugInp) sugInp.blur(); });
+  addEventListener("scroll", () => { if (sug.classList.contains("on") && sugInp) { const r = sugInp.getBoundingClientRect(); sug.style.top = r.bottom + 6 + "px"; if (r.bottom < 0) sug.classList.remove("on"); } }, { passive: true });
+
+  // ---------- 2 · El regalo no interrumpe: barra chica después de ver un material ----------
+  let regaloPend = false, vistos = 0; try { vistos = +sessionStorage.getItem("m8-vistos") || 0; } catch (_) {}
+  const bar = document.createElement("div"); bar.className = "m8-regalo"; bar.setAttribute("role", "status");
+  bar.innerHTML = '<span class="ic" aria-hidden="true">🎁</span><p><b>Tenés un regalo de bienvenida</b>Abrí el cofre y llevate un descuento.</p><button class="btn btn-primary" type="button" data-m8abrir>Abrir</button><button class="m8-cx" type="button" aria-label="Cerrar" data-m8cx>✕</button>';
+  document.body.appendChild(bar);
+  function mostrarBarra() { if (bar.classList.contains("on")) return; try { if (localStorage.getItem("cofre_regalo") === "claimed" || localStorage.getItem("m8-regalo-x")) return; sessionStorage.setItem("m8-pop", "1"); } catch (_) {} bar.classList.add("on"); track("regalo-barra"); }
+  function quizasBarra() { if (regaloPend && vistos >= 1 && !document.body.classList.contains("in-detail") && !ov.classList.contains("on")) { regaloPend = false; setTimeout(mostrarBarra, 1500); } }
+  bar.addEventListener("click", (ev) => { if (ev.target.closest("[data-m8abrir]")) { bar.classList.remove("on"); _abrir.call(window); } else if (ev.target.closest("[data-m8cx]")) { bar.classList.remove("on"); try { localStorage.setItem("m8-regalo-x", "1"); } catch (_) {} } });
+  const _abrir = typeof abrirCofre === "function" ? abrirCofre : null;
+  if (_abrir) abrirCofre = function () { const ev = window.event; if (!ev || !ev.isTrusted || !/click|key|touch|pointer|mouse/.test(ev.type)) { regaloPend = true; quizasBarra(); return; } return _abrir.apply(this, arguments); };
+  addEventListener("hashchange", () => { if (/^#\/producto\//.test(location.hash)) { vistos++; try { sessionStorage.setItem("m8-vistos", vistos); } catch (_) {} } quizasBarra(); });
+  setInterval(quizasBarra, 3000);
+  // el cartel de "antes de irte" (computadora): solo si no apareció otro aviso y después de 30 segundos
+  if (typeof abrirExit === "function") { const _ex = abrirExit; abrirExit = function () { let ya = false; try { ya = !!sessionStorage.getItem("m8-pop"); } catch (_) {} if (ya || performance.now() < 30000 || bar.classList.contains("on")) return; try { sessionStorage.setItem("m8-pop", "1"); } catch (_) {} return _ex.apply(this, arguments); }; }
+
+  // ---------- 11 · Textos de las imágenes ampliadas ----------
+  const nom = () => { const h = $1("#detail-content h1"); return h ? h.textContent.trim() : "Material de Cofre Didáctico"; };
+  ["#lb-img", "#fb-img"].forEach((sel) => { const im = $1(sel); if (!im) return; new MutationObserver(() => { im.alt = nom() + (sel === "#lb-img" ? " – vista ampliada" : " – página de muestra"); }).observe(im, { attributes: true, attributeFilter: ["src"] }); });
+
+  // ---------- se arma con cada catálogo nuevo ----------
+  if (typeof render === "function") { const _r = render; render = function () { const x = _r.apply(this, arguments); try { ponerBotones(); } catch (_) {} return x; }; }
+  setTimeout(ponerBotones, 1500);
 })();
 </script>
 </body>
