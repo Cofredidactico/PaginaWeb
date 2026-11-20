@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Botón de arrepentimiento · Cofre Didáctico</title>
+<meta name="description" content="Solicitá la revocación de tu compra en Cofre Didáctico (Resolución 424/2020)." />
+<link rel="icon" href="logo.png" />
+<link rel="canonical" href="https://cofredidactico.com.ar/arrepentimiento.html" />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0E1420;--card:#161D2B;--card-2:#1B2333;--line:#2C3648;--ink:#EEF1F6;--ink-2:#C3CAD6;--ink-3:#96A0B0;--primary:#54ABF5;--accent:#FF9B63;--green:#5CC47B;--f:'Nunito',system-ui,sans-serif;--fd:'Outfit',system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--f);color:var(--ink);min-height:100vh;background:radial-gradient(900px 520px at 8% -8%,rgba(84,171,245,.16),transparent 60%),radial-gradient(800px 500px at 100% 0%,rgba(255,155,99,.10),transparent 60%),var(--bg)}
+a{color:var(--primary)}
+.top{max-width:760px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;gap:10px}
+.top a{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:var(--fd);font-weight:700}
+.top img{width:36px;height:36px;border-radius:9px}.top b span{color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:10px 20px 60px}
+h1{font-family:var(--fd);font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.15;margin:8px 0 10px}
+.lead{color:var(--ink-2);font-size:1rem;line-height:1.6;margin-bottom:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 18px 40px -18px rgba(0,0,0,.7)}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-weight:800;font-size:.88rem}
+label small{font-weight:600;color:var(--ink-3)}
+.full{grid-column:1/-1}
+input,textarea{width:100%;font:inherit;font-size:.95rem;color:var(--ink);background:var(--card-2);border:1.5px solid var(--line);border-radius:12px;padding:11px 13px}
+input:focus,textarea:focus{outline:2px solid color-mix(in srgb,var(--primary) 55%,transparent);border-color:transparent}
+.chk{display:flex;gap:10px;align-items:flex-start;font-weight:600;font-size:.86rem;color:var(--ink-2);margin-top:4px}
+.chk input{width:18px;height:18px;margin-top:2px;accent-color:var(--primary)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:800;font-size:1rem;border:0;border-radius:14px;padding:13px 20px;cursor:pointer;text-decoration:none}
+.btn-p{background:linear-gradient(135deg,#FF9B63,#FF6B35);color:#fff;box-shadow:0 10px 24px -10px rgba(255,107,53,.7)}
+.btn-g{background:var(--card-2);color:var(--ink);border:1.5px solid var(--line)}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.msg{margin-top:12px;color:#FF8F85;font-weight:700;font-size:.88rem}
+.ok{display:none;text-align:center}
+.ok.on{display:block}
+.ok .ic{font-size:2.6rem}
+.cod{display:inline-block;font:800 1.4rem/1 var(--fd);letter-spacing:.06em;padding:12px 18px;border-radius:14px;background:var(--card-2);border:1.5px dashed var(--primary);margin:12px 0}
+.info{margin-top:22px;display:grid;gap:10px;color:var(--ink-2);font-size:.9rem;line-height:1.6}
+.info h2{font-family:var(--fd);font-size:1.1rem;color:var(--ink)}
+footer{text-align:center;color:var(--ink-3);font-size:.85rem;padding:24px 20px}
+@media (max-width:620px){.g{grid-template-columns:1fr}.card{padding:18px}.acts .btn{flex:1 1 100%}}
+</style>
+</head>
+<body>
+<header class="top"><a href="./"><img src="logo.png" alt=""><b>Cofre <span>Didáctico</span></b></a></header>
+<main>
+  <h1>↩️ Botón de arrepentimiento</h1>
+  <p class="lead">Si compraste un material y querés solicitar la revocación de la compra, completá este formulario. Te enviamos el número de trámite dentro de las 24 horas.</p>
+
+  <form class="card" id="f" novalidate>
+    <div class="g">
+      <label>Nombre y apellido *<input id="nom" autocomplete="name" required maxlength="80"></label>
+      <label>Correo con el que compraste *<input id="mail" type="email" inputmode="email" autocomplete="email" required maxlength="120"></label>
+      <label>Número de pedido <small>figura en el correo de tu compra</small><input id="ped" maxlength="40" placeholder="Ej.: 12345"></label>
+      <label>Fecha de compra<input id="fec" type="date"></label>
+      <label class="full">Material que compraste *<input id="mat" required maxlength="160" placeholder="Ej.: 20 de Noviembre - Día de la Soberanía Nacional"></label>
+      <label class="full">Motivo <small>opcional</small><textarea id="mot" rows="3" maxlength="600"></textarea></label>
+    </div>
+    <label class="chk"><input type="checkbox" id="ok"> Confirmo que quiero solicitar la revocación de esta compra.</label>
+    <div class="acts"><button class="btn btn-p" type="submit">Enviar solicitud</button><a class="btn btn-g" href="./">Volver a la tienda</a></div>
+    <div class="msg" id="msg" role="alert"></div>
+  </form>
+
+  <div class="card ok" id="listo" role="status" aria-live="polite">
+    <div class="ic">✅</div>
+    <h2 style="font-family:var(--fd);margin-top:6px">Tu solicitud está lista</h2>
+    <p class="lead" style="margin:8px 0 0">Se abrió tu correo con el pedido ya escrito: solo tenés que tocar <b>Enviar</b>. Guardá este código de solicitud:</p>
+    <div class="cod" id="cod"></div>
+    <p class="lead" style="font-size:.92rem">Si no se abrió tu correo, escribinos a <a id="mailTo" href="#"></a> con este código, o envialo por WhatsApp.</p>
+    <div class="acts" style="justify-content:center"><a class="btn btn-p" id="reMail" href="#">✉️ Abrir mi correo de nuevo</a><a class="btn btn-g" id="wa" href="#" target="_blank" rel="noopener">💬 Enviar por WhatsApp</a></div>
+  </div>
+
+  <section class="info">
+    <h2>¿Cómo funciona?</h2>
+    <p>Podés solicitar la revocación dentro de los <b>10 días corridos</b> desde la compra, sin tener que dar explicaciones. Revisamos cada pedido según la normativa vigente de Defensa del Consumidor y te respondemos por correo.</p>
+    <p>Este botón cumple con la Resolución 424/2020 de la Secretaría de Comercio Interior. Si necesitás hacer un reclamo, podés ingresar a <a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor/formulario" target="_blank" rel="noopener">Defensa del Consumidor</a>.</p>
+  </section>
+</main>
+<footer>© Cofre Didáctico · <a href="./">Volver a la tienda</a></footer>
+<script>
+const EMAIL = "cofredidacticoo@gmail.com", WA = "5491165298256";
+const $ = (s) => document.querySelector(s);
+const hoy = new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10); $("#fec").max = hoy;
+$("#f").onsubmit = (e) => { e.preventDefault(); const v = (id) => $(id).value.trim();
+  if (!v("#nom") || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v("#mail")) || !v("#mat")) { $("#msg").textContent = "Completá tu nombre, un correo válido y el material."; return; }
+  if (!$("#ok").checked) { $("#msg").textContent = "Marcá la confirmación para enviar la solicitud."; return; }
+  $("#msg").textContent = "";
+  const cod = "ARR-" + hoy.replace(/-/g, "").slice(2) + "-" + Math.random().toString(36).slice(2, 6).toUpperCase();
+  const cuerpo = `Solicitud de revocación (Botón de arrepentimiento)\n\nCódigo de solicitud: ${cod}\nNombre: ${v("#nom")}\nCorreo de compra: ${v("#mail")}\nNúmero de pedido: ${v("#ped") || "-"}\nFecha de compra: ${v("#fec") || "-"}\nMaterial: ${v("#mat")}\nMotivo: ${v("#mot") || "-"}\n\nFecha de la solicitud: ${new Date().toLocaleString("es-AR")}`;
+  const mailto = `mailto:${EMAIL}?subject=${encodeURIComponent("Botón de arrepentimiento · " + cod)}&body=${encodeURIComponent(cuerpo)}`;
+  $("#cod").textContent = cod; $("#mailTo").textContent = EMAIL; $("#mailTo").href = mailto; $("#reMail").href = mailto;
+  $("#wa").href = `https://wa.me/${WA}?text=${encodeURIComponent(cuerpo)}`;
+  $("#f").style.display = "none"; $("#listo").classList.add("on"); $("#listo").scrollIntoView({ behavior: "smooth", block: "start" });
+  location.href = mailto; };
+</script>
+</body>
+</html>

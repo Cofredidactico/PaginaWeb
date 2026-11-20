@@ -70,8 +70,10 @@ for (const p of productos) {
       "seller": { "@type": "Organization", "name": "Cofre Didáctico" }
     }
   };
-  if (tests.length){
-    schema.aggregateRating = { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": String(tests.length) };
+  // Solo opiniones reales con estrellas (las que publicás desde Mi biblioteca)
+  const notas = tests.map(x => Number(x && x.estrellas)).filter(n => n >= 1 && n <= 5);
+  if (notas.length){
+    schema.aggregateRating = { "@type": "AggregateRating", "ratingValue": (notas.reduce((a, b) => a + b, 0) / notas.length).toFixed(1), "reviewCount": String(notas.length), "bestRating": "5", "worstRating": "1" };
   }
 
   // ── Precio (HTML) ──
@@ -172,7 +174,7 @@ for (const p of productos) {
   </article>
 </main>
 <footer>
-  © Cofre Didáctico · Materiales educativos para docentes · <a href="../">Ver todos los materiales</a>
+  © Cofre Didáctico · Materiales educativos para docentes · <a href="../">Ver todos los materiales</a> · <a href="../arrepentimiento.html">Botón de arrepentimiento</a>
 </footer>
 </body>
 </html>

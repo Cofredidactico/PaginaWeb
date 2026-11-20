@@ -1838,6 +1838,13 @@ html.pro-theme-fade, html.pro-theme-fade *{transition:background-color .45s ease
 /* ===== Tienda en el celular (m5) ===== */
 /* precio e "incluye" repetidos sin estilo en la ficha: se muestra una sola vez */
 .detail-price-block,.detail-incluye-chips{display:none!important}
+.ft-arrep{color:rgba(255,255,255,.72)!important;font-weight:700;text-decoration:underline;text-underline-offset:3px}.ft-arrep:hover{color:#fff!important}
+.card-rate,.detail-rate{display:flex;align-items:center;gap:4px;font-size:.78rem;color:var(--ink-3);margin:2px 0 4px}
+.card-rate .rt-st,.detail-rate .rt-st{color:#F5B301;letter-spacing:1px}.card-rate b,.detail-rate b{color:var(--ink)}
+.detail-rate{font-size:.95rem;margin:-4px 0 12px}.detail-rate .rt-st{font-size:1.05rem}
+.p-loc{display:block;font-family:var(--f-body);font-size:.72rem;font-weight:700;color:var(--ink-3);letter-spacing:0;margin-top:1px}
+.p-loc:empty{display:none}
+.detail-loc .p-loc{font-size:.9rem;margin:-10px 0 14px}
 .detail-efe{display:inline-flex;align-items:center;gap:6px;margin:4px 0 14px;padding:8px 14px;border-radius:999px;font-size:.88rem;font-weight:700;background:var(--primary-soft);color:var(--ink);border:1px solid color-mix(in srgb,var(--primary) 30%,transparent)}
 .detail-efe.urge{background:color-mix(in srgb,var(--accent) 16%,transparent);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
 .m5-chips{display:none}
@@ -2259,6 +2266,7 @@ html.pro-theme-fade, html.pro-theme-fade *{transition:background-color .45s ease
       <div class="ft-bottom">
         <span>© <span id="year"></span> Cofre Didáctico · Hecho con ❤️ para docentes de todo el mundo</span>
         <span id="ft-email-link"></span>
+        <a href="arrepentimiento.html" class="ft-arrep">↩️ Botón de arrepentimiento</a>
       </div>
     </div>
   </div>
@@ -2481,6 +2489,8 @@ function generarSchemaProductos(){
       "url": BASE + '#/producto/' + (p.id || '')
     };
     const precio = p.acceso === 'gratis' ? 0 : (p.precio || 0);
+    const rt = ratingDe(p);
+    if (rt) prod.aggregateRating = { "@type": "AggregateRating", "ratingValue": rt.prom.toFixed(1), "reviewCount": rt.n, "bestRating": 5, "worstRating": 1 };
     prod.offers = {
       "@type": "Offer",
       "price": precio,
@@ -2510,6 +2520,12 @@ function marcarPublicacion(d){
     .forEach(p => { if (!p.etiqueta) { p.etiqueta = 'nuevo'; p._autoNuevo = true; } });
 }
 const masNuevoPrimero = (a, b) => (b._pub || 0) - (a._pub || 0);
+// Opiniones reales con estrellas (las que publicás desde Mi biblioteca): promedio y cantidad
+function ratingDe(p){ const L = (p.testimonios || []).map(t => Number(t && t.estrellas)).filter(n => n >= 1 && n <= 5); if (!L.length) return null; return { prom: L.reduce((a, b) => a + b, 0) / L.length, n: L.length }; }
+const estrellasTxt = (n) => '★★★★★'.slice(0, Math.round(n)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(n));
+const ratingHTML = (p, cls) => { const r = ratingDe(p); return r ? `<div class="${cls}" title="${r.n} opinión${r.n === 1 ? '' : 'es'} de docentes"><span class="rt-st">${estrellasTxt(r.prom)}</span> <b>${r.prom.toFixed(1).replace('.', ',')}</b> <span class="rt-n">(${r.n})</span></div>` : ''; };
+// Precio aproximado en la moneda del país de quien visita (se completa solo, ver "monedas" al final)
+const precioLocalHTML = (ars) => ars > 0 ? `<span class="p-loc" data-ars="${ars}"></span>` : '';
 
 // Normaliza rutas de imagen: convierte rutas absolutas /PaginaWeb/... a relativas
 function normImg(ruta){
@@ -2566,7 +2582,7 @@ function cardHTML(p, i, opts){
   const offBadge = descuento >= 5 ? `<div class="card-off">−${descuento}%</div>` : '';
   const precio = p.acceso==='gratis'
     ? `<div class="price gratis">¡Gratis!</div>`
-    : `<div class="price">${p.precioTachado?`<span class="price-tachado">$${p.precioTachado.toLocaleString('es-AR')}</span>`:''}$${(p.precio||0).toLocaleString('es-AR')}</div>`;
+    : `<div class="price">${p.precioTachado?`<span class="price-tachado">$${p.precioTachado.toLocaleString('es-AR')}</span>`:''}$${(p.precio||0).toLocaleString('es-AR')}${precioLocalHTML(p.precio)}</div>`;
   const cta = p.acceso==='gratis' ? 'Descargar →' : 'Ver más →';
   const fp = (opts.priority || i < 4) ? 'fetchpriority="high"' : '';
 
@@ -2602,6 +2618,7 @@ function cardHTML(p, i, opts){
         ${p.nivel?`<div class="card-nivel">${p.nivel}</div>`:''}
         ${p.linkHotmart?`<div class="card-intl">🌍 Internacional</div>`:''}
         <h3 class="card-ttl">${p.nombre}</h3>
+        ${ratingHTML(p, 'card-rate')}
         <p class="card-desc">${p.descripcion||''}</p>
         <div class="card-foot">
           ${precio}
@@ -3367,7 +3384,7 @@ function renderDetalle(p){
           <div class="testi">
             <div class="testi-av">${(t.inicial||'D').toUpperCase().slice(0,1)}</div>
             <div class="testi-bd">
-              <span class="testi-stars">★★★★★</span>
+              ${Number(t.estrellas) >= 1 ? `<span class="testi-stars">${estrellasTxt(Number(t.estrellas))}</span>` : ''}
               <p class="testi-tx">${t.texto}</p>
               <div class="testi-author">
                 <span class="testi-name">${t.nombre||'Docente'}</span>
@@ -3401,6 +3418,7 @@ function renderDetalle(p){
     <div class="detail-info">
       <div class="detail-meta">${tags.join('')}</div>
       <h1>${p.nombre}</h1>
+      ${ratingHTML(p, 'detail-rate')}
       ${intlBadge}
       ${(() => { const dE = typeof window.cofreDiasEfe === 'function' ? window.cofreDiasEfe(p) : null; if (dE === null || dE < 0 || dE > 30) return ''; const txt = dE === 0 ? '¡Es hoy!' : dE === 1 ? '¡Es mañana! Descargalo ya y lo imprimís hoy' : `Faltan ${dE} días: tenelo listo con tiempo`; return `<div class="detail-efe${dE <= 3 ? ' urge' : ''}">📅 <b>Efeméride</b> · ${txt}</div>`; })()}
 
@@ -3417,6 +3435,7 @@ function renderDetalle(p){
 
       <!-- Precio + botones al final, bien visibles antes de comprar -->
       <div class="detail-price">${precio}</div>
+      ${p.acceso !== 'gratis' ? `<div class="detail-loc">${precioLocalHTML(p.precio)}</div>` : ''}
       ${precioBloque}
       <div class="detail-cta">
         <a href="${p.link||'#'}" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-umami-event="click-comprar" data-umami-event-id="${p.id}" onpointerdown="if(typeof haptic==='function')haptic(15)">${cta}</a>
@@ -5042,6 +5061,22 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') cerrarExit
     if (wrap && cel()) { const top = wrap.getBoundingClientRect().top, lim = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--m5-hdr")) || 60); wrap.classList.toggle("on", top <= lim + 1 && wrap.parentElement.getBoundingClientRect().bottom > lim + 80); }
     if (fab && cel()) { if (y > yAnt + 6 && y > 300) fab.classList.add("m5-oculto"); else if (y < yAnt - 6) fab.classList.remove("m5-oculto"); }
     yAnt = y; }, { passive: true });
+})();
+</script>
+<script id="monedas-js">
+// ===== Precio aproximado en la moneda de cada país (México, Chile, Uruguay, España, etc.) =====
+(function () {
+  const TZ = { "America/Mexico_City": "MXN", "America/Monterrey": "MXN", "America/Tijuana": "MXN", "America/Cancun": "MXN", "America/Merida": "MXN", "America/Chihuahua": "MXN", "America/Hermosillo": "MXN", "America/Mazatlan": "MXN", "America/Santiago": "CLP", "America/Punta_Arenas": "CLP", "America/Montevideo": "UYU", "Europe/Madrid": "EUR", "Atlantic/Canary": "EUR", "America/Bogota": "COP", "America/Lima": "PEN", "America/Asuncion": "PYG", "America/La_Paz": "BOB", "America/Guayaquil": "USD", "America/Caracas": "USD", "America/Panama": "USD", "America/El_Salvador": "USD", "America/Costa_Rica": "CRC", "America/Guatemala": "GTQ", "America/Santo_Domingo": "DOP", "America/New_York": "USD", "America/Chicago": "USD", "America/Denver": "USD", "America/Los_Angeles": "USD", "America/Phoenix": "USD" };
+  const LOC = { MXN: "es-MX", CLP: "es-CL", UYU: "es-UY", EUR: "es-ES", COP: "es-CO", PEN: "es-PE", PYG: "es-PY", BOB: "es-BO", USD: "en-US", CRC: "es-CR", GTQ: "es-GT", DOP: "es-DO" };
+  let mon = null; try { mon = new URLSearchParams(location.search).get("moneda"); mon = mon ? mon.toUpperCase() : TZ[Intl.DateTimeFormat().resolvedOptions().timeZone] || null; } catch (e) {}
+  if (!mon || mon === "ARS") return;
+  let tasa = null;
+  const fmt = (v) => { try { return new Intl.NumberFormat(LOC[mon] || "es", { style: "currency", currency: mon, maximumFractionDigits: ["EUR", "USD", "PEN", "BOB", "GTQ"].includes(mon) ? 2 : 0 }).format(v); } catch (e) { return mon + " " + Math.round(v); } };
+  function pintar(raiz) { if (!tasa) return; (raiz || document).querySelectorAll(".p-loc[data-ars]:not([data-ok])").forEach((el) => { const v = Number(el.dataset.ars) * tasa; if (!(v > 0)) return; el.textContent = "≈ " + fmt(v) + " " + mon; el.title = "Precio aproximado en tu moneda. El cobro se hace en pesos argentinos y tu banco lo convierte."; el.dataset.ok = 1; }); }
+  function usar(t) { tasa = t; pintar(); new MutationObserver(() => pintar()).observe(document.body, { childList: true, subtree: true }); }
+  const K = "cofre-tasa-" + mon;
+  try { const c = JSON.parse(localStorage.getItem(K) || "null"); if (c && Date.now() - c.t < 12 * 3600e3 && c.v > 0) return usar(c.v); } catch (e) {}
+  fetch("https://open.er-api.com/v6/latest/ARS").then((r) => r.json()).then((j) => { const v = j && j.rates && j.rates[mon]; if (v > 0) { try { localStorage.setItem(K, JSON.stringify({ t: Date.now(), v })); } catch (e) {} usar(v); } }).catch(() => {});
 })();
 </script>
 </body>
